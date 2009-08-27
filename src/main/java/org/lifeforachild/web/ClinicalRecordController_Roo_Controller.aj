@@ -18,6 +18,9 @@ privileged aspect ClinicalRecordController_Roo_Controller {
     @org.springframework.web.bind.annotation.RequestMapping(value = "/clinicalrecord/form", method = org.springframework.web.bind.annotation.RequestMethod.GET)    
     public java.lang.String ClinicalRecordController.createForm(org.springframework.ui.ModelMap modelMap) {    
         modelMap.addAttribute("clinicalrecord", new org.lifeforachild.domain.ClinicalRecord());        
+        modelMap.addAttribute("_hba1cmethodtype", org.lifeforachild.domain.HbA1cMethodType.class.getEnumConstants());        
+        modelMap.addAttribute("_yesnolatertype", org.lifeforachild.domain.YesNoLaterType.class.getEnumConstants());        
+        modelMap.addAttribute("_yesnounkowntype", org.lifeforachild.domain.YesNoUnkownType.class.getEnumConstants());        
         return "clinicalrecord/create";        
     }    
     
@@ -51,6 +54,9 @@ privileged aspect ClinicalRecordController_Roo_Controller {
     public java.lang.String ClinicalRecordController.updateForm(@org.springframework.web.bind.annotation.PathVariable("id") java.lang.Long id, org.springframework.ui.ModelMap modelMap) {    
         if (id == null) throw new IllegalArgumentException("An Identifier is required");        
         modelMap.addAttribute("clinicalrecord", org.lifeforachild.domain.ClinicalRecord.findClinicalRecord(id));        
+        modelMap.addAttribute("_hba1cmethodtype", org.lifeforachild.domain.HbA1cMethodType.class.getEnumConstants());        
+        modelMap.addAttribute("_yesnolatertype", org.lifeforachild.domain.YesNoLaterType.class.getEnumConstants());        
+        modelMap.addAttribute("_yesnounkowntype", org.lifeforachild.domain.YesNoUnkownType.class.getEnumConstants());        
         return "clinicalrecord/update";        
     }    
     
@@ -59,6 +65,11 @@ privileged aspect ClinicalRecordController_Roo_Controller {
         if (id == null) throw new IllegalArgumentException("An Identifier is required");        
         org.lifeforachild.domain.ClinicalRecord.findClinicalRecord(id).remove();        
         return "redirect:/clinicalrecord";        
+    }    
+    
+    @org.springframework.web.bind.annotation.InitBinder    
+    public void ClinicalRecordController.initBinder(org.springframework.web.bind.WebDataBinder binder) {    
+        binder.registerCustomEditor(java.util.Date.class, new org.springframework.beans.propertyeditors.CustomDateEditor(new java.text.SimpleDateFormat("d/MM/yyyy"), false));        
     }    
     
 }

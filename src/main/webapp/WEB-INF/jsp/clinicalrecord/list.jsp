@@ -8,6 +8,12 @@
 <tr>
 <thead>
 <th>Id</th>
+<th>Blood Glucose Self Monitoring Per Week</th>
+<th>Urine Glucose Self Monitoring Per Week</th>
+<th>Adjust Insulin Dose If Needed</th>
+<th>Insulin Units Per Day</th>
+<th>Number Of Insulin Injections Per Day</th>
+<th>Long Acting Human</th>
 <th/>
 <th/>
 <th/>
@@ -16,6 +22,12 @@
 <c:forEach items="${clinicalrecords}" var="clinicalrecord">
 <tr>
 <td>${clinicalrecord.id}</td>
+<td>${fn:substring(clinicalrecord.bloodGlucoseSelfMonitoringPerWeek, 0, 10)}</td>
+<td>${fn:substring(clinicalrecord.urineGlucoseSelfMonitoringPerWeek, 0, 10)}</td>
+<td>${fn:substring(clinicalrecord.adjustInsulinDoseIfNeeded, 0, 10)}</td>
+<td>${fn:substring(clinicalrecord.insulinUnitsPerDay, 0, 10)}</td>
+<td>${fn:substring(clinicalrecord.numberOfInsulinInjectionsPerDay, 0, 10)}</td>
+<td>${fn:substring(clinicalrecord.longActingHuman, 0, 10)}</td>
 <td>
 <form:form action="/LifeForAChild/clinicalrecord/${clinicalrecord.id}" method="GET">
 <input alt="Show clinicalrecord" src="/LifeForAChild/static/images/show.png" title="Show clinicalrecord" type="image" value="Show clinicalrecord"/>
