@@ -188,6 +188,128 @@
 <div class="box" id="_hbA1cMethodOther">${clinicalrecord.hbA1cMethodOther}</div>
 </div>
 <br/>
+<div id="roo_clinicalrecord_microalbuminuriaValue">
+<label for="_microalbuminuriaValue">Microalbuminuria Value:</label>
+<div class="box" id="_microalbuminuriaValue">${clinicalrecord.microalbuminuriaValue}</div>
+</div>
+<br/>
+<div id="roo_clinicalrecord_microalbuminuriaUnitOfMeasure">
+<label for="_microalbuminuriaUnitOfMeasure">Microalbuminuria Unit Of Measure:</label>
+<div class="box" id="_microalbuminuriaUnitOfMeasure">${clinicalrecord.microalbuminuriaUnitOfMeasure}</div>
+</div>
+<br/>
+<div id="roo_clinicalrecord_creatinineValue">
+<label for="_creatinineValue">Creatinine Value:</label>
+<div class="box" id="_creatinineValue">${clinicalrecord.creatinineValue}</div>
+</div>
+<br/>
+<div id="roo_clinicalrecord_creatinineUnits">
+<label for="_creatinineUnits">Creatinine Units:</label>
+<div class="box" id="_creatinineUnits">${clinicalrecord.creatinineUnits}</div>
+</div>
+<br/>
+<div id="roo_clinicalrecord_totalCholesterolValue">
+<label for="_totalCholesterolValue">Total Cholesterol Value:</label>
+<div class="box" id="_totalCholesterolValue">${clinicalrecord.totalCholesterolValue}</div>
+</div>
+<br/>
+<div id="roo_clinicalrecord_cholesterolUnits">
+<label for="_cholesterolUnits">Cholesterol Units:</label>
+<div class="box" id="_cholesterolUnits">${clinicalrecord.cholesterolUnits}</div>
+</div>
+<br/>
+<div id="roo_clinicalrecord_hDLCholesterolValue">
+<label for="_hDLCholesterolValue">H D L Cholesterol Value:</label>
+<div class="box" id="_hDLCholesterolValue">${clinicalrecord.hDLCholesterolValue}</div>
+</div>
+<br/>
+<div id="roo_clinicalrecord_hDLUnits">
+<label for="_hDLUnits">H D L Units:</label>
+<div class="box" id="_hDLUnits">${clinicalrecord.hDLUnits}</div>
+</div>
+<br/>
+<div id="roo_clinicalrecord_triglyceridesValue">
+<label for="_triglyceridesValue">Triglycerides Value:</label>
+<div class="box" id="_triglyceridesValue">${clinicalrecord.triglyceridesValue}</div>
+</div>
+<br/>
+<div id="roo_clinicalrecord_triglyceridesUnits">
+<label for="_triglyceridesUnits">Triglycerides Units:</label>
+<div class="box" id="_triglyceridesUnits">${clinicalrecord.triglyceridesUnits}</div>
+</div>
+<br/>
+<div id="roo_clinicalrecord_fasted">
+<label for="_fasted">Fasted:</label>
+<div class="box" id="_fasted">${clinicalrecord.fasted}</div>
+</div>
+<br/>
+<div id="roo_clinicalrecord_attendingSchool">
+<label for="_attendingSchool">Attending School:</label>
+<div class="box" id="_attendingSchool">${clinicalrecord.attendingSchool}</div>
+</div>
+<br/>
+<div id="roo_clinicalrecord_notAttendingSchoolWhy">
+<label for="_notAttendingSchoolWhy">Not Attending School Why:</label>
+<div class="box" id="_notAttendingSchoolWhy">${clinicalrecord.notAttendingSchoolWhy}</div>
+</div>
+<br/>
+<div id="roo_clinicalrecord_diabetesLimitingAttendance">
+<label for="_diabetesLimitingAttendance">Diabetes Limiting Attendance:</label>
+<div class="box" id="_diabetesLimitingAttendance">${clinicalrecord.diabetesLimitingAttendance}</div>
+</div>
+<br/>
+<div id="roo_clinicalrecord_appropriateGradeForAge">
+<label for="_appropriateGradeForAge">Appropriate Grade For Age:</label>
+<div class="box" id="_appropriateGradeForAge">${clinicalrecord.appropriateGradeForAge}</div>
+</div>
+<br/>
+<div id="roo_clinicalrecord_diabetesCopingAbilities">
+<label for="_diabetesCopingAbilities">Diabetes Coping Abilities:</label>
+<div class="box" id="_diabetesCopingAbilities">${clinicalrecord.diabetesCopingAbilities}</div>
+</div>
+<br/>
+<div id="roo_clinicalrecord_numberOfSevereHypoglycaemiaEpisodes">
+<label for="_numberOfSevereHypoglycaemiaEpisodes">Number Of Severe Hypoglycaemia Episodes:</label>
+<div class="box" id="_numberOfSevereHypoglycaemiaEpisodes">${clinicalrecord.numberOfSevereHypoglycaemiaEpisodes}</div>
+</div>
+<br/>
+<div id="roo_clinicalrecord_numberKetoacidosisEpisodes">
+<label for="_numberKetoacidosisEpisodes">Number Ketoacidosis Episodes:</label>
+<div class="box" id="_numberKetoacidosisEpisodes">${clinicalrecord.numberKetoacidosisEpisodes}</div>
+</div>
+<br/>
+<div id="roo_clinicalrecord_numberOfHospitalAdmissionsRelatedToDiabetes">
+<label for="_numberOfHospitalAdmissionsRelatedToDiabetes">Number Of Hospital Admissions Related To Diabetes:</label>
+<div class="box" id="_numberOfHospitalAdmissionsRelatedToDiabetes">${clinicalrecord.numberOfHospitalAdmissionsRelatedToDiabetes}</div>
+</div>
+<br/>
+<div id="roo_clinicalrecord_additionalComment">
+<label for="_additionalComment">Additional Comment:</label>
+<div class="box" id="_additionalComment">${clinicalrecord.additionalComment}</div>
+</div>
+<br/>
+<div id="roo_clinicalrecord_personCompletingForm">
+<label for="_personCompletingForm">Person Completing Form:</label>
+<div class="box" id="_personCompletingForm">${clinicalrecord.personCompletingForm}</div>
+</div>
+<br/>
+<div id="roo_clinicalrecord_dateCompleted">
+<label for="_dateCompleted">Date Completed:</label>
+<div class="box" id="_dateCompleted">
+<fmt:formatDate pattern="d/MM/yyyy" type="DATE" value="${clinicalrecord.dateCompleted}"/>
+</div>
+</div>
+<br/>
+<div id="roo_clinicalrecord_seniorPhysician">
+<label for="_seniorPhysician">Senior Physician:</label>
+<div class="box" id="_seniorPhysician">${clinicalrecord.seniorPhysician}</div>
+</div>
+<br/>
+<div id="roo_clinicalrecord_child">
+<label for="_child">Child:</label>
+<div class="box" id="_child">${clinicalrecord.child}</div>
+</div>
+<br/>
 </c:if>
 <c:if test="${empty clinicalrecord}">No ClinicalRecord found with this id.</c:if>
 </div>

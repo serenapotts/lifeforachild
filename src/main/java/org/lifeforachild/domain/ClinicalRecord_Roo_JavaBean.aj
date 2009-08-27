@@ -306,4 +306,204 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.hbA1cMethodOther = hbA1cMethodOther;        
     }    
     
+    public int ClinicalRecord.getMicroalbuminuriaValue() {    
+        return this.microalbuminuriaValue;        
+    }    
+    
+    public void ClinicalRecord.setMicroalbuminuriaValue(int microalbuminuriaValue) {    
+        this.microalbuminuriaValue = microalbuminuriaValue;        
+    }    
+    
+    public org.lifeforachild.domain.MicroalbuminuriaUnitsType ClinicalRecord.getMicroalbuminuriaUnitOfMeasure() {    
+        return this.microalbuminuriaUnitOfMeasure;        
+    }    
+    
+    public void ClinicalRecord.setMicroalbuminuriaUnitOfMeasure(org.lifeforachild.domain.MicroalbuminuriaUnitsType microalbuminuriaUnitOfMeasure) {    
+        this.microalbuminuriaUnitOfMeasure = microalbuminuriaUnitOfMeasure;        
+    }    
+    
+    public java.lang.String ClinicalRecord.getProteinuria_dipstick_other() {    
+        return this.Proteinuria_dipstick_other;        
+    }    
+    
+    public void ClinicalRecord.setProteinuria_dipstick_other(java.lang.String Proteinuria_dipstick_other) {    
+        this.Proteinuria_dipstick_other = Proteinuria_dipstick_other;        
+    }    
+    
+    public float ClinicalRecord.getCreatinineValue() {    
+        return this.creatinineValue;        
+    }    
+    
+    public void ClinicalRecord.setCreatinineValue(float creatinineValue) {    
+        this.creatinineValue = creatinineValue;        
+    }    
+    
+    public org.lifeforachild.domain.CreatineUnitsType ClinicalRecord.getCreatinineUnits() {    
+        return this.creatinineUnits;        
+    }    
+    
+    public void ClinicalRecord.setCreatinineUnits(org.lifeforachild.domain.CreatineUnitsType creatinineUnits) {    
+        this.creatinineUnits = creatinineUnits;        
+    }    
+    
+    public float ClinicalRecord.getTotalCholesterolValue() {    
+        return this.totalCholesterolValue;        
+    }    
+    
+    public void ClinicalRecord.setTotalCholesterolValue(float totalCholesterolValue) {    
+        this.totalCholesterolValue = totalCholesterolValue;        
+    }    
+    
+    public org.lifeforachild.domain.MG_OR_MMOL_Type ClinicalRecord.getCholesterolUnits() {    
+        return this.cholesterolUnits;        
+    }    
+    
+    public void ClinicalRecord.setCholesterolUnits(org.lifeforachild.domain.MG_OR_MMOL_Type cholesterolUnits) {    
+        this.cholesterolUnits = cholesterolUnits;        
+    }    
+    
+    public float ClinicalRecord.getHDLCholesterolValue() {    
+        return this.hDLCholesterolValue;        
+    }    
+    
+    public void ClinicalRecord.setHDLCholesterolValue(float hDLCholesterolValue) {    
+        this.hDLCholesterolValue = hDLCholesterolValue;        
+    }    
+    
+    public org.lifeforachild.domain.MG_OR_MMOL_Type ClinicalRecord.getHDLUnits() {    
+        return this.hDLUnits;        
+    }    
+    
+    public void ClinicalRecord.setHDLUnits(org.lifeforachild.domain.MG_OR_MMOL_Type hDLUnits) {    
+        this.hDLUnits = hDLUnits;        
+    }    
+    
+    public float ClinicalRecord.getTriglyceridesValue() {    
+        return this.triglyceridesValue;        
+    }    
+    
+    public void ClinicalRecord.setTriglyceridesValue(float triglyceridesValue) {    
+        this.triglyceridesValue = triglyceridesValue;        
+    }    
+    
+    public org.lifeforachild.domain.MG_OR_MMOL_Type ClinicalRecord.getTriglyceridesUnits() {    
+        return this.triglyceridesUnits;        
+    }    
+    
+    public void ClinicalRecord.setTriglyceridesUnits(org.lifeforachild.domain.MG_OR_MMOL_Type triglyceridesUnits) {    
+        this.triglyceridesUnits = triglyceridesUnits;        
+    }    
+    
+    public org.lifeforachild.domain.YesNoUnkownType ClinicalRecord.getFasted() {    
+        return this.fasted;        
+    }    
+    
+    public void ClinicalRecord.setFasted(org.lifeforachild.domain.YesNoUnkownType fasted) {    
+        this.fasted = fasted;        
+    }    
+    
+    public boolean ClinicalRecord.getAttendingSchool() {    
+        return this.attendingSchool;        
+    }    
+    
+    public void ClinicalRecord.setAttendingSchool(boolean attendingSchool) {    
+        this.attendingSchool = attendingSchool;        
+    }    
+    
+    public org.lifeforachild.domain.NotAttendingSchoolReasonType ClinicalRecord.getNotAttendingSchoolWhy() {    
+        return this.notAttendingSchoolWhy;        
+    }    
+    
+    public void ClinicalRecord.setNotAttendingSchoolWhy(org.lifeforachild.domain.NotAttendingSchoolReasonType notAttendingSchoolWhy) {    
+        this.notAttendingSchoolWhy = notAttendingSchoolWhy;        
+    }    
+    
+    public boolean ClinicalRecord.getDiabetesLimitingAttendance() {    
+        return this.diabetesLimitingAttendance;        
+    }    
+    
+    public void ClinicalRecord.setDiabetesLimitingAttendance(boolean diabetesLimitingAttendance) {    
+        this.diabetesLimitingAttendance = diabetesLimitingAttendance;        
+    }    
+    
+    public boolean ClinicalRecord.getAppropriateGradeForAge() {    
+        return this.appropriateGradeForAge;        
+    }    
+    
+    public void ClinicalRecord.setAppropriateGradeForAge(boolean appropriateGradeForAge) {    
+        this.appropriateGradeForAge = appropriateGradeForAge;        
+    }    
+    
+    public org.lifeforachild.domain.DiabetesCopingType ClinicalRecord.getDiabetesCopingAbilities() {    
+        return this.diabetesCopingAbilities;        
+    }    
+    
+    public void ClinicalRecord.setDiabetesCopingAbilities(org.lifeforachild.domain.DiabetesCopingType diabetesCopingAbilities) {    
+        this.diabetesCopingAbilities = diabetesCopingAbilities;        
+    }    
+    
+    public int ClinicalRecord.getNumberOfSevereHypoglycaemiaEpisodes() {    
+        return this.numberOfSevereHypoglycaemiaEpisodes;        
+    }    
+    
+    public void ClinicalRecord.setNumberOfSevereHypoglycaemiaEpisodes(int numberOfSevereHypoglycaemiaEpisodes) {    
+        this.numberOfSevereHypoglycaemiaEpisodes = numberOfSevereHypoglycaemiaEpisodes;        
+    }    
+    
+    public int ClinicalRecord.getNumberKetoacidosisEpisodes() {    
+        return this.numberKetoacidosisEpisodes;        
+    }    
+    
+    public void ClinicalRecord.setNumberKetoacidosisEpisodes(int numberKetoacidosisEpisodes) {    
+        this.numberKetoacidosisEpisodes = numberKetoacidosisEpisodes;        
+    }    
+    
+    public int ClinicalRecord.getNumberOfHospitalAdmissionsRelatedToDiabetes() {    
+        return this.numberOfHospitalAdmissionsRelatedToDiabetes;        
+    }    
+    
+    public void ClinicalRecord.setNumberOfHospitalAdmissionsRelatedToDiabetes(int numberOfHospitalAdmissionsRelatedToDiabetes) {    
+        this.numberOfHospitalAdmissionsRelatedToDiabetes = numberOfHospitalAdmissionsRelatedToDiabetes;        
+    }    
+    
+    public java.lang.String ClinicalRecord.getAdditionalComment() {    
+        return this.additionalComment;        
+    }    
+    
+    public void ClinicalRecord.setAdditionalComment(java.lang.String additionalComment) {    
+        this.additionalComment = additionalComment;        
+    }    
+    
+    public org.lifeforachild.domain.User ClinicalRecord.getPersonCompletingForm() {    
+        return this.personCompletingForm;        
+    }    
+    
+    public void ClinicalRecord.setPersonCompletingForm(org.lifeforachild.domain.User personCompletingForm) {    
+        this.personCompletingForm = personCompletingForm;        
+    }    
+    
+    public java.util.Date ClinicalRecord.getDateCompleted() {    
+        return this.dateCompleted;        
+    }    
+    
+    public void ClinicalRecord.setDateCompleted(java.util.Date dateCompleted) {    
+        this.dateCompleted = dateCompleted;        
+    }    
+    
+    public java.lang.String ClinicalRecord.getSeniorPhysician() {    
+        return this.seniorPhysician;        
+    }    
+    
+    public void ClinicalRecord.setSeniorPhysician(java.lang.String seniorPhysician) {    
+        this.seniorPhysician = seniorPhysician;        
+    }    
+    
+    public org.lifeforachild.domain.Child ClinicalRecord.getChild() {    
+        return this.child;        
+    }    
+    
+    public void ClinicalRecord.setChild(org.lifeforachild.domain.Child child) {    
+        this.child = child;        
+    }    
+    
 }

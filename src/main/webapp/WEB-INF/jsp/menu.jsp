@@ -54,4 +54,15 @@
 </li>
 </ul>
 </li>
+<li id="web_mvc_jsp_user_category">
+<h2>User</h2>
+<ul>
+<li id="web_mvc_jsp_list_user_menu_item">
+<a href="/LifeForAChild/user">List all Users</a>
+</li>
+<li id="web_mvc_jsp_create_user_menu_item">
+<a href="/LifeForAChild/user/form">Create new User</a>
+</li>
+</ul>
+</li>
 </ul>

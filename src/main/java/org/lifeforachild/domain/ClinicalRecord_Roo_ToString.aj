@@ -43,7 +43,32 @@ privileged aspect ClinicalRecord_Roo_ToString {
         sb.append("tuningForkAbnormal: ").append(getTuningForkAbnormal()).append(", ");        
         sb.append("lastHbA1cInLast12Months: ").append(getLastHbA1cInLast12Months()).append(", ");        
         sb.append("hbA1cMethod: ").append(getHbA1cMethod()).append(", ");        
-        sb.append("hbA1cMethodOther: ").append(getHbA1cMethodOther());        
+        sb.append("hbA1cMethodOther: ").append(getHbA1cMethodOther()).append(", ");        
+        sb.append("microalbuminuriaValue: ").append(getMicroalbuminuriaValue()).append(", ");        
+        sb.append("microalbuminuriaUnitOfMeasure: ").append(getMicroalbuminuriaUnitOfMeasure()).append(", ");        
+        sb.append("proteinuria_dipstick_other: ").append(getProteinuria_dipstick_other()).append(", ");        
+        sb.append("creatinineValue: ").append(getCreatinineValue()).append(", ");        
+        sb.append("creatinineUnits: ").append(getCreatinineUnits()).append(", ");        
+        sb.append("totalCholesterolValue: ").append(getTotalCholesterolValue()).append(", ");        
+        sb.append("cholesterolUnits: ").append(getCholesterolUnits()).append(", ");        
+        sb.append("hDLCholesterolValue: ").append(getHDLCholesterolValue()).append(", ");        
+        sb.append("hDLUnits: ").append(getHDLUnits()).append(", ");        
+        sb.append("triglyceridesValue: ").append(getTriglyceridesValue()).append(", ");        
+        sb.append("triglyceridesUnits: ").append(getTriglyceridesUnits()).append(", ");        
+        sb.append("fasted: ").append(getFasted()).append(", ");        
+        sb.append("attendingSchool: ").append(getAttendingSchool()).append(", ");        
+        sb.append("notAttendingSchoolWhy: ").append(getNotAttendingSchoolWhy()).append(", ");        
+        sb.append("diabetesLimitingAttendance: ").append(getDiabetesLimitingAttendance()).append(", ");        
+        sb.append("appropriateGradeForAge: ").append(getAppropriateGradeForAge()).append(", ");        
+        sb.append("diabetesCopingAbilities: ").append(getDiabetesCopingAbilities()).append(", ");        
+        sb.append("numberOfSevereHypoglycaemiaEpisodes: ").append(getNumberOfSevereHypoglycaemiaEpisodes()).append(", ");        
+        sb.append("numberKetoacidosisEpisodes: ").append(getNumberKetoacidosisEpisodes()).append(", ");        
+        sb.append("numberOfHospitalAdmissionsRelatedToDiabetes: ").append(getNumberOfHospitalAdmissionsRelatedToDiabetes()).append(", ");        
+        sb.append("additionalComment: ").append(getAdditionalComment()).append(", ");        
+        sb.append("personCompletingForm: ").append(getPersonCompletingForm()).append(", ");        
+        sb.append("dateCompleted: ").append(getDateCompleted()).append(", ");        
+        sb.append("seniorPhysician: ").append(getSeniorPhysician()).append(", ");        
+        sb.append("child: ").append(getChild());        
         return sb.toString();        
     }    
     

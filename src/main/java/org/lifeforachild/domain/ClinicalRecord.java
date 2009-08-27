@@ -3,6 +3,7 @@ package org.lifeforachild.domain;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
@@ -148,10 +149,14 @@ public class ClinicalRecord {
 	@Size(max=100)
 	private String additionalComment;
 
+	@ManyToOne
+	private User personCompletingForm;
 	
-
-;
-
-
-
+	private Date dateCompleted;
+	
+	@Size(max=30)
+	private String seniorPhysician;
+	
+	@ManyToOne
+	Child child;
 }
