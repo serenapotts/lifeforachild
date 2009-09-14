@@ -32,53 +32,56 @@ privileged aspect DiabetesCentre_Roo_Entity {
     
     @org.springframework.transaction.annotation.Transactional    
     public void DiabetesCentre.persist() {    
-        if (this.entityManager == null) throw new IllegalStateException("Entity manager has not been injected (is the Spring Aspects JAR configured as an AJC/AJDT aspects library?)");        
+        if (this.entityManager == null) this.entityManager = entityManager();        
         this.entityManager.persist(this);        
     }    
     
     @org.springframework.transaction.annotation.Transactional    
     public void DiabetesCentre.remove() {    
-        if (this.entityManager == null) throw new IllegalStateException("Entity manager has not been injected (is the Spring Aspects JAR configured as an AJC/AJDT aspects library?)");        
-        this.entityManager.remove(this);        
+        if (this.entityManager == null) this.entityManager = entityManager();        
+        if (this.entityManager.contains(this)) {        
+            this.entityManager.remove(this);            
+        } else {        
+            DiabetesCentre attached = this.entityManager.find(DiabetesCentre.class, this.id);            
+            this.entityManager.remove(attached);            
+        }        
     }    
     
     @org.springframework.transaction.annotation.Transactional    
     public void DiabetesCentre.flush() {    
-        if (this.entityManager == null) throw new IllegalStateException("Entity manager has not been injected (is the Spring Aspects JAR configured as an AJC/AJDT aspects library?)");        
+        if (this.entityManager == null) this.entityManager = entityManager();        
         this.entityManager.flush();        
     }    
     
     @org.springframework.transaction.annotation.Transactional    
     public void DiabetesCentre.merge() {    
-        if (this.entityManager == null) throw new IllegalStateException("Entity manager has not been injected (is the Spring Aspects JAR configured as an AJC/AJDT aspects library?)");        
+        if (this.entityManager == null) this.entityManager = entityManager();        
         DiabetesCentre merged = this.entityManager.merge(this);        
         this.entityManager.flush();        
         this.id = merged.getId();        
     }    
     
-    public static long DiabetesCentre.countDiabetesCentres() {    
+    public static javax.persistence.EntityManager DiabetesCentre.entityManager() {    
         javax.persistence.EntityManager em = new DiabetesCentre().entityManager;        
         if (em == null) throw new IllegalStateException("Entity manager has not been injected (is the Spring Aspects JAR configured as an AJC/AJDT aspects library?)");        
-        return (Long) em.createQuery("select count(o) from DiabetesCentre o").getSingleResult();        
+        return em;        
+    }    
+    
+    public static long DiabetesCentre.countDiabetesCentres() {    
+        return (Long) entityManager().createQuery("select count(o) from DiabetesCentre o").getSingleResult();        
     }    
     
     public static java.util.List<org.lifeforachild.domain.DiabetesCentre> DiabetesCentre.findAllDiabetesCentres() {    
-        javax.persistence.EntityManager em = new DiabetesCentre().entityManager;        
-        if (em == null) throw new IllegalStateException("Entity manager has not been injected (is the Spring Aspects JAR configured as an AJC/AJDT aspects library?)");        
-        return em.createQuery("select o from DiabetesCentre o").getResultList();        
+        return entityManager().createQuery("select o from DiabetesCentre o").getResultList();        
     }    
     
     public static org.lifeforachild.domain.DiabetesCentre DiabetesCentre.findDiabetesCentre(java.lang.Long id) {    
         if (id == null) throw new IllegalArgumentException("An identifier is required to retrieve an instance of DiabetesCentre");        
-        javax.persistence.EntityManager em = new DiabetesCentre().entityManager;        
-        if (em == null) throw new IllegalStateException("Entity manager has not been injected (is the Spring Aspects JAR configured as an AJC/AJDT aspects library?)");        
-        return em.find(DiabetesCentre.class, id);        
+        return entityManager().find(DiabetesCentre.class, id);        
     }    
     
     public static java.util.List<org.lifeforachild.domain.DiabetesCentre> DiabetesCentre.findDiabetesCentreEntries(int firstResult, int maxResults) {    
-        javax.persistence.EntityManager em = new DiabetesCentre().entityManager;        
-        if (em == null) throw new IllegalStateException("Entity manager has not been injected (is the Spring Aspects JAR configured as an AJC/AJDT aspects library?)");        
-        return em.createQuery("select o from DiabetesCentre o").setFirstResult(firstResult).setMaxResults(maxResults).getResultList();        
+        return entityManager().createQuery("select o from DiabetesCentre o").setFirstResult(firstResult).setMaxResults(maxResults).getResultList();        
     }    
     
 }

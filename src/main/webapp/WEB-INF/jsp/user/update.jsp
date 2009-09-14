@@ -3,7 +3,8 @@
 <jsp:directive.include file="/WEB-INF/jsp/header.jsp"/>
 <script type="text/javascript">dojo.require("dijit.TitlePane");</script>
 <div dojoType="dijit.TitlePane" style="width: 100%" title="Update User">
-<form:form action="/LifeForAChild/user/${user.id}" method="PUT" modelAttribute="user">
+<c:url value="/user/${user.id}" var="form_url"/>
+<form:form action="${form_url}" method="PUT" modelAttribute="user">
 <div id="roo_user_name">
 <label for="_name">Name:</label>
 <form:input cssStyle="width:250px" id="_name" maxlength="30" path="name" size="0"/>

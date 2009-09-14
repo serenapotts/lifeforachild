@@ -218,14 +218,14 @@
 <div class="box" id="_cholesterolUnits">${clinicalrecord.cholesterolUnits}</div>
 </div>
 <br/>
-<div id="roo_clinicalrecord_hDLCholesterolValue">
-<label for="_hDLCholesterolValue">H D L Cholesterol Value:</label>
-<div class="box" id="_hDLCholesterolValue">${clinicalrecord.hDLCholesterolValue}</div>
+<div id="roo_clinicalrecord_hdlCholesterolValue">
+<label for="_hdlCholesterolValue">Hdl Cholesterol Value:</label>
+<div class="box" id="_hdlCholesterolValue">${clinicalrecord.hdlCholesterolValue}</div>
 </div>
 <br/>
-<div id="roo_clinicalrecord_hDLUnits">
-<label for="_hDLUnits">H D L Units:</label>
-<div class="box" id="_hDLUnits">${clinicalrecord.hDLUnits}</div>
+<div id="roo_clinicalrecord_hdlUnits">
+<label for="_hdlUnits">Hdl Units:</label>
+<div class="box" id="_hdlUnits">${clinicalrecord.hdlUnits}</div>
 </div>
 <br/>
 <div id="roo_clinicalrecord_triglyceridesValue">
@@ -303,6 +303,11 @@
 <div id="roo_clinicalrecord_seniorPhysician">
 <label for="_seniorPhysician">Senior Physician:</label>
 <div class="box" id="_seniorPhysician">${clinicalrecord.seniorPhysician}</div>
+</div>
+<br/>
+<div id="roo_clinicalrecord_literate">
+<label for="_literate">Literate:</label>
+<div class="box" id="_literate">${clinicalrecord.literate}</div>
 </div>
 <br/>
 <div id="roo_clinicalrecord_child">

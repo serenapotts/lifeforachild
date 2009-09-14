@@ -22,7 +22,7 @@ privileged aspect UserController_Roo_Controller {
     }    
     
     @org.springframework.web.bind.annotation.RequestMapping(value = "/user/{id}", method = org.springframework.web.bind.annotation.RequestMethod.GET)    
-    public java.lang.String UserController.show(@org.springframework.web.bind.annotation.PathVariable("id") Long id, org.springframework.ui.ModelMap modelMap) {    
+    public java.lang.String UserController.show(@org.springframework.web.bind.annotation.PathVariable("id") java.lang.Long id, org.springframework.ui.ModelMap modelMap) {    
         if (id == null) throw new IllegalArgumentException("An Identifier is required");        
         modelMap.addAttribute("user", org.lifeforachild.domain.User.findUser(id));        
         return "user/show";        

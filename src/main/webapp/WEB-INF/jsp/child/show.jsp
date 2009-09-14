@@ -84,6 +84,11 @@
 <div class="box" id="_diabetesTypeOther">${child.diabetesTypeOther}</div>
 </div>
 <br/>
+<div id="roo_child_distanceLivesFromCentre">
+<label for="_distanceLivesFromCentre">Distance Lives From Centre:</label>
+<div class="box" id="_distanceLivesFromCentre">${child.distanceLivesFromCentre}</div>
+</div>
+<br/>
 <div id="roo_child_clinicalRecords">
 <label for="_clinicalRecords">Clinical Records:</label>
 <div class="box" id="_clinicalRecords">${child.clinicalRecords}</div>

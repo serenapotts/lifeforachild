@@ -20,6 +20,7 @@ privileged aspect Child_Roo_ToString {
         sb.append("insulinSince: ").append(getInsulinSince()).append(", ");        
         sb.append("diabetesType: ").append(getDiabetesType()).append(", ");        
         sb.append("diabetesTypeOther: ").append(getDiabetesTypeOther()).append(", ");        
+        sb.append("distanceLivesFromCentre: ").append(getDistanceLivesFromCentre()).append(", ");        
         sb.append("clinicalRecords: ").append(getClinicalRecords() == null ? "null" : getClinicalRecords().size());        
         return sb.toString();        
     }    

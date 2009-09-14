@@ -1,16 +1,16 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
 <web-app xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.4" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
-	<display-name>LifeForAChild</display-name>
-	<description>Roo generated LifeForAChild application</description>
+	<display-name>lifeforachild</display-name>
+	<description>Roo generated lifeforachild application</description>
 
 	<context-param>
 		<param-name>webAppRootKey</param-name>
-		<param-value>LifeForAChild.root</param-value>
+		<param-value>lifeforachild.root</param-value>
 	</context-param>
 	
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>classpath:applicationContext*.xml</param-value>
+		<param-value>classpath*:META-INF/spring/applicationContext*.xml</param-value>
 	</context-param>
 	
 	<filter>
@@ -24,16 +24,14 @@
 	</filter>	
 
 	<filter>
-		<filter-name>Spring OpenEntityManagerInViewFilter</filter-name>
-		<filter-class>org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter</filter-class>
-	</filter>
-
-	<filter-mapping>
-		<filter-name>Spring OpenEntityManagerInViewFilter</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
-
-	<filter-mapping>
+        <filter-name>Spring OpenEntityManagerInViewFilter</filter-name>
+        <filter-class>org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>Spring OpenEntityManagerInViewFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
 		<filter-name>httpMethodFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
@@ -48,7 +46,7 @@
 	</listener>
 	
 	<servlet>
-		<servlet-name>LifeForAChild</servlet-name>
+		<servlet-name>lifeforachild</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<load-on-startup>2</load-on-startup>
 	</servlet>
@@ -60,7 +58,7 @@
 	</servlet>
 
 	<servlet-mapping>
-		<servlet-name>LifeForAChild</servlet-name>
+		<servlet-name>lifeforachild</servlet-name>
 		<url-pattern>/app/*</url-pattern>
 	</servlet-mapping>
 
@@ -82,4 +80,9 @@
 		<exception-type>java.lang.Exception</exception-type>
 		<location>/WEB-INF/jsp/uncaughtException.jsp</location>
 	</error-page>
+	
+	<error-page>
+	    <error-code>404</error-code>
+	    <location>/WEB-INF/jsp/resourceNotFound.jsp</location>
+	</error-page> 
 </web-app>

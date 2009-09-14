@@ -3,11 +3,12 @@
 <jsp:directive.include file="/WEB-INF/jsp/header.jsp"/>
 <script type="text/javascript">dojo.require("dijit.TitlePane");dojo.require("dijit.form.SimpleTextarea");dojo.require("dijit.form.MultiSelect");</script>
 <div dojoType="dijit.TitlePane" style="width: 100%" title="Create New Country">
-<form:form action="/LifeForAChild/country" method="POST" modelAttribute="country">
+<c:url value="/country" var="form_url"/>
+<form:form action="${form_url}" method="POST" modelAttribute="country">
 <div id="roo_country_name">
 <label for="_name">Name:</label>
 <form:textarea cssStyle="width:250px" id="_name" path="name"/>
-<script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : "_name", widgetType: 'dijit.form.SimpleTextarea'})); </script>
+<script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : "_name", widgetType: 'dijit.form.SimpleTextarea', widgetAttrs: {}})); </script>
 <br/>
 <form:errors cssClass="errors" id="_name" path="name"/>
 </div>
@@ -18,7 +19,7 @@
 <form:select cssStyle="width:250px" id="_diabetesCentres" path="diabetesCentres">
 <form:options itemValue="id" items="${diabetescentres}"/>
 </form:select>
-<script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_diabetesCentres', widgetType: 'dijit.form.MultiSelect'})); </script>
+<script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_diabetesCentres', widgetType: 'dijit.form.MultiSelect', widgetAttrs: {}})); </script>
 </c:if>
 </div>
 <br/>

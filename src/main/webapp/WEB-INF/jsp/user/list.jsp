@@ -19,18 +19,24 @@
 <td>${user.id}</td>
 <td>${fn:substring(user.name, 0, 10)}</td>
 <td>
-<form:form action="/LifeForAChild/user/${user.id}" method="GET">
-<input alt="Show user" src="/LifeForAChild/static/images/show.png" title="Show user" type="image" value="Show user"/>
+<c:url value="/user/${user.id}" var="show_form_url"/>
+<c:url value="/static/images/show.png" var="show_image_url"/>
+<form:form action="${show_form_url}" method="GET">
+<input alt="Show user" src="${show_image_url}" title="Show user" type="image" value="Show user"/>
 </form:form>
 </td>
 <td>
-<form:form action="/LifeForAChild/user/${user.id}/form" method="GET">
-<input alt="Update user" src="/LifeForAChild/static/images/update.png" title="Update user" type="image" value="Update user"/>
+<c:url value="/user/${user.id}/form" var="update_form_url"/>
+<c:url value="/static/images/update.png" var="update_image_url"/>
+<form:form action="${update_form_url}" method="GET">
+<input alt="Update user" src="${update_image_url}" title="Update user" type="image" value="Update user"/>
 </form:form>
 </td>
 <td>
-<form:form action="/LifeForAChild/user/${user.id}" method="DELETE">
-<input alt="Delete user" src="/LifeForAChild/static/images/delete.png" title="Delete user" type="image" value="Delete user"/>
+<c:url value="/user/${user.id}" var="delete_form_url"/>
+<c:url value="/static/images/delete.png" var="delete_image_url"/>
+<form:form action="${delete_form_url}" method="DELETE">
+<input alt="Delete user" src="${delete_image_url}" title="Delete user" type="image" value="Delete user"/>
 </form:form>
 </td>
 </tr>

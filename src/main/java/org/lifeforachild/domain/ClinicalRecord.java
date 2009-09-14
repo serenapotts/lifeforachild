@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
 
 import org.springframework.roo.addon.entity.RooEntity;
@@ -17,18 +18,16 @@ import org.springframework.roo.addon.tostring.RooToString;
 @RooJavaBean
 @RooToString
 public class ClinicalRecord {
-	@Size(max=56)
-	private int bloodGlucoseSelfMonitoringPerWeek;
+	@Min(0)
+	private Integer bloodGlucoseSelfMonitoringPerWeek;
 
-	private int urineGlucoseSelfMonitoringPerWeek;
+	private Integer urineGlucoseSelfMonitoringPerWeek;
 	
 	private boolean adjustInsulinDoseIfNeeded;
+	
+	private Integer insulinUnitsPerDay;
 
-	@Size(max=200)
-	private int insulinUnitsPerDay;
-
-	@Size (max=9)
-	private int numberOfInsulinInjectionsPerDay;
+	private Integer numberOfInsulinInjectionsPerDay;
 
 	// Types of Insulin / RX used
 	
@@ -43,8 +42,7 @@ public class ClinicalRecord {
 	@Size (max=40)
 	private String oralAgentsDescription;
 	
-	@Size (max=50)
-	private int routineClinicReviewsLastYear;
+	private Integer routineClinicReviewsLastYear;
 
 	private boolean bpMedications;
 	
@@ -60,15 +58,23 @@ public class ClinicalRecord {
 	
 	private float weightKG;
 	
-	private int heightCM;
+	private Integer heightCM;
 	
-	private int bloodPressureSystolicMMHg;
-	private int bloodPressureDiastolicMMHg;
+	public float bmi() {
+		float result = 0.0f;
+		if (heightCM != 0)
+			result = weightKG / (heightCM * heightCM);
+		
+		return result;
+	}
+	
+	private Integer bloodPressureSystolicMMHg;
+	private Integer bloodPressureDiastolicMMHg;
 
 	@Temporal(TemporalType.DATE)
 	private Date dateOfMeasurement;
 
-	private int age;
+	private Integer age;
 	
 	private boolean hasPersistentHypertension;
 	
@@ -105,7 +111,7 @@ public class ClinicalRecord {
 	
 	private String hbA1cMethodOther;
 	
-	private int microalbuminuriaValue;
+	private Integer microalbuminuriaValue;
 	
 	private MicroalbuminuriaUnitsType microalbuminuriaUnitOfMeasure;
 	
@@ -119,9 +125,9 @@ public class ClinicalRecord {
 	
 	private MG_OR_MMOL_Type cholesterolUnits;
 	
-	private float hDLCholesterolValue;
+	private float hdlCholesterolValue;
 	
-	private MG_OR_MMOL_Type hDLUnits;
+	private MG_OR_MMOL_Type hdlUnits;
 	
 	private float triglyceridesValue;
 	
@@ -140,11 +146,11 @@ public class ClinicalRecord {
 	
 	private DiabetesCopingType diabetesCopingAbilities;
 	
-	private int numberOfSevereHypoglycaemiaEpisodes;
+	private Integer numberOfSevereHypoglycaemiaEpisodes;
 
-	private int numberKetoacidosisEpisodes;
+	private Integer numberKetoacidosisEpisodes;
 	
-	private int numberOfHospitalAdmissionsRelatedToDiabetes;
+	private Integer numberOfHospitalAdmissionsRelatedToDiabetes;
 	
 	@Size(max=100)
 	private String additionalComment;
@@ -156,6 +162,20 @@ public class ClinicalRecord {
 	
 	@Size(max=30)
 	private String seniorPhysician;
+	
+	private YesNoNAType literate;
+	
+	public float calculatedAge() {
+		return calculateAge(dateCompleted, child.getDateOfBirth());
+	}
+	
+	public float insulinPerKg() {
+		return insulinUnitsPerDay/weightKG;
+	}
+	
+	public static float calculateAge(Date date, Date dob) {
+		return (float)((date.getTime() - dob.getTime())/(1000*60*60*24*365.25));
+	}
 	
 	@ManyToOne
 	Child child;

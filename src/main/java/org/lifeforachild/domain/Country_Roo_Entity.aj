@@ -32,53 +32,56 @@ privileged aspect Country_Roo_Entity {
     
     @org.springframework.transaction.annotation.Transactional    
     public void Country.persist() {    
-        if (this.entityManager == null) throw new IllegalStateException("Entity manager has not been injected (is the Spring Aspects JAR configured as an AJC/AJDT aspects library?)");        
+        if (this.entityManager == null) this.entityManager = entityManager();        
         this.entityManager.persist(this);        
     }    
     
     @org.springframework.transaction.annotation.Transactional    
     public void Country.remove() {    
-        if (this.entityManager == null) throw new IllegalStateException("Entity manager has not been injected (is the Spring Aspects JAR configured as an AJC/AJDT aspects library?)");        
-        this.entityManager.remove(this);        
+        if (this.entityManager == null) this.entityManager = entityManager();        
+        if (this.entityManager.contains(this)) {        
+            this.entityManager.remove(this);            
+        } else {        
+            Country attached = this.entityManager.find(Country.class, this.id);            
+            this.entityManager.remove(attached);            
+        }        
     }    
     
     @org.springframework.transaction.annotation.Transactional    
     public void Country.flush() {    
-        if (this.entityManager == null) throw new IllegalStateException("Entity manager has not been injected (is the Spring Aspects JAR configured as an AJC/AJDT aspects library?)");        
+        if (this.entityManager == null) this.entityManager = entityManager();        
         this.entityManager.flush();        
     }    
     
     @org.springframework.transaction.annotation.Transactional    
     public void Country.merge() {    
-        if (this.entityManager == null) throw new IllegalStateException("Entity manager has not been injected (is the Spring Aspects JAR configured as an AJC/AJDT aspects library?)");        
+        if (this.entityManager == null) this.entityManager = entityManager();        
         Country merged = this.entityManager.merge(this);        
         this.entityManager.flush();        
         this.id = merged.getId();        
     }    
     
-    public static long Country.countCountrys() {    
+    public static javax.persistence.EntityManager Country.entityManager() {    
         javax.persistence.EntityManager em = new Country().entityManager;        
         if (em == null) throw new IllegalStateException("Entity manager has not been injected (is the Spring Aspects JAR configured as an AJC/AJDT aspects library?)");        
-        return (Long) em.createQuery("select count(o) from Country o").getSingleResult();        
+        return em;        
+    }    
+    
+    public static long Country.countCountrys() {    
+        return (Long) entityManager().createQuery("select count(o) from Country o").getSingleResult();        
     }    
     
     public static java.util.List<org.lifeforachild.domain.Country> Country.findAllCountrys() {    
-        javax.persistence.EntityManager em = new Country().entityManager;        
-        if (em == null) throw new IllegalStateException("Entity manager has not been injected (is the Spring Aspects JAR configured as an AJC/AJDT aspects library?)");        
-        return em.createQuery("select o from Country o").getResultList();        
+        return entityManager().createQuery("select o from Country o").getResultList();        
     }    
     
     public static org.lifeforachild.domain.Country Country.findCountry(java.lang.Long id) {    
         if (id == null) throw new IllegalArgumentException("An identifier is required to retrieve an instance of Country");        
-        javax.persistence.EntityManager em = new Country().entityManager;        
-        if (em == null) throw new IllegalStateException("Entity manager has not been injected (is the Spring Aspects JAR configured as an AJC/AJDT aspects library?)");        
-        return em.find(Country.class, id);        
+        return entityManager().find(Country.class, id);        
     }    
     
     public static java.util.List<org.lifeforachild.domain.Country> Country.findCountryEntries(int firstResult, int maxResults) {    
-        javax.persistence.EntityManager em = new Country().entityManager;        
-        if (em == null) throw new IllegalStateException("Entity manager has not been injected (is the Spring Aspects JAR configured as an AJC/AJDT aspects library?)");        
-        return em.createQuery("select o from Country o").setFirstResult(firstResult).setMaxResults(maxResults).getResultList();        
+        return entityManager().createQuery("select o from Country o").setFirstResult(firstResult).setMaxResults(maxResults).getResultList();        
     }    
     
 }

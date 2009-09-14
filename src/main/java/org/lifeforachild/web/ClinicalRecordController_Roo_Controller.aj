@@ -27,12 +27,13 @@ privileged aspect ClinicalRecordController_Roo_Controller {
         modelMap.addAttribute("_notattendingschoolreasontype", org.lifeforachild.domain.NotAttendingSchoolReasonType.class.getEnumConstants());        
         modelMap.addAttribute("users", org.lifeforachild.domain.User.findAllUsers());        
         modelMap.addAttribute("_yesnolatertype", org.lifeforachild.domain.YesNoLaterType.class.getEnumConstants());        
+        modelMap.addAttribute("_yesnonatype", org.lifeforachild.domain.YesNoNAType.class.getEnumConstants());        
         modelMap.addAttribute("_yesnounkowntype", org.lifeforachild.domain.YesNoUnkownType.class.getEnumConstants());        
         return "clinicalrecord/create";        
     }    
     
     @org.springframework.web.bind.annotation.RequestMapping(value = "/clinicalrecord/{id}", method = org.springframework.web.bind.annotation.RequestMethod.GET)    
-    public java.lang.String ClinicalRecordController.show(@org.springframework.web.bind.annotation.PathVariable("id") Long id, org.springframework.ui.ModelMap modelMap) {    
+    public java.lang.String ClinicalRecordController.show(@org.springframework.web.bind.annotation.PathVariable("id") java.lang.Long id, org.springframework.ui.ModelMap modelMap) {    
         if (id == null) throw new IllegalArgumentException("An Identifier is required");        
         modelMap.addAttribute("clinicalrecord", org.lifeforachild.domain.ClinicalRecord.findClinicalRecord(id));        
         return "clinicalrecord/show";        
@@ -70,6 +71,7 @@ privileged aspect ClinicalRecordController_Roo_Controller {
         modelMap.addAttribute("_notattendingschoolreasontype", org.lifeforachild.domain.NotAttendingSchoolReasonType.class.getEnumConstants());        
         modelMap.addAttribute("users", org.lifeforachild.domain.User.findAllUsers());        
         modelMap.addAttribute("_yesnolatertype", org.lifeforachild.domain.YesNoLaterType.class.getEnumConstants());        
+        modelMap.addAttribute("_yesnonatype", org.lifeforachild.domain.YesNoNAType.class.getEnumConstants());        
         modelMap.addAttribute("_yesnounkowntype", org.lifeforachild.domain.YesNoUnkownType.class.getEnumConstants());        
         return "clinicalrecord/update";        
     }    

@@ -32,53 +32,56 @@ privileged aspect ClinicalRecord_Roo_Entity {
     
     @org.springframework.transaction.annotation.Transactional    
     public void ClinicalRecord.persist() {    
-        if (this.entityManager == null) throw new IllegalStateException("Entity manager has not been injected (is the Spring Aspects JAR configured as an AJC/AJDT aspects library?)");        
+        if (this.entityManager == null) this.entityManager = entityManager();        
         this.entityManager.persist(this);        
     }    
     
     @org.springframework.transaction.annotation.Transactional    
     public void ClinicalRecord.remove() {    
-        if (this.entityManager == null) throw new IllegalStateException("Entity manager has not been injected (is the Spring Aspects JAR configured as an AJC/AJDT aspects library?)");        
-        this.entityManager.remove(this);        
+        if (this.entityManager == null) this.entityManager = entityManager();        
+        if (this.entityManager.contains(this)) {        
+            this.entityManager.remove(this);            
+        } else {        
+            ClinicalRecord attached = this.entityManager.find(ClinicalRecord.class, this.id);            
+            this.entityManager.remove(attached);            
+        }        
     }    
     
     @org.springframework.transaction.annotation.Transactional    
     public void ClinicalRecord.flush() {    
-        if (this.entityManager == null) throw new IllegalStateException("Entity manager has not been injected (is the Spring Aspects JAR configured as an AJC/AJDT aspects library?)");        
+        if (this.entityManager == null) this.entityManager = entityManager();        
         this.entityManager.flush();        
     }    
     
     @org.springframework.transaction.annotation.Transactional    
     public void ClinicalRecord.merge() {    
-        if (this.entityManager == null) throw new IllegalStateException("Entity manager has not been injected (is the Spring Aspects JAR configured as an AJC/AJDT aspects library?)");        
+        if (this.entityManager == null) this.entityManager = entityManager();        
         ClinicalRecord merged = this.entityManager.merge(this);        
         this.entityManager.flush();        
         this.id = merged.getId();        
     }    
     
-    public static long ClinicalRecord.countClinicalRecords() {    
+    public static javax.persistence.EntityManager ClinicalRecord.entityManager() {    
         javax.persistence.EntityManager em = new ClinicalRecord().entityManager;        
         if (em == null) throw new IllegalStateException("Entity manager has not been injected (is the Spring Aspects JAR configured as an AJC/AJDT aspects library?)");        
-        return (Long) em.createQuery("select count(o) from ClinicalRecord o").getSingleResult();        
+        return em;        
+    }    
+    
+    public static long ClinicalRecord.countClinicalRecords() {    
+        return (Long) entityManager().createQuery("select count(o) from ClinicalRecord o").getSingleResult();        
     }    
     
     public static java.util.List<org.lifeforachild.domain.ClinicalRecord> ClinicalRecord.findAllClinicalRecords() {    
-        javax.persistence.EntityManager em = new ClinicalRecord().entityManager;        
-        if (em == null) throw new IllegalStateException("Entity manager has not been injected (is the Spring Aspects JAR configured as an AJC/AJDT aspects library?)");        
-        return em.createQuery("select o from ClinicalRecord o").getResultList();        
+        return entityManager().createQuery("select o from ClinicalRecord o").getResultList();        
     }    
     
     public static org.lifeforachild.domain.ClinicalRecord ClinicalRecord.findClinicalRecord(java.lang.Long id) {    
         if (id == null) throw new IllegalArgumentException("An identifier is required to retrieve an instance of ClinicalRecord");        
-        javax.persistence.EntityManager em = new ClinicalRecord().entityManager;        
-        if (em == null) throw new IllegalStateException("Entity manager has not been injected (is the Spring Aspects JAR configured as an AJC/AJDT aspects library?)");        
-        return em.find(ClinicalRecord.class, id);        
+        return entityManager().find(ClinicalRecord.class, id);        
     }    
     
     public static java.util.List<org.lifeforachild.domain.ClinicalRecord> ClinicalRecord.findClinicalRecordEntries(int firstResult, int maxResults) {    
-        javax.persistence.EntityManager em = new ClinicalRecord().entityManager;        
-        if (em == null) throw new IllegalStateException("Entity manager has not been injected (is the Spring Aspects JAR configured as an AJC/AJDT aspects library?)");        
-        return em.createQuery("select o from ClinicalRecord o").setFirstResult(firstResult).setMaxResults(maxResults).getResultList();        
+        return entityManager().createQuery("select o from ClinicalRecord o").setFirstResult(firstResult).setMaxResults(maxResults).getResultList();        
     }    
     
 }

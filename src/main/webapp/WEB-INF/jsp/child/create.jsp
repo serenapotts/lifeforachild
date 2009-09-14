@@ -3,7 +3,8 @@
 <jsp:directive.include file="/WEB-INF/jsp/header.jsp"/>
 <script type="text/javascript">dojo.require("dijit.TitlePane");dojo.require("dijit.form.DateTextBox");dojo.require("dijit.form.SimpleTextarea");dojo.require("dijit.form.MultiSelect");</script>
 <div dojoType="dijit.TitlePane" style="width: 100%" title="Create New Child">
-<form:form action="/LifeForAChild/child" method="POST" modelAttribute="child">
+<c:url value="/child" var="form_url"/>
+<form:form action="${form_url}" method="POST" modelAttribute="child">
 <div id="roo_child_initials">
 <label for="_initials">Initials:</label>
 <form:input cssStyle="width:250px" id="_initials" maxlength="30" path="initials" size="0"/>
@@ -64,7 +65,7 @@
 <div id="roo_child_causeOfDeathOther">
 <label for="_causeOfDeathOther">Cause Of Death Other:</label>
 <form:textarea cssStyle="width:250px" id="_causeOfDeathOther" path="causeOfDeathOther"/>
-<script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : "_causeOfDeathOther", widgetType: 'dijit.form.SimpleTextarea'})); </script>
+<script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : "_causeOfDeathOther", widgetType: 'dijit.form.SimpleTextarea', widgetAttrs: {}})); </script>
 <br/>
 <form:errors cssClass="errors" id="_causeOfDeathOther" path="causeOfDeathOther"/>
 </div>
@@ -116,9 +117,17 @@
 <div id="roo_child_diabetesTypeOther">
 <label for="_diabetesTypeOther">Diabetes Type Other:</label>
 <form:textarea cssStyle="width:250px" id="_diabetesTypeOther" path="diabetesTypeOther"/>
-<script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : "_diabetesTypeOther", widgetType: 'dijit.form.SimpleTextarea'})); </script>
+<script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : "_diabetesTypeOther", widgetType: 'dijit.form.SimpleTextarea', widgetAttrs: {}})); </script>
 <br/>
 <form:errors cssClass="errors" id="_diabetesTypeOther" path="diabetesTypeOther"/>
+</div>
+<br/>
+<div id="roo_child_distanceLivesFromCentre">
+<label for="_distanceLivesFromCentre">Distance Lives From Centre:</label>
+<form:input cssStyle="width:250px" id="_distanceLivesFromCentre" maxlength="30" path="distanceLivesFromCentre" size="0"/>
+<br/>
+<form:errors cssClass="errors" id="_distanceLivesFromCentre" path="distanceLivesFromCentre"/>
+<script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : "_distanceLivesFromCentre", widgetType : "dijit.form.ValidationTextBox", widgetAttrs : {promptMessage: "Enter Distance Lives From Centre", invalidMessage: "", required : false}})); </script>
 </div>
 <br/>
 <div id="roo_child_clinicalRecords">
@@ -127,7 +136,7 @@
 <form:select cssStyle="width:250px" id="_clinicalRecords" path="clinicalRecords">
 <form:options itemValue="id" items="${clinicalrecords}"/>
 </form:select>
-<script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_clinicalRecords', widgetType: 'dijit.form.MultiSelect'})); </script>
+<script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_clinicalRecords', widgetType: 'dijit.form.MultiSelect', widgetAttrs: {}})); </script>
 </c:if>
 </div>
 <br/>

@@ -51,8 +51,8 @@ privileged aspect ClinicalRecord_Roo_ToString {
         sb.append("creatinineUnits: ").append(getCreatinineUnits()).append(", ");        
         sb.append("totalCholesterolValue: ").append(getTotalCholesterolValue()).append(", ");        
         sb.append("cholesterolUnits: ").append(getCholesterolUnits()).append(", ");        
-        sb.append("hDLCholesterolValue: ").append(getHDLCholesterolValue()).append(", ");        
-        sb.append("hDLUnits: ").append(getHDLUnits()).append(", ");        
+        sb.append("hdlCholesterolValue: ").append(getHdlCholesterolValue()).append(", ");        
+        sb.append("hdlUnits: ").append(getHdlUnits()).append(", ");        
         sb.append("triglyceridesValue: ").append(getTriglyceridesValue()).append(", ");        
         sb.append("triglyceridesUnits: ").append(getTriglyceridesUnits()).append(", ");        
         sb.append("fasted: ").append(getFasted()).append(", ");        
@@ -68,6 +68,7 @@ privileged aspect ClinicalRecord_Roo_ToString {
         sb.append("personCompletingForm: ").append(getPersonCompletingForm()).append(", ");        
         sb.append("dateCompleted: ").append(getDateCompleted()).append(", ");        
         sb.append("seniorPhysician: ").append(getSeniorPhysician()).append(", ");        
+        sb.append("literate: ").append(getLiterate()).append(", ");        
         sb.append("child: ").append(getChild());        
         return sb.toString();        
     }    

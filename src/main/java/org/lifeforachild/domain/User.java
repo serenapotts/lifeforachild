@@ -1,7 +1,6 @@
 package org.lifeforachild.domain;
 
 import javax.persistence.Entity;
-
 import org.springframework.roo.addon.entity.RooEntity;
 import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.tostring.RooToString;
@@ -11,5 +10,6 @@ import org.springframework.roo.addon.tostring.RooToString;
 @RooJavaBean
 @RooToString
 public class User {
-	String name;
+
+    String name;
 }

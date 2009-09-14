@@ -23,18 +23,24 @@
 <td>${fn:substring(diabetescentre.address, 0, 10)}</td>
 <td>${fn:substring(diabetescentre.country, 0, 10)}</td>
 <td>
-<form:form action="/LifeForAChild/diabetescentre/${diabetescentre.id}" method="GET">
-<input alt="Show diabetescentre" src="/LifeForAChild/static/images/show.png" title="Show diabetescentre" type="image" value="Show diabetescentre"/>
+<c:url value="/diabetescentre/${diabetescentre.id}" var="show_form_url"/>
+<c:url value="/static/images/show.png" var="show_image_url"/>
+<form:form action="${show_form_url}" method="GET">
+<input alt="Show diabetescentre" src="${show_image_url}" title="Show diabetescentre" type="image" value="Show diabetescentre"/>
 </form:form>
 </td>
 <td>
-<form:form action="/LifeForAChild/diabetescentre/${diabetescentre.id}/form" method="GET">
-<input alt="Update diabetescentre" src="/LifeForAChild/static/images/update.png" title="Update diabetescentre" type="image" value="Update diabetescentre"/>
+<c:url value="/diabetescentre/${diabetescentre.id}/form" var="update_form_url"/>
+<c:url value="/static/images/update.png" var="update_image_url"/>
+<form:form action="${update_form_url}" method="GET">
+<input alt="Update diabetescentre" src="${update_image_url}" title="Update diabetescentre" type="image" value="Update diabetescentre"/>
 </form:form>
 </td>
 <td>
-<form:form action="/LifeForAChild/diabetescentre/${diabetescentre.id}" method="DELETE">
-<input alt="Delete diabetescentre" src="/LifeForAChild/static/images/delete.png" title="Delete diabetescentre" type="image" value="Delete diabetescentre"/>
+<c:url value="/diabetescentre/${diabetescentre.id}" var="delete_form_url"/>
+<c:url value="/static/images/delete.png" var="delete_image_url"/>
+<form:form action="${delete_form_url}" method="DELETE">
+<input alt="Delete diabetescentre" src="${delete_image_url}" title="Delete diabetescentre" type="image" value="Delete diabetescentre"/>
 </form:form>
 </td>
 </tr>

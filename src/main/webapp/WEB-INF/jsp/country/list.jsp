@@ -21,18 +21,24 @@
 <td>${fn:substring(country.name, 0, 10)}</td>
 <td>${fn:length(country.diabetesCentres)}</td>
 <td>
-<form:form action="/LifeForAChild/country/${country.id}" method="GET">
-<input alt="Show country" src="/LifeForAChild/static/images/show.png" title="Show country" type="image" value="Show country"/>
+<c:url value="/country/${country.id}" var="show_form_url"/>
+<c:url value="/static/images/show.png" var="show_image_url"/>
+<form:form action="${show_form_url}" method="GET">
+<input alt="Show country" src="${show_image_url}" title="Show country" type="image" value="Show country"/>
 </form:form>
 </td>
 <td>
-<form:form action="/LifeForAChild/country/${country.id}/form" method="GET">
-<input alt="Update country" src="/LifeForAChild/static/images/update.png" title="Update country" type="image" value="Update country"/>
+<c:url value="/country/${country.id}/form" var="update_form_url"/>
+<c:url value="/static/images/update.png" var="update_image_url"/>
+<form:form action="${update_form_url}" method="GET">
+<input alt="Update country" src="${update_image_url}" title="Update country" type="image" value="Update country"/>
 </form:form>
 </td>
 <td>
-<form:form action="/LifeForAChild/country/${country.id}" method="DELETE">
-<input alt="Delete country" src="/LifeForAChild/static/images/delete.png" title="Delete country" type="image" value="Delete country"/>
+<c:url value="/country/${country.id}" var="delete_form_url"/>
+<c:url value="/static/images/delete.png" var="delete_image_url"/>
+<form:form action="${delete_form_url}" method="DELETE">
+<input alt="Delete country" src="${delete_image_url}" title="Delete country" type="image" value="Delete country"/>
 </form:form>
 </td>
 </tr>

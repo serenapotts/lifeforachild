@@ -3,7 +3,8 @@
 <jsp:directive.include file="/WEB-INF/jsp/header.jsp"/>
 <script type="text/javascript">dojo.require("dijit.TitlePane");dojo.require("dijit.form.SimpleTextarea");dojo.require("dijit.form.FilteringSelect");</script>
 <div dojoType="dijit.TitlePane" style="width: 100%" title="Create New DiabetesCentre">
-<form:form action="/LifeForAChild/diabetescentre" method="POST" modelAttribute="diabetescentre">
+<c:url value="/diabetescentre" var="form_url"/>
+<form:form action="${form_url}" method="POST" modelAttribute="diabetescentre">
 <div id="roo_diabetescentre_name">
 <label for="_name">Name:</label>
 <form:input cssStyle="width:250px" id="_name" maxlength="30" path="name" size="0"/>
@@ -15,7 +16,7 @@
 <div id="roo_diabetescentre_address">
 <label for="_address">Address:</label>
 <form:textarea cssStyle="width:250px" id="_address" path="address"/>
-<script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : "_address", widgetType: 'dijit.form.SimpleTextarea'})); </script>
+<script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : "_address", widgetType: 'dijit.form.SimpleTextarea', widgetAttrs: {}})); </script>
 <br/>
 <form:errors cssClass="errors" id="_address" path="address"/>
 </div>

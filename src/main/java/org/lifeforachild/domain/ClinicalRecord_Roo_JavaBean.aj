@@ -2,19 +2,19 @@ package org.lifeforachild.domain;
 
 privileged aspect ClinicalRecord_Roo_JavaBean {
     
-    public int ClinicalRecord.getBloodGlucoseSelfMonitoringPerWeek() {    
+    public java.lang.Integer ClinicalRecord.getBloodGlucoseSelfMonitoringPerWeek() {    
         return this.bloodGlucoseSelfMonitoringPerWeek;        
     }    
     
-    public void ClinicalRecord.setBloodGlucoseSelfMonitoringPerWeek(int bloodGlucoseSelfMonitoringPerWeek) {    
+    public void ClinicalRecord.setBloodGlucoseSelfMonitoringPerWeek(java.lang.Integer bloodGlucoseSelfMonitoringPerWeek) {    
         this.bloodGlucoseSelfMonitoringPerWeek = bloodGlucoseSelfMonitoringPerWeek;        
     }    
     
-    public int ClinicalRecord.getUrineGlucoseSelfMonitoringPerWeek() {    
+    public java.lang.Integer ClinicalRecord.getUrineGlucoseSelfMonitoringPerWeek() {    
         return this.urineGlucoseSelfMonitoringPerWeek;        
     }    
     
-    public void ClinicalRecord.setUrineGlucoseSelfMonitoringPerWeek(int urineGlucoseSelfMonitoringPerWeek) {    
+    public void ClinicalRecord.setUrineGlucoseSelfMonitoringPerWeek(java.lang.Integer urineGlucoseSelfMonitoringPerWeek) {    
         this.urineGlucoseSelfMonitoringPerWeek = urineGlucoseSelfMonitoringPerWeek;        
     }    
     
@@ -26,19 +26,19 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.adjustInsulinDoseIfNeeded = adjustInsulinDoseIfNeeded;        
     }    
     
-    public int ClinicalRecord.getInsulinUnitsPerDay() {    
+    public java.lang.Integer ClinicalRecord.getInsulinUnitsPerDay() {    
         return this.insulinUnitsPerDay;        
     }    
     
-    public void ClinicalRecord.setInsulinUnitsPerDay(int insulinUnitsPerDay) {    
+    public void ClinicalRecord.setInsulinUnitsPerDay(java.lang.Integer insulinUnitsPerDay) {    
         this.insulinUnitsPerDay = insulinUnitsPerDay;        
     }    
     
-    public int ClinicalRecord.getNumberOfInsulinInjectionsPerDay() {    
+    public java.lang.Integer ClinicalRecord.getNumberOfInsulinInjectionsPerDay() {    
         return this.numberOfInsulinInjectionsPerDay;        
     }    
     
-    public void ClinicalRecord.setNumberOfInsulinInjectionsPerDay(int numberOfInsulinInjectionsPerDay) {    
+    public void ClinicalRecord.setNumberOfInsulinInjectionsPerDay(java.lang.Integer numberOfInsulinInjectionsPerDay) {    
         this.numberOfInsulinInjectionsPerDay = numberOfInsulinInjectionsPerDay;        
     }    
     
@@ -82,11 +82,11 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.oralAgentsDescription = oralAgentsDescription;        
     }    
     
-    public int ClinicalRecord.getRoutineClinicReviewsLastYear() {    
+    public java.lang.Integer ClinicalRecord.getRoutineClinicReviewsLastYear() {    
         return this.routineClinicReviewsLastYear;        
     }    
     
-    public void ClinicalRecord.setRoutineClinicReviewsLastYear(int routineClinicReviewsLastYear) {    
+    public void ClinicalRecord.setRoutineClinicReviewsLastYear(java.lang.Integer routineClinicReviewsLastYear) {    
         this.routineClinicReviewsLastYear = routineClinicReviewsLastYear;        
     }    
     
@@ -138,27 +138,27 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.weightKG = weightKG;        
     }    
     
-    public int ClinicalRecord.getHeightCM() {    
+    public java.lang.Integer ClinicalRecord.getHeightCM() {    
         return this.heightCM;        
     }    
     
-    public void ClinicalRecord.setHeightCM(int heightCM) {    
+    public void ClinicalRecord.setHeightCM(java.lang.Integer heightCM) {    
         this.heightCM = heightCM;        
     }    
     
-    public int ClinicalRecord.getBloodPressureSystolicMMHg() {    
+    public java.lang.Integer ClinicalRecord.getBloodPressureSystolicMMHg() {    
         return this.bloodPressureSystolicMMHg;        
     }    
     
-    public void ClinicalRecord.setBloodPressureSystolicMMHg(int bloodPressureSystolicMMHg) {    
+    public void ClinicalRecord.setBloodPressureSystolicMMHg(java.lang.Integer bloodPressureSystolicMMHg) {    
         this.bloodPressureSystolicMMHg = bloodPressureSystolicMMHg;        
     }    
     
-    public int ClinicalRecord.getBloodPressureDiastolicMMHg() {    
+    public java.lang.Integer ClinicalRecord.getBloodPressureDiastolicMMHg() {    
         return this.bloodPressureDiastolicMMHg;        
     }    
     
-    public void ClinicalRecord.setBloodPressureDiastolicMMHg(int bloodPressureDiastolicMMHg) {    
+    public void ClinicalRecord.setBloodPressureDiastolicMMHg(java.lang.Integer bloodPressureDiastolicMMHg) {    
         this.bloodPressureDiastolicMMHg = bloodPressureDiastolicMMHg;        
     }    
     
@@ -170,11 +170,11 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.dateOfMeasurement = dateOfMeasurement;        
     }    
     
-    public int ClinicalRecord.getAge() {    
+    public java.lang.Integer ClinicalRecord.getAge() {    
         return this.age;        
     }    
     
-    public void ClinicalRecord.setAge(int age) {    
+    public void ClinicalRecord.setAge(java.lang.Integer age) {    
         this.age = age;        
     }    
     
@@ -306,11 +306,11 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.hbA1cMethodOther = hbA1cMethodOther;        
     }    
     
-    public int ClinicalRecord.getMicroalbuminuriaValue() {    
+    public java.lang.Integer ClinicalRecord.getMicroalbuminuriaValue() {    
         return this.microalbuminuriaValue;        
     }    
     
-    public void ClinicalRecord.setMicroalbuminuriaValue(int microalbuminuriaValue) {    
+    public void ClinicalRecord.setMicroalbuminuriaValue(java.lang.Integer microalbuminuriaValue) {    
         this.microalbuminuriaValue = microalbuminuriaValue;        
     }    
     
@@ -362,20 +362,20 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.cholesterolUnits = cholesterolUnits;        
     }    
     
-    public float ClinicalRecord.getHDLCholesterolValue() {    
-        return this.hDLCholesterolValue;        
+    public float ClinicalRecord.getHdlCholesterolValue() {    
+        return this.hdlCholesterolValue;        
     }    
     
-    public void ClinicalRecord.setHDLCholesterolValue(float hDLCholesterolValue) {    
-        this.hDLCholesterolValue = hDLCholesterolValue;        
+    public void ClinicalRecord.setHdlCholesterolValue(float hdlCholesterolValue) {    
+        this.hdlCholesterolValue = hdlCholesterolValue;        
     }    
     
-    public org.lifeforachild.domain.MG_OR_MMOL_Type ClinicalRecord.getHDLUnits() {    
-        return this.hDLUnits;        
+    public org.lifeforachild.domain.MG_OR_MMOL_Type ClinicalRecord.getHdlUnits() {    
+        return this.hdlUnits;        
     }    
     
-    public void ClinicalRecord.setHDLUnits(org.lifeforachild.domain.MG_OR_MMOL_Type hDLUnits) {    
-        this.hDLUnits = hDLUnits;        
+    public void ClinicalRecord.setHdlUnits(org.lifeforachild.domain.MG_OR_MMOL_Type hdlUnits) {    
+        this.hdlUnits = hdlUnits;        
     }    
     
     public float ClinicalRecord.getTriglyceridesValue() {    
@@ -442,27 +442,27 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.diabetesCopingAbilities = diabetesCopingAbilities;        
     }    
     
-    public int ClinicalRecord.getNumberOfSevereHypoglycaemiaEpisodes() {    
+    public java.lang.Integer ClinicalRecord.getNumberOfSevereHypoglycaemiaEpisodes() {    
         return this.numberOfSevereHypoglycaemiaEpisodes;        
     }    
     
-    public void ClinicalRecord.setNumberOfSevereHypoglycaemiaEpisodes(int numberOfSevereHypoglycaemiaEpisodes) {    
+    public void ClinicalRecord.setNumberOfSevereHypoglycaemiaEpisodes(java.lang.Integer numberOfSevereHypoglycaemiaEpisodes) {    
         this.numberOfSevereHypoglycaemiaEpisodes = numberOfSevereHypoglycaemiaEpisodes;        
     }    
     
-    public int ClinicalRecord.getNumberKetoacidosisEpisodes() {    
+    public java.lang.Integer ClinicalRecord.getNumberKetoacidosisEpisodes() {    
         return this.numberKetoacidosisEpisodes;        
     }    
     
-    public void ClinicalRecord.setNumberKetoacidosisEpisodes(int numberKetoacidosisEpisodes) {    
+    public void ClinicalRecord.setNumberKetoacidosisEpisodes(java.lang.Integer numberKetoacidosisEpisodes) {    
         this.numberKetoacidosisEpisodes = numberKetoacidosisEpisodes;        
     }    
     
-    public int ClinicalRecord.getNumberOfHospitalAdmissionsRelatedToDiabetes() {    
+    public java.lang.Integer ClinicalRecord.getNumberOfHospitalAdmissionsRelatedToDiabetes() {    
         return this.numberOfHospitalAdmissionsRelatedToDiabetes;        
     }    
     
-    public void ClinicalRecord.setNumberOfHospitalAdmissionsRelatedToDiabetes(int numberOfHospitalAdmissionsRelatedToDiabetes) {    
+    public void ClinicalRecord.setNumberOfHospitalAdmissionsRelatedToDiabetes(java.lang.Integer numberOfHospitalAdmissionsRelatedToDiabetes) {    
         this.numberOfHospitalAdmissionsRelatedToDiabetes = numberOfHospitalAdmissionsRelatedToDiabetes;        
     }    
     
@@ -496,6 +496,14 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
     
     public void ClinicalRecord.setSeniorPhysician(java.lang.String seniorPhysician) {    
         this.seniorPhysician = seniorPhysician;        
+    }    
+    
+    public org.lifeforachild.domain.YesNoNAType ClinicalRecord.getLiterate() {    
+        return this.literate;        
+    }    
+    
+    public void ClinicalRecord.setLiterate(org.lifeforachild.domain.YesNoNAType literate) {    
+        this.literate = literate;        
     }    
     
     public org.lifeforachild.domain.Child ClinicalRecord.getChild() {    

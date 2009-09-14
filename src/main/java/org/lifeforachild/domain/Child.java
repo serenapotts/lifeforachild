@@ -59,7 +59,14 @@ public class Child {
 
     @Size(max = 60)
     private String diabetesTypeOther;
+    
+    private DistanceType distanceLivesFromCentre;
 
+	public float calculatedAgeAtDiabetesDiagnosis() {
+		return ClinicalRecord.calculateAge(diabetesDiagnosed, dateOfBirth);
+	}
+	
+	
     @OneToMany(cascade = CascadeType.ALL)
     private Set<ClinicalRecord> clinicalRecords = new HashSet<ClinicalRecord>();
 }

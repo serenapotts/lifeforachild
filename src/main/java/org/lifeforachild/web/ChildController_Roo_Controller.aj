@@ -21,13 +21,14 @@ privileged aspect ChildController_Roo_Controller {
         modelMap.addAttribute("_causeofdeathtype", org.lifeforachild.domain.CauseOfDeathType.class.getEnumConstants());        
         modelMap.addAttribute("clinicalrecords", org.lifeforachild.domain.ClinicalRecord.findAllClinicalRecords());        
         modelMap.addAttribute("_diabetestype", org.lifeforachild.domain.DiabetesType.class.getEnumConstants());        
+        modelMap.addAttribute("_distancetype", org.lifeforachild.domain.DistanceType.class.getEnumConstants());        
         modelMap.addAttribute("_sextype", org.lifeforachild.domain.SexType.class.getEnumConstants());        
         modelMap.addAttribute("_survivalstatustype", org.lifeforachild.domain.SurvivalStatusType.class.getEnumConstants());        
         return "child/create";        
     }    
     
     @org.springframework.web.bind.annotation.RequestMapping(value = "/child/{id}", method = org.springframework.web.bind.annotation.RequestMethod.GET)    
-    public java.lang.String ChildController.show(@org.springframework.web.bind.annotation.PathVariable("id") Long id, org.springframework.ui.ModelMap modelMap) {    
+    public java.lang.String ChildController.show(@org.springframework.web.bind.annotation.PathVariable("id") java.lang.Long id, org.springframework.ui.ModelMap modelMap) {    
         if (id == null) throw new IllegalArgumentException("An Identifier is required");        
         modelMap.addAttribute("child", org.lifeforachild.domain.Child.findChild(id));        
         return "child/show";        
@@ -59,6 +60,7 @@ privileged aspect ChildController_Roo_Controller {
         modelMap.addAttribute("_causeofdeathtype", org.lifeforachild.domain.CauseOfDeathType.class.getEnumConstants());        
         modelMap.addAttribute("clinicalrecords", org.lifeforachild.domain.ClinicalRecord.findAllClinicalRecords());        
         modelMap.addAttribute("_diabetestype", org.lifeforachild.domain.DiabetesType.class.getEnumConstants());        
+        modelMap.addAttribute("_distancetype", org.lifeforachild.domain.DistanceType.class.getEnumConstants());        
         modelMap.addAttribute("_sextype", org.lifeforachild.domain.SexType.class.getEnumConstants());        
         modelMap.addAttribute("_survivalstatustype", org.lifeforachild.domain.SurvivalStatusType.class.getEnumConstants());        
         return "child/update";        

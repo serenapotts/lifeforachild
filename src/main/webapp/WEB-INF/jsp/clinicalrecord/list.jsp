@@ -29,18 +29,24 @@
 <td>${fn:substring(clinicalrecord.numberOfInsulinInjectionsPerDay, 0, 10)}</td>
 <td>${fn:substring(clinicalrecord.longActingHuman, 0, 10)}</td>
 <td>
-<form:form action="/LifeForAChild/clinicalrecord/${clinicalrecord.id}" method="GET">
-<input alt="Show clinicalrecord" src="/LifeForAChild/static/images/show.png" title="Show clinicalrecord" type="image" value="Show clinicalrecord"/>
+<c:url value="/clinicalrecord/${clinicalrecord.id}" var="show_form_url"/>
+<c:url value="/static/images/show.png" var="show_image_url"/>
+<form:form action="${show_form_url}" method="GET">
+<input alt="Show clinicalrecord" src="${show_image_url}" title="Show clinicalrecord" type="image" value="Show clinicalrecord"/>
 </form:form>
 </td>
 <td>
-<form:form action="/LifeForAChild/clinicalrecord/${clinicalrecord.id}/form" method="GET">
-<input alt="Update clinicalrecord" src="/LifeForAChild/static/images/update.png" title="Update clinicalrecord" type="image" value="Update clinicalrecord"/>
+<c:url value="/clinicalrecord/${clinicalrecord.id}/form" var="update_form_url"/>
+<c:url value="/static/images/update.png" var="update_image_url"/>
+<form:form action="${update_form_url}" method="GET">
+<input alt="Update clinicalrecord" src="${update_image_url}" title="Update clinicalrecord" type="image" value="Update clinicalrecord"/>
 </form:form>
 </td>
 <td>
-<form:form action="/LifeForAChild/clinicalrecord/${clinicalrecord.id}" method="DELETE">
-<input alt="Delete clinicalrecord" src="/LifeForAChild/static/images/delete.png" title="Delete clinicalrecord" type="image" value="Delete clinicalrecord"/>
+<c:url value="/clinicalrecord/${clinicalrecord.id}" var="delete_form_url"/>
+<c:url value="/static/images/delete.png" var="delete_image_url"/>
+<form:form action="${delete_form_url}" method="DELETE">
+<input alt="Delete clinicalrecord" src="${delete_image_url}" title="Delete clinicalrecord" type="image" value="Delete clinicalrecord"/>
 </form:form>
 </td>
 </tr>

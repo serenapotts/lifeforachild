@@ -32,53 +32,56 @@ privileged aspect User_Roo_Entity {
     
     @org.springframework.transaction.annotation.Transactional    
     public void User.persist() {    
-        if (this.entityManager == null) throw new IllegalStateException("Entity manager has not been injected (is the Spring Aspects JAR configured as an AJC/AJDT aspects library?)");        
+        if (this.entityManager == null) this.entityManager = entityManager();        
         this.entityManager.persist(this);        
     }    
     
     @org.springframework.transaction.annotation.Transactional    
     public void User.remove() {    
-        if (this.entityManager == null) throw new IllegalStateException("Entity manager has not been injected (is the Spring Aspects JAR configured as an AJC/AJDT aspects library?)");        
-        this.entityManager.remove(this);        
+        if (this.entityManager == null) this.entityManager = entityManager();        
+        if (this.entityManager.contains(this)) {        
+            this.entityManager.remove(this);            
+        } else {        
+            User attached = this.entityManager.find(User.class, this.id);            
+            this.entityManager.remove(attached);            
+        }        
     }    
     
     @org.springframework.transaction.annotation.Transactional    
     public void User.flush() {    
-        if (this.entityManager == null) throw new IllegalStateException("Entity manager has not been injected (is the Spring Aspects JAR configured as an AJC/AJDT aspects library?)");        
+        if (this.entityManager == null) this.entityManager = entityManager();        
         this.entityManager.flush();        
     }    
     
     @org.springframework.transaction.annotation.Transactional    
     public void User.merge() {    
-        if (this.entityManager == null) throw new IllegalStateException("Entity manager has not been injected (is the Spring Aspects JAR configured as an AJC/AJDT aspects library?)");        
+        if (this.entityManager == null) this.entityManager = entityManager();        
         User merged = this.entityManager.merge(this);        
         this.entityManager.flush();        
         this.id = merged.getId();        
     }    
     
-    public static long User.countUsers() {    
+    public static javax.persistence.EntityManager User.entityManager() {    
         javax.persistence.EntityManager em = new User().entityManager;        
         if (em == null) throw new IllegalStateException("Entity manager has not been injected (is the Spring Aspects JAR configured as an AJC/AJDT aspects library?)");        
-        return (Long) em.createQuery("select count(o) from User o").getSingleResult();        
+        return em;        
+    }    
+    
+    public static long User.countUsers() {    
+        return (Long) entityManager().createQuery("select count(o) from User o").getSingleResult();        
     }    
     
     public static java.util.List<org.lifeforachild.domain.User> User.findAllUsers() {    
-        javax.persistence.EntityManager em = new User().entityManager;        
-        if (em == null) throw new IllegalStateException("Entity manager has not been injected (is the Spring Aspects JAR configured as an AJC/AJDT aspects library?)");        
-        return em.createQuery("select o from User o").getResultList();        
+        return entityManager().createQuery("select o from User o").getResultList();        
     }    
     
     public static org.lifeforachild.domain.User User.findUser(java.lang.Long id) {    
         if (id == null) throw new IllegalArgumentException("An identifier is required to retrieve an instance of User");        
-        javax.persistence.EntityManager em = new User().entityManager;        
-        if (em == null) throw new IllegalStateException("Entity manager has not been injected (is the Spring Aspects JAR configured as an AJC/AJDT aspects library?)");        
-        return em.find(User.class, id);        
+        return entityManager().find(User.class, id);        
     }    
     
     public static java.util.List<org.lifeforachild.domain.User> User.findUserEntries(int firstResult, int maxResults) {    
-        javax.persistence.EntityManager em = new User().entityManager;        
-        if (em == null) throw new IllegalStateException("Entity manager has not been injected (is the Spring Aspects JAR configured as an AJC/AJDT aspects library?)");        
-        return em.createQuery("select o from User o").setFirstResult(firstResult).setMaxResults(maxResults).getResultList();        
+        return entityManager().createQuery("select o from User o").setFirstResult(firstResult).setMaxResults(maxResults).getResultList();        
     }    
     
 }

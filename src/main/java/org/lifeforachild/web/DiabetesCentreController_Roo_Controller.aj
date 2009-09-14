@@ -23,7 +23,7 @@ privileged aspect DiabetesCentreController_Roo_Controller {
     }    
     
     @org.springframework.web.bind.annotation.RequestMapping(value = "/diabetescentre/{id}", method = org.springframework.web.bind.annotation.RequestMethod.GET)    
-    public java.lang.String DiabetesCentreController.show(@org.springframework.web.bind.annotation.PathVariable("id") Long id, org.springframework.ui.ModelMap modelMap) {    
+    public java.lang.String DiabetesCentreController.show(@org.springframework.web.bind.annotation.PathVariable("id") java.lang.Long id, org.springframework.ui.ModelMap modelMap) {    
         if (id == null) throw new IllegalArgumentException("An Identifier is required");        
         modelMap.addAttribute("diabetescentre", org.lifeforachild.domain.DiabetesCentre.findDiabetesCentre(id));        
         return "diabetescentre/show";        
