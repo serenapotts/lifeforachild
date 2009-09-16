@@ -25,6 +25,7 @@ privileged aspect ClinicalRecordController_Roo_Controller {
         modelMap.addAttribute("_mg_or_mmol_type", org.lifeforachild.domain.MG_OR_MMOL_Type.class.getEnumConstants());        
         modelMap.addAttribute("_microalbuminuriaunitstype", org.lifeforachild.domain.MicroalbuminuriaUnitsType.class.getEnumConstants());        
         modelMap.addAttribute("_notattendingschoolreasontype", org.lifeforachild.domain.NotAttendingSchoolReasonType.class.getEnumConstants());        
+        modelMap.addAttribute("_reasonnotenteringtype", org.lifeforachild.domain.ReasonNotEnteringType.class.getEnumConstants());        
         modelMap.addAttribute("users", org.lifeforachild.domain.User.findAllUsers());        
         modelMap.addAttribute("_yesnolatertype", org.lifeforachild.domain.YesNoLaterType.class.getEnumConstants());        
         modelMap.addAttribute("_yesnonatype", org.lifeforachild.domain.YesNoNAType.class.getEnumConstants());        
@@ -69,6 +70,7 @@ privileged aspect ClinicalRecordController_Roo_Controller {
         modelMap.addAttribute("_mg_or_mmol_type", org.lifeforachild.domain.MG_OR_MMOL_Type.class.getEnumConstants());        
         modelMap.addAttribute("_microalbuminuriaunitstype", org.lifeforachild.domain.MicroalbuminuriaUnitsType.class.getEnumConstants());        
         modelMap.addAttribute("_notattendingschoolreasontype", org.lifeforachild.domain.NotAttendingSchoolReasonType.class.getEnumConstants());        
+        modelMap.addAttribute("_reasonnotenteringtype", org.lifeforachild.domain.ReasonNotEnteringType.class.getEnumConstants());        
         modelMap.addAttribute("users", org.lifeforachild.domain.User.findAllUsers());        
         modelMap.addAttribute("_yesnolatertype", org.lifeforachild.domain.YesNoLaterType.class.getEnumConstants());        
         modelMap.addAttribute("_yesnonatype", org.lifeforachild.domain.YesNoNAType.class.getEnumConstants());        
