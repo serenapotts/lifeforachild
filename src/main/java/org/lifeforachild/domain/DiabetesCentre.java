@@ -9,6 +9,11 @@ import org.springframework.roo.addon.entity.RooEntity;
 import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.tostring.RooToString;
 
+/**
+ * The local diabetes centre which is supported with funds and supplies to
+ * help needy children receive proper diabetes care.
+ * @author hburgh
+ */
 @Entity
 @RooEntity
 @RooJavaBean

@@ -11,6 +11,11 @@ import java.util.HashSet;
 import javax.persistence.OneToMany;
 import javax.persistence.CascadeType;
 
+/**
+ * The Country which contains the diabetes centres supported by the
+ * LifeForAChild program
+ * @author hburgh
+ */
 @Entity
 @RooEntity
 @RooJavaBean

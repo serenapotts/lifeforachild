@@ -42,6 +42,7 @@ privileged aspect ClinicalRecord_Roo_ToString {
         sb.append("tuningForkTested: ").append(getTuningForkTested()).append(", ");        
         sb.append("tuningForkAbnormal: ").append(getTuningForkAbnormal()).append(", ");        
         sb.append("lastHbA1cInLast12Months: ").append(getLastHbA1cInLast12Months()).append(", ");        
+        sb.append("hbA1cPercentage: ").append(getHbA1cPercentage()).append(", ");        
         sb.append("hbA1cMethod: ").append(getHbA1cMethod()).append(", ");        
         sb.append("hbA1cMethodOther: ").append(getHbA1cMethodOther()).append(", ");        
         sb.append("microalbuminuriaValue: ").append(getMicroalbuminuriaValue()).append(", ");        
@@ -62,8 +63,11 @@ privileged aspect ClinicalRecord_Roo_ToString {
         sb.append("appropriateGradeForAge: ").append(getAppropriateGradeForAge()).append(", ");        
         sb.append("diabetesCopingAbilities: ").append(getDiabetesCopingAbilities()).append(", ");        
         sb.append("numberOfSevereHypoglycaemiaEpisodes: ").append(getNumberOfSevereHypoglycaemiaEpisodes()).append(", ");        
+        sb.append("reasonHypoglycaemiaEpisodesNotEntered: ").append(getReasonHypoglycaemiaEpisodesNotEntered()).append(", ");        
         sb.append("numberKetoacidosisEpisodes: ").append(getNumberKetoacidosisEpisodes()).append(", ");        
+        sb.append("reasonKetoacidosisEpisodesNotEntered: ").append(getReasonKetoacidosisEpisodesNotEntered()).append(", ");        
         sb.append("numberOfHospitalAdmissionsRelatedToDiabetes: ").append(getNumberOfHospitalAdmissionsRelatedToDiabetes()).append(", ");        
+        sb.append("reasonHospitalAdmissionsNotEntered: ").append(getReasonHospitalAdmissionsNotEntered()).append(", ");        
         sb.append("additionalComment: ").append(getAdditionalComment()).append(", ");        
         sb.append("personCompletingForm: ").append(getPersonCompletingForm()).append(", ");        
         sb.append("dateCompleted: ").append(getDateCompleted()).append(", ");        

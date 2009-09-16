@@ -290,6 +290,14 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.lastHbA1cInLast12Months = lastHbA1cInLast12Months;        
     }    
     
+    public float ClinicalRecord.getHbA1cPercentage() {    
+        return this.hbA1cPercentage;        
+    }    
+    
+    public void ClinicalRecord.setHbA1cPercentage(float hbA1cPercentage) {    
+        this.hbA1cPercentage = hbA1cPercentage;        
+    }    
+    
     public org.lifeforachild.domain.HbA1cMethodType ClinicalRecord.getHbA1cMethod() {    
         return this.hbA1cMethod;        
     }    
@@ -306,11 +314,11 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.hbA1cMethodOther = hbA1cMethodOther;        
     }    
     
-    public java.lang.Integer ClinicalRecord.getMicroalbuminuriaValue() {    
+    public float ClinicalRecord.getMicroalbuminuriaValue() {    
         return this.microalbuminuriaValue;        
     }    
     
-    public void ClinicalRecord.setMicroalbuminuriaValue(java.lang.Integer microalbuminuriaValue) {    
+    public void ClinicalRecord.setMicroalbuminuriaValue(float microalbuminuriaValue) {    
         this.microalbuminuriaValue = microalbuminuriaValue;        
     }    
     
@@ -450,6 +458,14 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.numberOfSevereHypoglycaemiaEpisodes = numberOfSevereHypoglycaemiaEpisodes;        
     }    
     
+    public org.lifeforachild.domain.ReasonNotEnteringType ClinicalRecord.getReasonHypoglycaemiaEpisodesNotEntered() {    
+        return this.reasonHypoglycaemiaEpisodesNotEntered;        
+    }    
+    
+    public void ClinicalRecord.setReasonHypoglycaemiaEpisodesNotEntered(org.lifeforachild.domain.ReasonNotEnteringType reasonHypoglycaemiaEpisodesNotEntered) {    
+        this.reasonHypoglycaemiaEpisodesNotEntered = reasonHypoglycaemiaEpisodesNotEntered;        
+    }    
+    
     public java.lang.Integer ClinicalRecord.getNumberKetoacidosisEpisodes() {    
         return this.numberKetoacidosisEpisodes;        
     }    
@@ -458,12 +474,28 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.numberKetoacidosisEpisodes = numberKetoacidosisEpisodes;        
     }    
     
+    public org.lifeforachild.domain.ReasonNotEnteringType ClinicalRecord.getReasonKetoacidosisEpisodesNotEntered() {    
+        return this.reasonKetoacidosisEpisodesNotEntered;        
+    }    
+    
+    public void ClinicalRecord.setReasonKetoacidosisEpisodesNotEntered(org.lifeforachild.domain.ReasonNotEnteringType reasonKetoacidosisEpisodesNotEntered) {    
+        this.reasonKetoacidosisEpisodesNotEntered = reasonKetoacidosisEpisodesNotEntered;        
+    }    
+    
     public java.lang.Integer ClinicalRecord.getNumberOfHospitalAdmissionsRelatedToDiabetes() {    
         return this.numberOfHospitalAdmissionsRelatedToDiabetes;        
     }    
     
     public void ClinicalRecord.setNumberOfHospitalAdmissionsRelatedToDiabetes(java.lang.Integer numberOfHospitalAdmissionsRelatedToDiabetes) {    
         this.numberOfHospitalAdmissionsRelatedToDiabetes = numberOfHospitalAdmissionsRelatedToDiabetes;        
+    }    
+    
+    public org.lifeforachild.domain.ReasonNotEnteringType ClinicalRecord.getReasonHospitalAdmissionsNotEntered() {    
+        return this.reasonHospitalAdmissionsNotEntered;        
+    }    
+    
+    public void ClinicalRecord.setReasonHospitalAdmissionsNotEntered(org.lifeforachild.domain.ReasonNotEnteringType reasonHospitalAdmissionsNotEntered) {    
+        this.reasonHospitalAdmissionsNotEntered = reasonHospitalAdmissionsNotEntered;        
     }    
     
     public java.lang.String ClinicalRecord.getAdditionalComment() {    

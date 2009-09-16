@@ -16,6 +16,14 @@ import java.util.HashSet;
 import javax.persistence.OneToMany;
 import javax.persistence.CascadeType;
 
+/**
+ * The Child in a 3rd world country who will be supported by the LifeForAChild
+ * program. This child will receive medical supplies and care from their local
+ * diabetes centre. Their progress will be tracked regularly in the form of a ClinicalRecord.
+ * @see ClinicalRecord
+ * @author hburgh
+ *
+ */
 @Entity
 @RooEntity
 @RooJavaBean
@@ -31,8 +39,10 @@ public class Child {
     @Size(max = 20)
     private String ethnicGroup;
 
+    @NotNull
     private SexType sex;
 
+    @NotNull
     private SurvivalStatusType survivalStatus;
 
     @Temporal(TemporalType.DATE)
@@ -57,6 +67,7 @@ public class Child {
 
     private DiabetesType diabetesType;
 
+    @NotNull
     @Size(max = 60)
     private String diabetesTypeOther;
     
