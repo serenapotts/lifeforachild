@@ -7,7 +7,7 @@
     <form:form action="${form_url}" method="POST" modelAttribute="report">
         <div id="roo_report_reporttype">
             <label for="_reporttype">Reporttype:</label>
-            <form:select cssStyle="width:250px" id="_reporttype" items="${_reporttype}" path="reporttype" itemLabel="label"/>
+            <form:select cssStyle="width:250px" id="_reporttype" items="${_reporttype}" path="reporttype"/>
             <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_reporttype', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
             <br/>
             <form:errors cssClass="errors" id="_reporttype" path="reporttype"/>
