@@ -64,4 +64,17 @@
 </li>
 </ul>
 </li>
+<li id="web_mvc_jsp_report_category">
+        <h2>Report</h2>
+        <ul>
+            <li id="web_mvc_jsp_create_report_menu_item">
+                <c:url value="/report/form" var="web_mvc_jsp_create_report_menu_item_url"/>
+                <a href="${web_mvc_jsp_create_report_menu_item_url}">Create new Report</a>
+            </li>
+        <li id="web_mvc_jsp_list_report_menu_item">
+                <c:url value="/report" var="web_mvc_jsp_list_report_menu_item_url"/>
+                <a href="${web_mvc_jsp_list_report_menu_item_url}">List all Reports</a>
+            </li>
+        </ul>
+    </li>
 </ul>
