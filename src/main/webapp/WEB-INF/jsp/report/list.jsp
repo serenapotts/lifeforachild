@@ -8,7 +8,12 @@
             <tr>
                 <thead>
                     <th>Id</th>
+                    <th>Name</th>
                     <th>Reporttype</th>
+                    <th>Statustype</th>
+                    <th>Time Period</th>
+                    <th>Timeperiodunit</th>
+                    <th>From Date</th>
                     <th/>
                     <th/>
                     <th/>
@@ -17,9 +22,16 @@
             <c:forEach items="${reports}" var="report">
                 <tr>
                     <td>${report.id}</td>
+                    <td>${fn:substring(report.name, 0, 10)}</td>
                     <td>${fn:substring(report.reporttype, 0, 10)}</td>
+                    <td>${fn:substring(report.statustype, 0, 10)}</td>
+                    <td>${fn:substring(report.timePeriod, 0, 10)}</td>
+                    <td>${fn:substring(report.timeperiodunit, 0, 10)}</td>
                     <td>
-                        <c:url value="/reportgenerator/${report.id}" var="show_form_url"/>
+                        <fmt:formatDate pattern="d/MM/yyyy" type="DATE" value="${report.fromDate}"/>
+                    </td>
+                    <td>
+                        <c:url value="/report/${report.id}" var="show_form_url"/>
                         <c:url value="/static/images/show.png" var="show_image_url"/>
                         <form:form action="${show_form_url}" method="GET">
                             <input alt="Show report" src="${show_image_url}" title="Show report" type="image" value="Show report"/>

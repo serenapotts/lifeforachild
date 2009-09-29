@@ -19,6 +19,8 @@ privileged aspect ReportController_Roo_Controller {
     public java.lang.String ReportController.createForm(org.springframework.ui.ModelMap modelMap) {    
         modelMap.addAttribute("report", new org.lifeforachild.domain.Report());        
         modelMap.addAttribute("_reporttype", org.lifeforachild.domain.ReportType.class.getEnumConstants());        
+        modelMap.addAttribute("_statustype", org.lifeforachild.domain.StatusType.class.getEnumConstants());        
+        modelMap.addAttribute("_timeperiodunit", org.lifeforachild.domain.TimePeriodUnit.class.getEnumConstants());        
         return "report/create";        
     }    
     
@@ -53,6 +55,8 @@ privileged aspect ReportController_Roo_Controller {
         if (id == null) throw new IllegalArgumentException("An Identifier is required");        
         modelMap.addAttribute("report", org.lifeforachild.domain.Report.findReport(id));        
         modelMap.addAttribute("_reporttype", org.lifeforachild.domain.ReportType.class.getEnumConstants());        
+        modelMap.addAttribute("_statustype", org.lifeforachild.domain.StatusType.class.getEnumConstants());        
+        modelMap.addAttribute("_timeperiodunit", org.lifeforachild.domain.TimePeriodUnit.class.getEnumConstants());        
         return "report/update";        
     }    
     
@@ -61,6 +65,11 @@ privileged aspect ReportController_Roo_Controller {
         if (id == null) throw new IllegalArgumentException("An Identifier is required");        
         org.lifeforachild.domain.Report.findReport(id).remove();        
         return "redirect:/report";        
+    }    
+    
+    @org.springframework.web.bind.annotation.InitBinder    
+    public void ReportController.initBinder(org.springframework.web.bind.WebDataBinder binder) {    
+        binder.registerCustomEditor(java.util.Date.class, new org.springframework.beans.propertyeditors.CustomDateEditor(new java.text.SimpleDateFormat("d/MM/yyyy"), false));        
     }    
     
 }
