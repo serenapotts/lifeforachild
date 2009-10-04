@@ -114,6 +114,22 @@ privileged aspect Child_Roo_JavaBean {
         this.diabetesTypeOther = diabetesTypeOther;        
     }    
     
+    public java.util.Date Child.getCreatedOn() {    
+        return this.createdOn;        
+    }    
+    
+    public void Child.setCreatedOn(java.util.Date createdOn) {    
+        this.createdOn = createdOn;        
+    }    
+    
+    public java.util.Date Child.getUpdatedOn() {    
+        return this.updatedOn;        
+    }    
+    
+    public void Child.setUpdatedOn(java.util.Date updatedOn) {    
+        this.updatedOn = updatedOn;        
+    }    
+    
     public org.lifeforachild.domain.DistanceType Child.getDistanceLivesFromCentre() {    
         return this.distanceLivesFromCentre;        
     }    

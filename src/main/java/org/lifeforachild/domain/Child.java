@@ -70,14 +70,20 @@ public class Child {
     @NotNull
     @Size(max = 60)
     private String diabetesTypeOther;
-    
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createdOn;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date updatedOn;
+
     private DistanceType distanceLivesFromCentre;
 
-	public float calculatedAgeAtDiabetesDiagnosis() {
-		return ClinicalRecord.calculateAge(diabetesDiagnosed, dateOfBirth);
-	}
-	
-	
+    public float calculatedAgeAtDiabetesDiagnosis() {
+        return ClinicalRecord.calculateAge(diabetesDiagnosed, dateOfBirth);
+    }
+
     @OneToMany(cascade = CascadeType.ALL)
     private Set<ClinicalRecord> clinicalRecords = new HashSet<ClinicalRecord>();
+
 }
