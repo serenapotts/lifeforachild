@@ -2,19 +2,6 @@ package org.lifeforachild.web;
 
 privileged aspect ChildController_Roo_Controller {
     
-    @org.springframework.web.bind.annotation.RequestMapping(value = "/child", method = org.springframework.web.bind.annotation.RequestMethod.POST)    
-    public java.lang.String ChildController.create(@org.springframework.web.bind.annotation.ModelAttribute("child") org.lifeforachild.domain.Child child, org.springframework.validation.BindingResult result) {    
-        if (child == null) throw new IllegalArgumentException("A child is required");        
-        for(javax.validation.ConstraintViolation<org.lifeforachild.domain.Child> constraint : javax.validation.Validation.buildDefaultValidatorFactory().getValidator().validate(child)) {        
-            result.rejectValue(constraint.getPropertyPath(), null, constraint.getMessage());            
-        }        
-        if (result.hasErrors()) {        
-            return "child/create";            
-        }        
-        child.persist();        
-        return "redirect:/child/" + child.getId();        
-    }    
-    
     @org.springframework.web.bind.annotation.RequestMapping(value = "/child/form", method = org.springframework.web.bind.annotation.RequestMethod.GET)    
     public java.lang.String ChildController.createForm(org.springframework.ui.ModelMap modelMap) {    
         modelMap.addAttribute("child", new org.lifeforachild.domain.Child());        
@@ -38,19 +25,6 @@ privileged aspect ChildController_Roo_Controller {
     public java.lang.String ChildController.list(org.springframework.ui.ModelMap modelMap) {    
         modelMap.addAttribute("children", org.lifeforachild.domain.Child.findAllChildren());        
         return "child/list";        
-    }    
-    
-    @org.springframework.web.bind.annotation.RequestMapping(method = org.springframework.web.bind.annotation.RequestMethod.PUT)    
-    public java.lang.String ChildController.update(@org.springframework.web.bind.annotation.ModelAttribute("child") org.lifeforachild.domain.Child child, org.springframework.validation.BindingResult result) {    
-        if (child == null) throw new IllegalArgumentException("A child is required");        
-        for(javax.validation.ConstraintViolation<org.lifeforachild.domain.Child> constraint : javax.validation.Validation.buildDefaultValidatorFactory().getValidator().validate(child)) {        
-            result.rejectValue(constraint.getPropertyPath(), null, constraint.getMessage());            
-        }        
-        if (result.hasErrors()) {        
-            return "child/update";            
-        }        
-        child.merge();        
-        return "redirect:/child/" + child.getId();        
     }    
     
     @org.springframework.web.bind.annotation.RequestMapping(value = "/child/{id}/form", method = org.springframework.web.bind.annotation.RequestMethod.GET)    
