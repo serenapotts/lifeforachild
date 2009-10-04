@@ -146,6 +146,7 @@
 </div>
 <form:hidden id="_id" path="id"/>
 <form:hidden id="_version" path="version"/>
+<form:hidden id="_createdOn" path="createdOn"/>
 </form:form>
 </div>
 <jsp:directive.include file="/WEB-INF/jsp/footer.jsp"/>
