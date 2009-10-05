@@ -31,7 +31,7 @@
                         <fmt:formatDate pattern="d/MM/yyyy" type="DATE" value="${report.fromDate}"/>
                     </td>
                     <td>
-                        <c:url value="/report/${report.id}" var="show_form_url"/>
+                        <c:url value="/reportgenerator/${report.id}" var="show_form_url"/>
                         <c:url value="/static/images/show.png" var="show_image_url"/>
                         <form:form action="${show_form_url}" method="GET">
                             <input alt="Show report" src="${show_image_url}" title="Show report" type="image" value="Show report"/>
