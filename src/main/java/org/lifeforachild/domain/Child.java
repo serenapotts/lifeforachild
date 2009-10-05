@@ -30,6 +30,10 @@ import javax.persistence.CascadeType;
 @RooToString
 public class Child {
 
+	// Name of database column for properties
+	public static final String ID_COLUMN = "id";
+	public static final String UPDATED_ON_COLUMN = "updated_on";
+	
     @Size(min = 1)
     private String initials;
 
@@ -85,5 +89,9 @@ public class Child {
 
     @OneToMany(cascade = CascadeType.ALL)
     private Set<ClinicalRecord> clinicalRecords = new HashSet<ClinicalRecord>();
+
+    public static java.util.List<Child> findChildren(String query) {    
+        return entityManager().createQuery(query).getResultList();        
+    }    
 
 }
