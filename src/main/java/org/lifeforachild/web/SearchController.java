@@ -115,7 +115,9 @@ public class SearchController {
 		if (!StringUtil.isEmpty(country))
 			appendOperator(buffer, "country", country, EQUALS_OPERATOR);*/
 		
-		return "where " + buffer.toString();
+		if (buffer.toString().length() > 0)
+			return "where " + buffer.toString();
+		return buffer.toString();
 	}
 	
 	/**
