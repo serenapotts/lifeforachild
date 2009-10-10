@@ -1,7 +1,5 @@
 package org.lifeforachild.web;
 
-import java.util.Date;
-
 import org.lifeforachild.domain.Child;
 import org.lifeforachild.domain.DiabetesType;
 import org.lifeforachild.domain.Report;

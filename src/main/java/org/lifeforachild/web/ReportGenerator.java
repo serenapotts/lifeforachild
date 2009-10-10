@@ -32,7 +32,7 @@ import ar.com.fdvs.dj.domain.builders.DynamicReportBuilder;
 import ar.com.fdvs.dj.domain.entities.columns.AbstractColumn;
 
 /**
- * Generate a report using DynamicJasper.
+ * Abstract class that generates a report using DynamicJasper.
  * 
  * A number of different of formats are supported including HTML and Excel.
  * 
@@ -146,6 +146,7 @@ public abstract class ReportGenerator {
      */
 	public static Connection createSQLConnection() throws Exception 
 	{
+		// TODO remove hard coding - how to get this information??
 		Connection con = null;
 		     Class.forName("com.mysql.jdbc.Driver" );
 			 con = DriverManager.getConnection("jdbc:mysql://localhost:3306/life_for_a_child", "dev", "password");
