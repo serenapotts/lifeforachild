@@ -1,5 +1,11 @@
 package org.lifeforachild.domain;
 
+/**
+ * Defines {@link Report} output formats.
+ * 
+ * @author Serena Potts
+ *
+ */
 public final class OutputType {
 
 	public static final String PDF = "PDF";

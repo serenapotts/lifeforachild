@@ -16,17 +16,21 @@ public enum SexType {
     
     public String getLabel() { return label; }
 
-	 public static CustomExpression getCustomExpression() {
-        return new CustomExpression() {
-                public Object evaluate(Map fields, Map variables, Map parameters) {
-                	String sex = (String)fields.get("sex");               
-                    return values()[Integer.valueOf(sex)].getLabel();
-                }
-
-                public String getClassName() {
-                        return String.class.getName();
-                }
-        };
-	 }
+    /**
+     * Custom Expression that formats a SexType enum in a report to display the label based
+     * on the code.
+     */
+	public static CustomExpression getCustomExpression() {
+	    return new CustomExpression() {
+	            public Object evaluate(Map fields, Map variables, Map parameters) {
+	            	String sex = (String)fields.get("sex");               
+	                return values()[Integer.valueOf(sex)].getLabel();
+	            }
+	
+	            public String getClassName() {
+	                    return String.class.getName();
+	            }
+	    };
+	}
 
 }

@@ -2,8 +2,6 @@ package org.lifeforachild.domain;
 
 import java.util.Map;
 
-import net.sf.jasperreports.engine.fill.JRFillField;
-
 import ar.com.fdvs.dj.domain.CustomExpression;
 
 /**
@@ -21,6 +19,10 @@ public enum DiabetesType {
     
     public String getLabel() { return label; }
 
+    /**
+     * Custom Expression that formats a DiabetesType enum in a report to display the label based
+     * on the code.
+     */
 	 public static CustomExpression getCustomExpression() {
         return new CustomExpression() {
                 public Object evaluate(Map fields, Map variables, Map parameters) {
