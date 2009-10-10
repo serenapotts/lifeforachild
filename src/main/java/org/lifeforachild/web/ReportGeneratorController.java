@@ -3,8 +3,6 @@ package org.lifeforachild.web;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.lifeforachild.domain.Child;
-import org.lifeforachild.domain.ClinicalRecord;
 import org.lifeforachild.domain.Report;
 import org.lifeforachild.domain.ReportType;
 import org.springframework.stereotype.Controller;
@@ -22,13 +20,17 @@ public class ReportGeneratorController {
     	Report report = Report.findReport(id);
     	if (report.getReporttype().equals(ReportType.CHILD))
     	{
-	    	modelMap.addAttribute("children", Child.findAllChildren());
-	    	return "child/report";
+    		ChildReportGenerator childRepGen = new ChildReportGenerator();
+    		String html = childRepGen.generateHtmlReport(report);
+    		modelMap.addAttribute("html", html);
+	    	return "report/report";
     	}
     	else if (report.getReporttype().equals(ReportType.CLINICAL_RECORD))
     	{
-	    	modelMap.addAttribute("clinicalrecords", ClinicalRecord.findAllClinicalRecords());
-	    	return "clinicalrecord/report";    		
+    		ClinicalRecordReportGenerator clinicalRecordRepGen = new ClinicalRecordReportGenerator();
+    		String html = clinicalRecordRepGen.generateHtmlReport(report);
+    		modelMap.addAttribute("html", html);
+	    	return "report/report";    		
     	}
     	return "dataAccessFailure";    	
     }
@@ -37,4 +39,6 @@ public class ReportGeneratorController {
     public String post(@PathVariable Long id, ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) {
     	return "dataAccessFailure";    	
     }       
+    
+    
 }
