@@ -87,7 +87,7 @@ privileged aspect ClinicalRecordController_Roo_Controller {
     
     @org.springframework.web.bind.annotation.InitBinder    
     public void ClinicalRecordController.initBinder(org.springframework.web.bind.WebDataBinder binder) {    
-        binder.registerCustomEditor(java.util.Date.class, new org.springframework.beans.propertyeditors.CustomDateEditor(new java.text.SimpleDateFormat("d/MM/yyyy"), false));        
+        binder.registerCustomEditor(java.util.Date.class, new org.springframework.beans.propertyeditors.CustomDateEditor(new java.text.SimpleDateFormat("d/MM/yyyy"), true));        
     }    
     
 }
