@@ -234,7 +234,13 @@
 	    <groupId>ar.com.fdvs</groupId>
 	    <artifactId>DynamicJasper</artifactId>
 	    <version>3.0.9</version>
-	</dependency>         
+	</dependency>    
+	<dependency>
+		<groupId>org.apache.poi</groupId> 
+		<artifactId>poi</artifactId> 
+		<version>3.2-FINAL</version> 
+	</dependency>
+	     
     </dependencies>
 
 	<build>
