@@ -1,4 +1,4 @@
-package org.lifeforachild.web;
+package org.lifeforachild.web.Report;
 
 import org.lifeforachild.domain.Child;
 import org.lifeforachild.domain.DiabetesType;
@@ -42,7 +42,7 @@ public class ChildReportGenerator extends ReportGenerator {
 	 * @param report The report parameters.
 	 * @return The SQL query.
 	 */
-	String buildQuery(Report report) {
+	public String buildQuery(Report report) {
 		// TODO build query based on report object
 		return "select * from Child";
 	}

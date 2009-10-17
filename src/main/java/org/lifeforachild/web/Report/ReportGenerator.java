@@ -1,12 +1,15 @@
-package org.lifeforachild.web;
+package org.lifeforachild.web.Report;
 
 import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.Date;
 import java.util.HashMap;
 
 import net.sf.jasperreports.engine.JRAbstractExporter;
+import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JRExporterParameter;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.export.JRHtmlExporter;
@@ -43,6 +46,7 @@ public abstract class ReportGenerator {
 
 	// The format of dates in a report
 	protected static String DATE_FORMAT = "dd/MM/yyyy";
+	OutputProcessed outputProcessed = null;
 	
 	// Class to hold information about the output format
     private class OutputProcessed {
@@ -55,13 +59,30 @@ public abstract class ReportGenerator {
      * Create a HTML report based on the {@link Report} parameters.
      * @param report The report parameters
      * @return The HTML for the report as a String. 
+     * @throws JRException 
      */
-	public String generateHtmlReport(Report report)
+	public String generateHtmlReport(String query)
 	{
 		// generate the sql query based on the report
-    	String query = buildQuery(report);
+    	//String query = buildQuery(report);
+    	byte[] bytes = null;
+    	try
+    	{
     	// get the report as bytes
-    	byte[] bytes = generateReport(OutputType.HTML, query);
+    	JasperPrint jp = generateReport(OutputType.HTML, query);  
+    	JRAbstractExporter exporter = outputProcessed.exporter;
+    	ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        exporter.setParameter(JRExporterParameter.JASPER_PRINT, jp);
+        exporter.setParameter(JRExporterParameter.OUTPUT_STREAM, baos);
+        exporter.exportReport();
+
+        bytes = baos.toByteArray();
+    	}
+    	catch (JRException e)
+    	{
+    		e.printStackTrace();
+    	}
+    	
     	// convert to string
         return new String(bytes);
 	}
@@ -69,10 +90,46 @@ public abstract class ReportGenerator {
 	/**
 	 * Create a report in Excel file format.
 	 * @param query The sql query
+	 * @throws JRException 
 	 */
-	public void generateExcelReport(String query)
+	public void generateExcelReport(String query)  
 	{
-		byte[] bytes = generateReport(OutputType.EXCEL, query);
+		try {
+			JasperPrint jp = generateReport(OutputType.EXCEL, query);
+			// TODO how to allow user to control this location
+			ReportExporter.exportReportXls(jp, "C:/Temp/report.xls");
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JRException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * Create a report in Excel file format.
+	 * @param query The sql query
+	 */
+	public void generatePdfReport(String query)
+	{
+		try {
+			JasperPrint jp = generateReport(OutputType.PDF, query);
+			// TODO how to allow user to control this location
+			ReportExporter.exportReport(jp, "C:/Temp/report.pdf");
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JRException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	/**
@@ -81,28 +138,15 @@ public abstract class ReportGenerator {
 	 * @param query The SQL query used to filter the results
 	 * @return the report as an array of bytes.
 	 */
-	private byte[] generateReport(String outputType, String query)
+	private JasperPrint generateReport(String outputType, String query) throws JRException
 	{
-        try {
             //Create DynamicReport instance
             DynamicReport dr = buildDynamicReport(query);
 
-            OutputProcessed outputProcessed = processOutput(OutputType.HTML); 
-            JRAbstractExporter exporter = outputProcessed.exporter;
+            outputProcessed = processOutput(outputType);             
             Connection connection = createSQLConnection();
-            HashMap params = new HashMap();
-            JasperPrint jp = DynamicJasperHelper.generateJasperPrint(dr, outputProcessed.layoutManager, connection, params);
-            
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            exporter.setParameter(JRExporterParameter.JASPER_PRINT, jp);
-            exporter.setParameter(JRExporterParameter.OUTPUT_STREAM, baos);
-            exporter.exportReport();
-
-            return baos.toByteArray();
-        } catch (Exception e) {
-            System.out.print("ERROR: " + e.getMessage());
-        }
-        return new byte[0];
+            JasperPrint jp = DynamicJasperHelper.generateJasperPrint(dr, outputProcessed.layoutManager, connection, new HashMap());
+            return jp;
 	}
 	
 	/**
@@ -144,12 +188,17 @@ public abstract class ReportGenerator {
     /**
      * Get the SQL connection.
      */
-	public static Connection createSQLConnection() throws Exception 
+	public static Connection createSQLConnection()
 	{
 		// TODO remove hard coding - how to get this information??
 		Connection con = null;
-		     Class.forName("com.mysql.jdbc.Driver" );
-			 con = DriverManager.getConnection("jdbc:mysql://localhost:3306/life_for_a_child", "dev", "password");
+		 try {
+		     Class.forName("com.mysql.jdbc.Driver" );			
+		     con = DriverManager.getConnection("jdbc:mysql://localhost:3306/life_for_a_child", "dev", "password");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return con;
 	}
 
@@ -157,7 +206,7 @@ public abstract class ReportGenerator {
 	 * Build the {@link DynamicReport} which adds the appropriate columns.
 	 * @param query The SQL query/
 	 */
-    private DynamicReport buildDynamicReport(String query) throws Exception 
+    private DynamicReport buildDynamicReport(String query) 
     {       
         DynamicReportBuilder drb = new DynamicReportBuilder();
         Integer margin = new Integer(20);
@@ -171,7 +220,12 @@ public abstract class ReportGenerator {
         .setBottomMargin(margin)
         .setPrintBackgroundOnOddRows(true);                      
 
-        addColumns(drb);
+        try {
+			addColumns(drb);
+		} catch (ColumnBuilderException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         
         DynamicReport dr = drb.build();
         return dr;
@@ -250,5 +304,5 @@ public abstract class ReportGenerator {
 	 * @param report The report parameters.
 	 * @return The SQL query.
 	 */
-	abstract String buildQuery(Report report);
+	public abstract String buildQuery(Report report);
 }

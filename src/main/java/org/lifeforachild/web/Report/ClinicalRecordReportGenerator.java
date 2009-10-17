@@ -1,4 +1,4 @@
-package org.lifeforachild.web;
+package org.lifeforachild.web.Report;
 
 import org.lifeforachild.domain.ClinicalRecord;
 import org.lifeforachild.domain.Report;
@@ -34,7 +34,7 @@ public class ClinicalRecordReportGenerator extends ReportGenerator {
 	 * @param report The report parameters.
 	 * @return The SQL query.
 	 */
-	String buildQuery(Report report) {
+	public String buildQuery(Report report) {
 		// TODO
 		return "select * from clinical_record";
 	}

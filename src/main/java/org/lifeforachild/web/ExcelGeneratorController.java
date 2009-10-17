@@ -10,32 +10,35 @@ import org.lifeforachild.web.Report.ClinicalRecordReportGenerator;
 import org.lifeforachild.web.Report.ReportGenerator;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
- * Controller that generates a the report for a {@link Report}.
+ * Controller that generates a Excel file of the report for a {@link Report}.
  * 
- * Called when /reportgenerator/id is called.
+ * Called when /excelgenerator is called.
  * 
  * @author Serena Potts
  */
-@RequestMapping("/reportgenerator/**")
+@RequestMapping("/excelgenerator/**")
 @Controller
-public class ReportGeneratorController {
+public class ExcelGeneratorController {
+
+	// not implemented
+    @RequestMapping(method = RequestMethod.GET)
+    public void get(@ModelAttribute("report") Report report, ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) {
+    }
 
 	/**
-	 * 
-	 * @param id Id of the report to display.
+	 * @param report Report object
 	 * @param modelMap Map to hold servlet information
      * @param request HTTP servlet request
      * @param response HTTP servlet response
 	 * @return the jsp page to display
 	 */
-    @RequestMapping(method = RequestMethod.GET, value = "{id}")
-    public String get(@PathVariable Long id, ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) {
-    	Report report = Report.findReport(id);
+    @RequestMapping(method = RequestMethod.POST)
+    public String post(@ModelAttribute("report") Report report, ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) {
     	ReportGenerator repGen = null;
     	// check what type of report we are displaying
     	if (report.getReporttype().equals(ReportType.CHILD))
@@ -45,18 +48,10 @@ public class ReportGeneratorController {
     	if (repGen != null)
     	{
     		String query = repGen.buildQuery(report);
-    		String html = repGen.generateHtmlReport(query);
-    		modelMap.addAttribute("html", html);
-    		modelMap.addAttribute("report", report);
-	    	return "report/report";
-    	}
-    	return "dataAccessFailure";    	
-    }
-
-    // Not called at present
-    @RequestMapping(method = RequestMethod.POST, value = "{id}")
-    public String post(@PathVariable Long id, ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) {
-    	return "dataAccessFailure";    	
+    		repGen.generateExcelReport(query);
+    	}    	
+    	// redirect back to to the current page
+    	return "redirect:/reportgenerator/" + report.getId();
     }       
     
     
