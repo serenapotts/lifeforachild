@@ -64,27 +64,41 @@
         </div>
         <br/>
         <div id="roo_report_centre">
-            <label for="_centre">Centre:</label>
-            <form:input cssStyle="width:250px" id="_centre" maxlength="30" path="centre" size="0"/>
-            <br/>
-            <form:errors cssClass="errors" id="_centre" path="centre"/>
-            <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : "_centre", widgetType : "dijit.form.ValidationTextBox", widgetAttrs : {promptMessage: "Enter Centre", invalidMessage: "", required : false}})); </script>
+            <c:if test="${not empty diabetescentres}">
+                <label for="_centre">Centre:</label>
+                <form:select cssStyle="width:250px" id="_centre" path="centre">
+                    <form:options itemValue="id" items="${diabetescentres}"/>
+                </form:select>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_centre', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
+            </c:if>
         </div>
         <br/>
         <div id="roo_report_country">
-            <label for="_country">Country:</label>
-            <form:input cssStyle="width:250px" id="_country" maxlength="30" path="country" size="0"/>
-            <br/>
-            <form:errors cssClass="errors" id="_country" path="country"/>
-            <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : "_country", widgetType : "dijit.form.ValidationTextBox", widgetAttrs : {promptMessage: "Enter Country", invalidMessage: "", required : false}})); </script>
+            <c:if test="${not empty countrys}">
+                <label for="_country">Country:</label>
+                <form:select cssStyle="width:250px" id="_country" path="country">
+                    <form:options itemValue="id" items="${countrys}"/>
+                </form:select>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_country', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
+            </c:if>
         </div>
         <br/>
-        <div id="roo_report_displayFields">
-            <label for="_displayFields">Display Fields:</label>
-            <form:input cssStyle="width:250px" id="_displayFields" maxlength="30" path="displayFields" size="0"/>
+        <br/>
+        <div id="roo_report_childfields">
+            <label for="_childfields">Childfields:</label>
+            <form:select cssStyle="width:250px" id="_childfields" items="${_childfields}" path="childfields" multiple="true"/>
+            <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_childfields', widgetType: 'dijit.form.MultipleSelect', widgetAttrs : {hasDownArrow : true}})); </script>
             <br/>
-            <form:errors cssClass="errors" id="_displayFields" path="displayFields"/>
-            <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : "_displayFields", widgetType : "dijit.form.ValidationTextBox", widgetAttrs : {promptMessage: "Enter Display Fields", invalidMessage: "", required : false}})); </script>
+            <form:errors cssClass="errors" id="_childfields" path="childfields"/>
+        </div>
+        <br/>
+        <br/>
+        <div id="roo_report_clinicalrecordfields">
+            <label for="_clinicalrecordfields">Clinicalrecordfields:</label>
+            <form:select cssStyle="width:250px" id="_clinicalrecordfields" items="${_clinicalrecordfields}" path="clinicalrecordfields" multiple="true"/>
+            <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_clinicalrecordfields', widgetType: 'dijit.form.MultipleSelect', widgetAttrs : {hasDownArrow : true}})); </script>
+            <br/>
+            <form:errors cssClass="errors" id="_clinicalrecordfields" path="clinicalrecordfields"/>
         </div>
         <br/>
         <div class="submit" id="roo_report_submit">

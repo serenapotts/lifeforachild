@@ -44,8 +44,7 @@ public class ReportGeneratorController {
     		repGen = new ClinicalRecordReportGenerator();    		
     	if (repGen != null)
     	{
-    		String query = repGen.buildQuery(report);
-    		String html = repGen.generateHtmlReport(query);
+    		String html = repGen.generateHtmlReport(report);
     		modelMap.addAttribute("html", html);
     		modelMap.addAttribute("report", report);
 	    	return "report/report";

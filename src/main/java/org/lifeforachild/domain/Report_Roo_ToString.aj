@@ -15,7 +15,8 @@ privileged aspect Report_Roo_ToString {
         sb.append("toDate: ").append(getToDate()).append(", ");        
         sb.append("centre: ").append(getCentre()).append(", ");        
         sb.append("country: ").append(getCountry()).append(", ");        
-        sb.append("displayFields: ").append(getDisplayFields());        
+        sb.append("childfields: ").append(java.util.Arrays.toString(getChildfields())).append(", ");        
+        sb.append("clinicalrecordfields: ").append(java.util.Arrays.toString(getClinicalrecordfields()));        
         return sb.toString();        
     }    
     

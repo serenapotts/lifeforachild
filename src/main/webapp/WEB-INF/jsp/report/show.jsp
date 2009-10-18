@@ -53,9 +53,14 @@
             <div class="box" id="_country">${report.country}</div>
         </div>
         <br/>
-        <div id="roo_report_displayFields">
-            <label for="_displayFields">Display Fields:</label>
-            <div class="box" id="_displayFields">${report.displayFields}</div>
+        <div id="roo_report_childfields">
+            <label for="_childfields">Childfields:</label>
+            <div class="box" id="_childfields">${report.childfields}</div>
+        </div>
+        <br/>
+        <div id="roo_report_clinicalrecordfields">
+            <label for="_clinicalrecordfields">Clinicalrecordfields:</label>
+            <div class="box" id="_clinicalrecordfields">${report.clinicalrecordfields}</div>
         </div>
         <br/>
     </c:if>

@@ -58,28 +58,36 @@ privileged aspect Report_Roo_JavaBean {
         this.toDate = toDate;        
     }    
     
-    public java.lang.String Report.getCentre() {    
+    public org.lifeforachild.domain.DiabetesCentre Report.getCentre() {    
         return this.centre;        
     }    
     
-    public void Report.setCentre(java.lang.String centre) {    
+    public void Report.setCentre(org.lifeforachild.domain.DiabetesCentre centre) {    
         this.centre = centre;        
     }    
     
-    public java.lang.String Report.getCountry() {    
+    public org.lifeforachild.domain.Country Report.getCountry() {    
         return this.country;        
     }    
     
-    public void Report.setCountry(java.lang.String country) {    
+    public void Report.setCountry(org.lifeforachild.domain.Country country) {    
         this.country = country;        
     }    
     
-    public java.lang.String Report.getDisplayFields() {    
-        return this.displayFields;        
+    public org.lifeforachild.domain.ChildFields[] Report.getChildfields() {    
+        return this.childfields;        
     }    
     
-    public void Report.setDisplayFields(java.lang.String displayFields) {    
-        this.displayFields = displayFields;        
+    public void Report.setChildfields(org.lifeforachild.domain.ChildFields[] childfields) {    
+        this.childfields = childfields;        
+    }    
+    
+    public org.lifeforachild.domain.ClinicalRecordFields[] Report.getClinicalrecordfields() {    
+        return this.clinicalrecordfields;        
+    }    
+    
+    public void Report.setClinicalrecordfields(org.lifeforachild.domain.ClinicalRecordFields[] clinicalrecordfields) {    
+        this.clinicalrecordfields = clinicalrecordfields;        
     }    
     
 }

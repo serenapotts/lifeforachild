@@ -46,10 +46,7 @@ public class ExcelGeneratorController {
     	else if (report.getReporttype().equals(ReportType.CLINICAL_RECORD))
     		repGen = new ClinicalRecordReportGenerator();    		
     	if (repGen != null)
-    	{
-    		String query = repGen.buildQuery(report);
-    		repGen.generateExcelReport(query);
-    	}    	
+    		repGen.generateExcelReport(report);
     	// redirect back to to the current page
     	return "redirect:/reportgenerator/" + report.getId();
     }       

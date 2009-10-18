@@ -61,10 +61,10 @@ public abstract class ReportGenerator {
      * @return The HTML for the report as a String. 
      * @throws JRException 
      */
-	public String generateHtmlReport(String query)
+	public String generateHtmlReport(Report report)
 	{
 		// generate the sql query based on the report
-    	//String query = buildQuery(report);
+    	String query = buildQuery(report);
     	byte[] bytes = null;
     	try
     	{
@@ -92,9 +92,10 @@ public abstract class ReportGenerator {
 	 * @param query The sql query
 	 * @throws JRException 
 	 */
-	public void generateExcelReport(String query)  
+	public void generateExcelReport(Report report)  
 	{
 		try {
+			String query = buildQuery(report);
 			JasperPrint jp = generateReport(OutputType.EXCEL, query);
 			// TODO how to allow user to control this location
 			ReportExporter.exportReportXls(jp, "C:/Temp/report.xls");
@@ -114,9 +115,10 @@ public abstract class ReportGenerator {
 	 * Create a report in Excel file format.
 	 * @param query The sql query
 	 */
-	public void generatePdfReport(String query)
+	public void generatePdfReport(Report report)
 	{
 		try {
+			String query = buildQuery(report);
 			JasperPrint jp = generateReport(OutputType.PDF, query);
 			// TODO how to allow user to control this location
 			ReportExporter.exportReport(jp, "C:/Temp/report.pdf");

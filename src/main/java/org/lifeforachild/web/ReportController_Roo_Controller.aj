@@ -18,6 +18,10 @@ privileged aspect ReportController_Roo_Controller {
     @org.springframework.web.bind.annotation.RequestMapping(value = "/report/form", method = org.springframework.web.bind.annotation.RequestMethod.GET)    
     public java.lang.String ReportController.createForm(org.springframework.ui.ModelMap modelMap) {    
         modelMap.addAttribute("report", new org.lifeforachild.domain.Report());        
+        modelMap.addAttribute("_childfields", org.lifeforachild.domain.ChildFields.class.getEnumConstants());        
+        modelMap.addAttribute("_clinicalrecordfields", org.lifeforachild.domain.ClinicalRecordFields.class.getEnumConstants());        
+        modelMap.addAttribute("countrys", org.lifeforachild.domain.Country.findAllCountrys());        
+        modelMap.addAttribute("diabetescentres", org.lifeforachild.domain.DiabetesCentre.findAllDiabetesCentres());        
         modelMap.addAttribute("_reporttype", org.lifeforachild.domain.ReportType.class.getEnumConstants());        
         modelMap.addAttribute("_statustype", org.lifeforachild.domain.StatusType.class.getEnumConstants());        
         modelMap.addAttribute("_timeperiodunit", org.lifeforachild.domain.TimePeriodUnit.class.getEnumConstants());        
@@ -54,6 +58,10 @@ privileged aspect ReportController_Roo_Controller {
     public java.lang.String ReportController.updateForm(@org.springframework.web.bind.annotation.PathVariable("id") java.lang.Long id, org.springframework.ui.ModelMap modelMap) {    
         if (id == null) throw new IllegalArgumentException("An Identifier is required");        
         modelMap.addAttribute("report", org.lifeforachild.domain.Report.findReport(id));        
+        modelMap.addAttribute("_childfields", org.lifeforachild.domain.ChildFields.class.getEnumConstants());        
+        modelMap.addAttribute("_clinicalrecordfields", org.lifeforachild.domain.ClinicalRecordFields.class.getEnumConstants());        
+        modelMap.addAttribute("countrys", org.lifeforachild.domain.Country.findAllCountrys());        
+        modelMap.addAttribute("diabetescentres", org.lifeforachild.domain.DiabetesCentre.findAllDiabetesCentres());        
         modelMap.addAttribute("_reporttype", org.lifeforachild.domain.ReportType.class.getEnumConstants());        
         modelMap.addAttribute("_statustype", org.lifeforachild.domain.StatusType.class.getEnumConstants());        
         modelMap.addAttribute("_timeperiodunit", org.lifeforachild.domain.TimePeriodUnit.class.getEnumConstants());        
@@ -69,7 +77,7 @@ privileged aspect ReportController_Roo_Controller {
     
     @org.springframework.web.bind.annotation.InitBinder    
     public void ReportController.initBinder(org.springframework.web.bind.WebDataBinder binder) {    
-        binder.registerCustomEditor(java.util.Date.class, new org.springframework.beans.propertyeditors.CustomDateEditor(new java.text.SimpleDateFormat("d/MM/yyyy"), false));        
+        binder.registerCustomEditor(java.util.Date.class, new org.springframework.beans.propertyeditors.CustomDateEditor(new java.text.SimpleDateFormat("d/MM/yyyy"), true));        
     }    
     
 }

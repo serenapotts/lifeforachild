@@ -47,8 +47,7 @@ public class PdfGeneratorController {
     		repGen = new ClinicalRecordReportGenerator();    		
     	if (repGen != null)
     	{
-    		String query = repGen.buildQuery(report);
-    		repGen.generatePdfReport(query);
+    		repGen.generatePdfReport(report);
     	}    	
     	// redirect back to to the current page
     	return "redirect:/reportgenerator/" + report.getId();

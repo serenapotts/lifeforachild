@@ -1,6 +1,7 @@
 package org.lifeforachild.domain;
 
 public enum StatusType {
+	NONE(""),
 	UPDATED("Updated"),
 	NOT_UPDATED("Not Updated");
 	
