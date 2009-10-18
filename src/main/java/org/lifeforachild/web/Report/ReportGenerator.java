@@ -21,6 +21,7 @@ import net.sf.jasperreports.engine.export.JRXlsExporterParameter;
 
 import org.lifeforachild.domain.OutputType;
 import org.lifeforachild.domain.Report;
+import org.lifeforachild.domain.ReportProperties;
 
 import ar.com.fdvs.dj.core.DJConstants;
 import ar.com.fdvs.dj.core.DynamicJasperHelper;
@@ -92,10 +93,10 @@ public abstract class ReportGenerator {
 	 * @param query The sql query
 	 * @throws JRException 
 	 */
-	public void generateExcelReport(Report report)  
+	public void generateExcelReport(ReportProperties reportProperties)  
 	{
 		try {
-			String query = buildQuery(report);
+			String query = reportProperties.getQuery();
 			JasperPrint jp = generateReport(OutputType.EXCEL, query);
 			// TODO how to allow user to control this location
 			ReportExporter.exportReportXls(jp, "C:/Temp/report.xls");
@@ -115,10 +116,10 @@ public abstract class ReportGenerator {
 	 * Create a report in Excel file format.
 	 * @param query The sql query
 	 */
-	public void generatePdfReport(Report report)
+	public void generatePdfReport(ReportProperties reportProperties)
 	{
 		try {
-			String query = buildQuery(report);
+			String query = reportProperties.getQuery();
 			JasperPrint jp = generateReport(OutputType.PDF, query);
 			// TODO how to allow user to control this location
 			ReportExporter.exportReport(jp, "C:/Temp/report.pdf");

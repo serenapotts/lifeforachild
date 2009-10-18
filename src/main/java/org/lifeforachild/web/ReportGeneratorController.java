@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.lifeforachild.domain.Report;
+import org.lifeforachild.domain.ReportProperties;
 import org.lifeforachild.domain.ReportType;
 import org.lifeforachild.web.Report.ChildReportGenerator;
 import org.lifeforachild.web.Report.ClinicalRecordReportGenerator;
@@ -44,9 +45,14 @@ public class ReportGeneratorController {
     		repGen = new ClinicalRecordReportGenerator();    		
     	if (repGen != null)
     	{
+    		String query = repGen.buildQuery(report);
     		String html = repGen.generateHtmlReport(report);
     		modelMap.addAttribute("html", html);
-    		modelMap.addAttribute("report", report);
+    		ReportProperties reportProperties = new ReportProperties();
+    		reportProperties.setId(report.getId());
+    		reportProperties.setQuery(query);
+    		reportProperties.setReportType(report.getReporttype());
+    		modelMap.addAttribute("reportProperties", reportProperties);
 	    	return "report/report";
     	}
     	return "dataAccessFailure";    	
