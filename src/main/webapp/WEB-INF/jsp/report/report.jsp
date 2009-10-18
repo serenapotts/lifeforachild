@@ -11,14 +11,7 @@
 			    <input id="exportExcel" type="submit" value="Export Excel"/>
 			    <form:hidden id="_id" path="id"/>
 			    <form:hidden id="_name" path="name"/>
-			    <form:hidden id="_reporttype" path="reporttype"/>
-			    <form:hidden id="_statustype" path="statustype"/>
-			    <form:hidden id="_timePeriod" path="timePeriod"/>
-			    <form:hidden id="_timeperiodunit" path="timeperiodunit"/>
-			    <form:hidden id="_fromDate" path="fromDate"/>
-			    <form:hidden id="_toDate" path="toDate"/>
-			    <form:hidden id="_centre" path="centre"/>
-			    <form:hidden id="_country" path="country"/>			  
+			    <form:hidden id="_reporttype" path="reporttype"/>			   		
 			</form:form>
 		</td>
 		<td class="submit">
@@ -28,14 +21,7 @@
 			    <input id="exportPdf" type="submit" value="Export PDF"/>
 			    <form:hidden id="_id" path="id"/>
 			    <form:hidden id="_name" path="name"/>
-			    <form:hidden id="_reporttype" path="reporttype"/>
-			    <form:hidden id="_statustype" path="statustype"/>
-			    <form:hidden id="_timePeriod" path="timePeriod"/>
-			    <form:hidden id="_timeperiodunit" path="timeperiodunit"/>
-			    <form:hidden id="_fromDate" path="fromDate"/>
-			    <form:hidden id="_toDate" path="toDate"/>
-			    <form:hidden id="_centre" path="centre"/>
-			    <form:hidden id="_country" path="country"/>	
+			    <form:hidden id="_reporttype" path="reporttype"/>	
 			</form:form>
 		</td>
 	</tr>
