@@ -2,7 +2,6 @@ package org.lifeforachild.domain;
 
 
 public enum ClinicalRecordFields {
-	NONE(""),
     DIABETES_CARE("Diabetes Care"), 
     TYPES_INSULIN("Types of Insulin"), 
     CLINICAL_MEASURES("Clinical Measures"), 

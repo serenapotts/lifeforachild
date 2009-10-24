@@ -1,7 +1,35 @@
 package org.lifeforachild.domain;
 
+import java.util.Map;
+
+import ar.com.fdvs.dj.domain.CustomExpression;
+
 public enum SurvivalStatusType {
-	ALIVE,
-	DEAD,
-	UNKNOWN
+	ALIVE("Alive"),
+	DEAD("Dead"),
+	UNKNOWN("Unknown");
+	
+	SurvivalStatusType(String s) { label = s; }
+    
+    String label;
+    
+    public String getLabel() { return label; }
+    /**
+     * Custom Expression that formats a Survival Status enum in a report to display the label based
+     * on the code.
+     */
+	public static CustomExpression getCustomExpression() {
+	    return new CustomExpression() {
+	            public Object evaluate(Map fields, Map variables, Map parameters) {
+	            	String survivalStatus = (String)fields.get("survival_status");   
+	            	if (survivalStatus == null)
+	            		return "";
+	                return values()[Integer.valueOf(survivalStatus)].getLabel();
+	            }
+	
+	            public String getClassName() {
+	                    return String.class.getName();
+	            }
+	    };
+	}
 }

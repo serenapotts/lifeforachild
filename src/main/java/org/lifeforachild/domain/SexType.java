@@ -2,8 +2,6 @@ package org.lifeforachild.domain;
 
 import java.util.Map;
 
-import net.sf.jasperreports.engine.fill.JRFillField;
-
 import ar.com.fdvs.dj.domain.CustomExpression;
 
 public enum SexType {

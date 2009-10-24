@@ -5,8 +5,11 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.StringTokenizer;
 
 import net.sf.jasperreports.engine.JRAbstractExporter;
 import net.sf.jasperreports.engine.JRException;
@@ -47,6 +50,7 @@ public abstract class ReportGenerator {
 
 	// The format of dates in a report
 	protected static String DATE_FORMAT = "dd/MM/yyyy";
+	public static final String DISPLAY_FIELD_SEPARATOR = ",";
 	OutputProcessed outputProcessed = null;
 	
 	// Class to hold information about the output format
@@ -70,7 +74,7 @@ public abstract class ReportGenerator {
     	try
     	{
     	// get the report as bytes
-    	JasperPrint jp = generateReport(OutputType.HTML, query);  
+    	JasperPrint jp = generateReport(OutputType.HTML, query, getDisplayFields(report));  
     	JRAbstractExporter exporter = outputProcessed.exporter;
     	ByteArrayOutputStream baos = new ByteArrayOutputStream();
         exporter.setParameter(JRExporterParameter.JASPER_PRINT, jp);
@@ -97,7 +101,8 @@ public abstract class ReportGenerator {
 	{
 		try {
 			String query = reportProperties.getQuery();
-			JasperPrint jp = generateReport(OutputType.EXCEL, query);
+			String fields = reportProperties.getDisplayFields();
+			JasperPrint jp = generateReport(OutputType.EXCEL, query, fields);
 			// TODO how to allow user to control this location
 			ReportExporter.exportReportXls(jp, "C:/Temp/report.xls");
 		} catch (FileNotFoundException e) {
@@ -120,7 +125,8 @@ public abstract class ReportGenerator {
 	{
 		try {
 			String query = reportProperties.getQuery();
-			JasperPrint jp = generateReport(OutputType.PDF, query);
+			String fields = reportProperties.getDisplayFields();
+			JasperPrint jp = generateReport(OutputType.PDF, query, fields);
 			// TODO how to allow user to control this location
 			ReportExporter.exportReport(jp, "C:/Temp/report.pdf");
 		} catch (FileNotFoundException e) {
@@ -141,15 +147,20 @@ public abstract class ReportGenerator {
 	 * @param query The SQL query used to filter the results
 	 * @return the report as an array of bytes.
 	 */
-	private JasperPrint generateReport(String outputType, String query) throws JRException
+	private JasperPrint generateReport(String outputType, String query, String fields) throws JRException
 	{
-            //Create DynamicReport instance
-            DynamicReport dr = buildDynamicReport(query);
+		return generateReport(outputType, query, getDisplayFieldsList(fields));
+	}
+	
+	private JasperPrint generateReport(String outputType, String query, Object[] fields) throws JRException
+	{
+		//Create DynamicReport instance
+        DynamicReport dr = buildDynamicReport(query, fields);
 
-            outputProcessed = processOutput(outputType);             
-            Connection connection = createSQLConnection();
-            JasperPrint jp = DynamicJasperHelper.generateJasperPrint(dr, outputProcessed.layoutManager, connection, new HashMap());
-            return jp;
+        outputProcessed = processOutput(outputType);             
+        Connection connection = createSQLConnection();
+        JasperPrint jp = DynamicJasperHelper.generateJasperPrint(dr, outputProcessed.layoutManager, connection, new HashMap());
+        return jp;
 	}
 	
 	/**
@@ -209,7 +220,7 @@ public abstract class ReportGenerator {
 	 * Build the {@link DynamicReport} which adds the appropriate columns.
 	 * @param query The SQL query/
 	 */
-    private DynamicReport buildDynamicReport(String query) 
+    private DynamicReport buildDynamicReport(String query, Object[] fields) 
     {       
         DynamicReportBuilder drb = new DynamicReportBuilder();
         Integer margin = new Integer(20);
@@ -224,7 +235,7 @@ public abstract class ReportGenerator {
         .setPrintBackgroundOnOddRows(true);                      
 
         try {
-			addColumns(drb);
+			addColumns(drb, fields);
 		} catch (ColumnBuilderException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -300,7 +311,7 @@ public abstract class ReportGenerator {
      * @param drb The report builder.
      * @throws ColumnBuilderException
      */
-	abstract void addColumns(DynamicReportBuilder drb) throws ColumnBuilderException;
+	abstract void addColumns(DynamicReportBuilder drb, Object[] fields) throws ColumnBuilderException;
 	
 	/**
 	 * Build the SQL query based on the report parameters.
@@ -308,4 +319,10 @@ public abstract class ReportGenerator {
 	 * @return The SQL query.
 	 */
 	public abstract String buildQuery(Report report);
+	
+	public abstract Object[] getDisplayFieldsList(String fields);
+	
+	public abstract Object[] getDisplayFields(Report report);
+	
+	public abstract String getFieldListAsString(Report report);
 }

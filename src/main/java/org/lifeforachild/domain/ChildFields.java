@@ -1,7 +1,7 @@
 package org.lifeforachild.domain;
 
 public enum ChildFields {
-	NONE(""),
+	DATE_OF_BIRTH("Date of Birth"),	
 	INITIALS("Initals"),
 	ETHNIC_GROUP("Ethnic Group"),
 	SURVIVAL_STATUS("Survial Status"),
@@ -12,7 +12,7 @@ public enum ChildFields {
 	AGE_AT_DIAGNOSIS("Calulated Age at Diagnosis"),
 	AGE_FIRST_INSULIN("Calculated Age at First Insulin");
 	
-	ChildFields(String s) { label = s; }
+	ChildFields(String s) { label = s;  }
     
     String label;
     

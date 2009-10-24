@@ -51,6 +51,7 @@ public class ReportGeneratorController {
     		ReportProperties reportProperties = new ReportProperties();
     		reportProperties.setId(report.getId());
     		reportProperties.setQuery(query);
+    		reportProperties.setDisplayFields(repGen.getFieldListAsString(report));
     		reportProperties.setReportType(report.getReporttype());
     		modelMap.addAttribute("reportProperties", reportProperties);
 	    	return "report/report";
