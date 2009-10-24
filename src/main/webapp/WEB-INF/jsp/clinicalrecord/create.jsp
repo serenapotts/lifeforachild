@@ -255,7 +255,7 @@
 <form:input cssStyle="width:250px" id="_microalbuminuriaValue" maxlength="30" path="microalbuminuriaValue" size="0"/>
 <br/>
 <form:errors cssClass="errors" id="_microalbuminuriaValue" path="microalbuminuriaValue"/>
-<script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : "_microalbuminuriaValue", widgetType : "dijit.form.ValidationTextBox", widgetAttrs : {promptMessage: "Enter Microalbuminuria Value", invalidMessage: "Integer numbers only", regExp: "-?[0-9]*", required : false}})); </script>
+<script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : "_microalbuminuriaValue", widgetType : "dijit.form.ValidationTextBox", widgetAttrs : {promptMessage: "Enter Microalbuminuria Value", invalidMessage: "Integer numbers only", regExp: "-?[0-9]*\.[0-9]*", required : false}})); </script>
 </div>
 <br/>
 <div id="roo_clinicalrecord_microalbuminuriaUnitOfMeasure">
@@ -402,13 +402,11 @@
 </div>
 <br/>
 <div id="roo_clinicalrecord_personCompletingForm">
-<c:if test="${not empty users}">
 <label for="_personCompletingForm">Person Completing Form:</label>
 <form:select cssStyle="width:250px" id="_personCompletingForm" path="personCompletingForm">
 <form:options itemValue="id" items="${users}"/>
 </form:select>
 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_personCompletingForm', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
-</c:if>
 </div>
 <br/>
 <div id="roo_clinicalrecord_dateCompleted">
