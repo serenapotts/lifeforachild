@@ -27,7 +27,8 @@ public class ClinicalRecordReportGenerator extends ReportGenerator {
      */
 	void addColumns(DynamicReportBuilder drb, Object[] fields) throws ColumnBuilderException {
 		// these columns are displayed on every report
-		addColumn(drb, "id", "ID", Integer.class, 85);
+		addColumn(drb, "child", "Child ID", Integer.class, 85);
+		addColumn(drb, "name", "Child Name", String.class, 85);
 		addDateColumn(drb, "date_of_measurement", "Date of Measurement");
 		addDateColumn(drb, "date_completed", "Date Form Completed");
         // configurable columns
@@ -67,7 +68,7 @@ public class ClinicalRecordReportGenerator extends ReportGenerator {
 	 */
 	public String buildQuery(Report report) {
 		// TODO
-		return "select * from clinical_record";
+		return "SELECT * FROM clinical_record c, child where c.child=child.id";
 	}
 
 	public Object[] getDisplayFieldsList(String fields)
