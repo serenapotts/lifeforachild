@@ -1,18 +1,15 @@
 package org.lifeforachild.domain;
 
 import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
 import org.hibernate.annotations.CollectionOfElements;
 import org.hibernate.annotations.IndexColumn;
 import org.springframework.roo.addon.entity.RooEntity;
 import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.tostring.RooToString;
-
 import com.sun.istack.internal.NotNull;
 
 @Entity
@@ -42,6 +39,17 @@ public class Report {
     private Date toDate;
 
     @NotNull
+    private ShowOptionType showoptiontype;
+    
+    private String recordNumber;
+
+    private String age;
+
+    private String weight;
+
+    private String height;
+    
+    @NotNull
     @ManyToOne
     private DiabetesCentre centre;
 
@@ -56,4 +64,8 @@ public class Report {
     @CollectionOfElements
     @IndexColumn(name = "clinical_record_fields")
     private ClinicalRecordFields[] clinicalrecordfields;
+
+    private String orderBy;
+
+    private String thenOrderBy;
 }

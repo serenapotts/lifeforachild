@@ -58,6 +58,46 @@ privileged aspect Report_Roo_JavaBean {
         this.toDate = toDate;        
     }    
     
+    public org.lifeforachild.domain.ShowOptionType Report.getShowoptiontype() {    
+        return this.showoptiontype;        
+    }    
+    
+    public void Report.setShowoptiontype(org.lifeforachild.domain.ShowOptionType showoptiontype) {    
+        this.showoptiontype = showoptiontype;        
+    }    
+    
+    public java.lang.String Report.getRecordNumber() {    
+        return this.recordNumber;        
+    }    
+    
+    public void Report.setRecordNumber(java.lang.String recordNumber) {    
+        this.recordNumber = recordNumber;        
+    }    
+    
+    public java.lang.String Report.getAge() {    
+        return this.age;        
+    }    
+    
+    public void Report.setAge(java.lang.String age) {    
+        this.age = age;        
+    }    
+    
+    public java.lang.String Report.getWeight() {    
+        return this.weight;        
+    }    
+    
+    public void Report.setWeight(java.lang.String weight) {    
+        this.weight = weight;        
+    }    
+    
+    public java.lang.String Report.getHeight() {    
+        return this.height;        
+    }    
+    
+    public void Report.setHeight(java.lang.String height) {    
+        this.height = height;        
+    }    
+    
     public org.lifeforachild.domain.DiabetesCentre Report.getCentre() {    
         return this.centre;        
     }    
@@ -88,6 +128,22 @@ privileged aspect Report_Roo_JavaBean {
     
     public void Report.setClinicalrecordfields(org.lifeforachild.domain.ClinicalRecordFields[] clinicalrecordfields) {    
         this.clinicalrecordfields = clinicalrecordfields;        
+    }    
+    
+    public java.lang.String Report.getOrderBy() {    
+        return this.orderBy;        
+    }    
+    
+    public void Report.setOrderBy(java.lang.String orderBy) {    
+        this.orderBy = orderBy;        
+    }    
+    
+    public java.lang.String Report.getThenOrderBy() {    
+        return this.thenOrderBy;        
+    }    
+    
+    public void Report.setThenOrderBy(java.lang.String thenOrderBy) {    
+        this.thenOrderBy = thenOrderBy;        
     }    
     
 }

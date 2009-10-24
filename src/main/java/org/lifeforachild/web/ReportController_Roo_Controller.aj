@@ -23,6 +23,7 @@ privileged aspect ReportController_Roo_Controller {
         modelMap.addAttribute("countrys", org.lifeforachild.domain.Country.findAllCountrys());        
         modelMap.addAttribute("diabetescentres", org.lifeforachild.domain.DiabetesCentre.findAllDiabetesCentres());        
         modelMap.addAttribute("_reporttype", org.lifeforachild.domain.ReportType.class.getEnumConstants());        
+        modelMap.addAttribute("_showoptiontype", org.lifeforachild.domain.ShowOptionType.class.getEnumConstants());        
         modelMap.addAttribute("_statustype", org.lifeforachild.domain.StatusType.class.getEnumConstants());        
         modelMap.addAttribute("_timeperiodunit", org.lifeforachild.domain.TimePeriodUnit.class.getEnumConstants());        
         return "report/create";        
@@ -63,6 +64,7 @@ privileged aspect ReportController_Roo_Controller {
         modelMap.addAttribute("countrys", org.lifeforachild.domain.Country.findAllCountrys());        
         modelMap.addAttribute("diabetescentres", org.lifeforachild.domain.DiabetesCentre.findAllDiabetesCentres());        
         modelMap.addAttribute("_reporttype", org.lifeforachild.domain.ReportType.class.getEnumConstants());        
+        modelMap.addAttribute("_showoptiontype", org.lifeforachild.domain.ShowOptionType.class.getEnumConstants());        
         modelMap.addAttribute("_statustype", org.lifeforachild.domain.StatusType.class.getEnumConstants());        
         modelMap.addAttribute("_timeperiodunit", org.lifeforachild.domain.TimePeriodUnit.class.getEnumConstants());        
         return "report/update";        
@@ -77,7 +79,7 @@ privileged aspect ReportController_Roo_Controller {
     
     @org.springframework.web.bind.annotation.InitBinder    
     public void ReportController.initBinder(org.springframework.web.bind.WebDataBinder binder) {    
-        binder.registerCustomEditor(java.util.Date.class, new org.springframework.beans.propertyeditors.CustomDateEditor(new java.text.SimpleDateFormat("d/MM/yyyy"), true));        
+        binder.registerCustomEditor(java.util.Date.class, new org.springframework.beans.propertyeditors.CustomDateEditor(new java.text.SimpleDateFormat("d/MM/yyyy"), false));        
     }    
     
 }

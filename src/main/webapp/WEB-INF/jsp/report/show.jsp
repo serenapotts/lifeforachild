@@ -43,6 +43,31 @@
             </div>
         </div>
         <br/>
+        <div id="roo_report_showoptiontype">
+            <label for="_showoptiontype">Showoptiontype:</label>
+            <div class="box" id="_showoptiontype">${report.showoptiontype}</div>
+        </div>
+        <br/>
+        <div id="roo_report_recordNumber">
+            <label for="_recordNumber">Record Number:</label>
+            <div class="box" id="_recordNumber">${report.recordNumber}</div>
+        </div>
+        <br/>
+        <div id="roo_report_age">
+            <label for="_age">Age:</label>
+            <div class="box" id="_age">${report.age}</div>
+        </div>
+        <br/>
+        <div id="roo_report_weight">
+            <label for="_weight">Weight:</label>
+            <div class="box" id="_weight">${report.weight}</div>
+        </div>
+        <br/>
+        <div id="roo_report_height">
+            <label for="_height">Height:</label>
+            <div class="box" id="_height">${report.height}</div>
+        </div>
+        <br/>
         <div id="roo_report_centre">
             <label for="_centre">Centre:</label>
             <div class="box" id="_centre">${report.centre}</div>
@@ -61,6 +86,16 @@
         <div id="roo_report_clinicalrecordfields">
             <label for="_clinicalrecordfields">Clinicalrecordfields:</label>
             <div class="box" id="_clinicalrecordfields">${report.clinicalrecordfields}</div>
+        </div>
+        <br/>
+        <div id="roo_report_orderBy">
+            <label for="_orderBy">Order By:</label>
+            <div class="box" id="_orderBy">${report.orderBy}</div>
+        </div>
+        <br/>
+        <div id="roo_report_thenOrderBy">
+            <label for="_thenOrderBy">Then Order By:</label>
+            <div class="box" id="_thenOrderBy">${report.thenOrderBy}</div>
         </div>
         <br/>
     </c:if>
