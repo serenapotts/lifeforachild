@@ -86,7 +86,7 @@
         <br/>
         <div id="roo_report_childfields">
             <label for="_childfields">Childfields:</label>
-            <form:select cssStyle="width:250px" id="_childfields" items="${_childfields}" path="childfields" multiple="true"/>
+            <form:select cssStyle="width:250px" id="_childfields" items="${_childfields}" path="childfields" multiple="true" size="4"/>
             <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_childfields', widgetType: 'dijit.form.MultipleSelect', widgetAttrs : {hasDownArrow : true}})); </script>
             <br/>
             <form:errors cssClass="errors" id="_childfields" path="childfields"/>
@@ -95,7 +95,7 @@
         <br/>
         <div id="roo_report_clinicalrecordfields">
             <label for="_clinicalrecordfields">Clinicalrecordfields:</label>
-            <form:select cssStyle="width:250px" id="_clinicalrecordfields" items="${_clinicalrecordfields}" path="clinicalrecordfields" multiple="true"/>
+            <form:select cssStyle="width:250px" id="_clinicalrecordfields" items="${_clinicalrecordfields}" path="clinicalrecordfields" multiple="true" size="4"/>
             <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_clinicalrecordfields', widgetType: 'dijit.form.MultipleSelect', widgetAttrs : {hasDownArrow : true}})); </script>
             <br/>
             <form:errors cssClass="errors" id="_clinicalrecordfields" path="clinicalrecordfields"/>
