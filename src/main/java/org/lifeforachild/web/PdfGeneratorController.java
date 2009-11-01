@@ -1,5 +1,8 @@
 package org.lifeforachild.web;
 
+import java.io.IOException;
+
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -39,7 +42,7 @@ public class PdfGeneratorController {
 	 * @return the jsp page to display
 	 */
     @RequestMapping(method = RequestMethod.POST)
-    public String post(@ModelAttribute("reportProperties") ReportProperties reportProperties, ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) {
+    public void post(@ModelAttribute("reportProperties") ReportProperties reportProperties, ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) {
     	ReportGenerator repGen = null;
     	// check what type of report we are displaying
     	if (reportProperties.getReportType().equals(ReportType.CHILD))
@@ -48,10 +51,8 @@ public class PdfGeneratorController {
     		repGen = new ClinicalRecordReportGenerator();    		
     	if (repGen != null)
     	{
-    		repGen.generatePdfReport(reportProperties);
+    		repGen.generatePdfReport(reportProperties, response);    		
     	}    	
-    	// redirect back to to the current page
-    	return "redirect:/reportgenerator/" + reportProperties.getId();
     }       
     
     

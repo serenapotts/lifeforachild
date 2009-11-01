@@ -5,11 +5,10 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.StringTokenizer;
+
+import javax.servlet.http.HttpServletResponse;
 
 import net.sf.jasperreports.engine.JRAbstractExporter;
 import net.sf.jasperreports.engine.JRException;
@@ -54,7 +53,7 @@ public abstract class ReportGenerator {
 	OutputProcessed outputProcessed = null;
 	
 	// Class to hold information about the output format
-    private class OutputProcessed {
+    public class OutputProcessed {
         public AbstractLayoutManager layoutManager;
         public JRAbstractExporter exporter;
         public String contentType;
@@ -97,14 +96,14 @@ public abstract class ReportGenerator {
 	 * @param query The sql query
 	 * @throws JRException 
 	 */
-	public void generateExcelReport(ReportProperties reportProperties)  
+	public void generateExcelReport(ReportProperties reportProperties, HttpServletResponse response)  
 	{
 		try {
 			String query = reportProperties.getQuery();
 			String fields = reportProperties.getDisplayFields();
 			JasperPrint jp = generateReport(OutputType.EXCEL, query, fields);
 			// TODO how to allow user to control this location
-			ReportExporter.exportReportXls(jp, "C:/Temp/report.xls");
+			ReportExporter.exportReport(jp, outputProcessed, response);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -114,21 +113,21 @@ public abstract class ReportGenerator {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}		
 	}
 
 	/**
 	 * Create a report in Excel file format.
 	 * @param query The sql query
 	 */
-	public void generatePdfReport(ReportProperties reportProperties)
+	public void generatePdfReport(ReportProperties reportProperties, HttpServletResponse response)
 	{
 		try {
 			String query = reportProperties.getQuery();
 			String fields = reportProperties.getDisplayFields();
 			JasperPrint jp = generateReport(OutputType.PDF, query, fields);
 			// TODO how to allow user to control this location
-			ReportExporter.exportReport(jp, "C:/Temp/report.pdf");
+			ReportExporter.exportReport(jp, outputProcessed, response);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
