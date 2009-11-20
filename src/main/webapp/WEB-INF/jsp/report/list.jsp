@@ -17,6 +17,8 @@
                     <th/>
                     <th/>
                     <th/>
+                    <th/>
+                    <th/>
                 </thead>
             </tr>
             <c:forEach items="${reports}" var="report">
@@ -44,6 +46,20 @@
                             <input alt="Update report" src="${update_image_url}" title="Update report" type="image" value="Update report"/>
                         </form:form>
                     </td>
+                    <td>
+                        <c:url value="/excelgenerator/${report.id}" var="export_excel_url"/>
+                        <c:url value="/static/images/excel.gif" var="excel_image_url"/>
+                        <form:form action="${export_excel_url}" method="GET">
+                            <input alt="Export to Excel" src="${excel_image_url}" title="Export to Excel" type="image" value="Export to Excel"/>
+                        </form:form>
+                    </td>
+                    <td>
+                        <c:url value="/pdfgenerator/${report.id}" var="export_pdf_url"/>
+                        <c:url value="/static/images/pdf.gif" var="pdf_image_url"/>
+                        <form:form action="${export_pdf_url}" method="GET">
+                            <input alt="Export to PDF" src="${pdf_image_url}" title="Export to PDF" type="image" value="Export to PDF"/>
+                        </form:form>
+                    </td>                                        
                     <td>
                         <c:url value="/report/${report.id}" var="delete_form_url"/>
                         <c:url value="/static/images/delete.png" var="delete_image_url"/>
