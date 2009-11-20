@@ -240,7 +240,12 @@
 		<artifactId>poi</artifactId> 
 		<version>3.2-FINAL</version> 
 	</dependency>
-	     
+	<dependency>
+		<groupId>net.java.dev.querybuilder</groupId> 
+		<artifactId>query-builder</artifactId> 
+		<version>0.1</version> 
+	</dependency>
+		     
     </dependencies>
 
 	<build>
