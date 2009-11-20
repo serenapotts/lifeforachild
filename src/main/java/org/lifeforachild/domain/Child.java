@@ -1,20 +1,21 @@
 package org.lifeforachild.domain;
 
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.lifeforachild.web.query.ChildQuery;
 import org.springframework.roo.addon.entity.RooEntity;
 import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.tostring.RooToString;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-import java.util.Date;
-import javax.persistence.Id;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import java.util.Set;
-import org.lifeforachild.domain.ClinicalRecord;
-import java.util.HashSet;
-import javax.persistence.OneToMany;
-import javax.persistence.CascadeType;
 
 /**
  * The Child in a 3rd world country who will be supported by the LifeForAChild
@@ -90,8 +91,9 @@ public class Child {
     @OneToMany(cascade = CascadeType.ALL)
     private Set<ClinicalRecord> clinicalRecords = new HashSet<ClinicalRecord>();
 
-    public static java.util.List<Child> findChildren(String query) {    
-        return entityManager().createQuery(query).getResultList();        
+    public static java.util.List<Child> findChildren(Search search) {  
+    	return ChildQuery.getQuery(entityManager(), search);
+        //return entityManager().createQuery(query).getResultList();        
     }    
 
 }

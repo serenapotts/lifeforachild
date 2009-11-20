@@ -4,6 +4,7 @@ privileged aspect Report_Roo_ToString {
     
     public java.lang.String Report.toString() {    
         StringBuilder sb = new StringBuilder();        
+        sb.append("entityManager: ").append(getEntityManager()).append(", ");        
         sb.append("id: ").append(getId()).append(", ");        
         sb.append("version: ").append(getVersion()).append(", ");        
         sb.append("name: ").append(getName()).append(", ");        

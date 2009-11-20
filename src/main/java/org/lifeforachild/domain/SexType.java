@@ -21,8 +21,8 @@ public enum SexType {
 	public static CustomExpression getCustomExpression() {
 	    return new CustomExpression() {
 	            public Object evaluate(Map fields, Map variables, Map parameters) {
-	            	String sex = (String)fields.get("sex");               
-	                return values()[Integer.valueOf(sex)].getLabel();
+	            	SexType sex = (SexType)fields.get("sex");
+	            	return sex.getLabel();
 	            }
 	
 	            public String getClassName() {

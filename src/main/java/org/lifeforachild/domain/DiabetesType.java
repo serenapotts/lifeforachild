@@ -26,10 +26,10 @@ public enum DiabetesType {
 	 public static CustomExpression getCustomExpression() {
         return new CustomExpression() {
                 public Object evaluate(Map fields, Map variables, Map parameters) {
-                	String type = (String)fields.get("diabetes_type"); 
+                	DiabetesType type = (DiabetesType)fields.get("diabetes_type"); 
                 	if (type == null)
                 		return "";
-                    return values()[Integer.valueOf(type)].getLabel();
+                	return type.getLabel();
                 }
 
                 public String getClassName() {

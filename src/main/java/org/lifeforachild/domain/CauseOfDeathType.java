@@ -25,10 +25,10 @@ public enum CauseOfDeathType {
 	public static CustomExpression getCustomExpression() {
 	    return new CustomExpression() {
 	            public Object evaluate(Map fields, Map variables, Map parameters) {
-	            	String cause = (String)fields.get("cause_of_death"); 
+	            	CauseOfDeathType cause = (CauseOfDeathType)fields.get("cause_of_death"); 
 	            	if (cause == null)
 	            		return "";
-	                return values()[Integer.valueOf(cause)].getLabel();
+	            	return cause.getLabel();
 	            }
 	
 	            public String getClassName() {

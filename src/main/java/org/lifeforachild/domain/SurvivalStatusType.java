@@ -21,10 +21,10 @@ public enum SurvivalStatusType {
 	public static CustomExpression getCustomExpression() {
 	    return new CustomExpression() {
 	            public Object evaluate(Map fields, Map variables, Map parameters) {
-	            	String survivalStatus = (String)fields.get("survival_status");   
+	            	SurvivalStatusType survivalStatus = (SurvivalStatusType)fields.get("survival_status");   
 	            	if (survivalStatus == null)
 	            		return "";
-	                return values()[Integer.valueOf(survivalStatus)].getLabel();
+	                return survivalStatus.getLabel();
 	            }
 	
 	            public String getClassName() {
