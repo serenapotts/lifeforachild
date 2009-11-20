@@ -14,6 +14,7 @@ import org.lifeforachild.domain.DateRange;
 import org.lifeforachild.domain.ReportType;
 import org.lifeforachild.domain.Search;
 import org.lifeforachild.domain.TimePeriodUnit;
+import org.lifeforachild.web.query.ChildQuery;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -63,7 +64,7 @@ public class SearchController {
     	// determine the type of object we are searching on
     	if (search.getReportType().equals(ReportType.CHILD))
     	{
-    		modelMap.addAttribute("children", Child.findChildren("select o from Child o " + subQuery));
+    		modelMap.addAttribute("children", Child.findChildren(search));
 	    	return "child/list";
     	}
     	else if (search.getReportType().equals(ReportType.CLINICAL_RECORD))

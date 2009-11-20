@@ -1,8 +1,5 @@
 package org.lifeforachild.web;
 
-import java.io.IOException;
-
-import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -15,6 +12,7 @@ import org.lifeforachild.web.Report.ReportGenerator;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -30,8 +28,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class ExcelGeneratorController {
 
 	// not implemented
-    @RequestMapping(method = RequestMethod.GET)
-    public void get(@ModelAttribute("report") Report report, ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) {
+    @RequestMapping(method = RequestMethod.GET, value = "{id}")
+    public void get(@PathVariable Long id, ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) {
+    	generateExcelReport(id, request, response);
     }
 
 	/**
@@ -43,17 +42,22 @@ public class ExcelGeneratorController {
 	 */
     @RequestMapping(method = RequestMethod.POST)
     public void post(@ModelAttribute("reportProperties") ReportProperties reportProperties, ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) {
+    	generateExcelReport(reportProperties.getId(), request, response);
+    }       
+    
+    private void generateExcelReport(Long id, HttpServletRequest request, HttpServletResponse response)
+    {
+    	Report report = Report.findReport(id);
     	ReportGenerator repGen = null;
     	// check what type of report we are displaying
-    	if (reportProperties.getReportType().equals(ReportType.CHILD))
+    	if (report.getReporttype().equals(ReportType.CHILD))
     		repGen = new ChildReportGenerator();
-    	else if (reportProperties.getReportType().equals(ReportType.CLINICAL_RECORD))
+    	else if (report.getReporttype().equals(ReportType.CLINICAL_RECORD))
     		repGen = new ClinicalRecordReportGenerator();    		
     	if (repGen != null)
     	{
-    		repGen.generateExcelReport(reportProperties, response);    		
+    		repGen.generateExcelReport(report, response);    		
     	}
-    }       
-    
+    }
     
 }

@@ -1,5 +1,7 @@
 package org.lifeforachild.web;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -45,14 +47,11 @@ public class ReportGeneratorController {
     		repGen = new ClinicalRecordReportGenerator();    		
     	if (repGen != null)
     	{
-    		String query = repGen.buildQuery(report);
-    		String html = repGen.generateHtmlReport(report);
+    		List results = repGen.buildQuery(report);
+    		String html = repGen.generateHtmlReport(report, results);
     		modelMap.addAttribute("html", html);
     		ReportProperties reportProperties = new ReportProperties();
     		reportProperties.setId(report.getId());
-    		reportProperties.setQuery(query);
-    		reportProperties.setDisplayFields(repGen.getFieldListAsString(report));
-    		reportProperties.setReportType(report.getReporttype());
     		modelMap.addAttribute("reportProperties", reportProperties);
 	    	return "report/report";
     	}

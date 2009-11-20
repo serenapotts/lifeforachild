@@ -1,7 +1,7 @@
 package org.lifeforachild.web.Report;
 
 import java.util.ArrayList;
-import java.util.StringTokenizer;
+import java.util.List;
 
 import org.lifeforachild.domain.CauseOfDeathType;
 import org.lifeforachild.domain.Child;
@@ -10,6 +10,7 @@ import org.lifeforachild.domain.DiabetesType;
 import org.lifeforachild.domain.Report;
 import org.lifeforachild.domain.SexType;
 import org.lifeforachild.domain.SurvivalStatusType;
+import org.lifeforachild.web.query.ChildQuery;
 
 import ar.com.fdvs.dj.domain.builders.ColumnBuilderException;
 import ar.com.fdvs.dj.domain.builders.DynamicReportBuilder;
@@ -32,12 +33,13 @@ public class ChildReportGenerator extends ReportGenerator {
 	throws ColumnBuilderException
 	{
 		// these columns are displayed on every report
-        addColumn(drb, "id", "ID", Integer.class, 85);
+        addColumn(drb, "id", "ID", Long.class, 85);
         addColumn(drb, "name", "Name", String.class, 85);
-        drb.addField("sex", String.class.getName());
-        addColumn(drb, "sex", "Sex", Integer.class, 85, null, SexType.getCustomExpression());
-        drb.addField("diabetes_type", String.class.getName());
-        addColumn(drb, "diabetes_type", "Diabetes Type", Integer.class, 85, null, DiabetesType.getCustomExpression());
+        //addColumn(drb, "sex", "Sex", SexType.class, 85);
+        drb.addField("sex", String.class.getName());        
+        addColumn(drb, "sex", "Sex", SexType.class, 85, null, SexType.getCustomExpression());
+        drb.addField("diabetesType", String.class.getName());
+        addColumn(drb, "diabetesType", "Diabetes Type", DiabetesType.class, 85, null, DiabetesType.getCustomExpression());
         
         // TODO always show country and centre
         
@@ -55,32 +57,32 @@ public class ChildReportGenerator extends ReportGenerator {
 					// TODO field not in database
 					break;
 				case DATE_OF_BIRTH:
-					addDateColumn(drb, "date_of_birth", ChildFields.DATE_OF_BIRTH.getLabel());
+					addDateColumn(drb, "dateOfBirth", ChildFields.DATE_OF_BIRTH.getLabel());
 					break;
 				case DATE_REGO:
-					addDateColumn(drb, "date_of_registration", ChildFields.DATE_REGO.getLabel());
+					addDateColumn(drb, "dateOfRegistration", ChildFields.DATE_REGO.getLabel());
 					break;
 				case DEATH:
-					addDateColumn(drb, "date_of_death", "Date of Death");
-			        drb.addField("cause_of_death", String.class.getName());
-			        addColumn(drb, "cause_of_death", "Cause of Death", Integer.class, 
+					addDateColumn(drb, "dateOfDeath", "Date of Death");
+			        drb.addField("causeOfDeath", String.class.getName());
+			        addColumn(drb, "causeOfDeath", "Cause of Death", Integer.class, 
 			        		85, null, CauseOfDeathType.getCustomExpression());
 					break;
 				case DIABETES_DIAGNOSED:
-					addDateColumn(drb, "diabetes_diagnosed", ChildFields.DIABETES_DIAGNOSED.getLabel());
+					addDateColumn(drb, "diabetesDiagnosed", ChildFields.DIABETES_DIAGNOSED.getLabel());
 					break;
 				case ETHNIC_GROUP:
-					addColumn(drb, "ethnic_group", ChildFields.ETHNIC_GROUP.getLabel(), String.class, 85);
+					addColumn(drb, "ethnicGroup", ChildFields.ETHNIC_GROUP.getLabel(), String.class, 85);
 					break;
 				case INITIALS:
 					addColumn(drb, "initials", ChildFields.INITIALS.getLabel(), String.class, 85);
 					break;
 				case INSULIN_SINCE:
-					addDateColumn(drb, "insulin_since", ChildFields.INSULIN_SINCE.getLabel());
+					addDateColumn(drb, "insulinSince", ChildFields.INSULIN_SINCE.getLabel());
 					break;
 				case SURVIVAL_STATUS:
-			        drb.addField("survival_status", String.class.getName());
-			        addColumn(drb, "survival_status", ChildFields.SURVIVAL_STATUS.getLabel(), 
+			        drb.addField("survivalStatus", String.class.getName());
+			        addColumn(drb, "survivalStatus", ChildFields.SURVIVAL_STATUS.getLabel(), 
 			        		Integer.class, 85, null, SurvivalStatusType.getCustomExpression());
 					break;
 				default:
@@ -95,19 +97,24 @@ public class ChildReportGenerator extends ReportGenerator {
 	 * @param report The report parameters.
 	 * @return The SQL query.
 	 */
-	public String buildQuery(Report report) {
+	public List buildQuery(Report report) {
 		// TODO build query based on report object
-		return "select * from Child";
+		
+		return ChildQuery.getQuery(report.getEntityManager(), report);		
+		//return "select * from Child";
 	}
 	
 	public Object[] getDisplayFieldsList(String fields)
 	{
 		ArrayList<ChildFields> fieldList = new ArrayList<ChildFields>();
-		StringTokenizer st = new StringTokenizer(fields, DISPLAY_FIELD_SEPARATOR);
-		while (st.hasMoreTokens())
+		/*if (fields != null && fields.trim().length() > 0)
 		{
-			fieldList.add(ChildFields.valueOf(st.nextToken()));
-		}
+			StringTokenizer st = new StringTokenizer(fields, DISPLAY_FIELD_SEPARATOR);
+			while (st.hasMoreTokens())
+			{
+				fieldList.add(ChildFields.valueOf(st.nextToken()));
+			}
+		}*/
 		return fieldList.toArray();
 	}
 	

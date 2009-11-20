@@ -1,9 +1,9 @@
 package org.lifeforachild.web.Report;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.StringTokenizer;
 
-import org.lifeforachild.domain.ChildFields;
 import org.lifeforachild.domain.ClinicalRecord;
 import org.lifeforachild.domain.ClinicalRecordFields;
 import org.lifeforachild.domain.Report;
@@ -66,18 +66,22 @@ public class ClinicalRecordReportGenerator extends ReportGenerator {
 	 * @param report The report parameters.
 	 * @return The SQL query.
 	 */
-	public String buildQuery(Report report) {
+	public List buildQuery(Report report) {
 		// TODO
-		return "SELECT * FROM clinical_record c, child where c.child=child.id";
+		//return "SELECT * FROM clinical_record c, child where c.child=child.id";
+		return null;
 	}
 
 	public Object[] getDisplayFieldsList(String fields)
 	{
 		ArrayList<ClinicalRecordFields> fieldList = new ArrayList<ClinicalRecordFields>();
-		StringTokenizer st = new StringTokenizer(fields, DISPLAY_FIELD_SEPARATOR);
-		while (st.hasMoreTokens())
+		if (fields != null && fields.trim().length() > 0)
 		{
-			fieldList.add(ClinicalRecordFields.valueOf(st.nextToken()));
+			StringTokenizer st = new StringTokenizer(fields, DISPLAY_FIELD_SEPARATOR);
+			while (st.hasMoreTokens())
+			{
+				fieldList.add(ClinicalRecordFields.valueOf(st.nextToken()));
+			}
 		}
 		return fieldList.toArray();
 	}
