@@ -1,0 +1,33 @@
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:fmt="http://java.sun.com/jsp/jstl/fmt" xmlns:form="http://www.springframework.org/tags/form" xmlns:spring="http://www.springframework.org/tags">
+    <script type="text/javascript">dojo.require("dijit.TitlePane");</script>
+    <div id="_title_div" style="width: 100%">
+        <spring:message code="label.reportproperties" var="entity_label"/>
+        <spring:message arguments="${entity_label}" code="entity.show" var="title_msg"/>
+        <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_title_div', widgetType : 'dijit.TitlePane', widgetAttrs : {title: '${title_msg}'}})); </script>
+        <c:if test="${not empty reportproperties}">
+            <div id="roo_reportproperties_query">
+                <label for="_query">Query:</label>
+                <div class="box" id="_query">${reportproperties.query}</div>
+            </div>
+            <br/>
+            <div id="roo_reportproperties_id">
+                <label for="_id">Id:</label>
+                <div class="box" id="_id">${reportproperties.id}</div>
+            </div>
+            <br/>
+            <div id="roo_reportproperties_displayFields">
+                <label for="_displayFields">Display Fields:</label>
+                <div class="box" id="_displayFields">${reportproperties.displayFields}</div>
+            </div>
+            <br/>
+            <div id="roo_reportproperties_reportType">
+                <label for="_reportType">Report Type:</label>
+                <div class="box" id="_reportType">${reportproperties.reportType}</div>
+            </div>
+            <br/>
+        </c:if>
+        <c:if test="${empty reportproperties}">
+            <spring:message arguments="${entity_label}" code="entity.not.found.single"/>
+        </c:if>
+    </div>
+</div>

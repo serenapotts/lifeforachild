@@ -1,0 +1,117 @@
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:fmt="http://java.sun.com/jsp/jstl/fmt" xmlns:form="http://www.springframework.org/tags/form" xmlns:spring="http://www.springframework.org/tags">
+    <script type="text/javascript">dojo.require("dijit.TitlePane");</script>
+    <div id="_title_div" style="width: 100%">
+        <spring:message code="label.child" var="entity_label"/>
+        <spring:message arguments="${entity_label}" code="entity.show" var="title_msg"/>
+        <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_title_div', widgetType : 'dijit.TitlePane', widgetAttrs : {title: '${title_msg}'}})); </script>
+        <c:if test="${not empty child}">
+            <div id="roo_child_initials">
+                <label for="_initials">Initials:</label>
+                <div class="box" id="_initials">${child.initials}</div>
+            </div>
+            <br/>
+            <div id="roo_child_name">
+                <label for="_name">Name:</label>
+                <div class="box" id="_name">${child.name}</div>
+            </div>
+            <br/>
+            <div id="roo_child_ethnicGroup">
+                <label for="_ethnicGroup">Ethnic Group:</label>
+                <div class="box" id="_ethnicGroup">${child.ethnicGroup}</div>
+            </div>
+            <br/>
+            <div id="roo_child_sex">
+                <label for="_sex">Sex:</label>
+                <div class="box" id="_sex">${child.sex}</div>
+            </div>
+            <br/>
+            <div id="roo_child_survivalStatus">
+                <label for="_survivalStatus">Survival Status:</label>
+                <div class="box" id="_survivalStatus">${child.survivalStatus}</div>
+            </div>
+            <br/>
+            <div id="roo_child_dateOfDeath">
+                <label for="_dateOfDeath">Date Of Death:</label>
+                <div class="box" id="_dateOfDeath">
+                    <fmt:formatDate pattern="d/MM/yy" type="DATE" value="${child.dateOfDeath}"/>
+                </div>
+            </div>
+            <br/>
+            <div id="roo_child_causeOfDeath">
+                <label for="_causeOfDeath">Cause Of Death:</label>
+                <div class="box" id="_causeOfDeath">${child.causeOfDeath}</div>
+            </div>
+            <br/>
+            <div id="roo_child_causeOfDeathOther">
+                <label for="_causeOfDeathOther">Cause Of Death Other:</label>
+                <div class="box" id="_causeOfDeathOther">${child.causeOfDeathOther}</div>
+            </div>
+            <br/>
+            <div id="roo_child_dateOfRegistration">
+                <label for="_dateOfRegistration">Date Of Registration:</label>
+                <div class="box" id="_dateOfRegistration">
+                    <fmt:formatDate pattern="d/MM/yy" type="DATE" value="${child.dateOfRegistration}"/>
+                </div>
+            </div>
+            <br/>
+            <div id="roo_child_dateOfBirth">
+                <label for="_dateOfBirth">Date Of Birth:</label>
+                <div class="box" id="_dateOfBirth">
+                    <fmt:formatDate pattern="d/MM/yy" type="DATE" value="${child.dateOfBirth}"/>
+                </div>
+            </div>
+            <br/>
+            <div id="roo_child_diabetesDiagnosed">
+                <label for="_diabetesDiagnosed">Diabetes Diagnosed:</label>
+                <div class="box" id="_diabetesDiagnosed">
+                    <fmt:formatDate pattern="d/MM/yy" type="DATE" value="${child.diabetesDiagnosed}"/>
+                </div>
+            </div>
+            <br/>
+            <div id="roo_child_insulinSince">
+                <label for="_insulinSince">Insulin Since:</label>
+                <div class="box" id="_insulinSince">
+                    <fmt:formatDate pattern="d/MM/yy" type="DATE" value="${child.insulinSince}"/>
+                </div>
+            </div>
+            <br/>
+            <div id="roo_child_diabetesType">
+                <label for="_diabetesType">Diabetes Type:</label>
+                <div class="box" id="_diabetesType">${child.diabetesType}</div>
+            </div>
+            <br/>
+            <div id="roo_child_diabetesTypeOther">
+                <label for="_diabetesTypeOther">Diabetes Type Other:</label>
+                <div class="box" id="_diabetesTypeOther">${child.diabetesTypeOther}</div>
+            </div>
+            <br/>
+            <div id="roo_child_createdOn">
+                <label for="_createdOn">Created On:</label>
+                <div class="box" id="_createdOn">
+                    <fmt:formatDate pattern="d/MM/yy" type="DATE" value="${child.createdOn}"/>
+                </div>
+            </div>
+            <br/>
+            <div id="roo_child_updatedOn">
+                <label for="_updatedOn">Updated On:</label>
+                <div class="box" id="_updatedOn">
+                    <fmt:formatDate pattern="d/MM/yy" type="DATE" value="${child.updatedOn}"/>
+                </div>
+            </div>
+            <br/>
+            <div id="roo_child_distanceLivesFromCentre">
+                <label for="_distanceLivesFromCentre">Distance Lives From Centre:</label>
+                <div class="box" id="_distanceLivesFromCentre">${child.distanceLivesFromCentre}</div>
+            </div>
+            <br/>
+            <div id="roo_child_clinicalRecords">
+                <label for="_clinicalRecords">Clinical Records:</label>
+                <div class="box" id="_clinicalRecords">${child.clinicalRecords}</div>
+            </div>
+            <br/>
+        </c:if>
+        <c:if test="${empty child}">
+            <spring:message arguments="${entity_label}" code="entity.not.found.single"/>
+        </c:if>
+    </div>
+</div>

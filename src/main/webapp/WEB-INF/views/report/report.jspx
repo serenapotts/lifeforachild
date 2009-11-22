@@ -1,0 +1,36 @@
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:fmt="http://java.sun.com/jsp/jstl/fmt" xmlns:fn="http://java.sun.com/jsp/jstl/functions" xmlns:form="http://www.springframework.org/tags/form" xmlns:roo="urn:jsptagdir:/WEB-INF/tags" xmlns:spring="http://www.springframework.org/tags">
+    <script type="text/javascript">dojo.require("dijit.TitlePane");</script>
+    <div id="_title_div" style="width: 100%">
+        <spring:message code="label.report" var="entity_label"/>
+        <spring:message code="label.reports" var="entity_label_plural"/>
+        <spring:message arguments="${entity_label_plural}" code="entity.list.all" var="title_msg"/>
+        <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_title_div', widgetType : 'dijit.TitlePane', widgetAttrs : {title: '${title_msg}'}})); </script>
+		<table>
+			<tr>
+				<td class="submit">
+					<c:url value="/excelgenerator" var="export_excel_url"/>
+					<form:form action="${export_excel_url}" method="POST" modelAttribute="reportProperties">
+						<script type="text/javascript">Spring.addDecoration(new Spring.ValidateAllDecoration({elementId:'exportExcel', event:'onclick'}));</script>
+					    <input id="exportExcel" type="submit" value="Export Excel"/>
+					    <form:hidden id="_id" path="id"/>
+					    <form:hidden id="_query" path="query"/>
+					    <form:hidden id="_reporttype" path="reportType"/>
+					    <form:hidden id="_displayfields" path="displayFields"/>			   		
+					</form:form>
+				</td>
+				<td class="submit">
+					<c:url value="/pdfgenerator" var="export_pdf_url"/>
+					<form:form action="${export_pdf_url}" method="POST" modelAttribute="reportProperties">
+						<script type="text/javascript">Spring.addDecoration(new Spring.ValidateAllDecoration({elementId:'exportPdf', event:'onclick'}));</script>
+					    <input id="exportPdf" type="submit" value="Export PDF"/>
+					    <form:hidden id="_id" path="id"/>
+					    <form:hidden id="_query" path="query"/>
+					    <form:hidden id="_reporttype" path="reportType"/>	
+					    <form:hidden id="_displayfields" path="displayFields"/>
+					</form:form>
+				</td>
+			</tr>
+		</table>
+		${html}
+    </div>
+</div>

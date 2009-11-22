@@ -1,0 +1,189 @@
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:form="http://www.springframework.org/tags/form" xmlns:spring="http://www.springframework.org/tags">
+    <script type="text/javascript">dojo.require("dijit.TitlePane");dojo.require("dijit.form.FilteringSelect");dojo.require("dijit.form.DateTextBox");dojo.require("dijit.form.SimpleTextarea");</script>
+    <div id="_title_div" style="width: 100%">
+        <spring:message code="label.child" var="entity_label"/>
+        <spring:message arguments="${entity_label}" code="entity.create" var="title_msg"/>
+        <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_title_div', widgetType : 'dijit.TitlePane', widgetAttrs : {title: '${title_msg}'}})); </script>
+        <spring:url value="/child" var="form_url"/>
+        <form:form action="${form_url}" method="POST" modelAttribute="child">
+            <div id="roo_child_initials">
+                <label for="_initials">Initials:</label>
+                <form:input cssStyle="width:250px" id="_initials" maxlength="30" path="initials" size="0"/>
+                <br/>
+                <form:errors cssClass="errors" id="_initials_error" path="initials"/>
+                <spring:message arguments="Initials" code="field.invalid" var="field_invalid"/>
+                <spring:message code="field.required" var="field_required"/>
+                <spring:message argumentSeparator="," arguments="Initials," code="field.simple.validation" var="field_validation"/>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : "_initials", widgetType : "dijit.form.ValidationTextBox", widgetAttrs : {promptMessage: "${field_validation}", invalidMessage: "${field_invalid}", required : false}})); </script>
+            </div>
+            <br/>
+            <div id="roo_child_name">
+                <label for="_name">Name:</label>
+                <form:input cssStyle="width:250px" id="_name" maxlength="30" path="name" size="0"/>
+                <br/>
+                <form:errors cssClass="errors" id="_name_error" path="name"/>
+                <spring:message arguments="Name" code="field.invalid" var="field_invalid"/>
+                <spring:message code="field.required" var="field_required"/>
+                <spring:message argumentSeparator="," arguments="Name," code="field.simple.validation" var="field_validation"/>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : "_name", widgetType : "dijit.form.ValidationTextBox", widgetAttrs : {promptMessage: "${field_validation}", invalidMessage: "${field_invalid}", required : false}})); </script>
+            </div>
+            <br/>
+            <div id="roo_child_ethnicGroup">
+                <label for="_ethnicGroup">Ethnic Group:</label>
+                <form:input cssStyle="width:250px" id="_ethnicGroup" maxlength="20" path="ethnicGroup" size="0"/>
+                <br/>
+                <form:errors cssClass="errors" id="_ethnicGroup_error" path="ethnicGroup"/>
+                <spring:message arguments="Ethnic Group" code="field.invalid" var="field_invalid"/>
+                <spring:message code="field.required" var="field_required"/>
+                <spring:message argumentSeparator="," arguments="Ethnic Group," code="field.simple.validation" var="field_validation"/>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : "_ethnicGroup", widgetType : "dijit.form.ValidationTextBox", widgetAttrs : {promptMessage: "${field_validation}", invalidMessage: "${field_invalid}", required : false}})); </script>
+            </div>
+            <br/>
+            <div id="roo_child_sex">
+                <label for="_sex">Sex:</label>
+                <form:select cssStyle="width:250px" id="_sex" items="${sextype_enum}" path="sex"/>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_sex', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
+                <br/>
+                <form:errors cssClass="errors" id="_sex_error" path="sex"/>
+            </div>
+            <br/>
+            <div id="roo_child_survivalStatus">
+                <label for="_survivalStatus">Survival Status:</label>
+                <form:select cssStyle="width:250px" id="_survivalStatus" items="${survivalstatustype_enum}" path="survivalStatus"/>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_survivalStatus', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
+                <br/>
+                <form:errors cssClass="errors" id="_survivalStatus_error" path="survivalStatus"/>
+            </div>
+            <br/>
+            <div id="roo_child_dateOfDeath">
+                <label for="_dateOfDeath">Date Of Death:</label>
+                <form:input cssStyle="width:250px" id="_dateOfDeath" maxlength="30" path="dateOfDeath" size="0"/>
+                <br/>
+                <form:errors cssClass="errors" id="_dateOfDeath_error" path="dateOfDeath"/>
+                <spring:message arguments="Date Of Death" code="field.invalid" var="field_invalid"/>
+                <spring:message code="field.required" var="field_required"/>
+                <spring:message argumentSeparator="," arguments="Date Of Death," code="field.simple.validation" var="field_validation"/>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : "_dateOfDeath", widgetType : "dijit.form.ValidationTextBox", widgetAttrs : {promptMessage: "${field_validation}", invalidMessage: "${field_invalid}", required : false}})); </script>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_dateOfDeath', widgetType : 'dijit.form.DateTextBox', widgetAttrs : {constraints: {datePattern : 'd/MM/yy', required : false}, datePattern : 'd/MM/yy'}})); </script>
+            </div>
+            <br/>
+            <div id="roo_child_causeOfDeath">
+                <label for="_causeOfDeath">Cause Of Death:</label>
+                <form:select cssStyle="width:250px" id="_causeOfDeath" items="${causeofdeathtype_enum}" path="causeOfDeath"/>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_causeOfDeath', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
+                <br/>
+                <form:errors cssClass="errors" id="_causeOfDeath_error" path="causeOfDeath"/>
+            </div>
+            <br/>
+            <div id="roo_child_causeOfDeathOther">
+                <label for="_causeOfDeathOther">Cause Of Death Other:</label>
+                <form:textarea cssStyle="width:250px" id="_causeOfDeathOther" path="causeOfDeathOther"/>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : "_causeOfDeathOther", widgetType: 'dijit.form.SimpleTextarea', widgetAttrs: {}})); </script>
+                <br/>
+                <form:errors cssClass="errors" id="_causeOfDeathOther_error" path="causeOfDeathOther"/>
+            </div>
+            <br/>
+            <div id="roo_child_dateOfRegistration">
+                <label for="_dateOfRegistration">Date Of Registration:</label>
+                <form:input cssStyle="width:250px" id="_dateOfRegistration" maxlength="30" path="dateOfRegistration" size="0"/>
+                <br/>
+                <form:errors cssClass="errors" id="_dateOfRegistration_error" path="dateOfRegistration"/>
+                <spring:message arguments="Date Of Registration" code="field.invalid" var="field_invalid"/>
+                <spring:message code="field.required" var="field_required"/>
+                <spring:message argumentSeparator="," arguments="Date Of Registration," code="field.simple.validation" var="field_validation"/>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : "_dateOfRegistration", widgetType : "dijit.form.ValidationTextBox", widgetAttrs : {promptMessage: "${field_validation}", invalidMessage: "${field_invalid}", required : false}})); </script>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_dateOfRegistration', widgetType : 'dijit.form.DateTextBox', widgetAttrs : {constraints: {datePattern : 'd/MM/yy', required : false}, datePattern : 'd/MM/yy'}})); </script>
+            </div>
+            <br/>
+            <div id="roo_child_dateOfBirth">
+                <label for="_dateOfBirth">Date Of Birth:</label>
+                <form:input cssStyle="width:250px" id="_dateOfBirth" maxlength="30" path="dateOfBirth" size="0"/>
+                <br/>
+                <form:errors cssClass="errors" id="_dateOfBirth_error" path="dateOfBirth"/>
+                <spring:message arguments="Date Of Birth" code="field.invalid" var="field_invalid"/>
+                <spring:message code="field.required" var="field_required"/>
+                <spring:message argumentSeparator="," arguments="Date Of Birth," code="field.simple.validation" var="field_validation"/>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : "_dateOfBirth", widgetType : "dijit.form.ValidationTextBox", widgetAttrs : {promptMessage: "${field_validation}", invalidMessage: "${field_invalid}", required : false}})); </script>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_dateOfBirth', widgetType : 'dijit.form.DateTextBox', widgetAttrs : {constraints: {datePattern : 'd/MM/yy', required : false}, datePattern : 'd/MM/yy'}})); </script>
+            </div>
+            <br/>
+            <div id="roo_child_diabetesDiagnosed">
+                <label for="_diabetesDiagnosed">Diabetes Diagnosed:</label>
+                <form:input cssStyle="width:250px" id="_diabetesDiagnosed" maxlength="30" path="diabetesDiagnosed" size="0"/>
+                <br/>
+                <form:errors cssClass="errors" id="_diabetesDiagnosed_error" path="diabetesDiagnosed"/>
+                <spring:message arguments="Diabetes Diagnosed" code="field.invalid" var="field_invalid"/>
+                <spring:message code="field.required" var="field_required"/>
+                <spring:message argumentSeparator="," arguments="Diabetes Diagnosed," code="field.simple.validation" var="field_validation"/>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : "_diabetesDiagnosed", widgetType : "dijit.form.ValidationTextBox", widgetAttrs : {promptMessage: "${field_validation}", invalidMessage: "${field_invalid}", required : false}})); </script>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_diabetesDiagnosed', widgetType : 'dijit.form.DateTextBox', widgetAttrs : {constraints: {datePattern : 'd/MM/yy', required : false}, datePattern : 'd/MM/yy'}})); </script>
+            </div>
+            <br/>
+            <div id="roo_child_insulinSince">
+                <label for="_insulinSince">Insulin Since:</label>
+                <form:input cssStyle="width:250px" id="_insulinSince" maxlength="30" path="insulinSince" size="0"/>
+                <br/>
+                <form:errors cssClass="errors" id="_insulinSince_error" path="insulinSince"/>
+                <spring:message arguments="Insulin Since" code="field.invalid" var="field_invalid"/>
+                <spring:message code="field.required" var="field_required"/>
+                <spring:message argumentSeparator="," arguments="Insulin Since," code="field.simple.validation" var="field_validation"/>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : "_insulinSince", widgetType : "dijit.form.ValidationTextBox", widgetAttrs : {promptMessage: "${field_validation}", invalidMessage: "${field_invalid}", required : false}})); </script>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_insulinSince', widgetType : 'dijit.form.DateTextBox', widgetAttrs : {constraints: {datePattern : 'd/MM/yy', required : false}, datePattern : 'd/MM/yy'}})); </script>
+            </div>
+            <br/>
+            <div id="roo_child_diabetesType">
+                <label for="_diabetesType">Diabetes Type:</label>
+                <form:select cssStyle="width:250px" id="_diabetesType" items="${diabetestype_enum}" path="diabetesType"/>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_diabetesType', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
+                <br/>
+                <form:errors cssClass="errors" id="_diabetesType_error" path="diabetesType"/>
+            </div>
+            <br/>
+            <div id="roo_child_diabetesTypeOther">
+                <label for="_diabetesTypeOther">Diabetes Type Other:</label>
+                <form:textarea cssStyle="width:250px" id="_diabetesTypeOther" path="diabetesTypeOther"/>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : "_diabetesTypeOther", widgetType: 'dijit.form.SimpleTextarea', widgetAttrs: {}})); </script>
+                <br/>
+                <form:errors cssClass="errors" id="_diabetesTypeOther_error" path="diabetesTypeOther"/>
+            </div>
+            <br/>
+            <div id="roo_child_createdOn">
+                <label for="_createdOn">Created On:</label>
+                <form:input cssStyle="width:250px" id="_createdOn" maxlength="30" path="createdOn" size="0"/>
+                <br/>
+                <form:errors cssClass="errors" id="_createdOn_error" path="createdOn"/>
+                <spring:message arguments="Created On" code="field.invalid" var="field_invalid"/>
+                <spring:message code="field.required" var="field_required"/>
+                <spring:message argumentSeparator="," arguments="Created On," code="field.simple.validation" var="field_validation"/>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : "_createdOn", widgetType : "dijit.form.ValidationTextBox", widgetAttrs : {promptMessage: "${field_validation}", invalidMessage: "${field_invalid}", required : false}})); </script>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_createdOn', widgetType : 'dijit.form.DateTextBox', widgetAttrs : {constraints: {datePattern : 'd/MM/yy', required : false}, datePattern : 'd/MM/yy'}})); </script>
+            </div>
+            <br/>
+            <div id="roo_child_updatedOn">
+                <label for="_updatedOn">Updated On:</label>
+                <form:input cssStyle="width:250px" id="_updatedOn" maxlength="30" path="updatedOn" size="0"/>
+                <br/>
+                <form:errors cssClass="errors" id="_updatedOn_error" path="updatedOn"/>
+                <spring:message arguments="Updated On" code="field.invalid" var="field_invalid"/>
+                <spring:message code="field.required" var="field_required"/>
+                <spring:message argumentSeparator="," arguments="Updated On," code="field.simple.validation" var="field_validation"/>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : "_updatedOn", widgetType : "dijit.form.ValidationTextBox", widgetAttrs : {promptMessage: "${field_validation}", invalidMessage: "${field_invalid}", required : false}})); </script>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_updatedOn', widgetType : 'dijit.form.DateTextBox', widgetAttrs : {constraints: {datePattern : 'd/MM/yy', required : false}, datePattern : 'd/MM/yy'}})); </script>
+            </div>
+            <br/>
+            <div id="roo_child_distanceLivesFromCentre">
+                <label for="_distanceLivesFromCentre">Distance Lives From Centre:</label>
+                <form:select cssStyle="width:250px" id="_distanceLivesFromCentre" items="${distancetype_enum}" path="distanceLivesFromCentre"/>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_distanceLivesFromCentre', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
+                <br/>
+                <form:errors cssClass="errors" id="_distanceLivesFromCentre_error" path="distanceLivesFromCentre"/>
+            </div>
+            <br/>
+            <div class="submit" id="roo_child_submit">
+                <spring:message code="button.save" var="save_button"/>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ValidateAllDecoration({elementId:'proceed', event:'onclick'}));</script>
+                <input id="proceed" type="submit" value="${save_button}"/>
+            </div>
+        </form:form>
+    </div>
+</div>

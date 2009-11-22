@@ -1,0 +1,23 @@
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:fmt="http://java.sun.com/jsp/jstl/fmt" xmlns:form="http://www.springframework.org/tags/form" xmlns:spring="http://www.springframework.org/tags">
+    <script type="text/javascript">dojo.require("dijit.TitlePane");</script>
+    <div id="_title_div" style="width: 100%">
+        <spring:message code="label.country" var="entity_label"/>
+        <spring:message arguments="${entity_label}" code="entity.show" var="title_msg"/>
+        <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_title_div', widgetType : 'dijit.TitlePane', widgetAttrs : {title: '${title_msg}'}})); </script>
+        <c:if test="${not empty country}">
+            <div id="roo_country_name">
+                <label for="_name">Name:</label>
+                <div class="box" id="_name">${country.name}</div>
+            </div>
+            <br/>
+            <div id="roo_country_diabetesCentres">
+                <label for="_diabetesCentres">Diabetes Centres:</label>
+                <div class="box" id="_diabetesCentres">${country.diabetesCentres}</div>
+            </div>
+            <br/>
+        </c:if>
+        <c:if test="${empty country}">
+            <spring:message arguments="${entity_label}" code="entity.not.found.single"/>
+        </c:if>
+    </div>
+</div>

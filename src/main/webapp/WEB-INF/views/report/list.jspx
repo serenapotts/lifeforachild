@@ -1,0 +1,98 @@
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:fmt="http://java.sun.com/jsp/jstl/fmt" xmlns:fn="http://java.sun.com/jsp/jstl/functions" xmlns:form="http://www.springframework.org/tags/form" xmlns:roo="urn:jsptagdir:/WEB-INF/tags" xmlns:spring="http://www.springframework.org/tags">
+    <script type="text/javascript">dojo.require("dijit.TitlePane");</script>
+    <div id="_title_div" style="width: 100%">
+        <spring:message code="label.report" var="entity_label"/>
+        <spring:message code="label.reports" var="entity_label_plural"/>
+        <spring:message arguments="${entity_label_plural}" code="entity.list.all" var="title_msg"/>
+        <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_title_div', widgetType : 'dijit.TitlePane', widgetAttrs : {title: '${title_msg}'}})); </script>
+        <c:if test="${not empty reports}">
+            <table width="300px">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Reporttype</th>
+                        <th>Statustype</th>
+                        <th>Time Period</th>
+                        <th>Timeperiodunit</th>
+                        <th>From Date</th>
+                        <th/>
+                        <th/>
+                        <th/>
+                        <th/>
+                        <th/>                        
+                    </tr>
+                </thead>
+                <c:forEach items="${reports}" var="report">
+                    <tr>
+                        <td>${report.id}</td>
+                        <td>${fn:substring(report.name, 0, 10)}</td>
+                        <td>${fn:substring(report.reporttype, 0, 10)}</td>
+                        <td>${fn:substring(report.statustype, 0, 10)}</td>
+                        <td>${fn:substring(report.timePeriod, 0, 10)}</td>
+                        <td>${fn:substring(report.timeperiodunit, 0, 10)}</td>
+                        <td>
+                            <fmt:formatDate pattern="d/MM/yy" type="DATE" value="${report.fromDate}"/>
+                        </td>
+                        <td>
+                            <spring:url value="/reportgenerator/${report.id}" var="show_form_url"/>
+                            <spring:url value="/static/images/show.png" var="show_image_url"/>
+                            <form:form action="${show_form_url}" method="GET">
+                                <spring:message arguments="${entity_label}" code="entity.show" var="show_label"/>
+                                <input alt="${show_label}" class="image" src="${show_image_url}" title="${show_label}" type="image" value="${show_label}"/>
+                            </form:form>
+                        </td>
+                        <td>
+                            <spring:url value="/report/${report.id}/form" var="update_form_url"/>
+                            <spring:url value="/static/images/update.png" var="update_image_url"/>
+                            <form:form action="${update_form_url}" method="GET">
+                                <spring:message arguments="${entity_label}" code="entity.update" var="update_label"/>
+                                <input alt="${update_label}" class="image" src="${update_image_url}" title="${update_label}" type="image" value="${update_label}"/>
+                            </form:form>
+                        </td>
+	                    <td>
+	                        <c:url value="/excelgenerator/${report.id}" var="export_excel_url"/>
+	                        <c:url value="/static/images/excel.gif" var="excel_image_url"/>
+	                        <form:form action="${export_excel_url}" method="GET">
+	                            <input alt="Export to Excel" src="${excel_image_url}" title="Export to Excel" type="image" value="Export to Excel"/>
+	                        </form:form>
+	                    </td>
+	                    <td>
+	                        <c:url value="/pdfgenerator/${report.id}" var="export_pdf_url"/>
+	                        <c:url value="/static/images/pdf.gif" var="pdf_image_url"/>
+	                        <form:form action="${export_pdf_url}" method="GET">
+	                            <input alt="Export to PDF" src="${pdf_image_url}" title="Export to PDF" type="image" value="Export to PDF"/>
+	                        </form:form>
+	                    </td>                                                                
+                        <td>
+                            <spring:url value="/report/${report.id}" var="delete_form_url"/>
+                            <spring:url value="/static/images/delete.png" var="delete_image_url"/>
+                            <form:form action="${delete_form_url}" method="DELETE">
+                                <spring:message arguments="${entity_label}" code="entity.delete" var="delete_label"/>
+                                <input alt="${delete_label}" class="image" src="${delete_image_url}" title="${delete_label}" type="image" value="${delete_label}"/>
+                            </form:form>
+                        </td>
+                    </tr>
+                </c:forEach>
+                <tr class="footer">
+                    <td colspan="10">
+                        <span class="new">
+                            <spring:url value="/report/form" var="create_url"/>
+                            <a href="${create_url}">
+                                <spring:url value="/static/images/add.png" var="create_img_url"/>
+                                <spring:message arguments="${entity_label}" code="global.menu.new" var="add_message"/>
+                                <img alt="${add_message}" src="${create_img_url}" title="${add_message}"/>
+                            </a>
+                        </span>
+                        <c:if test="${not empty maxPages}">
+                            <roo:pagination maxPages="${maxPages}" page="${param.page}" size="${param.size}"/>
+                        </c:if>
+                    </td>
+                </tr>
+            </table>
+        </c:if>
+        <c:if test="${empty reports}">
+            <spring:message arguments="${entity_label_plural}" code="entity.not.found"/>
+        </c:if>
+    </div>
+</div>
