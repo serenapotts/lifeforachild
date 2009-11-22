@@ -1,65 +1,92 @@
 package org.lifeforachild.web;
 
+import java.lang.Long;
+import java.lang.String;
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
+import org.lifeforachild.domain.Country;
+import org.lifeforachild.domain.DiabetesCentre;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
 privileged aspect CountryController_Roo_Controller {
     
-    @org.springframework.web.bind.annotation.RequestMapping(value = "/country", method = org.springframework.web.bind.annotation.RequestMethod.POST)    
-    public java.lang.String CountryController.create(@org.springframework.web.bind.annotation.ModelAttribute("country") org.lifeforachild.domain.Country country, org.springframework.validation.BindingResult result) {    
+    @RequestMapping(value = "/country", method = RequestMethod.POST)    
+    public String CountryController.create(@ModelAttribute("country") Country country, BindingResult result, ModelMap modelMap) {    
         if (country == null) throw new IllegalArgumentException("A country is required");        
-        for(javax.validation.ConstraintViolation<org.lifeforachild.domain.Country> constraint : javax.validation.Validation.buildDefaultValidatorFactory().getValidator().validate(country)) {        
-            result.rejectValue(constraint.getPropertyPath(), null, constraint.getMessage());            
+        for (ConstraintViolation<Country> constraint : Validation.buildDefaultValidatorFactory().getValidator().validate(country)) {        
+            result.rejectValue(constraint.getPropertyPath().toString(), "country.error." + constraint.getPropertyPath(), constraint.getMessage());            
         }        
         if (result.hasErrors()) {        
+            modelMap.addAllAttributes(result.getAllErrors());            
+            modelMap.addAttribute("country", country);            
+            modelMap.addAttribute("diabetescentres", DiabetesCentre.findAllDiabetesCentres());            
             return "country/create";            
         }        
         country.persist();        
         return "redirect:/country/" + country.getId();        
     }    
     
-    @org.springframework.web.bind.annotation.RequestMapping(value = "/country/form", method = org.springframework.web.bind.annotation.RequestMethod.GET)    
-    public java.lang.String CountryController.createForm(org.springframework.ui.ModelMap modelMap) {    
-        modelMap.addAttribute("country", new org.lifeforachild.domain.Country());        
-        modelMap.addAttribute("diabetescentres", org.lifeforachild.domain.DiabetesCentre.findAllDiabetesCentres());        
+    @RequestMapping(value = "/country/form", method = RequestMethod.GET)    
+    public String CountryController.createForm(ModelMap modelMap) {    
+        modelMap.addAttribute("country", new Country());        
+        modelMap.addAttribute("diabetescentres", DiabetesCentre.findAllDiabetesCentres());        
         return "country/create";        
     }    
     
-    @org.springframework.web.bind.annotation.RequestMapping(value = "/country/{id}", method = org.springframework.web.bind.annotation.RequestMethod.GET)    
-    public java.lang.String CountryController.show(@org.springframework.web.bind.annotation.PathVariable("id") java.lang.Long id, org.springframework.ui.ModelMap modelMap) {    
+    @RequestMapping(value = "/country/{id}", method = RequestMethod.GET)    
+    public String CountryController.show(@PathVariable("id") Long id, ModelMap modelMap) {    
         if (id == null) throw new IllegalArgumentException("An Identifier is required");        
-        modelMap.addAttribute("country", org.lifeforachild.domain.Country.findCountry(id));        
+        modelMap.addAttribute("country", Country.findCountry(id));        
         return "country/show";        
     }    
     
-    @org.springframework.web.bind.annotation.RequestMapping(value = "/country", method = org.springframework.web.bind.annotation.RequestMethod.GET)    
-    public java.lang.String CountryController.list(org.springframework.ui.ModelMap modelMap) {    
-        modelMap.addAttribute("countrys", org.lifeforachild.domain.Country.findAllCountrys());        
+    @RequestMapping(value = "/country", method = RequestMethod.GET)    
+    public String CountryController.list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, ModelMap modelMap) {    
+        if (page != null || size != null) {        
+            int sizeNo = size == null ? 10 : size.intValue();            
+            modelMap.addAttribute("countrys", Country.findCountryEntries(page == null ? 0 : (page.intValue() - 1) * sizeNo, sizeNo));            
+            float nrOfPages = (float) Country.countCountrys() / sizeNo;            
+            modelMap.addAttribute("maxPages", (int) ((nrOfPages > (int) nrOfPages || nrOfPages == 0.0) ? nrOfPages + 1 : nrOfPages));            
+        } else {        
+            modelMap.addAttribute("countrys", Country.findAllCountrys());            
+        }        
         return "country/list";        
     }    
     
-    @org.springframework.web.bind.annotation.RequestMapping(method = org.springframework.web.bind.annotation.RequestMethod.PUT)    
-    public java.lang.String CountryController.update(@org.springframework.web.bind.annotation.ModelAttribute("country") org.lifeforachild.domain.Country country, org.springframework.validation.BindingResult result) {    
+    @RequestMapping(method = RequestMethod.PUT)    
+    public String CountryController.update(@ModelAttribute("country") Country country, BindingResult result, ModelMap modelMap) {    
         if (country == null) throw new IllegalArgumentException("A country is required");        
-        for(javax.validation.ConstraintViolation<org.lifeforachild.domain.Country> constraint : javax.validation.Validation.buildDefaultValidatorFactory().getValidator().validate(country)) {        
-            result.rejectValue(constraint.getPropertyPath(), null, constraint.getMessage());            
+        for (ConstraintViolation<Country> constraint : Validation.buildDefaultValidatorFactory().getValidator().validate(country)) {        
+            result.rejectValue(constraint.getPropertyPath().toString(), "country.error." + constraint.getPropertyPath(), constraint.getMessage());            
         }        
         if (result.hasErrors()) {        
+            modelMap.addAllAttributes(result.getAllErrors());            
+            modelMap.addAttribute("country", country);            
+            modelMap.addAttribute("diabetescentres", DiabetesCentre.findAllDiabetesCentres());            
             return "country/update";            
         }        
         country.merge();        
         return "redirect:/country/" + country.getId();        
     }    
     
-    @org.springframework.web.bind.annotation.RequestMapping(value = "/country/{id}/form", method = org.springframework.web.bind.annotation.RequestMethod.GET)    
-    public java.lang.String CountryController.updateForm(@org.springframework.web.bind.annotation.PathVariable("id") java.lang.Long id, org.springframework.ui.ModelMap modelMap) {    
+    @RequestMapping(value = "/country/{id}/form", method = RequestMethod.GET)    
+    public String CountryController.updateForm(@PathVariable("id") Long id, ModelMap modelMap) {    
         if (id == null) throw new IllegalArgumentException("An Identifier is required");        
-        modelMap.addAttribute("country", org.lifeforachild.domain.Country.findCountry(id));        
-        modelMap.addAttribute("diabetescentres", org.lifeforachild.domain.DiabetesCentre.findAllDiabetesCentres());        
+        modelMap.addAttribute("country", Country.findCountry(id));        
+        modelMap.addAttribute("diabetescentres", DiabetesCentre.findAllDiabetesCentres());        
         return "country/update";        
     }    
     
-    @org.springframework.web.bind.annotation.RequestMapping(value = "/country/{id}", method = org.springframework.web.bind.annotation.RequestMethod.DELETE)    
-    public java.lang.String CountryController.delete(@org.springframework.web.bind.annotation.PathVariable("id") java.lang.Long id) {    
+    @RequestMapping(value = "/country/{id}", method = RequestMethod.DELETE)    
+    public String CountryController.delete(@PathVariable("id") Long id) {    
         if (id == null) throw new IllegalArgumentException("An Identifier is required");        
-        org.lifeforachild.domain.Country.findCountry(id).remove();        
+        Country.findCountry(id).remove();        
         return "redirect:/country";        
     }    
     

@@ -1,65 +1,92 @@
 package org.lifeforachild.web;
 
+import java.lang.Long;
+import java.lang.String;
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
+import org.lifeforachild.domain.Country;
+import org.lifeforachild.domain.DiabetesCentre;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
 privileged aspect DiabetesCentreController_Roo_Controller {
     
-    @org.springframework.web.bind.annotation.RequestMapping(value = "/diabetescentre", method = org.springframework.web.bind.annotation.RequestMethod.POST)    
-    public java.lang.String DiabetesCentreController.create(@org.springframework.web.bind.annotation.ModelAttribute("diabetescentre") org.lifeforachild.domain.DiabetesCentre diabetescentre, org.springframework.validation.BindingResult result) {    
+    @RequestMapping(value = "/diabetescentre", method = RequestMethod.POST)    
+    public String DiabetesCentreController.create(@ModelAttribute("diabetescentre") DiabetesCentre diabetescentre, BindingResult result, ModelMap modelMap) {    
         if (diabetescentre == null) throw new IllegalArgumentException("A diabetescentre is required");        
-        for(javax.validation.ConstraintViolation<org.lifeforachild.domain.DiabetesCentre> constraint : javax.validation.Validation.buildDefaultValidatorFactory().getValidator().validate(diabetescentre)) {        
-            result.rejectValue(constraint.getPropertyPath(), null, constraint.getMessage());            
+        for (ConstraintViolation<DiabetesCentre> constraint : Validation.buildDefaultValidatorFactory().getValidator().validate(diabetescentre)) {        
+            result.rejectValue(constraint.getPropertyPath().toString(), "diabetescentre.error." + constraint.getPropertyPath(), constraint.getMessage());            
         }        
         if (result.hasErrors()) {        
+            modelMap.addAllAttributes(result.getAllErrors());            
+            modelMap.addAttribute("diabetescentre", diabetescentre);            
+            modelMap.addAttribute("countrys", Country.findAllCountrys());            
             return "diabetescentre/create";            
         }        
         diabetescentre.persist();        
         return "redirect:/diabetescentre/" + diabetescentre.getId();        
     }    
     
-    @org.springframework.web.bind.annotation.RequestMapping(value = "/diabetescentre/form", method = org.springframework.web.bind.annotation.RequestMethod.GET)    
-    public java.lang.String DiabetesCentreController.createForm(org.springframework.ui.ModelMap modelMap) {    
-        modelMap.addAttribute("diabetescentre", new org.lifeforachild.domain.DiabetesCentre());        
-        modelMap.addAttribute("countrys", org.lifeforachild.domain.Country.findAllCountrys());        
+    @RequestMapping(value = "/diabetescentre/form", method = RequestMethod.GET)    
+    public String DiabetesCentreController.createForm(ModelMap modelMap) {    
+        modelMap.addAttribute("diabetescentre", new DiabetesCentre());        
+        modelMap.addAttribute("countrys", Country.findAllCountrys());        
         return "diabetescentre/create";        
     }    
     
-    @org.springframework.web.bind.annotation.RequestMapping(value = "/diabetescentre/{id}", method = org.springframework.web.bind.annotation.RequestMethod.GET)    
-    public java.lang.String DiabetesCentreController.show(@org.springframework.web.bind.annotation.PathVariable("id") java.lang.Long id, org.springframework.ui.ModelMap modelMap) {    
+    @RequestMapping(value = "/diabetescentre/{id}", method = RequestMethod.GET)    
+    public String DiabetesCentreController.show(@PathVariable("id") Long id, ModelMap modelMap) {    
         if (id == null) throw new IllegalArgumentException("An Identifier is required");        
-        modelMap.addAttribute("diabetescentre", org.lifeforachild.domain.DiabetesCentre.findDiabetesCentre(id));        
+        modelMap.addAttribute("diabetescentre", DiabetesCentre.findDiabetesCentre(id));        
         return "diabetescentre/show";        
     }    
     
-    @org.springframework.web.bind.annotation.RequestMapping(value = "/diabetescentre", method = org.springframework.web.bind.annotation.RequestMethod.GET)    
-    public java.lang.String DiabetesCentreController.list(org.springframework.ui.ModelMap modelMap) {    
-        modelMap.addAttribute("diabetescentres", org.lifeforachild.domain.DiabetesCentre.findAllDiabetesCentres());        
+    @RequestMapping(value = "/diabetescentre", method = RequestMethod.GET)    
+    public String DiabetesCentreController.list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, ModelMap modelMap) {    
+        if (page != null || size != null) {        
+            int sizeNo = size == null ? 10 : size.intValue();            
+            modelMap.addAttribute("diabetescentres", DiabetesCentre.findDiabetesCentreEntries(page == null ? 0 : (page.intValue() - 1) * sizeNo, sizeNo));            
+            float nrOfPages = (float) DiabetesCentre.countDiabetesCentres() / sizeNo;            
+            modelMap.addAttribute("maxPages", (int) ((nrOfPages > (int) nrOfPages || nrOfPages == 0.0) ? nrOfPages + 1 : nrOfPages));            
+        } else {        
+            modelMap.addAttribute("diabetescentres", DiabetesCentre.findAllDiabetesCentres());            
+        }        
         return "diabetescentre/list";        
     }    
     
-    @org.springframework.web.bind.annotation.RequestMapping(method = org.springframework.web.bind.annotation.RequestMethod.PUT)    
-    public java.lang.String DiabetesCentreController.update(@org.springframework.web.bind.annotation.ModelAttribute("diabetescentre") org.lifeforachild.domain.DiabetesCentre diabetescentre, org.springframework.validation.BindingResult result) {    
+    @RequestMapping(method = RequestMethod.PUT)    
+    public String DiabetesCentreController.update(@ModelAttribute("diabetescentre") DiabetesCentre diabetescentre, BindingResult result, ModelMap modelMap) {    
         if (diabetescentre == null) throw new IllegalArgumentException("A diabetescentre is required");        
-        for(javax.validation.ConstraintViolation<org.lifeforachild.domain.DiabetesCentre> constraint : javax.validation.Validation.buildDefaultValidatorFactory().getValidator().validate(diabetescentre)) {        
-            result.rejectValue(constraint.getPropertyPath(), null, constraint.getMessage());            
+        for (ConstraintViolation<DiabetesCentre> constraint : Validation.buildDefaultValidatorFactory().getValidator().validate(diabetescentre)) {        
+            result.rejectValue(constraint.getPropertyPath().toString(), "diabetescentre.error." + constraint.getPropertyPath(), constraint.getMessage());            
         }        
         if (result.hasErrors()) {        
+            modelMap.addAllAttributes(result.getAllErrors());            
+            modelMap.addAttribute("diabetescentre", diabetescentre);            
+            modelMap.addAttribute("countrys", Country.findAllCountrys());            
             return "diabetescentre/update";            
         }        
         diabetescentre.merge();        
         return "redirect:/diabetescentre/" + diabetescentre.getId();        
     }    
     
-    @org.springframework.web.bind.annotation.RequestMapping(value = "/diabetescentre/{id}/form", method = org.springframework.web.bind.annotation.RequestMethod.GET)    
-    public java.lang.String DiabetesCentreController.updateForm(@org.springframework.web.bind.annotation.PathVariable("id") java.lang.Long id, org.springframework.ui.ModelMap modelMap) {    
+    @RequestMapping(value = "/diabetescentre/{id}/form", method = RequestMethod.GET)    
+    public String DiabetesCentreController.updateForm(@PathVariable("id") Long id, ModelMap modelMap) {    
         if (id == null) throw new IllegalArgumentException("An Identifier is required");        
-        modelMap.addAttribute("diabetescentre", org.lifeforachild.domain.DiabetesCentre.findDiabetesCentre(id));        
-        modelMap.addAttribute("countrys", org.lifeforachild.domain.Country.findAllCountrys());        
+        modelMap.addAttribute("diabetescentre", DiabetesCentre.findDiabetesCentre(id));        
+        modelMap.addAttribute("countrys", Country.findAllCountrys());        
         return "diabetescentre/update";        
     }    
     
-    @org.springframework.web.bind.annotation.RequestMapping(value = "/diabetescentre/{id}", method = org.springframework.web.bind.annotation.RequestMethod.DELETE)    
-    public java.lang.String DiabetesCentreController.delete(@org.springframework.web.bind.annotation.PathVariable("id") java.lang.Long id) {    
+    @RequestMapping(value = "/diabetescentre/{id}", method = RequestMethod.DELETE)    
+    public String DiabetesCentreController.delete(@PathVariable("id") Long id) {    
         if (id == null) throw new IllegalArgumentException("An Identifier is required");        
-        org.lifeforachild.domain.DiabetesCentre.findDiabetesCentre(id).remove();        
+        DiabetesCentre.findDiabetesCentre(id).remove();        
         return "redirect:/diabetescentre";        
     }    
     

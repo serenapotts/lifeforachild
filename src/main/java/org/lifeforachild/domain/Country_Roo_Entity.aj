@@ -1,42 +1,55 @@
 package org.lifeforachild.domain;
 
+import java.lang.Integer;
+import java.lang.Long;
+import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.EntityManager;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Version;
+import org.lifeforachild.domain.Country;
+import org.springframework.transaction.annotation.Transactional;
+
 privileged aspect Country_Roo_Entity {
     
-    @javax.persistence.PersistenceContext    
-    transient javax.persistence.EntityManager Country.entityManager;    
+    @PersistenceContext    
+    transient EntityManager Country.entityManager;    
     
-    @javax.persistence.Id    
-    @javax.persistence.GeneratedValue(strategy = javax.persistence.GenerationType.AUTO)    
-    @javax.persistence.Column(name = "id")    
-    private java.lang.Long Country.id;    
+    @Id    
+    @GeneratedValue(strategy = GenerationType.AUTO)    
+    @Column(name = "id")    
+    private Long Country.id;    
     
-    @javax.persistence.Version    
-    @javax.persistence.Column(name = "version")    
-    private java.lang.Integer Country.version;    
+    @Version    
+    @Column(name = "version")    
+    private Integer Country.version;    
     
-    public java.lang.Long Country.getId() {    
+    public Long Country.getId() {    
         return this.id;        
     }    
     
-    public void Country.setId(java.lang.Long id) {    
+    public void Country.setId(Long id) {    
         this.id = id;        
     }    
     
-    public java.lang.Integer Country.getVersion() {    
+    public Integer Country.getVersion() {    
         return this.version;        
     }    
     
-    public void Country.setVersion(java.lang.Integer version) {    
+    public void Country.setVersion(Integer version) {    
         this.version = version;        
     }    
     
-    @org.springframework.transaction.annotation.Transactional    
+    @Transactional    
     public void Country.persist() {    
         if (this.entityManager == null) this.entityManager = entityManager();        
         this.entityManager.persist(this);        
     }    
     
-    @org.springframework.transaction.annotation.Transactional    
+    @Transactional    
     public void Country.remove() {    
         if (this.entityManager == null) this.entityManager = entityManager();        
         if (this.entityManager.contains(this)) {        
@@ -47,13 +60,13 @@ privileged aspect Country_Roo_Entity {
         }        
     }    
     
-    @org.springframework.transaction.annotation.Transactional    
+    @Transactional    
     public void Country.flush() {    
         if (this.entityManager == null) this.entityManager = entityManager();        
         this.entityManager.flush();        
     }    
     
-    @org.springframework.transaction.annotation.Transactional    
+    @Transactional    
     public void Country.merge() {    
         if (this.entityManager == null) this.entityManager = entityManager();        
         Country merged = this.entityManager.merge(this);        
@@ -61,8 +74,8 @@ privileged aspect Country_Roo_Entity {
         this.id = merged.getId();        
     }    
     
-    public static javax.persistence.EntityManager Country.entityManager() {    
-        javax.persistence.EntityManager em = new Country().entityManager;        
+    public static final EntityManager Country.entityManager() {    
+        EntityManager em = new Country().entityManager;        
         if (em == null) throw new IllegalStateException("Entity manager has not been injected (is the Spring Aspects JAR configured as an AJC/AJDT aspects library?)");        
         return em;        
     }    
@@ -71,16 +84,16 @@ privileged aspect Country_Roo_Entity {
         return (Long) entityManager().createQuery("select count(o) from Country o").getSingleResult();        
     }    
     
-    public static java.util.List<org.lifeforachild.domain.Country> Country.findAllCountrys() {    
+    public static List<Country> Country.findAllCountrys() {    
         return entityManager().createQuery("select o from Country o").getResultList();        
     }    
     
-    public static org.lifeforachild.domain.Country Country.findCountry(java.lang.Long id) {    
+    public static Country Country.findCountry(Long id) {    
         if (id == null) throw new IllegalArgumentException("An identifier is required to retrieve an instance of Country");        
         return entityManager().find(Country.class, id);        
     }    
     
-    public static java.util.List<org.lifeforachild.domain.Country> Country.findCountryEntries(int firstResult, int maxResults) {    
+    public static List<Country> Country.findCountryEntries(int firstResult, int maxResults) {    
         return entityManager().createQuery("select o from Country o").setFirstResult(firstResult).setMaxResults(maxResults).getResultList();        
     }    
     

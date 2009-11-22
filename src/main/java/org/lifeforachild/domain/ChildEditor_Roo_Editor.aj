@@ -1,32 +1,38 @@
 package org.lifeforachild.domain;
 
+import java.beans.PropertyEditorSupport;
+import java.lang.Long;
+import java.lang.String;
+import org.lifeforachild.domain.Child;
+import org.springframework.beans.SimpleTypeConverter;
+
 privileged aspect ChildEditor_Roo_Editor {
     
-    declare parents: ChildEditor implements java.beans.PropertyEditorSupport;    
+    declare parents: ChildEditor implements PropertyEditorSupport;    
     
-    org.springframework.beans.SimpleTypeConverter ChildEditor.typeConverter = new org.springframework.beans.SimpleTypeConverter();    
+    private SimpleTypeConverter ChildEditor.typeConverter = new SimpleTypeConverter();    
     
-    public java.lang.String ChildEditor.getAsText() {    
+    public String ChildEditor.getAsText() {    
         Object obj = getValue();        
         if (obj == null) {        
             return null;            
         }        
-        return (String) typeConverter.convertIfNecessary(((org.lifeforachild.domain.Child) obj).getId() , String.class);        
+        return (String) typeConverter.convertIfNecessary(((Child) obj).getId(), String.class);        
     }    
     
-    public void ChildEditor.setAsText(java.lang.String text) {    
+    public void ChildEditor.setAsText(String text) {    
         if (text == null || 0 == text.length()) {        
             setValue(null);            
             return;            
         }        
         
-        java.lang.Long identifier = (java.lang.Long) typeConverter.convertIfNecessary(text, java.lang.Long.class);        
+        Long identifier = (Long) typeConverter.convertIfNecessary(text, Long.class);        
         if (identifier == null) {        
             setValue(null);            
             return;            
         }        
         
-        setValue(org.lifeforachild.domain.Child.findChild(identifier));        
+        setValue(Child.findChild(identifier));        
     }    
     
 }

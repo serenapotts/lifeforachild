@@ -5,7 +5,7 @@ import org.lifeforachild.domain.Country;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.stereotype.Controller;
 
-@RooWebScaffold(automaticallyMaintainView = true, formBackingObject = Country.class)
+@RooWebScaffold(path = "country", automaticallyMaintainView = true, formBackingObject = Country.class)
 @RequestMapping("/country/**")
 @Controller
 public class CountryController {

@@ -1,42 +1,55 @@
 package org.lifeforachild.domain;
 
+import java.lang.Integer;
+import java.lang.Long;
+import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.EntityManager;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Version;
+import org.lifeforachild.domain.User;
+import org.springframework.transaction.annotation.Transactional;
+
 privileged aspect User_Roo_Entity {
     
-    @javax.persistence.PersistenceContext    
-    transient javax.persistence.EntityManager User.entityManager;    
+    @PersistenceContext    
+    transient EntityManager User.entityManager;    
     
-    @javax.persistence.Id    
-    @javax.persistence.GeneratedValue(strategy = javax.persistence.GenerationType.AUTO)    
-    @javax.persistence.Column(name = "id")    
-    private java.lang.Long User.id;    
+    @Id    
+    @GeneratedValue(strategy = GenerationType.AUTO)    
+    @Column(name = "id")    
+    private Long User.id;    
     
-    @javax.persistence.Version    
-    @javax.persistence.Column(name = "version")    
-    private java.lang.Integer User.version;    
+    @Version    
+    @Column(name = "version")    
+    private Integer User.version;    
     
-    public java.lang.Long User.getId() {    
+    public Long User.getId() {    
         return this.id;        
     }    
     
-    public void User.setId(java.lang.Long id) {    
+    public void User.setId(Long id) {    
         this.id = id;        
     }    
     
-    public java.lang.Integer User.getVersion() {    
+    public Integer User.getVersion() {    
         return this.version;        
     }    
     
-    public void User.setVersion(java.lang.Integer version) {    
+    public void User.setVersion(Integer version) {    
         this.version = version;        
     }    
     
-    @org.springframework.transaction.annotation.Transactional    
+    @Transactional    
     public void User.persist() {    
         if (this.entityManager == null) this.entityManager = entityManager();        
         this.entityManager.persist(this);        
     }    
     
-    @org.springframework.transaction.annotation.Transactional    
+    @Transactional    
     public void User.remove() {    
         if (this.entityManager == null) this.entityManager = entityManager();        
         if (this.entityManager.contains(this)) {        
@@ -47,13 +60,13 @@ privileged aspect User_Roo_Entity {
         }        
     }    
     
-    @org.springframework.transaction.annotation.Transactional    
+    @Transactional    
     public void User.flush() {    
         if (this.entityManager == null) this.entityManager = entityManager();        
         this.entityManager.flush();        
     }    
     
-    @org.springframework.transaction.annotation.Transactional    
+    @Transactional    
     public void User.merge() {    
         if (this.entityManager == null) this.entityManager = entityManager();        
         User merged = this.entityManager.merge(this);        
@@ -61,8 +74,8 @@ privileged aspect User_Roo_Entity {
         this.id = merged.getId();        
     }    
     
-    public static javax.persistence.EntityManager User.entityManager() {    
-        javax.persistence.EntityManager em = new User().entityManager;        
+    public static final EntityManager User.entityManager() {    
+        EntityManager em = new User().entityManager;        
         if (em == null) throw new IllegalStateException("Entity manager has not been injected (is the Spring Aspects JAR configured as an AJC/AJDT aspects library?)");        
         return em;        
     }    
@@ -71,16 +84,16 @@ privileged aspect User_Roo_Entity {
         return (Long) entityManager().createQuery("select count(o) from User o").getSingleResult();        
     }    
     
-    public static java.util.List<org.lifeforachild.domain.User> User.findAllUsers() {    
+    public static List<User> User.findAllUsers() {    
         return entityManager().createQuery("select o from User o").getResultList();        
     }    
     
-    public static org.lifeforachild.domain.User User.findUser(java.lang.Long id) {    
+    public static User User.findUser(Long id) {    
         if (id == null) throw new IllegalArgumentException("An identifier is required to retrieve an instance of User");        
         return entityManager().find(User.class, id);        
     }    
     
-    public static java.util.List<org.lifeforachild.domain.User> User.findUserEntries(int firstResult, int maxResults) {    
+    public static List<User> User.findUserEntries(int firstResult, int maxResults) {    
         return entityManager().createQuery("select o from User o").setFirstResult(firstResult).setMaxResults(maxResults).getResultList();        
     }    
     

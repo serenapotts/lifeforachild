@@ -1,148 +1,158 @@
 package org.lifeforachild.domain;
 
+import java.lang.String;
+import java.util.Date;
+import java.util.Set;
+import org.lifeforachild.domain.CauseOfDeathType;
+import org.lifeforachild.domain.ClinicalRecord;
+import org.lifeforachild.domain.DiabetesType;
+import org.lifeforachild.domain.DistanceType;
+import org.lifeforachild.domain.SexType;
+import org.lifeforachild.domain.SurvivalStatusType;
+
 privileged aspect Child_Roo_JavaBean {
     
-    public java.lang.String Child.getInitials() {    
+    public String Child.getInitials() {    
         return this.initials;        
     }    
     
-    public void Child.setInitials(java.lang.String initials) {    
+    public void Child.setInitials(String initials) {    
         this.initials = initials;        
     }    
     
-    public java.lang.String Child.getName() {    
+    public String Child.getName() {    
         return this.name;        
     }    
     
-    public void Child.setName(java.lang.String name) {    
+    public void Child.setName(String name) {    
         this.name = name;        
     }    
     
-    public java.lang.String Child.getEthnicGroup() {    
+    public String Child.getEthnicGroup() {    
         return this.ethnicGroup;        
     }    
     
-    public void Child.setEthnicGroup(java.lang.String ethnicGroup) {    
+    public void Child.setEthnicGroup(String ethnicGroup) {    
         this.ethnicGroup = ethnicGroup;        
     }    
     
-    public org.lifeforachild.domain.SexType Child.getSex() {    
+    public SexType Child.getSex() {    
         return this.sex;        
     }    
     
-    public void Child.setSex(org.lifeforachild.domain.SexType sex) {    
+    public void Child.setSex(SexType sex) {    
         this.sex = sex;        
     }    
     
-    public org.lifeforachild.domain.SurvivalStatusType Child.getSurvivalStatus() {    
+    public SurvivalStatusType Child.getSurvivalStatus() {    
         return this.survivalStatus;        
     }    
     
-    public void Child.setSurvivalStatus(org.lifeforachild.domain.SurvivalStatusType survivalStatus) {    
+    public void Child.setSurvivalStatus(SurvivalStatusType survivalStatus) {    
         this.survivalStatus = survivalStatus;        
     }    
     
-    public java.util.Date Child.getDateOfDeath() {    
+    public Date Child.getDateOfDeath() {    
         return this.dateOfDeath;        
     }    
     
-    public void Child.setDateOfDeath(java.util.Date dateOfDeath) {    
+    public void Child.setDateOfDeath(Date dateOfDeath) {    
         this.dateOfDeath = dateOfDeath;        
     }    
     
-    public org.lifeforachild.domain.CauseOfDeathType Child.getCauseOfDeath() {    
+    public CauseOfDeathType Child.getCauseOfDeath() {    
         return this.causeOfDeath;        
     }    
     
-    public void Child.setCauseOfDeath(org.lifeforachild.domain.CauseOfDeathType causeOfDeath) {    
+    public void Child.setCauseOfDeath(CauseOfDeathType causeOfDeath) {    
         this.causeOfDeath = causeOfDeath;        
     }    
     
-    public java.lang.String Child.getCauseOfDeathOther() {    
+    public String Child.getCauseOfDeathOther() {    
         return this.causeOfDeathOther;        
     }    
     
-    public void Child.setCauseOfDeathOther(java.lang.String causeOfDeathOther) {    
+    public void Child.setCauseOfDeathOther(String causeOfDeathOther) {    
         this.causeOfDeathOther = causeOfDeathOther;        
     }    
     
-    public java.util.Date Child.getDateOfRegistration() {    
+    public Date Child.getDateOfRegistration() {    
         return this.dateOfRegistration;        
     }    
     
-    public void Child.setDateOfRegistration(java.util.Date dateOfRegistration) {    
+    public void Child.setDateOfRegistration(Date dateOfRegistration) {    
         this.dateOfRegistration = dateOfRegistration;        
     }    
     
-    public java.util.Date Child.getDateOfBirth() {    
+    public Date Child.getDateOfBirth() {    
         return this.dateOfBirth;        
     }    
     
-    public void Child.setDateOfBirth(java.util.Date dateOfBirth) {    
+    public void Child.setDateOfBirth(Date dateOfBirth) {    
         this.dateOfBirth = dateOfBirth;        
     }    
     
-    public java.util.Date Child.getDiabetesDiagnosed() {    
+    public Date Child.getDiabetesDiagnosed() {    
         return this.diabetesDiagnosed;        
     }    
     
-    public void Child.setDiabetesDiagnosed(java.util.Date diabetesDiagnosed) {    
+    public void Child.setDiabetesDiagnosed(Date diabetesDiagnosed) {    
         this.diabetesDiagnosed = diabetesDiagnosed;        
     }    
     
-    public java.util.Date Child.getInsulinSince() {    
+    public Date Child.getInsulinSince() {    
         return this.insulinSince;        
     }    
     
-    public void Child.setInsulinSince(java.util.Date insulinSince) {    
+    public void Child.setInsulinSince(Date insulinSince) {    
         this.insulinSince = insulinSince;        
     }    
     
-    public org.lifeforachild.domain.DiabetesType Child.getDiabetesType() {    
+    public DiabetesType Child.getDiabetesType() {    
         return this.diabetesType;        
     }    
     
-    public void Child.setDiabetesType(org.lifeforachild.domain.DiabetesType diabetesType) {    
+    public void Child.setDiabetesType(DiabetesType diabetesType) {    
         this.diabetesType = diabetesType;        
     }    
     
-    public java.lang.String Child.getDiabetesTypeOther() {    
+    public String Child.getDiabetesTypeOther() {    
         return this.diabetesTypeOther;        
     }    
     
-    public void Child.setDiabetesTypeOther(java.lang.String diabetesTypeOther) {    
+    public void Child.setDiabetesTypeOther(String diabetesTypeOther) {    
         this.diabetesTypeOther = diabetesTypeOther;        
     }    
     
-    public java.util.Date Child.getCreatedOn() {    
+    public Date Child.getCreatedOn() {    
         return this.createdOn;        
     }    
     
-    public void Child.setCreatedOn(java.util.Date createdOn) {    
+    public void Child.setCreatedOn(Date createdOn) {    
         this.createdOn = createdOn;        
     }    
     
-    public java.util.Date Child.getUpdatedOn() {    
+    public Date Child.getUpdatedOn() {    
         return this.updatedOn;        
     }    
     
-    public void Child.setUpdatedOn(java.util.Date updatedOn) {    
+    public void Child.setUpdatedOn(Date updatedOn) {    
         this.updatedOn = updatedOn;        
     }    
     
-    public org.lifeforachild.domain.DistanceType Child.getDistanceLivesFromCentre() {    
+    public DistanceType Child.getDistanceLivesFromCentre() {    
         return this.distanceLivesFromCentre;        
     }    
     
-    public void Child.setDistanceLivesFromCentre(org.lifeforachild.domain.DistanceType distanceLivesFromCentre) {    
+    public void Child.setDistanceLivesFromCentre(DistanceType distanceLivesFromCentre) {    
         this.distanceLivesFromCentre = distanceLivesFromCentre;        
     }    
     
-    public java.util.Set<org.lifeforachild.domain.ClinicalRecord> Child.getClinicalRecords() {    
+    public Set<ClinicalRecord> Child.getClinicalRecords() {    
         return this.clinicalRecords;        
     }    
     
-    public void Child.setClinicalRecords(java.util.Set<org.lifeforachild.domain.ClinicalRecord> clinicalRecords) {    
+    public void Child.setClinicalRecords(Set<ClinicalRecord> clinicalRecords) {    
         this.clinicalRecords = clinicalRecords;        
     }    
     

@@ -1,24 +1,40 @@
 package org.lifeforachild.domain;
 
+import java.lang.Integer;
+import java.lang.String;
+import java.util.Date;
+import org.lifeforachild.domain.Child;
+import org.lifeforachild.domain.CreatineUnitsType;
+import org.lifeforachild.domain.DiabetesCopingType;
+import org.lifeforachild.domain.HbA1cMethodType;
+import org.lifeforachild.domain.MG_OR_MMOL_Type;
+import org.lifeforachild.domain.MicroalbuminuriaUnitsType;
+import org.lifeforachild.domain.NotAttendingSchoolReasonType;
+import org.lifeforachild.domain.ReasonNotEnteringType;
+import org.lifeforachild.domain.User;
+import org.lifeforachild.domain.YesNoLaterType;
+import org.lifeforachild.domain.YesNoNAType;
+import org.lifeforachild.domain.YesNoUnkownType;
+
 privileged aspect ClinicalRecord_Roo_JavaBean {
     
-    public java.lang.Integer ClinicalRecord.getBloodGlucoseSelfMonitoringPerWeek() {    
+    public Integer ClinicalRecord.getBloodGlucoseSelfMonitoringPerWeek() {    
         return this.bloodGlucoseSelfMonitoringPerWeek;        
     }    
     
-    public void ClinicalRecord.setBloodGlucoseSelfMonitoringPerWeek(java.lang.Integer bloodGlucoseSelfMonitoringPerWeek) {    
+    public void ClinicalRecord.setBloodGlucoseSelfMonitoringPerWeek(Integer bloodGlucoseSelfMonitoringPerWeek) {    
         this.bloodGlucoseSelfMonitoringPerWeek = bloodGlucoseSelfMonitoringPerWeek;        
     }    
     
-    public java.lang.Integer ClinicalRecord.getUrineGlucoseSelfMonitoringPerWeek() {    
+    public Integer ClinicalRecord.getUrineGlucoseSelfMonitoringPerWeek() {    
         return this.urineGlucoseSelfMonitoringPerWeek;        
     }    
     
-    public void ClinicalRecord.setUrineGlucoseSelfMonitoringPerWeek(java.lang.Integer urineGlucoseSelfMonitoringPerWeek) {    
+    public void ClinicalRecord.setUrineGlucoseSelfMonitoringPerWeek(Integer urineGlucoseSelfMonitoringPerWeek) {    
         this.urineGlucoseSelfMonitoringPerWeek = urineGlucoseSelfMonitoringPerWeek;        
     }    
     
-    public boolean ClinicalRecord.getAdjustInsulinDoseIfNeeded() {    
+    public boolean ClinicalRecord.isAdjustInsulinDoseIfNeeded() {    
         return this.adjustInsulinDoseIfNeeded;        
     }    
     
@@ -26,23 +42,23 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.adjustInsulinDoseIfNeeded = adjustInsulinDoseIfNeeded;        
     }    
     
-    public java.lang.Integer ClinicalRecord.getInsulinUnitsPerDay() {    
+    public Integer ClinicalRecord.getInsulinUnitsPerDay() {    
         return this.insulinUnitsPerDay;        
     }    
     
-    public void ClinicalRecord.setInsulinUnitsPerDay(java.lang.Integer insulinUnitsPerDay) {    
+    public void ClinicalRecord.setInsulinUnitsPerDay(Integer insulinUnitsPerDay) {    
         this.insulinUnitsPerDay = insulinUnitsPerDay;        
     }    
     
-    public java.lang.Integer ClinicalRecord.getNumberOfInsulinInjectionsPerDay() {    
+    public Integer ClinicalRecord.getNumberOfInsulinInjectionsPerDay() {    
         return this.numberOfInsulinInjectionsPerDay;        
     }    
     
-    public void ClinicalRecord.setNumberOfInsulinInjectionsPerDay(java.lang.Integer numberOfInsulinInjectionsPerDay) {    
+    public void ClinicalRecord.setNumberOfInsulinInjectionsPerDay(Integer numberOfInsulinInjectionsPerDay) {    
         this.numberOfInsulinInjectionsPerDay = numberOfInsulinInjectionsPerDay;        
     }    
     
-    public boolean ClinicalRecord.getLongActingHuman() {    
+    public boolean ClinicalRecord.isLongActingHuman() {    
         return this.longActingHuman;        
     }    
     
@@ -50,7 +66,7 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.longActingHuman = longActingHuman;        
     }    
     
-    public boolean ClinicalRecord.getShortActingHuman() {    
+    public boolean ClinicalRecord.isShortActingHuman() {    
         return this.shortActingHuman;        
     }    
     
@@ -58,7 +74,7 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.shortActingHuman = shortActingHuman;        
     }    
     
-    public boolean ClinicalRecord.getAnalog() {    
+    public boolean ClinicalRecord.isAnalog() {    
         return this.analog;        
     }    
     
@@ -66,7 +82,7 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.analog = analog;        
     }    
     
-    public boolean ClinicalRecord.getOralAgents() {    
+    public boolean ClinicalRecord.isOralAgents() {    
         return this.oralAgents;        
     }    
     
@@ -74,23 +90,23 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.oralAgents = oralAgents;        
     }    
     
-    public java.lang.String ClinicalRecord.getOralAgentsDescription() {    
+    public String ClinicalRecord.getOralAgentsDescription() {    
         return this.oralAgentsDescription;        
     }    
     
-    public void ClinicalRecord.setOralAgentsDescription(java.lang.String oralAgentsDescription) {    
+    public void ClinicalRecord.setOralAgentsDescription(String oralAgentsDescription) {    
         this.oralAgentsDescription = oralAgentsDescription;        
     }    
     
-    public java.lang.Integer ClinicalRecord.getRoutineClinicReviewsLastYear() {    
+    public Integer ClinicalRecord.getRoutineClinicReviewsLastYear() {    
         return this.routineClinicReviewsLastYear;        
     }    
     
-    public void ClinicalRecord.setRoutineClinicReviewsLastYear(java.lang.Integer routineClinicReviewsLastYear) {    
+    public void ClinicalRecord.setRoutineClinicReviewsLastYear(Integer routineClinicReviewsLastYear) {    
         this.routineClinicReviewsLastYear = routineClinicReviewsLastYear;        
     }    
     
-    public boolean ClinicalRecord.getBpMedications() {    
+    public boolean ClinicalRecord.isBpMedications() {    
         return this.bpMedications;        
     }    
     
@@ -98,31 +114,31 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.bpMedications = bpMedications;        
     }    
     
-    public boolean ClinicalRecord.getACE_ARB() {    
-        return this.ACE_ARB;        
+    public boolean ClinicalRecord.isAcearb() {    
+        return this.acearb;        
     }    
     
-    public void ClinicalRecord.setACE_ARB(boolean ACE_ARB) {    
-        this.ACE_ARB = ACE_ARB;        
+    public void ClinicalRecord.setAcearb(boolean acearb) {    
+        this.acearb = acearb;        
     }    
     
-    public java.lang.String ClinicalRecord.getBpMedicationsOther() {    
+    public String ClinicalRecord.getBpMedicationsOther() {    
         return this.bpMedicationsOther;        
     }    
     
-    public void ClinicalRecord.setBpMedicationsOther(java.lang.String bpMedicationsOther) {    
+    public void ClinicalRecord.setBpMedicationsOther(String bpMedicationsOther) {    
         this.bpMedicationsOther = bpMedicationsOther;        
     }    
     
-    public java.lang.String ClinicalRecord.getOtherTreatments() {    
+    public String ClinicalRecord.getOtherTreatments() {    
         return this.otherTreatments;        
     }    
     
-    public void ClinicalRecord.setOtherTreatments(java.lang.String otherTreatments) {    
+    public void ClinicalRecord.setOtherTreatments(String otherTreatments) {    
         this.otherTreatments = otherTreatments;        
     }    
     
-    public boolean ClinicalRecord.getLaserRxInLast12Months() {    
+    public boolean ClinicalRecord.isLaserRxInLast12Months() {    
         return this.LaserRxInLast12Months;        
     }    
     
@@ -138,47 +154,47 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.weightKG = weightKG;        
     }    
     
-    public java.lang.Integer ClinicalRecord.getHeightCM() {    
+    public Integer ClinicalRecord.getHeightCM() {    
         return this.heightCM;        
     }    
     
-    public void ClinicalRecord.setHeightCM(java.lang.Integer heightCM) {    
+    public void ClinicalRecord.setHeightCM(Integer heightCM) {    
         this.heightCM = heightCM;        
     }    
     
-    public java.lang.Integer ClinicalRecord.getBloodPressureSystolicMMHg() {    
+    public Integer ClinicalRecord.getBloodPressureSystolicMMHg() {    
         return this.bloodPressureSystolicMMHg;        
     }    
     
-    public void ClinicalRecord.setBloodPressureSystolicMMHg(java.lang.Integer bloodPressureSystolicMMHg) {    
+    public void ClinicalRecord.setBloodPressureSystolicMMHg(Integer bloodPressureSystolicMMHg) {    
         this.bloodPressureSystolicMMHg = bloodPressureSystolicMMHg;        
     }    
     
-    public java.lang.Integer ClinicalRecord.getBloodPressureDiastolicMMHg() {    
+    public Integer ClinicalRecord.getBloodPressureDiastolicMMHg() {    
         return this.bloodPressureDiastolicMMHg;        
     }    
     
-    public void ClinicalRecord.setBloodPressureDiastolicMMHg(java.lang.Integer bloodPressureDiastolicMMHg) {    
+    public void ClinicalRecord.setBloodPressureDiastolicMMHg(Integer bloodPressureDiastolicMMHg) {    
         this.bloodPressureDiastolicMMHg = bloodPressureDiastolicMMHg;        
     }    
     
-    public java.util.Date ClinicalRecord.getDateOfMeasurement() {    
+    public Date ClinicalRecord.getDateOfMeasurement() {    
         return this.dateOfMeasurement;        
     }    
     
-    public void ClinicalRecord.setDateOfMeasurement(java.util.Date dateOfMeasurement) {    
+    public void ClinicalRecord.setDateOfMeasurement(Date dateOfMeasurement) {    
         this.dateOfMeasurement = dateOfMeasurement;        
     }    
     
-    public java.lang.Integer ClinicalRecord.getAge() {    
+    public Integer ClinicalRecord.getAge() {    
         return this.age;        
     }    
     
-    public void ClinicalRecord.setAge(java.lang.Integer age) {    
+    public void ClinicalRecord.setAge(Integer age) {    
         this.age = age;        
     }    
     
-    public boolean ClinicalRecord.getHasPersistentHypertension() {    
+    public boolean ClinicalRecord.isHasPersistentHypertension() {    
         return this.hasPersistentHypertension;        
     }    
     
@@ -186,7 +202,7 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.hasPersistentHypertension = hasPersistentHypertension;        
     }    
     
-    public boolean ClinicalRecord.getHasPubertyTannerB2_P2orGreater() {    
+    public boolean ClinicalRecord.isHasPubertyTannerB2_P2orGreater() {    
         return this.hasPubertyTannerB2_P2orGreater;        
     }    
     
@@ -194,7 +210,7 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.hasPubertyTannerB2_P2orGreater = hasPubertyTannerB2_P2orGreater;        
     }    
     
-    public boolean ClinicalRecord.getMenarche() {    
+    public boolean ClinicalRecord.isMenarche() {    
         return this.menarche;        
     }    
     
@@ -202,15 +218,15 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.menarche = menarche;        
     }    
     
-    public java.util.Date ClinicalRecord.getIfMenarcheAge() {    
+    public Date ClinicalRecord.getIfMenarcheAge() {    
         return this.ifMenarcheAge;        
     }    
     
-    public void ClinicalRecord.setIfMenarcheAge(java.util.Date ifMenarcheAge) {    
+    public void ClinicalRecord.setIfMenarcheAge(Date ifMenarcheAge) {    
         this.ifMenarcheAge = ifMenarcheAge;        
     }    
     
-    public boolean ClinicalRecord.getEyesExaminedInLastYear() {    
+    public boolean ClinicalRecord.isEyesExaminedInLastYear() {    
         return this.eyesExaminedInLastYear;        
     }    
     
@@ -218,31 +234,31 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.eyesExaminedInLastYear = eyesExaminedInLastYear;        
     }    
     
-    public org.lifeforachild.domain.YesNoUnkownType ClinicalRecord.getCateract() {    
+    public YesNoUnkownType ClinicalRecord.getCateract() {    
         return this.cateract;        
     }    
     
-    public void ClinicalRecord.setCateract(org.lifeforachild.domain.YesNoUnkownType cateract) {    
+    public void ClinicalRecord.setCateract(YesNoUnkownType cateract) {    
         this.cateract = cateract;        
     }    
     
-    public java.lang.String ClinicalRecord.getVisualAcuityRight() {    
+    public String ClinicalRecord.getVisualAcuityRight() {    
         return this.visualAcuityRight;        
     }    
     
-    public void ClinicalRecord.setVisualAcuityRight(java.lang.String visualAcuityRight) {    
+    public void ClinicalRecord.setVisualAcuityRight(String visualAcuityRight) {    
         this.visualAcuityRight = visualAcuityRight;        
     }    
     
-    public java.lang.String ClinicalRecord.getVisualAcuityLeft() {    
+    public String ClinicalRecord.getVisualAcuityLeft() {    
         return this.visualAcuityLeft;        
     }    
     
-    public void ClinicalRecord.setVisualAcuityLeft(java.lang.String visualAcuityLeft) {    
+    public void ClinicalRecord.setVisualAcuityLeft(String visualAcuityLeft) {    
         this.visualAcuityLeft = visualAcuityLeft;        
     }    
     
-    public boolean ClinicalRecord.getFeetExaminedInLastYear() {    
+    public boolean ClinicalRecord.isFeetExaminedInLastYear() {    
         return this.feetExaminedInLastYear;        
     }    
     
@@ -250,7 +266,7 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.feetExaminedInLastYear = feetExaminedInLastYear;        
     }    
     
-    public boolean ClinicalRecord.getMonofilamentTested() {    
+    public boolean ClinicalRecord.isMonofilamentTested() {    
         return this.monofilamentTested;        
     }    
     
@@ -258,7 +274,7 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.monofilamentTested = monofilamentTested;        
     }    
     
-    public boolean ClinicalRecord.getMonofilamentAbnormal() {    
+    public boolean ClinicalRecord.isMonofilamentAbnormal() {    
         return this.monofilamentAbnormal;        
     }    
     
@@ -266,7 +282,7 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.monofilamentAbnormal = monofilamentAbnormal;        
     }    
     
-    public boolean ClinicalRecord.getTuningForkTested() {    
+    public boolean ClinicalRecord.isTuningForkTested() {    
         return this.tuningForkTested;        
     }    
     
@@ -274,7 +290,7 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.tuningForkTested = tuningForkTested;        
     }    
     
-    public boolean ClinicalRecord.getTuningForkAbnormal() {    
+    public boolean ClinicalRecord.isTuningForkAbnormal() {    
         return this.tuningForkAbnormal;        
     }    
     
@@ -282,11 +298,11 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.tuningForkAbnormal = tuningForkAbnormal;        
     }    
     
-    public org.lifeforachild.domain.YesNoLaterType ClinicalRecord.getLastHbA1cInLast12Months() {    
+    public YesNoLaterType ClinicalRecord.getLastHbA1cInLast12Months() {    
         return this.lastHbA1cInLast12Months;        
     }    
     
-    public void ClinicalRecord.setLastHbA1cInLast12Months(org.lifeforachild.domain.YesNoLaterType lastHbA1cInLast12Months) {    
+    public void ClinicalRecord.setLastHbA1cInLast12Months(YesNoLaterType lastHbA1cInLast12Months) {    
         this.lastHbA1cInLast12Months = lastHbA1cInLast12Months;        
     }    
     
@@ -298,19 +314,19 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.hbA1cPercentage = hbA1cPercentage;        
     }    
     
-    public org.lifeforachild.domain.HbA1cMethodType ClinicalRecord.getHbA1cMethod() {    
+    public HbA1cMethodType ClinicalRecord.getHbA1cMethod() {    
         return this.hbA1cMethod;        
     }    
     
-    public void ClinicalRecord.setHbA1cMethod(org.lifeforachild.domain.HbA1cMethodType hbA1cMethod) {    
+    public void ClinicalRecord.setHbA1cMethod(HbA1cMethodType hbA1cMethod) {    
         this.hbA1cMethod = hbA1cMethod;        
     }    
     
-    public java.lang.String ClinicalRecord.getHbA1cMethodOther() {    
+    public String ClinicalRecord.getHbA1cMethodOther() {    
         return this.hbA1cMethodOther;        
     }    
     
-    public void ClinicalRecord.setHbA1cMethodOther(java.lang.String hbA1cMethodOther) {    
+    public void ClinicalRecord.setHbA1cMethodOther(String hbA1cMethodOther) {    
         this.hbA1cMethodOther = hbA1cMethodOther;        
     }    
     
@@ -322,19 +338,19 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.microalbuminuriaValue = microalbuminuriaValue;        
     }    
     
-    public org.lifeforachild.domain.MicroalbuminuriaUnitsType ClinicalRecord.getMicroalbuminuriaUnitOfMeasure() {    
+    public MicroalbuminuriaUnitsType ClinicalRecord.getMicroalbuminuriaUnitOfMeasure() {    
         return this.microalbuminuriaUnitOfMeasure;        
     }    
     
-    public void ClinicalRecord.setMicroalbuminuriaUnitOfMeasure(org.lifeforachild.domain.MicroalbuminuriaUnitsType microalbuminuriaUnitOfMeasure) {    
+    public void ClinicalRecord.setMicroalbuminuriaUnitOfMeasure(MicroalbuminuriaUnitsType microalbuminuriaUnitOfMeasure) {    
         this.microalbuminuriaUnitOfMeasure = microalbuminuriaUnitOfMeasure;        
     }    
     
-    public java.lang.String ClinicalRecord.getProteinuria_dipstick_other() {    
+    public String ClinicalRecord.getProteinuria_dipstick_other() {    
         return this.Proteinuria_dipstick_other;        
     }    
     
-    public void ClinicalRecord.setProteinuria_dipstick_other(java.lang.String Proteinuria_dipstick_other) {    
+    public void ClinicalRecord.setProteinuria_dipstick_other(String Proteinuria_dipstick_other) {    
         this.Proteinuria_dipstick_other = Proteinuria_dipstick_other;        
     }    
     
@@ -346,11 +362,11 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.creatinineValue = creatinineValue;        
     }    
     
-    public org.lifeforachild.domain.CreatineUnitsType ClinicalRecord.getCreatinineUnits() {    
+    public CreatineUnitsType ClinicalRecord.getCreatinineUnits() {    
         return this.creatinineUnits;        
     }    
     
-    public void ClinicalRecord.setCreatinineUnits(org.lifeforachild.domain.CreatineUnitsType creatinineUnits) {    
+    public void ClinicalRecord.setCreatinineUnits(CreatineUnitsType creatinineUnits) {    
         this.creatinineUnits = creatinineUnits;        
     }    
     
@@ -362,11 +378,11 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.totalCholesterolValue = totalCholesterolValue;        
     }    
     
-    public org.lifeforachild.domain.MG_OR_MMOL_Type ClinicalRecord.getCholesterolUnits() {    
+    public MG_OR_MMOL_Type ClinicalRecord.getCholesterolUnits() {    
         return this.cholesterolUnits;        
     }    
     
-    public void ClinicalRecord.setCholesterolUnits(org.lifeforachild.domain.MG_OR_MMOL_Type cholesterolUnits) {    
+    public void ClinicalRecord.setCholesterolUnits(MG_OR_MMOL_Type cholesterolUnits) {    
         this.cholesterolUnits = cholesterolUnits;        
     }    
     
@@ -378,11 +394,11 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.hdlCholesterolValue = hdlCholesterolValue;        
     }    
     
-    public org.lifeforachild.domain.MG_OR_MMOL_Type ClinicalRecord.getHdlUnits() {    
+    public MG_OR_MMOL_Type ClinicalRecord.getHdlUnits() {    
         return this.hdlUnits;        
     }    
     
-    public void ClinicalRecord.setHdlUnits(org.lifeforachild.domain.MG_OR_MMOL_Type hdlUnits) {    
+    public void ClinicalRecord.setHdlUnits(MG_OR_MMOL_Type hdlUnits) {    
         this.hdlUnits = hdlUnits;        
     }    
     
@@ -394,23 +410,23 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.triglyceridesValue = triglyceridesValue;        
     }    
     
-    public org.lifeforachild.domain.MG_OR_MMOL_Type ClinicalRecord.getTriglyceridesUnits() {    
+    public MG_OR_MMOL_Type ClinicalRecord.getTriglyceridesUnits() {    
         return this.triglyceridesUnits;        
     }    
     
-    public void ClinicalRecord.setTriglyceridesUnits(org.lifeforachild.domain.MG_OR_MMOL_Type triglyceridesUnits) {    
+    public void ClinicalRecord.setTriglyceridesUnits(MG_OR_MMOL_Type triglyceridesUnits) {    
         this.triglyceridesUnits = triglyceridesUnits;        
     }    
     
-    public org.lifeforachild.domain.YesNoUnkownType ClinicalRecord.getFasted() {    
+    public YesNoUnkownType ClinicalRecord.getFasted() {    
         return this.fasted;        
     }    
     
-    public void ClinicalRecord.setFasted(org.lifeforachild.domain.YesNoUnkownType fasted) {    
+    public void ClinicalRecord.setFasted(YesNoUnkownType fasted) {    
         this.fasted = fasted;        
     }    
     
-    public boolean ClinicalRecord.getAttendingSchool() {    
+    public boolean ClinicalRecord.isAttendingSchool() {    
         return this.attendingSchool;        
     }    
     
@@ -418,15 +434,15 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.attendingSchool = attendingSchool;        
     }    
     
-    public org.lifeforachild.domain.NotAttendingSchoolReasonType ClinicalRecord.getNotAttendingSchoolWhy() {    
+    public NotAttendingSchoolReasonType ClinicalRecord.getNotAttendingSchoolWhy() {    
         return this.notAttendingSchoolWhy;        
     }    
     
-    public void ClinicalRecord.setNotAttendingSchoolWhy(org.lifeforachild.domain.NotAttendingSchoolReasonType notAttendingSchoolWhy) {    
+    public void ClinicalRecord.setNotAttendingSchoolWhy(NotAttendingSchoolReasonType notAttendingSchoolWhy) {    
         this.notAttendingSchoolWhy = notAttendingSchoolWhy;        
     }    
     
-    public boolean ClinicalRecord.getDiabetesLimitingAttendance() {    
+    public boolean ClinicalRecord.isDiabetesLimitingAttendance() {    
         return this.diabetesLimitingAttendance;        
     }    
     
@@ -434,7 +450,7 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.diabetesLimitingAttendance = diabetesLimitingAttendance;        
     }    
     
-    public boolean ClinicalRecord.getAppropriateGradeForAge() {    
+    public boolean ClinicalRecord.isAppropriateGradeForAge() {    
         return this.appropriateGradeForAge;        
     }    
     
@@ -442,107 +458,107 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.appropriateGradeForAge = appropriateGradeForAge;        
     }    
     
-    public org.lifeforachild.domain.DiabetesCopingType ClinicalRecord.getDiabetesCopingAbilities() {    
+    public DiabetesCopingType ClinicalRecord.getDiabetesCopingAbilities() {    
         return this.diabetesCopingAbilities;        
     }    
     
-    public void ClinicalRecord.setDiabetesCopingAbilities(org.lifeforachild.domain.DiabetesCopingType diabetesCopingAbilities) {    
+    public void ClinicalRecord.setDiabetesCopingAbilities(DiabetesCopingType diabetesCopingAbilities) {    
         this.diabetesCopingAbilities = diabetesCopingAbilities;        
     }    
     
-    public java.lang.Integer ClinicalRecord.getNumberOfSevereHypoglycaemiaEpisodes() {    
+    public Integer ClinicalRecord.getNumberOfSevereHypoglycaemiaEpisodes() {    
         return this.numberOfSevereHypoglycaemiaEpisodes;        
     }    
     
-    public void ClinicalRecord.setNumberOfSevereHypoglycaemiaEpisodes(java.lang.Integer numberOfSevereHypoglycaemiaEpisodes) {    
+    public void ClinicalRecord.setNumberOfSevereHypoglycaemiaEpisodes(Integer numberOfSevereHypoglycaemiaEpisodes) {    
         this.numberOfSevereHypoglycaemiaEpisodes = numberOfSevereHypoglycaemiaEpisodes;        
     }    
     
-    public org.lifeforachild.domain.ReasonNotEnteringType ClinicalRecord.getReasonHypoglycaemiaEpisodesNotEntered() {    
+    public ReasonNotEnteringType ClinicalRecord.getReasonHypoglycaemiaEpisodesNotEntered() {    
         return this.reasonHypoglycaemiaEpisodesNotEntered;        
     }    
     
-    public void ClinicalRecord.setReasonHypoglycaemiaEpisodesNotEntered(org.lifeforachild.domain.ReasonNotEnteringType reasonHypoglycaemiaEpisodesNotEntered) {    
+    public void ClinicalRecord.setReasonHypoglycaemiaEpisodesNotEntered(ReasonNotEnteringType reasonHypoglycaemiaEpisodesNotEntered) {    
         this.reasonHypoglycaemiaEpisodesNotEntered = reasonHypoglycaemiaEpisodesNotEntered;        
     }    
     
-    public java.lang.Integer ClinicalRecord.getNumberKetoacidosisEpisodes() {    
+    public Integer ClinicalRecord.getNumberKetoacidosisEpisodes() {    
         return this.numberKetoacidosisEpisodes;        
     }    
     
-    public void ClinicalRecord.setNumberKetoacidosisEpisodes(java.lang.Integer numberKetoacidosisEpisodes) {    
+    public void ClinicalRecord.setNumberKetoacidosisEpisodes(Integer numberKetoacidosisEpisodes) {    
         this.numberKetoacidosisEpisodes = numberKetoacidosisEpisodes;        
     }    
     
-    public org.lifeforachild.domain.ReasonNotEnteringType ClinicalRecord.getReasonKetoacidosisEpisodesNotEntered() {    
+    public ReasonNotEnteringType ClinicalRecord.getReasonKetoacidosisEpisodesNotEntered() {    
         return this.reasonKetoacidosisEpisodesNotEntered;        
     }    
     
-    public void ClinicalRecord.setReasonKetoacidosisEpisodesNotEntered(org.lifeforachild.domain.ReasonNotEnteringType reasonKetoacidosisEpisodesNotEntered) {    
+    public void ClinicalRecord.setReasonKetoacidosisEpisodesNotEntered(ReasonNotEnteringType reasonKetoacidosisEpisodesNotEntered) {    
         this.reasonKetoacidosisEpisodesNotEntered = reasonKetoacidosisEpisodesNotEntered;        
     }    
     
-    public java.lang.Integer ClinicalRecord.getNumberOfHospitalAdmissionsRelatedToDiabetes() {    
+    public Integer ClinicalRecord.getNumberOfHospitalAdmissionsRelatedToDiabetes() {    
         return this.numberOfHospitalAdmissionsRelatedToDiabetes;        
     }    
     
-    public void ClinicalRecord.setNumberOfHospitalAdmissionsRelatedToDiabetes(java.lang.Integer numberOfHospitalAdmissionsRelatedToDiabetes) {    
+    public void ClinicalRecord.setNumberOfHospitalAdmissionsRelatedToDiabetes(Integer numberOfHospitalAdmissionsRelatedToDiabetes) {    
         this.numberOfHospitalAdmissionsRelatedToDiabetes = numberOfHospitalAdmissionsRelatedToDiabetes;        
     }    
     
-    public org.lifeforachild.domain.ReasonNotEnteringType ClinicalRecord.getReasonHospitalAdmissionsNotEntered() {    
+    public ReasonNotEnteringType ClinicalRecord.getReasonHospitalAdmissionsNotEntered() {    
         return this.reasonHospitalAdmissionsNotEntered;        
     }    
     
-    public void ClinicalRecord.setReasonHospitalAdmissionsNotEntered(org.lifeforachild.domain.ReasonNotEnteringType reasonHospitalAdmissionsNotEntered) {    
+    public void ClinicalRecord.setReasonHospitalAdmissionsNotEntered(ReasonNotEnteringType reasonHospitalAdmissionsNotEntered) {    
         this.reasonHospitalAdmissionsNotEntered = reasonHospitalAdmissionsNotEntered;        
     }    
     
-    public java.lang.String ClinicalRecord.getAdditionalComment() {    
+    public String ClinicalRecord.getAdditionalComment() {    
         return this.additionalComment;        
     }    
     
-    public void ClinicalRecord.setAdditionalComment(java.lang.String additionalComment) {    
+    public void ClinicalRecord.setAdditionalComment(String additionalComment) {    
         this.additionalComment = additionalComment;        
     }    
     
-    public org.lifeforachild.domain.User ClinicalRecord.getPersonCompletingForm() {    
+    public User ClinicalRecord.getPersonCompletingForm() {    
         return this.personCompletingForm;        
     }    
     
-    public void ClinicalRecord.setPersonCompletingForm(org.lifeforachild.domain.User personCompletingForm) {    
+    public void ClinicalRecord.setPersonCompletingForm(User personCompletingForm) {    
         this.personCompletingForm = personCompletingForm;        
     }    
     
-    public java.util.Date ClinicalRecord.getDateCompleted() {    
+    public Date ClinicalRecord.getDateCompleted() {    
         return this.dateCompleted;        
     }    
     
-    public void ClinicalRecord.setDateCompleted(java.util.Date dateCompleted) {    
+    public void ClinicalRecord.setDateCompleted(Date dateCompleted) {    
         this.dateCompleted = dateCompleted;        
     }    
     
-    public java.lang.String ClinicalRecord.getSeniorPhysician() {    
+    public String ClinicalRecord.getSeniorPhysician() {    
         return this.seniorPhysician;        
     }    
     
-    public void ClinicalRecord.setSeniorPhysician(java.lang.String seniorPhysician) {    
+    public void ClinicalRecord.setSeniorPhysician(String seniorPhysician) {    
         this.seniorPhysician = seniorPhysician;        
     }    
     
-    public org.lifeforachild.domain.YesNoNAType ClinicalRecord.getLiterate() {    
+    public YesNoNAType ClinicalRecord.getLiterate() {    
         return this.literate;        
     }    
     
-    public void ClinicalRecord.setLiterate(org.lifeforachild.domain.YesNoNAType literate) {    
+    public void ClinicalRecord.setLiterate(YesNoNAType literate) {    
         this.literate = literate;        
     }    
     
-    public org.lifeforachild.domain.Child ClinicalRecord.getChild() {    
+    public Child ClinicalRecord.getChild() {    
         return this.child;        
     }    
     
-    public void ClinicalRecord.setChild(org.lifeforachild.domain.Child child) {    
+    public void ClinicalRecord.setChild(Child child) {    
         this.child = child;        
     }    
     

@@ -1,148 +1,159 @@
 package org.lifeforachild.domain;
 
+import java.lang.String;
+import java.util.Date;
+import org.lifeforachild.domain.ChildFields;
+import org.lifeforachild.domain.ClinicalRecordFields;
+import org.lifeforachild.domain.Country;
+import org.lifeforachild.domain.DiabetesCentre;
+import org.lifeforachild.domain.ReportType;
+import org.lifeforachild.domain.ShowOptionType;
+import org.lifeforachild.domain.StatusType;
+import org.lifeforachild.domain.TimePeriodUnit;
+
 privileged aspect Report_Roo_JavaBean {
     
-    public java.lang.String Report.getName() {    
+    public String Report.getName() {    
         return this.name;        
     }    
     
-    public void Report.setName(java.lang.String name) {    
+    public void Report.setName(String name) {    
         this.name = name;        
     }    
     
-    public org.lifeforachild.domain.ReportType Report.getReporttype() {    
+    public ReportType Report.getReporttype() {    
         return this.reporttype;        
     }    
     
-    public void Report.setReporttype(org.lifeforachild.domain.ReportType reporttype) {    
+    public void Report.setReporttype(ReportType reporttype) {    
         this.reporttype = reporttype;        
     }    
     
-    public org.lifeforachild.domain.StatusType Report.getStatustype() {    
+    public StatusType Report.getStatustype() {    
         return this.statustype;        
     }    
     
-    public void Report.setStatustype(org.lifeforachild.domain.StatusType statustype) {    
+    public void Report.setStatustype(StatusType statustype) {    
         this.statustype = statustype;        
     }    
     
-    public java.lang.String Report.getTimePeriod() {    
+    public String Report.getTimePeriod() {    
         return this.timePeriod;        
     }    
     
-    public void Report.setTimePeriod(java.lang.String timePeriod) {    
+    public void Report.setTimePeriod(String timePeriod) {    
         this.timePeriod = timePeriod;        
     }    
     
-    public org.lifeforachild.domain.TimePeriodUnit Report.getTimeperiodunit() {    
+    public TimePeriodUnit Report.getTimeperiodunit() {    
         return this.timeperiodunit;        
     }    
     
-    public void Report.setTimeperiodunit(org.lifeforachild.domain.TimePeriodUnit timeperiodunit) {    
+    public void Report.setTimeperiodunit(TimePeriodUnit timeperiodunit) {    
         this.timeperiodunit = timeperiodunit;        
     }    
     
-    public java.util.Date Report.getFromDate() {    
+    public Date Report.getFromDate() {    
         return this.fromDate;        
     }    
     
-    public void Report.setFromDate(java.util.Date fromDate) {    
+    public void Report.setFromDate(Date fromDate) {    
         this.fromDate = fromDate;        
     }    
     
-    public java.util.Date Report.getToDate() {    
+    public Date Report.getToDate() {    
         return this.toDate;        
     }    
     
-    public void Report.setToDate(java.util.Date toDate) {    
+    public void Report.setToDate(Date toDate) {    
         this.toDate = toDate;        
     }    
     
-    public org.lifeforachild.domain.ShowOptionType Report.getShowoptiontype() {    
+    public ShowOptionType Report.getShowoptiontype() {    
         return this.showoptiontype;        
     }    
     
-    public void Report.setShowoptiontype(org.lifeforachild.domain.ShowOptionType showoptiontype) {    
+    public void Report.setShowoptiontype(ShowOptionType showoptiontype) {    
         this.showoptiontype = showoptiontype;        
     }    
     
-    public java.lang.String Report.getRecordNumber() {    
+    public String Report.getRecordNumber() {    
         return this.recordNumber;        
     }    
     
-    public void Report.setRecordNumber(java.lang.String recordNumber) {    
+    public void Report.setRecordNumber(String recordNumber) {    
         this.recordNumber = recordNumber;        
     }    
     
-    public java.lang.String Report.getAge() {    
+    public String Report.getAge() {    
         return this.age;        
     }    
     
-    public void Report.setAge(java.lang.String age) {    
+    public void Report.setAge(String age) {    
         this.age = age;        
     }    
     
-    public java.lang.String Report.getWeight() {    
+    public String Report.getWeight() {    
         return this.weight;        
     }    
     
-    public void Report.setWeight(java.lang.String weight) {    
+    public void Report.setWeight(String weight) {    
         this.weight = weight;        
     }    
     
-    public java.lang.String Report.getHeight() {    
+    public String Report.getHeight() {    
         return this.height;        
     }    
     
-    public void Report.setHeight(java.lang.String height) {    
+    public void Report.setHeight(String height) {    
         this.height = height;        
     }    
     
-    public org.lifeforachild.domain.DiabetesCentre Report.getCentre() {    
+    public DiabetesCentre Report.getCentre() {    
         return this.centre;        
     }    
     
-    public void Report.setCentre(org.lifeforachild.domain.DiabetesCentre centre) {    
+    public void Report.setCentre(DiabetesCentre centre) {    
         this.centre = centre;        
     }    
     
-    public org.lifeforachild.domain.Country Report.getCountry() {    
+    public Country Report.getCountry() {    
         return this.country;        
     }    
     
-    public void Report.setCountry(org.lifeforachild.domain.Country country) {    
+    public void Report.setCountry(Country country) {    
         this.country = country;        
     }    
     
-    public org.lifeforachild.domain.ChildFields[] Report.getChildfields() {    
+    public ChildFields[] Report.getChildfields() {    
         return this.childfields;        
     }    
     
-    public void Report.setChildfields(org.lifeforachild.domain.ChildFields[] childfields) {    
+    public void Report.setChildfields(ChildFields[] childfields) {    
         this.childfields = childfields;        
     }    
     
-    public org.lifeforachild.domain.ClinicalRecordFields[] Report.getClinicalrecordfields() {    
+    public ClinicalRecordFields[] Report.getClinicalrecordfields() {    
         return this.clinicalrecordfields;        
     }    
     
-    public void Report.setClinicalrecordfields(org.lifeforachild.domain.ClinicalRecordFields[] clinicalrecordfields) {    
+    public void Report.setClinicalrecordfields(ClinicalRecordFields[] clinicalrecordfields) {    
         this.clinicalrecordfields = clinicalrecordfields;        
     }    
     
-    public java.lang.String Report.getOrderBy() {    
+    public String Report.getOrderBy() {    
         return this.orderBy;        
     }    
     
-    public void Report.setOrderBy(java.lang.String orderBy) {    
+    public void Report.setOrderBy(String orderBy) {    
         this.orderBy = orderBy;        
     }    
     
-    public java.lang.String Report.getThenOrderBy() {    
+    public String Report.getThenOrderBy() {    
         return this.thenOrderBy;        
     }    
     
-    public void Report.setThenOrderBy(java.lang.String thenOrderBy) {    
+    public void Report.setThenOrderBy(String thenOrderBy) {    
         this.thenOrderBy = thenOrderBy;        
     }    
     

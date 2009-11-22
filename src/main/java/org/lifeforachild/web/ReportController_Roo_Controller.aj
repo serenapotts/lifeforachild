@@ -1,85 +1,135 @@
 package org.lifeforachild.web;
 
+import java.lang.Long;
+import java.lang.String;
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
+import org.lifeforachild.domain.ChildFields;
+import org.lifeforachild.domain.ClinicalRecordFields;
+import org.lifeforachild.domain.Country;
+import org.lifeforachild.domain.DiabetesCentre;
+import org.lifeforachild.domain.Report;
+import org.lifeforachild.domain.ReportType;
+import org.lifeforachild.domain.ShowOptionType;
+import org.lifeforachild.domain.StatusType;
+import org.lifeforachild.domain.TimePeriodUnit;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
 privileged aspect ReportController_Roo_Controller {
     
-    @org.springframework.web.bind.annotation.RequestMapping(value = "/report", method = org.springframework.web.bind.annotation.RequestMethod.POST)    
-    public java.lang.String ReportController.create(@org.springframework.web.bind.annotation.ModelAttribute("report") org.lifeforachild.domain.Report report, org.springframework.validation.BindingResult result) {    
+    @RequestMapping(value = "/report", method = RequestMethod.POST)    
+    public String ReportController.create(@ModelAttribute("report") Report report, BindingResult result, ModelMap modelMap) {    
         if (report == null) throw new IllegalArgumentException("A report is required");        
-        for(javax.validation.ConstraintViolation<org.lifeforachild.domain.Report> constraint : javax.validation.Validation.buildDefaultValidatorFactory().getValidator().validate(report)) {        
-            result.rejectValue(constraint.getPropertyPath(), null, constraint.getMessage());            
+        for (ConstraintViolation<Report> constraint : Validation.buildDefaultValidatorFactory().getValidator().validate(report)) {        
+            result.rejectValue(constraint.getPropertyPath().toString(), "report.error." + constraint.getPropertyPath(), constraint.getMessage());            
         }        
         if (result.hasErrors()) {        
+            modelMap.addAllAttributes(result.getAllErrors());            
+            modelMap.addAttribute("report", report);            
+            modelMap.addAttribute("childfields_enum", ChildFields[].class.getEnumConstants());            
+            modelMap.addAttribute("clinicalrecordfields_enum", ClinicalRecordFields[].class.getEnumConstants());            
+            modelMap.addAttribute("countrys", Country.findAllCountrys());            
+            modelMap.addAttribute("diabetescentres", DiabetesCentre.findAllDiabetesCentres());            
+            modelMap.addAttribute("reporttype_enum", ReportType.class.getEnumConstants());            
+            modelMap.addAttribute("showoptiontype_enum", ShowOptionType.class.getEnumConstants());            
+            modelMap.addAttribute("statustype_enum", StatusType.class.getEnumConstants());            
+            modelMap.addAttribute("timeperiodunit_enum", TimePeriodUnit.class.getEnumConstants());            
             return "report/create";            
         }        
         report.persist();        
         return "redirect:/report/" + report.getId();        
     }    
     
-    @org.springframework.web.bind.annotation.RequestMapping(value = "/report/form", method = org.springframework.web.bind.annotation.RequestMethod.GET)    
-    public java.lang.String ReportController.createForm(org.springframework.ui.ModelMap modelMap) {    
-        modelMap.addAttribute("report", new org.lifeforachild.domain.Report());        
-        modelMap.addAttribute("_childfields", org.lifeforachild.domain.ChildFields.class.getEnumConstants());        
-        modelMap.addAttribute("_clinicalrecordfields", org.lifeforachild.domain.ClinicalRecordFields.class.getEnumConstants());        
-        modelMap.addAttribute("countrys", org.lifeforachild.domain.Country.findAllCountrys());        
-        modelMap.addAttribute("diabetescentres", org.lifeforachild.domain.DiabetesCentre.findAllDiabetesCentres());        
-        modelMap.addAttribute("_reporttype", org.lifeforachild.domain.ReportType.class.getEnumConstants());        
-        modelMap.addAttribute("_showoptiontype", org.lifeforachild.domain.ShowOptionType.class.getEnumConstants());        
-        modelMap.addAttribute("_statustype", org.lifeforachild.domain.StatusType.class.getEnumConstants());        
-        modelMap.addAttribute("_timeperiodunit", org.lifeforachild.domain.TimePeriodUnit.class.getEnumConstants());        
+    @RequestMapping(value = "/report/form", method = RequestMethod.GET)    
+    public String ReportController.createForm(ModelMap modelMap) {    
+        modelMap.addAttribute("report", new Report());        
+        modelMap.addAttribute("childfields_enum", ChildFields[].class.getEnumConstants());        
+        modelMap.addAttribute("clinicalrecordfields_enum", ClinicalRecordFields[].class.getEnumConstants());        
+        modelMap.addAttribute("countrys", Country.findAllCountrys());        
+        modelMap.addAttribute("diabetescentres", DiabetesCentre.findAllDiabetesCentres());        
+        modelMap.addAttribute("reporttype_enum", ReportType.class.getEnumConstants());        
+        modelMap.addAttribute("showoptiontype_enum", ShowOptionType.class.getEnumConstants());        
+        modelMap.addAttribute("statustype_enum", StatusType.class.getEnumConstants());        
+        modelMap.addAttribute("timeperiodunit_enum", TimePeriodUnit.class.getEnumConstants());        
         return "report/create";        
     }    
     
-    @org.springframework.web.bind.annotation.RequestMapping(value = "/report/{id}", method = org.springframework.web.bind.annotation.RequestMethod.GET)    
-    public java.lang.String ReportController.show(@org.springframework.web.bind.annotation.PathVariable("id") java.lang.Long id, org.springframework.ui.ModelMap modelMap) {    
+    @RequestMapping(value = "/report/{id}", method = RequestMethod.GET)    
+    public String ReportController.show(@PathVariable("id") Long id, ModelMap modelMap) {    
         if (id == null) throw new IllegalArgumentException("An Identifier is required");        
-        modelMap.addAttribute("report", org.lifeforachild.domain.Report.findReport(id));        
+        modelMap.addAttribute("report", Report.findReport(id));        
         return "report/show";        
     }    
     
-    @org.springframework.web.bind.annotation.RequestMapping(value = "/report", method = org.springframework.web.bind.annotation.RequestMethod.GET)    
-    public java.lang.String ReportController.list(org.springframework.ui.ModelMap modelMap) {    
-        modelMap.addAttribute("reports", org.lifeforachild.domain.Report.findAllReports());        
+    @RequestMapping(value = "/report", method = RequestMethod.GET)    
+    public String ReportController.list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, ModelMap modelMap) {    
+        if (page != null || size != null) {        
+            int sizeNo = size == null ? 10 : size.intValue();            
+            modelMap.addAttribute("reports", Report.findReportEntries(page == null ? 0 : (page.intValue() - 1) * sizeNo, sizeNo));            
+            float nrOfPages = (float) Report.countReports() / sizeNo;            
+            modelMap.addAttribute("maxPages", (int) ((nrOfPages > (int) nrOfPages || nrOfPages == 0.0) ? nrOfPages + 1 : nrOfPages));            
+        } else {        
+            modelMap.addAttribute("reports", Report.findAllReports());            
+        }        
         return "report/list";        
     }    
     
-    @org.springframework.web.bind.annotation.RequestMapping(method = org.springframework.web.bind.annotation.RequestMethod.PUT)    
-    public java.lang.String ReportController.update(@org.springframework.web.bind.annotation.ModelAttribute("report") org.lifeforachild.domain.Report report, org.springframework.validation.BindingResult result) {    
+    @RequestMapping(method = RequestMethod.PUT)    
+    public String ReportController.update(@ModelAttribute("report") Report report, BindingResult result, ModelMap modelMap) {    
         if (report == null) throw new IllegalArgumentException("A report is required");        
-        for(javax.validation.ConstraintViolation<org.lifeforachild.domain.Report> constraint : javax.validation.Validation.buildDefaultValidatorFactory().getValidator().validate(report)) {        
-            result.rejectValue(constraint.getPropertyPath(), null, constraint.getMessage());            
+        for (ConstraintViolation<Report> constraint : Validation.buildDefaultValidatorFactory().getValidator().validate(report)) {        
+            result.rejectValue(constraint.getPropertyPath().toString(), "report.error." + constraint.getPropertyPath(), constraint.getMessage());            
         }        
         if (result.hasErrors()) {        
+            modelMap.addAllAttributes(result.getAllErrors());            
+            modelMap.addAttribute("report", report);            
+            modelMap.addAttribute("childfields_enum", ChildFields[].class.getEnumConstants());            
+            modelMap.addAttribute("clinicalrecordfields_enum", ClinicalRecordFields[].class.getEnumConstants());            
+            modelMap.addAttribute("countrys", Country.findAllCountrys());            
+            modelMap.addAttribute("diabetescentres", DiabetesCentre.findAllDiabetesCentres());            
+            modelMap.addAttribute("reporttype_enum", ReportType.class.getEnumConstants());            
+            modelMap.addAttribute("showoptiontype_enum", ShowOptionType.class.getEnumConstants());            
+            modelMap.addAttribute("statustype_enum", StatusType.class.getEnumConstants());            
+            modelMap.addAttribute("timeperiodunit_enum", TimePeriodUnit.class.getEnumConstants());            
             return "report/update";            
         }        
         report.merge();        
         return "redirect:/report/" + report.getId();        
     }    
     
-    @org.springframework.web.bind.annotation.RequestMapping(value = "/report/{id}/form", method = org.springframework.web.bind.annotation.RequestMethod.GET)    
-    public java.lang.String ReportController.updateForm(@org.springframework.web.bind.annotation.PathVariable("id") java.lang.Long id, org.springframework.ui.ModelMap modelMap) {    
+    @RequestMapping(value = "/report/{id}/form", method = RequestMethod.GET)    
+    public String ReportController.updateForm(@PathVariable("id") Long id, ModelMap modelMap) {    
         if (id == null) throw new IllegalArgumentException("An Identifier is required");        
-        modelMap.addAttribute("report", org.lifeforachild.domain.Report.findReport(id));        
-        modelMap.addAttribute("_childfields", org.lifeforachild.domain.ChildFields.class.getEnumConstants());        
-        modelMap.addAttribute("_clinicalrecordfields", org.lifeforachild.domain.ClinicalRecordFields.class.getEnumConstants());        
-        modelMap.addAttribute("countrys", org.lifeforachild.domain.Country.findAllCountrys());        
-        modelMap.addAttribute("diabetescentres", org.lifeforachild.domain.DiabetesCentre.findAllDiabetesCentres());        
-        modelMap.addAttribute("_reporttype", org.lifeforachild.domain.ReportType.class.getEnumConstants());        
-        modelMap.addAttribute("_showoptiontype", org.lifeforachild.domain.ShowOptionType.class.getEnumConstants());        
-        modelMap.addAttribute("_statustype", org.lifeforachild.domain.StatusType.class.getEnumConstants());        
-        modelMap.addAttribute("_timeperiodunit", org.lifeforachild.domain.TimePeriodUnit.class.getEnumConstants());        
+        modelMap.addAttribute("report", Report.findReport(id));        
+        modelMap.addAttribute("childfields_enum", ChildFields[].class.getEnumConstants());        
+        modelMap.addAttribute("clinicalrecordfields_enum", ClinicalRecordFields[].class.getEnumConstants());        
+        modelMap.addAttribute("countrys", Country.findAllCountrys());        
+        modelMap.addAttribute("diabetescentres", DiabetesCentre.findAllDiabetesCentres());        
+        modelMap.addAttribute("reporttype_enum", ReportType.class.getEnumConstants());        
+        modelMap.addAttribute("showoptiontype_enum", ShowOptionType.class.getEnumConstants());        
+        modelMap.addAttribute("statustype_enum", StatusType.class.getEnumConstants());        
+        modelMap.addAttribute("timeperiodunit_enum", TimePeriodUnit.class.getEnumConstants());        
         return "report/update";        
     }    
     
-    @org.springframework.web.bind.annotation.RequestMapping(value = "/report/{id}", method = org.springframework.web.bind.annotation.RequestMethod.DELETE)    
-    public java.lang.String ReportController.delete(@org.springframework.web.bind.annotation.PathVariable("id") java.lang.Long id) {    
+    @RequestMapping(value = "/report/{id}", method = RequestMethod.DELETE)    
+    public String ReportController.delete(@PathVariable("id") Long id) {    
         if (id == null) throw new IllegalArgumentException("An Identifier is required");        
-        org.lifeforachild.domain.Report.findReport(id).remove();        
+        Report.findReport(id).remove();        
         return "redirect:/report";        
     }    
     
-    @org.springframework.web.bind.annotation.InitBinder    
-    public void ReportController.initBinder(org.springframework.web.bind.WebDataBinder binder) {    
-        binder.registerCustomEditor(java.util.Date.class, new org.springframework.beans.propertyeditors.CustomDateEditor(new java.text.SimpleDateFormat("d/MM/yyyy"), false));        
+    @InitBinder    
+    public void ReportController.initBinder(WebDataBinder binder) {    
+        binder.registerCustomEditor(java.util.Date.class, new org.springframework.beans.propertyeditors.CustomDateEditor(new java.text.SimpleDateFormat("d/MM/yy"), true));        
     }    
     
 }

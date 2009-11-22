@@ -53,6 +53,7 @@ public class Child {
     @Temporal(TemporalType.DATE)
     private Date dateOfDeath;
 
+    @NotNull
     private CauseOfDeathType causeOfDeath;
 
     @Size(max = 60)
@@ -70,6 +71,7 @@ public class Child {
     @Temporal(TemporalType.DATE)
     private Date insulinSince;
 
+    @NotNull
     private DiabetesType diabetesType;
 
     @NotNull
@@ -82,6 +84,7 @@ public class Child {
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedOn;
 
+    @NotNull
     private DistanceType distanceLivesFromCentre;
 
     public float calculatedAgeAtDiabetesDiagnosis() {
@@ -91,6 +94,10 @@ public class Child {
     @OneToMany(cascade = CascadeType.ALL)
     private Set<ClinicalRecord> clinicalRecords = new HashSet<ClinicalRecord>();
 
+    public static java.util.List<Child> findChildren(String query) {    
+        return entityManager().createQuery(query).getResultList();        
+    }    
+    
     public static java.util.List<Child> findChildren(Search search) {  
     	return ChildQuery.getQuery(entityManager(), search);
         //return entityManager().createQuery(query).getResultList();        

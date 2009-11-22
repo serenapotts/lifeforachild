@@ -1,28 +1,31 @@
 package org.lifeforachild.domain;
 
+import java.lang.String;
+import org.lifeforachild.domain.Country;
+
 privileged aspect DiabetesCentre_Roo_JavaBean {
     
-    public java.lang.String DiabetesCentre.getName() {    
+    public String DiabetesCentre.getName() {    
         return this.name;        
     }    
     
-    public void DiabetesCentre.setName(java.lang.String name) {    
+    public void DiabetesCentre.setName(String name) {    
         this.name = name;        
     }    
     
-    public java.lang.String DiabetesCentre.getAddress() {    
+    public String DiabetesCentre.getAddress() {    
         return this.address;        
     }    
     
-    public void DiabetesCentre.setAddress(java.lang.String address) {    
+    public void DiabetesCentre.setAddress(String address) {    
         this.address = address;        
     }    
     
-    public org.lifeforachild.domain.Country DiabetesCentre.getCountry() {    
+    public Country DiabetesCentre.getCountry() {    
         return this.country;        
     }    
     
-    public void DiabetesCentre.setCountry(org.lifeforachild.domain.Country country) {    
+    public void DiabetesCentre.setCountry(Country country) {    
         this.country = country;        
     }    
     

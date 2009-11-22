@@ -1,42 +1,55 @@
 package org.lifeforachild.domain;
 
+import java.lang.Integer;
+import java.lang.Long;
+import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.EntityManager;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Version;
+import org.lifeforachild.domain.ClinicalRecord;
+import org.springframework.transaction.annotation.Transactional;
+
 privileged aspect ClinicalRecord_Roo_Entity {
     
-    @javax.persistence.PersistenceContext    
-    transient javax.persistence.EntityManager ClinicalRecord.entityManager;    
+    @PersistenceContext    
+    transient EntityManager ClinicalRecord.entityManager;    
     
-    @javax.persistence.Id    
-    @javax.persistence.GeneratedValue(strategy = javax.persistence.GenerationType.AUTO)    
-    @javax.persistence.Column(name = "id")    
-    private java.lang.Long ClinicalRecord.id;    
+    @Id    
+    @GeneratedValue(strategy = GenerationType.AUTO)    
+    @Column(name = "id")    
+    private Long ClinicalRecord.id;    
     
-    @javax.persistence.Version    
-    @javax.persistence.Column(name = "version")    
-    private java.lang.Integer ClinicalRecord.version;    
+    @Version    
+    @Column(name = "version")    
+    private Integer ClinicalRecord.version;    
     
-    public java.lang.Long ClinicalRecord.getId() {    
+    public Long ClinicalRecord.getId() {    
         return this.id;        
     }    
     
-    public void ClinicalRecord.setId(java.lang.Long id) {    
+    public void ClinicalRecord.setId(Long id) {    
         this.id = id;        
     }    
     
-    public java.lang.Integer ClinicalRecord.getVersion() {    
+    public Integer ClinicalRecord.getVersion() {    
         return this.version;        
     }    
     
-    public void ClinicalRecord.setVersion(java.lang.Integer version) {    
+    public void ClinicalRecord.setVersion(Integer version) {    
         this.version = version;        
     }    
     
-    @org.springframework.transaction.annotation.Transactional    
+    @Transactional    
     public void ClinicalRecord.persist() {    
         if (this.entityManager == null) this.entityManager = entityManager();        
         this.entityManager.persist(this);        
     }    
     
-    @org.springframework.transaction.annotation.Transactional    
+    @Transactional    
     public void ClinicalRecord.remove() {    
         if (this.entityManager == null) this.entityManager = entityManager();        
         if (this.entityManager.contains(this)) {        
@@ -47,13 +60,13 @@ privileged aspect ClinicalRecord_Roo_Entity {
         }        
     }    
     
-    @org.springframework.transaction.annotation.Transactional    
+    @Transactional    
     public void ClinicalRecord.flush() {    
         if (this.entityManager == null) this.entityManager = entityManager();        
         this.entityManager.flush();        
     }    
     
-    @org.springframework.transaction.annotation.Transactional    
+    @Transactional    
     public void ClinicalRecord.merge() {    
         if (this.entityManager == null) this.entityManager = entityManager();        
         ClinicalRecord merged = this.entityManager.merge(this);        
@@ -61,8 +74,8 @@ privileged aspect ClinicalRecord_Roo_Entity {
         this.id = merged.getId();        
     }    
     
-    public static javax.persistence.EntityManager ClinicalRecord.entityManager() {    
-        javax.persistence.EntityManager em = new ClinicalRecord().entityManager;        
+    public static final EntityManager ClinicalRecord.entityManager() {    
+        EntityManager em = new ClinicalRecord().entityManager;        
         if (em == null) throw new IllegalStateException("Entity manager has not been injected (is the Spring Aspects JAR configured as an AJC/AJDT aspects library?)");        
         return em;        
     }    
@@ -71,16 +84,16 @@ privileged aspect ClinicalRecord_Roo_Entity {
         return (Long) entityManager().createQuery("select count(o) from ClinicalRecord o").getSingleResult();        
     }    
     
-    public static java.util.List<org.lifeforachild.domain.ClinicalRecord> ClinicalRecord.findAllClinicalRecords() {    
+    public static List<ClinicalRecord> ClinicalRecord.findAllClinicalRecords() {    
         return entityManager().createQuery("select o from ClinicalRecord o").getResultList();        
     }    
     
-    public static org.lifeforachild.domain.ClinicalRecord ClinicalRecord.findClinicalRecord(java.lang.Long id) {    
+    public static ClinicalRecord ClinicalRecord.findClinicalRecord(Long id) {    
         if (id == null) throw new IllegalArgumentException("An identifier is required to retrieve an instance of ClinicalRecord");        
         return entityManager().find(ClinicalRecord.class, id);        
     }    
     
-    public static java.util.List<org.lifeforachild.domain.ClinicalRecord> ClinicalRecord.findClinicalRecordEntries(int firstResult, int maxResults) {    
+    public static List<ClinicalRecord> ClinicalRecord.findClinicalRecordEntries(int firstResult, int maxResults) {    
         return entityManager().createQuery("select o from ClinicalRecord o").setFirstResult(firstResult).setMaxResults(maxResults).getResultList();        
     }    
     

@@ -1,12 +1,14 @@
 package org.lifeforachild.domain;
 
+import java.lang.String;
+
 privileged aspect User_Roo_ToString {
     
-    public java.lang.String User.toString() {    
+    public String User.toString() {    
         StringBuilder sb = new StringBuilder();        
-        sb.append("id: ").append(getId()).append(", ");        
-        sb.append("version: ").append(getVersion()).append(", ");        
-        sb.append("name: ").append(getName());        
+        sb.append("Id: ").append(getId()).append(", ");        
+        sb.append("Version: ").append(getVersion()).append(", ");        
+        sb.append("Name: ").append(getName());        
         return sb.toString();        
     }    
     

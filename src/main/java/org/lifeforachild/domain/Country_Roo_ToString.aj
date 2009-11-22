@@ -1,13 +1,15 @@
 package org.lifeforachild.domain;
 
+import java.lang.String;
+
 privileged aspect Country_Roo_ToString {
     
-    public java.lang.String Country.toString() {    
+    public String Country.toString() {    
         StringBuilder sb = new StringBuilder();        
-        sb.append("id: ").append(getId()).append(", ");        
-        sb.append("version: ").append(getVersion()).append(", ");        
-        sb.append("name: ").append(getName()).append(", ");        
-        sb.append("diabetesCentres: ").append(getDiabetesCentres() == null ? "null" : getDiabetesCentres().size());        
+        sb.append("Id: ").append(getId()).append(", ");        
+        sb.append("Version: ").append(getVersion()).append(", ");        
+        sb.append("Name: ").append(getName()).append(", ");        
+        sb.append("DiabetesCentres: ").append(getDiabetesCentres() == null ? "null" : getDiabetesCentres().size());        
         return sb.toString();        
     }    
     

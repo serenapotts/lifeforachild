@@ -63,7 +63,7 @@ public class ClinicalRecord {
 
     private boolean bpMedications;
 
-    private boolean ACE_ARB;
+    private boolean acearb;
 
     @Size(max = 30)
     private String bpMedicationsOther;
@@ -112,6 +112,7 @@ public class ClinicalRecord {
 
     private boolean eyesExaminedInLastYear;
 
+    @NotNull
     private YesNoUnkownType cateract;
 
     @Size(max = 20)
@@ -135,6 +136,7 @@ public class ClinicalRecord {
     
     private float hbA1cPercentage;
 
+    @NotNull
     private HbA1cMethodType hbA1cMethod;
 
     @Size(max = 30)
@@ -142,26 +144,32 @@ public class ClinicalRecord {
 
     private float microalbuminuriaValue;
 
+    @NotNull
     private MicroalbuminuriaUnitsType microalbuminuriaUnitOfMeasure;
 
     private String Proteinuria_dipstick_other;
 
     private float creatinineValue;
 
+    @NotNull
     private CreatineUnitsType creatinineUnits;
 
     private float totalCholesterolValue;
 
+    @NotNull
     private MG_OR_MMOL_Type cholesterolUnits;
 
     private float hdlCholesterolValue;
 
+    @NotNull
     private MG_OR_MMOL_Type hdlUnits;
 
     private float triglyceridesValue;
 
+    @NotNull
     private MG_OR_MMOL_Type triglyceridesUnits;
 
+    @NotNull
     private YesNoUnkownType fasted;
 
     private boolean attendingSchool;
@@ -173,24 +181,28 @@ public class ClinicalRecord {
 
     private boolean appropriateGradeForAge;
 
+    @NotNull
     private DiabetesCopingType diabetesCopingAbilities;
 
     @Min(0L)
     @Max(20L)    
     private Integer numberOfSevereHypoglycaemiaEpisodes;
 
+    @NotNull
     ReasonNotEnteringType reasonHypoglycaemiaEpisodesNotEntered;
 
     @Min(0L)
     @Max(10L)     
     private Integer numberKetoacidosisEpisodes;
 
+    @NotNull
     ReasonNotEnteringType reasonKetoacidosisEpisodesNotEntered;
     
     @Min(0L)
     @Max(15L)  
     private Integer numberOfHospitalAdmissionsRelatedToDiabetes;
 
+    @NotNull
     ReasonNotEnteringType reasonHospitalAdmissionsNotEntered;
 
     @Size(max = 100)
@@ -207,6 +219,7 @@ public class ClinicalRecord {
     @Size(max = 30)
     private String seniorPhysician;
 
+    @NotNull
     private YesNoNAType literate;
 
     public float calculatedAge() {
