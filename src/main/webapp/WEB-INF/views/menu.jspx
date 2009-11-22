@@ -1,109 +1,4 @@
 <ul xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:spring="http://www.springframework.org/tags" id="roo_menu">
-<li id="web_mvc_jsp_user_category">
-        <h2>
-            <spring:message code="menu.category.user.label"/>
-        </h2>
-        <ul>
-            <li id="web_mvc_jsp_create_user_menu_item">
-                <spring:url value="/user/form" var="web_mvc_jsp_create_user_menu_item_url"/>
-                <a href="${web_mvc_jsp_create_user_menu_item_url}">
-                    <spring:message code="label.user" var="label_user"/>
-                    <spring:message arguments="${label_user}" code="global.menu.new"/>
-                </a>
-            </li>
-        <li id="web_mvc_jsp_list_user_menu_item">
-                <spring:url value="/user?page=${empty param.page ? 1 : param.page}&amp;amp;size=${empty param.size ? 10 : param.size}" var="web_mvc_jsp_list_user_menu_item_url"/>
-                <a href="${web_mvc_jsp_list_user_menu_item_url}">
-                    <spring:message code="label.users" var="label_users"/>
-                    <spring:message arguments="${label_users}" code="global.menu.list"/>
-                </a>
-            </li>
-        </ul>
-    </li>
-<li id="web_mvc_jsp_diabetescentre_category">
-        <h2>
-            <spring:message code="menu.category.diabetescentre.label"/>
-        </h2>
-        <ul>
-            <li id="web_mvc_jsp_create_diabetescentre_menu_item">
-                <spring:url value="/diabetescentre/form" var="web_mvc_jsp_create_diabetescentre_menu_item_url"/>
-                <a href="${web_mvc_jsp_create_diabetescentre_menu_item_url}">
-                    <spring:message code="label.diabetescentre" var="label_diabetescentre"/>
-                    <spring:message arguments="${label_diabetescentre}" code="global.menu.new"/>
-                </a>
-            </li>
-        <li id="web_mvc_jsp_list_diabetescentre_menu_item">
-                <spring:url value="/diabetescentre?page=${empty param.page ? 1 : param.page}&amp;amp;size=${empty param.size ? 10 : param.size}" var="web_mvc_jsp_list_diabetescentre_menu_item_url"/>
-                <a href="${web_mvc_jsp_list_diabetescentre_menu_item_url}">
-                    <spring:message code="label.diabetescentres" var="label_diabetescentres"/>
-                    <spring:message arguments="${label_diabetescentres}" code="global.menu.list"/>
-                </a>
-            </li>
-        </ul>
-    </li>
-<li id="web_mvc_jsp_pant_category">
-        <h2>
-            <spring:message code="menu.category.pant.label"/>
-        </h2>
-        <ul>
-            <li id="web_mvc_jsp_create_pant_menu_item">
-                <spring:url value="/pant/form" var="web_mvc_jsp_create_pant_menu_item_url"/>
-                <a href="${web_mvc_jsp_create_pant_menu_item_url}">
-                    <spring:message code="label.pant" var="label_pant"/>
-                    <spring:message arguments="${label_pant}" code="global.menu.new"/>
-                </a>
-            </li>
-        <li id="web_mvc_jsp_list_pant_menu_item">
-                <spring:url value="/pant?page=${empty param.page ? 1 : param.page}&amp;amp;size=${empty param.size ? 10 : param.size}" var="web_mvc_jsp_list_pant_menu_item_url"/>
-                <a href="${web_mvc_jsp_list_pant_menu_item_url}">
-                    <spring:message code="label.pants" var="label_pants"/>
-                    <spring:message arguments="${label_pants}" code="global.menu.list"/>
-                </a>
-            </li>
-        </ul>
-    </li>
-<li id="web_mvc_jsp_report_category">
-        <h2>
-            <spring:message code="menu.category.report.label"/>
-        </h2>
-        <ul>
-            <li id="web_mvc_jsp_create_report_menu_item">
-                <spring:url value="/report/form" var="web_mvc_jsp_create_report_menu_item_url"/>
-                <a href="${web_mvc_jsp_create_report_menu_item_url}">
-                    <spring:message code="label.report" var="label_report"/>
-                    <spring:message arguments="${label_report}" code="global.menu.new"/>
-                </a>
-            </li>
-        <li id="web_mvc_jsp_list_report_menu_item">
-                <spring:url value="/report?page=${empty param.page ? 1 : param.page}&amp;amp;size=${empty param.size ? 10 : param.size}" var="web_mvc_jsp_list_report_menu_item_url"/>
-                <a href="${web_mvc_jsp_list_report_menu_item_url}">
-                    <spring:message code="label.reports" var="label_reports"/>
-                    <spring:message arguments="${label_reports}" code="global.menu.list"/>
-                </a>
-            </li>
-        </ul>
-    </li>
-<li id="web_mvc_jsp_country_category">
-        <h2>
-            <spring:message code="menu.category.country.label"/>
-        </h2>
-        <ul>
-            <li id="web_mvc_jsp_create_country_menu_item">
-                <spring:url value="/country/form" var="web_mvc_jsp_create_country_menu_item_url"/>
-                <a href="${web_mvc_jsp_create_country_menu_item_url}">
-                    <spring:message code="label.country" var="label_country"/>
-                    <spring:message arguments="${label_country}" code="global.menu.new"/>
-                </a>
-            </li>
-        <li id="web_mvc_jsp_list_country_menu_item">
-                <spring:url value="/country?page=${empty param.page ? 1 : param.page}&amp;amp;size=${empty param.size ? 10 : param.size}" var="web_mvc_jsp_list_country_menu_item_url"/>
-                <a href="${web_mvc_jsp_list_country_menu_item_url}">
-                    <spring:message code="label.countrys" var="label_countrys"/>
-                    <spring:message arguments="${label_countrys}" code="global.menu.list"/>
-                </a>
-            </li>
-        </ul>
-    </li>
 <li id="web_mvc_jsp_child_category">
         <h2>
             <spring:message code="menu.category.child.label"/>
@@ -146,23 +41,86 @@
             </li>
         </ul>
     </li>
-<li id="web_mvc_jsp_reportproperties_category">
+<li id="web_mvc_jsp_country_category">
         <h2>
-            <spring:message code="menu.category.reportproperties.label"/>
+            <spring:message code="menu.category.country.label"/>
         </h2>
         <ul>
-            <li id="web_mvc_jsp_create_reportproperties_menu_item">
-                <spring:url value="/reportproperties/form" var="web_mvc_jsp_create_reportproperties_menu_item_url"/>
-                <a href="${web_mvc_jsp_create_reportproperties_menu_item_url}">
-                    <spring:message code="label.reportproperties" var="label_reportproperties"/>
-                    <spring:message arguments="${label_reportproperties}" code="global.menu.new"/>
+            <li id="web_mvc_jsp_create_country_menu_item">
+                <spring:url value="/country/form" var="web_mvc_jsp_create_country_menu_item_url"/>
+                <a href="${web_mvc_jsp_create_country_menu_item_url}">
+                    <spring:message code="label.country" var="label_country"/>
+                    <spring:message arguments="${label_country}" code="global.menu.new"/>
                 </a>
             </li>
-        <li id="web_mvc_jsp_list_reportproperties_menu_item">
-                <spring:url value="/reportproperties?page=${empty param.page ? 1 : param.page}&amp;amp;size=${empty param.size ? 10 : param.size}" var="web_mvc_jsp_list_reportproperties_menu_item_url"/>
-                <a href="${web_mvc_jsp_list_reportproperties_menu_item_url}">
-                    <spring:message code="label.reportpropertieses" var="label_reportpropertieses"/>
-                    <spring:message arguments="${label_reportpropertieses}" code="global.menu.list"/>
+        <li id="web_mvc_jsp_list_country_menu_item">
+                <spring:url value="/country?page=${empty param.page ? 1 : param.page}&amp;amp;size=${empty param.size ? 10 : param.size}" var="web_mvc_jsp_list_country_menu_item_url"/>
+                <a href="${web_mvc_jsp_list_country_menu_item_url}">
+                    <spring:message code="label.countrys" var="label_countrys"/>
+                    <spring:message arguments="${label_countrys}" code="global.menu.list"/>
+                </a>
+            </li>
+        </ul>
+    </li>
+<li id="web_mvc_jsp_diabetescentre_category">
+        <h2>
+            <spring:message code="menu.category.diabetescentre.label"/>
+        </h2>
+        <ul>
+            <li id="web_mvc_jsp_create_diabetescentre_menu_item">
+                <spring:url value="/diabetescentre/form" var="web_mvc_jsp_create_diabetescentre_menu_item_url"/>
+                <a href="${web_mvc_jsp_create_diabetescentre_menu_item_url}">
+                    <spring:message code="label.diabetescentre" var="label_diabetescentre"/>
+                    <spring:message arguments="${label_diabetescentre}" code="global.menu.new"/>
+                </a>
+            </li>
+        <li id="web_mvc_jsp_list_diabetescentre_menu_item">
+                <spring:url value="/diabetescentre?page=${empty param.page ? 1 : param.page}&amp;amp;size=${empty param.size ? 10 : param.size}" var="web_mvc_jsp_list_diabetescentre_menu_item_url"/>
+                <a href="${web_mvc_jsp_list_diabetescentre_menu_item_url}">
+                    <spring:message code="label.diabetescentres" var="label_diabetescentres"/>
+                    <spring:message arguments="${label_diabetescentres}" code="global.menu.list"/>
+                </a>
+            </li>
+        </ul>
+    </li>
+<li id="web_mvc_jsp_user_category">
+        <h2>
+            <spring:message code="menu.category.user.label"/>
+        </h2>
+        <ul>
+            <li id="web_mvc_jsp_create_user_menu_item">
+                <spring:url value="/user/form" var="web_mvc_jsp_create_user_menu_item_url"/>
+                <a href="${web_mvc_jsp_create_user_menu_item_url}">
+                    <spring:message code="label.user" var="label_user"/>
+                    <spring:message arguments="${label_user}" code="global.menu.new"/>
+                </a>
+            </li>
+        <li id="web_mvc_jsp_list_user_menu_item">
+                <spring:url value="/user?page=${empty param.page ? 1 : param.page}&amp;amp;size=${empty param.size ? 10 : param.size}" var="web_mvc_jsp_list_user_menu_item_url"/>
+                <a href="${web_mvc_jsp_list_user_menu_item_url}">
+                    <spring:message code="label.users" var="label_users"/>
+                    <spring:message arguments="${label_users}" code="global.menu.list"/>
+                </a>
+            </li>
+        </ul>
+    </li>
+<li id="web_mvc_jsp_report_category">
+        <h2>
+            <spring:message code="menu.category.report.label"/>
+        </h2>
+        <ul>
+            <li id="web_mvc_jsp_create_report_menu_item">
+                <spring:url value="/report/form" var="web_mvc_jsp_create_report_menu_item_url"/>
+                <a href="${web_mvc_jsp_create_report_menu_item_url}">
+                    <spring:message code="label.report" var="label_report"/>
+                    <spring:message arguments="${label_report}" code="global.menu.new"/>
+                </a>
+            </li>
+        <li id="web_mvc_jsp_list_report_menu_item">
+                <spring:url value="/report?page=${empty param.page ? 1 : param.page}&amp;amp;size=${empty param.size ? 10 : param.size}" var="web_mvc_jsp_list_report_menu_item_url"/>
+                <a href="${web_mvc_jsp_list_report_menu_item_url}">
+                    <spring:message code="label.reports" var="label_reports"/>
+                    <spring:message arguments="${label_reports}" code="global.menu.list"/>
                 </a>
             </li>
         </ul>
