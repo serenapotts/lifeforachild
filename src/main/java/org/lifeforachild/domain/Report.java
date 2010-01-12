@@ -23,6 +23,10 @@ public class Report {
     private String name;
 
     @NotNull
+    @ManyToOne
+    private User viewableBy;
+    
+    @NotNull
     private ReportType reporttype;
 
     @NotNull
@@ -45,10 +49,6 @@ public class Report {
     private String recordNumber;
 
     private String age;
-
-    private String weight;
-
-    private String height;
     
     @NotNull
     @ManyToOne

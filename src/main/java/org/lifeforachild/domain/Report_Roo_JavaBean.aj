@@ -10,6 +10,7 @@ import org.lifeforachild.domain.ReportType;
 import org.lifeforachild.domain.ShowOptionType;
 import org.lifeforachild.domain.StatusType;
 import org.lifeforachild.domain.TimePeriodUnit;
+import org.lifeforachild.domain.User;
 
 privileged aspect Report_Roo_JavaBean {
     
@@ -19,6 +20,14 @@ privileged aspect Report_Roo_JavaBean {
     
     public void Report.setName(String name) {    
         this.name = name;        
+    }    
+    
+    public User Report.getViewableBy() {    
+        return this.viewableBy;        
+    }    
+    
+    public void Report.setViewableBy(User viewableBy) {    
+        this.viewableBy = viewableBy;        
     }    
     
     public ReportType Report.getReporttype() {    
@@ -91,22 +100,6 @@ privileged aspect Report_Roo_JavaBean {
     
     public void Report.setAge(String age) {    
         this.age = age;        
-    }    
-    
-    public String Report.getWeight() {    
-        return this.weight;        
-    }    
-    
-    public void Report.setWeight(String weight) {    
-        this.weight = weight;        
-    }    
-    
-    public String Report.getHeight() {    
-        return this.height;        
-    }    
-    
-    public void Report.setHeight(String height) {    
-        this.height = height;        
     }    
     
     public DiabetesCentre Report.getCentre() {    
