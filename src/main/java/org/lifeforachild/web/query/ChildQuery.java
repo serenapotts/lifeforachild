@@ -53,20 +53,19 @@ public class ChildQuery extends BaseQuery {
 		return getQuery(entityManager, null, report.getTimePeriod(), report.getTimeperiodunit(), 
 				report.getFromDate(), report.getToDate(), report.getCentre(), report.getCountry(),
 				report.getStatustype(), report.getShowoptiontype(), report.getRecordNumber(), 
-				report.getAge(), report.getWeight(), report.getHeight(), report.getOrderBy(), report.getThenOrderBy());
+				report.getAge(), report.getOrderBy(), report.getThenOrderBy());
 	}
 	
 	private static List getQuery(EntityManager entityManager, String id, String timePeriod, 
 			TimePeriodUnit timePeriodUnit, Date from, Date to, DiabetesCentre diabetesCentre, Country country)
 	{
 		return getQuery(entityManager, id, timePeriod, timePeriodUnit, from, to, diabetesCentre, country, null,
-				null, null, null, null, null, null, null);
+				null, null, null, null, null);
 	}
 	
 	private static List getQuery(EntityManager entityManager, String id, String timePeriod, 
 			TimePeriodUnit timePeriodUnit, Date from, Date to, DiabetesCentre diabetesCentre, Country country,
-			StatusType statusType, ShowOptionType showOptionType, String recordNumber, String age, String weight, 
-			String height, String orderBy, String thenOrderBy)
+			StatusType statusType, ShowOptionType showOptionType, String recordNumber, String age, String orderBy, String thenOrderBy)
 	{
 		JPAQueryBuilder builder = new JPAQueryBuilder();
 		builder.select("o");
@@ -81,8 +80,6 @@ public class ChildQuery extends BaseQuery {
 		searchByShowOptionType(builder, showOptionType);
 		searchByRecordNumber(builder, recordNumber);
 		searchByAge(builder, age);
-		searchByWeight(builder, weight);
-		searchByHeight(builder, height);
 		orderBy(builder, orderBy, thenOrderBy);
 
 		Query query = builder.build(entityManager);
@@ -101,16 +98,6 @@ public class ChildQuery extends BaseQuery {
 			builder.orderBy(orderBy);
 		if (!StringUtil.isEmpty(thenOrderBy))
 			builder.orderBy(thenOrderBy);			
-	}
-
-	private static void searchByHeight(JPAQueryBuilder builder, String height) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	private static void searchByWeight(JPAQueryBuilder builder, String weight) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	private static void searchByAge(JPAQueryBuilder builder, String age) {
