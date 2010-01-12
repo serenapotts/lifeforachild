@@ -10,6 +10,11 @@
                 <div class="box" id="_name">${report.name}</div>
             </div>
             <br/>
+            <div id="roo_report_viewableBy">
+                <label for="_viewableBy">Viewable By:</label>
+                <div class="box" id="_viewableBy">${report.viewableBy}</div>
+            </div>
+            <br/>
             <div id="roo_report_reporttype">
                 <label for="_reporttype">Reporttype:</label>
                 <div class="box" id="_reporttype">${report.reporttype}</div>
@@ -57,16 +62,6 @@
             <div id="roo_report_age">
                 <label for="_age">Age:</label>
                 <div class="box" id="_age">${report.age}</div>
-            </div>
-            <br/>
-            <div id="roo_report_weight">
-                <label for="_weight">Weight:</label>
-                <div class="box" id="_weight">${report.weight}</div>
-            </div>
-            <br/>
-            <div id="roo_report_height">
-                <label for="_height">Height:</label>
-                <div class="box" id="_height">${report.height}</div>
             </div>
             <br/>
             <div id="roo_report_centre">
