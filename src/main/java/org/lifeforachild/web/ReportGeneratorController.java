@@ -24,7 +24,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * 
  * @author Serena Potts
  */
-@RequestMapping("/reportgenerator/**")
 @Controller
 public class ReportGeneratorController {
 
@@ -36,7 +35,7 @@ public class ReportGeneratorController {
      * @param response HTTP servlet response
 	 * @return the jsp page to display
 	 */
-    @RequestMapping(method = RequestMethod.GET, value = "{id}")
+    @RequestMapping(method = RequestMethod.GET, value = "/reportgenerator/{id}")
     public String get(@PathVariable Long id, ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) {
     	Report report = Report.findReport(id);
     	ReportGenerator repGen = null;
@@ -57,12 +56,5 @@ public class ReportGeneratorController {
     	}
     	return "dataAccessFailure";    	
     }
-
-    // Not called at present
-    @RequestMapping(method = RequestMethod.POST, value = "{id}")
-    public String post(@PathVariable Long id, ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) {
-    	return "dataAccessFailure";    	
-    }       
-    
-    
+      
 }
