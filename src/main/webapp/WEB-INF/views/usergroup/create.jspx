@@ -1,0 +1,37 @@
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:form="http://www.springframework.org/tags/form" xmlns:spring="http://www.springframework.org/tags">
+    <script type="text/javascript">dojo.require("dijit.TitlePane");dojo.require("dijit.form.MultiSelect");</script>
+    <div id="_title_div" style="width: 100%">
+        <spring:message code="label.usergroup" var="entity_label"/>
+        <spring:message arguments="${entity_label}" code="entity.create" var="title_msg"/>
+        <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_title_div', widgetType : 'dijit.TitlePane', widgetAttrs : {title: '${title_msg}'}})); </script>
+        <spring:url value="/usergroup" var="form_url"/>
+        <form:form action="${form_url}" method="POST" modelAttribute="usergroup">
+            <div id="roo_usergroup_groupName">
+                <label for="_groupName">Group Name:</label>
+                <form:input cssStyle="width:250px" id="_groupName" maxlength="30" path="groupName" size="0"/>
+                <br/>
+                <form:errors cssClass="errors" id="_groupName_error" path="groupName"/>
+                <spring:message arguments="Group Name" code="field.invalid" var="field_invalid"/>
+                <spring:message code="field.required" var="field_required"/>
+                <spring:message argumentSeparator="," arguments="Group Name,(${field_required})" code="field.simple.validation" var="field_validation"/>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : "_groupName", widgetType : "dijit.form.ValidationTextBox", widgetAttrs : {promptMessage: "${field_validation}", invalidMessage: "${field_invalid}", required : true}})); </script>
+            </div>
+            <br/>
+            <div id="roo_usergroup_permissions">
+                <c:if test="${not empty permissionses}">
+                    <label for="_permissions">Permissions:</label>
+                    <form:select cssStyle="width:250px" id="_permissions" path="permissions">
+                        <form:options itemValue="id" items="${permissionses}"/>
+                    </form:select>
+                    <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_permissions', widgetType: 'dijit.form.MultiSelect', widgetAttrs: {}})); </script>
+                </c:if>
+            </div>
+            <br/>
+            <div class="submit" id="roo_usergroup_submit">
+                <spring:message code="button.save" var="save_button"/>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ValidateAllDecoration({elementId:'proceed', event:'onclick'}));</script>
+                <input id="proceed" type="submit" value="${save_button}"/>
+            </div>
+        </form:form>
+    </div>
+</div>

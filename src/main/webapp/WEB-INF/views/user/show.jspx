@@ -5,9 +5,24 @@
         <spring:message arguments="${entity_label}" code="entity.show" var="title_msg"/>
         <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_title_div', widgetType : 'dijit.TitlePane', widgetAttrs : {title: '${title_msg}'}})); </script>
         <c:if test="${not empty user}">
-            <div id="roo_user_name">
-                <label for="_name">Name:</label>
-                <div class="box" id="_name">${user.name}</div>
+            <div id="roo_user_username">
+                <label for="_username">Username:</label>
+                <div class="box" id="_username">${user.username}</div>
+            </div>
+            <br/>
+            <div id="roo_user_password">
+                <label for="_password">Password:</label>
+                <div class="box" id="_password">${user.password}</div>
+            </div>
+            <br/>
+            <div id="roo_user_enabled">
+                <label for="_enabled">Enabled:</label>
+                <div class="box" id="_enabled">${user.enabled}</div>
+            </div>
+            <br/>
+            <div id="roo_user_userGroup">
+                <label for="_userGroup">User Group:</label>
+                <div class="box" id="_userGroup">${user.userGroup}</div>
             </div>
             <br/>
         </c:if>
