@@ -139,12 +139,8 @@
             <br/>
             <div id="roo_report_childfields">
                 <label for="_childfields">Childfields:</label>
-                <form:select cssStyle="width:250px" id="_childfields" items="${childfields_enum}" path="childfields"/>
-                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_childfields', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
-                <br/>
-                <form:errors cssClass="errors" id="_childfields_error" path="childfields"/>
-                <form:select cssStyle="width:250px" id="_childfields" items="${childfields_enum}" path="childfields"/>
-                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_childfields', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
+                <form:select cssStyle="width:250px" id="_childfields" items="${childfields_enum}" path="childfields" size="4" multiple="true"/>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_childfields', widgetType: 'dijit.form.MultiSelect', widgetAttrs : {hasDownArrow : true}})); </script>
                 <br/>
                 <form:errors cssClass="errors" id="_childfields_error" path="childfields"/>
             </div>
@@ -152,12 +148,8 @@
             <br/>
             <div id="roo_report_clinicalrecordfields">
                 <label for="_clinicalrecordfields">Clinicalrecordfields:</label>
-                <form:select cssStyle="width:250px" id="_clinicalrecordfields" items="${clinicalrecordfields_enum}" path="clinicalrecordfields"/>
-                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_clinicalrecordfields', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
-                <br/>
-                <form:errors cssClass="errors" id="_clinicalrecordfields_error" path="clinicalrecordfields"/>
-                <form:select cssStyle="width:250px" id="_clinicalrecordfields" items="${clinicalrecordfields_enum}" path="clinicalrecordfields"/>
-                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_clinicalrecordfields', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
+                <form:select cssStyle="width:250px" id="_clinicalrecordfields" items="${clinicalrecordfields_enum}" path="clinicalrecordfields" size="4" multiple="true"/>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_clinicalrecordfields', widgetType: 'dijit.form.MultiSelect', widgetAttrs : {hasDownArrow : true}})); </script>
                 <br/>
                 <form:errors cssClass="errors" id="_clinicalrecordfields_error" path="clinicalrecordfields"/>
             </div>
