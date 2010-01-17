@@ -21,15 +21,19 @@ insert into user_group (version, group_name) values (1, 'Researchers');
 insert into user_group_permissions (user_group, permissions)
 (select ug.id, p.id from user_group ug, permissions p
 where ug.group_name='Program Manager' and
-name='View Child Name');
+name='Add Child');
 insert into user_group_permissions (user_group, permissions)
 (select ug.id, p.id from user_group ug, permissions p
 where ug.group_name='Program Manager' and
 name='ACCESS_ADMIN');
 insert into user_group_permissions (user_group, permissions)
 (select ug.id, p.id from user_group ug, permissions p
-where ug.group_name='Program Manager' and
-name='Centre Staff');
+where ug.group_name='PMs Assistants' and
+name='Add Child');
+insert into user_group_permissions (user_group, permissions)
+(select ug.id, p.id from user_group ug, permissions p
+where ug.group_name='Centre Staff' and
+name='Add Child');
 
 insert into user (version, username, password, enabled, user_group)
 (select 1, 'gogle', 'gogle', true, ug.id from user_group ug
