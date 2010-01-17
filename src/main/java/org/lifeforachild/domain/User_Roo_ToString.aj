@@ -8,7 +8,10 @@ privileged aspect User_Roo_ToString {
         StringBuilder sb = new StringBuilder();        
         sb.append("Id: ").append(getId()).append(", ");        
         sb.append("Version: ").append(getVersion()).append(", ");        
-        sb.append("Name: ").append(getName());        
+        sb.append("Username: ").append(getUsername()).append(", ");        
+        sb.append("Password: ").append(getPassword()).append(", ");        
+        sb.append("Enabled: ").append(isEnabled()).append(", ");        
+        sb.append("UserGroup: ").append(getUserGroup());        
         return sb.toString();        
     }    
     
