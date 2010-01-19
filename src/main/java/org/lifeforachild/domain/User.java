@@ -28,6 +28,13 @@ public class User {
 	@NotNull
     boolean enabled;
 	
+	@NotNull
 	@ManyToOne
 	UserGroup userGroup;
+	
+	@ManyToOne
+	Country country;
+	
+	@ManyToOne
+	DiabetesCentre centre;
 }

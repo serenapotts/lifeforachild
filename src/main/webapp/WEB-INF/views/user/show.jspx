@@ -25,6 +25,16 @@
                 <div class="box" id="_userGroup">${user.userGroup}</div>
             </div>
             <br/>
+            <div id="roo_user_country">
+                <label for="_country">Country:</label>
+                <div class="box" id="_country">${user.country}</div>
+            </div>
+            <br/>
+            <div id="roo_user_centre">
+                <label for="_centre">Centre:</label>
+                <div class="box" id="_centre">${user.centre}</div>
+            </div>
+            <br/>
         </c:if>
         <c:if test="${empty user}">
             <spring:message arguments="${entity_label}" code="entity.not.found.single"/>

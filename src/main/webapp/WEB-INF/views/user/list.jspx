@@ -14,6 +14,8 @@
                         <th>Password</th>
                         <th>Enabled</th>
                         <th>User Group</th>
+                        <th>Country</th>
+                        <th>Centre</th>
                         <th/>
                         <th/>
                         <th/>
@@ -26,6 +28,8 @@
                         <td>${fn:substring(user.password, 0, 10)}</td>
                         <td>${fn:substring(user.enabled, 0, 10)}</td>
                         <td>${fn:substring(user.userGroup, 0, 10)}</td>
+                        <td>${fn:substring(user.country, 0, 10)}</td>
+                        <td>${fn:substring(user.centre, 0, 10)}</td>
                         <td>
                             <spring:url value="/user/${user.id}" var="show_form_url"/>
                             <spring:url value="/static/images/show.png" var="show_image_url"/>
@@ -53,7 +57,7 @@
                     </tr>
                 </c:forEach>
                 <tr class="footer">
-                    <td colspan="8">
+                    <td colspan="10">
                         <span class="new">
                             <spring:url value="/user/form" var="create_url"/>
                             <a href="${create_url}">
