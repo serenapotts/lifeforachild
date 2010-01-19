@@ -11,9 +11,15 @@
         <logout logout-url="/static/j_spring_security_logout"/>
         <intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"/>
         <intercept-url pattern="/child/**" access="isAuthenticated()"/>
-        <intercept-url pattern="/user/**" access="isAuthenticated()"/>   
+        <intercept-url pattern="/user/**" access="isAuthenticated()"/>
+        <intercept-url pattern="/usergroup/**" access="isAuthenticated()"/>    
         <intercept-url pattern="/search/**" access="isAuthenticated()"/>             
         <intercept-url pattern="/member/**" access="isAuthenticated()" />
+        <intercept-url pattern="/clinicalrecord/**" access="isAuthenticated()"/>        
+        <intercept-url pattern="/country/**" access="isAuthenticated()"/>
+        <intercept-url pattern="/diabetescentre/**" access="isAuthenticated()"/>
+        <intercept-url pattern="/permissions/**" access="isAuthenticated()"/>
+        <intercept-url pattern="/report/**" access="isAuthenticated()"/>
         <intercept-url pattern="/resources/**" access="permitAll" />
         <intercept-url pattern="/static/**" access="permitAll" />
         <intercept-url pattern="/**" access="permitAll" />                
@@ -36,6 +42,18 @@
 	     		/>
 		</authentication-provider>
 	</authentication-manager>
+               
+	<beans:bean id="userDetailsManager" class="org.springframework.security.provisioning.JdbcUserDetailsManager">
+        <beans:property name="dataSource" ref="dataSource"/>
+        <beans:property name="authenticationManager" ref="authenticationManager"/>   
+              
+		<!-- enable lookup of permissions via user's group -->
+		<beans:property name="enableGroups" value="true"/>
+		
+		
+		<!-- disable direct lookup of user's permissions (require lookup via group) -->
+		<beans:property name="enableAuthorities" value="false"/>                    
+	</beans:bean>
                
 <!--     <beans:bean id="permissions" class="org.lifeforachild.domain.Permissions">
     	<beans:property name="name" value="ACCESS_ADMIN"/>
