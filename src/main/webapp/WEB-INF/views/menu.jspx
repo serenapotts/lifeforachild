@@ -104,7 +104,7 @@
             </li>
         </ul>
     </li>
-	<sec:authorize ifAllGranted="ACCESS_ADMIN">
+	<sec:authorize ifAllGranted="User Administation">
     <li id="web_mvc_jsp_user_category">
         <h2>
             <spring:message code="menu.category.user.label"/>
