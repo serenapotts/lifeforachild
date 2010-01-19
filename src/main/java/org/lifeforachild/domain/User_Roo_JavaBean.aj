@@ -1,6 +1,8 @@
 package org.lifeforachild.domain;
 
 import java.lang.String;
+import org.lifeforachild.domain.Country;
+import org.lifeforachild.domain.DiabetesCentre;
 import org.lifeforachild.domain.UserGroup;
 
 privileged aspect User_Roo_JavaBean {
@@ -35,6 +37,22 @@ privileged aspect User_Roo_JavaBean {
     
     public void User.setUserGroup(UserGroup userGroup) {    
         this.userGroup = userGroup;        
+    }    
+    
+    public Country User.getCountry() {    
+        return this.country;        
+    }    
+    
+    public void User.setCountry(Country country) {    
+        this.country = country;        
+    }    
+    
+    public DiabetesCentre User.getCentre() {    
+        return this.centre;        
+    }    
+    
+    public void User.setCentre(DiabetesCentre centre) {    
+        this.centre = centre;        
     }    
     
 }

@@ -4,6 +4,8 @@ import java.lang.Long;
 import java.lang.String;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
+import org.lifeforachild.domain.Country;
+import org.lifeforachild.domain.DiabetesCentre;
 import org.lifeforachild.domain.User;
 import org.lifeforachild.domain.UserGroup;
 import org.springframework.ui.ModelMap;
@@ -25,7 +27,9 @@ privileged aspect UserController_Roo_Controller {
         if (result.hasErrors()) {        
             modelMap.addAllAttributes(result.getAllErrors());            
             modelMap.addAttribute("user", user);            
-            modelMap.addAttribute("usergroups", UserGroup.findAllUserGroups());            
+            modelMap.addAttribute("countrys", Country.findAllCountrys());            
+            modelMap.addAttribute("diabetescentres", DiabetesCentre.findAllDiabetesCentres());            
+            modelMap.addAttribute("usergroups", UserGroup.findUserGroupsByAccess());            
             return "user/create";            
         }        
         user.persist();        
@@ -35,7 +39,9 @@ privileged aspect UserController_Roo_Controller {
     @RequestMapping(value = "/user/form", method = RequestMethod.GET)    
     public String UserController.createForm(ModelMap modelMap) {    
         modelMap.addAttribute("user", new User());        
-        modelMap.addAttribute("usergroups", UserGroup.findAllUserGroups());        
+        modelMap.addAttribute("countrys", Country.findAllCountrys());        
+        modelMap.addAttribute("diabetescentres", DiabetesCentre.findAllDiabetesCentres());        
+        modelMap.addAttribute("usergroups", UserGroup.findUserGroupsByAccess());        
         return "user/create";        
     }    
     
@@ -68,7 +74,9 @@ privileged aspect UserController_Roo_Controller {
         if (result.hasErrors()) {        
             modelMap.addAllAttributes(result.getAllErrors());            
             modelMap.addAttribute("user", user);            
-            modelMap.addAttribute("usergroups", UserGroup.findAllUserGroups());            
+            modelMap.addAttribute("countrys", Country.findAllCountrys());            
+            modelMap.addAttribute("diabetescentres", DiabetesCentre.findAllDiabetesCentres());            
+            modelMap.addAttribute("usergroups", UserGroup.findUserGroupsByAccess());            
             return "user/update";            
         }        
         user.merge();        
@@ -79,7 +87,9 @@ privileged aspect UserController_Roo_Controller {
     public String UserController.updateForm(@PathVariable("id") Long id, ModelMap modelMap) {    
         if (id == null) throw new IllegalArgumentException("An Identifier is required");        
         modelMap.addAttribute("user", User.findUser(id));        
-        modelMap.addAttribute("usergroups", UserGroup.findAllUserGroups());        
+        modelMap.addAttribute("countrys", Country.findAllCountrys());        
+        modelMap.addAttribute("diabetescentres", DiabetesCentre.findAllDiabetesCentres());        
+        modelMap.addAttribute("usergroups", UserGroup.findUserGroupsByAccess());        
         return "user/update";        
     }    
     
@@ -89,5 +99,6 @@ privileged aspect UserController_Roo_Controller {
         User.findUser(id).remove();        
         return "redirect:/user";        
     }    
+   
     
 }

@@ -15,4 +15,31 @@ public class StringUtil {
 	{
 		return s == null || ( s != null && s.equals(""));
 	}
+	
+    public static String buildString (Object[] array, String pre,
+		      String post, String delim)
+	{
+    	StringBuffer buf = new StringBuffer ();
+		if (array != null) {
+		  boolean first = true;
+		  for (int i = 0; i < array.length; i++)
+		  {
+		      if (array[i] != null)
+		      {
+		          if (first)
+		              first = false;
+		          else if (delim != null)
+		              buf.append (delim);
+		
+		          if (pre != null)
+		              buf.append (pre);
+		          buf.append (array[i].toString());
+		          if (post != null)
+		              buf.append (post);
+		      }
+		  }
+		}
+		return buf.toString ();
+	}
+
 }
