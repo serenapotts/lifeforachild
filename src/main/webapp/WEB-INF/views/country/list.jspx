@@ -1,6 +1,7 @@
-<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:fmt="http://java.sun.com/jsp/jstl/fmt" xmlns:fn="http://java.sun.com/jsp/jstl/functions" xmlns:form="http://www.springframework.org/tags/form" xmlns:roo="urn:jsptagdir:/WEB-INF/tags" xmlns:spring="http://www.springframework.org/tags">
-    <script type="text/javascript">dojo.require("dijit.TitlePane");</script>
-    <div id="_title_div" style="width: 100%">
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:fmt="http://java.sun.com/jsp/jstl/fmt" xmlns:fn="http://java.sun.com/jsp/jstl/functions" xmlns:form="http://www.springframework.org/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:roo="urn:jsptagdir:/WEB-INF/tags" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+    <jsp:output omit-xml-declaration="yes"/>
+    <script type="text/javascript">dojo.require('dijit.TitlePane');</script>
+    <div id="_title_div">
         <spring:message code="label.country" var="entity_label"/>
         <spring:message code="label.countrys" var="entity_label_plural"/>
         <spring:message arguments="${entity_label_plural}" code="entity.list.all" var="title_msg"/>
@@ -44,6 +45,12 @@
                             <form:form action="${delete_form_url}" method="DELETE">
                                 <spring:message arguments="${entity_label}" code="entity.delete" var="delete_label"/>
                                 <input alt="${delete_label}" class="image" src="${delete_image_url}" title="${delete_label}" type="image" value="${delete_label}"/>
+                                <c:if test="${not empty param.page}">
+                                    <input name="page" type="hidden" value="${param.page}"/>
+                                </c:if>
+                                <c:if test="${not empty param.size}">
+                                    <input name="size" type="hidden" value="${param.size}"/>
+                                </c:if>
                             </form:form>
                         </td>
                     </tr>

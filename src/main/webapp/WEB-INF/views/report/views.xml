@@ -15,5 +15,5 @@
     </definition>
     <definition extends="default" name="report/report">
         <put-attribute name="body" value="/WEB-INF/views/report/report.jspx"/>
-    </definition>    
+    </definition>  
 </tiles-definitions>

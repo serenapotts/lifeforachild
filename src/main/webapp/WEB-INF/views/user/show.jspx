@@ -1,38 +1,39 @@
-<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:fmt="http://java.sun.com/jsp/jstl/fmt" xmlns:form="http://www.springframework.org/tags/form" xmlns:spring="http://www.springframework.org/tags">
-    <script type="text/javascript">dojo.require("dijit.TitlePane");</script>
-    <div id="_title_div" style="width: 100%">
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:fmt="http://java.sun.com/jsp/jstl/fmt" xmlns:form="http://www.springframework.org/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+    <jsp:output omit-xml-declaration="yes"/>
+    <script type="text/javascript">dojo.require('dijit.TitlePane');</script>
+    <div id="_title_div">
         <spring:message code="label.user" var="entity_label"/>
         <spring:message arguments="${entity_label}" code="entity.show" var="title_msg"/>
         <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_title_div', widgetType : 'dijit.TitlePane', widgetAttrs : {title: '${title_msg}'}})); </script>
         <c:if test="${not empty user}">
             <div id="roo_user_username">
-                <label for="_username">Username:</label>
-                <div class="box" id="_username">${user.username}</div>
+                <label for="_username_id">Username:</label>
+                <div class="box" id="_username_id">${user.username}</div>
             </div>
             <br/>
             <div id="roo_user_password">
-                <label for="_password">Password:</label>
-                <div class="box" id="_password">${user.password}</div>
+                <label for="_password_id">Password:</label>
+                <div class="box" id="_password_id">${user.password}</div>
             </div>
             <br/>
             <div id="roo_user_enabled">
-                <label for="_enabled">Enabled:</label>
-                <div class="box" id="_enabled">${user.enabled}</div>
+                <label for="_enabled_id">Enabled:</label>
+                <div class="box" id="_enabled_id">${user.enabled}</div>
             </div>
             <br/>
             <div id="roo_user_userGroup">
-                <label for="_userGroup">User Group:</label>
-                <div class="box" id="_userGroup">${user.userGroup}</div>
+                <label for="_userGroup_id">User Group:</label>
+                <div class="box" id="_userGroup_id">${user.userGroup}</div>
             </div>
             <br/>
             <div id="roo_user_country">
-                <label for="_country">Country:</label>
-                <div class="box" id="_country">${user.country}</div>
+                <label for="_country_id">Country:</label>
+                <div class="box" id="_country_id">${user.country}</div>
             </div>
             <br/>
             <div id="roo_user_centre">
-                <label for="_centre">Centre:</label>
-                <div class="box" id="_centre">${user.centre}</div>
+                <label for="_centre_id">Centre:</label>
+                <div class="box" id="_centre_id">${user.centre}</div>
             </div>
             <br/>
         </c:if>

@@ -1,62 +1,61 @@
-<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:form="http://www.springframework.org/tags/form" xmlns:spring="http://www.springframework.org/tags">
-    <script type="text/javascript">dojo.require("dijit.TitlePane");</script>
-    <div id="_title_div" style="width: 100%">
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:form="http://www.springframework.org/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+    <jsp:output omit-xml-declaration="yes"/>
+    <script type="text/javascript">dojo.require('dijit.TitlePane');dojo.require('dijit.form.FilteringSelect');</script>
+    <div id="_title_div">
         <spring:message code="label.reportproperties" var="entity_label"/>
         <spring:message arguments="${entity_label}" code="entity.update" var="title_msg"/>
         <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_title_div', widgetType : 'dijit.TitlePane', widgetAttrs : {title: '${title_msg}'}})); </script>
-        <spring:url value="/reportproperties/${reportproperties._id}" var="form_url"/>
-        <form:form action="${form_url}" method="PUT" modelAttribute="reportproperties">
-            <div id="roo_reportproperties_query">
-                <label for="_query">Query:</label>
-                <form:input cssStyle="width:250px" id="_query" maxlength="30" path="query" size="0"/>
+        <spring:url value="/reportproperties/${reportProperties._id}" var="form_url"/>
+        <form:form action="${form_url}" method="PUT" modelAttribute="reportProperties">
+            <form:errors cssClass="errors" delimiter="&lt;p/&gt;"/>
+            <div id="roo_reportProperties_query">
+                <label for="_query_id">Query:</label>
+                <form:input cssStyle="width:250px" id="_query_id" maxlength="30" path="query" size="0"/>
                 <br/>
-                <form:errors cssClass="errors" id="_query_error" path="query"/>
+                <form:errors cssClass="errors" id="_query_error_id" path="query"/>
                 <spring:message arguments="Query" code="field.invalid" var="field_invalid"/>
                 <spring:message code="field.required" var="field_required"/>
                 <spring:message argumentSeparator="," arguments="Query," code="field.simple.validation" var="field_validation"/>
-                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : "_query", widgetType : "dijit.form.ValidationTextBox", widgetAttrs : {promptMessage: "${field_validation}", invalidMessage: "${field_invalid}", required : false}})); </script>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_query_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : false}})); </script>
             </div>
             <br/>
-            <div id="roo_reportproperties_id">
-                <label for="_id">Id:</label>
-                <form:input cssStyle="width:250px" id="_id" maxlength="30" path="id" size="0"/>
+            <div id="roo_reportProperties_id">
+                <label for="_id_id">Id:</label>
+                <form:input cssStyle="width:250px" id="_id_id" maxlength="30" path="id" size="0"/>
                 <br/>
-                <form:errors cssClass="errors" id="_id_error" path="id"/>
+                <form:errors cssClass="errors" id="_id_error_id" path="id"/>
                 <spring:message arguments="Id" code="field.invalid" var="field_invalid"/>
                 <spring:message code="field.required" var="field_required"/>
                 <spring:message argumentSeparator="," arguments="Id," code="field.simple.validation" var="field_validation"/>
-                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : "_id", widgetType : "dijit.form.ValidationTextBox", widgetAttrs : {promptMessage: "${field_validation}", invalidMessage: "${field_invalid}", required : false}})); </script>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_id_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : false}})); </script>
             </div>
             <br/>
-            <div id="roo_reportproperties_displayFields">
-                <label for="_displayFields">Display Fields:</label>
-                <form:input cssStyle="width:250px" id="_displayFields" maxlength="30" path="displayFields" size="0"/>
+            <div id="roo_reportProperties_displayFields">
+                <label for="_displayFields_id">Display Fields:</label>
+                <form:input cssStyle="width:250px" id="_displayFields_id" maxlength="30" path="displayFields" size="0"/>
                 <br/>
-                <form:errors cssClass="errors" id="_displayFields_error" path="displayFields"/>
+                <form:errors cssClass="errors" id="_displayFields_error_id" path="displayFields"/>
                 <spring:message arguments="Display Fields" code="field.invalid" var="field_invalid"/>
                 <spring:message code="field.required" var="field_required"/>
                 <spring:message argumentSeparator="," arguments="Display Fields," code="field.simple.validation" var="field_validation"/>
-                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : "_displayFields", widgetType : "dijit.form.ValidationTextBox", widgetAttrs : {promptMessage: "${field_validation}", invalidMessage: "${field_invalid}", required : false}})); </script>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_displayFields_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : false}})); </script>
             </div>
             <br/>
-            <div id="roo_reportproperties_reportType">
-                <label for="_reportType">Report Type:</label>
-                <form:input cssStyle="width:250px" id="_reportType" maxlength="30" path="reportType" size="0"/>
+            <div id="roo_reportProperties_reportType">
+                <label for="_reportType_id">Report Type:</label>
+                <form:errors cssClass="errors" id="_reportType_error_id" path="reportType"/>
+                <form:select cssStyle="width:250px" id="_reportType_id" items="${reporttype_enum}" path="reportType"/>
                 <br/>
-                <form:errors cssClass="errors" id="_reportType_error" path="reportType"/>
-                <spring:message arguments="Report Type" code="field.invalid" var="field_invalid"/>
-                <spring:message code="field.required" var="field_required"/>
-                <spring:message argumentSeparator="," arguments="Report Type," code="field.simple.validation" var="field_validation"/>
-                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : "_reportType", widgetType : "dijit.form.ValidationTextBox", widgetAttrs : {promptMessage: "${field_validation}", invalidMessage: "${field_invalid}", required : false}})); </script>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_reportType_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
             </div>
             <br/>
-            <div class="submit" id="roo_reportproperties_submit">
+            <div class="submit" id="roo_reportProperties_submit">
                 <spring:message code="button.update" var="update_button"/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ValidateAllDecoration({elementId:'proceed', event:'onclick'}));</script>
                 <input id="proceed" type="submit" value="${update_button}"/>
             </div>
-            <form:hidden id="__id" path="_id"/>
-            <form:hidden id="_version" path="version"/>
+            <form:hidden id="__id_id" path="_id"/>
+            <form:hidden id="_version_id" path="version"/>
         </form:form>
     </div>
 </div>

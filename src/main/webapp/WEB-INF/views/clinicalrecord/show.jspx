@@ -1,358 +1,359 @@
-<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:fmt="http://java.sun.com/jsp/jstl/fmt" xmlns:form="http://www.springframework.org/tags/form" xmlns:spring="http://www.springframework.org/tags">
-    <script type="text/javascript">dojo.require("dijit.TitlePane");</script>
-    <div id="_title_div" style="width: 100%">
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:fmt="http://java.sun.com/jsp/jstl/fmt" xmlns:form="http://www.springframework.org/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+    <jsp:output omit-xml-declaration="yes"/>
+    <script type="text/javascript">dojo.require('dijit.TitlePane');</script>
+    <div id="_title_div">
         <spring:message code="label.clinicalrecord" var="entity_label"/>
         <spring:message arguments="${entity_label}" code="entity.show" var="title_msg"/>
         <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_title_div', widgetType : 'dijit.TitlePane', widgetAttrs : {title: '${title_msg}'}})); </script>
-        <c:if test="${not empty clinicalrecord}">
-            <div id="roo_clinicalrecord_bloodGlucoseSelfMonitoringPerWeek">
-                <label for="_bloodGlucoseSelfMonitoringPerWeek">Blood Glucose Self Monitoring Per Week:</label>
-                <div class="box" id="_bloodGlucoseSelfMonitoringPerWeek">${clinicalrecord.bloodGlucoseSelfMonitoringPerWeek}</div>
+        <c:if test="${not empty clinicalRecord}">
+            <div id="roo_clinicalRecord_child">
+                <label for="_child_id">Child:</label>
+                <div class="box" id="_child_id">${clinicalRecord.child}</div>
             </div>
             <br/>
-            <div id="roo_clinicalrecord_urineGlucoseSelfMonitoringPerWeek">
-                <label for="_urineGlucoseSelfMonitoringPerWeek">Urine Glucose Self Monitoring Per Week:</label>
-                <div class="box" id="_urineGlucoseSelfMonitoringPerWeek">${clinicalrecord.urineGlucoseSelfMonitoringPerWeek}</div>
+            <div id="roo_clinicalRecord_bloodGlucoseSelfMonitoringPerWeek">
+                <label for="_bloodGlucoseSelfMonitoringPerWeek_id">Blood Glucose Self Monitoring Per Week:</label>
+                <div class="box" id="_bloodGlucoseSelfMonitoringPerWeek_id">${clinicalRecord.bloodGlucoseSelfMonitoringPerWeek}</div>
             </div>
             <br/>
-            <div id="roo_clinicalrecord_adjustInsulinDoseIfNeeded">
-                <label for="_adjustInsulinDoseIfNeeded">Adjust Insulin Dose If Needed:</label>
-                <div class="box" id="_adjustInsulinDoseIfNeeded">${clinicalrecord.adjustInsulinDoseIfNeeded}</div>
+            <div id="roo_clinicalRecord_urineGlucoseSelfMonitoringPerWeek">
+                <label for="_urineGlucoseSelfMonitoringPerWeek_id">Urine Glucose Self Monitoring Per Week:</label>
+                <div class="box" id="_urineGlucoseSelfMonitoringPerWeek_id">${clinicalRecord.urineGlucoseSelfMonitoringPerWeek}</div>
             </div>
             <br/>
-            <div id="roo_clinicalrecord_insulinUnitsPerDay">
-                <label for="_insulinUnitsPerDay">Insulin Units Per Day:</label>
-                <div class="box" id="_insulinUnitsPerDay">${clinicalrecord.insulinUnitsPerDay}</div>
+            <div id="roo_clinicalRecord_adjustInsulinDoseIfNeeded">
+                <label for="_adjustInsulinDoseIfNeeded_id">Adjust Insulin Dose If Needed:</label>
+                <div class="box" id="_adjustInsulinDoseIfNeeded_id">${clinicalRecord.adjustInsulinDoseIfNeeded}</div>
             </div>
             <br/>
-            <div id="roo_clinicalrecord_numberOfInsulinInjectionsPerDay">
-                <label for="_numberOfInsulinInjectionsPerDay">Number Of Insulin Injections Per Day:</label>
-                <div class="box" id="_numberOfInsulinInjectionsPerDay">${clinicalrecord.numberOfInsulinInjectionsPerDay}</div>
+            <div id="roo_clinicalRecord_insulinUnitsPerDay">
+                <label for="_insulinUnitsPerDay_id">Insulin Units Per Day:</label>
+                <div class="box" id="_insulinUnitsPerDay_id">${clinicalRecord.insulinUnitsPerDay}</div>
             </div>
             <br/>
-            <div id="roo_clinicalrecord_longActingHuman">
-                <label for="_longActingHuman">Long Acting Human:</label>
-                <div class="box" id="_longActingHuman">${clinicalrecord.longActingHuman}</div>
+            <div id="roo_clinicalRecord_numberOfInsulinInjectionsPerDay">
+                <label for="_numberOfInsulinInjectionsPerDay_id">Number Of Insulin Injections Per Day:</label>
+                <div class="box" id="_numberOfInsulinInjectionsPerDay_id">${clinicalRecord.numberOfInsulinInjectionsPerDay}</div>
             </div>
             <br/>
-            <div id="roo_clinicalrecord_shortActingHuman">
-                <label for="_shortActingHuman">Short Acting Human:</label>
-                <div class="box" id="_shortActingHuman">${clinicalrecord.shortActingHuman}</div>
+            <div id="roo_clinicalRecord_longActingHuman">
+                <label for="_longActingHuman_id">Long Acting Human:</label>
+                <div class="box" id="_longActingHuman_id">${clinicalRecord.longActingHuman}</div>
             </div>
             <br/>
-            <div id="roo_clinicalrecord_analog">
-                <label for="_analog">Analog:</label>
-                <div class="box" id="_analog">${clinicalrecord.analog}</div>
+            <div id="roo_clinicalRecord_shortActingHuman">
+                <label for="_shortActingHuman_id">Short Acting Human:</label>
+                <div class="box" id="_shortActingHuman_id">${clinicalRecord.shortActingHuman}</div>
             </div>
             <br/>
-            <div id="roo_clinicalrecord_oralAgents">
-                <label for="_oralAgents">Oral Agents:</label>
-                <div class="box" id="_oralAgents">${clinicalrecord.oralAgents}</div>
+            <div id="roo_clinicalRecord_analog">
+                <label for="_analog_id">Analog:</label>
+                <div class="box" id="_analog_id">${clinicalRecord.analog}</div>
             </div>
             <br/>
-            <div id="roo_clinicalrecord_oralAgentsDescription">
-                <label for="_oralAgentsDescription">Oral Agents Description:</label>
-                <div class="box" id="_oralAgentsDescription">${clinicalrecord.oralAgentsDescription}</div>
+            <div id="roo_clinicalRecord_oralAgents">
+                <label for="_oralAgents_id">Oral Agents:</label>
+                <div class="box" id="_oralAgents_id">${clinicalRecord.oralAgents}</div>
             </div>
             <br/>
-            <div id="roo_clinicalrecord_routineClinicReviewsLastYear">
-                <label for="_routineClinicReviewsLastYear">Routine Clinic Reviews Last Year:</label>
-                <div class="box" id="_routineClinicReviewsLastYear">${clinicalrecord.routineClinicReviewsLastYear}</div>
+            <div id="roo_clinicalRecord_oralAgentsDescription">
+                <label for="_oralAgentsDescription_id">Oral Agents Description:</label>
+                <div class="box" id="_oralAgentsDescription_id">${clinicalRecord.oralAgentsDescription}</div>
             </div>
             <br/>
-            <div id="roo_clinicalrecord_bpMedications">
-                <label for="_bpMedications">Bp Medications:</label>
-                <div class="box" id="_bpMedications">${clinicalrecord.bpMedications}</div>
+            <div id="roo_clinicalRecord_routineClinicReviewsLastYear">
+                <label for="_routineClinicReviewsLastYear_id">Routine Clinic Reviews Last Year:</label>
+                <div class="box" id="_routineClinicReviewsLastYear_id">${clinicalRecord.routineClinicReviewsLastYear}</div>
             </div>
             <br/>
-            <div id="roo_clinicalrecord_acearb">
-                <label for="_acearb">Acearb:</label>
-                <div class="box" id="_acearb">${clinicalrecord.acearb}</div>
+            <div id="roo_clinicalRecord_bpMedications">
+                <label for="_bpMedications_id">Bp Medications:</label>
+                <div class="box" id="_bpMedications_id">${clinicalRecord.bpMedications}</div>
             </div>
             <br/>
-            <div id="roo_clinicalrecord_bpMedicationsOther">
-                <label for="_bpMedicationsOther">Bp Medications Other:</label>
-                <div class="box" id="_bpMedicationsOther">${clinicalrecord.bpMedicationsOther}</div>
+            <div id="roo_clinicalRecord_acearb">
+                <label for="_acearb_id">Acearb:</label>
+                <div class="box" id="_acearb_id">${clinicalRecord.acearb}</div>
             </div>
             <br/>
-            <div id="roo_clinicalrecord_otherTreatments">
-                <label for="_otherTreatments">Other Treatments:</label>
-                <div class="box" id="_otherTreatments">${clinicalrecord.otherTreatments}</div>
+            <div id="roo_clinicalRecord_bpMedicationsOther">
+                <label for="_bpMedicationsOther_id">Bp Medications Other:</label>
+                <div class="box" id="_bpMedicationsOther_id">${clinicalRecord.bpMedicationsOther}</div>
             </div>
             <br/>
-            <div id="roo_clinicalrecord_laserRxInLast12Months">
-                <label for="_laserRxInLast12Months">Laser Rx In Last12 Months:</label>
-                <div class="box" id="_laserRxInLast12Months">${clinicalrecord.laserRxInLast12Months}</div>
+            <div id="roo_clinicalRecord_otherTreatments">
+                <label for="_otherTreatments_id">Other Treatments:</label>
+                <div class="box" id="_otherTreatments_id">${clinicalRecord.otherTreatments}</div>
             </div>
             <br/>
-            <div id="roo_clinicalrecord_weightKG">
-                <label for="_weightKG">Weight K G:</label>
-                <div class="box" id="_weightKG">${clinicalrecord.weightKG}</div>
+            <div id="roo_clinicalRecord_laserRxInLast12Months">
+                <label for="_laserRxInLast12Months_id">Laser Rx In Last12 Months:</label>
+                <div class="box" id="_laserRxInLast12Months_id">${clinicalRecord.laserRxInLast12Months}</div>
             </div>
             <br/>
-            <div id="roo_clinicalrecord_heightCM">
-                <label for="_heightCM">Height C M:</label>
-                <div class="box" id="_heightCM">${clinicalrecord.heightCM}</div>
+            <div id="roo_clinicalRecord_weightKG">
+                <label for="_weightKG_id">Weight K G:</label>
+                <div class="box" id="_weightKG_id">${clinicalRecord.weightKG}</div>
             </div>
             <br/>
-            <div id="roo_clinicalrecord_bloodPressureSystolicMMHg">
-                <label for="_bloodPressureSystolicMMHg">Blood Pressure Systolic M M Hg:</label>
-                <div class="box" id="_bloodPressureSystolicMMHg">${clinicalrecord.bloodPressureSystolicMMHg}</div>
+            <div id="roo_clinicalRecord_heightCM">
+                <label for="_heightCM_id">Height C M:</label>
+                <div class="box" id="_heightCM_id">${clinicalRecord.heightCM}</div>
             </div>
             <br/>
-            <div id="roo_clinicalrecord_bloodPressureDiastolicMMHg">
-                <label for="_bloodPressureDiastolicMMHg">Blood Pressure Diastolic M M Hg:</label>
-                <div class="box" id="_bloodPressureDiastolicMMHg">${clinicalrecord.bloodPressureDiastolicMMHg}</div>
+            <div id="roo_clinicalRecord_bloodPressureSystolicMMHg">
+                <label for="_bloodPressureSystolicMMHg_id">Blood Pressure Systolic M M Hg:</label>
+                <div class="box" id="_bloodPressureSystolicMMHg_id">${clinicalRecord.bloodPressureSystolicMMHg}</div>
             </div>
             <br/>
-            <div id="roo_clinicalrecord_dateOfMeasurement">
-                <label for="_dateOfMeasurement">Date Of Measurement:</label>
-                <div class="box" id="_dateOfMeasurement">
-                    <fmt:formatDate pattern="d/MM/yy" type="DATE" value="${clinicalrecord.dateOfMeasurement}"/>
+            <div id="roo_clinicalRecord_bloodPressureDiastolicMMHg">
+                <label for="_bloodPressureDiastolicMMHg_id">Blood Pressure Diastolic M M Hg:</label>
+                <div class="box" id="_bloodPressureDiastolicMMHg_id">${clinicalRecord.bloodPressureDiastolicMMHg}</div>
+            </div>
+            <br/>
+            <div id="roo_clinicalRecord_dateOfMeasurement">
+                <label for="_dateOfMeasurement_id">Date Of Measurement:</label>
+                <div class="box" id="_dateOfMeasurement_id">
+                    <fmt:formatDate pattern="${clinicalRecord_dateOfMeasurement_date_format}" value="${clinicalRecord.dateOfMeasurement}"/>
                 </div>
             </div>
             <br/>
-            <div id="roo_clinicalrecord_age">
-                <label for="_age">Age:</label>
-                <div class="box" id="_age">${clinicalrecord.age}</div>
+            <div id="roo_clinicalRecord_age">
+                <label for="_age_id">Age:</label>
+                <div class="box" id="_age_id">${clinicalRecord.age}</div>
             </div>
             <br/>
-            <div id="roo_clinicalrecord_hasPersistentHypertension">
-                <label for="_hasPersistentHypertension">Has Persistent Hypertension:</label>
-                <div class="box" id="_hasPersistentHypertension">${clinicalrecord.hasPersistentHypertension}</div>
+            <div id="roo_clinicalRecord_hasPersistentHypertension">
+                <label for="_hasPersistentHypertension_id">Has Persistent Hypertension:</label>
+                <div class="box" id="_hasPersistentHypertension_id">${clinicalRecord.hasPersistentHypertension}</div>
             </div>
             <br/>
-            <div id="roo_clinicalrecord_hasPubertyTannerB2_P2orGreater">
-                <label for="_hasPubertyTannerB2_P2orGreater">Has Puberty Tanner B2_ P2or Greater:</label>
-                <div class="box" id="_hasPubertyTannerB2_P2orGreater">${clinicalrecord.hasPubertyTannerB2_P2orGreater}</div>
+            <div id="roo_clinicalRecord_hasPubertyTannerB2_P2orGreater">
+                <label for="_hasPubertyTannerB2_P2orGreater_id">Has Puberty Tanner B2_ P2or Greater:</label>
+                <div class="box" id="_hasPubertyTannerB2_P2orGreater_id">${clinicalRecord.hasPubertyTannerB2_P2orGreater}</div>
             </div>
             <br/>
-            <div id="roo_clinicalrecord_menarche">
-                <label for="_menarche">Menarche:</label>
-                <div class="box" id="_menarche">${clinicalrecord.menarche}</div>
+            <div id="roo_clinicalRecord_menarche">
+                <label for="_menarche_id">Menarche:</label>
+                <div class="box" id="_menarche_id">${clinicalRecord.menarche}</div>
             </div>
             <br/>
-            <div id="roo_clinicalrecord_ifMenarcheAge">
-                <label for="_ifMenarcheAge">If Menarche Age:</label>
-                <div class="box" id="_ifMenarcheAge">
-                    <fmt:formatDate pattern="d/MM/yy" type="DATE" value="${clinicalrecord.ifMenarcheAge}"/>
+            <div id="roo_clinicalRecord_ifMenarcheAge">
+                <label for="_ifMenarcheAge_id">If Menarche Age:</label>
+                <div class="box" id="_ifMenarcheAge_id">
+                    <fmt:formatDate pattern="${clinicalRecord_ifMenarcheAge_date_format}" value="${clinicalRecord.ifMenarcheAge}"/>
                 </div>
             </div>
             <br/>
-            <div id="roo_clinicalrecord_eyesExaminedInLastYear">
-                <label for="_eyesExaminedInLastYear">Eyes Examined In Last Year:</label>
-                <div class="box" id="_eyesExaminedInLastYear">${clinicalrecord.eyesExaminedInLastYear}</div>
+            <div id="roo_clinicalRecord_eyesExaminedInLastYear">
+                <label for="_eyesExaminedInLastYear_id">Eyes Examined In Last Year:</label>
+                <div class="box" id="_eyesExaminedInLastYear_id">${clinicalRecord.eyesExaminedInLastYear}</div>
             </div>
             <br/>
-            <div id="roo_clinicalrecord_cateract">
-                <label for="_cateract">Cateract:</label>
-                <div class="box" id="_cateract">${clinicalrecord.cateract}</div>
+            <div id="roo_clinicalRecord_cateract">
+                <label for="_cateract_id">Cateract:</label>
+                <div class="box" id="_cateract_id">${clinicalRecord.cateract}</div>
             </div>
             <br/>
-            <div id="roo_clinicalrecord_visualAcuityRight">
-                <label for="_visualAcuityRight">Visual Acuity Right:</label>
-                <div class="box" id="_visualAcuityRight">${clinicalrecord.visualAcuityRight}</div>
+            <div id="roo_clinicalRecord_visualAcuityRight">
+                <label for="_visualAcuityRight_id">Visual Acuity Right:</label>
+                <div class="box" id="_visualAcuityRight_id">${clinicalRecord.visualAcuityRight}</div>
             </div>
             <br/>
-            <div id="roo_clinicalrecord_visualAcuityLeft">
-                <label for="_visualAcuityLeft">Visual Acuity Left:</label>
-                <div class="box" id="_visualAcuityLeft">${clinicalrecord.visualAcuityLeft}</div>
+            <div id="roo_clinicalRecord_visualAcuityLeft">
+                <label for="_visualAcuityLeft_id">Visual Acuity Left:</label>
+                <div class="box" id="_visualAcuityLeft_id">${clinicalRecord.visualAcuityLeft}</div>
             </div>
             <br/>
-            <div id="roo_clinicalrecord_feetExaminedInLastYear">
-                <label for="_feetExaminedInLastYear">Feet Examined In Last Year:</label>
-                <div class="box" id="_feetExaminedInLastYear">${clinicalrecord.feetExaminedInLastYear}</div>
+            <div id="roo_clinicalRecord_feetExaminedInLastYear">
+                <label for="_feetExaminedInLastYear_id">Feet Examined In Last Year:</label>
+                <div class="box" id="_feetExaminedInLastYear_id">${clinicalRecord.feetExaminedInLastYear}</div>
             </div>
             <br/>
-            <div id="roo_clinicalrecord_monofilamentTested">
-                <label for="_monofilamentTested">Monofilament Tested:</label>
-                <div class="box" id="_monofilamentTested">${clinicalrecord.monofilamentTested}</div>
+            <div id="roo_clinicalRecord_monofilamentTested">
+                <label for="_monofilamentTested_id">Monofilament Tested:</label>
+                <div class="box" id="_monofilamentTested_id">${clinicalRecord.monofilamentTested}</div>
             </div>
             <br/>
-            <div id="roo_clinicalrecord_monofilamentAbnormal">
-                <label for="_monofilamentAbnormal">Monofilament Abnormal:</label>
-                <div class="box" id="_monofilamentAbnormal">${clinicalrecord.monofilamentAbnormal}</div>
+            <div id="roo_clinicalRecord_monofilamentAbnormal">
+                <label for="_monofilamentAbnormal_id">Monofilament Abnormal:</label>
+                <div class="box" id="_monofilamentAbnormal_id">${clinicalRecord.monofilamentAbnormal}</div>
             </div>
             <br/>
-            <div id="roo_clinicalrecord_tuningForkTested">
-                <label for="_tuningForkTested">Tuning Fork Tested:</label>
-                <div class="box" id="_tuningForkTested">${clinicalrecord.tuningForkTested}</div>
+            <div id="roo_clinicalRecord_tuningForkTested">
+                <label for="_tuningForkTested_id">Tuning Fork Tested:</label>
+                <div class="box" id="_tuningForkTested_id">${clinicalRecord.tuningForkTested}</div>
             </div>
             <br/>
-            <div id="roo_clinicalrecord_tuningForkAbnormal">
-                <label for="_tuningForkAbnormal">Tuning Fork Abnormal:</label>
-                <div class="box" id="_tuningForkAbnormal">${clinicalrecord.tuningForkAbnormal}</div>
+            <div id="roo_clinicalRecord_tuningForkAbnormal">
+                <label for="_tuningForkAbnormal_id">Tuning Fork Abnormal:</label>
+                <div class="box" id="_tuningForkAbnormal_id">${clinicalRecord.tuningForkAbnormal}</div>
             </div>
             <br/>
-            <div id="roo_clinicalrecord_lastHbA1cInLast12Months">
-                <label for="_lastHbA1cInLast12Months">Last Hb A1c In Last12 Months:</label>
-                <div class="box" id="_lastHbA1cInLast12Months">${clinicalrecord.lastHbA1cInLast12Months}</div>
+            <div id="roo_clinicalRecord_lastHbA1cInLast12Months">
+                <label for="_lastHbA1cInLast12Months_id">Last Hb A1c In Last12 Months:</label>
+                <div class="box" id="_lastHbA1cInLast12Months_id">${clinicalRecord.lastHbA1cInLast12Months}</div>
             </div>
             <br/>
-            <div id="roo_clinicalrecord_hbA1cPercentage">
-                <label for="_hbA1cPercentage">Hb A1c Percentage:</label>
-                <div class="box" id="_hbA1cPercentage">${clinicalrecord.hbA1cPercentage}</div>
+            <div id="roo_clinicalRecord_hbA1cPercentage">
+                <label for="_hbA1cPercentage_id">Hb A1c Percentage:</label>
+                <div class="box" id="_hbA1cPercentage_id">${clinicalRecord.hbA1cPercentage}</div>
             </div>
             <br/>
-            <div id="roo_clinicalrecord_hbA1cMethod">
-                <label for="_hbA1cMethod">Hb A1c Method:</label>
-                <div class="box" id="_hbA1cMethod">${clinicalrecord.hbA1cMethod}</div>
+            <div id="roo_clinicalRecord_hbA1cMethod">
+                <label for="_hbA1cMethod_id">Hb A1c Method:</label>
+                <div class="box" id="_hbA1cMethod_id">${clinicalRecord.hbA1cMethod}</div>
             </div>
             <br/>
-            <div id="roo_clinicalrecord_hbA1cMethodOther">
-                <label for="_hbA1cMethodOther">Hb A1c Method Other:</label>
-                <div class="box" id="_hbA1cMethodOther">${clinicalrecord.hbA1cMethodOther}</div>
+            <div id="roo_clinicalRecord_hbA1cMethodOther">
+                <label for="_hbA1cMethodOther_id">Hb A1c Method Other:</label>
+                <div class="box" id="_hbA1cMethodOther_id">${clinicalRecord.hbA1cMethodOther}</div>
             </div>
             <br/>
-            <div id="roo_clinicalrecord_microalbuminuriaValue">
-                <label for="_microalbuminuriaValue">Microalbuminuria Value:</label>
-                <div class="box" id="_microalbuminuriaValue">${clinicalrecord.microalbuminuriaValue}</div>
+            <div id="roo_clinicalRecord_microalbuminuriaValue">
+                <label for="_microalbuminuriaValue_id">Microalbuminuria Value:</label>
+                <div class="box" id="_microalbuminuriaValue_id">${clinicalRecord.microalbuminuriaValue}</div>
             </div>
             <br/>
-            <div id="roo_clinicalrecord_microalbuminuriaUnitOfMeasure">
-                <label for="_microalbuminuriaUnitOfMeasure">Microalbuminuria Unit Of Measure:</label>
-                <div class="box" id="_microalbuminuriaUnitOfMeasure">${clinicalrecord.microalbuminuriaUnitOfMeasure}</div>
+            <div id="roo_clinicalRecord_microalbuminuriaUnitOfMeasure">
+                <label for="_microalbuminuriaUnitOfMeasure_id">Microalbuminuria Unit Of Measure:</label>
+                <div class="box" id="_microalbuminuriaUnitOfMeasure_id">${clinicalRecord.microalbuminuriaUnitOfMeasure}</div>
             </div>
             <br/>
-            <div id="roo_clinicalrecord_proteinuria_dipstick_other">
-                <label for="_proteinuria_dipstick_other">Proteinuria_dipstick_other:</label>
-                <div class="box" id="_proteinuria_dipstick_other">${clinicalrecord.proteinuria_dipstick_other}</div>
+            <div id="roo_clinicalRecord_proteinuria_dipstick_other">
+                <label for="_proteinuria_dipstick_other_id">Proteinuria_dipstick_other:</label>
+                <div class="box" id="_proteinuria_dipstick_other_id">${clinicalRecord.proteinuria_dipstick_other}</div>
             </div>
             <br/>
-            <div id="roo_clinicalrecord_creatinineValue">
-                <label for="_creatinineValue">Creatinine Value:</label>
-                <div class="box" id="_creatinineValue">${clinicalrecord.creatinineValue}</div>
+            <div id="roo_clinicalRecord_creatinineValue">
+                <label for="_creatinineValue_id">Creatinine Value:</label>
+                <div class="box" id="_creatinineValue_id">${clinicalRecord.creatinineValue}</div>
             </div>
             <br/>
-            <div id="roo_clinicalrecord_creatinineUnits">
-                <label for="_creatinineUnits">Creatinine Units:</label>
-                <div class="box" id="_creatinineUnits">${clinicalrecord.creatinineUnits}</div>
+            <div id="roo_clinicalRecord_creatinineUnits">
+                <label for="_creatinineUnits_id">Creatinine Units:</label>
+                <div class="box" id="_creatinineUnits_id">${clinicalRecord.creatinineUnits}</div>
             </div>
             <br/>
-            <div id="roo_clinicalrecord_totalCholesterolValue">
-                <label for="_totalCholesterolValue">Total Cholesterol Value:</label>
-                <div class="box" id="_totalCholesterolValue">${clinicalrecord.totalCholesterolValue}</div>
+            <div id="roo_clinicalRecord_totalCholesterolValue">
+                <label for="_totalCholesterolValue_id">Total Cholesterol Value:</label>
+                <div class="box" id="_totalCholesterolValue_id">${clinicalRecord.totalCholesterolValue}</div>
             </div>
             <br/>
-            <div id="roo_clinicalrecord_cholesterolUnits">
-                <label for="_cholesterolUnits">Cholesterol Units:</label>
-                <div class="box" id="_cholesterolUnits">${clinicalrecord.cholesterolUnits}</div>
+            <div id="roo_clinicalRecord_cholesterolUnits">
+                <label for="_cholesterolUnits_id">Cholesterol Units:</label>
+                <div class="box" id="_cholesterolUnits_id">${clinicalRecord.cholesterolUnits}</div>
             </div>
             <br/>
-            <div id="roo_clinicalrecord_hdlCholesterolValue">
-                <label for="_hdlCholesterolValue">Hdl Cholesterol Value:</label>
-                <div class="box" id="_hdlCholesterolValue">${clinicalrecord.hdlCholesterolValue}</div>
+            <div id="roo_clinicalRecord_hdlCholesterolValue">
+                <label for="_hdlCholesterolValue_id">Hdl Cholesterol Value:</label>
+                <div class="box" id="_hdlCholesterolValue_id">${clinicalRecord.hdlCholesterolValue}</div>
             </div>
             <br/>
-            <div id="roo_clinicalrecord_hdlUnits">
-                <label for="_hdlUnits">Hdl Units:</label>
-                <div class="box" id="_hdlUnits">${clinicalrecord.hdlUnits}</div>
+            <div id="roo_clinicalRecord_hdlUnits">
+                <label for="_hdlUnits_id">Hdl Units:</label>
+                <div class="box" id="_hdlUnits_id">${clinicalRecord.hdlUnits}</div>
             </div>
             <br/>
-            <div id="roo_clinicalrecord_triglyceridesValue">
-                <label for="_triglyceridesValue">Triglycerides Value:</label>
-                <div class="box" id="_triglyceridesValue">${clinicalrecord.triglyceridesValue}</div>
+            <div id="roo_clinicalRecord_triglyceridesValue">
+                <label for="_triglyceridesValue_id">Triglycerides Value:</label>
+                <div class="box" id="_triglyceridesValue_id">${clinicalRecord.triglyceridesValue}</div>
             </div>
             <br/>
-            <div id="roo_clinicalrecord_triglyceridesUnits">
-                <label for="_triglyceridesUnits">Triglycerides Units:</label>
-                <div class="box" id="_triglyceridesUnits">${clinicalrecord.triglyceridesUnits}</div>
+            <div id="roo_clinicalRecord_triglyceridesUnits">
+                <label for="_triglyceridesUnits_id">Triglycerides Units:</label>
+                <div class="box" id="_triglyceridesUnits_id">${clinicalRecord.triglyceridesUnits}</div>
             </div>
             <br/>
-            <div id="roo_clinicalrecord_fasted">
-                <label for="_fasted">Fasted:</label>
-                <div class="box" id="_fasted">${clinicalrecord.fasted}</div>
+            <div id="roo_clinicalRecord_fasted">
+                <label for="_fasted_id">Fasted:</label>
+                <div class="box" id="_fasted_id">${clinicalRecord.fasted}</div>
             </div>
             <br/>
-            <div id="roo_clinicalrecord_attendingSchool">
-                <label for="_attendingSchool">Attending School:</label>
-                <div class="box" id="_attendingSchool">${clinicalrecord.attendingSchool}</div>
+            <div id="roo_clinicalRecord_attendingSchool">
+                <label for="_attendingSchool_id">Attending School:</label>
+                <div class="box" id="_attendingSchool_id">${clinicalRecord.attendingSchool}</div>
             </div>
             <br/>
-            <div id="roo_clinicalrecord_notAttendingSchoolWhy">
-                <label for="_notAttendingSchoolWhy">Not Attending School Why:</label>
-                <div class="box" id="_notAttendingSchoolWhy">${clinicalrecord.notAttendingSchoolWhy}</div>
+            <div id="roo_clinicalRecord_notAttendingSchoolWhy">
+                <label for="_notAttendingSchoolWhy_id">Not Attending School Why:</label>
+                <div class="box" id="_notAttendingSchoolWhy_id">${clinicalRecord.notAttendingSchoolWhy}</div>
             </div>
             <br/>
-            <div id="roo_clinicalrecord_diabetesLimitingAttendance">
-                <label for="_diabetesLimitingAttendance">Diabetes Limiting Attendance:</label>
-                <div class="box" id="_diabetesLimitingAttendance">${clinicalrecord.diabetesLimitingAttendance}</div>
+            <div id="roo_clinicalRecord_diabetesLimitingAttendance">
+                <label for="_diabetesLimitingAttendance_id">Diabetes Limiting Attendance:</label>
+                <div class="box" id="_diabetesLimitingAttendance_id">${clinicalRecord.diabetesLimitingAttendance}</div>
             </div>
             <br/>
-            <div id="roo_clinicalrecord_appropriateGradeForAge">
-                <label for="_appropriateGradeForAge">Appropriate Grade For Age:</label>
-                <div class="box" id="_appropriateGradeForAge">${clinicalrecord.appropriateGradeForAge}</div>
+            <div id="roo_clinicalRecord_appropriateGradeForAge">
+                <label for="_appropriateGradeForAge_id">Appropriate Grade For Age:</label>
+                <div class="box" id="_appropriateGradeForAge_id">${clinicalRecord.appropriateGradeForAge}</div>
             </div>
             <br/>
-            <div id="roo_clinicalrecord_diabetesCopingAbilities">
-                <label for="_diabetesCopingAbilities">Diabetes Coping Abilities:</label>
-                <div class="box" id="_diabetesCopingAbilities">${clinicalrecord.diabetesCopingAbilities}</div>
+            <div id="roo_clinicalRecord_diabetesCopingAbilities">
+                <label for="_diabetesCopingAbilities_id">Diabetes Coping Abilities:</label>
+                <div class="box" id="_diabetesCopingAbilities_id">${clinicalRecord.diabetesCopingAbilities}</div>
             </div>
             <br/>
-            <div id="roo_clinicalrecord_numberOfSevereHypoglycaemiaEpisodes">
-                <label for="_numberOfSevereHypoglycaemiaEpisodes">Number Of Severe Hypoglycaemia Episodes:</label>
-                <div class="box" id="_numberOfSevereHypoglycaemiaEpisodes">${clinicalrecord.numberOfSevereHypoglycaemiaEpisodes}</div>
+            <div id="roo_clinicalRecord_numberOfSevereHypoglycaemiaEpisodes">
+                <label for="_numberOfSevereHypoglycaemiaEpisodes_id">Number Of Severe Hypoglycaemia Episodes:</label>
+                <div class="box" id="_numberOfSevereHypoglycaemiaEpisodes_id">${clinicalRecord.numberOfSevereHypoglycaemiaEpisodes}</div>
             </div>
             <br/>
-            <div id="roo_clinicalrecord_reasonHypoglycaemiaEpisodesNotEntered">
-                <label for="_reasonHypoglycaemiaEpisodesNotEntered">Reason Hypoglycaemia Episodes Not Entered:</label>
-                <div class="box" id="_reasonHypoglycaemiaEpisodesNotEntered">${clinicalrecord.reasonHypoglycaemiaEpisodesNotEntered}</div>
+            <div id="roo_clinicalRecord_reasonHypoglycaemiaEpisodesNotEntered">
+                <label for="_reasonHypoglycaemiaEpisodesNotEntered_id">Reason Hypoglycaemia Episodes Not Entered:</label>
+                <div class="box" id="_reasonHypoglycaemiaEpisodesNotEntered_id">${clinicalRecord.reasonHypoglycaemiaEpisodesNotEntered}</div>
             </div>
             <br/>
-            <div id="roo_clinicalrecord_numberKetoacidosisEpisodes">
-                <label for="_numberKetoacidosisEpisodes">Number Ketoacidosis Episodes:</label>
-                <div class="box" id="_numberKetoacidosisEpisodes">${clinicalrecord.numberKetoacidosisEpisodes}</div>
+            <div id="roo_clinicalRecord_numberKetoacidosisEpisodes">
+                <label for="_numberKetoacidosisEpisodes_id">Number Ketoacidosis Episodes:</label>
+                <div class="box" id="_numberKetoacidosisEpisodes_id">${clinicalRecord.numberKetoacidosisEpisodes}</div>
             </div>
             <br/>
-            <div id="roo_clinicalrecord_reasonKetoacidosisEpisodesNotEntered">
-                <label for="_reasonKetoacidosisEpisodesNotEntered">Reason Ketoacidosis Episodes Not Entered:</label>
-                <div class="box" id="_reasonKetoacidosisEpisodesNotEntered">${clinicalrecord.reasonKetoacidosisEpisodesNotEntered}</div>
+            <div id="roo_clinicalRecord_reasonKetoacidosisEpisodesNotEntered">
+                <label for="_reasonKetoacidosisEpisodesNotEntered_id">Reason Ketoacidosis Episodes Not Entered:</label>
+                <div class="box" id="_reasonKetoacidosisEpisodesNotEntered_id">${clinicalRecord.reasonKetoacidosisEpisodesNotEntered}</div>
             </div>
             <br/>
-            <div id="roo_clinicalrecord_numberOfHospitalAdmissionsRelatedToDiabetes">
-                <label for="_numberOfHospitalAdmissionsRelatedToDiabetes">Number Of Hospital Admissions Related To Diabetes:</label>
-                <div class="box" id="_numberOfHospitalAdmissionsRelatedToDiabetes">${clinicalrecord.numberOfHospitalAdmissionsRelatedToDiabetes}</div>
+            <div id="roo_clinicalRecord_numberOfHospitalAdmissionsRelatedToDiabetes">
+                <label for="_numberOfHospitalAdmissionsRelatedToDiabetes_id">Number Of Hospital Admissions Related To Diabetes:</label>
+                <div class="box" id="_numberOfHospitalAdmissionsRelatedToDiabetes_id">${clinicalRecord.numberOfHospitalAdmissionsRelatedToDiabetes}</div>
             </div>
             <br/>
-            <div id="roo_clinicalrecord_reasonHospitalAdmissionsNotEntered">
-                <label for="_reasonHospitalAdmissionsNotEntered">Reason Hospital Admissions Not Entered:</label>
-                <div class="box" id="_reasonHospitalAdmissionsNotEntered">${clinicalrecord.reasonHospitalAdmissionsNotEntered}</div>
+            <div id="roo_clinicalRecord_reasonHospitalAdmissionsNotEntered">
+                <label for="_reasonHospitalAdmissionsNotEntered_id">Reason Hospital Admissions Not Entered:</label>
+                <div class="box" id="_reasonHospitalAdmissionsNotEntered_id">${clinicalRecord.reasonHospitalAdmissionsNotEntered}</div>
             </div>
             <br/>
-            <div id="roo_clinicalrecord_additionalComment">
-                <label for="_additionalComment">Additional Comment:</label>
-                <div class="box" id="_additionalComment">${clinicalrecord.additionalComment}</div>
+            <div id="roo_clinicalRecord_additionalComment">
+                <label for="_additionalComment_id">Additional Comment:</label>
+                <div class="box" id="_additionalComment_id">${clinicalRecord.additionalComment}</div>
             </div>
             <br/>
-            <div id="roo_clinicalrecord_personCompletingForm">
-                <label for="_personCompletingForm">Person Completing Form:</label>
-                <div class="box" id="_personCompletingForm">${clinicalrecord.personCompletingForm}</div>
+            <div id="roo_clinicalRecord_personCompletingForm">
+                <label for="_personCompletingForm_id">Person Completing Form:</label>
+                <div class="box" id="_personCompletingForm_id">${clinicalRecord.personCompletingForm}</div>
             </div>
             <br/>
-            <div id="roo_clinicalrecord_dateCompleted">
-                <label for="_dateCompleted">Date Completed:</label>
-                <div class="box" id="_dateCompleted">
-                    <fmt:formatDate pattern="d/MM/yy" type="DATE" value="${clinicalrecord.dateCompleted}"/>
+            <div id="roo_clinicalRecord_dateCompleted">
+                <label for="_dateCompleted_id">Date Completed:</label>
+                <div class="box" id="_dateCompleted_id">
+                    <fmt:formatDate pattern="${clinicalRecord_dateCompleted_date_format}" value="${clinicalRecord.dateCompleted}"/>
                 </div>
             </div>
             <br/>
-            <div id="roo_clinicalrecord_seniorPhysician">
-                <label for="_seniorPhysician">Senior Physician:</label>
-                <div class="box" id="_seniorPhysician">${clinicalrecord.seniorPhysician}</div>
+            <div id="roo_clinicalRecord_seniorPhysician">
+                <label for="_seniorPhysician_id">Senior Physician:</label>
+                <div class="box" id="_seniorPhysician_id">${clinicalRecord.seniorPhysician}</div>
             </div>
             <br/>
-            <div id="roo_clinicalrecord_literate">
-                <label for="_literate">Literate:</label>
-                <div class="box" id="_literate">${clinicalrecord.literate}</div>
-            </div>
-            <br/>
-            <div id="roo_clinicalrecord_child">
-                <label for="_child">Child:</label>
-                <div class="box" id="_child">${clinicalrecord.child}</div>
+            <div id="roo_clinicalRecord_literate">
+                <label for="_literate_id">Literate:</label>
+                <div class="box" id="_literate_id">${clinicalRecord.literate}</div>
             </div>
             <br/>
         </c:if>
-        <c:if test="${empty clinicalrecord}">
+        <c:if test="${empty clinicalRecord}">
             <spring:message arguments="${entity_label}" code="entity.not.found.single"/>
         </c:if>
     </div>

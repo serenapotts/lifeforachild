@@ -1,27 +1,28 @@
-<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:fmt="http://java.sun.com/jsp/jstl/fmt" xmlns:form="http://www.springframework.org/tags/form" xmlns:spring="http://www.springframework.org/tags">
-    <script type="text/javascript">dojo.require("dijit.TitlePane");</script>
-    <div id="_title_div" style="width: 100%">
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:fmt="http://java.sun.com/jsp/jstl/fmt" xmlns:form="http://www.springframework.org/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+    <jsp:output omit-xml-declaration="yes"/>
+    <script type="text/javascript">dojo.require('dijit.TitlePane');</script>
+    <div id="_title_div">
         <spring:message code="label.diabetescentre" var="entity_label"/>
         <spring:message arguments="${entity_label}" code="entity.show" var="title_msg"/>
         <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_title_div', widgetType : 'dijit.TitlePane', widgetAttrs : {title: '${title_msg}'}})); </script>
-        <c:if test="${not empty diabetescentre}">
-            <div id="roo_diabetescentre_name">
-                <label for="_name">Name:</label>
-                <div class="box" id="_name">${diabetescentre.name}</div>
+        <c:if test="${not empty diabetesCentre}">
+            <div id="roo_diabetesCentre_name">
+                <label for="_name_id">Name:</label>
+                <div class="box" id="_name_id">${diabetesCentre.name}</div>
             </div>
             <br/>
-            <div id="roo_diabetescentre_address">
-                <label for="_address">Address:</label>
-                <div class="box" id="_address">${diabetescentre.address}</div>
+            <div id="roo_diabetesCentre_address">
+                <label for="_address_id">Address:</label>
+                <div class="box" id="_address_id">${diabetesCentre.address}</div>
             </div>
             <br/>
-            <div id="roo_diabetescentre_country">
-                <label for="_country">Country:</label>
-                <div class="box" id="_country">${diabetescentre.country}</div>
+            <div id="roo_diabetesCentre_country">
+                <label for="_country_id">Country:</label>
+                <div class="box" id="_country_id">${diabetesCentre.country}</div>
             </div>
             <br/>
         </c:if>
-        <c:if test="${empty diabetescentre}">
+        <c:if test="${empty diabetesCentre}">
             <spring:message arguments="${entity_label}" code="entity.not.found.single"/>
         </c:if>
     </div>

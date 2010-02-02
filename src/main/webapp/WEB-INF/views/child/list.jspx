@@ -1,6 +1,7 @@
-<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:fmt="http://java.sun.com/jsp/jstl/fmt" xmlns:fn="http://java.sun.com/jsp/jstl/functions" xmlns:form="http://www.springframework.org/tags/form" xmlns:roo="urn:jsptagdir:/WEB-INF/tags" xmlns:spring="http://www.springframework.org/tags">
-    <script type="text/javascript">dojo.require("dijit.TitlePane");</script>
-    <div id="_title_div" style="width: 100%">
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:fmt="http://java.sun.com/jsp/jstl/fmt" xmlns:fn="http://java.sun.com/jsp/jstl/functions" xmlns:form="http://www.springframework.org/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:roo="urn:jsptagdir:/WEB-INF/tags" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+    <jsp:output omit-xml-declaration="yes"/>
+    <script type="text/javascript">dojo.require('dijit.TitlePane');</script>
+    <div id="_title_div">
         <spring:message code="label.child" var="entity_label"/>
         <spring:message code="label.children" var="entity_label_plural"/>
         <spring:message arguments="${entity_label_plural}" code="entity.list.all" var="title_msg"/>
@@ -10,12 +11,12 @@
                 <thead>
                     <tr>
                         <th>Id</th>
+                        <th>Individual Id</th>
                         <th>Initials</th>
                         <th>Name</th>
                         <th>Ethnic Group</th>
                         <th>Sex</th>
                         <th>Survival Status</th>
-                        <th>Date Of Death</th>
                         <th/>
                         <th/>
                         <th/>
@@ -24,14 +25,12 @@
                 <c:forEach items="${children}" var="child">
                     <tr>
                         <td>${child.id}</td>
+                        <td>${fn:substring(child.individualId, 0, 10)}</td>
                         <td>${fn:substring(child.initials, 0, 10)}</td>
                         <td>${fn:substring(child.name, 0, 10)}</td>
                         <td>${fn:substring(child.ethnicGroup, 0, 10)}</td>
                         <td>${fn:substring(child.sex, 0, 10)}</td>
                         <td>${fn:substring(child.survivalStatus, 0, 10)}</td>
-                        <td>
-                            <fmt:formatDate pattern="d/MM/yy" type="DATE" value="${child.dateOfDeath}"/>
-                        </td>
                         <td>
                             <spring:url value="/child/${child.id}" var="show_form_url"/>
                             <spring:url value="/static/images/show.png" var="show_image_url"/>
@@ -54,6 +53,12 @@
                             <form:form action="${delete_form_url}" method="DELETE">
                                 <spring:message arguments="${entity_label}" code="entity.delete" var="delete_label"/>
                                 <input alt="${delete_label}" class="image" src="${delete_image_url}" title="${delete_label}" type="image" value="${delete_label}"/>
+                                <c:if test="${not empty param.page}">
+                                    <input name="page" type="hidden" value="${param.page}"/>
+                                </c:if>
+                                <c:if test="${not empty param.size}">
+                                    <input name="size" type="hidden" value="${param.size}"/>
+                                </c:if>
                             </form:form>
                         </td>
                     </tr>

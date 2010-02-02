@@ -1,67 +1,67 @@
-<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:form="http://www.springframework.org/tags/form" xmlns:spring="http://www.springframework.org/tags">
-    <script type="text/javascript">dojo.require("dijit.TitlePane");dojo.require("dijit.form.FilteringSelect");</script>
-    <div id="_title_div" style="width: 100%">
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:form="http://www.springframework.org/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+    <jsp:output omit-xml-declaration="yes"/>
+    <script type="text/javascript">dojo.require('dijit.TitlePane');dojo.require('dijit.form.FilteringSelect');</script>
+    <div id="_title_div">
         <spring:message code="label.user" var="entity_label"/>
         <spring:message arguments="${entity_label}" code="entity.create" var="title_msg"/>
         <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_title_div', widgetType : 'dijit.TitlePane', widgetAttrs : {title: '${title_msg}'}})); </script>
         <spring:url value="/user" var="form_url"/>
         <form:form action="${form_url}" method="POST" modelAttribute="user">
+            <form:errors cssClass="errors" delimiter="&lt;p/&gt;"/>
             <div id="roo_user_username">
-                <label for="_username">Username:</label>
-                <form:input cssStyle="width:250px" id="_username" maxlength="30" path="username" size="0"/>
+                <label for="_username_id">Username:</label>
+                <form:input cssStyle="width:250px" id="_username_id" maxlength="30" path="username" size="0"/>
                 <br/>
-                <form:errors cssClass="errors" id="_username_error" path="username"/>
+                <form:errors cssClass="errors" id="_username_error_id" path="username"/>
                 <spring:message arguments="Username" code="field.invalid" var="field_invalid"/>
                 <spring:message code="field.required" var="field_required"/>
                 <spring:message argumentSeparator="," arguments="Username,(${field_required})" code="field.simple.validation" var="field_validation"/>
-                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : "_username", widgetType : "dijit.form.ValidationTextBox", widgetAttrs : {promptMessage: "${field_validation}", invalidMessage: "${field_invalid}", required : true}})); </script>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_username_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : true}})); </script>
             </div>
             <br/>
             <div id="roo_user_password">
-                <label for="_password">Password:</label>
-                <form:input cssStyle="width:250px" id="_password" maxlength="30" path="password" size="0"/>
+                <label for="_password_id">Password:</label>
+                <form:input cssStyle="width:250px" id="_password_id" maxlength="30" path="password" size="0"/>
                 <br/>
-                <form:errors cssClass="errors" id="_password_error" path="password"/>
+                <form:errors cssClass="errors" id="_password_error_id" path="password"/>
                 <spring:message arguments="Password" code="field.invalid" var="field_invalid"/>
                 <spring:message code="field.required" var="field_required"/>
                 <spring:message argumentSeparator="," arguments="Password,(${field_required})" code="field.simple.validation" var="field_validation"/>
-                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : "_password", widgetType : "dijit.form.ValidationTextBox", widgetAttrs : {promptMessage: "${field_validation}", invalidMessage: "${field_invalid}", required : true}})); </script>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_password_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : true}})); </script>
             </div>
             <br/>
             <div id="roo_user_enabled">
-                <label for="_enabled">Enabled:</label>
-                <form:checkbox id="_enabled" path="enabled"/>
+                <label for="_enabled_id">Enabled:</label>
+                <form:checkbox id="_enabled_id" path="enabled"/>
             </div>
             <br/>
             <div id="roo_user_userGroup">
                 <c:if test="${not empty usergroups}">
-                    <label for="_userGroup">User Group:</label>
-                    <form:select cssStyle="width:250px" id="_userGroup" path="userGroup">
+                    <label for="_userGroup_id">User Group:</label>
+                    <form:select cssStyle="width:250px" id="_userGroup_id" path="userGroup">
                         <form:options itemValue="id" items="${usergroups}"/>
                     </form:select>
-                    <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_userGroup', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
+                    <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_userGroup_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
                 </c:if>
             </div>
             <br/>
             <div id="roo_user_country">
                 <c:if test="${not empty countrys}">
-                    <label for="_country">Country:</label>
-                    <form:select cssStyle="width:250px" id="_country" path="country">
-                    	<form:option value=""/>
+                    <label for="_country_id">Country:</label>
+                    <form:select cssStyle="width:250px" id="_country_id" path="country">
                         <form:options itemValue="id" items="${countrys}"/>
                     </form:select>
-                    <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_country', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
+                    <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_country_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
                 </c:if>
             </div>
             <br/>
             <div id="roo_user_centre">
                 <c:if test="${not empty diabetescentres}">
-                    <label for="_centre">Centre:</label>
-                    <form:select cssStyle="width:250px" id="_centre" path="centre">
-                    	<form:option value=""/>
+                    <label for="_centre_id">Centre:</label>
+                    <form:select cssStyle="width:250px" id="_centre_id" path="centre">
                         <form:options itemValue="id" items="${diabetescentres}"/>
                     </form:select>
-                    <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_centre', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
+                    <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_centre_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
                 </c:if>
             </div>
             <br/>
