@@ -2,8 +2,7 @@ package org.lifeforachild.web;
 
 import java.lang.Long;
 import java.lang.String;
-import javax.validation.ConstraintViolation;
-import javax.validation.Validation;
+import javax.validation.Valid;
 import org.lifeforachild.domain.ChildFields;
 import org.lifeforachild.domain.ClinicalRecordFields;
 import org.lifeforachild.domain.Country;
@@ -16,9 +15,6 @@ import org.lifeforachild.domain.TimePeriodUnit;
 import org.lifeforachild.domain.User;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -27,13 +23,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 privileged aspect ReportController_Roo_Controller {
     
     @RequestMapping(value = "/report", method = RequestMethod.POST)    
-    public String ReportController.create(@ModelAttribute("report") Report report, BindingResult result, ModelMap modelMap) {    
+    public String ReportController.create(@Valid Report report, BindingResult result, ModelMap modelMap) {    
         if (report == null) throw new IllegalArgumentException("A report is required");        
-        for (ConstraintViolation<Report> constraint : Validation.buildDefaultValidatorFactory().getValidator().validate(report)) {        
-            result.rejectValue(constraint.getPropertyPath().toString(), "report.error." + constraint.getPropertyPath(), constraint.getMessage());            
-        }        
         if (result.hasErrors()) {        
-            modelMap.addAllAttributes(result.getAllErrors());            
             modelMap.addAttribute("report", report);            
             modelMap.addAttribute("childfields_enum", ChildFields.class.getEnumConstants());            
             modelMap.addAttribute("clinicalrecordfields_enum", ClinicalRecordFields.class.getEnumConstants());            
@@ -86,13 +78,9 @@ privileged aspect ReportController_Roo_Controller {
     }    
     
     @RequestMapping(method = RequestMethod.PUT)    
-    public String ReportController.update(@ModelAttribute("report") Report report, BindingResult result, ModelMap modelMap) {    
+    public String ReportController.update(@Valid Report report, BindingResult result, ModelMap modelMap) {    
         if (report == null) throw new IllegalArgumentException("A report is required");        
-        for (ConstraintViolation<Report> constraint : Validation.buildDefaultValidatorFactory().getValidator().validate(report)) {        
-            result.rejectValue(constraint.getPropertyPath().toString(), "report.error." + constraint.getPropertyPath(), constraint.getMessage());            
-        }        
         if (result.hasErrors()) {        
-            modelMap.addAllAttributes(result.getAllErrors());            
             modelMap.addAttribute("report", report);            
             modelMap.addAttribute("childfields_enum", ChildFields.class.getEnumConstants());            
             modelMap.addAttribute("clinicalrecordfields_enum", ClinicalRecordFields.class.getEnumConstants());            
@@ -126,15 +114,10 @@ privileged aspect ReportController_Roo_Controller {
     }    
     
     @RequestMapping(value = "/report/{id}", method = RequestMethod.DELETE)    
-    public String ReportController.delete(@PathVariable("id") Long id) {    
+    public String ReportController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size) {    
         if (id == null) throw new IllegalArgumentException("An Identifier is required");        
         Report.findReport(id).remove();        
-        return "redirect:/report";        
-    }    
-    
-    @InitBinder    
-    public void ReportController.initBinder(WebDataBinder binder) {    
-        binder.registerCustomEditor(java.util.Date.class, new org.springframework.beans.propertyeditors.CustomDateEditor(new java.text.SimpleDateFormat("d/MM/yy"), true));        
+        return "redirect:/report?page=" + ((page == null) ? "1" : page.toString()) + "&size=" + ((size == null) ? "10" : size.toString());        
     }    
     
 }

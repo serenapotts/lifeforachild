@@ -2,8 +2,7 @@ package org.lifeforachild.web;
 
 import java.lang.Long;
 import java.lang.String;
-import javax.validation.ConstraintViolation;
-import javax.validation.Validation;
+import javax.validation.Valid;
 import org.lifeforachild.domain.Child;
 import org.lifeforachild.domain.ClinicalRecord;
 import org.lifeforachild.domain.CreatineUnitsType;
@@ -19,9 +18,6 @@ import org.lifeforachild.domain.YesNoNAType;
 import org.lifeforachild.domain.YesNoUnkownType;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -30,14 +26,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 privileged aspect ClinicalRecordController_Roo_Controller {
     
     @RequestMapping(value = "/clinicalrecord", method = RequestMethod.POST)    
-    public String ClinicalRecordController.create(@ModelAttribute("clinicalrecord") ClinicalRecord clinicalrecord, BindingResult result, ModelMap modelMap) {    
-        if (clinicalrecord == null) throw new IllegalArgumentException("A clinicalrecord is required");        
-        for (ConstraintViolation<ClinicalRecord> constraint : Validation.buildDefaultValidatorFactory().getValidator().validate(clinicalrecord)) {        
-            result.rejectValue(constraint.getPropertyPath().toString(), "clinicalrecord.error." + constraint.getPropertyPath(), constraint.getMessage());            
-        }        
+    public String ClinicalRecordController.create(@Valid ClinicalRecord clinicalRecord, BindingResult result, ModelMap modelMap) {    
+        if (clinicalRecord == null) throw new IllegalArgumentException("A clinicalRecord is required");        
         if (result.hasErrors()) {        
-            modelMap.addAllAttributes(result.getAllErrors());            
-            modelMap.addAttribute("clinicalrecord", clinicalrecord);            
+            modelMap.addAttribute("clinicalRecord", clinicalRecord);            
             modelMap.addAttribute("children", Child.findAllChildren());            
             modelMap.addAttribute("creatineunitstype_enum", CreatineUnitsType.class.getEnumConstants());            
             modelMap.addAttribute("diabetescopingtype_enum", DiabetesCopingType.class.getEnumConstants());            
@@ -50,15 +42,18 @@ privileged aspect ClinicalRecordController_Roo_Controller {
             modelMap.addAttribute("yesnolatertype_enum", YesNoLaterType.class.getEnumConstants());            
             modelMap.addAttribute("yesnonatype_enum", YesNoNAType.class.getEnumConstants());            
             modelMap.addAttribute("yesnounkowntype_enum", YesNoUnkownType.class.getEnumConstants());            
+            modelMap.addAttribute("clinicalRecord_dateOfMeasurement_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));            
+            modelMap.addAttribute("clinicalRecord_ifMenarcheAge_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));            
+            modelMap.addAttribute("clinicalRecord_dateCompleted_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));            
             return "clinicalrecord/create";            
         }        
-        clinicalrecord.persist();        
-        return "redirect:/clinicalrecord/" + clinicalrecord.getId();        
+        clinicalRecord.persist();        
+        return "redirect:/clinicalrecord/" + clinicalRecord.getId();        
     }    
     
     @RequestMapping(value = "/clinicalrecord/form", method = RequestMethod.GET)    
     public String ClinicalRecordController.createForm(ModelMap modelMap) {    
-        modelMap.addAttribute("clinicalrecord", new ClinicalRecord());        
+        modelMap.addAttribute("clinicalRecord", new ClinicalRecord());        
         modelMap.addAttribute("children", Child.findAllChildren());        
         modelMap.addAttribute("creatineunitstype_enum", CreatineUnitsType.class.getEnumConstants());        
         modelMap.addAttribute("diabetescopingtype_enum", DiabetesCopingType.class.getEnumConstants());        
@@ -71,13 +66,19 @@ privileged aspect ClinicalRecordController_Roo_Controller {
         modelMap.addAttribute("yesnolatertype_enum", YesNoLaterType.class.getEnumConstants());        
         modelMap.addAttribute("yesnonatype_enum", YesNoNAType.class.getEnumConstants());        
         modelMap.addAttribute("yesnounkowntype_enum", YesNoUnkownType.class.getEnumConstants());        
+        modelMap.addAttribute("clinicalRecord_dateOfMeasurement_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));        
+        modelMap.addAttribute("clinicalRecord_ifMenarcheAge_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));        
+        modelMap.addAttribute("clinicalRecord_dateCompleted_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));        
         return "clinicalrecord/create";        
     }    
     
     @RequestMapping(value = "/clinicalrecord/{id}", method = RequestMethod.GET)    
     public String ClinicalRecordController.show(@PathVariable("id") Long id, ModelMap modelMap) {    
         if (id == null) throw new IllegalArgumentException("An Identifier is required");        
-        modelMap.addAttribute("clinicalrecord", ClinicalRecord.findClinicalRecord(id));        
+        modelMap.addAttribute("clinicalRecord_dateOfMeasurement_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));        
+        modelMap.addAttribute("clinicalRecord_ifMenarcheAge_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));        
+        modelMap.addAttribute("clinicalRecord_dateCompleted_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));        
+        modelMap.addAttribute("clinicalRecord", ClinicalRecord.findClinicalRecord(id));        
         return "clinicalrecord/show";        
     }    
     
@@ -91,18 +92,17 @@ privileged aspect ClinicalRecordController_Roo_Controller {
         } else {        
             modelMap.addAttribute("clinicalrecords", ClinicalRecord.findAllClinicalRecords());            
         }        
+        modelMap.addAttribute("clinicalRecord_dateOfMeasurement_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));        
+        modelMap.addAttribute("clinicalRecord_ifMenarcheAge_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));        
+        modelMap.addAttribute("clinicalRecord_dateCompleted_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));        
         return "clinicalrecord/list";        
     }    
     
     @RequestMapping(method = RequestMethod.PUT)    
-    public String ClinicalRecordController.update(@ModelAttribute("clinicalrecord") ClinicalRecord clinicalrecord, BindingResult result, ModelMap modelMap) {    
-        if (clinicalrecord == null) throw new IllegalArgumentException("A clinicalrecord is required");        
-        for (ConstraintViolation<ClinicalRecord> constraint : Validation.buildDefaultValidatorFactory().getValidator().validate(clinicalrecord)) {        
-            result.rejectValue(constraint.getPropertyPath().toString(), "clinicalrecord.error." + constraint.getPropertyPath(), constraint.getMessage());            
-        }        
+    public String ClinicalRecordController.update(@Valid ClinicalRecord clinicalRecord, BindingResult result, ModelMap modelMap) {    
+        if (clinicalRecord == null) throw new IllegalArgumentException("A clinicalRecord is required");        
         if (result.hasErrors()) {        
-            modelMap.addAllAttributes(result.getAllErrors());            
-            modelMap.addAttribute("clinicalrecord", clinicalrecord);            
+            modelMap.addAttribute("clinicalRecord", clinicalRecord);            
             modelMap.addAttribute("children", Child.findAllChildren());            
             modelMap.addAttribute("creatineunitstype_enum", CreatineUnitsType.class.getEnumConstants());            
             modelMap.addAttribute("diabetescopingtype_enum", DiabetesCopingType.class.getEnumConstants());            
@@ -115,16 +115,19 @@ privileged aspect ClinicalRecordController_Roo_Controller {
             modelMap.addAttribute("yesnolatertype_enum", YesNoLaterType.class.getEnumConstants());            
             modelMap.addAttribute("yesnonatype_enum", YesNoNAType.class.getEnumConstants());            
             modelMap.addAttribute("yesnounkowntype_enum", YesNoUnkownType.class.getEnumConstants());            
+            modelMap.addAttribute("clinicalRecord_dateOfMeasurement_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));            
+            modelMap.addAttribute("clinicalRecord_ifMenarcheAge_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));            
+            modelMap.addAttribute("clinicalRecord_dateCompleted_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));            
             return "clinicalrecord/update";            
         }        
-        clinicalrecord.merge();        
-        return "redirect:/clinicalrecord/" + clinicalrecord.getId();        
+        clinicalRecord.merge();        
+        return "redirect:/clinicalrecord/" + clinicalRecord.getId();        
     }    
     
     @RequestMapping(value = "/clinicalrecord/{id}/form", method = RequestMethod.GET)    
     public String ClinicalRecordController.updateForm(@PathVariable("id") Long id, ModelMap modelMap) {    
         if (id == null) throw new IllegalArgumentException("An Identifier is required");        
-        modelMap.addAttribute("clinicalrecord", ClinicalRecord.findClinicalRecord(id));        
+        modelMap.addAttribute("clinicalRecord", ClinicalRecord.findClinicalRecord(id));        
         modelMap.addAttribute("children", Child.findAllChildren());        
         modelMap.addAttribute("creatineunitstype_enum", CreatineUnitsType.class.getEnumConstants());        
         modelMap.addAttribute("diabetescopingtype_enum", DiabetesCopingType.class.getEnumConstants());        
@@ -137,19 +140,17 @@ privileged aspect ClinicalRecordController_Roo_Controller {
         modelMap.addAttribute("yesnolatertype_enum", YesNoLaterType.class.getEnumConstants());        
         modelMap.addAttribute("yesnonatype_enum", YesNoNAType.class.getEnumConstants());        
         modelMap.addAttribute("yesnounkowntype_enum", YesNoUnkownType.class.getEnumConstants());        
+        modelMap.addAttribute("clinicalRecord_dateOfMeasurement_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));        
+        modelMap.addAttribute("clinicalRecord_ifMenarcheAge_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));        
+        modelMap.addAttribute("clinicalRecord_dateCompleted_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));        
         return "clinicalrecord/update";        
     }    
     
     @RequestMapping(value = "/clinicalrecord/{id}", method = RequestMethod.DELETE)    
-    public String ClinicalRecordController.delete(@PathVariable("id") Long id) {    
+    public String ClinicalRecordController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size) {    
         if (id == null) throw new IllegalArgumentException("An Identifier is required");        
         ClinicalRecord.findClinicalRecord(id).remove();        
-        return "redirect:/clinicalrecord";        
-    }    
-    
-    @InitBinder    
-    public void ClinicalRecordController.initBinder(WebDataBinder binder) {    
-        binder.registerCustomEditor(java.util.Date.class, new org.springframework.beans.propertyeditors.CustomDateEditor(new java.text.SimpleDateFormat("d/MM/yy"), true));        
+        return "redirect:/clinicalrecord?page=" + ((page == null) ? "1" : page.toString()) + "&size=" + ((size == null) ? "10" : size.toString());        
     }    
     
 }

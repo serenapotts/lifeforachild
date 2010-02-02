@@ -2,13 +2,11 @@ package org.lifeforachild.web;
 
 import java.lang.Long;
 import java.lang.String;
-import javax.validation.ConstraintViolation;
-import javax.validation.Validation;
+import javax.validation.Valid;
 import org.lifeforachild.domain.ReportProperties;
 import org.lifeforachild.domain.ReportType;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,24 +15,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 privileged aspect ReportPropertiesController_Roo_Controller {
     
     @RequestMapping(value = "/reportproperties", method = RequestMethod.POST)    
-    public String ReportPropertiesController.create(@ModelAttribute("reportproperties") ReportProperties reportproperties, BindingResult result, ModelMap modelMap) {    
-        if (reportproperties == null) throw new IllegalArgumentException("A reportproperties is required");        
-        for (ConstraintViolation<ReportProperties> constraint : Validation.buildDefaultValidatorFactory().getValidator().validate(reportproperties)) {        
-            result.rejectValue(constraint.getPropertyPath().toString(), "reportproperties.error." + constraint.getPropertyPath(), constraint.getMessage());            
-        }        
+    public String ReportPropertiesController.create(@Valid ReportProperties reportProperties, BindingResult result, ModelMap modelMap) {    
+        if (reportProperties == null) throw new IllegalArgumentException("A reportProperties is required");        
         if (result.hasErrors()) {        
-            modelMap.addAllAttributes(result.getAllErrors());            
-            modelMap.addAttribute("reportproperties", reportproperties);            
+            modelMap.addAttribute("reportProperties", reportProperties);            
             modelMap.addAttribute("reporttype_enum", ReportType.class.getEnumConstants());            
             return "reportproperties/create";            
         }        
-        reportproperties.persist();        
-        return "redirect:/reportproperties/" + reportproperties.get_id();        
+        reportProperties.persist();        
+        return "redirect:/reportproperties/" + reportProperties.get_id();        
     }    
     
     @RequestMapping(value = "/reportproperties/form", method = RequestMethod.GET)    
     public String ReportPropertiesController.createForm(ModelMap modelMap) {    
-        modelMap.addAttribute("reportproperties", new ReportProperties());        
+        modelMap.addAttribute("reportProperties", new ReportProperties());        
         modelMap.addAttribute("reporttype_enum", ReportType.class.getEnumConstants());        
         return "reportproperties/create";        
     }    
@@ -42,7 +36,7 @@ privileged aspect ReportPropertiesController_Roo_Controller {
     @RequestMapping(value = "/reportproperties/{_id}", method = RequestMethod.GET)    
     public String ReportPropertiesController.show(@PathVariable("_id") Long _id, ModelMap modelMap) {    
         if (_id == null) throw new IllegalArgumentException("An Identifier is required");        
-        modelMap.addAttribute("reportproperties", ReportProperties.findReportProperties(_id));        
+        modelMap.addAttribute("reportProperties", ReportProperties.findReportProperties(_id));        
         return "reportproperties/show";        
     }    
     
@@ -60,34 +54,30 @@ privileged aspect ReportPropertiesController_Roo_Controller {
     }    
     
     @RequestMapping(method = RequestMethod.PUT)    
-    public String ReportPropertiesController.update(@ModelAttribute("reportproperties") ReportProperties reportproperties, BindingResult result, ModelMap modelMap) {    
-        if (reportproperties == null) throw new IllegalArgumentException("A reportproperties is required");        
-        for (ConstraintViolation<ReportProperties> constraint : Validation.buildDefaultValidatorFactory().getValidator().validate(reportproperties)) {        
-            result.rejectValue(constraint.getPropertyPath().toString(), "reportproperties.error." + constraint.getPropertyPath(), constraint.getMessage());            
-        }        
+    public String ReportPropertiesController.update(@Valid ReportProperties reportProperties, BindingResult result, ModelMap modelMap) {    
+        if (reportProperties == null) throw new IllegalArgumentException("A reportProperties is required");        
         if (result.hasErrors()) {        
-            modelMap.addAllAttributes(result.getAllErrors());            
-            modelMap.addAttribute("reportproperties", reportproperties);            
+            modelMap.addAttribute("reportProperties", reportProperties);            
             modelMap.addAttribute("reporttype_enum", ReportType.class.getEnumConstants());            
             return "reportproperties/update";            
         }        
-        reportproperties.merge();        
-        return "redirect:/reportproperties/" + reportproperties.get_id();        
+        reportProperties.merge();        
+        return "redirect:/reportproperties/" + reportProperties.get_id();        
     }    
     
     @RequestMapping(value = "/reportproperties/{_id}/form", method = RequestMethod.GET)    
     public String ReportPropertiesController.updateForm(@PathVariable("_id") Long _id, ModelMap modelMap) {    
         if (_id == null) throw new IllegalArgumentException("An Identifier is required");        
-        modelMap.addAttribute("reportproperties", ReportProperties.findReportProperties(_id));        
+        modelMap.addAttribute("reportProperties", ReportProperties.findReportProperties(_id));        
         modelMap.addAttribute("reporttype_enum", ReportType.class.getEnumConstants());        
         return "reportproperties/update";        
     }    
     
     @RequestMapping(value = "/reportproperties/{_id}", method = RequestMethod.DELETE)    
-    public String ReportPropertiesController.delete(@PathVariable("_id") Long _id) {    
+    public String ReportPropertiesController.delete(@PathVariable("_id") Long _id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size) {    
         if (_id == null) throw new IllegalArgumentException("An Identifier is required");        
         ReportProperties.findReportProperties(_id).remove();        
-        return "redirect:/reportproperties";        
+        return "redirect:/reportproperties?page=" + ((page == null) ? "1" : page.toString()) + "&size=" + ((size == null) ? "10" : size.toString());        
     }    
     
 }
