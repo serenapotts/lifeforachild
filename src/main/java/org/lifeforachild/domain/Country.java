@@ -24,6 +24,6 @@ public class Country {
     @Size(max = 60)
     private String name;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "country")
     private Set<DiabetesCentre> diabetesCentres = new HashSet<DiabetesCentre>();
 }

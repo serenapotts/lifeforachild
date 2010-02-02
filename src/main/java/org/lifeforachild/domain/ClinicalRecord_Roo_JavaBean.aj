@@ -18,6 +18,14 @@ import org.lifeforachild.domain.YesNoUnkownType;
 
 privileged aspect ClinicalRecord_Roo_JavaBean {
     
+    public Child ClinicalRecord.getChild() {    
+        return this.child;        
+    }    
+    
+    public void ClinicalRecord.setChild(Child child) {    
+        this.child = child;        
+    }    
+    
     public Integer ClinicalRecord.getBloodGlucoseSelfMonitoringPerWeek() {    
         return this.bloodGlucoseSelfMonitoringPerWeek;        
     }    
@@ -552,14 +560,6 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
     
     public void ClinicalRecord.setLiterate(YesNoNAType literate) {    
         this.literate = literate;        
-    }    
-    
-    public Child ClinicalRecord.getChild() {    
-        return this.child;        
-    }    
-    
-    public void ClinicalRecord.setChild(Child child) {    
-        this.child = child;        
     }    
     
 }

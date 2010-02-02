@@ -8,6 +8,7 @@ privileged aspect Child_Roo_ToString {
         StringBuilder sb = new StringBuilder();        
         sb.append("Id: ").append(getId()).append(", ");        
         sb.append("Version: ").append(getVersion()).append(", ");        
+        sb.append("IndividualId: ").append(getIndividualId()).append(", ");        
         sb.append("Initials: ").append(getInitials()).append(", ");        
         sb.append("Name: ").append(getName()).append(", ");        
         sb.append("EthnicGroup: ").append(getEthnicGroup()).append(", ");        

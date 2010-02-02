@@ -10,10 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Version;
-
-import org.lifeforachild.Util.SecurityUtil;
 import org.lifeforachild.domain.User;
-import org.lifeforachild.enums.UserGroups;
 import org.springframework.transaction.annotation.Transactional;
 
 privileged aspect User_Roo_Entity {
@@ -97,33 +94,7 @@ privileged aspect User_Roo_Entity {
     }    
     
     public static List<User> User.findUserEntries(int firstResult, int maxResults) {    
-        return entityManager().createQuery(getUsersQuery()).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();        
+        return entityManager().createQuery("select o from User o").setFirstResult(firstResult).setMaxResults(maxResults).getResultList();        
     }    
-    
-    public static String getUsersQuery()
-    {
-    	String baseQuery = getAllUsersQuery();
-    	UserGroup userGroup = SecurityUtil.getCurrentUserGroup();
-    	String query = null;
-    	if (userGroup == null)
-    		return null;
-    	else if (userGroup.getGroupName().equals(UserGroups.PROGRAM_MANAGER.getName()))
-    		// they can see all users
-    		query = baseQuery;
-    	else
-    	{
-    		String[] accessGroups = UserGroups.getUserGroupsCanAccess(userGroup);
-    		if (accessGroups != null)
-    			query = baseQuery + " where " + 
-    				UserGroup.getUserGroupFilter(accessGroups, "o.userGroup.groupName");  		
-    	}
-
-    	return query;
-    }
-    
-    public static String getAllUsersQuery()
-    {
-    	return "select o from User o";
-    }
     
 }

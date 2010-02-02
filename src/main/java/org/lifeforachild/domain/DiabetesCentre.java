@@ -1,6 +1,7 @@
 package org.lifeforachild.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.Size;
@@ -25,6 +26,7 @@ public class DiabetesCentre {
     @Size(max = 200)
     private String address;
     
-    @ManyToOne
+    @ManyToOne(targetEntity = Country.class)
+    @JoinColumn
     private Country country;
 }

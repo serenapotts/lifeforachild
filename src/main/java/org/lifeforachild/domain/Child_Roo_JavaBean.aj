@@ -12,6 +12,14 @@ import org.lifeforachild.domain.SurvivalStatusType;
 
 privileged aspect Child_Roo_JavaBean {
     
+    public String Child.getIndividualId() {    
+        return this.individualId;        
+    }    
+    
+    public void Child.setIndividualId(String individualId) {    
+        this.individualId = individualId;        
+    }    
+    
     public String Child.getInitials() {    
         return this.initials;        
     }    

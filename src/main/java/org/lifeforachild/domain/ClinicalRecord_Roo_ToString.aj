@@ -8,6 +8,7 @@ privileged aspect ClinicalRecord_Roo_ToString {
         StringBuilder sb = new StringBuilder();        
         sb.append("Id: ").append(getId()).append(", ");        
         sb.append("Version: ").append(getVersion()).append(", ");        
+        sb.append("Child: ").append(getChild()).append(", ");        
         sb.append("BloodGlucoseSelfMonitoringPerWeek: ").append(getBloodGlucoseSelfMonitoringPerWeek()).append(", ");        
         sb.append("UrineGlucoseSelfMonitoringPerWeek: ").append(getUrineGlucoseSelfMonitoringPerWeek()).append(", ");        
         sb.append("AdjustInsulinDoseIfNeeded: ").append(isAdjustInsulinDoseIfNeeded()).append(", ");        
@@ -74,8 +75,7 @@ privileged aspect ClinicalRecord_Roo_ToString {
         sb.append("PersonCompletingForm: ").append(getPersonCompletingForm()).append(", ");        
         sb.append("DateCompleted: ").append(getDateCompleted()).append(", ");        
         sb.append("SeniorPhysician: ").append(getSeniorPhysician()).append(", ");        
-        sb.append("Literate: ").append(getLiterate()).append(", ");        
-        sb.append("Child: ").append(getChild());        
+        sb.append("Literate: ").append(getLiterate());        
         return sb.toString();        
     }    
     

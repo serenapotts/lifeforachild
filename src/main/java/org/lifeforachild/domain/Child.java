@@ -6,6 +6,7 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -13,6 +14,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.lifeforachild.web.query.ChildQuery;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.roo.addon.entity.RooEntity;
 import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.tostring.RooToString;
@@ -35,6 +37,9 @@ public class Child {
 	public static final String ID_COLUMN = "id";
 	public static final String UPDATED_ON_COLUMN = "updated_on";
 	
+	@Size(max=20)
+	private String individualId;
+	
     @Size(min = 1)
     private String initials;
 
@@ -44,33 +49,47 @@ public class Child {
     @Size(max = 20)
     private String ethnicGroup;
 
+    @Enumerated
     @NotNull
     private SexType sex;
 
+    @Enumerated
     @NotNull
     private SurvivalStatusType survivalStatus;
 
-    @Temporal(TemporalType.DATE)
+    @NotNull
+    @Temporal(TemporalType.TIMESTAMP)
+    @DateTimeFormat(style = "S-")
     private Date dateOfDeath;
 
+    @Enumerated
     @NotNull
     private CauseOfDeathType causeOfDeath;
 
     @Size(max = 60)
     private String causeOfDeathOther;
 
-    @Temporal(TemporalType.DATE)
+    @NotNull
+    @Temporal(TemporalType.TIMESTAMP)
+    @DateTimeFormat(style = "S-")
     private Date dateOfRegistration;
 
-    @Temporal(TemporalType.DATE)
+    @NotNull
+    @Temporal(TemporalType.TIMESTAMP)
+    @DateTimeFormat(style = "S-")
     private Date dateOfBirth;
 
-    @Temporal(TemporalType.DATE)
+    @NotNull
+    @Temporal(TemporalType.TIMESTAMP)
+    @DateTimeFormat(style = "S-")
     private Date diabetesDiagnosed;
 
-    @Temporal(TemporalType.DATE)
+    @NotNull
+    @Temporal(TemporalType.TIMESTAMP)
+    @DateTimeFormat(style = "S-")
     private Date insulinSince;
 
+    @Enumerated
     @NotNull
     private DiabetesType diabetesType;
 
@@ -78,12 +97,17 @@ public class Child {
     @Size(max = 60)
     private String diabetesTypeOther;
 
+    @NotNull
     @Temporal(TemporalType.TIMESTAMP)
+    @DateTimeFormat(style = "S-")
     private Date createdOn;
 
+    @NotNull
     @Temporal(TemporalType.TIMESTAMP)
+    @DateTimeFormat(style = "S-")
     private Date updatedOn;
 
+    @Enumerated
     @NotNull
     private DistanceType distanceLivesFromCentre;
 
@@ -91,7 +115,7 @@ public class Child {
         return ClinicalRecord.calculateAge(diabetesDiagnosed, dateOfBirth);
     }
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "child")
     private Set<ClinicalRecord> clinicalRecords = new HashSet<ClinicalRecord>();
 
     public static java.util.List<Child> findChildren(String query) {    

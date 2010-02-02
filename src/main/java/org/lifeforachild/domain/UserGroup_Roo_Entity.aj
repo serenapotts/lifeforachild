@@ -1,7 +1,8 @@
 package org.lifeforachild.domain;
 
+import java.lang.Integer;
+import java.lang.Long;
 import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.EntityManager;
 import javax.persistence.GeneratedValue;
@@ -9,11 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Version;
-
-import org.lifeforachild.Util.SecurityUtil;
-import org.lifeforachild.Util.StringUtil;
-import org.lifeforachild.enums.UserGroups;
-import org.springframework.security.provisioning.JdbcUserDetailsManager;
+import org.lifeforachild.domain.UserGroup;
 import org.springframework.transaction.annotation.Transactional;
 
 privileged aspect UserGroup_Roo_Entity {
@@ -100,39 +97,4 @@ privileged aspect UserGroup_Roo_Entity {
         return entityManager().createQuery("select o from UserGroup o").setFirstResult(firstResult).setMaxResults(maxResults).getResultList();        
     }    
     
-    public static String getAllUsersQuery()
-    {
-    	return "select o from UserGroup o";
-    }
-
-    public static List<UserGroup> UserGroup.findUserGroupsByAccess() {
-    	UserGroup userGroup = SecurityUtil.getCurrentUserGroup();
-    	String baseQuery = getAllUsersQuery();
-    	String query = null;
-    	if (userGroup == null)
-    		return null;
-    	else if (userGroup.getGroupName().equals(UserGroups.PROGRAM_MANAGER.getName()))
-    		// they can see all users
-    		query = baseQuery;
-    	else
-    	{
-    		String[] accessGroups = UserGroups.getUserGroupsCanAccess(userGroup);
-    		if (accessGroups != null)
-    			query = baseQuery + " where " + getUserGroupFilter(accessGroups);     		
-    	}
-    	if (query != null)
-    		return entityManager().createQuery(query).getResultList();
-    	return null;
-    }    
-    
-    public static String UserGroup.getUserGroupFilter(String[] userGroups)
-    {
-    	return UserGroup.getUserGroupFilter(userGroups, "group_name");
-    }
-
-    public static String UserGroup.getUserGroupFilter(String[] userGroups, String pre)
-    {
-    	return StringUtil.buildString(userGroups, pre + "='", "'", " or ");
-    }
-
 }

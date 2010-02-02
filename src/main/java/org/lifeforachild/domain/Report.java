@@ -3,6 +3,7 @@ package org.lifeforachild.domain;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.EntityManager;
+import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -26,14 +27,17 @@ public class Report {
     @ManyToOne
     private User viewableBy;
     
+    @Enumerated
     @NotNull
     private ReportType reporttype;
 
+    @Enumerated
     @NotNull
     private StatusType statustype;
 
     private String timePeriod;
 
+    @Enumerated
     @NotNull
     private TimePeriodUnit timeperiodunit;
 
@@ -43,6 +47,7 @@ public class Report {
     @Temporal(TemporalType.TIMESTAMP)
     private Date toDate;
 
+    @Enumerated
     @NotNull
     private ShowOptionType showoptiontype;
     
@@ -50,6 +55,7 @@ public class Report {
 
     private String age;
     
+    @Enumerated
     @NotNull
     @ManyToOne
     private DiabetesCentre centre;
