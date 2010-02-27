@@ -8,7 +8,7 @@ body,div,td {
 
 body {
 	background-color: #fff;
-	background-image: url(../images/banner-graphic.png);
+	background-image: url(../images/lfac-banner-graphic.png);
 	background-position: top center;
 	background-repeat: no-repeat;
 	text-align: center;
@@ -64,7 +64,7 @@ body {
 
 #menu h2 {
 	color: #fff;
-	background: #648C1D;
+	background: #84cdfb;
 	text-transform: uppercase;
 	font-weight:bold;
 	font-size: 12px;
