@@ -8,17 +8,23 @@
         <c:if test="${not empty diabetesCentre}">
             <div id="roo_diabetesCentre_name">
                 <label for="_name_id">Name:</label>
-                <div class="box" id="_name_id">${diabetesCentre.name}</div>
+                <div class="box" id="_name_id">
+                    <c:out value="${diabetesCentre.name}"/>
+                </div>
             </div>
             <br/>
             <div id="roo_diabetesCentre_address">
                 <label for="_address_id">Address:</label>
-                <div class="box" id="_address_id">${diabetesCentre.address}</div>
+                <div class="box" id="_address_id">
+                    <c:out value="${diabetesCentre.address}"/>
+                </div>
             </div>
             <br/>
             <div id="roo_diabetesCentre_country">
                 <label for="_country_id">Country:</label>
-                <div class="box" id="_country_id">${diabetesCentre.country}</div>
+                <div class="box" id="_country_id">
+                    <c:out value="${diabetesCentre.country}"/>
+                </div>
             </div>
             <br/>
         </c:if>
