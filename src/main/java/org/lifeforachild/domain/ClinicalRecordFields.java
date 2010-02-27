@@ -20,4 +20,6 @@ public enum ClinicalRecordFields {
     public String getLabel() {
         return label;
     }
+    
+    public String getId() {return name();}
 }
