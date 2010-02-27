@@ -5,483 +5,589 @@
         <spring:message code="label.clinicalrecord" var="entity_label"/>
         <spring:message arguments="${entity_label}" code="entity.show" var="title_msg"/>
         <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_title_div', widgetType : 'dijit.TitlePane', widgetAttrs : {title: '${title_msg}'}})); </script>
-        <c:if test="${not empty clinicalRecord}">
-            <div id="roo_clinicalRecord_child">
-                <label for="_child_id">Child:</label>
-                <div class="box" id="_child_id">
-                    <c:out value="${clinicalRecord.child}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_clinicalRecord_bloodGlucoseSelfMonitoringPerWeek">
-                <label for="_bloodGlucoseSelfMonitoringPerWeek_id">Blood Glucose Self Monitoring Per Week:</label>
-                <div class="box" id="_bloodGlucoseSelfMonitoringPerWeek_id">
-                    <c:out value="${clinicalRecord.bloodGlucoseSelfMonitoringPerWeek}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_clinicalRecord_urineGlucoseSelfMonitoringPerWeek">
-                <label for="_urineGlucoseSelfMonitoringPerWeek_id">Urine Glucose Self Monitoring Per Week:</label>
-                <div class="box" id="_urineGlucoseSelfMonitoringPerWeek_id">
-                    <c:out value="${clinicalRecord.urineGlucoseSelfMonitoringPerWeek}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_clinicalRecord_adjustInsulinDoseIfNeeded">
-                <label for="_adjustInsulinDoseIfNeeded_id">Adjust Insulin Dose If Needed:</label>
-                <div class="box" id="_adjustInsulinDoseIfNeeded_id">
-                    <c:out value="${clinicalRecord.adjustInsulinDoseIfNeeded}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_clinicalRecord_insulinUnitsPerDay">
-                <label for="_insulinUnitsPerDay_id">Insulin Units Per Day:</label>
-                <div class="box" id="_insulinUnitsPerDay_id">
-                    <c:out value="${clinicalRecord.insulinUnitsPerDay}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_clinicalRecord_numberOfInsulinInjectionsPerDay">
-                <label for="_numberOfInsulinInjectionsPerDay_id">Number Of Insulin Injections Per Day:</label>
-                <div class="box" id="_numberOfInsulinInjectionsPerDay_id">
-                    <c:out value="${clinicalRecord.numberOfInsulinInjectionsPerDay}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_clinicalRecord_longActingHuman">
-                <label for="_longActingHuman_id">Long Acting Human:</label>
-                <div class="box" id="_longActingHuman_id">
-                    <c:out value="${clinicalRecord.longActingHuman}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_clinicalRecord_shortActingHuman">
-                <label for="_shortActingHuman_id">Short Acting Human:</label>
-                <div class="box" id="_shortActingHuman_id">
-                    <c:out value="${clinicalRecord.shortActingHuman}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_clinicalRecord_analog">
-                <label for="_analog_id">Analog:</label>
-                <div class="box" id="_analog_id">
-                    <c:out value="${clinicalRecord.analog}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_clinicalRecord_oralAgents">
-                <label for="_oralAgents_id">Oral Agents:</label>
-                <div class="box" id="_oralAgents_id">
-                    <c:out value="${clinicalRecord.oralAgents}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_clinicalRecord_oralAgentsDescription">
-                <label for="_oralAgentsDescription_id">Oral Agents Description:</label>
-                <div class="box" id="_oralAgentsDescription_id">
-                    <c:out value="${clinicalRecord.oralAgentsDescription}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_clinicalRecord_routineClinicReviewsLastYear">
-                <label for="_routineClinicReviewsLastYear_id">Routine Clinic Reviews Last Year:</label>
-                <div class="box" id="_routineClinicReviewsLastYear_id">
-                    <c:out value="${clinicalRecord.routineClinicReviewsLastYear}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_clinicalRecord_bpMedications">
-                <label for="_bpMedications_id">Bp Medications:</label>
-                <div class="box" id="_bpMedications_id">
-                    <c:out value="${clinicalRecord.bpMedications}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_clinicalRecord_acearb">
-                <label for="_acearb_id">Acearb:</label>
-                <div class="box" id="_acearb_id">
-                    <c:out value="${clinicalRecord.acearb}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_clinicalRecord_bpMedicationsOther">
-                <label for="_bpMedicationsOther_id">Bp Medications Other:</label>
-                <div class="box" id="_bpMedicationsOther_id">
-                    <c:out value="${clinicalRecord.bpMedicationsOther}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_clinicalRecord_otherTreatments">
-                <label for="_otherTreatments_id">Other Treatments:</label>
-                <div class="box" id="_otherTreatments_id">
-                    <c:out value="${clinicalRecord.otherTreatments}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_clinicalRecord_laserRxInLast12Months">
-                <label for="_laserRxInLast12Months_id">Laser Rx In Last12 Months:</label>
-                <div class="box" id="_laserRxInLast12Months_id">
-                    <c:out value="${clinicalRecord.laserRxInLast12Months}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_clinicalRecord_weightKG">
-                <label for="_weightKG_id">Weight K G:</label>
-                <div class="box" id="_weightKG_id">
-                    <c:out value="${clinicalRecord.weightKG}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_clinicalRecord_heightCM">
-                <label for="_heightCM_id">Height C M:</label>
-                <div class="box" id="_heightCM_id">
-                    <c:out value="${clinicalRecord.heightCM}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_clinicalRecord_bloodPressureSystolicMMHg">
-                <label for="_bloodPressureSystolicMMHg_id">Blood Pressure Systolic M M Hg:</label>
-                <div class="box" id="_bloodPressureSystolicMMHg_id">
-                    <c:out value="${clinicalRecord.bloodPressureSystolicMMHg}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_clinicalRecord_bloodPressureDiastolicMMHg">
-                <label for="_bloodPressureDiastolicMMHg_id">Blood Pressure Diastolic M M Hg:</label>
-                <div class="box" id="_bloodPressureDiastolicMMHg_id">
-                    <c:out value="${clinicalRecord.bloodPressureDiastolicMMHg}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_clinicalRecord_dateOfMeasurement">
-                <label for="_dateOfMeasurement_id">Date Of Measurement:</label>
-                <div class="box" id="_dateOfMeasurement_id">
-                    <fmt:formatDate pattern="${clinicalRecord_dateOfMeasurement_date_format}" value="${clinicalRecord.dateOfMeasurement}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_clinicalRecord_age">
-                <label for="_age_id">Age:</label>
-                <div class="box" id="_age_id">
-                    <c:out value="${clinicalRecord.age}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_clinicalRecord_hasPersistentHypertension">
-                <label for="_hasPersistentHypertension_id">Has Persistent Hypertension:</label>
-                <div class="box" id="_hasPersistentHypertension_id">
-                    <c:out value="${clinicalRecord.hasPersistentHypertension}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_clinicalRecord_hasPubertyTannerB2_P2orGreater">
-                <label for="_hasPubertyTannerB2_P2orGreater_id">Has Puberty Tanner B2_ P2or Greater:</label>
-                <div class="box" id="_hasPubertyTannerB2_P2orGreater_id">
-                    <c:out value="${clinicalRecord.hasPubertyTannerB2_P2orGreater}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_clinicalRecord_menarche">
-                <label for="_menarche_id">Menarche:</label>
-                <div class="box" id="_menarche_id">
-                    <c:out value="${clinicalRecord.menarche}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_clinicalRecord_ifMenarcheAge">
-                <label for="_ifMenarcheAge_id">If Menarche Age:</label>
-                <div class="box" id="_ifMenarcheAge_id">
-                    <fmt:formatDate pattern="${clinicalRecord_ifMenarcheAge_date_format}" value="${clinicalRecord.ifMenarcheAge}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_clinicalRecord_eyesExaminedInLastYear">
-                <label for="_eyesExaminedInLastYear_id">Eyes Examined In Last Year:</label>
-                <div class="box" id="_eyesExaminedInLastYear_id">
-                    <c:out value="${clinicalRecord.eyesExaminedInLastYear}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_clinicalRecord_cateract">
-                <label for="_cateract_id">Cateract:</label>
-                <div class="box" id="_cateract_id">
-                    <c:out value="${clinicalRecord.cateract}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_clinicalRecord_visualAcuityRight">
-                <label for="_visualAcuityRight_id">Visual Acuity Right:</label>
-                <div class="box" id="_visualAcuityRight_id">
-                    <c:out value="${clinicalRecord.visualAcuityRight}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_clinicalRecord_visualAcuityLeft">
-                <label for="_visualAcuityLeft_id">Visual Acuity Left:</label>
-                <div class="box" id="_visualAcuityLeft_id">
-                    <c:out value="${clinicalRecord.visualAcuityLeft}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_clinicalRecord_feetExaminedInLastYear">
-                <label for="_feetExaminedInLastYear_id">Feet Examined In Last Year:</label>
-                <div class="box" id="_feetExaminedInLastYear_id">
-                    <c:out value="${clinicalRecord.feetExaminedInLastYear}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_clinicalRecord_monofilamentTested">
-                <label for="_monofilamentTested_id">Monofilament Tested:</label>
-                <div class="box" id="_monofilamentTested_id">
-                    <c:out value="${clinicalRecord.monofilamentTested}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_clinicalRecord_monofilamentAbnormal">
-                <label for="_monofilamentAbnormal_id">Monofilament Abnormal:</label>
-                <div class="box" id="_monofilamentAbnormal_id">
-                    <c:out value="${clinicalRecord.monofilamentAbnormal}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_clinicalRecord_tuningForkTested">
-                <label for="_tuningForkTested_id">Tuning Fork Tested:</label>
-                <div class="box" id="_tuningForkTested_id">
-                    <c:out value="${clinicalRecord.tuningForkTested}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_clinicalRecord_tuningForkAbnormal">
-                <label for="_tuningForkAbnormal_id">Tuning Fork Abnormal:</label>
-                <div class="box" id="_tuningForkAbnormal_id">
-                    <c:out value="${clinicalRecord.tuningForkAbnormal}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_clinicalRecord_lastHbA1cInLast12Months">
-                <label for="_lastHbA1cInLast12Months_id">Last Hb A1c In Last12 Months:</label>
-                <div class="box" id="_lastHbA1cInLast12Months_id">
-                    <c:out value="${clinicalRecord.lastHbA1cInLast12Months}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_clinicalRecord_hbA1cPercentage">
-                <label for="_hbA1cPercentage_id">Hb A1c Percentage:</label>
-                <div class="box" id="_hbA1cPercentage_id">
-                    <c:out value="${clinicalRecord.hbA1cPercentage}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_clinicalRecord_hbA1cMethod">
-                <label for="_hbA1cMethod_id">Hb A1c Method:</label>
-                <div class="box" id="_hbA1cMethod_id">
-                    <c:out value="${clinicalRecord.hbA1cMethod}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_clinicalRecord_hbA1cMethodOther">
-                <label for="_hbA1cMethodOther_id">Hb A1c Method Other:</label>
-                <div class="box" id="_hbA1cMethodOther_id">
-                    <c:out value="${clinicalRecord.hbA1cMethodOther}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_clinicalRecord_microalbuminuriaValue">
-                <label for="_microalbuminuriaValue_id">Microalbuminuria Value:</label>
-                <div class="box" id="_microalbuminuriaValue_id">
-                    <c:out value="${clinicalRecord.microalbuminuriaValue}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_clinicalRecord_microalbuminuriaUnitOfMeasure">
-                <label for="_microalbuminuriaUnitOfMeasure_id">Microalbuminuria Unit Of Measure:</label>
-                <div class="box" id="_microalbuminuriaUnitOfMeasure_id">
-                    <c:out value="${clinicalRecord.microalbuminuriaUnitOfMeasure}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_clinicalRecord_proteinuria_dipstick_other">
-                <label for="_proteinuria_dipstick_other_id">Proteinuria_dipstick_other:</label>
-                <div class="box" id="_proteinuria_dipstick_other_id">
-                    <c:out value="${clinicalRecord.proteinuria_dipstick_other}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_clinicalRecord_creatinineValue">
-                <label for="_creatinineValue_id">Creatinine Value:</label>
-                <div class="box" id="_creatinineValue_id">
-                    <c:out value="${clinicalRecord.creatinineValue}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_clinicalRecord_creatinineUnits">
-                <label for="_creatinineUnits_id">Creatinine Units:</label>
-                <div class="box" id="_creatinineUnits_id">
-                    <c:out value="${clinicalRecord.creatinineUnits}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_clinicalRecord_totalCholesterolValue">
-                <label for="_totalCholesterolValue_id">Total Cholesterol Value:</label>
-                <div class="box" id="_totalCholesterolValue_id">
-                    <c:out value="${clinicalRecord.totalCholesterolValue}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_clinicalRecord_cholesterolUnits">
-                <label for="_cholesterolUnits_id">Cholesterol Units:</label>
-                <div class="box" id="_cholesterolUnits_id">
-                    <c:out value="${clinicalRecord.cholesterolUnits}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_clinicalRecord_hdlCholesterolValue">
-                <label for="_hdlCholesterolValue_id">Hdl Cholesterol Value:</label>
-                <div class="box" id="_hdlCholesterolValue_id">
-                    <c:out value="${clinicalRecord.hdlCholesterolValue}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_clinicalRecord_hdlUnits">
-                <label for="_hdlUnits_id">Hdl Units:</label>
-                <div class="box" id="_hdlUnits_id">
-                    <c:out value="${clinicalRecord.hdlUnits}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_clinicalRecord_triglyceridesValue">
-                <label for="_triglyceridesValue_id">Triglycerides Value:</label>
-                <div class="box" id="_triglyceridesValue_id">
-                    <c:out value="${clinicalRecord.triglyceridesValue}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_clinicalRecord_triglyceridesUnits">
-                <label for="_triglyceridesUnits_id">Triglycerides Units:</label>
-                <div class="box" id="_triglyceridesUnits_id">
-                    <c:out value="${clinicalRecord.triglyceridesUnits}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_clinicalRecord_fasted">
-                <label for="_fasted_id">Fasted:</label>
-                <div class="box" id="_fasted_id">
-                    <c:out value="${clinicalRecord.fasted}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_clinicalRecord_attendingSchool">
-                <label for="_attendingSchool_id">Attending School:</label>
-                <div class="box" id="_attendingSchool_id">
-                    <c:out value="${clinicalRecord.attendingSchool}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_clinicalRecord_notAttendingSchoolWhy">
-                <label for="_notAttendingSchoolWhy_id">Not Attending School Why:</label>
-                <div class="box" id="_notAttendingSchoolWhy_id">
-                    <c:out value="${clinicalRecord.notAttendingSchoolWhy}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_clinicalRecord_diabetesLimitingAttendance">
-                <label for="_diabetesLimitingAttendance_id">Diabetes Limiting Attendance:</label>
-                <div class="box" id="_diabetesLimitingAttendance_id">
-                    <c:out value="${clinicalRecord.diabetesLimitingAttendance}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_clinicalRecord_appropriateGradeForAge">
-                <label for="_appropriateGradeForAge_id">Appropriate Grade For Age:</label>
-                <div class="box" id="_appropriateGradeForAge_id">
-                    <c:out value="${clinicalRecord.appropriateGradeForAge}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_clinicalRecord_diabetesCopingAbilities">
-                <label for="_diabetesCopingAbilities_id">Diabetes Coping Abilities:</label>
-                <div class="box" id="_diabetesCopingAbilities_id">
-                    <c:out value="${clinicalRecord.diabetesCopingAbilities}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_clinicalRecord_numberOfSevereHypoglycaemiaEpisodes">
-                <label for="_numberOfSevereHypoglycaemiaEpisodes_id">Number Of Severe Hypoglycaemia Episodes:</label>
-                <div class="box" id="_numberOfSevereHypoglycaemiaEpisodes_id">
-                    <c:out value="${clinicalRecord.numberOfSevereHypoglycaemiaEpisodes}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_clinicalRecord_reasonHypoglycaemiaEpisodesNotEntered">
-                <label for="_reasonHypoglycaemiaEpisodesNotEntered_id">Reason Hypoglycaemia Episodes Not Entered:</label>
-                <div class="box" id="_reasonHypoglycaemiaEpisodesNotEntered_id">
-                    <c:out value="${clinicalRecord.reasonHypoglycaemiaEpisodesNotEntered}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_clinicalRecord_numberKetoacidosisEpisodes">
-                <label for="_numberKetoacidosisEpisodes_id">Number Ketoacidosis Episodes:</label>
-                <div class="box" id="_numberKetoacidosisEpisodes_id">
-                    <c:out value="${clinicalRecord.numberKetoacidosisEpisodes}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_clinicalRecord_reasonKetoacidosisEpisodesNotEntered">
-                <label for="_reasonKetoacidosisEpisodesNotEntered_id">Reason Ketoacidosis Episodes Not Entered:</label>
-                <div class="box" id="_reasonKetoacidosisEpisodesNotEntered_id">
-                    <c:out value="${clinicalRecord.reasonKetoacidosisEpisodesNotEntered}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_clinicalRecord_numberOfHospitalAdmissionsRelatedToDiabetes">
-                <label for="_numberOfHospitalAdmissionsRelatedToDiabetes_id">Number Of Hospital Admissions Related To Diabetes:</label>
-                <div class="box" id="_numberOfHospitalAdmissionsRelatedToDiabetes_id">
-                    <c:out value="${clinicalRecord.numberOfHospitalAdmissionsRelatedToDiabetes}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_clinicalRecord_reasonHospitalAdmissionsNotEntered">
-                <label for="_reasonHospitalAdmissionsNotEntered_id">Reason Hospital Admissions Not Entered:</label>
-                <div class="box" id="_reasonHospitalAdmissionsNotEntered_id">
-                    <c:out value="${clinicalRecord.reasonHospitalAdmissionsNotEntered}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_clinicalRecord_additionalComment">
-                <label for="_additionalComment_id">Additional Comment:</label>
-                <div class="box" id="_additionalComment_id">
-                    <c:out value="${clinicalRecord.additionalComment}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_clinicalRecord_personCompletingForm">
-                <label for="_personCompletingForm_id">Person Completing Form:</label>
-                <div class="box" id="_personCompletingForm_id">
-                    <c:out value="${clinicalRecord.personCompletingForm}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_clinicalRecord_dateCompleted">
-                <label for="_dateCompleted_id">Date Completed:</label>
-                <div class="box" id="_dateCompleted_id">
-                    <fmt:formatDate pattern="${clinicalRecord_dateCompleted_date_format}" value="${clinicalRecord.dateCompleted}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_clinicalRecord_seniorPhysician">
-                <label for="_seniorPhysician_id">Senior Physician:</label>
-                <div class="box" id="_seniorPhysician_id">
-                    <c:out value="${clinicalRecord.seniorPhysician}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_clinicalRecord_literate">
-                <label for="_literate_id">Literate:</label>
-                <div class="box" id="_literate_id">
-                    <c:out value="${clinicalRecord.literate}"/>
-                </div>
-            </div>
-            <br/>
+        <c:if test="${not empty clinicalRecord}">       
+	        <div id="mainTabContainer" style="width:500px;height:500px">
+	           	<div id="general"> 
+		            <div id="roo_clinicalRecord_child">
+		                <label for="_child_id">Child:</label>
+		                <div class="box" id="_child_id">
+		                    <c:out value="${clinicalRecord.child}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <div id="roo_clinicalRecord_additionalComment">
+		                <label for="_additionalComment_id">Additional Comment:</label>
+		                <div class="box" id="_additionalComment_id">
+		                    <c:out value="${clinicalRecord.additionalComment}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <br/>
+		            <div id="roo_clinicalRecord_personCompletingForm">
+		                <label for="_personCompletingForm_id">Person Completing Form:</label>
+		                <div class="box" id="_personCompletingForm_id">
+		                    <c:out value="${clinicalRecord.personCompletingForm}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <div id="roo_clinicalRecord_dateCompleted">
+		                <label for="_dateCompleted_id">Date Completed:</label>
+		                <div class="box" id="_dateCompleted_id">
+		                    <fmt:formatDate pattern="${clinicalRecord_dateCompleted_date_format}" value="${clinicalRecord.dateCompleted}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <div id="roo_clinicalRecord_seniorPhysician">
+		                <label for="_seniorPhysician_id">Senior Physician:</label>
+		                <div class="box" id="_seniorPhysician_id">
+		                    <c:out value="${clinicalRecord.seniorPhysician}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <div id="roo_clinicalRecord_literate">
+		                <label for="_literate_id">Literate:</label>
+		                <div class="box" id="_literate_id">
+		                    <c:out value="${clinicalRecord.literate}"/>
+		                </div>
+		            </div>
+		            <br/>	
+		      	</div>	   
+				<script type="text/javascript">
+					Spring.addDecoration(new Spring.ElementDecoration({
+						elementId : "general",
+						widgetType : "dijit.layout.ContentPane",
+						widgetAttrs : { title: "General" },
+						}));
+				</script>
+	            <div id="diabetesCare">		      	         
+		            <div id="roo_clinicalRecord_bloodGlucoseSelfMonitoringPerWeek">
+		                <label for="_bloodGlucoseSelfMonitoringPerWeek_id">Blood Glucose Self Monitoring Per Week:</label>
+		                <div class="box" id="_bloodGlucoseSelfMonitoringPerWeek_id">
+		                    <c:out value="${clinicalRecord.bloodGlucoseSelfMonitoringPerWeek}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <br/>
+		            <div id="roo_clinicalRecord_urineGlucoseSelfMonitoringPerWeek">
+		                <label for="_urineGlucoseSelfMonitoringPerWeek_id">Urine Glucose Self Monitoring Per Week:</label>
+		                <div class="box" id="_urineGlucoseSelfMonitoringPerWeek_id">
+		                    <c:out value="${clinicalRecord.urineGlucoseSelfMonitoringPerWeek}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <br/>
+		            <div id="roo_clinicalRecord_adjustInsulinDoseIfNeeded">
+		                <label for="_adjustInsulinDoseIfNeeded_id">Adjust Insulin Dose If Needed:</label>
+		                <div class="box" id="_adjustInsulinDoseIfNeeded_id">
+		                    <c:out value="${clinicalRecord.adjustInsulinDoseIfNeeded}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <div id="roo_clinicalRecord_insulinUnitsPerDay">
+		                <label for="_insulinUnitsPerDay_id">Insulin Units Per Day:</label>
+		                <div class="box" id="_insulinUnitsPerDay_id">
+		                    <c:out value="${clinicalRecord.insulinUnitsPerDay}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <div id="roo_clinicalRecord_numberOfInsulinInjectionsPerDay">
+		                <label for="_numberOfInsulinInjectionsPerDay_id">Number Of Insulin Injections Per Day:</label>
+		                <div class="box" id="_numberOfInsulinInjectionsPerDay_id">
+		                    <c:out value="${clinicalRecord.numberOfInsulinInjectionsPerDay}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <br/>
+		            <br/>
+		            <div id="roo_clinicalRecord_longActingHuman">
+		                <label for="_longActingHuman_id">Long Acting Human:</label>
+		                <div class="box" id="_longActingHuman_id">
+		                    <c:out value="${clinicalRecord.longActingHuman}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <div id="roo_clinicalRecord_shortActingHuman">
+		                <label for="_shortActingHuman_id">Short Acting Human:</label>
+		                <div class="box" id="_shortActingHuman_id">
+		                    <c:out value="${clinicalRecord.shortActingHuman}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <div id="roo_clinicalRecord_analog">
+		                <label for="_analog_id">Analog:</label>
+		                <div class="box" id="_analog_id">
+		                    <c:out value="${clinicalRecord.analog}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <div id="roo_clinicalRecord_oralAgents">
+		                <label for="_oralAgents_id">Oral Agents:</label>
+		                <div class="box" id="_oralAgents_id">
+		                    <c:out value="${clinicalRecord.oralAgents}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <div id="roo_clinicalRecord_oralAgentsDescription">
+		                <label for="_oralAgentsDescription_id">Oral Agents Description:</label>
+		                <div class="box" id="_oralAgentsDescription_id">
+		                    <c:out value="${clinicalRecord.oralAgentsDescription}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <br/>
+		            <div id="roo_clinicalRecord_routineClinicReviewsLastYear">
+		                <label for="_routineClinicReviewsLastYear_id">Routine Clinic Reviews Last Year:</label>
+		                <div class="box" id="_routineClinicReviewsLastYear_id">
+		                    <c:out value="${clinicalRecord.routineClinicReviewsLastYear}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <br/>
+		            <div id="roo_clinicalRecord_bpMedications">
+		                <label for="_bpMedications_id">Bp Medications:</label>
+		                <div class="box" id="_bpMedications_id">
+		                    <c:out value="${clinicalRecord.bpMedications}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <div id="roo_clinicalRecord_acearb">
+		                <label for="_acearb_id">Acearb:</label>
+		                <div class="box" id="_acearb_id">
+		                    <c:out value="${clinicalRecord.acearb}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <div id="roo_clinicalRecord_bpMedicationsOther">
+		                <label for="_bpMedicationsOther_id">Bp Medications Other:</label>
+		                <div class="box" id="_bpMedicationsOther_id">
+		                    <c:out value="${clinicalRecord.bpMedicationsOther}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <br/>
+		            <div id="roo_clinicalRecord_otherTreatments">
+		                <label for="_otherTreatments_id">Other Treatments:</label>
+		                <div class="box" id="_otherTreatments_id">
+		                    <c:out value="${clinicalRecord.otherTreatments}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <div id="roo_clinicalRecord_laserRxInLast12Months">
+		                <label for="_laserRxInLast12Months_id">Laser Rx In Last12 Months:</label>
+		                <div class="box" id="_laserRxInLast12Months_id">
+		                    <c:out value="${clinicalRecord.laserRxInLast12Months}"/>
+		                </div>
+		            </div>
+		            <br/>
+	            </div>
+				<script type="text/javascript">
+					Spring.addDecoration(new Spring.ElementDecoration({
+						elementId : "diabetesCare",
+						widgetType : "dijit.layout.ContentPane",
+						widgetAttrs : { title: "Diabetes Care" },
+						}));
+				</script>	            
+	            <div id="clinicalMeasures">            
+		            <div id="roo_clinicalRecord_weightKG">
+		                <label for="_weightKG_id">Weight K G:</label>
+		                <div class="box" id="_weightKG_id">
+		                    <c:out value="${clinicalRecord.weightKG}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <div id="roo_clinicalRecord_heightCM">
+		                <label for="_heightCM_id">Height C M:</label>
+		                <div class="box" id="_heightCM_id">
+		                    <c:out value="${clinicalRecord.heightCM}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <div id="roo_clinicalRecord_bloodPressureSystolicMMHg">
+		                <label for="_bloodPressureSystolicMMHg_id">Blood Pressure Systolic M M Hg:</label>
+		                <div class="box" id="_bloodPressureSystolicMMHg_id">
+		                    <c:out value="${clinicalRecord.bloodPressureSystolicMMHg}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <br/>
+		            <div id="roo_clinicalRecord_bloodPressureDiastolicMMHg">
+		                <label for="_bloodPressureDiastolicMMHg_id">Blood Pressure Diastolic M M Hg:</label>
+		                <div class="box" id="_bloodPressureDiastolicMMHg_id">
+		                    <c:out value="${clinicalRecord.bloodPressureDiastolicMMHg}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <br/>
+		            <div id="roo_clinicalRecord_dateOfMeasurement">
+		                <label for="_dateOfMeasurement_id">Date Of Measurement:</label>
+		                <div class="box" id="_dateOfMeasurement_id">
+		                    <fmt:formatDate pattern="${clinicalRecord_dateOfMeasurement_date_format}" value="${clinicalRecord.dateOfMeasurement}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <div id="roo_clinicalRecord_age">
+		                <label for="_age_id">Age:</label>
+		                <div class="box" id="_age_id">
+		                    <c:out value="${clinicalRecord.age}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <div id="roo_clinicalRecord_hasPersistentHypertension">
+		                <label for="_hasPersistentHypertension_id">Has Persistent Hypertension:</label>
+		                <div class="box" id="_hasPersistentHypertension_id">
+		                    <c:out value="${clinicalRecord.hasPersistentHypertension}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <div id="roo_clinicalRecord_hasPubertyTannerB2_P2orGreater">
+		                <label for="_hasPubertyTannerB2_P2orGreater_id">Has Puberty Tanner B2_ P2or Greater:</label>
+		                <div class="box" id="_hasPubertyTannerB2_P2orGreater_id">
+		                    <c:out value="${clinicalRecord.hasPubertyTannerB2_P2orGreater}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <br/>
+		            <div id="roo_clinicalRecord_menarche">
+		                <label for="_menarche_id">Menarche:</label>
+		                <div class="box" id="_menarche_id">
+		                    <c:out value="${clinicalRecord.menarche}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <div id="roo_clinicalRecord_ifMenarcheAge">
+		                <label for="_ifMenarcheAge_id">If Menarche Age:</label>
+		                <div class="box" id="_ifMenarcheAge_id">
+		                    <fmt:formatDate pattern="${clinicalRecord_ifMenarcheAge_date_format}" value="${clinicalRecord.ifMenarcheAge}"/>
+		                </div>
+		            </div>
+		            <br/>				
+            	</div>	 
+  				<script type="text/javascript">
+					Spring.addDecoration(new Spring.ElementDecoration({
+						elementId : "clinicalMeasures",
+						widgetType : "dijit.layout.ContentPane",
+						widgetAttrs : { title: "Clinical Measures" },
+						}));
+				</script>	
+				<div id="eyes">             
+		            <div id="roo_clinicalRecord_eyesExaminedInLastYear">
+		                <label for="_eyesExaminedInLastYear_id">Eyes Examined In Last Year:</label>
+		                <div class="box" id="_eyesExaminedInLastYear_id">
+		                    <c:out value="${clinicalRecord.eyesExaminedInLastYear}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <div id="roo_clinicalRecord_cateract">
+		                <label for="_cateract_id">Cateract:</label>
+		                <div class="box" id="_cateract_id">
+		                    <c:out value="${clinicalRecord.cateract}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <div id="roo_clinicalRecord_visualAcuityRight">
+		                <label for="_visualAcuityRight_id">Visual Acuity Right:</label>
+		                <div class="box" id="_visualAcuityRight_id">
+		                    <c:out value="${clinicalRecord.visualAcuityRight}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <br/>
+		            <div id="roo_clinicalRecord_visualAcuityLeft">
+		                <label for="_visualAcuityLeft_id">Visual Acuity Left:</label>
+		                <div class="box" id="_visualAcuityLeft_id">
+		                    <c:out value="${clinicalRecord.visualAcuityLeft}"/>
+		                </div>
+		            </div>
+		            <br/>
+		        </div>
+				<script type="text/javascript">
+					Spring.addDecoration(new Spring.ElementDecoration({
+						elementId : "eyes",
+						widgetType : "dijit.layout.ContentPane",
+						widgetAttrs : { title: "Eyes" },
+						}));
+				</script>			        
+		        <div id="feet">		            
+		            <div id="roo_clinicalRecord_feetExaminedInLastYear">
+		                <label for="_feetExaminedInLastYear_id">Feet Examined In Last Year:</label>
+		                <div class="box" id="_feetExaminedInLastYear_id">
+		                    <c:out value="${clinicalRecord.feetExaminedInLastYear}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <div id="roo_clinicalRecord_monofilamentTested">
+		                <label for="_monofilamentTested_id">Monofilament Tested:</label>
+		                <div class="box" id="_monofilamentTested_id">
+		                    <c:out value="${clinicalRecord.monofilamentTested}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <div id="roo_clinicalRecord_monofilamentAbnormal">
+		                <label for="_monofilamentAbnormal_id">Monofilament Abnormal:</label>
+		                <div class="box" id="_monofilamentAbnormal_id">
+		                    <c:out value="${clinicalRecord.monofilamentAbnormal}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <div id="roo_clinicalRecord_tuningForkTested">
+		                <label for="_tuningForkTested_id">Tuning Fork Tested:</label>
+		                <div class="box" id="_tuningForkTested_id">
+		                    <c:out value="${clinicalRecord.tuningForkTested}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <div id="roo_clinicalRecord_tuningForkAbnormal">
+		                <label for="_tuningForkAbnormal_id">Tuning Fork Abnormal:</label>
+		                <div class="box" id="_tuningForkAbnormal_id">
+		                    <c:out value="${clinicalRecord.tuningForkAbnormal}"/>
+		                </div>
+		            </div>
+		            <br/>
+		        </div>
+				<script type="text/javascript">
+					Spring.addDecoration(new Spring.ElementDecoration({
+						elementId : "feet",
+						widgetType : "dijit.layout.ContentPane",
+						widgetAttrs : { title: "Feet" },
+						}));
+				</script>			        
+		        <div id="labTesting">		            
+		            <div id="roo_clinicalRecord_lastHbA1cInLast12Months">
+		                <label for="_lastHbA1cInLast12Months_id">Last Hb A1c In Last12 Months:</label>
+		                <div class="box" id="_lastHbA1cInLast12Months_id">
+		                    <c:out value="${clinicalRecord.lastHbA1cInLast12Months}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <div id="roo_clinicalRecord_hbA1cPercentage">
+		                <label for="_hbA1cPercentage_id">Hb A1c Percentage:</label>
+		                <div class="box" id="_hbA1cPercentage_id">
+		                    <c:out value="${clinicalRecord.hbA1cPercentage}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <div id="roo_clinicalRecord_hbA1cMethod">
+		                <label for="_hbA1cMethod_id">Hb A1c Method:</label>
+		                <div class="box" id="_hbA1cMethod_id">
+		                    <c:out value="${clinicalRecord.hbA1cMethod}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <div id="roo_clinicalRecord_hbA1cMethodOther">
+		                <label for="_hbA1cMethodOther_id">Hb A1c Method Other:</label>
+		                <div class="box" id="_hbA1cMethodOther_id">
+		                    <c:out value="${clinicalRecord.hbA1cMethodOther}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <br/>
+		            <div id="roo_clinicalRecord_microalbuminuriaValue">
+		                <label for="_microalbuminuriaValue_id">Microalbuminuria Value:</label>
+		                <div class="box" id="_microalbuminuriaValue_id">
+		                    <c:out value="${clinicalRecord.microalbuminuriaValue}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <div id="roo_clinicalRecord_microalbuminuriaUnitOfMeasure">
+		                <label for="_microalbuminuriaUnitOfMeasure_id">Microalbuminuria Unit Of Measure:</label>
+		                <div class="box" id="_microalbuminuriaUnitOfMeasure_id">
+		                    <c:out value="${clinicalRecord.microalbuminuriaUnitOfMeasure}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <div id="roo_clinicalRecord_proteinuria_dipstick_other">
+		                <label for="_proteinuria_dipstick_other_id">Proteinuria_dipstick_other:</label>
+		                <div class="box" id="_proteinuria_dipstick_other_id">
+		                    <c:out value="${clinicalRecord.proteinuria_dipstick_other}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <div id="roo_clinicalRecord_creatinineValue">
+		                <label for="_creatinineValue_id">Creatinine Value:</label>
+		                <div class="box" id="_creatinineValue_id">
+		                    <c:out value="${clinicalRecord.creatinineValue}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <div id="roo_clinicalRecord_creatinineUnits">
+		                <label for="_creatinineUnits_id">Creatinine Units:</label>
+		                <div class="box" id="_creatinineUnits_id">
+		                    <c:out value="${clinicalRecord.creatinineUnits}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <div id="roo_clinicalRecord_totalCholesterolValue">
+		                <label for="_totalCholesterolValue_id">Total Cholesterol Value:</label>
+		                <div class="box" id="_totalCholesterolValue_id">
+		                    <c:out value="${clinicalRecord.totalCholesterolValue}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <div id="roo_clinicalRecord_cholesterolUnits">
+		                <label for="_cholesterolUnits_id">Cholesterol Units:</label>
+		                <div class="box" id="_cholesterolUnits_id">
+		                    <c:out value="${clinicalRecord.cholesterolUnits}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <div id="roo_clinicalRecord_hdlCholesterolValue">
+		                <label for="_hdlCholesterolValue_id">Hdl Cholesterol Value:</label>
+		                <div class="box" id="_hdlCholesterolValue_id">
+		                    <c:out value="${clinicalRecord.hdlCholesterolValue}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <div id="roo_clinicalRecord_hdlUnits">
+		                <label for="_hdlUnits_id">Hdl Units:</label>
+		                <div class="box" id="_hdlUnits_id">
+		                    <c:out value="${clinicalRecord.hdlUnits}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <div id="roo_clinicalRecord_triglyceridesValue">
+		                <label for="_triglyceridesValue_id">Triglycerides Value:</label>
+		                <div class="box" id="_triglyceridesValue_id">
+		                    <c:out value="${clinicalRecord.triglyceridesValue}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <div id="roo_clinicalRecord_triglyceridesUnits">
+		                <label for="_triglyceridesUnits_id">Triglycerides Units:</label>
+		                <div class="box" id="_triglyceridesUnits_id">
+		                    <c:out value="${clinicalRecord.triglyceridesUnits}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <div id="roo_clinicalRecord_fasted">
+		                <label for="_fasted_id">Fasted:</label>
+		                <div class="box" id="_fasted_id">
+		                    <c:out value="${clinicalRecord.fasted}"/>
+		                </div>
+		            </div>
+		            <br/>
+		        </div>
+				<script type="text/javascript">
+					Spring.addDecoration(new Spring.ElementDecoration({
+						elementId : "labTesting",
+						widgetType : "dijit.layout.ContentPane",
+						widgetAttrs : { title: "Lab Testing" },
+						}));
+				</script>			        
+		        <div id="schooling">            
+		            <div id="roo_clinicalRecord_attendingSchool">
+		                <label for="_attendingSchool_id">Attending School:</label>
+		                <div class="box" id="_attendingSchool_id">
+		                    <c:out value="${clinicalRecord.attendingSchool}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <div id="roo_clinicalRecord_notAttendingSchoolWhy">
+		                <label for="_notAttendingSchoolWhy_id">Not Attending School Why:</label>
+		                <div class="box" id="_notAttendingSchoolWhy_id">
+		                    <c:out value="${clinicalRecord.notAttendingSchoolWhy}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <div id="roo_clinicalRecord_diabetesLimitingAttendance">
+		                <label for="_diabetesLimitingAttendance_id">Diabetes Limiting Attendance:</label>
+		                <div class="box" id="_diabetesLimitingAttendance_id">
+		                    <c:out value="${clinicalRecord.diabetesLimitingAttendance}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <div id="roo_clinicalRecord_appropriateGradeForAge">
+		                <label for="_appropriateGradeForAge_id">Appropriate Grade For Age:</label>
+		                <div class="box" id="_appropriateGradeForAge_id">
+		                    <c:out value="${clinicalRecord.appropriateGradeForAge}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <div id="roo_clinicalRecord_diabetesCopingAbilities">
+		                <label for="_diabetesCopingAbilities_id">Diabetes Coping Abilities:</label>
+		                <div class="box" id="_diabetesCopingAbilities_id">
+		                    <c:out value="${clinicalRecord.diabetesCopingAbilities}"/>
+		                </div>
+		            </div>
+		            <br/>
+		        </div>
+				<script type="text/javascript">
+					Spring.addDecoration(new Spring.ElementDecoration({
+						elementId : "schooling",
+						widgetType : "dijit.layout.ContentPane",
+						widgetAttrs : { title: "Schooling" },
+						}));
+				</script>			        
+		        <div id="emergencies">		            
+		            <div id="roo_clinicalRecord_numberOfSevereHypoglycaemiaEpisodes">
+		                <label for="_numberOfSevereHypoglycaemiaEpisodes_id">Number Of Severe Hypoglycaemia Episodes:</label>
+		                <div class="box" id="_numberOfSevereHypoglycaemiaEpisodes_id">
+		                    <c:out value="${clinicalRecord.numberOfSevereHypoglycaemiaEpisodes}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <br/>
+		            <br/>
+		            <br/>
+		            <div id="roo_clinicalRecord_reasonHypoglycaemiaEpisodesNotEntered">
+		                <label for="_reasonHypoglycaemiaEpisodesNotEntered_id">Reason Hypoglycaemia Episodes Not Entered:</label>
+		                <div class="box" id="_reasonHypoglycaemiaEpisodesNotEntered_id">
+		                    <c:out value="${clinicalRecord.reasonHypoglycaemiaEpisodesNotEntered}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <br/>
+		            <br/>
+		            <br/>
+		            <div id="roo_clinicalRecord_numberKetoacidosisEpisodes">
+		                <label for="_numberKetoacidosisEpisodes_id">Number Ketoacidosis Episodes:</label>
+		                <div class="box" id="_numberKetoacidosisEpisodes_id">
+		                    <c:out value="${clinicalRecord.numberKetoacidosisEpisodes}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <br/>
+		            <br/>
+		            <div id="roo_clinicalRecord_reasonKetoacidosisEpisodesNotEntered">
+		                <label for="_reasonKetoacidosisEpisodesNotEntered_id">Reason Ketoacidosis Episodes Not Entered:</label>
+		                <div class="box" id="_reasonKetoacidosisEpisodesNotEntered_id">
+		                    <c:out value="${clinicalRecord.reasonKetoacidosisEpisodesNotEntered}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <br/>
+		            <br/>
+		            <div id="roo_clinicalRecord_numberOfHospitalAdmissionsRelatedToDiabetes">
+		                <label for="_numberOfHospitalAdmissionsRelatedToDiabetes_id">Number Of Hospital Admissions Related To Diabetes:</label>
+		                <div class="box" id="_numberOfHospitalAdmissionsRelatedToDiabetes_id">
+		                    <c:out value="${clinicalRecord.numberOfHospitalAdmissionsRelatedToDiabetes}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <br/>
+		            <br/>
+		            <br/>
+		            <br/>
+		            <div id="roo_clinicalRecord_reasonHospitalAdmissionsNotEntered">
+		                <label for="_reasonHospitalAdmissionsNotEntered_id">Reason Hospital Admissions Not Entered:</label>
+		                <div class="box" id="_reasonHospitalAdmissionsNotEntered_id">
+		                    <c:out value="${clinicalRecord.reasonHospitalAdmissionsNotEntered}"/>
+		                </div>
+		            </div>
+		            <br/>
+		        </div>
+				<script type="text/javascript">
+					Spring.addDecoration(new Spring.ElementDecoration({
+						elementId : "emergencies",
+						widgetType : "dijit.layout.ContentPane",
+						widgetAttrs : { title: "Emergencies" },
+						}));
+				</script>		            
+            </div>
+			<script type="text/javascript">
+				Spring.addDecoration(new Spring.ElementDecoration({
+					elementId : "mainTabContainer",
+					widgetType : "dijit.layout.TabContainer"}));
+			</script>           
         </c:if>
         <c:if test="${empty clinicalRecord}">
             <spring:message arguments="${entity_label}" code="entity.not.found.single"/>
