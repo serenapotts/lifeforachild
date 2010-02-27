@@ -49,7 +49,7 @@
 	    		<tiles:insertAttribute name="body" />
 	    		<div id="footer">				
 				  	<spring:url var="home" value="/" />
-				    <span><a href="${home}"><spring:message code="button.home"/></a></span>				    
+				    <span><a href="${home}search"><spring:message code="button.home"/></a></span>				    
 				    <c:if test="${pageContext.request.userPrincipal != null}">	
 				    	<c:out value=" | "/>
 				    	<span>			    
