@@ -8,32 +8,44 @@
         <c:if test="${not empty user}">
             <div id="roo_user_username">
                 <label for="_username_id">Username:</label>
-                <div class="box" id="_username_id">${user.username}</div>
+                <div class="box" id="_username_id">
+                    <c:out value="${user.username}"/>
+                </div>
             </div>
             <br/>
             <div id="roo_user_password">
                 <label for="_password_id">Password:</label>
-                <div class="box" id="_password_id">${user.password}</div>
+                <div class="box" id="_password_id">
+                    <c:out value="${user.password}"/>
+                </div>
             </div>
             <br/>
             <div id="roo_user_enabled">
                 <label for="_enabled_id">Enabled:</label>
-                <div class="box" id="_enabled_id">${user.enabled}</div>
+                <div class="box" id="_enabled_id">
+                    <c:out value="${user.enabled}"/>
+                </div>
             </div>
             <br/>
             <div id="roo_user_userGroup">
                 <label for="_userGroup_id">User Group:</label>
-                <div class="box" id="_userGroup_id">${user.userGroup}</div>
+                <div class="box" id="_userGroup_id">
+                    <c:out value="${user.userGroup}"/>
+                </div>
             </div>
             <br/>
             <div id="roo_user_country">
                 <label for="_country_id">Country:</label>
-                <div class="box" id="_country_id">${user.country}</div>
+                <div class="box" id="_country_id">
+                    <c:out value="${user.country}"/>
+                </div>
             </div>
             <br/>
             <div id="roo_user_centre">
                 <label for="_centre_id">Centre:</label>
-                <div class="box" id="_centre_id">${user.centre}</div>
+                <div class="box" id="_centre_id">
+                    <c:out value="${user.centre}"/>
+                </div>
             </div>
             <br/>
         </c:if>

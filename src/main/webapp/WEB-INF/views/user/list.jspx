@@ -25,12 +25,24 @@
                 <c:forEach items="${users}" var="user">
                     <tr>
                         <td>${user.id}</td>
-                        <td>${fn:substring(user.username, 0, 10)}</td>
-                        <td>${fn:substring(user.password, 0, 10)}</td>
-                        <td>${fn:substring(user.enabled, 0, 10)}</td>
-                        <td>${fn:substring(user.userGroup, 0, 10)}</td>
-                        <td>${fn:substring(user.country, 0, 10)}</td>
-                        <td>${fn:substring(user.centre, 0, 10)}</td>
+                        <td>
+                            <c:out value="${fn:substring(user.username, 0, 10)}"/>
+                        </td>
+                        <td>
+                            <c:out value="${fn:substring(user.password, 0, 10)}"/>
+                        </td>
+                        <td>
+                            <c:out value="${fn:substring(user.enabled, 0, 10)}"/>
+                        </td>
+                        <td>
+                            <c:out value="${fn:substring(user.userGroup, 0, 10)}"/>
+                        </td>
+                        <td>
+                            <c:out value="${fn:substring(user.country, 0, 10)}"/>
+                        </td>
+                        <td>
+                            <c:out value="${fn:substring(user.centre, 0, 10)}"/>
+                        </td>
                         <td>
                             <spring:url value="/user/${user.id}" var="show_form_url"/>
                             <spring:url value="/static/images/show.png" var="show_image_url"/>
