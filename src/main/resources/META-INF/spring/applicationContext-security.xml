@@ -18,6 +18,9 @@
         <intercept-url pattern="/clinicalrecord/**" access="isAuthenticated()"/>        
         <intercept-url pattern="/country/**" access="isAuthenticated()"/>
         <intercept-url pattern="/diabetescentre/**" access="isAuthenticated()"/>
+        <intercept-url pattern="/reportgenerator/**" access="isAuthenticated()"/>
+        <intercept-url pattern="/excelgenerator/**" access="isAuthenticated()"/>
+        <intercept-url pattern="/pdfgenerator/**" access="isAuthenticated()"/>
         <intercept-url pattern="/permissions/**" access="isAuthenticated()"/>
         <intercept-url pattern="/report/**" access="isAuthenticated()"/>
         <intercept-url pattern="/resources/**" access="permitAll" />
