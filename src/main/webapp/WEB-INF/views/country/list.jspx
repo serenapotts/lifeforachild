@@ -21,7 +21,9 @@
                 <c:forEach items="${countrys}" var="country">
                     <tr>
                         <td>${country.id}</td>
-                        <td>${fn:substring(country.name, 0, 10)}</td>
+                        <td>
+                            <c:out value="${fn:substring(country.name, 0, 10)}"/>
+                        </td>
                         <td>${fn:length(country.diabetesCentres)}</td>
                         <td>
                             <spring:url value="/country/${country.id}" var="show_form_url"/>

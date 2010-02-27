@@ -8,12 +8,16 @@
         <c:if test="${not empty country}">
             <div id="roo_country_name">
                 <label for="_name_id">Name:</label>
-                <div class="box" id="_name_id">${country.name}</div>
+                <div class="box" id="_name_id">
+                    <c:out value="${country.name}"/>
+                </div>
             </div>
             <br/>
             <div id="roo_country_diabetesCentres">
                 <label for="_diabetesCentres_id">Diabetes Centres:</label>
-                <div class="box" id="_diabetesCentres_id">${country.diabetesCentres}</div>
+                <div class="box" id="_diabetesCentres_id">
+                    <c:out value="${country.diabetesCentres}"/>
+                </div>
             </div>
             <br/>
         </c:if>
