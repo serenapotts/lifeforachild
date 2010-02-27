@@ -96,7 +96,7 @@ body {
 #footer a:link {color: #7db223;}
 
 label {
-	width:100px;
+	width:200px;
 	float:left;
 	margin-left: 5px;
 	margin-top: 0px;
@@ -125,7 +125,7 @@ div {
 
 div .box {
 	display:block;
-	margin-left:105px;
+	margin-left:200px;
 }
 
 /* menu elements*/
@@ -164,7 +164,7 @@ h4 {
 	color: red;
 	font-weight: bold;
 	display: block;
-	margin-left: 105px;
+	margin-left: 200px;
 }
 
 a {
@@ -283,7 +283,7 @@ fieldset {
 }
 
 fieldset label {
-	width: 70px;
+	width: 200px;
 	float: left;
 	margin-top: 1.7em;
 	margin-left: 20px;
