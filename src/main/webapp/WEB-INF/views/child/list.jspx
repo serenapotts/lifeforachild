@@ -25,12 +25,24 @@
                 <c:forEach items="${children}" var="child">
                     <tr>
                         <td>${child.id}</td>
-                        <td>${fn:substring(child.individualId, 0, 10)}</td>
-                        <td>${fn:substring(child.initials, 0, 10)}</td>
-                        <td>${fn:substring(child.name, 0, 10)}</td>
-                        <td>${fn:substring(child.ethnicGroup, 0, 10)}</td>
-                        <td>${fn:substring(child.sex, 0, 10)}</td>
-                        <td>${fn:substring(child.survivalStatus, 0, 10)}</td>
+                        <td>
+                            <c:out value="${fn:substring(child.individualId, 0, 10)}"/>
+                        </td>
+                        <td>
+                            <c:out value="${fn:substring(child.initials, 0, 10)}"/>
+                        </td>
+                        <td>
+                            <c:out value="${fn:substring(child.name, 0, 10)}"/>
+                        </td>
+                        <td>
+                            <c:out value="${fn:substring(child.ethnicGroup, 0, 10)}"/>
+                        </td>
+                        <td>
+                            <c:out value="${fn:substring(child.sex, 0, 10)}"/>
+                        </td>
+                        <td>
+                            <c:out value="${fn:substring(child.survivalStatus, 0, 10)}"/>
+                        </td>
                         <td>
                             <spring:url value="/child/${child.id}" var="show_form_url"/>
                             <spring:url value="/static/images/show.png" var="show_image_url"/>

@@ -8,32 +8,44 @@
         <c:if test="${not empty child}">
             <div id="roo_child_individualId">
                 <label for="_individualId_id">Individual Id:</label>
-                <div class="box" id="_individualId_id">${child.individualId}</div>
+                <div class="box" id="_individualId_id">
+                    <c:out value="${child.individualId}"/>
+                </div>
             </div>
             <br/>
             <div id="roo_child_initials">
                 <label for="_initials_id">Initials:</label>
-                <div class="box" id="_initials_id">${child.initials}</div>
+                <div class="box" id="_initials_id">
+                    <c:out value="${child.initials}"/>
+                </div>
             </div>
             <br/>
             <div id="roo_child_name">
                 <label for="_name_id">Name:</label>
-                <div class="box" id="_name_id">${child.name}</div>
+                <div class="box" id="_name_id">
+                    <c:out value="${child.name}"/>
+                </div>
             </div>
             <br/>
             <div id="roo_child_ethnicGroup">
                 <label for="_ethnicGroup_id">Ethnic Group:</label>
-                <div class="box" id="_ethnicGroup_id">${child.ethnicGroup}</div>
+                <div class="box" id="_ethnicGroup_id">
+                    <c:out value="${child.ethnicGroup}"/>
+                </div>
             </div>
             <br/>
             <div id="roo_child_sex">
                 <label for="_sex_id">Sex:</label>
-                <div class="box" id="_sex_id">${child.sex}</div>
+                <div class="box" id="_sex_id">
+                    <c:out value="${child.sex}"/>
+                </div>
             </div>
             <br/>
             <div id="roo_child_survivalStatus">
                 <label for="_survivalStatus_id">Survival Status:</label>
-                <div class="box" id="_survivalStatus_id">${child.survivalStatus}</div>
+                <div class="box" id="_survivalStatus_id">
+                    <c:out value="${child.survivalStatus}"/>
+                </div>
             </div>
             <br/>
             <div id="roo_child_dateOfDeath">
@@ -45,12 +57,16 @@
             <br/>
             <div id="roo_child_causeOfDeath">
                 <label for="_causeOfDeath_id">Cause Of Death:</label>
-                <div class="box" id="_causeOfDeath_id">${child.causeOfDeath}</div>
+                <div class="box" id="_causeOfDeath_id">
+                    <c:out value="${child.causeOfDeath}"/>
+                </div>
             </div>
             <br/>
             <div id="roo_child_causeOfDeathOther">
                 <label for="_causeOfDeathOther_id">Cause Of Death Other:</label>
-                <div class="box" id="_causeOfDeathOther_id">${child.causeOfDeathOther}</div>
+                <div class="box" id="_causeOfDeathOther_id">
+                    <c:out value="${child.causeOfDeathOther}"/>
+                </div>
             </div>
             <br/>
             <div id="roo_child_dateOfRegistration">
@@ -83,12 +99,16 @@
             <br/>
             <div id="roo_child_diabetesType">
                 <label for="_diabetesType_id">Diabetes Type:</label>
-                <div class="box" id="_diabetesType_id">${child.diabetesType}</div>
+                <div class="box" id="_diabetesType_id">
+                    <c:out value="${child.diabetesType}"/>
+                </div>
             </div>
             <br/>
             <div id="roo_child_diabetesTypeOther">
                 <label for="_diabetesTypeOther_id">Diabetes Type Other:</label>
-                <div class="box" id="_diabetesTypeOther_id">${child.diabetesTypeOther}</div>
+                <div class="box" id="_diabetesTypeOther_id">
+                    <c:out value="${child.diabetesTypeOther}"/>
+                </div>
             </div>
             <br/>
             <div id="roo_child_createdOn">
@@ -107,12 +127,16 @@
             <br/>
             <div id="roo_child_distanceLivesFromCentre">
                 <label for="_distanceLivesFromCentre_id">Distance Lives From Centre:</label>
-                <div class="box" id="_distanceLivesFromCentre_id">${child.distanceLivesFromCentre}</div>
+                <div class="box" id="_distanceLivesFromCentre_id">
+                    <c:out value="${child.distanceLivesFromCentre}"/>
+                </div>
             </div>
             <br/>
             <div id="roo_child_clinicalRecords">
                 <label for="_clinicalRecords_id">Clinical Records:</label>
-                <div class="box" id="_clinicalRecords_id">${child.clinicalRecords}</div>
+                <div class="box" id="_clinicalRecords_id">
+                    <c:out value="${child.clinicalRecords}"/>
+                </div>
             </div>
             <br/>
         </c:if>

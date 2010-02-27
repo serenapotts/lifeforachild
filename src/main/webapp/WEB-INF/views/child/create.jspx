@@ -75,8 +75,8 @@
                 <form:errors cssClass="errors" id="_dateOfDeath_error_id" path="dateOfDeath"/>
                 <spring:message arguments="Date Of Death" code="field.invalid" var="field_invalid"/>
                 <spring:message code="field.required" var="field_required"/>
-                <spring:message argumentSeparator="," arguments="Date Of Death,(${field_required})" code="field.simple.validation" var="field_validation"/>
-                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_dateOfDeath_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : true}})); </script>
+                <spring:message argumentSeparator="," arguments="Date Of Death," code="field.simple.validation" var="field_validation"/>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_dateOfDeath_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : false}})); </script>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_dateOfDeath_id', widgetType : 'dijit.form.DateTextBox', widgetAttrs : {promptMessage: '${field_validation}', constraints: {datePattern : '${child_dateOfDeath_date_format}', required : false}, datePattern : '${child_dateOfDeath_date_format}'}})); </script>
             </div>
             <br/>
