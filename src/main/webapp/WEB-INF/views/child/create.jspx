@@ -160,30 +160,8 @@
                 <form:errors cssClass="errors" id="_diabetesTypeOther_error_id" path="diabetesTypeOther"/>
             </div>
             <br/>
-            <div id="roo_child_createdOn">
-                <label for="_createdOn_id">Created On:</label>
-                <form:input cssStyle="width:250px" id="_createdOn_id" maxlength="30" path="createdOn" size="0"/>
-                <br/>
-                <form:errors cssClass="errors" id="_createdOn_error_id" path="createdOn"/>
-                <spring:message arguments="Created On" code="field.invalid" var="field_invalid"/>
-                <spring:message code="field.required" var="field_required"/>
-                <spring:message argumentSeparator="," arguments="Created On,(${field_required})" code="field.simple.validation" var="field_validation"/>
-                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_createdOn_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : true}})); </script>
-                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_createdOn_id', widgetType : 'dijit.form.DateTextBox', widgetAttrs : {promptMessage: '${field_validation}', constraints: {datePattern : '${child_createdOn_date_format}', required : false}, datePattern : '${child_createdOn_date_format}'}})); </script>
-            </div>
-            <br/>
-            <div id="roo_child_updatedOn">
-                <label for="_updatedOn_id">Updated On:</label>
-                <form:input cssStyle="width:250px" id="_updatedOn_id" maxlength="30" path="updatedOn" size="0"/>
-                <br/>
-                <form:errors cssClass="errors" id="_updatedOn_error_id" path="updatedOn"/>
-                <spring:message arguments="Updated On" code="field.invalid" var="field_invalid"/>
-                <spring:message code="field.required" var="field_required"/>
-                <spring:message argumentSeparator="," arguments="Updated On,(${field_required})" code="field.simple.validation" var="field_validation"/>
-                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_updatedOn_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : true}})); </script>
-                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_updatedOn_id', widgetType : 'dijit.form.DateTextBox', widgetAttrs : {promptMessage: '${field_validation}', constraints: {datePattern : '${child_updatedOn_date_format}', required : false}, datePattern : '${child_updatedOn_date_format}'}})); </script>
-            </div>
-            <br/>
+            <form:hidden id="_id" path="createdOn"/>
+            <form:hidden id="_id" path="updatedOn"/>
             <div id="roo_child_distanceLivesFromCentre">
                 <label for="_distanceLivesFromCentre_id">Distance Lives From Centre:</label>
                 <form:errors cssClass="errors" id="_distanceLivesFromCentre_error_id" path="distanceLivesFromCentre"/>
