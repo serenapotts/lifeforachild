@@ -1,8 +1,8 @@
 package org.lifeforachild.web;
 
-import java.lang.Long;
-import java.lang.String;
 import javax.validation.Valid;
+import java.util.Date;
+
 import org.lifeforachild.domain.CauseOfDeathType;
 import org.lifeforachild.domain.Child;
 import org.lifeforachild.domain.ClinicalRecord;
@@ -21,7 +21,7 @@ privileged aspect ChildController_Roo_Controller {
     
     @RequestMapping(value = "/child", method = RequestMethod.POST)    
     public String ChildController.create(@Valid Child child, BindingResult result, ModelMap modelMap) {    
-        if (child == null) throw new IllegalArgumentException("A child is required");        
+        if (child == null) throw new IllegalArgumentException("A child is required"); 
         if (result.hasErrors()) {        
             modelMap.addAttribute("child", child);            
             modelMap.addAttribute("causeofdeathtype_enum", CauseOfDeathType.class.getEnumConstants());            
@@ -44,8 +44,11 @@ privileged aspect ChildController_Roo_Controller {
     }    
     
     @RequestMapping(value = "/child/form", method = RequestMethod.GET)    
-    public String ChildController.createForm(ModelMap modelMap) {    
-        modelMap.addAttribute("child", new Child());        
+    public String ChildController.createForm(ModelMap modelMap) {  
+    	Child child = new Child();
+        child.setCreatedOn(new Date());
+        child.setUpdatedOn(new Date()); 
+        modelMap.addAttribute("child", child);        
         modelMap.addAttribute("causeofdeathtype_enum", CauseOfDeathType.class.getEnumConstants());        
         modelMap.addAttribute("clinicalrecords", ClinicalRecord.findAllClinicalRecords());        
         modelMap.addAttribute("diabetestype_enum", DiabetesType.class.getEnumConstants());        
@@ -116,14 +119,17 @@ privileged aspect ChildController_Roo_Controller {
             modelMap.addAttribute("child_dateOfRegistration_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));            
             return "child/update";            
         }        
+        child.setUpdatedOn(new Date());
         child.merge();        
         return "redirect:/child/" + child.getId();        
     }    
     
     @RequestMapping(value = "/child/{id}/form", method = RequestMethod.GET)    
     public String ChildController.updateForm(@PathVariable("id") Long id, ModelMap modelMap) {    
-        if (id == null) throw new IllegalArgumentException("An Identifier is required");        
-        modelMap.addAttribute("child", Child.findChild(id));        
+        if (id == null) throw new IllegalArgumentException("An Identifier is required");
+        Child child = Child.findChild(id);
+        child.setUpdatedOn(new Date()); 
+        modelMap.addAttribute("child", child);        
         modelMap.addAttribute("causeofdeathtype_enum", CauseOfDeathType.class.getEnumConstants());        
         modelMap.addAttribute("clinicalrecords", ClinicalRecord.findAllClinicalRecords());        
         modelMap.addAttribute("diabetestype_enum", DiabetesType.class.getEnumConstants());        
