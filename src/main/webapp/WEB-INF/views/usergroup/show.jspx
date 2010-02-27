@@ -8,12 +8,16 @@
         <c:if test="${not empty userGroup}">
             <div id="roo_userGroup_groupName">
                 <label for="_groupName_id">Group Name:</label>
-                <div class="box" id="_groupName_id">${userGroup.groupName}</div>
+                <div class="box" id="_groupName_id">
+                    <c:out value="${userGroup.groupName}"/>
+                </div>
             </div>
             <br/>
             <div id="roo_userGroup_permissions">
                 <label for="_permissions_id">Permissions:</label>
-                <div class="box" id="_permissions_id">${userGroup.permissions}</div>
+                <div class="box" id="_permissions_id">
+                    <c:out value="${userGroup.permissions}"/>
+                </div>
             </div>
             <br/>
         </c:if>

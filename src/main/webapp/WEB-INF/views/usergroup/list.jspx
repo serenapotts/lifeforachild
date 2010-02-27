@@ -21,7 +21,9 @@
                 <c:forEach items="${usergroups}" var="userGroup">
                     <tr>
                         <td>${userGroup.id}</td>
-                        <td>${fn:substring(userGroup.groupName, 0, 10)}</td>
+                        <td>
+                            <c:out value="${fn:substring(userGroup.groupName, 0, 10)}"/>
+                        </td>
                         <td>${fn:length(userGroup.permissions)}</td>
                         <td>
                             <spring:url value="/usergroup/${userGroup.id}" var="show_form_url"/>
