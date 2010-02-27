@@ -57,13 +57,11 @@ public class Child {
     @NotNull
     private SurvivalStatusType survivalStatus;
 
-    @NotNull
     @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(style = "S-")
     private Date dateOfDeath;
 
     @Enumerated
-    @NotNull
     private CauseOfDeathType causeOfDeath;
 
     @Size(max = 60)
