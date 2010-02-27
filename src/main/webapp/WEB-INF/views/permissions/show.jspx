@@ -8,7 +8,9 @@
         <c:if test="${not empty permissions}">
             <div id="roo_permissions_name">
                 <label for="_name_id">Name:</label>
-                <div class="box" id="_name_id">${permissions.name}</div>
+                <div class="box" id="_name_id">
+                    <c:out value="${permissions.name}"/>
+                </div>
             </div>
             <br/>
         </c:if>
