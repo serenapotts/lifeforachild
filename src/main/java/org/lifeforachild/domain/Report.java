@@ -9,6 +9,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import org.hibernate.annotations.CollectionOfElements;
 import org.hibernate.annotations.IndexColumn;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.roo.addon.entity.RooEntity;
 import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.tostring.RooToString;
@@ -42,9 +43,11 @@ public class Report {
     private TimePeriodUnit timeperiodunit;
 
     @Temporal(TemporalType.TIMESTAMP)
+    @DateTimeFormat(style = "S-")
     private Date fromDate;
 
     @Temporal(TemporalType.TIMESTAMP)
+    @DateTimeFormat(style = "S-")
     private Date toDate;
 
     @Enumerated
