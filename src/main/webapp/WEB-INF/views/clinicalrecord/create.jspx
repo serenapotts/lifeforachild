@@ -1,6 +1,10 @@
 <div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:form="http://www.springframework.org/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
     <jsp:output omit-xml-declaration="yes"/>
     <script type="text/javascript">dojo.require('dijit.TitlePane');dojo.require('dijit.form.FilteringSelect');dojo.require('dijit.form.SimpleTextarea');dojo.require('dijit.form.DateTextBox');</script>
+	<div id="_title_div">
+        <spring:message code="label.clinicalrecord" var="entity_label"/>
+        <spring:message arguments="${entity_label}" code="entity.create" var="title_msg"/>
+        <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_title_div', widgetType : 'dijit.TitlePane', widgetAttrs : {title: '${title_msg}'}})); </script>    
         <spring:url value="/clinicalrecord" var="form_url"/>
         <form:form action="${form_url}" method="POST" modelAttribute="clinicalRecord">
             <form:errors cssClass="errors" delimiter="&lt;p/&gt;"/>
@@ -664,4 +668,5 @@
                 <input id="proceed" type="submit" value="${save_button}"/>
             </div>
         </form:form>
+	</div>
 </div>
