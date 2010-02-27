@@ -8,22 +8,30 @@
         <c:if test="${not empty reportProperties}">
             <div id="roo_reportProperties_query">
                 <label for="_query_id">Query:</label>
-                <div class="box" id="_query_id">${reportProperties.query}</div>
+                <div class="box" id="_query_id">
+                    <c:out value="${reportProperties.query}"/>
+                </div>
             </div>
             <br/>
             <div id="roo_reportProperties_id">
                 <label for="_id_id">Id:</label>
-                <div class="box" id="_id_id">${reportProperties.id}</div>
+                <div class="box" id="_id_id">
+                    <c:out value="${reportProperties.id}"/>
+                </div>
             </div>
             <br/>
             <div id="roo_reportProperties_displayFields">
                 <label for="_displayFields_id">Display Fields:</label>
-                <div class="box" id="_displayFields_id">${reportProperties.displayFields}</div>
+                <div class="box" id="_displayFields_id">
+                    <c:out value="${reportProperties.displayFields}"/>
+                </div>
             </div>
             <br/>
             <div id="roo_reportProperties_reportType">
                 <label for="_reportType_id">Report Type:</label>
-                <div class="box" id="_reportType_id">${reportProperties.reportType}</div>
+                <div class="box" id="_reportType_id">
+                    <c:out value="${reportProperties.reportType}"/>
+                </div>
             </div>
             <br/>
         </c:if>
