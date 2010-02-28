@@ -20,6 +20,12 @@ import org.springframework.roo.addon.tostring.RooToString;
 public class User {
 
 	@NotNull
+	String firstName;
+	
+	@NotNull
+	String lastName;	
+	
+	@NotNull
     String username;
     
 	@NotNull

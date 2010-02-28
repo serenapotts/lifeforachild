@@ -7,6 +7,22 @@ import org.lifeforachild.domain.UserGroup;
 
 privileged aspect User_Roo_JavaBean {
     
+    public String User.getFirstName() {    
+        return this.firstName;        
+    }    
+    
+    public void User.setFirstName(String firstName) {    
+        this.firstName = firstName;        
+    }    
+    
+    public String User.getLastName() {    
+        return this.lastName;        
+    }    
+    
+    public void User.setLastName(String lastName) {    
+        this.lastName = lastName;        
+    }    
+    
     public String User.getUsername() {    
         return this.username;        
     }    
