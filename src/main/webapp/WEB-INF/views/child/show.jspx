@@ -27,6 +27,20 @@
                 </div>
             </div>
             <br/>
+            <div id="roo_child_country">
+                <label for="_country_id">Country:</label>
+                <div class="box" id="_country_id">
+                    <c:out value="${child.country}"/>
+                </div>
+            </div>
+            <br/>
+            <div id="roo_child_centre">
+                <label for="_centre_id">Centre:</label>
+                <div class="box" id="_centre_id">
+                    <c:out value="${child.centre}"/>
+                </div>
+            </div>
+            <br/>
             <div id="roo_child_ethnicGroup">
                 <label for="_ethnicGroup_id">Ethnic Group:</label>
                 <div class="box" id="_ethnicGroup_id">
