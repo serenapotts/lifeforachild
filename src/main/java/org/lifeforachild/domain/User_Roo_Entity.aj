@@ -1,8 +1,7 @@
 package org.lifeforachild.domain;
 
-import java.lang.Integer;
-import java.lang.Long;
 import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.EntityManager;
 import javax.persistence.GeneratedValue;
@@ -10,7 +9,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Version;
-import org.lifeforachild.domain.User;
+
+import org.lifeforachild.Util.SecurityUtil;
+import org.lifeforachild.enums.UserGroups;
 import org.springframework.transaction.annotation.Transactional;
 
 privileged aspect User_Roo_Entity {
@@ -85,16 +86,46 @@ privileged aspect User_Roo_Entity {
     }    
     
     public static List<User> User.findAllUsers() {    
-        return entityManager().createQuery("select o from User o").getResultList();        
+        return entityManager().createQuery(getUsersQuery()).getResultList();        
     }    
     
     public static User User.findUser(Long id) {    
         if (id == null) throw new IllegalArgumentException("An identifier is required to retrieve an instance of User");        
         return entityManager().find(User.class, id);        
-    }    
+    }   
+    
+    public static String User.findUserGroupForUser(String username) {            
+        return (String)entityManager().createQuery("select o.userGroup.groupName from User o where username='" + username + "'").getSingleResult();    
+    }  
+    
     
     public static List<User> User.findUserEntries(int firstResult, int maxResults) {    
-        return entityManager().createQuery("select o from User o").setFirstResult(firstResult).setMaxResults(maxResults).getResultList();        
+        return entityManager().createQuery(getUsersQuery()).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();        
     }    
     
+    public static String getUsersQuery()
+    {
+    	String baseQuery = getAllUsersQuery();
+    	UserGroup userGroup = SecurityUtil.getInstance().getCurrentUserGroup();
+    	String query = null;
+    	if (userGroup == null)
+    		return null;
+    	else if (userGroup.getGroupName().equals(UserGroups.PROGRAM_MANAGER.getName()))
+    		// they can see all users
+    		query = baseQuery;
+    	else
+    	{
+    		String[] accessGroups = UserGroups.getUserGroupsCanAccess(userGroup);
+    		if (accessGroups != null)
+    			query = baseQuery + " where " + 
+    				UserGroup.getUserGroupFilter(accessGroups, "o.userGroup.groupName");  		
+    	}
+
+    	return query;
+    }
+    
+    public static String getAllUsersQuery()
+    {
+    	return "select o from User o";
+    }
 }
