@@ -5,8 +5,9 @@ import org.lifeforachild.domain.UserGroup;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.stereotype.Controller;
 
-@RooWebScaffold(path = "usergroup", automaticallyMaintainView = true, formBackingObject = UserGroup.class)
+@RooWebScaffold(path = "usergroup", automaticallyMaintainView = false, formBackingObject = UserGroup.class)
 @RequestMapping("/usergroup/**")
 @Controller
 public class UserGroupController {
+	
 }

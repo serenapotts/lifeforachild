@@ -23,10 +23,10 @@ privileged aspect UserController_Roo_Controller {
             modelMap.addAttribute("user", user);            
             modelMap.addAttribute("countrys", Country.findAllCountrys());            
             modelMap.addAttribute("diabetescentres", DiabetesCentre.findAllDiabetesCentres());            
-            modelMap.addAttribute("usergroups", UserGroup.findAllUserGroups());            
+            modelMap.addAttribute("usergroups", UserGroup.findUserGroupsByAccess());            
             return "user/create";            
         }        
-        user.persist();        
+        user.persist();     
         return "redirect:/user/" + user.getId();        
     }    
     
@@ -35,7 +35,7 @@ privileged aspect UserController_Roo_Controller {
         modelMap.addAttribute("user", new User());        
         modelMap.addAttribute("countrys", Country.findAllCountrys());        
         modelMap.addAttribute("diabetescentres", DiabetesCentre.findAllDiabetesCentres());        
-        modelMap.addAttribute("usergroups", UserGroup.findAllUserGroups());        
+        modelMap.addAttribute("usergroups", UserGroup.findUserGroupsByAccess());        
         return "user/create";        
     }    
     
@@ -66,7 +66,7 @@ privileged aspect UserController_Roo_Controller {
             modelMap.addAttribute("user", user);            
             modelMap.addAttribute("countrys", Country.findAllCountrys());            
             modelMap.addAttribute("diabetescentres", DiabetesCentre.findAllDiabetesCentres());            
-            modelMap.addAttribute("usergroups", UserGroup.findAllUserGroups());            
+            modelMap.addAttribute("usergroups", UserGroup.findUserGroupsByAccess());            
             return "user/update";            
         }        
         user.merge();        
@@ -79,7 +79,7 @@ privileged aspect UserController_Roo_Controller {
         modelMap.addAttribute("user", User.findUser(id));        
         modelMap.addAttribute("countrys", Country.findAllCountrys());        
         modelMap.addAttribute("diabetescentres", DiabetesCentre.findAllDiabetesCentres());        
-        modelMap.addAttribute("usergroups", UserGroup.findAllUserGroups());        
+        modelMap.addAttribute("usergroups", UserGroup.findUserGroupsByAccess());        
         return "user/update";        
     }    
     
