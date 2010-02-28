@@ -8,7 +8,7 @@
         <spring:url value="/clinicalrecord/${clinicalRecord.id}" var="form_url"/>
         <form:form action="${form_url}" method="PUT" modelAttribute="clinicalRecord">
             <form:errors cssClass="errors" delimiter="&lt;p/&gt;"/>
-			<div id="mainTabContainer" style="width:500px;height:500px">
+			<div id="mainTabContainer" style="width:500px;height:400px">
             	<div id="general">            
 		            <div id="roo_clinicalRecord_child">
 		                <c:if test="${not empty children}">
