@@ -13,6 +13,8 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.hibernate.Criteria;
+import org.hibernate.Session;
 import org.lifeforachild.web.query.ChildQuery;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.roo.addon.entity.RooEntity;
@@ -120,7 +122,8 @@ public class Child {
         return entityManager().createQuery(query).getResultList();        
     }    
     
-    public static java.util.List<Child> findChildren(Search search) {  
+    public static java.util.List<Child> findChildren(Search search) { 
+    	Criteria criteria = ((Session)entityManager().getDelegate()).createCriteria(Child.class);
     	return ChildQuery.getQuery(entityManager(), search);
         //return entityManager().createQuery(query).getResultList();        
     }    
