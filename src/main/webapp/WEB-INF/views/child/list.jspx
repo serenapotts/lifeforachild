@@ -1,4 +1,4 @@
-<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:fmt="http://java.sun.com/jsp/jstl/fmt" xmlns:fn="http://java.sun.com/jsp/jstl/functions" xmlns:form="http://www.springframework.org/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:roo="urn:jsptagdir:/WEB-INF/tags" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:sec="http://www.springframework.org/security/tags" xmlns:fmt="http://java.sun.com/jsp/jstl/fmt" xmlns:fn="http://java.sun.com/jsp/jstl/functions" xmlns:form="http://www.springframework.org/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:roo="urn:jsptagdir:/WEB-INF/tags" xmlns:spring="http://www.springframework.org/tags" version="2.0">
     <jsp:output omit-xml-declaration="yes"/>
     <script type="text/javascript">dojo.require('dijit.TitlePane');</script>
     <div id="_title_div">
@@ -10,10 +10,12 @@
             <table width="300px">
                 <thead>
                     <tr>
-                        <th>Id</th>
-                        <th>Individual Id</th>
-                        <th>Initials</th>
-                        <th>Name</th>
+                        <th>Id</th>                        
+                       	<th>Individual Id</th>                        
+                        <sec:authorize ifAllGranted="View Child Name">
+	                        <th>Initials</th>
+	                        <th>Name</th>
+                        </sec:authorize>
                         <th>Country</th>
                         <th>Centre</th>
                         <th>Ethnic Group</th>
@@ -27,13 +29,15 @@
                         <td>${child.id}</td>
                         <td>
                             <c:out value="${fn:substring(child.individualId, 0, 10)}"/>
-                        </td>
-                        <td>
-                            <c:out value="${fn:substring(child.initials, 0, 10)}"/>
-                        </td>
-                        <td>
-                            <c:out value="${fn:substring(child.name, 0, 10)}"/>
-                        </td>
+                        </td>                        
+                        <sec:authorize ifAllGranted="View Child Name">
+	                        <td>
+	                            <c:out value="${fn:substring(child.initials, 0, 10)}"/>
+	                        </td>
+	                        <td>
+	                            <c:out value="${fn:substring(child.name, 0, 10)}"/>
+	                        </td>
+                        </sec:authorize>
                         <td>
                             <c:out value="${fn:substring(child.country, 0, 10)}"/>
                         </td>
