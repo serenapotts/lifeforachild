@@ -30,17 +30,17 @@
             </div>
             <br/>
             <div id="roo_report_reporttype">
-                <label for="_reporttype_id">Reporttype:</label>
+                <label for="_reporttype_id">Report Type:</label>
                 <form:errors cssClass="errors" id="_reporttype_error_id" path="reporttype"/>
-                <form:select cssStyle="width:250px" id="_reporttype_id" items="${reporttype_enum}" path="reporttype"/>
+                <form:select cssStyle="width:250px" id="_reporttype_id" items="${reporttype_enum}" path="reporttype" itemLabel="label"/>
                 <br/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_reporttype_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
             </div>
             <br/>
             <div id="roo_report_statustype">
-                <label for="_statustype_id">Statustype:</label>
+                <label for="_statustype_id">Status Type:</label>
                 <form:errors cssClass="errors" id="_statustype_error_id" path="statustype"/>
-                <form:select cssStyle="width:250px" id="_statustype_id" items="${statustype_enum}" path="statustype"/>
+                <form:select cssStyle="width:250px" id="_statustype_id" items="${statustype_enum}" path="statustype" itemLabel="label"/>
                 <br/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_statustype_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
             </div>
@@ -57,9 +57,9 @@
             </div>
             <br/>
             <div id="roo_report_timeperiodunit">
-                <label for="_timeperiodunit_id">Timeperiodunit:</label>
+                <label for="_timeperiodunit_id">Time Period Unit:</label>
                 <form:errors cssClass="errors" id="_timeperiodunit_error_id" path="timeperiodunit"/>
-                <form:select cssStyle="width:250px" id="_timeperiodunit_id" items="${timeperiodunit_enum}" path="timeperiodunit"/>
+                <form:select cssStyle="width:250px" id="_timeperiodunit_id" items="${timeperiodunit_enum}" path="timeperiodunit" itemLabel="label"/>
                 <br/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_timeperiodunit_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
             </div>
@@ -90,9 +90,9 @@
             </div>
             <br/>
             <div id="roo_report_showoptiontype">
-                <label for="_showoptiontype_id">Showoptiontype:</label>
+                <label for="_showoptiontype_id">Show Option Type:</label>
                 <form:errors cssClass="errors" id="_showoptiontype_error_id" path="showoptiontype"/>
-                <form:select cssStyle="width:250px" id="_showoptiontype_id" items="${showoptiontype_enum}" path="showoptiontype"/>
+                <form:select cssStyle="width:250px" id="_showoptiontype_id" items="${showoptiontype_enum}" path="showoptiontype" itemLabel="label"/>
                 <br/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_showoptiontype_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
             </div>
@@ -140,8 +140,8 @@
             </div>
             <br/>
                 <div id="roo_report_childfields">
-                <label for="_childfields">Childfields:</label>
-                <form:select cssStyle="width:250px" id="_childfields" items="${childfields_enum}" path="childfields" size="4" multiple="true"/>
+                <label for="_childfields">Child Fields:</label>
+                <form:select cssStyle="width:250px" id="_childfields" items="${childfields_enum}" path="childfields" size="4" multiple="true" itemLabel="label"/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_childfields', widgetType: 'dijit.form.MultiSelect', widgetAttrs : {hasDownArrow : true}})); </script>
                 <br/>
                 <form:errors cssClass="errors" id="_childfields_error" path="childfields"/>
@@ -149,8 +149,8 @@
             <br/>
             <br/>
             <div id="roo_report_clinicalrecordfields">
-                <label for="_clinicalrecordfields">Clinicalrecordfields:</label>
-                <form:select cssStyle="width:250px" id="_clinicalrecordfields" items="${clinicalrecordfields_enum}" path="clinicalrecordfields" size="4" multiple="true"/>
+                <label for="_clinicalrecordfields">Clinical Record Fields:</label>
+                <form:select cssStyle="width:250px" id="_clinicalrecordfields" items="${clinicalrecordfields_enum}" path="clinicalrecordfields" size="4" multiple="true" itemLabel="label"/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_clinicalrecordfields', widgetType: 'dijit.form.MultiSelect', widgetAttrs : {hasDownArrow : true}})); </script>
                 <br/>
                 <form:errors cssClass="errors" id="_clinicalrecordfields_error" path="clinicalrecordfields"/>
