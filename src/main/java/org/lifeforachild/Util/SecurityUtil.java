@@ -2,13 +2,25 @@ package org.lifeforachild.Util;
 
 import org.lifeforachild.domain.UserGroup;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.authority.GrantedAuthorityImpl;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 
 public class SecurityUtil {
-
-	public static User getCurrentUser()
+	
+	private static SecurityUtil instance = null;
+	
+	protected SecurityUtil() {}
+	
+	public static SecurityUtil getInstance()
+	{
+		if (instance == null)
+		{
+			instance = new SecurityUtil();
+		}
+		return instance;
+	}
+	
+	public User getCurrentUser()
 	{
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		if (auth != null)
@@ -20,14 +32,14 @@ public class SecurityUtil {
 		return null;
 	}
 	
-	public static UserGroup getCurrentUserGroup()
+	public UserGroup getCurrentUserGroup()
 	{
 		User user = getCurrentUser();
 		if (user == null)
 			return null;
-		// TODO how to get the user group ??
+		String userGroupName = org.lifeforachild.domain.User.findUserGroupForUser(user.getUsername());
 		UserGroup ug = new UserGroup();
-		ug.setGroupName("Program Manager");
+		ug.setGroupName(userGroupName);
 		return ug;
 	}
 }
