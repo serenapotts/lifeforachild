@@ -1,7 +1,13 @@
 package org.lifeforachild.domain;
 
 public enum YesNoUnkownType {
-	YES,
-	NO,
-	UNKNOWN
+	YES("Yes"),
+	NO("No"),
+	UNKNOWN("Unknown");
+	
+	YesNoUnkownType(String s) { label = s; }
+    
+    String label;
+    
+    public String getLabel() { return label; }
 }
