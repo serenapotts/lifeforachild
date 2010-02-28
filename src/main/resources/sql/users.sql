@@ -276,3 +276,23 @@ insert into user (version, username, password, enabled, user_group)
 (select 1, 'spotts', 'spotts', true, ug.id from user_group ug
 where ug.group_name='Program Manager');
 
+update user set first_name ='Graham', last_name='Ogle' where username='gogle';
+update user set first_name ='Robyn', last_name='' where username='robyn';
+update user set first_name ='Data Entry Operator', last_name='' where username='deo';
+update user set first_name ='Reasearcher', last_name='' where username='res';
+update user set first_name ='Bolivia', last_name='Manager' where username='bmanager';
+update user set first_name ='Nepal', last_name='Manager' where username='nmanager';
+update user set first_name ='India', last_name='Manager' where username='imanager';
+update user set first_name ='Bolivia', last_name='Admin' where username='badmin';
+update user set first_name ='Nepal', last_name='Admin' where username='nadmin';
+update user set first_name ='India', last_name='Admin' where username='iadmin';
+update user set first_name ='Bolivia', last_name='Admin Two' where username='badmin2';
+update user set first_name ='Nepal', last_name='Admin Two' where username='nadmin2';
+update user set first_name ='India', last_name='Admin Two' where username='iadmin2';
+update user set first_name ='Bolivia', last_name='Staff' where username='bstaff';
+update user set first_name ='Nepal', last_name='Staff' where username='nstaff';
+update user set first_name ='India', last_name='Staff' where username='istaff';
+update user set first_name ='Bolivia', last_name='Staff Two' where username='bstaff2';
+update user set first_name ='Nepal', last_name='Staff Two' where username='nstaff2';
+update user set first_name ='India', last_name='Staff Two' where username='istaff2';
+update user set first_name ='Serena', last_name='Potts' where username='spotts';
