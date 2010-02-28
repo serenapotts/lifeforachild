@@ -8,6 +8,28 @@
         <spring:url value="/user" var="form_url"/>
         <form:form action="${form_url}" method="POST" modelAttribute="user">
             <form:errors cssClass="errors" delimiter="&lt;p/&gt;"/>
+            <div id="roo_user_firstName">
+                <label for="_firstName_id">First Name:</label>
+                <form:input cssStyle="width:250px" id="_firstName_id" maxlength="30" path="firstName" size="0"/>
+                <br/>
+                <form:errors cssClass="errors" id="_firstName_error_id" path="firstName"/>
+                <spring:message arguments="First Name" code="field.invalid" var="field_invalid"/>
+                <spring:message code="field.required" var="field_required"/>
+                <spring:message argumentSeparator="," arguments="First Name,(${field_required})" code="field.simple.validation" var="field_validation"/>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_firstName_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : true}})); </script>
+            </div>
+            <br/>
+            <div id="roo_user_lastName">
+                <label for="_lastName_id">Last Name:</label>
+                <form:input cssStyle="width:250px" id="_lastName_id" maxlength="30" path="lastName" size="0"/>
+                <br/>
+                <form:errors cssClass="errors" id="_lastName_error_id" path="lastName"/>
+                <spring:message arguments="Last Name" code="field.invalid" var="field_invalid"/>
+                <spring:message code="field.required" var="field_required"/>
+                <spring:message argumentSeparator="," arguments="Last Name,(${field_required})" code="field.simple.validation" var="field_validation"/>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_lastName_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : true}})); </script>
+            </div>
+            <br/>
             <div id="roo_user_username">
                 <label for="_username_id">Username:</label>
                 <form:input cssStyle="width:250px" id="_username_id" maxlength="30" path="username" size="0"/>
