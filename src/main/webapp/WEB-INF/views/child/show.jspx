@@ -51,14 +51,14 @@
             <div id="roo_child_sex">
                 <label for="_sex_id">Sex:</label>
                 <div class="box" id="_sex_id">
-                    <c:out value="${child.sex}"/>
+                    <c:out value="${child.sex.label}"/>
                 </div>
             </div>
             <br/>
             <div id="roo_child_survivalStatus">
                 <label for="_survivalStatus_id">Survival Status:</label>
                 <div class="box" id="_survivalStatus_id">
-                    <c:out value="${child.survivalStatus}"/>
+                    <c:out value="${child.survivalStatus.label}"/>
                 </div>
             </div>
             <br/>
@@ -72,7 +72,7 @@
             <div id="roo_child_causeOfDeath">
                 <label for="_causeOfDeath_id">Cause Of Death:</label>
                 <div class="box" id="_causeOfDeath_id">
-                    <c:out value="${child.causeOfDeath}"/>
+                    <c:out value="${child.causeOfDeath.label}"/>
                 </div>
             </div>
             <br/>
@@ -114,7 +114,7 @@
             <div id="roo_child_diabetesType">
                 <label for="_diabetesType_id">Diabetes Type:</label>
                 <div class="box" id="_diabetesType_id">
-                    <c:out value="${child.diabetesType}"/>
+                    <c:out value="${child.diabetesType.label}"/>
                 </div>
             </div>
             <br/>
@@ -142,7 +142,7 @@
             <div id="roo_child_distanceLivesFromCentre">
                 <label for="_distanceLivesFromCentre_id">Distance Lives From Centre:</label>
                 <div class="box" id="_distanceLivesFromCentre_id">
-                    <c:out value="${child.distanceLivesFromCentre}"/>
+                    <c:out value="${child.distanceLivesFromCentre.label}"/>
                 </div>
             </div>
             <br/>
