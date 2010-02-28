@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.Set;
 import org.lifeforachild.domain.CauseOfDeathType;
 import org.lifeforachild.domain.ClinicalRecord;
+import org.lifeforachild.domain.Country;
+import org.lifeforachild.domain.DiabetesCentre;
 import org.lifeforachild.domain.DiabetesType;
 import org.lifeforachild.domain.DistanceType;
 import org.lifeforachild.domain.SexType;
@@ -34,6 +36,22 @@ privileged aspect Child_Roo_JavaBean {
     
     public void Child.setName(String name) {    
         this.name = name;        
+    }    
+    
+    public Country Child.getCountry() {    
+        return this.country;        
+    }    
+    
+    public void Child.setCountry(Country country) {    
+        this.country = country;        
+    }    
+    
+    public DiabetesCentre Child.getCentre() {    
+        return this.centre;        
+    }    
+    
+    public void Child.setCentre(DiabetesCentre centre) {    
+        this.centre = centre;        
     }    
     
     public String Child.getEthnicGroup() {    

@@ -11,6 +11,8 @@ privileged aspect Child_Roo_ToString {
         sb.append("IndividualId: ").append(getIndividualId()).append(", ");        
         sb.append("Initials: ").append(getInitials()).append(", ");        
         sb.append("Name: ").append(getName()).append(", ");        
+        sb.append("Country: ").append(getCountry()).append(", ");        
+        sb.append("Centre: ").append(getCentre()).append(", ");        
         sb.append("EthnicGroup: ").append(getEthnicGroup()).append(", ");        
         sb.append("Sex: ").append(getSex()).append(", ");        
         sb.append("SurvivalStatus: ").append(getSurvivalStatus()).append(", ");        

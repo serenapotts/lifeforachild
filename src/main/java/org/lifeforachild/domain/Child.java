@@ -7,6 +7,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -47,6 +48,12 @@ public class Child {
 
     @Size(max = 30)
     private String name;
+    
+	@ManyToOne
+	Country country;
+	
+	@ManyToOne
+	DiabetesCentre centre;    
 
     @Size(max = 20)
     private String ethnicGroup;

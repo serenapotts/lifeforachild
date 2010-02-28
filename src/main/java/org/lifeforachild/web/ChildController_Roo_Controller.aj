@@ -2,10 +2,11 @@ package org.lifeforachild.web;
 
 import javax.validation.Valid;
 import java.util.Date;
-
 import org.lifeforachild.domain.CauseOfDeathType;
 import org.lifeforachild.domain.Child;
 import org.lifeforachild.domain.ClinicalRecord;
+import org.lifeforachild.domain.Country;
+import org.lifeforachild.domain.DiabetesCentre;
 import org.lifeforachild.domain.DiabetesType;
 import org.lifeforachild.domain.DistanceType;
 import org.lifeforachild.domain.SexType;
@@ -21,11 +22,13 @@ privileged aspect ChildController_Roo_Controller {
     
     @RequestMapping(value = "/child", method = RequestMethod.POST)    
     public String ChildController.create(@Valid Child child, BindingResult result, ModelMap modelMap) {    
-        if (child == null) throw new IllegalArgumentException("A child is required"); 
+        if (child == null) throw new IllegalArgumentException("A child is required");        
         if (result.hasErrors()) {        
             modelMap.addAttribute("child", child);            
             modelMap.addAttribute("causeofdeathtype_enum", CauseOfDeathType.class.getEnumConstants());            
             modelMap.addAttribute("clinicalrecords", ClinicalRecord.findAllClinicalRecords());            
+            modelMap.addAttribute("countrys", Country.findAllCountrys());            
+            modelMap.addAttribute("diabetescentres", DiabetesCentre.findAllDiabetesCentres());            
             modelMap.addAttribute("diabetestype_enum", DiabetesType.class.getEnumConstants());            
             modelMap.addAttribute("distancetype_enum", DistanceType.class.getEnumConstants());            
             modelMap.addAttribute("sextype_enum", SexType.class.getEnumConstants());            
@@ -48,9 +51,11 @@ privileged aspect ChildController_Roo_Controller {
     	Child child = new Child();
         child.setCreatedOn(new Date());
         child.setUpdatedOn(new Date()); 
-        modelMap.addAttribute("child", child);        
+        modelMap.addAttribute("child", child);     	    
         modelMap.addAttribute("causeofdeathtype_enum", CauseOfDeathType.class.getEnumConstants());        
         modelMap.addAttribute("clinicalrecords", ClinicalRecord.findAllClinicalRecords());        
+        modelMap.addAttribute("countrys", Country.findAllCountrys());        
+        modelMap.addAttribute("diabetescentres", DiabetesCentre.findAllDiabetesCentres());        
         modelMap.addAttribute("diabetestype_enum", DiabetesType.class.getEnumConstants());        
         modelMap.addAttribute("distancetype_enum", DistanceType.class.getEnumConstants());        
         modelMap.addAttribute("sextype_enum", SexType.class.getEnumConstants());        
@@ -106,6 +111,8 @@ privileged aspect ChildController_Roo_Controller {
             modelMap.addAttribute("child", child);            
             modelMap.addAttribute("causeofdeathtype_enum", CauseOfDeathType.class.getEnumConstants());            
             modelMap.addAttribute("clinicalrecords", ClinicalRecord.findAllClinicalRecords());            
+            modelMap.addAttribute("countrys", Country.findAllCountrys());            
+            modelMap.addAttribute("diabetescentres", DiabetesCentre.findAllDiabetesCentres());            
             modelMap.addAttribute("diabetestype_enum", DiabetesType.class.getEnumConstants());            
             modelMap.addAttribute("distancetype_enum", DistanceType.class.getEnumConstants());            
             modelMap.addAttribute("sextype_enum", SexType.class.getEnumConstants());            
@@ -119,19 +126,20 @@ privileged aspect ChildController_Roo_Controller {
             modelMap.addAttribute("child_dateOfRegistration_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));            
             return "child/update";            
         }        
-        child.setUpdatedOn(new Date());
         child.merge();        
         return "redirect:/child/" + child.getId();        
     }    
     
     @RequestMapping(value = "/child/{id}/form", method = RequestMethod.GET)    
     public String ChildController.updateForm(@PathVariable("id") Long id, ModelMap modelMap) {    
-        if (id == null) throw new IllegalArgumentException("An Identifier is required");
+        if (id == null) throw new IllegalArgumentException("An Identifier is required");     
         Child child = Child.findChild(id);
         child.setUpdatedOn(new Date()); 
-        modelMap.addAttribute("child", child);        
+        modelMap.addAttribute("child", child);     
         modelMap.addAttribute("causeofdeathtype_enum", CauseOfDeathType.class.getEnumConstants());        
         modelMap.addAttribute("clinicalrecords", ClinicalRecord.findAllClinicalRecords());        
+        modelMap.addAttribute("countrys", Country.findAllCountrys());        
+        modelMap.addAttribute("diabetescentres", DiabetesCentre.findAllDiabetesCentres());        
         modelMap.addAttribute("diabetestype_enum", DiabetesType.class.getEnumConstants());        
         modelMap.addAttribute("distancetype_enum", DistanceType.class.getEnumConstants());        
         modelMap.addAttribute("sextype_enum", SexType.class.getEnumConstants());        
