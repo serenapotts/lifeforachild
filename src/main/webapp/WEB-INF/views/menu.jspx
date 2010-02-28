@@ -1,4 +1,4 @@
-<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" id="menu" version="2.0">
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" xmlns:sec="http://www.springframework.org/security/tags" id="menu" version="2.0">
 	<jsp:output omit-xml-declaration="yes"/>
 	<ul id="roo_menu">
     	<li id="web_mvc_jsp_child_category">
@@ -106,7 +106,7 @@
                 </li>
             </ul>
         </li>
-
+		<sec:authorize ifAllGranted="User Administation">
 		<li id="web_mvc_jsp_user_category">
             <h2>
                 <spring:message code="menu.category.web_mvc_jsp_user_category.label"/>
@@ -170,5 +170,6 @@
                 </li>
             </ul>
         </li>
+        </sec:authorize>
     </ul>
 </div>
