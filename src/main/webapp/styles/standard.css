@@ -229,13 +229,13 @@ table {
 	margin: 2px 0 0 0;
 	border: 1px solid #BBBBBB;
 	border-collapse: collapse;
-	width: 100%
+	
 }
 
 table table {
 	margin: -5px 0;
 	border: 0px solid #e0e7d3;
-	width: 100%;
+	
 }
 
 table td,table th {
