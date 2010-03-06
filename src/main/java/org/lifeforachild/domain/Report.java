@@ -59,11 +59,9 @@ public class Report {
     private String age;
     
     @Enumerated
-    @NotNull
     @ManyToOne
     private DiabetesCentre centre;
 
-    @NotNull
     @ManyToOne
     private Country country;
 
