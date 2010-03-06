@@ -33,6 +33,7 @@ public class ChildReportGenerator extends ReportGenerator {
 	throws ColumnBuilderException
 	{
 		// these columns are displayed on every report
+		// TODO change the field names to use the constants in the child class 
         addColumn(drb, "id", "ID", Long.class, 85);
         addColumn(drb, "name", "Name", String.class, 85);
         //addColumn(drb, "sex", "Sex", SexType.class, 85);
