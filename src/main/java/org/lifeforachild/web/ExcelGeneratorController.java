@@ -47,7 +47,7 @@ public class ExcelGeneratorController {
     		repGen = new ClinicalRecordReportGenerator();    		
     	if (repGen != null)
     	{
-    		repGen.generateExcelReport(report, response);    		
+    		repGen.generateExcelReport(report, request, response);    		
     	}
     }
     

@@ -47,7 +47,7 @@ public class PdfGeneratorController {
     		repGen = new ClinicalRecordReportGenerator();    		
     	if (repGen != null)
     	{
-    		repGen.generatePdfReport(report, response);    		
+    		repGen.generatePdfReport(report, request, response);    		
     	} 
     }
     

@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import net.sf.jasperreports.engine.JRAbstractExporter;
@@ -66,7 +67,7 @@ public abstract class ReportGenerator {
      * @return The HTML for the report as a String. 
      * @throws JRException 
      */
-	public String generateHtmlReport(Report report, List results)
+	public String generateHtmlReport(Report report, List results, HttpServletRequest request)
 	{
 		// generate the sql query based on the report
     	//List results = buildQuery(report);
@@ -74,7 +75,7 @@ public abstract class ReportGenerator {
     	try
     	{
     	// get the report as bytes
-    	JasperPrint jp = generateReport(OutputType.HTML, results, getDisplayFields(report), 
+    	JasperPrint jp = generateReport(request, OutputType.HTML, results, getDisplayFields(report), 
     			report.getName(), false);  
     	JRAbstractExporter exporter = outputProcessed.exporter;
     	ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -98,11 +99,11 @@ public abstract class ReportGenerator {
 	 * @param query The sql query
 	 * @throws JRException 
 	 */
-	public void generateExcelReport(Report report, HttpServletResponse response)  
+	public void generateExcelReport(Report report, HttpServletRequest request, HttpServletResponse response)  
 	{
 		try {
 			List results = buildQuery(report);
-			JasperPrint jp = generateReport(OutputType.EXCEL, results, getDisplayFields(report), 
+			JasperPrint jp = generateReport(request, OutputType.EXCEL, results, getDisplayFields(report), 
 					report.getName(), false);
 			// TODO how to allow user to control this location
 			ReportExporter.exportReport(jp, outputProcessed, response);
@@ -122,11 +123,11 @@ public abstract class ReportGenerator {
 	 * Create a report in Excel file format.
 	 * @param query The sql query
 	 */
-	public void generatePdfReport(Report report, HttpServletResponse response)
+	public void generatePdfReport(Report report, HttpServletRequest request, HttpServletResponse response)
 	{
 		try {
 			List results = buildQuery(report);
-			JasperPrint jp = generateReport(OutputType.PDF, results, getDisplayFields(report), 
+			JasperPrint jp = generateReport(request, OutputType.PDF, results, getDisplayFields(report), 
 						report.getName(), true);
 			// TODO how to allow user to control this location
 			ReportExporter.exportReport(jp, outputProcessed, response);
@@ -148,10 +149,11 @@ public abstract class ReportGenerator {
 	 * @param query The SQL query used to filter the results
 	 * @return the report as an array of bytes.
 	 */
-	private JasperPrint generateReport(String outputType, List results, Object[] fields, String title, boolean addTitleAndImage) throws JRException
+	private JasperPrint generateReport(HttpServletRequest request, String outputType, List results, 
+			Object[] fields, String title, boolean addTitleAndImage) throws JRException
 	{
 		//Create DynamicReport instance
-        DynamicReport dr = buildDynamicReport(null, fields, title, addTitleAndImage);
+        DynamicReport dr = buildDynamicReport(request, null, fields, title, addTitleAndImage);
 
         outputProcessed = processOutput(outputType);  
 		//Obtain the JasperPrint instance with a ClassicLayoutManager
@@ -174,6 +176,8 @@ public abstract class ReportGenerator {
         } else if (output.equals(OutputType.HTML)) {
             result.contentType = "text/html";
             result.exporter = new JRHtmlExporter();
+            // fix to remove extra borders around html report
+            result.exporter.setParameter(JRHtmlExporterParameter.HTML_HEADER, "<style>table{border-collapse:collapse}</style>"); 
             result.exporter.setParameter(
                     JRHtmlExporterParameter.IS_USING_IMAGES_TO_ALIGN, Boolean.FALSE);
             result.layoutManager = new ClassicLayoutManager();
@@ -201,20 +205,18 @@ public abstract class ReportGenerator {
 	 * Build the {@link DynamicReport} which adds the appropriate columns.
 	 * @param query The SQL query/
 	 */
-    private DynamicReport buildDynamicReport(String query, Object[] fields, String title, boolean addTitleAndImage) 
+    private DynamicReport buildDynamicReport(HttpServletRequest request, String query, Object[] fields, 
+    		String title, boolean addTitleAndImage) 
     {       
         DynamicReportBuilder drb = new DynamicReportBuilder();
         Integer margin = new Integer(20);
-        drb        
-        .setLeftMargin(margin)
-        .setRightMargin(margin)
-        .setTopMargin(margin)
-        .setBottomMargin(margin)                
-        .setPrintBackgroundOnOddRows(true);    
+        drb.setPrintBackgroundOnOddRows(true);                          
+        drb.setUseFullPageWidth(true);
         
         if (addTitleAndImage)
         {
-        	drb.addImageBanner("C:/charity/lifeforachild/src/main/webapp/images/logo_T_01 cropped.jpg", new Integer(30), new Integer(30), ImageBanner.ALIGN_RIGHT);
+        	String realPath = request.getSession().getServletContext().getRealPath("/");
+        	drb.addImageBanner(realPath + "/images/logo_T_01 cropped.jpg", new Integer(30), new Integer(30), ImageBanner.ALIGN_RIGHT);
         	drb.setTitle(title);
         	Style titleStyle = new Style();
         	titleStyle.setFont(new Font(18,Font._FONT_VERDANA,true));
