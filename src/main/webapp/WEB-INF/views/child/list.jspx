@@ -7,7 +7,7 @@
         <spring:message arguments="${entity_label_plural}" code="entity.list.all" var="title_msg"/>
         <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_title_div', widgetType : 'dijit.TitlePane', widgetAttrs : {title: '${title_msg}'}})); </script>
         <c:if test="${not empty children}">
-            <table width="300px">
+            <table width="550px">
                 <thead>
                     <tr>
                         <th>Id</th>                        
@@ -28,24 +28,24 @@
                     <tr>
                         <td>${child.id}</td>
                         <td>
-                            <c:out value="${fn:substring(child.individualId, 0, 10)}"/>
+                            <c:out value="${child.individualId}"/>
                         </td>                        
                         <sec:authorize ifAllGranted="View Child Name">
 	                        <td>
-	                            <c:out value="${fn:substring(child.initials, 0, 10)}"/>
+	                            <c:out value="${child.initials}"/>
 	                        </td>
 	                        <td>
-	                            <c:out value="${fn:substring(child.name, 0, 10)}"/>
+	                            <c:out value="${child.name}"/>
 	                        </td>
                         </sec:authorize>
                         <td>
-                            <c:out value="${fn:substring(child.country, 0, 10)}"/>
+                            <c:out value="${child.country}"/>
                         </td>
                         <td>
-                            <c:out value="${fn:substring(child.centre, 0, 10)}"/>
+                            <c:out value="${child.centre}"/>
                         </td>
                         <td>
-                            <c:out value="${fn:substring(child.ethnicGroup, 0, 10)}"/>
+                            <c:out value="${child.ethnicGroup}"/>
                         </td>
                         <td>
                             <spring:url value="/child/${child.id}" var="show_form_url"/>

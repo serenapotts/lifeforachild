@@ -7,7 +7,7 @@
         <spring:message arguments="${entity_label_plural}" code="entity.list.all" var="title_msg"/>
         <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_title_div', widgetType : 'dijit.TitlePane', widgetAttrs : {title: '${title_msg}'}})); </script>
         <c:if test="${not empty reports}">
-            <table width="300px">
+            <table width="550px">
                 <thead>
                     <tr>
                         <th>Id</th>
@@ -20,17 +20,19 @@
                         <th/>
                         <th/>
                         <th/>
+                        <th/>
+                        <th/>
                     </tr>
                 </thead>
                 <c:forEach items="${reports}" var="report">
                     <tr>
                         <td>${report.id}</td>
-                        <td>${fn:substring(report.name, 0, 10)}</td>
-                        <td>${fn:substring(report.viewableBy, 0, 10)}</td>
-                        <td>${fn:substring(report.reporttype, 0, 10)}</td>
-                        <td>${fn:substring(report.statustype, 0, 10)}</td>
-                        <td>${fn:substring(report.timePeriod, 0, 10)}</td>
-                        <td>${fn:substring(report.timeperiodunit, 0, 10)}</td>
+                        <td>${report.name}</td>
+                        <td>${report.viewableBy}</td>
+                        <td>${report.reporttype}</td>
+                        <td>${report.statustype}</td>
+                        <td>${report.timePeriod}</td>
+                        <td>${report.timeperiodunit}</td>
                         <td>
                             <spring:url value="/reportgenerator/${report.id}" var="show_form_url"/>
                             <spring:url value="/static/images/show.png" var="show_image_url"/>
