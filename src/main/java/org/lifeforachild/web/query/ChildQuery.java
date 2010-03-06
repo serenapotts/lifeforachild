@@ -55,8 +55,12 @@ public class ChildQuery extends BaseQuery {
 	
 	public static List getQuery(EntityManager entityManager, Report report)
 	{
+		DiabetesCentre centre = report.getCentre();
+		Country country = report.getCountry();
+		Long centreId = centre == null ? null : Long.valueOf(centre.getId());
+		Long countryId = country == null ? null : Long.valueOf(country.getId());		
 		return getQuery(entityManager, report.getRecordNumber(), null, report.getTimePeriod(), report.getTimeperiodunit(), 
-				report.getFromDate(), report.getToDate(), report.getCentre().getId(), report.getCountry().getId(),
+				report.getFromDate(), report.getToDate(), centreId, countryId,
 				report.getStatustype(), report.getShowoptiontype(), 
 				report.getAge(), report.getOrderBy(), report.getThenOrderBy());
 	}
