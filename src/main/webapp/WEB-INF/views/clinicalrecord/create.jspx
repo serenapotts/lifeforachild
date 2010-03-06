@@ -74,7 +74,7 @@
 					Spring.addDecoration(new Spring.ElementDecoration({
 						elementId : "general",
 						widgetType : "dijit.layout.ContentPane",
-						widgetAttrs : { title: "General" },
+						widgetAttrs : { title: "General" }
 						}));
 				</script>
 	            <div id="diabetesCare">
@@ -205,7 +205,7 @@
 					Spring.addDecoration(new Spring.ElementDecoration({
 						elementId : "diabetesCare",
 						widgetType : "dijit.layout.ContentPane",
-						widgetAttrs : { title: "Diabetes Care" },
+						widgetAttrs : { title: "Diabetes Care" }
 						}));
 				</script>	            
 	            <div id="clinicalMeasures">            
@@ -308,7 +308,7 @@
 					Spring.addDecoration(new Spring.ElementDecoration({
 						elementId : "clinicalMeasures",
 						widgetType : "dijit.layout.ContentPane",
-						widgetAttrs : { title: "Clinical Measures" },
+						widgetAttrs : { title: "Clinical Measures" }
 						}));
 				</script>	
 				<div id="eyes">         
@@ -352,7 +352,7 @@
 					Spring.addDecoration(new Spring.ElementDecoration({
 						elementId : "eyes",
 						widgetType : "dijit.layout.ContentPane",
-						widgetAttrs : { title: "Eyes" },
+						widgetAttrs : { title: "Eyes" }
 						}));
 				</script>			        
 		        <div id="feet">
@@ -386,7 +386,7 @@
 					Spring.addDecoration(new Spring.ElementDecoration({
 						elementId : "feet",
 						widgetType : "dijit.layout.ContentPane",
-						widgetAttrs : { title: "Feet" },
+						widgetAttrs : { title: "Feet" }
 						}));
 				</script>			        
 		        <div id="labTesting">
@@ -547,7 +547,7 @@
 					Spring.addDecoration(new Spring.ElementDecoration({
 						elementId : "labTesting",
 						widgetType : "dijit.layout.ContentPane",
-						widgetAttrs : { title: "Lab Testing" },
+						widgetAttrs : { title: "Lab Testing" }
 						}));
 				</script>			        
 		        <div id="schooling">
@@ -587,7 +587,7 @@
 					Spring.addDecoration(new Spring.ElementDecoration({
 						elementId : "schooling",
 						widgetType : "dijit.layout.ContentPane",
-						widgetAttrs : { title: "Schooling" },
+						widgetAttrs : { title: "Schooling" }
 						}));
 				</script>			        
 		        <div id="emergencies">
@@ -653,7 +653,7 @@
 					Spring.addDecoration(new Spring.ElementDecoration({
 						elementId : "emergencies",
 						widgetType : "dijit.layout.ContentPane",
-						widgetAttrs : { title: "Emergencies" },
+						widgetAttrs : { title: "Emergencies" }
 						}));
 				</script>		            
             </div>
