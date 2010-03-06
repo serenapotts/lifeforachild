@@ -14,8 +14,6 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import org.hibernate.Criteria;
-import org.hibernate.Session;
 import org.lifeforachild.web.query.ChildQuery;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.roo.addon.entity.RooEntity;
@@ -38,6 +36,10 @@ public class Child {
 
 	// Name of database column for properties
 	public static final String ID_COLUMN = "id";
+	public static final String INDIVIDUAL_ID_COLUMN = "individual_id";
+	public static final String COUNTRY_COLUMN = "country.id";
+	public static final String CENTRE_COLUMN = "centre.id";
+	public static final String NAME_COLUMN = "name";
 	public static final String UPDATED_ON_COLUMN = "updated_on";
 	
 	@Size(max=20)
@@ -129,10 +131,8 @@ public class Child {
         return entityManager().createQuery(query).getResultList();        
     }    
     
-    public static java.util.List<Child> findChildren(Search search) { 
-    	Criteria criteria = ((Session)entityManager().getDelegate()).createCriteria(Child.class);
-    	return ChildQuery.getQuery(entityManager(), search);
-        //return entityManager().createQuery(query).getResultList();        
+    public static java.util.List<Child> findChildren(Search search) {     	
+    	return ChildQuery.getQuery(entityManager(), search);        
     }    
 
 }

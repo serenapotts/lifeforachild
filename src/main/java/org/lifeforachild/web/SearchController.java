@@ -1,20 +1,17 @@
 package org.lifeforachild.web;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.lifeforachild.Util.StringUtil;
 import org.lifeforachild.domain.Child;
 import org.lifeforachild.domain.ClinicalRecord;
-import org.lifeforachild.domain.DateRange;
+import org.lifeforachild.domain.Country;
+import org.lifeforachild.domain.DiabetesCentre;
 import org.lifeforachild.domain.ReportType;
 import org.lifeforachild.domain.Search;
 import org.lifeforachild.domain.TimePeriodUnit;
-import org.lifeforachild.web.query.ChildQuery;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -46,6 +43,8 @@ public class SearchController {
     	// map attributes for lists
     	modelMap.addAttribute("_reporttype", ReportType.class.getEnumConstants());
     	modelMap.addAttribute("_timeperiodunit", TimePeriodUnit.class.getEnumConstants());
+    	modelMap.addAttribute("countrys", Country.findAllCountrys());
+    	modelMap.addAttribute("diabetescentres", DiabetesCentre.findAllDiabetesCentres());
     	return "index";
     }
 
@@ -60,7 +59,6 @@ public class SearchController {
     @RequestMapping(method = RequestMethod.POST)
     public String post(@ModelAttribute("search") Search search, ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) {
     	// generate the query from the search parameters entered
-    	String subQuery = generateSubQuery(search);
     	// determine the type of object we are searching on
     	if (search.getReportType().equals(ReportType.CHILD))
     	{
@@ -76,89 +74,4 @@ public class SearchController {
     	return "dataAccessFailure";    	
     }
 
-    /**
-     * Generates a query string from the entered search values.
-     * 
-     * @param search The search object which has the values from the form
-     * @return A sql query string
-     */
-	private String generateSubQuery(Search search) {
-		String id = search.getId();
-		String timePeriod = search.getTimePeriod();
-		TimePeriodUnit timePeriodUnit = search.getTimePeriodUnit();
-		String from = search.getFromDate();
-		String to = search.getToDate();
-		String centre = search.getCentre();
-		String country = search.getCountry(); 
-		StringBuffer buffer = new StringBuffer();
-		if (!StringUtil.isEmpty(id))
-			appendOperator(buffer, Child.ID_COLUMN, id, EQUALS_OPERATOR);
-		if (!StringUtil.isEmpty(timePeriod) && timePeriodUnit != TimePeriodUnit.NONE)
-		{
-			DateRange dateRange = TimePeriodUnit.getDateRange(timePeriod, timePeriodUnit);
-			appendDateRange(buffer, dateRange);
-		}
-		if (!StringUtil.isEmpty(from) && !StringUtil.isEmpty(to))
-		{
-			try
-			{
-				Date fromDate = DATE_FORMAT.parse(from);
-				Date toDate = DATE_FORMAT.parse(to);
-				appendDateRange(buffer, new DateRange(fromDate, toDate));
-			}
-			catch (ParseException e) {
-				e.printStackTrace();
-				return null;
-			}			
-		}	
-		/*if (!StringUtil.isEmpty(centre))
-			appendOperator(buffer, "centre", centre, EQUALS_OPERATOR);
-		if (!StringUtil.isEmpty(country))
-			appendOperator(buffer, "country", country, EQUALS_OPERATOR);*/
-		
-		if (buffer.toString().length() > 0)
-			return "where " + buffer.toString();
-		return buffer.toString();
-	}
-	
-	/**
-	 * Append a date range to the sql query
-	 * @param buffer The StringBuffer that contains the query
-	 * @param dateRange Two dates in the range
-	 */
-	private void appendDateRange(StringBuffer buffer, DateRange dateRange)
-	{
-		appendAndClause(buffer);
-		String toDate = QUERY_DATE_FORMAT.format(dateRange.getToDate());
-		String fromDate = QUERY_DATE_FORMAT.format(dateRange.getFromDate());
-		appendOperator(buffer, Child.UPDATED_ON_COLUMN, toDate, LESS_THAN_OPERATOR);
-		appendOperator(buffer, Child.UPDATED_ON_COLUMN, fromDate, GREATER_THAN_OPERATOR);
-	}
-	
-	/**
-	 * Append an and to the sql query if something previously exists in the query.
-	 * @param buffer The StringBuffer that contains the query
-	 */
-	private void appendAndClause(StringBuffer buffer)
-	{
-		if (buffer.toString().length() > 0)
-			buffer.append(" and ");
-	}
-	
-	/**
-	 * Append an operator based statement to the query 
-	 * @param buffer The StringBuffer that contains the query
-	 * @param key The name of the column
-	 * @param value The value to operate on
-	 * @param operator The operator to use
-	 */
-	private void appendOperator(StringBuffer buffer, String key, String value, char operator)
-	{
-		appendAndClause(buffer);
-		buffer.append(key);
-		buffer.append(operator);
-		buffer.append("'");
-		buffer.append(value);
-		buffer.append("'");
-	}
 }

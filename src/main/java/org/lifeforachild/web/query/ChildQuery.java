@@ -7,8 +7,10 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import net.java.dev.querybuilder.JPAQueryBuilder;
-
+import org.hibernate.Criteria;
+import org.hibernate.Session;
+import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.Restrictions;
 import org.lifeforachild.Util.StringUtil;
 import org.lifeforachild.domain.Child;
 import org.lifeforachild.domain.Country;
@@ -23,8 +25,9 @@ import org.lifeforachild.domain.TimePeriodUnit;
 public class ChildQuery extends BaseQuery {
 
 	public static List getQuery(EntityManager entityManager, Search search)
-	{
+	{		
 		String id = search.getId();
+		String name = search.getName();
 		String timePeriod = search.getTimePeriod();
 		TimePeriodUnit timePeriodUnit = search.getTimePeriodUnit();
 		String from = search.getFromDate();
@@ -44,112 +47,101 @@ public class ChildQuery extends BaseQuery {
 		}
 		// TODO convert these to objects in the Search class and in UI
 		String centre = search.getCentre();
-		String country = search.getCountry(); 
-		return getQuery(entityManager, id, timePeriod, timePeriodUnit, fromDate, toDate, null, null);
+		String country = search.getCountry();
+		Long centreId = StringUtil.isEmpty(centre) ? null : Long.valueOf(centre);
+		Long countryId = StringUtil.isEmpty(country) ? null : Long.valueOf(country); 
+		return getQuery(entityManager, id, name, timePeriod, timePeriodUnit, fromDate, toDate, centreId, countryId);
 	}
 	
 	public static List getQuery(EntityManager entityManager, Report report)
 	{
-		return getQuery(entityManager, null, report.getTimePeriod(), report.getTimeperiodunit(), 
-				report.getFromDate(), report.getToDate(), report.getCentre(), report.getCountry(),
-				report.getStatustype(), report.getShowoptiontype(), report.getRecordNumber(), 
+		return getQuery(entityManager, report.getRecordNumber(), null, report.getTimePeriod(), report.getTimeperiodunit(), 
+				report.getFromDate(), report.getToDate(), report.getCentre().getId(), report.getCountry().getId(),
+				report.getStatustype(), report.getShowoptiontype(), 
 				report.getAge(), report.getOrderBy(), report.getThenOrderBy());
 	}
 	
-	private static List getQuery(EntityManager entityManager, String id, String timePeriod, 
-			TimePeriodUnit timePeriodUnit, Date from, Date to, DiabetesCentre diabetesCentre, Country country)
+	private static List getQuery(EntityManager entityManager, String id, String name, String timePeriod, 
+			TimePeriodUnit timePeriodUnit, Date from, Date to, Long diabetesCentre, Long country)
 	{
-		return getQuery(entityManager, id, timePeriod, timePeriodUnit, from, to, diabetesCentre, country, null,
-				null, null, null, null, null);
+		return getQuery(entityManager, id, name, timePeriod, timePeriodUnit, from, to, diabetesCentre, country, null,
+				null, null, null, null);
 	}
 	
-	private static List getQuery(EntityManager entityManager, String id, String timePeriod, 
-			TimePeriodUnit timePeriodUnit, Date from, Date to, DiabetesCentre diabetesCentre, Country country,
-			StatusType statusType, ShowOptionType showOptionType, String recordNumber, String age, String orderBy, String thenOrderBy)
+	private static List getQuery(EntityManager entityManager, String id, String name, String timePeriod, 
+			TimePeriodUnit timePeriodUnit, Date from, Date to, Long diabetesCentre, Long country,
+			StatusType statusType, ShowOptionType showOptionType, String age, String orderBy, String thenOrderBy)
 	{
-		JPAQueryBuilder builder = new JPAQueryBuilder();
-		builder.select("o");
-		builder.from("Child o");
-		
-		searchByID(builder, id);
-		searchByTimePeriod(builder, timePeriod, timePeriodUnit);
-		searchByDateRange(builder, from, to);
-		searchByDiabetesCentre(builder, diabetesCentre);
-		searchByCountry(builder, country);
-		searchByStatusType(builder, statusType);
-		searchByShowOptionType(builder, showOptionType);
-		searchByRecordNumber(builder, recordNumber);
-		searchByAge(builder, age);
-		orderBy(builder, orderBy, thenOrderBy);
-
-		Query query = builder.build(entityManager);
-		return query.getResultList();
+		Criteria criteria = ((Session)entityManager.getDelegate()).createCriteria(Child.class);
+		searchByID(criteria, id);
+		searchByName(criteria, name);
+		searchByTimePeriod(criteria, timePeriod, timePeriodUnit);
+//		searchByDateRange(criteria, from, to);
+		searchByDiabetesCentre(criteria, diabetesCentre);
+		searchByCountry(criteria, country);
+//		searchByStatusType(criteria, statusType);
+//		searchByShowOptionType(criteria, showOptionType);
+//		searchByAge(criteria, age);
+//		orderBy(criteria, orderBy, thenOrderBy);		
+		return criteria.list();
 
 	}
 	
-	private static void searchByShowOptionType(JPAQueryBuilder builder,
-			ShowOptionType showOptionType) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	private static void orderBy(JPAQueryBuilder builder, String orderBy, String thenOrderBy) {
-		if (!StringUtil.isEmpty(orderBy))
-			builder.orderBy(orderBy);
-		if (!StringUtil.isEmpty(thenOrderBy))
-			builder.orderBy(thenOrderBy);			
-	}
-
-	private static void searchByAge(JPAQueryBuilder builder, String age) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	private static void searchByRecordNumber(JPAQueryBuilder builder,
-			String recordNumber) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	private static void searchByStatusType(JPAQueryBuilder builder,
-			StatusType statusType) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	private static void searchByCountry(JPAQueryBuilder builder, Country country) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	private static void searchByDiabetesCentre(JPAQueryBuilder builder,
-			DiabetesCentre diabetesCentre) {
-		//builder.andIfNotNull(condition, object)
-		
-	}
-
-	private static void searchByID(JPAQueryBuilder builder, String id)
+	private static void searchByID(Criteria criteria, String id)
 	{
 		if (!StringUtil.isEmpty(id))
-			builder.and(Child.ID_COLUMN + "=?", new Long(id));
+			criteria.add(Restrictions.eq("individualId", id) );
 	}
 	
-	private static void searchByTimePeriod(JPAQueryBuilder builder, String timePeriod, TimePeriodUnit timePeriodUnit)
+	private static void searchByName(Criteria criteria, String name)
+	{
+		if (!StringUtil.isEmpty(name))
+			criteria.add(Restrictions.like(Child.NAME_COLUMN, name) );
+	}	
+	
+	
+	private static void searchByTimePeriod(Criteria criteria, String timePeriod, TimePeriodUnit timePeriodUnit)
 	{
 		if (!StringUtil.isEmpty(timePeriod) && timePeriodUnit != TimePeriodUnit.NONE)
 		{
 			DateRange dateRange = TimePeriodUnit.getDateRange(timePeriod, timePeriodUnit);
-			searchByDateRange(builder, dateRange.getFromDate(), dateRange.getToDate());
+			// TODO what dates to compare against. child or record??
+//			criteria.add(Restrictions.and(
+//					Restrictions.ge(propertyName, dateRange.getFromDate()), 
+//					Restrictions.le(propertyName, dateRange.getToDate())) );
 		}
-	}
+	}	
+	private static void searchByShowOptionType(Criteria criteria,
+			ShowOptionType showOptionType) {
 		
-	private static void searchByDateRange(JPAQueryBuilder builder, Date fromDate, Date toDate)
-	{
-		if (fromDate != null && toDate != null)
-		{
-			builder.and(Child.UPDATED_ON_COLUMN + "<?", toDate);
-			builder.and(Child.UPDATED_ON_COLUMN + ">?", fromDate);
-		}
 	}
 
+
+
+	private static void searchByAge(Criteria criteria, String age) {
+		
+	}
+
+	private static void searchByStatusType(Criteria criteria,
+			StatusType statusType) {
+		
+	}
+
+	private static void searchByCountry(Criteria criteria, Long country) {
+		if (country != null)
+			criteria.add(Restrictions.eq("country.id", country) );
+	}
+
+	private static void searchByDiabetesCentre(Criteria criteria,
+			Long diabetesCentre) {
+		if (diabetesCentre != null)
+			criteria.add(Restrictions.eq("centre.id", diabetesCentre) );
+	}
+
+	private static void orderBy(Criteria criteria, String orderBy, String thenOrderBy) {
+		//if (!StringUtil.isEmpty(orderBy))
+			//builder.orderBy(orderBy);
+		//if (!StringUtil.isEmpty(thenOrderBy))
+			//builder.orderBy(thenOrderBy);			
+	}
 }
