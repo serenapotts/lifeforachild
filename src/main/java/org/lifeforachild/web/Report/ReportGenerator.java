@@ -30,9 +30,12 @@ import ar.com.fdvs.dj.core.layout.ClassicLayoutManager;
 import ar.com.fdvs.dj.core.layout.ListLayoutManager;
 import ar.com.fdvs.dj.domain.CustomExpression;
 import ar.com.fdvs.dj.domain.DynamicReport;
+import ar.com.fdvs.dj.domain.ImageBanner;
+import ar.com.fdvs.dj.domain.Style;
 import ar.com.fdvs.dj.domain.builders.ColumnBuilder;
 import ar.com.fdvs.dj.domain.builders.ColumnBuilderException;
 import ar.com.fdvs.dj.domain.builders.DynamicReportBuilder;
+import ar.com.fdvs.dj.domain.constants.Font;
 import ar.com.fdvs.dj.domain.entities.columns.AbstractColumn;
 
 /**
@@ -71,7 +74,8 @@ public abstract class ReportGenerator {
     	try
     	{
     	// get the report as bytes
-    	JasperPrint jp = generateReport(OutputType.HTML, results, getDisplayFields(report));  
+    	JasperPrint jp = generateReport(OutputType.HTML, results, getDisplayFields(report), 
+    			report.getName(), false);  
     	JRAbstractExporter exporter = outputProcessed.exporter;
     	ByteArrayOutputStream baos = new ByteArrayOutputStream();
         exporter.setParameter(JRExporterParameter.JASPER_PRINT, jp);
@@ -98,7 +102,8 @@ public abstract class ReportGenerator {
 	{
 		try {
 			List results = buildQuery(report);
-			JasperPrint jp = generateReport(OutputType.EXCEL, results, getDisplayFields(report));
+			JasperPrint jp = generateReport(OutputType.EXCEL, results, getDisplayFields(report), 
+					report.getName(), false);
 			// TODO how to allow user to control this location
 			ReportExporter.exportReport(jp, outputProcessed, response);
 		} catch (FileNotFoundException e) {
@@ -121,7 +126,8 @@ public abstract class ReportGenerator {
 	{
 		try {
 			List results = buildQuery(report);
-			JasperPrint jp = generateReport(OutputType.PDF, results, getDisplayFields(report));
+			JasperPrint jp = generateReport(OutputType.PDF, results, getDisplayFields(report), 
+						report.getName(), true);
 			// TODO how to allow user to control this location
 			ReportExporter.exportReport(jp, outputProcessed, response);
 		} catch (FileNotFoundException e) {
@@ -142,15 +148,10 @@ public abstract class ReportGenerator {
 	 * @param query The SQL query used to filter the results
 	 * @return the report as an array of bytes.
 	 */
-	private JasperPrint generateReport(String outputType, List results, String fields) throws JRException
-	{
-		return generateReport(outputType, results, getDisplayFieldsList(fields));
-	}
-	
-	private JasperPrint generateReport(String outputType, List results, Object[] fields) throws JRException
+	private JasperPrint generateReport(String outputType, List results, Object[] fields, String title, boolean addTitleAndImage) throws JRException
 	{
 		//Create DynamicReport instance
-        DynamicReport dr = buildDynamicReport(null, fields);
+        DynamicReport dr = buildDynamicReport(null, fields, title, addTitleAndImage);
 
         outputProcessed = processOutput(outputType);  
 		//Obtain the JasperPrint instance with a ClassicLayoutManager
@@ -200,19 +201,25 @@ public abstract class ReportGenerator {
 	 * Build the {@link DynamicReport} which adds the appropriate columns.
 	 * @param query The SQL query/
 	 */
-    private DynamicReport buildDynamicReport(String query, Object[] fields) 
+    private DynamicReport buildDynamicReport(String query, Object[] fields, String title, boolean addTitleAndImage) 
     {       
         DynamicReportBuilder drb = new DynamicReportBuilder();
         Integer margin = new Integer(20);
-        drb
-        //.setTitle("My Title")
-        //.setSubtitle("My Subtitle")         
+        drb        
         .setLeftMargin(margin)
         .setRightMargin(margin)
         .setTopMargin(margin)
-        //.setQuery(query, DJConstants.QUERY_LANGUAGE_SQL)
-        .setBottomMargin(margin)
-        .setPrintBackgroundOnOddRows(true);                      
+        .setBottomMargin(margin)                
+        .setPrintBackgroundOnOddRows(true);    
+        
+        if (addTitleAndImage)
+        {
+        	drb.addImageBanner("C:/charity/lifeforachild/src/main/webapp/images/logo_T_01 cropped.jpg", new Integer(30), new Integer(30), ImageBanner.ALIGN_RIGHT);
+        	drb.setTitle(title);
+        	Style titleStyle = new Style();
+        	titleStyle.setFont(new Font(18,Font._FONT_VERDANA,true));
+        	drb.setTitleStyle(titleStyle);
+        }
 
         try {
 			addColumns(drb, fields);
