@@ -1,9 +1,9 @@
 package org.lifeforachild.Util;
 
+import org.lifeforachild.domain.AllUserDetails;
 import org.lifeforachild.domain.UserGroup;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
 
 public class SecurityUtil {
 	
@@ -20,26 +20,27 @@ public class SecurityUtil {
 		return instance;
 	}
 	
-	public User getCurrentUser()
+	public AllUserDetails getCurrentUser()
 	{
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		if (auth != null)
 		{
 			Object principal = auth.getPrincipal();
-			if (principal != null && principal instanceof User)
-				return (User)principal;
+			if (principal != null && principal instanceof AllUserDetails)
+				return (AllUserDetails)principal;
 		}
 		return null;
 	}
 	
 	public UserGroup getCurrentUserGroup()
 	{
-		User user = getCurrentUser();
+		AllUserDetails user = getCurrentUser();
 		if (user == null)
 			return null;
-		String userGroupName = org.lifeforachild.domain.User.findUserGroupForUser(user.getUsername());
+		//String userGroupName = org.lifeforachild.domain.User.findUserGroupForUser(user.getUsername());
 		UserGroup ug = new UserGroup();
-		ug.setGroupName(userGroupName);
+		ug.setGroupName(user.getUserGroup());
 		return ug;
 	}
+	
 }
