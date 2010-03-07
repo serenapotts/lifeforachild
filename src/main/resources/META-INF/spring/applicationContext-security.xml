@@ -29,45 +29,11 @@
     </http>
 
     <authentication-manager alias="authenticationManager">
-    	<!-- SHA-256 values can be produced using 'echo -n your_desired_password | sha256sum' (using normal *nix environments) -->
-    	<authentication-provider>
-    		<jdbc-user-service data-source-ref="dataSource"
-	     		group-authorities-by-username-query="SELECT u.username, g.group_name, p.name from user u inner join user_group g on (g.id = u.user_group) inner join user_group_permissions gp on (gp.user_group = u.user_group) inner join permissions p on (p.id = gp.permissions) where u.username=?"
-	     		users-by-username-query="select username,password,enabled from User where username = ?"
-	     		authorities-by-username-query="select u.username, p.name from user u inner join user_group g on (g.id = u.user_group) inner join user_group_permissions gp on (gp.user_group = u.user_group) inner join permissions p on (p.id = gp.permissions) where u.username=?"	     		
-	     	/>
-		</authentication-provider>
+    	<authentication-provider user-service-ref="customUserDetailsService"/>
 	</authentication-manager>
+             
+     <beans:bean id="customUserDetailsService" class="org.lifeforachild.web.service.CustomUserDetailsService">
+		<beans:property name="dataSource" ref="dataSource"/>
+ 	</beans:bean> 
                
-	<beans:bean id="userDetailsManager" class="org.springframework.security.provisioning.JdbcUserDetailsManager">
-        <beans:property name="dataSource" ref="dataSource"/>
-        <beans:property name="authenticationManager" ref="authenticationManager"/>   
-              
-		<!-- enable lookup of permissions via user's group -->
-		<beans:property name="enableGroups" value="true"/>
-		
-		<!-- disable direct lookup of user's permissions (require lookup via group) -->
-		<beans:property name="enableAuthorities" value="false"/>                    
-	</beans:bean>
-               
-<!--     <beans:bean id="permissions" class="org.lifeforachild.domain.Permissions">
-    	<beans:property name="name" value="ACCESS_ADMIN"/>
-    </beans:bean>
-    
-    <beans:bean id="userGroup" class="org.lifeforachild.domain.UserGroup">
-    	<beans:property name="groupName" value="administrator"/>
-    	<beans:property name="permissions">
-    		<beans:list>
-    			<beans:ref bean="permissions"/>
-    		</beans:list>
-   		</beans:property>    	
-    </beans:bean>
-    
-    <beans:bean id="adminUser" class="org.lifeforachild.domain.User">
-            <beans:property name="username" value="admin" />
-            <beans:property name="password" value="admin" />                
-            <beans:property name="enabled" value="true" />
-            <beans:property name="userGroup" ref="userGroup"/>
-    </beans:bean> -->
-
 </beans:beans>
