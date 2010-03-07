@@ -37,7 +37,6 @@ public class SecurityUtil {
 		AllUserDetails user = getCurrentUser();
 		if (user == null)
 			return null;
-		//String userGroupName = org.lifeforachild.domain.User.findUserGroupForUser(user.getUsername());
 		UserGroup ug = new UserGroup();
 		ug.setGroupName(user.getUserGroup());
 		return ug;
