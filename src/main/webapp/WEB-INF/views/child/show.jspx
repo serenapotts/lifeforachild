@@ -1,4 +1,4 @@
-<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:sec="http://www.springframework.org/security/tags" xmlns:fmt="http://java.sun.com/jsp/jstl/fmt" xmlns:form="http://www.springframework.org/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:roo="urn:jsptagdir:/WEB-INF/tags" xmlns:fn="http://java.sun.com/jsp/jstl/functions" xmlns:sec="http://www.springframework.org/security/tags" xmlns:fmt="http://java.sun.com/jsp/jstl/fmt" xmlns:form="http://www.springframework.org/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
     <jsp:output omit-xml-declaration="yes"/>
     <script type="text/javascript">dojo.require('dijit.TitlePane');</script>
     <div id="_title_div">
@@ -29,132 +29,212 @@
 	            </div>
 	            <br/>
             </sec:authorize>
-            <div id="roo_child_country">
-                <label for="_country_id">Country:</label>
-                <div class="box" id="_country_id">
-                    <c:out value="${child.country}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_child_centre">
-                <label for="_centre_id">Centre:</label>
-                <div class="box" id="_centre_id">
-                    <c:out value="${child.centre}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_child_ethnicGroup">
-                <label for="_ethnicGroup_id">Ethnic Group:</label>
-                <div class="box" id="_ethnicGroup_id">
-                    <c:out value="${child.ethnicGroup}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_child_sex">
-                <label for="_sex_id">Sex:</label>
-                <div class="box" id="_sex_id">
-                    <c:out value="${child.sex.label}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_child_survivalStatus">
-                <label for="_survivalStatus_id">Survival Status:</label>
-                <div class="box" id="_survivalStatus_id">
-                    <c:out value="${child.survivalStatus.label}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_child_dateOfDeath">
-                <label for="_dateOfDeath_id">Date Of Death:</label>
-                <div class="box" id="_dateOfDeath_id">
-                    <fmt:formatDate pattern="${child_dateOfDeath_date_format}" value="${child.dateOfDeath}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_child_causeOfDeath">
-                <label for="_causeOfDeath_id">Cause Of Death:</label>
-                <div class="box" id="_causeOfDeath_id">
-                    <c:out value="${child.causeOfDeath.label}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_child_causeOfDeathOther">
-                <label for="_causeOfDeathOther_id">Cause Of Death Other:</label>
-                <div class="box" id="_causeOfDeathOther_id">
-                    <c:out value="${child.causeOfDeathOther}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_child_dateOfRegistration">
-                <label for="_dateOfRegistration_id">Date Of Registration:</label>
-                <div class="box" id="_dateOfRegistration_id">
-                    <fmt:formatDate pattern="${child_dateOfRegistration_date_format}" value="${child.dateOfRegistration}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_child_dateOfBirth">
-                <label for="_dateOfBirth_id">Date Of Birth:</label>
-                <div class="box" id="_dateOfBirth_id">
-                    <fmt:formatDate pattern="${child_dateOfBirth_date_format}" value="${child.dateOfBirth}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_child_diabetesDiagnosed">
-                <label for="_diabetesDiagnosed_id">Diabetes Diagnosed:</label>
-                <div class="box" id="_diabetesDiagnosed_id">
-                    <fmt:formatDate pattern="${child_diabetesDiagnosed_date_format}" value="${child.diabetesDiagnosed}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_child_insulinSince">
-                <label for="_insulinSince_id">Insulin Since:</label>
-                <div class="box" id="_insulinSince_id">
-                    <fmt:formatDate pattern="${child_insulinSince_date_format}" value="${child.insulinSince}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_child_diabetesType">
-                <label for="_diabetesType_id">Diabetes Type:</label>
-                <div class="box" id="_diabetesType_id">
-                    <c:out value="${child.diabetesType.label}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_child_diabetesTypeOther">
-                <label for="_diabetesTypeOther_id">Diabetes Type Other:</label>
-                <div class="box" id="_diabetesTypeOther_id">
-                    <c:out value="${child.diabetesTypeOther}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_child_createdOn">
-                <label for="_createdOn_id">Created On:</label>
-                <div class="box" id="_createdOn_id">
-                    <fmt:formatDate pattern="${child_createdOn_date_format}" value="${child.createdOn}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_child_updatedOn">
-                <label for="_updatedOn_id">Updated On:</label>
-                <div class="box" id="_updatedOn_id">
-                    <fmt:formatDate pattern="${child_updatedOn_date_format}" value="${child.updatedOn}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_child_distanceLivesFromCentre">
-                <label for="_distanceLivesFromCentre_id">Distance Lives From Centre:</label>
-                <div class="box" id="_distanceLivesFromCentre_id">
-                    <c:out value="${child.distanceLivesFromCentre.label}"/>
-                </div>
-            </div>
-            <br/>
-            <div id="roo_child_clinicalRecords">
-                <label for="_clinicalRecords_id">Clinical Records:</label>
-                <div class="box" id="_clinicalRecords_id">
-                    <c:out value="${child.clinicalRecords}"/>
-                </div>
-            </div>
-            <br/>
+            <div id="mainTabContainer" style="width:550px;height:300px">
+            	<div id="childInfo">
+		            <div id="roo_child_country">
+		                <label for="_country_id">Country:</label>
+		                <div class="box" id="_country_id">
+		                    <c:out value="${child.country}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <div id="roo_child_centre">
+		                <label for="_centre_id">Centre:</label>
+		                <div class="box" id="_centre_id">
+		                    <c:out value="${child.centre}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <div id="roo_child_ethnicGroup">
+		                <label for="_ethnicGroup_id">Ethnic Group:</label>
+		                <div class="box" id="_ethnicGroup_id">
+		                    <c:out value="${child.ethnicGroup}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <div id="roo_child_sex">
+		                <label for="_sex_id">Sex:</label>
+		                <div class="box" id="_sex_id">
+		                    <c:out value="${child.sex.label}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <div id="roo_child_survivalStatus">
+		                <label for="_survivalStatus_id">Survival Status:</label>
+		                <div class="box" id="_survivalStatus_id">
+		                    <c:out value="${child.survivalStatus.label}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <div id="roo_child_dateOfDeath">
+		                <label for="_dateOfDeath_id">Date Of Death:</label>
+		                <div class="box" id="_dateOfDeath_id">
+		                    <fmt:formatDate pattern="${child_dateOfDeath_date_format}" value="${child.dateOfDeath}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <div id="roo_child_causeOfDeath">
+		                <label for="_causeOfDeath_id">Cause Of Death:</label>
+		                <div class="box" id="_causeOfDeath_id">
+		                    <c:out value="${child.causeOfDeath.label}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <div id="roo_child_causeOfDeathOther">
+		                <label for="_causeOfDeathOther_id">Cause Of Death Other:</label>
+		                <div class="box" id="_causeOfDeathOther_id">
+		                    <c:out value="${child.causeOfDeathOther}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <div id="roo_child_dateOfRegistration">
+		                <label for="_dateOfRegistration_id">Date Of Registration:</label>
+		                <div class="box" id="_dateOfRegistration_id">
+		                    <fmt:formatDate pattern="${child_dateOfRegistration_date_format}" value="${child.dateOfRegistration}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <div id="roo_child_dateOfBirth">
+		                <label for="_dateOfBirth_id">Date Of Birth:</label>
+		                <div class="box" id="_dateOfBirth_id">
+		                    <fmt:formatDate pattern="${child_dateOfBirth_date_format}" value="${child.dateOfBirth}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <div id="roo_child_diabetesDiagnosed">
+		                <label for="_diabetesDiagnosed_id">Diabetes Diagnosed:</label>
+		                <div class="box" id="_diabetesDiagnosed_id">
+		                    <fmt:formatDate pattern="${child_diabetesDiagnosed_date_format}" value="${child.diabetesDiagnosed}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <div id="roo_child_insulinSince">
+		                <label for="_insulinSince_id">Insulin Since:</label>
+		                <div class="box" id="_insulinSince_id">
+		                    <fmt:formatDate pattern="${child_insulinSince_date_format}" value="${child.insulinSince}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <div id="roo_child_diabetesType">
+		                <label for="_diabetesType_id">Diabetes Type:</label>
+		                <div class="box" id="_diabetesType_id">
+		                    <c:out value="${child.diabetesType.label}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <div id="roo_child_diabetesTypeOther">
+		                <label for="_diabetesTypeOther_id">Diabetes Type Other:</label>
+		                <div class="box" id="_diabetesTypeOther_id">
+		                    <c:out value="${child.diabetesTypeOther}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <div id="roo_child_createdOn">
+		                <label for="_createdOn_id">Created On:</label>
+		                <div class="box" id="_createdOn_id">
+		                    <fmt:formatDate pattern="${child_createdOn_date_format}" value="${child.createdOn}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <div id="roo_child_updatedOn">
+		                <label for="_updatedOn_id">Updated On:</label>
+		                <div class="box" id="_updatedOn_id">
+		                    <fmt:formatDate pattern="${child_updatedOn_date_format}" value="${child.updatedOn}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <div id="roo_child_distanceLivesFromCentre">
+		                <label for="_distanceLivesFromCentre_id">Distance Lives From Centre:</label>
+		                <div class="box" id="_distanceLivesFromCentre_id">
+		                    <c:out value="${child.distanceLivesFromCentre.label}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <div id="roo_child_clinicalRecords">
+		                <label for="_clinicalRecords_id">Clinical Records:</label>
+		                <div class="box" id="_clinicalRecords_id">
+		                    <c:out value="${child.clinicalRecords}"/>
+		                </div>
+		            </div>
+		            <br/>
+				</div>
+				<script type="text/javascript">
+					Spring.addDecoration(new Spring.ElementDecoration({
+						elementId : "childInfo",
+						widgetType : "dijit.layout.ContentPane",
+						widgetAttrs : { title: "Information" }
+						}));
+				</script>
+	            <div id="visits">
+			        <c:if test="${not empty child.clinicalRecords}">
+			            <table width="500px">
+			                <tr class="footer">
+			                    <td colspan="10">
+			                        <span class="new">
+			                            <spring:url value="/clinicalrecord/form" var="create_url"/>
+			                            <a href="${create_url}">
+			                                <spring:url value="/static/images/add.png" var="create_img_url"/>			                                			                                
+			                                <img alt="${add_message}" src="${create_img_url}" title="${add_message}"/>
+			                                <c:out value="Create Visit"/>
+			                            </a>
+			                        </span>
+			                        <c:if test="${not empty maxPages}">
+			                            <roo:pagination maxPages="${maxPages}" page="${param.page}" size="${param.size}"/>
+			                        </c:if>
+			                    </td>
+			                </tr>
+		               </table>	
+		               <table width="500px">		            
+			                <thead>
+			                    <tr>
+			                        <th>Id</th>
+			                        <th>Child</th>
+			                        <th>Date Completed</th>
+			                        <th>Person Completed By</th>
+			                        <th/>
+			                    </tr>
+			                </thead>
+			                <c:forEach items="${child.clinicalRecords}" var="clinicalRecord">
+			                    <tr>
+			                        <td>${clinicalRecord.id}</td>
+			                        <td>
+			                            <c:out value="${clinicalRecord.child}"/>
+			                        </td>
+			                        <td>
+			                            <fmt:formatDate pattern="${clinicalRecord_dateCompleted_date_format}" value="${clinicalRecord.dateCompleted}"/>
+			                        </td>
+			                        <td>
+			                        	<c:out value="${clinicalRecord.personCompletingForm}"/>
+			                        </td>			                        
+			                        <td>
+			                            <spring:url value="/clinicalrecord/${clinicalRecord.id}" var="show_form_url"/>
+			                            <spring:url value="/static/images/show.png" var="show_image_url"/>
+			                            <form:form action="${show_form_url}" method="GET">
+			                                <spring:message arguments="${entity_label}" code="entity.show" var="show_label"/>
+			                                <input alt="${show_label}" class="image" src="${show_image_url}" title="${show_label}" type="image" value="${show_label}"/>
+			                            </form:form>
+			                        </td>
+			                    </tr>
+			                </c:forEach>
+			            </table>
+			        </c:if>
+			        <c:if test="${empty child.clinicalRecords}">
+			            <spring:message arguments="${entity_label_plural}" code="entity.not.found"/>
+			        </c:if>	            	       
+	            </div>
+				<script type="text/javascript">
+					Spring.addDecoration(new Spring.ElementDecoration({
+						elementId : "visits",
+						widgetType : "dijit.layout.ContentPane",
+						widgetAttrs : { title: "Visits" }
+						}));
+				</script>	
+			</div>
+        	<script type="text/javascript">
+				Spring.addDecoration(new Spring.ElementDecoration({
+					elementId : "mainTabContainer",
+					widgetType : "dijit.layout.TabContainer"}));
+			</script> 
         </c:if>
         <c:if test="${empty child}">
             <spring:message arguments="${entity_label}" code="entity.not.found.single"/>
