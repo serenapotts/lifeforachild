@@ -38,6 +38,14 @@ privileged aspect Child_Roo_JavaBean {
         this.name = name;        
     }    
     
+    public String Child.getLastName() {    
+        return this.lastName;        
+    }    
+    
+    public void Child.setLastName(String lastName) {    
+        this.lastName = lastName;        
+    }    
+    
     public Country Child.getCountry() {    
         return this.country;        
     }    

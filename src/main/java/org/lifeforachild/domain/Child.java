@@ -42,14 +42,20 @@ public class Child {
 	public static final String NAME_COLUMN = "name";
 	public static final String UPDATED_ON_COLUMN = "updated_on";
 	
+	@NotNull
 	@Size(max=20)
 	private String individualId;
 	
     @Size(min = 1)
     private String initials;
-
+    
+    @NotNull
     @Size(max = 30)
     private String name;
+    
+    @NotNull
+    @Size(max = 30)
+    private String lastName;
     
 	@ManyToOne
 	Country country;
