@@ -166,24 +166,13 @@
 						}));
 				</script>
 	            <div id="visits">
-			        <c:if test="${not empty child.clinicalRecords}">
-			            <table width="500px">
-			                <tr class="footer">
-			                    <td colspan="10">
-			                        <span class="new">
-			                            <spring:url value="/clinicalrecord/form" var="create_url"/>
-			                            <a href="${create_url}">
-			                                <spring:url value="/static/images/add.png" var="create_img_url"/>			                                			                                
-			                                <img alt="${add_message}" src="${create_img_url}" title="${add_message}"/>
-			                                <c:out value="Create Visit"/>
-			                            </a>
-			                        </span>
-			                        <c:if test="${not empty maxPages}">
-			                            <roo:pagination maxPages="${maxPages}" page="${param.page}" size="${param.size}"/>
-			                        </c:if>
-			                    </td>
-			                </tr>
-		               </table>	
+                     <spring:url value="/clinicalrecord/form" var="create_url"/>
+                     <a href="${create_url}">
+                         <spring:url value="/static/images/add.png" var="create_img_url"/>			                                			                                
+                         <img alt="${add_message}" src="${create_img_url}" title="${add_message}"/>
+                         <c:out value="Create Visit"/>
+                     </a>
+			        <c:if test="${not empty child.clinicalRecords}">			            
 		               <table width="500px">		            
 			                <thead>
 			                    <tr>
@@ -212,11 +201,23 @@
 			                        </td>
 			                    </tr>
 			                </c:forEach>
+							<tr class="footer">
+			                    <td colspan="10">
+			                        <span class="new">
+			                            <spring:url value="/clinicalrecord/form" var="create_url"/>
+			                            <a href="${create_url}">
+			                                <spring:url value="/static/images/add.png" var="create_img_url"/>
+			                                <spring:message arguments="${entity_label}" code="global.menu.new" var="add_message"/>
+			                                <img alt="${add_message}" src="${create_img_url}" title="${add_message}"/>
+			                            </a>
+			                        </span>
+			                        <c:if test="${not empty maxPages}">
+			                            <roo:pagination maxPages="${maxPages}" page="${param.page}" size="${param.size}"/>
+			                        </c:if>
+			                    </td>
+			                </tr>			                
 			            </table>
-			        </c:if>
-			        <c:if test="${empty child.clinicalRecords}">
-			            <spring:message arguments="${entity_label_plural}" code="entity.not.found"/>
-			        </c:if>	            	       
+			        </c:if>         	       
 	            </div>
 				<script type="text/javascript">
 					Spring.addDecoration(new Spring.ElementDecoration({
