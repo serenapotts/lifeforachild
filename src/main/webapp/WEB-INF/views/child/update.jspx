@@ -16,9 +16,8 @@
                 <form:errors cssClass="errors" id="_individualId_error_id" path="individualId"/>
                 <spring:message arguments="Individual Id" code="field.invalid" var="field_invalid"/>
                 <spring:message code="field.required" var="field_required"/>
-                <spring:message argumentSeparator="," arguments="Individual Id," code="field.simple.validation" var="field_validation"/>
-                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_individualId_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : false}})); </script>
-            </div>
+                <spring:message argumentSeparator="," arguments="Individual Id,(${field_required})" code="field.simple.validation" var="field_validation"/>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_individualId_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : true}})); </script>            </div>
             <br/>
             <sec:authorize ifAllGranted="View Child Name">
 	            <div id="roo_child_initials">
@@ -33,20 +32,32 @@
 	            </div>
 	            <br/>
 	            <div id="roo_child_name">
-	                <label for="_name_id">Name:</label>
+	                <label for="_name_id">First Name:</label>
 	                <form:input cssStyle="width:250px" id="_name_id" maxlength="30" path="name" size="0"/>
 	                <br/>
 	                <form:errors cssClass="errors" id="_name_error_id" path="name"/>
 	                <spring:message arguments="Name" code="field.invalid" var="field_invalid"/>
 	                <spring:message code="field.required" var="field_required"/>
-	                <spring:message argumentSeparator="," arguments="Name," code="field.simple.validation" var="field_validation"/>
-	                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_name_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : false}})); </script>
+	                <spring:message argumentSeparator="," arguments="Name,(${field_required})" code="field.simple.validation" var="field_validation"/>
+	                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_name_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : true}})); </script>
 	            </div>
 	            <br/>
+				<div id="roo_child_lastName">
+	                <label for="_lastName_id">Last Name:</label>
+	                <form:input cssStyle="width:250px" id="_lastName_id" maxlength="30" path="lastName" size="0"/>
+	                <br/>
+	                <form:errors cssClass="errors" id="_lastName_error_id" path="lastName"/>
+	                <spring:message arguments="Last Name" code="field.invalid" var="field_invalid"/>
+	                <spring:message code="field.required" var="field_required"/>
+	                <spring:message argumentSeparator="," arguments="Last Name,(${field_required})" code="field.simple.validation" var="field_validation"/>
+	                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_lastName_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : true}})); </script>
+	            </div>
+	            <br/>	            
             </sec:authorize>
             <sec:authorize ifNotGranted="View Child Name">
             	<form:hidden id="_initials_id" path="initials"/>
-            	<form:hidden id="_name_id" path="name"/>		        
+            	<form:hidden id="_name_id" path="name"/>	
+            	<form:hidden id="_lastName_id" path="lastName"/>	        
             </sec:authorize>            
             <div id="roo_child_country">
                 <c:if test="${not empty countrys}">

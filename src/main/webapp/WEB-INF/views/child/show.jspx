@@ -22,12 +22,19 @@
 	            </div>
 	            <br/>
 	            <div id="roo_child_name">
-	                <label for="_name_id">Name:</label>
+	                <label for="_name_id">First Name:</label>
 	                <div class="box" id="_name_id">
 	                    <c:out value="${child.name}"/>
 	                </div>
 	            </div>
 	            <br/>
+	            <div id="roo_child_lastName">
+	                <label for="_lastName_id">Last Name:</label>
+	                <div class="box" id="_lastName_id">
+	                    <c:out value="${child.lastName}"/>
+	                </div>
+	            </div>
+	            <br/>	            
             </sec:authorize>
             <div id="mainTabContainer" style="width:550px;height:300px">
             	<div id="childInfo">

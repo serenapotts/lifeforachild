@@ -14,11 +14,11 @@
                        	<th>Individual Id</th>                        
                         <sec:authorize ifAllGranted="View Child Name">
 	                        <th>Initials</th>
-	                        <th>Name</th>
+	                        <th>First Name</th>
+	                        <th>Last Name</th>
                         </sec:authorize>
                         <th>Country</th>
                         <th>Centre</th>
-                        <th>Ethnic Group</th>
                         <th/>
                         <th/>
                         <th/>
@@ -37,15 +37,15 @@
 	                        <td>
 	                            <c:out value="${child.name}"/>
 	                        </td>
+	                        <td>
+                            <c:out value="${child.lastName}"/>
+                        	</td>
                         </sec:authorize>
                         <td>
                             <c:out value="${child.country}"/>
                         </td>
                         <td>
                             <c:out value="${child.centre}"/>
-                        </td>
-                        <td>
-                            <c:out value="${child.ethnicGroup}"/>
                         </td>
                         <td>
                             <spring:url value="/child/${child.id}" var="show_form_url"/>
