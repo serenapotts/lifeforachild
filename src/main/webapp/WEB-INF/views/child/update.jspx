@@ -44,6 +44,10 @@
 	            </div>
 	            <br/>
             </sec:authorize>
+            <sec:authorize ifNotGranted="View Child Name">
+            	<form:hidden id="_initials_id" path="initials"/>
+            	<form:hidden id="_name_id" path="name"/>		        
+            </sec:authorize>            
             <div id="roo_child_country">
                 <c:if test="${not empty countrys}">
                     <label for="_country_id">Country:</label>
