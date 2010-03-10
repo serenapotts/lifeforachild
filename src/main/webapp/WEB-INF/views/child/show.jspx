@@ -188,7 +188,6 @@
 			                <thead>
 			                    <tr>
 			                        <th>Id</th>
-			                        <th>Child</th>
 			                        <th>Date Completed</th>
 			                        <th>Person Completed By</th>
 			                        <th/>
@@ -197,9 +196,6 @@
 			                <c:forEach items="${child.clinicalRecords}" var="clinicalRecord">
 			                    <tr>
 			                        <td>${clinicalRecord.id}</td>
-			                        <td>
-			                            <c:out value="${clinicalRecord.child}"/>
-			                        </td>
 			                        <td>
 			                            <fmt:formatDate pattern="${clinicalRecord_dateCompleted_date_format}" value="${clinicalRecord.dateCompleted}"/>
 			                        </td>
