@@ -44,28 +44,6 @@ public class UserQuery extends BaseQuery {
     	}
 
     	return criteria;
-    }
-    
-    private static void findCountryByAccessCriteria(Criteria criteria)
-    {
-		Integer country = SecurityUtil.getInstance().getCountry();
-		if (country != null && country != 0)
-		{
-			// have just country access to restrict to all centres in that country
-			criteria.createCriteria("country")
-					.add(Restrictions.eq("id", new Long(country)));
-		}    
-    }
-    
-    private static void findCentreByAccessCriteria(Criteria criteria)
-    {
-		Integer centre = SecurityUtil.getInstance().getCentre();
-		if (centre != null && centre != 0)
-		{
-			// have just country access to restrict to all centres in that country
-			criteria.createCriteria("centre")
-					.add(Restrictions.eq("id", new Long(centre)));
-		}    
     }    
     
     public static List<User> getUsersByAccess(EntityManager entityManager)

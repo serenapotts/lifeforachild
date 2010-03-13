@@ -5,11 +5,9 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
-import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Restrictions;
 import org.lifeforachild.Util.StringUtil;
 import org.lifeforachild.domain.Child;
@@ -147,5 +145,19 @@ public class ChildQuery extends BaseQuery {
 			//builder.orderBy(orderBy);
 		//if (!StringUtil.isEmpty(thenOrderBy))
 			//builder.orderBy(thenOrderBy);			
+	}
+	
+	public static Criteria getChildrenByAccessCriteria(EntityManager entityManager)
+	{
+		Criteria criteria = ((Session)entityManager.getDelegate()).createCriteria(Child.class);
+		findCountryByAccessCriteria(criteria);
+    	findCentreByAccessCriteria(criteria);
+    	return criteria;
+	}
+	
+	public static List<Child> getChildrenByAccess(EntityManager entityManager)
+	{
+		Criteria criteria = getChildrenByAccessCriteria(entityManager);
+		return criteria.list();
 	}
 }

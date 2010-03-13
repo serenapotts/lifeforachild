@@ -10,7 +10,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Version;
+
+import org.hibernate.Criteria;
 import org.lifeforachild.domain.Child;
+import org.lifeforachild.web.query.ChildQuery;
+import org.lifeforachild.web.query.UserGroupQuery;
+import org.lifeforachild.web.query.UserQuery;
 import org.springframework.transaction.annotation.Transactional;
 
 privileged aspect Child_Roo_Entity {
@@ -81,11 +86,12 @@ privileged aspect Child_Roo_Entity {
     }    
     
     public static long Child.countChildren() {    
-        return (Long) entityManager().createQuery("select count(o) from Child o").getSingleResult();        
+    	Criteria criteria = ChildQuery.getChildrenByAccessCriteria(entityManager());
+        return ChildQuery.count(criteria);        
     }    
     
     public static List<Child> Child.findAllChildren() {    
-        return entityManager().createQuery("select o from Child o").getResultList();        
+        return ChildQuery.getChildrenByAccess(entityManager());        
     }    
     
     public static Child Child.findChild(Long id) {    
@@ -94,7 +100,7 @@ privileged aspect Child_Roo_Entity {
     }    
     
     public static List<Child> Child.findChildEntries(int firstResult, int maxResults) {    
-        return entityManager().createQuery("select o from Child o").setFirstResult(firstResult).setMaxResults(maxResults).getResultList();        
+        return ChildQuery.getChildrenByAccessCriteria(entityManager()).setFirstResult(firstResult).setMaxResults(maxResults).list();        
     }    
     
 }

@@ -83,7 +83,7 @@ privileged aspect UserGroup_Roo_Entity {
     
     public static long UserGroup.countUserGroups() {    
     	Criteria criteria = UserGroupQuery.findUserGroupsByAccessCriteria(entityManager());
-        return UserQuery.count(criteria);       
+        return UserGroupQuery.count(criteria);       
     }    
     
     public static List<UserGroup> UserGroup.findAllUserGroups() {    
