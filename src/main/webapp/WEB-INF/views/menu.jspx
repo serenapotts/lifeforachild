@@ -21,28 +21,7 @@
                     </a>
                 </li>
             </ul>
-        </li>	
-    	<li id="web_mvc_jsp_clinicalrecord_category">
-            <h2>
-                <spring:message code="menu.category.web_mvc_jsp_clinicalrecord_category.label"/>
-            </h2>
-            <ul>
-                <li id="web_mvc_jsp_create_clinicalrecord_menu_item">
-                    <spring:url value="/clinicalrecord/form" var="web_mvc_jsp_create_clinicalrecord_menu_item_url"/>
-                    <a href="${web_mvc_jsp_create_clinicalrecord_menu_item_url}">
-                        <spring:message code="label.clinicalrecord" var="label_clinicalrecord"/>
-                        <spring:message arguments="${label_clinicalrecord}" code="global.menu.new"/>
-                    </a>
-                </li>
-            <li id="web_mvc_jsp_list_clinicalrecord_menu_item">
-                    <spring:url value="/clinicalrecord?page=${empty param.page ? 1 : param.page}&amp;amp;size=${empty param.size ? 10 : param.size}" var="web_mvc_jsp_list_clinicalrecord_menu_item_url"/>
-                    <a href="${web_mvc_jsp_list_clinicalrecord_menu_item_url}">
-                        <spring:message code="label.clinicalrecords" var="label_clinicalrecords"/>
-                        <spring:message arguments="${label_clinicalrecords}" code="global.menu.list"/>
-                    </a>
-                </li>
-            </ul>
-        </li>        		
+        </li>	      		
     	<li id="web_mvc_jsp_country_category">
             <h2>
                 <spring:message code="menu.category.web_mvc_jsp_country_category.label"/>
