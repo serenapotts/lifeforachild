@@ -233,7 +233,7 @@ where ug.group_name='Centre Admin' and c.name='India' and dc.name='India Medical
 insert into user (version, username, password, enabled, user_group, country, centre)
 (select 1, 'nadmin', 'nadmin', true, ug.id, c.id, dc.id
 from user_group ug, country c, diabetes_centre dc
-where ug.group_name='Centre Admin' and c.name='Nepal' and dc.name='Nepal Surgery');
+where ug.group_name='Centre Admin' and c.name='Nepal' and dc.name='Nepal Medical');
 insert into user (version, username, password, enabled, user_group, country, centre)
 (select 1, 'badmin2', 'badmin2', true, ug.id, c.id, dc.id
 from user_group ug, country c, diabetes_centre dc
@@ -245,7 +245,7 @@ where ug.group_name='Centre Admin' and c.name='India' and dc.name='India Surgery
 insert into user (version, username, password, enabled, user_group, country, centre)
 (select 1, 'nadmin2', 'nadmin2', true, ug.id, c.id, dc.id
 from user_group ug, country c, diabetes_centre dc
-where ug.group_name='Centre Admin' and c.name='Nepal' and dc.name='Nepal Medical');
+where ug.group_name='Centre Admin' and c.name='Nepal' and dc.name='Nepal Surgery');
 
 insert into user (version, username, password, enabled, user_group, country, centre)
 (select 1, 'bstaff', 'bstaff', true, ug.id, c.id, dc.id
