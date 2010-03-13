@@ -9,10 +9,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Version;
-
-import org.lifeforachild.Util.SecurityUtil;
-import org.lifeforachild.Util.StringUtil;
-import org.lifeforachild.enums.UserGroups;
+import org.hibernate.Criteria;
+import org.lifeforachild.web.query.UserGroupQuery;
+import org.lifeforachild.web.query.UserQuery;
 import org.springframework.transaction.annotation.Transactional;
 
 privileged aspect UserGroup_Roo_Entity {
@@ -83,11 +82,12 @@ privileged aspect UserGroup_Roo_Entity {
     }    
     
     public static long UserGroup.countUserGroups() {    
-        return (Long) entityManager().createQuery("select count(o) from UserGroup o").getSingleResult();        
+    	Criteria criteria = UserGroupQuery.findUserGroupsByAccessCriteria(entityManager());
+        return UserQuery.count(criteria);       
     }    
     
     public static List<UserGroup> UserGroup.findAllUserGroups() {    
-        return entityManager().createQuery("select o from UserGroup o").getResultList();        
+        return UserGroupQuery.findUserGroupsByAccess(entityManager());        
     }    
     
     public static UserGroup UserGroup.findUserGroup(Long id) {    
@@ -96,42 +96,8 @@ privileged aspect UserGroup_Roo_Entity {
     }    
     
     public static List<UserGroup> UserGroup.findUserGroupEntries(int firstResult, int maxResults) {    
-        return entityManager().createQuery("select o from UserGroup o").setFirstResult(firstResult).setMaxResults(maxResults).getResultList();        
+        return UserGroupQuery.findUserGroupsByAccessCriteria(entityManager()).setFirstResult(firstResult).setMaxResults(maxResults).list();        
     }    
     
-    public static String getAllUsersQuery()
-    {
-    	return "select o from UserGroup o";
-    }
-
-    public static List<UserGroup> UserGroup.findUserGroupsByAccess() {
-    	UserGroup userGroup = SecurityUtil.getInstance().getCurrentUserGroup();
-    	String baseQuery = getAllUsersQuery();
-    	String query = null;
-    	if (userGroup == null)
-    		return null;
-    	else if (userGroup.getGroupName().equals(UserGroups.PROGRAM_MANAGER.getName()))
-    		// they can see all users
-    		query = baseQuery;
-    	else
-    	{
-    		String[] accessGroups = UserGroups.getUserGroupsCanAccess(userGroup);
-    		if (accessGroups != null)
-    			query = baseQuery + " where " + getUserGroupFilter(accessGroups);     		
-    	}
-    	if (query != null)
-    		return entityManager().createQuery(query).getResultList();
-    	return null;
-    }    
-    
-    public static String UserGroup.getUserGroupFilter(String[] userGroups)
-    {
-    	return UserGroup.getUserGroupFilter(userGroups, "group_name");
-    }
-
-    public static String UserGroup.getUserGroupFilter(String[] userGroups, String pre)
-    {
-    	return StringUtil.buildString(userGroups, pre + "='", "'", " or ");
-    }
         
 }

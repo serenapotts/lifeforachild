@@ -42,4 +42,21 @@ public class SecurityUtil {
 		return ug;
 	}
 	
+	public Integer getCountry()
+	{
+		AllUserDetails user = getCurrentUser();
+		// if no user don't let them access anything
+		if (user == null)
+			return -1;
+		return user.getCountry();
+	}
+	
+	public Integer getCentre()
+	{
+		AllUserDetails user = getCurrentUser();
+		// if no user don't let them access anything
+		if (user == null)
+			return -1;
+		return user.getCentre();
+	}	
 }

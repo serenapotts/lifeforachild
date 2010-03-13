@@ -1,8 +1,7 @@
 package org.lifeforachild.domain;
 
-import java.lang.Integer;
-import java.lang.Long;
 import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.EntityManager;
 import javax.persistence.GeneratedValue;
@@ -10,7 +9,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Version;
-import org.lifeforachild.domain.Country;
+
+import org.hibernate.Criteria;
+import org.lifeforachild.web.query.CountryQuery;
 import org.springframework.transaction.annotation.Transactional;
 
 privileged aspect Country_Roo_Entity {
@@ -81,11 +82,12 @@ privileged aspect Country_Roo_Entity {
     }    
     
     public static long Country.countCountrys() {    
-        return (Long) entityManager().createQuery("select count(o) from Country o").getSingleResult();        
+    	Criteria criteria = CountryQuery.findCountryByAccessCriteria(entityManager());
+        return CountryQuery.count(criteria);        
     }    
     
     public static List<Country> Country.findAllCountrys() {    
-        return entityManager().createQuery("select o from Country o").getResultList();        
+        return CountryQuery.findCountryByAccess(entityManager());        
     }    
     
     public static Country Country.findCountry(Long id) {    
@@ -94,7 +96,7 @@ privileged aspect Country_Roo_Entity {
     }    
     
     public static List<Country> Country.findCountryEntries(int firstResult, int maxResults) {    
-        return entityManager().createQuery("select o from Country o").setFirstResult(firstResult).setMaxResults(maxResults).getResultList();        
+        return CountryQuery.findCountryByAccessCriteria(entityManager()).setFirstResult(firstResult).setMaxResults(maxResults).list();        
     }    
     
 }

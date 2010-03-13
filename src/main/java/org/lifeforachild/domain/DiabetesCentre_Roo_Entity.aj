@@ -1,8 +1,7 @@
 package org.lifeforachild.domain;
 
-import java.lang.Integer;
-import java.lang.Long;
 import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.EntityManager;
 import javax.persistence.GeneratedValue;
@@ -10,7 +9,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Version;
-import org.lifeforachild.domain.DiabetesCentre;
+
+import org.hibernate.Criteria;
+import org.lifeforachild.web.query.DiabetesCentreQuery;
+import org.lifeforachild.web.query.UserQuery;
 import org.springframework.transaction.annotation.Transactional;
 
 privileged aspect DiabetesCentre_Roo_Entity {
@@ -81,11 +83,12 @@ privileged aspect DiabetesCentre_Roo_Entity {
     }    
     
     public static long DiabetesCentre.countDiabetesCentres() {    
-        return (Long) entityManager().createQuery("select count(o) from DiabetesCentre o").getSingleResult();        
+    	Criteria criteria = DiabetesCentreQuery.findCentreByAccessCriteria(entityManager());
+        return UserQuery.count(criteria);        
     }    
     
     public static List<DiabetesCentre> DiabetesCentre.findAllDiabetesCentres() {    
-        return entityManager().createQuery("select o from DiabetesCentre o").getResultList();        
+    	return DiabetesCentreQuery.findCentreByAccess(entityManager());       
     }    
     
     public static DiabetesCentre DiabetesCentre.findDiabetesCentre(Long id) {    
@@ -94,7 +97,7 @@ privileged aspect DiabetesCentre_Roo_Entity {
     }    
     
     public static List<DiabetesCentre> DiabetesCentre.findDiabetesCentreEntries(int firstResult, int maxResults) {    
-        return entityManager().createQuery("select o from DiabetesCentre o").setFirstResult(firstResult).setMaxResults(maxResults).getResultList();        
+        return DiabetesCentreQuery.findCentreByAccessCriteria(entityManager()).setFirstResult(firstResult).setMaxResults(maxResults).list();        
     }    
     
 }
