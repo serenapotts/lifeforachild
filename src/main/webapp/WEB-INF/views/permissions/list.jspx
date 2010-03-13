@@ -7,7 +7,7 @@
         <spring:message arguments="${entity_label_plural}" code="entity.list.all" var="title_msg"/>
         <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_title_div', widgetType : 'dijit.TitlePane', widgetAttrs : {title: '${title_msg}'}})); </script>
         <c:if test="${not empty permissionses}">
-            <table width="300px">
+            <table width="550px">
                 <thead>
                     <tr>
                         <th>Id</th>
@@ -21,7 +21,7 @@
                     <tr>
                         <td>${permissions.id}</td>
                         <td>
-                            <c:out value="${fn:substring(permissions.name, 0, 10)}"/>
+                            <c:out value="${permissions.name}"/>
                         </td>
                         <td>
                             <spring:url value="/permissions/${permissions.id}" var="show_form_url"/>

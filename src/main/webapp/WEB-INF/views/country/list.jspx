@@ -7,7 +7,7 @@
         <spring:message arguments="${entity_label_plural}" code="entity.list.all" var="title_msg"/>
         <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_title_div', widgetType : 'dijit.TitlePane', widgetAttrs : {title: '${title_msg}'}})); </script>
         <c:if test="${not empty countrys}">
-            <table width="300px">
+            <table width="550px">
                 <thead>
                     <tr>
                         <th>Id</th>
@@ -22,7 +22,7 @@
                     <tr>
                         <td>${country.id}</td>
                         <td>
-                            <c:out value="${fn:substring(country.name, 0, 10)}"/>
+                            <c:out value="${country.name}"/>
                         </td>
                         <td>${fn:length(country.diabetesCentres)}</td>
                         <td>

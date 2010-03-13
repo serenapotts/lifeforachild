@@ -7,12 +7,11 @@
         <spring:message arguments="${entity_label_plural}" code="entity.list.all" var="title_msg"/>
         <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_title_div', widgetType : 'dijit.TitlePane', widgetAttrs : {title: '${title_msg}'}})); </script>
         <c:if test="${not empty diabetescentres}">
-            <table width="300px">
+            <table width="550px">
                 <thead>
                     <tr>
                         <th>Id</th>
                         <th>Name</th>
-                        <th>Address</th>
                         <th>Country</th>
                         <th/>
                         <th/>
@@ -23,13 +22,10 @@
                     <tr>
                         <td>${diabetesCentre.id}</td>
                         <td>
-                            <c:out value="${fn:substring(diabetesCentre.name, 0, 10)}"/>
+                            <c:out value="${diabetesCentre.name}"/>
                         </td>
                         <td>
-                            <c:out value="${fn:substring(diabetesCentre.address, 0, 10)}"/>
-                        </td>
-                        <td>
-                            <c:out value="${fn:substring(diabetesCentre.country, 0, 10)}"/>
+                            <c:out value="${diabetesCentre.country}"/>
                         </td>
                         <td>
                             <spring:url value="/diabetescentre/${diabetesCentre.id}" var="show_form_url"/>

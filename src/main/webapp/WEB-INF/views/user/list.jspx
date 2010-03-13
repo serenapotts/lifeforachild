@@ -7,14 +7,13 @@
         <spring:message arguments="${entity_label_plural}" code="entity.list.all" var="title_msg"/>
         <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_title_div', widgetType : 'dijit.TitlePane', widgetAttrs : {title: '${title_msg}'}})); </script>
         <c:if test="${not empty users}">
-            <table width="300px">
+            <table width="550px">
                 <thead>
                     <tr>
                         <th>Id</th>
                         <th>First Name</th>
                         <th>Last Name</th>
                         <th>Username</th>
-                        <th>Password</th>
                         <th>Enabled</th>
                         <th>User Group</th>
                         <th/>
@@ -26,22 +25,19 @@
                     <tr>
                         <td>${user.id}</td>
                         <td>
-                            <c:out value="${fn:substring(user.firstName, 0, 10)}"/>
+                            <c:out value="${user.firstName}"/>
                         </td>
                         <td>
-                            <c:out value="${fn:substring(user.lastName, 0, 10)}"/>
+                            <c:out value="${user.lastName}"/>
                         </td>
                         <td>
-                            <c:out value="${fn:substring(user.username, 0, 10)}"/>
+                            <c:out value="${user.username}"/>
                         </td>
                         <td>
-                            <c:out value="${fn:substring(user.password, 0, 10)}"/>
+                            <c:out value="${user.enabled}"/>
                         </td>
                         <td>
-                            <c:out value="${fn:substring(user.enabled, 0, 10)}"/>
-                        </td>
-                        <td>
-                            <c:out value="${fn:substring(user.userGroup, 0, 10)}"/>
+                            <c:out value="${user.userGroup}"/>
                         </td>
                         <td>
                             <spring:url value="/user/${user.id}" var="show_form_url"/>
