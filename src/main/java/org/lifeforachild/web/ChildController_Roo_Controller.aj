@@ -1,7 +1,10 @@
 package org.lifeforachild.web;
 
-import javax.validation.Valid;
 import java.util.Date;
+
+import javax.validation.Valid;
+
+import org.lifeforachild.Util.StringUtil;
 import org.lifeforachild.domain.CauseOfDeathType;
 import org.lifeforachild.domain.Child;
 import org.lifeforachild.domain.ClinicalRecord;
@@ -42,7 +45,14 @@ privileged aspect ChildController_Roo_Controller {
             modelMap.addAttribute("child_dateOfRegistration_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));            
             return "child/create";            
         }        
-        child.persist();        
+        child.persist();  
+        
+        // now that child is created auto generate individual id
+        String id = StringUtil.padWithZeros(child.getId(), 4);
+        String countryId = StringUtil.padWithZeros(child.getCountry().getId(), 2);
+        String centreId = StringUtil.padWithZeros(child.getCentre().getId(), 2);
+        child.setIndividualId(countryId + centreId + id);
+        child.persist();
         return "redirect:/child/" + child.getId();        
     }    
     

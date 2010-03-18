@@ -41,5 +41,15 @@ public class StringUtil {
 		}
 		return buf.toString ();
 	}
+    
+    public static String padWithZeros(long id, int length)
+    {
+    	String idString = String.valueOf(id);
+    	for (int i = idString.length(); i < length; i++)
+    	{
+    		idString = "0" + idString;
+    	}
+    	return idString;
+    }
 
 }
