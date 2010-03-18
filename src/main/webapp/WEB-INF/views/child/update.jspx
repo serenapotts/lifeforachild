@@ -9,17 +9,14 @@
             <div id="childInfo">        
 		        <spring:url value="/child/${child.id}" var="form_url"/>
 		        <form:form action="${form_url}" method="PUT" modelAttribute="child">
-		            <form:errors cssClass="errors" delimiter="&lt;p/&gt;"/>
-		            
+		            <form:errors cssClass="errors" delimiter="&lt;p/&gt;"/>		            
 		            <div id="roo_child_individualId">
 		                <label for="_individualId_id">Individual Id:</label>
-		                <form:input cssStyle="width:250px" id="_individualId_id" maxlength="20" path="individualId" size="0"/>
-		                <br/>
-		                <form:errors cssClass="errors" id="_individualId_error_id" path="individualId"/>
-		                <spring:message arguments="Individual Id" code="field.invalid" var="field_invalid"/>
-		                <spring:message code="field.required" var="field_required"/>
-		                <spring:message argumentSeparator="," arguments="Individual Id,(${field_required})" code="field.simple.validation" var="field_validation"/>
-		                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_individualId_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : true}})); </script>            </div>
+		                <div class="box" id="_individualId_id_label">
+                    		<c:out value="${child.individualId}"/>
+                		</div>
+                		<form:hidden id="_individualId_id" path="individualId"/>
+                	</div>
 		            <br/>
 		            <sec:authorize ifAllGranted="View Child Name">
 			            <div id="roo_child_initials">
