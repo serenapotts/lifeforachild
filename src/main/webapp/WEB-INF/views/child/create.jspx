@@ -86,7 +86,10 @@
             <div id="roo_child_sex">
                 <label for="_sex_id">Sex:</label>
                 <form:errors cssClass="errors" id="_sex_error_id" path="sex"/>
-                <form:select cssStyle="width:250px" id="_sex_id" items="${sextype_enum}" path="sex" itemLabel="label"/>
+                <form:select cssStyle="width:250px" id="_sex_id" path="sex" itemLabel="label">
+                	<form:option value=""></form:option>
+                	<form:options items="${sextype_enum}"/>
+                </form:select>
                 <br/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_sex_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
             </div>
@@ -94,7 +97,10 @@
             <div id="roo_child_survivalStatus">
                 <label for="_survivalStatus_id">Survival Status:</label>
                 <form:errors cssClass="errors" id="_survivalStatus_error_id" path="survivalStatus"/>
-                <form:select cssStyle="width:250px" id="_survivalStatus_id" items="${survivalstatustype_enum}" path="survivalStatus" itemLabel="label"/>
+                <form:select cssStyle="width:250px" id="_survivalStatus_id" path="survivalStatus" itemLabel="label">
+                	<form:option value=""></form:option>
+                	<form:options items="${survivalstatustype_enum}"/>
+                </form:select>
                 <br/>
                 <script type="text/javascript">Spring.addDecoration(
                         new Spring.ElementDecoration({
@@ -225,7 +231,10 @@
             <div id="roo_child_diabetesType">
                 <label for="_diabetesType_id">Diabetes Type:</label>
                 <form:errors cssClass="errors" id="_diabetesType_error_id" path="diabetesType"/>
-                <form:select cssStyle="width:250px" id="_diabetesType_id" items="${diabetestype_enum}" path="diabetesType" itemLabel="label"/>
+                <form:select cssStyle="width:250px" id="_diabetesType_id" path="diabetesType" itemLabel="label">
+                	<form:option value=""></form:option>
+                	<form:options items="${diabetestype_enum}"/>
+                </form:select>
                 <br/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_diabetesType_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
             </div>
@@ -243,7 +252,10 @@
             <div id="roo_child_distanceLivesFromCentre">
                 <label for="_distanceLivesFromCentre_id">Distance Lives From Centre:</label>
                 <form:errors cssClass="errors" id="_distanceLivesFromCentre_error_id" path="distanceLivesFromCentre"/>
-                <form:select cssStyle="width:250px" id="_distanceLivesFromCentre_id" items="${distancetype_enum}" path="distanceLivesFromCentre" itemLabel="label"/>
+                <form:select cssStyle="width:250px" id="_distanceLivesFromCentre_id" path="distanceLivesFromCentre" itemLabel="label">
+					<form:option value=""></form:option>
+                	<form:options items="${distancetype_enum}"/>
+                </form:select>                
                 <br/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_distanceLivesFromCentre_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
             </div>
