@@ -29,8 +29,7 @@ privileged aspect ClinicalRecordController_Roo_Controller {
     public String ClinicalRecordController.create(@Valid ClinicalRecord clinicalRecord, BindingResult result, ModelMap modelMap) {    
         if (clinicalRecord == null) throw new IllegalArgumentException("A clinicalRecord is required");        
         if (result.hasErrors()) {        
-            modelMap.addAttribute("clinicalRecord", clinicalRecord);            
-            modelMap.addAttribute("children", Child.findAllChildren());            
+            modelMap.addAttribute("clinicalRecord", clinicalRecord);                       
             modelMap.addAttribute("creatineunitstype_enum", CreatineUnitsType.class.getEnumConstants());            
             modelMap.addAttribute("diabetescopingtype_enum", DiabetesCopingType.class.getEnumConstants());            
             modelMap.addAttribute("hba1cmethodtype_enum", HbA1cMethodType.class.getEnumConstants());            
@@ -51,10 +50,11 @@ privileged aspect ClinicalRecordController_Roo_Controller {
         return "redirect:/clinicalrecord/" + clinicalRecord.getId();        
     }    
     
-    @RequestMapping(value = "/clinicalrecord/form", method = RequestMethod.GET)    
-    public String ClinicalRecordController.createForm(ModelMap modelMap) {    
-        modelMap.addAttribute("clinicalRecord", new ClinicalRecord());        
-        modelMap.addAttribute("children", Child.findAllChildren());        
+    @RequestMapping(value = "/clinicalrecord/form/{id}", method = RequestMethod.GET)    
+    public String ClinicalRecordController.createForm(@PathVariable("id") Long id, ModelMap modelMap) {  
+    	ClinicalRecord record = new ClinicalRecord();
+    	record.setChild(Child.findChild(id));
+        modelMap.addAttribute("clinicalRecord", record);
         modelMap.addAttribute("creatineunitstype_enum", CreatineUnitsType.class.getEnumConstants());        
         modelMap.addAttribute("diabetescopingtype_enum", DiabetesCopingType.class.getEnumConstants());        
         modelMap.addAttribute("hba1cmethodtype_enum", HbA1cMethodType.class.getEnumConstants());        
@@ -102,8 +102,7 @@ privileged aspect ClinicalRecordController_Roo_Controller {
     public String ClinicalRecordController.update(@Valid ClinicalRecord clinicalRecord, BindingResult result, ModelMap modelMap) {    
         if (clinicalRecord == null) throw new IllegalArgumentException("A clinicalRecord is required");        
         if (result.hasErrors()) {        
-            modelMap.addAttribute("clinicalRecord", clinicalRecord);            
-            modelMap.addAttribute("children", Child.findAllChildren());            
+            modelMap.addAttribute("clinicalRecord", clinicalRecord);                       
             modelMap.addAttribute("creatineunitstype_enum", CreatineUnitsType.class.getEnumConstants());            
             modelMap.addAttribute("diabetescopingtype_enum", DiabetesCopingType.class.getEnumConstants());            
             modelMap.addAttribute("hba1cmethodtype_enum", HbA1cMethodType.class.getEnumConstants());            
@@ -127,8 +126,7 @@ privileged aspect ClinicalRecordController_Roo_Controller {
     @RequestMapping(value = "/clinicalrecord/{id}/form", method = RequestMethod.GET)    
     public String ClinicalRecordController.updateForm(@PathVariable("id") Long id, ModelMap modelMap) {    
         if (id == null) throw new IllegalArgumentException("An Identifier is required");        
-        modelMap.addAttribute("clinicalRecord", ClinicalRecord.findClinicalRecord(id));        
-        modelMap.addAttribute("children", Child.findAllChildren());        
+        modelMap.addAttribute("clinicalRecord", ClinicalRecord.findClinicalRecord(id));                
         modelMap.addAttribute("creatineunitstype_enum", CreatineUnitsType.class.getEnumConstants());        
         modelMap.addAttribute("diabetescopingtype_enum", DiabetesCopingType.class.getEnumConstants());        
         modelMap.addAttribute("hba1cmethodtype_enum", HbA1cMethodType.class.getEnumConstants());        

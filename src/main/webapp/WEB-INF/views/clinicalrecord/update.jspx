@@ -11,13 +11,11 @@
 			<div id="mainTabContainer" style="width:500px;height:400px">
             	<div id="general">            
 		            <div id="roo_clinicalRecord_child">
-		                <c:if test="${not empty children}">
-		                    <label for="_child_id">Child:</label>
-		                    <form:select cssStyle="width:250px" id="_child_id" path="child">
-		                        <form:options itemValue="id" items="${children}"/>
-		                    </form:select>
-		                    <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_child_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
-		                </c:if>
+	                    <label for="_child_id">Child:</label>
+		                    <div class="box" id="_child_id">
+		                    <c:out value="${clinicalRecord.child}"/>
+		                </div>
+		                <form:hidden id="_child_id" path="child"/>
 		            </div>
 		            <br/>
 					<div id="roo_clinicalRecord_additionalComment">

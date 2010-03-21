@@ -325,7 +325,7 @@
 					}));
 			</script>
             <div id="visits">
-                    <spring:url value="/clinicalrecord/form" var="create_url"/>
+                    <spring:url value="/clinicalrecord/form/${child.id}" var="create_url"/>
                     <a href="${create_url}">
                         <spring:url value="/static/images/add.png" var="create_img_url"/>			                                			                                
                         <img alt="${add_message}" src="${create_img_url}" title="${add_message}"/>
@@ -372,7 +372,7 @@
 						<tr class="footer">
 		                    <td colspan="10">
 		                        <span class="new">
-		                            <spring:url value="/clinicalrecord/form" var="create_url"/>
+		                            <spring:url value="/clinicalrecord/form/${child.id}" var="create_url"/>
 		                            <a href="${create_url}">
 		                                <spring:url value="/static/images/add.png" var="create_img_url"/>
 		                                <spring:message arguments="${entity_label}" code="global.menu.new" var="add_message"/>
