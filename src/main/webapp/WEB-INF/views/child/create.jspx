@@ -111,7 +111,8 @@
 			                			dojo.style(dijit.byId("roo_child_causeOfDeath").domNode, "display", "none");
 			                			dojo.style(dijit.byId("roo_child_causeOfDeathOther").domNode, "display", "none");
 			                		}
-                        		}}                            
+                        		}
+                			}                            
                        	})); 
 				</script>
             </div>           
@@ -235,15 +236,16 @@
                             widgetType: 'dijit.form.FilteringSelect', 
                             widgetAttrs : {hasDownArrow : true,
                             onChange : function(newValue) {
-	                		if (newValue == 'OTHER')
-	                		{
-		                		dojo.style(dijit.byId("roo_child_diabetesTypeOther").domNode, "display", "block");
-	                		}
-	                		else
-	                		{
-	                			dojo.style(dijit.byId("roo_child_diabetesTypeOther").domNode, "display", "none");
-	                		}
-                		}}
+		                		if (newValue == 'OTHER')
+		                		{
+			                		dojo.style(dijit.byId("roo_child_diabetesTypeOther").domNode, "display", "block");
+		                		}
+		                		else
+		                		{
+		                			dojo.style(dijit.byId("roo_child_diabetesTypeOther").domNode, "display", "none");
+		                		}
+                			}
+                		}
                 	})); 
                 </script>
             </div>
