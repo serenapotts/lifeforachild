@@ -1,6 +1,33 @@
 <div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:fmt="http://java.sun.com/jsp/jstl/fmt" xmlns:sec="http://www.springframework.org/security/tags" xmlns:form="http://www.springframework.org/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:roo="urn:jsptagdir:/WEB-INF/tags" xmlns:spring="http://www.springframework.org/tags" version="2.0">
     <jsp:output omit-xml-declaration="yes"/>
-    <script type="text/javascript">dojo.require('dijit.TitlePane');dojo.require('dijit.form.FilteringSelect');dojo.require('dijit.form.DateTextBox');dojo.require('dijit.form.SimpleTextarea');</script>
+    <script type="text/javascript">
+    	dojo.require('dijit.TitlePane');
+    	dojo.require('dijit.form.FilteringSelect');
+    	dojo.require('dijit.form.DateTextBox');
+    	dojo.require('dijit.form.SimpleTextarea');
+
+    	dojo.addOnLoad(
+			function(){
+				if (dijit.byId("_survivalStatus_id").value != 'DEAD')
+			  	{
+				  	// hide death values as not dead
+					dojo.style(dijit.byId("roo_child_dateOfDeath").domNode, "display", "none");
+					dojo.style(dijit.byId("roo_child_causeOfDeath").domNode, "display", "none");
+					dojo.style(dijit.byId("roo_child_causeOfDeathOther").domNode, "display", "none");				  
+			  	}
+				else if (dijit.byId("_causeOfDeath_id").value != 'OTHER_DIABETES_RELATED_CONDITION')
+				{
+					// hide death other as other not selected
+					dojo.style(dijit.byId("roo_child_causeOfDeathOther").domNode, "display", "none");
+				}
+
+				if (dijit.byId("_diabetesType_id").value != 'OTHER')
+			  	{
+					dojo.style(dijit.byId("roo_child_diabetesTypeOther").domNode, "display", "none");
+			  	}
+			}
+		);    			    	
+    </script>
     <div id="_title_div">
         <spring:message code="label.child" var="entity_label"/>
         <spring:message arguments="${entity_label}" code="entity.update" var="title_msg"/>
@@ -102,7 +129,29 @@
 		                <form:errors cssClass="errors" id="_survivalStatus_error_id" path="survivalStatus"/>
 		                <form:select cssStyle="width:250px" id="_survivalStatus_id" items="${survivalstatustype_enum}" path="survivalStatus" itemLabel="label"/>
 		                <br/>
-		                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_survivalStatus_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
+		                <script type="text/javascript">Spring.addDecoration(
+				                new Spring.ElementDecoration({
+					                elementId : '_survivalStatus_id', 
+					                widgetType: 'dijit.form.FilteringSelect', 
+					                widgetAttrs : {hasDownArrow : true,
+						                onChange : function(newValue) {
+					                		if (newValue == 'DEAD')
+					                		{
+						                		dojo.style(dijit.byId("roo_child_dateOfDeath").domNode, "display", "block");
+						                		dojo.style(dijit.byId("roo_child_causeOfDeath").domNode, "display", "block");
+						                		if (dijit.byId("_causeOfDeath_id").value == 'OTHER_DIABETES_RELATED_CONDITION')
+						                			dojo.style(dijit.byId("roo_child_causeOfDeathOther").domNode, "display", "block");
+					                		}
+					                		else
+					                		{
+					                			dojo.style(dijit.byId("roo_child_dateOfDeath").domNode, "display", "none");
+					                			dojo.style(dijit.byId("roo_child_causeOfDeath").domNode, "display", "none");
+					                			dojo.style(dijit.byId("roo_child_causeOfDeathOther").domNode, "display", "none");
+					                		}
+		                        		}
+		                        	}
+				                })); 
+						</script>
 		            </div>
 		            <br/>
 		            <div id="roo_child_dateOfDeath">
@@ -113,26 +162,60 @@
 		                <spring:message arguments="Date Of Death" code="field.invalid" var="field_invalid"/>
 		                <spring:message code="field.required" var="field_required"/>
 		                <spring:message argumentSeparator="," arguments="Date Of Death," code="field.simple.validation" var="field_validation"/>
-		                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_dateOfDeath_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : false}})); </script>
 		                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_dateOfDeath_id', widgetType : 'dijit.form.DateTextBox', widgetAttrs : {promptMessage: '${field_validation}', constraints: {datePattern : '${child_dateOfDeath_date_format}', required : false}, datePattern : '${child_dateOfDeath_date_format}'}})); </script>
+		                <br/>
 		            </div>
-		            <br/>
+		            <script type="text/javascript">Spring.addDecoration(
+		                    new Spring.ElementDecoration({
+		                        elementId : 'roo_child_dateOfDeath', 
+		                        widgetType: 'dijit.layout.ContentPane'})); 
+		            </script> 		            
 		            <div id="roo_child_causeOfDeath">
 		                <label for="_causeOfDeath_id">Cause Of Death:</label>
 		                <form:errors cssClass="errors" id="_causeOfDeath_error_id" path="causeOfDeath"/>
 		                <form:select cssStyle="width:250px" id="_causeOfDeath_id" items="${causeofdeathtype_enum}" path="causeOfDeath" itemLabel="label"/>
 		                <br/>
-		                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_causeOfDeath_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
+		                <script type="text/javascript">
+		                	Spring.addDecoration(
+			                	new Spring.ElementDecoration({
+				                	elementId : '_causeOfDeath_id', 
+				                	widgetType: 'dijit.form.FilteringSelect', 
+				                	widgetAttrs : {hasDownArrow : true, 			                            
+			                            onChange : function(newValue) {
+					                		if (newValue == 'OTHER_DIABETES_RELATED_CONDITION')
+					                		{
+						                		dojo.style(dijit.byId("roo_child_causeOfDeathOther").domNode, "display", "block");
+					                		}
+					                		else
+					                		{
+					                			dojo.style(dijit.byId("roo_child_causeOfDeathOther").domNode, "display", "none");
+					                		}
+			                    		}
+	                				}
+                				})
+	                		); 
+					    </script>
+		            	<br/>		                
 		            </div>
-		            <br/>
+		            <script type="text/javascript">Spring.addDecoration(
+	                    new Spring.ElementDecoration({
+	                        elementId : 'roo_child_causeOfDeath', 
+	                        widgetType: 'dijit.layout.ContentPane'
+            			})); 
+            		</script> 
 		            <div id="roo_child_causeOfDeathOther">
 		                <label for="_causeOfDeathOther_id">Cause Of Death Other:</label>
 		                <form:textarea cssStyle="width:250px" id="_causeOfDeathOther_id" path="causeOfDeathOther"/>
 		                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_causeOfDeathOther_id', widgetType: 'dijit.form.SimpleTextarea', widgetAttrs: {}})); </script>
 		                <br/>
 		                <form:errors cssClass="errors" id="_causeOfDeathOther_error_id" path="causeOfDeathOther"/>
+		                <br/>
 		            </div>
-		            <br/>
+		            <script type="text/javascript">Spring.addDecoration(
+	                    new Spring.ElementDecoration({
+	                        elementId : 'roo_child_causeOfDeathOther', 
+	                        widgetType: 'dijit.layout.ContentPane'})); 
+            		</script> 		            
 		            <div id="roo_child_dateOfRegistration">
 		                <label for="_dateOfRegistration_id">Date Of Registration:</label>
 		                <form:input cssStyle="width:250px" id="_dateOfRegistration_id" maxlength="30" path="dateOfRegistration" size="0"/>
@@ -141,7 +224,6 @@
 		                <spring:message arguments="Date Of Registration" code="field.invalid" var="field_invalid"/>
 		                <spring:message code="field.required" var="field_required"/>
 		                <spring:message argumentSeparator="," arguments="Date Of Registration,(${field_required})" code="field.simple.validation" var="field_validation"/>
-		                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_dateOfRegistration_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : true}})); </script>
 		                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_dateOfRegistration_id', widgetType : 'dijit.form.DateTextBox', widgetAttrs : {promptMessage: '${field_validation}', constraints: {datePattern : '${child_dateOfRegistration_date_format}', required : false}, datePattern : '${child_dateOfRegistration_date_format}'}})); </script>
 		            </div>
 		            <br/>
@@ -153,7 +235,6 @@
 		                <spring:message arguments="Date Of Birth" code="field.invalid" var="field_invalid"/>
 		                <spring:message code="field.required" var="field_required"/>
 		                <spring:message argumentSeparator="," arguments="Date Of Birth,(${field_required})" code="field.simple.validation" var="field_validation"/>
-		                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_dateOfBirth_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : true}})); </script>
 		                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_dateOfBirth_id', widgetType : 'dijit.form.DateTextBox', widgetAttrs : {promptMessage: '${field_validation}', constraints: {datePattern : '${child_dateOfBirth_date_format}', required : false}, datePattern : '${child_dateOfBirth_date_format}'}})); </script>
 		            </div>
 		            <br/>
@@ -165,7 +246,6 @@
 		                <spring:message arguments="Diabetes Diagnosed" code="field.invalid" var="field_invalid"/>
 		                <spring:message code="field.required" var="field_required"/>
 		                <spring:message argumentSeparator="," arguments="Diabetes Diagnosed,(${field_required})" code="field.simple.validation" var="field_validation"/>
-		                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_diabetesDiagnosed_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : true}})); </script>
 		                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_diabetesDiagnosed_id', widgetType : 'dijit.form.DateTextBox', widgetAttrs : {promptMessage: '${field_validation}', constraints: {datePattern : '${child_diabetesDiagnosed_date_format}', required : false}, datePattern : '${child_diabetesDiagnosed_date_format}'}})); </script>
 		            </div>
 		            <br/>
@@ -177,7 +257,6 @@
 		                <spring:message arguments="Insulin Since" code="field.invalid" var="field_invalid"/>
 		                <spring:message code="field.required" var="field_required"/>
 		                <spring:message argumentSeparator="," arguments="Insulin Since,(${field_required})" code="field.simple.validation" var="field_validation"/>
-		                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_insulinSince_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : true}})); </script>
 		                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_insulinSince_id', widgetType : 'dijit.form.DateTextBox', widgetAttrs : {promptMessage: '${field_validation}', constraints: {datePattern : '${child_insulinSince_date_format}', required : false}, datePattern : '${child_insulinSince_date_format}'}})); </script>
 		            </div>
 		            <br/>
@@ -186,7 +265,24 @@
 		                <form:errors cssClass="errors" id="_diabetesType_error_id" path="diabetesType"/>
 		                <form:select cssStyle="width:250px" id="_diabetesType_id" items="${diabetestype_enum}" path="diabetesType" itemLabel="label"/>
 		                <br/>
-		                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_diabetesType_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
+		                <script type="text/javascript">Spring.addDecoration(
+			                new Spring.ElementDecoration({
+				                elementId : '_diabetesType_id', 
+				                widgetType: 'dijit.form.FilteringSelect', 
+				                widgetAttrs : {hasDownArrow : true,
+		                            onChange : function(newValue) {
+				                		if (newValue == 'OTHER')
+				                		{
+					                		dojo.style(dijit.byId("roo_child_diabetesTypeOther").domNode, "display", "block");
+				                		}
+				                		else
+				                		{
+				                			dojo.style(dijit.byId("roo_child_diabetesTypeOther").domNode, "display", "none");
+				                		}
+	                				}
+				                }
+			                })); 
+						</script>
 		            </div>
 		            <br/>
 		            <div id="roo_child_diabetesTypeOther">
@@ -195,8 +291,13 @@
 		                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_diabetesTypeOther_id', widgetType: 'dijit.form.SimpleTextarea', widgetAttrs: {}})); </script>
 		                <br/>
 		                <form:errors cssClass="errors" id="_diabetesTypeOther_error_id" path="diabetesTypeOther"/>
+		                <br/>
 		            </div>
-		            <br/>
+		            <script type="text/javascript">Spring.addDecoration(
+	                    new Spring.ElementDecoration({
+	                        elementId : 'roo_child_diabetesTypeOther', 
+	                        widgetType: 'dijit.layout.ContentPane'})); 
+            		</script>		            
 		            <form:hidden id="_id" path="createdOn"/>
 		            <form:hidden id="_id" path="updatedOn"/>
 		            <div id="roo_child_distanceLivesFromCentre">
