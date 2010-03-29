@@ -1,22 +1,24 @@
 package org.lifeforachild.domain;
 
 import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.roo.addon.entity.RooEntity;
 import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.tostring.RooToString;
-import javax.validation.constraints.Max;
-import org.lifeforachild.domain.Child;
-import javax.persistence.JoinColumn;
-import org.lifeforachild.domain.Country;
 
 /**
  * A data sheet which is periodically filled out for a patient. It
@@ -43,7 +45,9 @@ public class ClinicalRecord {
     @NotNull
     private Integer urineGlucoseSelfMonitoringPerWeek;
 
-    private boolean adjustInsulinDoseIfNeeded;
+    @Enumerated
+    @NotNull
+    private YesNoType adjustInsulinDoseIfNeeded;
 
     @Min(0L)
     @Max(200L)
@@ -54,13 +58,21 @@ public class ClinicalRecord {
     @Max(9L)
     private Integer numberOfInsulinInjectionsPerDay;
 
-    private boolean longActingHuman;
+    @Enumerated
+    @NotNull
+    private YesNoType longActingHuman;
 
-    private boolean shortActingHuman;
+    @Enumerated
+    @NotNull
+    private YesNoType shortActingHuman;
 
-    private boolean analog;
+    @Enumerated
+    @NotNull
+    private YesNoType analog;
 
-    private boolean oralAgents;
+    @Enumerated
+    @NotNull
+    private YesNoType oralAgents;
 
     @Size(max = 40)
     private String oralAgentsDescription;
@@ -70,9 +82,11 @@ public class ClinicalRecord {
     @NotNull
     private Integer routineClinicReviewsLastYear;
 
-    private boolean bpMedications;
+    @Enumerated
+    @NotNull
+    private YesNoType bpMedications;
 
-    private boolean acearb;
+    private YesNoType acearb;
 
     @Size(max = 30)
     private String bpMedicationsOther;
@@ -80,8 +94,13 @@ public class ClinicalRecord {
     @Size(max = 50)
     private String otherTreatments;
 
-    private boolean LaserRxInLast12Months;
+    @Enumerated
+    @NotNull
+    private YesNoType LaserRxInLast12Months;
 
+    @NotNull
+    @DecimalMin(value ="3.0")
+    @DecimalMax(value = "120.0")
     private float weightKG;
 
     @Min(50L)
@@ -112,21 +131,27 @@ public class ClinicalRecord {
     @Max(60L)
     private Integer age;
 
-    private boolean hasPersistentHypertension;
-
-    private boolean hasPubertyTannerB2_P2orGreater;
-
-    private boolean menarche;
-
+    @Enumerated
     @NotNull
+    private YesNoType hasPersistentHypertension;
+
+    @Enumerated
+    @NotNull
+    private YesNoType hasPubertyTannerB2_P2orGreater;
+
+    @Enumerated
+    @NotNull
+    private YesNoType menarche;
+
     @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(style = "S-")
     private Date ifMenarcheAge;
 
-    private boolean eyesExaminedInLastYear;
-
     @Enumerated
     @NotNull
+    private YesNoType eyesExaminedInLastYear;
+
+    @Enumerated
     private YesNoUnkownType cateract;
 
     @Size(max = 20)
@@ -135,15 +160,21 @@ public class ClinicalRecord {
     @Size(max = 20)
     private String visualAcuityLeft;
 
-    private boolean feetExaminedInLastYear;
+    @Enumerated
+    @NotNull
+    private YesNoType feetExaminedInLastYear;
 
-    private boolean monofilamentTested;
+    @Enumerated
+    private YesNoType monofilamentTested;
 
-    private boolean monofilamentAbnormal;
+    @Enumerated
+    private YesNoType monofilamentAbnormal;
 
-    private boolean tuningForkTested;
+    @Enumerated
+    private YesNoType tuningForkTested;
 
-    private boolean tuningForkAbnormal;
+    @Enumerated
+    private YesNoType tuningForkAbnormal;
 
     @Enumerated
     @NotNull
@@ -158,6 +189,8 @@ public class ClinicalRecord {
     @Size(max = 30)
     private String hbA1cMethodOther;
 
+    @DecimalMin(value = "0.1")
+    @DecimalMax(value = "9999.9")
     private float microalbuminuriaValue;
 
     @Enumerated
@@ -194,15 +227,17 @@ public class ClinicalRecord {
     @NotNull
     private YesNoUnkownType fasted;
 
-    private boolean attendingSchool;
+    @Enumerated
+    @NotNull
+    private YesNoType attendingSchool;
 
     @Enumerated
     @NotNull
     private NotAttendingSchoolReasonType notAttendingSchoolWhy;
 
-    private boolean diabetesLimitingAttendance;
+    private YesNoType diabetesLimitingAttendance;
 
-    private boolean appropriateGradeForAge;
+    private YesNoType appropriateGradeForAge;
 
     @Enumerated
     @NotNull

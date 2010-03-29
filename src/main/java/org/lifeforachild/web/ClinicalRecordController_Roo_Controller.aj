@@ -16,6 +16,7 @@ import org.lifeforachild.domain.User;
 import org.lifeforachild.domain.YesNoLaterType;
 import org.lifeforachild.domain.YesNoNAType;
 import org.lifeforachild.domain.YesNoUnkownType;
+import org.lifeforachild.domain.YesNoType;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -39,7 +40,8 @@ privileged aspect ClinicalRecordController_Roo_Controller {
             modelMap.addAttribute("reasonnotenteringtype_enum", ReasonNotEnteringType.class.getEnumConstants());            
             modelMap.addAttribute("users", User.findAllUsers());            
             modelMap.addAttribute("yesnolatertype_enum", YesNoLaterType.class.getEnumConstants());            
-            modelMap.addAttribute("yesnonatype_enum", YesNoNAType.class.getEnumConstants());            
+            modelMap.addAttribute("yesnonatype_enum", YesNoNAType.class.getEnumConstants());     
+            modelMap.addAttribute("yesnotype_enum", YesNoType.class.getEnumConstants()); 
             modelMap.addAttribute("yesnounkowntype_enum", YesNoUnkownType.class.getEnumConstants());            
             modelMap.addAttribute("clinicalRecord_dateOfMeasurement_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));            
             modelMap.addAttribute("clinicalRecord_ifMenarcheAge_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));            
@@ -64,7 +66,8 @@ privileged aspect ClinicalRecordController_Roo_Controller {
         modelMap.addAttribute("reasonnotenteringtype_enum", ReasonNotEnteringType.class.getEnumConstants());        
         modelMap.addAttribute("users", User.findAllUsers());        
         modelMap.addAttribute("yesnolatertype_enum", YesNoLaterType.class.getEnumConstants());        
-        modelMap.addAttribute("yesnonatype_enum", YesNoNAType.class.getEnumConstants());        
+        modelMap.addAttribute("yesnonatype_enum", YesNoNAType.class.getEnumConstants());       
+        modelMap.addAttribute("yesnotype_enum", YesNoType.class.getEnumConstants()); 
         modelMap.addAttribute("yesnounkowntype_enum", YesNoUnkownType.class.getEnumConstants());        
         modelMap.addAttribute("clinicalRecord_dateOfMeasurement_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));        
         modelMap.addAttribute("clinicalRecord_ifMenarcheAge_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));        
@@ -112,7 +115,8 @@ privileged aspect ClinicalRecordController_Roo_Controller {
             modelMap.addAttribute("reasonnotenteringtype_enum", ReasonNotEnteringType.class.getEnumConstants());            
             modelMap.addAttribute("users", User.findAllUsers());            
             modelMap.addAttribute("yesnolatertype_enum", YesNoLaterType.class.getEnumConstants());            
-            modelMap.addAttribute("yesnonatype_enum", YesNoNAType.class.getEnumConstants());            
+            modelMap.addAttribute("yesnonatype_enum", YesNoNAType.class.getEnumConstants()); 
+            modelMap.addAttribute("yesnotype_enum", YesNoType.class.getEnumConstants()); 
             modelMap.addAttribute("yesnounkowntype_enum", YesNoUnkownType.class.getEnumConstants());            
             modelMap.addAttribute("clinicalRecord_dateOfMeasurement_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));            
             modelMap.addAttribute("clinicalRecord_ifMenarcheAge_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));            
@@ -136,7 +140,8 @@ privileged aspect ClinicalRecordController_Roo_Controller {
         modelMap.addAttribute("reasonnotenteringtype_enum", ReasonNotEnteringType.class.getEnumConstants());        
         modelMap.addAttribute("users", User.findAllUsers());        
         modelMap.addAttribute("yesnolatertype_enum", YesNoLaterType.class.getEnumConstants());        
-        modelMap.addAttribute("yesnonatype_enum", YesNoNAType.class.getEnumConstants());        
+        modelMap.addAttribute("yesnonatype_enum", YesNoNAType.class.getEnumConstants());  
+        modelMap.addAttribute("yesnotype_enum", YesNoType.class.getEnumConstants()); 
         modelMap.addAttribute("yesnounkowntype_enum", YesNoUnkownType.class.getEnumConstants());        
         modelMap.addAttribute("clinicalRecord_dateOfMeasurement_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));        
         modelMap.addAttribute("clinicalRecord_ifMenarcheAge_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));        

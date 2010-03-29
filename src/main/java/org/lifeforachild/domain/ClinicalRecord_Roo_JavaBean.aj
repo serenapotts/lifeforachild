@@ -14,6 +14,7 @@ import org.lifeforachild.domain.ReasonNotEnteringType;
 import org.lifeforachild.domain.User;
 import org.lifeforachild.domain.YesNoLaterType;
 import org.lifeforachild.domain.YesNoNAType;
+import org.lifeforachild.domain.YesNoType;
 import org.lifeforachild.domain.YesNoUnkownType;
 
 privileged aspect ClinicalRecord_Roo_JavaBean {
@@ -42,11 +43,11 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.urineGlucoseSelfMonitoringPerWeek = urineGlucoseSelfMonitoringPerWeek;        
     }    
     
-    public boolean ClinicalRecord.isAdjustInsulinDoseIfNeeded() {    
+    public YesNoType ClinicalRecord.getAdjustInsulinDoseIfNeeded() {    
         return this.adjustInsulinDoseIfNeeded;        
     }    
     
-    public void ClinicalRecord.setAdjustInsulinDoseIfNeeded(boolean adjustInsulinDoseIfNeeded) {    
+    public void ClinicalRecord.setAdjustInsulinDoseIfNeeded(YesNoType adjustInsulinDoseIfNeeded) {    
         this.adjustInsulinDoseIfNeeded = adjustInsulinDoseIfNeeded;        
     }    
     
@@ -66,35 +67,35 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.numberOfInsulinInjectionsPerDay = numberOfInsulinInjectionsPerDay;        
     }    
     
-    public boolean ClinicalRecord.isLongActingHuman() {    
+    public YesNoType ClinicalRecord.getLongActingHuman() {    
         return this.longActingHuman;        
     }    
     
-    public void ClinicalRecord.setLongActingHuman(boolean longActingHuman) {    
+    public void ClinicalRecord.setLongActingHuman(YesNoType longActingHuman) {    
         this.longActingHuman = longActingHuman;        
     }    
     
-    public boolean ClinicalRecord.isShortActingHuman() {    
+    public YesNoType ClinicalRecord.getShortActingHuman() {    
         return this.shortActingHuman;        
     }    
     
-    public void ClinicalRecord.setShortActingHuman(boolean shortActingHuman) {    
+    public void ClinicalRecord.setShortActingHuman(YesNoType shortActingHuman) {    
         this.shortActingHuman = shortActingHuman;        
     }    
     
-    public boolean ClinicalRecord.isAnalog() {    
+    public YesNoType ClinicalRecord.getAnalog() {    
         return this.analog;        
     }    
     
-    public void ClinicalRecord.setAnalog(boolean analog) {    
+    public void ClinicalRecord.setAnalog(YesNoType analog) {    
         this.analog = analog;        
     }    
     
-    public boolean ClinicalRecord.isOralAgents() {    
+    public YesNoType ClinicalRecord.getOralAgents() {    
         return this.oralAgents;        
     }    
     
-    public void ClinicalRecord.setOralAgents(boolean oralAgents) {    
+    public void ClinicalRecord.setOralAgents(YesNoType oralAgents) {    
         this.oralAgents = oralAgents;        
     }    
     
@@ -114,19 +115,19 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.routineClinicReviewsLastYear = routineClinicReviewsLastYear;        
     }    
     
-    public boolean ClinicalRecord.isBpMedications() {    
+    public YesNoType ClinicalRecord.getBpMedications() {    
         return this.bpMedications;        
     }    
     
-    public void ClinicalRecord.setBpMedications(boolean bpMedications) {    
+    public void ClinicalRecord.setBpMedications(YesNoType bpMedications) {    
         this.bpMedications = bpMedications;        
     }    
     
-    public boolean ClinicalRecord.isAcearb() {    
+    public YesNoType ClinicalRecord.getAcearb() {    
         return this.acearb;        
     }    
     
-    public void ClinicalRecord.setAcearb(boolean acearb) {    
+    public void ClinicalRecord.setAcearb(YesNoType acearb) {    
         this.acearb = acearb;        
     }    
     
@@ -146,11 +147,11 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.otherTreatments = otherTreatments;        
     }    
     
-    public boolean ClinicalRecord.isLaserRxInLast12Months() {    
+    public YesNoType ClinicalRecord.getLaserRxInLast12Months() {    
         return this.LaserRxInLast12Months;        
     }    
     
-    public void ClinicalRecord.setLaserRxInLast12Months(boolean LaserRxInLast12Months) {    
+    public void ClinicalRecord.setLaserRxInLast12Months(YesNoType LaserRxInLast12Months) {    
         this.LaserRxInLast12Months = LaserRxInLast12Months;        
     }    
     
@@ -202,27 +203,27 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.age = age;        
     }    
     
-    public boolean ClinicalRecord.isHasPersistentHypertension() {    
+    public YesNoType ClinicalRecord.getHasPersistentHypertension() {    
         return this.hasPersistentHypertension;        
     }    
     
-    public void ClinicalRecord.setHasPersistentHypertension(boolean hasPersistentHypertension) {    
+    public void ClinicalRecord.setHasPersistentHypertension(YesNoType hasPersistentHypertension) {    
         this.hasPersistentHypertension = hasPersistentHypertension;        
     }    
     
-    public boolean ClinicalRecord.isHasPubertyTannerB2_P2orGreater() {    
+    public YesNoType ClinicalRecord.getHasPubertyTannerB2_P2orGreater() {    
         return this.hasPubertyTannerB2_P2orGreater;        
     }    
     
-    public void ClinicalRecord.setHasPubertyTannerB2_P2orGreater(boolean hasPubertyTannerB2_P2orGreater) {    
+    public void ClinicalRecord.setHasPubertyTannerB2_P2orGreater(YesNoType hasPubertyTannerB2_P2orGreater) {    
         this.hasPubertyTannerB2_P2orGreater = hasPubertyTannerB2_P2orGreater;        
     }    
     
-    public boolean ClinicalRecord.isMenarche() {    
+    public YesNoType ClinicalRecord.getMenarche() {    
         return this.menarche;        
     }    
     
-    public void ClinicalRecord.setMenarche(boolean menarche) {    
+    public void ClinicalRecord.setMenarche(YesNoType menarche) {    
         this.menarche = menarche;        
     }    
     
@@ -234,11 +235,11 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.ifMenarcheAge = ifMenarcheAge;        
     }    
     
-    public boolean ClinicalRecord.isEyesExaminedInLastYear() {    
+    public YesNoType ClinicalRecord.getEyesExaminedInLastYear() {    
         return this.eyesExaminedInLastYear;        
     }    
     
-    public void ClinicalRecord.setEyesExaminedInLastYear(boolean eyesExaminedInLastYear) {    
+    public void ClinicalRecord.setEyesExaminedInLastYear(YesNoType eyesExaminedInLastYear) {    
         this.eyesExaminedInLastYear = eyesExaminedInLastYear;        
     }    
     
@@ -266,43 +267,43 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.visualAcuityLeft = visualAcuityLeft;        
     }    
     
-    public boolean ClinicalRecord.isFeetExaminedInLastYear() {    
+    public YesNoType ClinicalRecord.getFeetExaminedInLastYear() {    
         return this.feetExaminedInLastYear;        
     }    
     
-    public void ClinicalRecord.setFeetExaminedInLastYear(boolean feetExaminedInLastYear) {    
+    public void ClinicalRecord.setFeetExaminedInLastYear(YesNoType feetExaminedInLastYear) {    
         this.feetExaminedInLastYear = feetExaminedInLastYear;        
     }    
     
-    public boolean ClinicalRecord.isMonofilamentTested() {    
+    public YesNoType ClinicalRecord.getMonofilamentTested() {    
         return this.monofilamentTested;        
     }    
     
-    public void ClinicalRecord.setMonofilamentTested(boolean monofilamentTested) {    
+    public void ClinicalRecord.setMonofilamentTested(YesNoType monofilamentTested) {    
         this.monofilamentTested = monofilamentTested;        
     }    
     
-    public boolean ClinicalRecord.isMonofilamentAbnormal() {    
+    public YesNoType ClinicalRecord.getMonofilamentAbnormal() {    
         return this.monofilamentAbnormal;        
     }    
     
-    public void ClinicalRecord.setMonofilamentAbnormal(boolean monofilamentAbnormal) {    
+    public void ClinicalRecord.setMonofilamentAbnormal(YesNoType monofilamentAbnormal) {    
         this.monofilamentAbnormal = monofilamentAbnormal;        
     }    
     
-    public boolean ClinicalRecord.isTuningForkTested() {    
+    public YesNoType ClinicalRecord.getTuningForkTested() {    
         return this.tuningForkTested;        
     }    
     
-    public void ClinicalRecord.setTuningForkTested(boolean tuningForkTested) {    
+    public void ClinicalRecord.setTuningForkTested(YesNoType tuningForkTested) {    
         this.tuningForkTested = tuningForkTested;        
     }    
     
-    public boolean ClinicalRecord.isTuningForkAbnormal() {    
+    public YesNoType ClinicalRecord.getTuningForkAbnormal() {    
         return this.tuningForkAbnormal;        
     }    
     
-    public void ClinicalRecord.setTuningForkAbnormal(boolean tuningForkAbnormal) {    
+    public void ClinicalRecord.setTuningForkAbnormal(YesNoType tuningForkAbnormal) {    
         this.tuningForkAbnormal = tuningForkAbnormal;        
     }    
     
@@ -434,11 +435,11 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.fasted = fasted;        
     }    
     
-    public boolean ClinicalRecord.isAttendingSchool() {    
+    public YesNoType ClinicalRecord.getAttendingSchool() {    
         return this.attendingSchool;        
     }    
     
-    public void ClinicalRecord.setAttendingSchool(boolean attendingSchool) {    
+    public void ClinicalRecord.setAttendingSchool(YesNoType attendingSchool) {    
         this.attendingSchool = attendingSchool;        
     }    
     
@@ -450,19 +451,19 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.notAttendingSchoolWhy = notAttendingSchoolWhy;        
     }    
     
-    public boolean ClinicalRecord.isDiabetesLimitingAttendance() {    
+    public YesNoType ClinicalRecord.getDiabetesLimitingAttendance() {    
         return this.diabetesLimitingAttendance;        
     }    
     
-    public void ClinicalRecord.setDiabetesLimitingAttendance(boolean diabetesLimitingAttendance) {    
+    public void ClinicalRecord.setDiabetesLimitingAttendance(YesNoType diabetesLimitingAttendance) {    
         this.diabetesLimitingAttendance = diabetesLimitingAttendance;        
     }    
     
-    public boolean ClinicalRecord.isAppropriateGradeForAge() {    
+    public YesNoType ClinicalRecord.getAppropriateGradeForAge() {    
         return this.appropriateGradeForAge;        
     }    
     
-    public void ClinicalRecord.setAppropriateGradeForAge(boolean appropriateGradeForAge) {    
+    public void ClinicalRecord.setAppropriateGradeForAge(YesNoType appropriateGradeForAge) {    
         this.appropriateGradeForAge = appropriateGradeForAge;        
     }    
     
