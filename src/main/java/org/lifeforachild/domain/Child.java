@@ -125,6 +125,8 @@ public class Child {
     @Enumerated
     @NotNull
     private DistanceType distanceLivesFromCentre;
+    
+    private Float ageAtDiagnosis;
 
     public float calculatedAgeAtDiabetesDiagnosis() {
         return ClinicalRecord.calculateAge(diabetesDiagnosed, dateOfBirth);

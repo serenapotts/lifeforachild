@@ -48,6 +48,12 @@ privileged aspect ClinicalRecordController_Roo_Controller {
             modelMap.addAttribute("clinicalRecord_dateCompleted_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));            
             return "clinicalrecord/create";            
         }        
+        clinicalRecord.setExactAge(clinicalRecord.calculateExactAge());
+        clinicalRecord.setInsulinPerKg(clinicalRecord.calculateInsulinPerKg());
+        if (clinicalRecord.getHeightCM() != null)
+        {
+	        clinicalRecord.setBmi(clinicalRecord.calculateBMI());	        
+        }
         clinicalRecord.persist();        
         return "redirect:/clinicalrecord/" + clinicalRecord.getId();        
     }    
@@ -122,7 +128,13 @@ privileged aspect ClinicalRecordController_Roo_Controller {
             modelMap.addAttribute("clinicalRecord_ifMenarcheAge_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));            
             modelMap.addAttribute("clinicalRecord_dateCompleted_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));            
             return "clinicalrecord/update";            
-        }        
+        }                
+        clinicalRecord.setExactAge(clinicalRecord.calculateExactAge());
+        clinicalRecord.setInsulinPerKg(clinicalRecord.calculateInsulinPerKg());
+        if (clinicalRecord.getHeightCM() != null)
+        {
+	        clinicalRecord.setBmi(clinicalRecord.calculateBMI());
+        }
         clinicalRecord.merge();        
         return "redirect:/clinicalrecord/" + clinicalRecord.getId();        
     }    

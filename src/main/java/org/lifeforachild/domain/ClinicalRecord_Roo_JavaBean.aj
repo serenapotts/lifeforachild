@@ -563,4 +563,68 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.literate = literate;        
     }    
     
+    public Float ClinicalRecord.getExactAge() {    
+        return this.exactAge;        
+    }    
+    
+    public void ClinicalRecord.setExactAge(Float exactAge) {    
+        this.exactAge = exactAge;        
+    }    
+    
+    public Float ClinicalRecord.getBmi() {    
+        return this.bmi;        
+    }    
+    
+    public void ClinicalRecord.setBmi(Float bmi) {    
+        this.bmi = bmi;        
+    }    
+    
+    public Float ClinicalRecord.getInsulinPerKg() {    
+        return this.insulinPerKg;        
+    }    
+    
+    public void ClinicalRecord.setInsulinPerKg(Float insulinPerKg) {    
+        this.insulinPerKg = insulinPerKg;        
+    }  
+    
+    public Float ClinicalRecord.getHeightSD() {    
+        return this.heightSD;        
+    }    
+    
+    public void ClinicalRecord.setHeightSD(Float heightSD) {    
+        this.heightSD = heightSD;        
+    }    
+    
+    public Float ClinicalRecord.getWeightSD() {    
+        return this.weightSD;        
+    }    
+    
+    public void ClinicalRecord.setWeightSD(Float weightSD) {    
+        this.weightSD = weightSD;        
+    }    
+    
+    public Float ClinicalRecord.getBmiSD() {    
+        return this.bmiSD;        
+    }    
+    
+    public void ClinicalRecord.setBmiSD(Float bmiSD) {    
+        this.bmiSD = bmiSD;        
+    }    
+    
+    public Float ClinicalRecord.getBloodPressureSystolicSD() {    
+        return this.BloodPressureSystolicSD;        
+    }    
+    
+    public void ClinicalRecord.setBloodPressureSystolicSD(Float BloodPressureSystolicSD) {    
+        this.BloodPressureSystolicSD = BloodPressureSystolicSD;        
+    }    
+    
+    public Float ClinicalRecord.getBloodPressureDiastolicSD() {    
+        return this.BloodPressureDiastolicSD;        
+    }    
+    
+    public void ClinicalRecord.setBloodPressureDiastolicSD(Float BloodPressureDiastolicSD) {    
+        this.BloodPressureDiastolicSD = BloodPressureDiastolicSD;        
+    }    
+    
 }

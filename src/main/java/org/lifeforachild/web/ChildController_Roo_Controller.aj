@@ -45,6 +45,7 @@ privileged aspect ChildController_Roo_Controller {
             modelMap.addAttribute("child_dateOfRegistration_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));            
             return "child/create";            
         }        
+        child.setAgeAtDiagnosis(child.calculatedAgeAtDiabetesDiagnosis());
         child.persist();  
         
         // now that child is created auto generate individual id
@@ -138,6 +139,7 @@ privileged aspect ChildController_Roo_Controller {
             modelMap.addAttribute("clinicalRecord_dateCompleted_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));
             return "child/update";            
         }        
+        child.setAgeAtDiagnosis(child.calculatedAgeAtDiabetesDiagnosis());
         child.merge();        
         return "redirect:/child/" + child.getId();        
     }    

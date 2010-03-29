@@ -182,6 +182,14 @@ privileged aspect Child_Roo_JavaBean {
         this.distanceLivesFromCentre = distanceLivesFromCentre;        
     }    
     
+    public Float Child.getAgeAtDiagnosis() {    
+        return this.ageAtDiagnosis;        
+    }    
+    
+    public void Child.setAgeAtDiagnosis(Float ageAtDiagnosis) {    
+        this.ageAtDiagnosis = ageAtDiagnosis;        
+    }    
+    
     public Set<ClinicalRecord> Child.getClinicalRecords() {    
         return this.clinicalRecords;        
     }    

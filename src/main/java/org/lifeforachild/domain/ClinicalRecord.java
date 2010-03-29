@@ -107,12 +107,6 @@ public class ClinicalRecord {
     @Max(200L)
     private Integer heightCM;
 
-    public float bmi() {
-        float result = 0.0f;
-        if (heightCM != 0) result = weightKG / (heightCM * heightCM);
-        return result;
-    }
-
     @Min(20L)
     @Max(130L)
     private Integer bloodPressureSystolicMMHg;
@@ -287,11 +281,33 @@ public class ClinicalRecord {
     @NotNull
     private YesNoNAType literate;
 
-    public float calculatedAge() {
+    private Float exactAge;
+    
+    private Float bmi;
+    
+    private Float insulinPerKg;
+    
+    private Float heightSD;
+    
+    private Float weightSD;
+    
+    private Float bmiSD;
+    
+    private Float BloodPressureSystolicSD;
+    
+    private Float BloodPressureDiastolicSD;    
+    
+    public float calculateBMI() {
+        float result = 0.0f;
+        if (heightCM != 0) result = weightKG / (heightCM * heightCM);
+        return result;
+    }
+    
+    public float calculateExactAge() {
         return calculateAge(dateCompleted, child.getDateOfBirth());
     }
 
-    public float insulinPerKg() {
+    public float calculateInsulinPerKg() {
         return insulinUnitsPerDay / weightKG;
     }
 
