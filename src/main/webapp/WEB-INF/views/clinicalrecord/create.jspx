@@ -746,6 +746,14 @@
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_reasonHospitalAdmissionsNotEntered_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
             </div>
             <br/>
+            <form:hidden id="_exactAge_id" path="exactAge"/>
+            <form:hidden id="_bmi_id" path="bmi"/>
+            <form:hidden id="_insulinPerKg_id" path="insulinPerKg"/>
+            <form:hidden id="_heightSD_id" path="heightSD"/>
+            <form:hidden id="_weightSD_id" path="weightSD"/>
+            <form:hidden id="_bmiSD_id" path="bmiSD"/>
+            <form:hidden id="_BloodPressureSystolicSD_id" path="BloodPressureSystolicSD"/>
+            <form:hidden id="_BloodPressureDiastolicSD_id" path="BloodPressureDiastolicSD"/>
             <div class="submit" id="roo_clinicalRecord_submit">
                 <spring:message code="button.save" var="save_button"/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ValidateAllDecoration({elementId:'proceed', event:'onclick'}));</script>

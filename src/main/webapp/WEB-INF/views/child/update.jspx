@@ -298,8 +298,9 @@
 	                        elementId : 'roo_child_diabetesTypeOther', 
 	                        widgetType: 'dijit.layout.ContentPane'})); 
             		</script>		            
-		            <form:hidden id="_id" path="createdOn"/>
-		            <form:hidden id="_id" path="updatedOn"/>
+		            <form:hidden id="_createdOn_id" path="createdOn"/>
+		            <form:hidden id="_updatedOn_id" path="updatedOn"/>
+		            <form:hidden id="_ageAtDiagnosis_id" path="ageAtDiagnosis"/>
 		            <div id="roo_child_distanceLivesFromCentre">
 		                <label for="_distanceLivesFromCentre_id">Distance Lives From Centre:</label>
 		                <form:errors cssClass="errors" id="_distanceLivesFromCentre_error_id" path="distanceLivesFromCentre"/>

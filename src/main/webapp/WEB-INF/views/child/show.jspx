@@ -157,6 +157,13 @@
 		                </div>
 		            </div>
 		            <br/>
+		            <div id="roo_child_ageAtDiagnosis">
+		                <label for="_ageAtDiagnosis_id">Age At Diagnosis:</label>
+		                <div class="box" id="_ageAtDiagnosis_id">
+		                    <c:out value="${child.ageAtDiagnosis}"/>
+		                </div>
+		            </div>
+		            <br/>		            
 		            <div id="roo_child_clinicalRecords">
 		                <label for="_clinicalRecords_id">Clinical Records:</label>
 		                <div class="box" id="_clinicalRecords_id">

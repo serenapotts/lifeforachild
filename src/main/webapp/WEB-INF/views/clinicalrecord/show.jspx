@@ -49,7 +49,63 @@
 		                    <c:out value="${clinicalRecord.literate}"/>
 		                </div>
 		            </div>
-		            <br/>	
+		            <br/>
+		            <div id="roo_clinicalRecord_exactAge">
+		                <label for="_exactAge_id">Exact Age:</label>
+		                <div class="box" id="_exactAge_id">
+		                    <c:out value="${clinicalRecord.exactAge}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <div id="roo_clinicalRecord_bmi">
+		                <label for="_bmi_id">Body Mass Index:</label>
+		                <div class="box" id="_bmi_id">
+		                    <c:out value="${clinicalRecord.bmi}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <div id="roo_clinicalRecord_insulinPerKg">
+		                <label for="_insulinPerKg_id">Insulin Per KG:</label>
+		                <div class="box" id="_insulinPerKg_id">
+		                    <c:out value="${clinicalRecord.insulinPerKg}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <div id="roo_clinicalRecord_heightSD">
+		                <label for="_heightSD_id">Height SD:</label>
+		                <div class="box" id="_heightSD_id">
+		                    <c:out value="${clinicalRecord.heightSD}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <div id="roo_clinicalRecord_weightSD">
+		                <label for="_weightSD_id">Weight SD:</label>
+		                <div class="box" id="_weightSD_id">
+		                    <c:out value="${clinicalRecord.weightSD}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <div id="roo_clinicalRecord_bmiSD">
+		                <label for="_bmiSD_id">Body Mass Index SD:</label>
+		                <div class="box" id="_bmiSD_id">
+		                    <c:out value="${clinicalRecord.bmiSD}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <div id="roo_clinicalRecord_bloodPressureSystolicSD">
+		                <label for="_bloodPressureSystolicSD_id">Blood Pressure Systolic SD:</label>
+		                <div class="box" id="_bloodPressureSystolicSD_id">
+		                    <c:out value="${clinicalRecord.bloodPressureSystolicSD}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <div id="roo_clinicalRecord_bloodPressureDiastolicSD">
+		                <label for="_bloodPressureDiastolicSD_id">Blood Pressure Diastolic SD:</label>
+		                <div class="box" id="_bloodPressureDiastolicSD_id">
+		                    <c:out value="${clinicalRecord.bloodPressureDiastolicSD}"/>
+		                </div>
+		            </div>		            
+		            <br/>			            
 		      	</div>	   
 				<script type="text/javascript">
 					Spring.addDecoration(new Spring.ElementDecoration({
