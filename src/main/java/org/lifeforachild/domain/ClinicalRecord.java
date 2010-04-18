@@ -338,7 +338,12 @@ public class ClinicalRecord {
     	
     	WeightForAgeLMS weightForAgeLMS = (WeightForAgeLMS) WeightForAgeLMS.findWeightForAgeLMSsBySexAndAgeMonthsOldEquals(child.getSex(), ageMonths).getSingleResult();
     	
-    	double weightSD = (Math.pow(weightKG / weightForAgeLMS.getM(), weightForAgeLMS.getL()) - 1) / (weightForAgeLMS.getL() * weightForAgeLMS.getS()); 
-    	return new Float(weightSD);
+    	if(weightForAgeLMS == null) {
+    	    return Float.NaN;
+    	}
+    	else {
+    	    double weightSD = (Math.pow(weightKG / weightForAgeLMS.getM(), weightForAgeLMS.getL()) - 1) / (weightForAgeLMS.getL() * weightForAgeLMS.getS()); 
+            return new Float(weightSD);
+    	}
     }
 }
