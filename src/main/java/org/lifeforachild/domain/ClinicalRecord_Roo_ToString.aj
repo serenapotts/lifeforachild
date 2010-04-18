@@ -75,7 +75,15 @@ privileged aspect ClinicalRecord_Roo_ToString {
         sb.append("PersonCompletingForm: ").append(getPersonCompletingForm()).append(", ");        
         sb.append("DateCompleted: ").append(getDateCompleted()).append(", ");        
         sb.append("SeniorPhysician: ").append(getSeniorPhysician()).append(", ");        
-        sb.append("Literate: ").append(getLiterate());        
+        sb.append("Literate: ").append(getLiterate()).append(", ");        
+        sb.append("ExactAge: ").append(getExactAge()).append(", ");        
+        sb.append("Bmi: ").append(getBmi()).append(", ");        
+        sb.append("InsulinPerKg: ").append(getInsulinPerKg()).append(", ");        
+        sb.append("HeightSD: ").append(getHeightSD()).append(", ");        
+        sb.append("WeightSD: ").append(getWeightSD()).append(", ");        
+        sb.append("BmiSD: ").append(getBmiSD()).append(", ");        
+        sb.append("BloodPressureSystolicSD: ").append(getBloodPressureSystolicSD()).append(", ");        
+        sb.append("BloodPressureDiastolicSD: ").append(getBloodPressureDiastolicSD());        
         return sb.toString();        
     }    
     

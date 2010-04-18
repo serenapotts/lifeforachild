@@ -314,4 +314,31 @@ public class ClinicalRecord {
     public static float calculateAge(Date date, Date dob) {
         return (float) ((date.getTime() - dob.getTime()) / (1000 * 60 * 60 * 24 * 365.25));
     }
+    
+	private static Float calculateAgeMonths(Date date, Date dob) {
+		float ageMonthsExact = calculateAge(date, dob) * 12;
+		double lowMidPoint = Math.floor(ageMonthsExact) + 0.5;
+		if (ageMonthsExact <= lowMidPoint) {
+			return new Float(lowMidPoint);
+		} else {
+			return new Float(lowMidPoint + 1);
+		}
+	}
+    
+    public Float calculateWeightSD() {
+    	if(weightKG == 0) {
+    	    return Float.NaN;
+    	}
+        
+        Float ageMonths = calculateAgeMonths(dateCompleted, child.getDateOfBirth());
+    	
+		if (ageMonths.compareTo(new Float(240)) > 0) {
+			ageMonths = new Float(240);
+		}
+    	
+    	WeightForAgeLMS weightForAgeLMS = (WeightForAgeLMS) WeightForAgeLMS.findWeightForAgeLMSsBySexAndAgeMonthsOldEquals(child.getSex(), ageMonths).getSingleResult();
+    	
+    	double weightSD = (Math.pow(weightKG / weightForAgeLMS.getM(), weightForAgeLMS.getL()) - 1) / (weightForAgeLMS.getL() * weightForAgeLMS.getS()); 
+    	return new Float(weightSD);
+    }
 }

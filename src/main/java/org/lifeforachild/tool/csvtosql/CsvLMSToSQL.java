@@ -8,42 +8,39 @@ import java.io.PrintWriter;
 import java.io.Reader;
 import java.io.Writer;
 
-public class WeightLMSToSQL {
+public class CsvLMSToSQL {
 
 	private static final int FEMALE = 1;
 
 	private static final int MALE = 0;
 
-	private static final String WTAGEINF_CSV_FILE = "/csv/wtageinf.csv";
+	private static final String OUTPUT_SQL_DIR = System.getProperty("java.io.tmpdir");
 
-	private static final String WTAGEINF_SQL_DIR = System
-			.getProperty("java.io.tmpdir");
-	private static final String WTAGEINF_SQL_FILE = "wtageinf.sql";
-
+	private static String sqlFilename;
+	private static String csvResourceName;
+	private static String dType;
+	
 	private static int sexIndex = 0;
 	private static int ageIndex = 0;
 	private static int lIndex = 0;
 	private static int mIndex = 0;
 	private static int sIndex = 0;
-	private static int id = 0;
 
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
+		validateArgs(args);
+		
 		BufferedReader reader = null;
 		PrintWriter writer = null;
 
 		try {
-			File csvFile = new File(WeightLMSToSQL.class.getResource(
-					WTAGEINF_CSV_FILE).getFile());
-			File sqlFile = new File(WTAGEINF_SQL_DIR + File.separator
-					+ WTAGEINF_SQL_FILE);
+			File csvFile = new File(CsvLMSToSQL.class.getResource(csvResourceName).getFile());
+			File sqlFile = new File(OUTPUT_SQL_DIR + File.separator + sqlFilename);
 
-			System.out.println("  Reading wtageinf from : "
-					+ csvFile.getAbsolutePath());
-			System.out.println("Writing wtageinf sql to : "
-					+ sqlFile.getAbsolutePath());
+			System.out.println("  Reading from : " + csvFile.getAbsolutePath());
+			System.out.println("Writing sql to : " + sqlFile.getAbsolutePath());
 
 			reader = new BufferedReader(new FileReader(csvFile));
 			writer = new PrintWriter(new FileWriter(sqlFile));
@@ -57,11 +54,7 @@ public class WeightLMSToSQL {
 
 			processHeaderLine(line);
 
-			//clear the records where DType = 'WeightForAgeLMS'
-			writer.println("delete from lms where dtype='WeightForAgeLMS';");
-
 			line = reader.readLine();
-			String sex;
 
 			while (line != null) {
 				processLine(writer, line);
@@ -81,6 +74,26 @@ public class WeightLMSToSQL {
 		}
 	}
 
+	private static void validateArgs(String[] args) {
+		if(args.length != 1) {
+			showUsageAndExit();
+		}
+		
+		String name = args[0];
+		if(name.equals("wtage")) {
+			dType = "WeightForAgeLMS";
+			sqlFilename = name + ".sql";
+			csvResourceName = "/csv/" + name + ".csv"; 
+		}
+	}
+
+	private static void showUsageAndExit() {
+		System.out.println("Usage: java CsvLMSTOSQL <name>");
+		System.out.println("where <name>: wtage | wtageinf ");
+		
+		System.exit(1);
+	}
+
 	private static void processLine(PrintWriter writer, String line) {
 		int sex;
 		String[] splitStrings = line.split(",");
@@ -90,7 +103,7 @@ public class WeightLMSToSQL {
 			sex = FEMALE;
 		}
 
-		writer.println("insert into lms(dtype, age_months_old, version, l, m, s, sex) values('WeightForAgeLMS', " 
+		writer.println("insert into lms(dtype, age_months_old, version, l, m, s, sex) values('" + dType + "', " 
 						+ splitStrings[ageIndex] + ", 0, " + splitStrings[lIndex] + ", " + splitStrings[mIndex] + ", "
 						+ splitStrings[sIndex] + ", " + sex + ");");
 	}

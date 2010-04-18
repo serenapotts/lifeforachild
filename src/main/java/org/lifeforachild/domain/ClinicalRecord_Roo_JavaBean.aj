@@ -1,5 +1,6 @@
 package org.lifeforachild.domain;
 
+import java.lang.Float;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Date;
@@ -585,7 +586,7 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
     
     public void ClinicalRecord.setInsulinPerKg(Float insulinPerKg) {    
         this.insulinPerKg = insulinPerKg;        
-    }  
+    }    
     
     public Float ClinicalRecord.getHeightSD() {    
         return this.heightSD;        

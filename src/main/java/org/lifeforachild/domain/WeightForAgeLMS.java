@@ -12,8 +12,8 @@ import javax.persistence.DiscriminatorColumn;
 @Entity
 @RooJavaBean
 @RooToString
-@RooEntity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn
+@RooEntity(finders = { "findWeightForAgeLMSsBySexAndAgeMonthsOldEquals" })
 public class WeightForAgeLMS extends LMS {
 }
