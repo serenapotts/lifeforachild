@@ -34,6 +34,7 @@ public class CsvLMSToSQL {
 	    fileToTypeMap.put("wtage", "WeightForAgeLMS");
 	    fileToTypeMap.put("wtageinf", "WeightForAgeLMS");
 	    fileToTypeMap.put("statage", "HeightForAgeLMS");
+	    fileToTypeMap.put("bmiage", "BMIForAgeLMS");
 	}
 
 	/**
