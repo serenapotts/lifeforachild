@@ -54,6 +54,7 @@ privileged aspect ClinicalRecordController_Roo_Controller {
         
         if (clinicalRecord.getHeightCM() != null) {
             clinicalRecord.setBmi(clinicalRecord.calculateBMI());
+            clinicalRecord.setBmiSD(clinicalRecord.calculateBmiSD());
             clinicalRecord.setHeightSD(clinicalRecord.calculateHeightSD());
         }
         
@@ -138,6 +139,7 @@ privileged aspect ClinicalRecordController_Roo_Controller {
         
         if (clinicalRecord.getHeightCM() != null) {
             clinicalRecord.setBmi(clinicalRecord.calculateBMI());
+            clinicalRecord.setBmiSD(clinicalRecord.calculateBmiSD());
             clinicalRecord.setHeightSD(clinicalRecord.calculateHeightSD());
         }
         
