@@ -329,21 +329,44 @@ public class ClinicalRecord {
     	if(weightKG == 0) {
     	    return Float.NaN;
     	}
-        
-        Float ageMonths = calculateAgeMonths(dateCompleted, child.getDateOfBirth());
     	
+        Float ageMonths = calculateAgeMonths(dateCompleted, child.getDateOfBirth());
 		if (ageMonths.compareTo(new Float(240)) > 0) {
 			ageMonths = new Float(240);
 		}
     	
     	WeightForAgeLMS weightForAgeLMS = (WeightForAgeLMS) WeightForAgeLMS.findWeightForAgeLMSsBySexAndAgeMonthsOldEquals(child.getSex(), ageMonths).getSingleResult();
-    	
     	if(weightForAgeLMS == null) {
     	    return Float.NaN;
     	}
     	else {
-    	    double weightSD = (Math.pow(weightKG / weightForAgeLMS.getM(), weightForAgeLMS.getL()) - 1) / (weightForAgeLMS.getL() * weightForAgeLMS.getS()); 
-            return new Float(weightSD);
+    	    double weightSDCalculated = calculateSD((double) weightKG, weightForAgeLMS); 
+            return new Float(weightSDCalculated);
     	}
+    }
+    
+    public Float calculateHeightSD() {
+        if(heightCM == null || heightCM.intValue() == 0) {
+            return Float.NaN;
+        }
+        Float ageMonths = calculateAgeMonths(dateCompleted, child.getDateOfBirth());
+        
+        //Just do 24-240 months, younger and older would be N/A
+        if(ageMonths.floatValue() < 24 || ageMonths.floatValue() > 240) {
+            return Float.NaN;
+        }
+        
+        HeightForAgeLMS heightForAgeLMS = (HeightForAgeLMS) HeightForAgeLMS.findHeightForAgeLMSsBySexAndAgeMonthsOldEquals(child.getSex(), ageMonths).getSingleResult();
+        if(heightForAgeLMS == null) {
+            return Float.NaN;
+        }
+        else {
+            double heightSDCalculated = calculateSD(heightCM.doubleValue(), heightForAgeLMS); 
+            return new Float(heightSDCalculated);
+        }
+    }
+    
+    private double calculateSD(double value, LMS lms) {
+        return (Math.pow(value / lms.getM(), lms.getL()) - 1) / (lms.getL() * lms.getS());
     }
 }

@@ -50,12 +50,12 @@ privileged aspect ClinicalRecordController_Roo_Controller {
         }        
         clinicalRecord.setExactAge(clinicalRecord.calculateExactAge());
         clinicalRecord.setInsulinPerKg(clinicalRecord.calculateInsulinPerKg());
+        clinicalRecord.setWeightSD(clinicalRecord.calculateWeightSD());
         
         if (clinicalRecord.getHeightCM() != null) {
             clinicalRecord.setBmi(clinicalRecord.calculateBMI());
+            clinicalRecord.setHeightSD(clinicalRecord.calculateHeightSD());
         }
-        
-        clinicalRecord.setWeightSD(clinicalRecord.calculateWeightSD());
         
         clinicalRecord.persist();        
         return "redirect:/clinicalrecord/" + clinicalRecord.getId();        
@@ -134,12 +134,12 @@ privileged aspect ClinicalRecordController_Roo_Controller {
         }                
         clinicalRecord.setExactAge(clinicalRecord.calculateExactAge());
         clinicalRecord.setInsulinPerKg(clinicalRecord.calculateInsulinPerKg());
+        clinicalRecord.setWeightSD(clinicalRecord.calculateWeightSD());
         
         if (clinicalRecord.getHeightCM() != null) {
             clinicalRecord.setBmi(clinicalRecord.calculateBMI());
+            clinicalRecord.setHeightSD(clinicalRecord.calculateHeightSD());
         }
-        
-        clinicalRecord.setWeightSD(clinicalRecord.calculateWeightSD());
         
         clinicalRecord.merge();        
         return "redirect:/clinicalrecord/" + clinicalRecord.getId();        

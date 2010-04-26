@@ -7,6 +7,8 @@ import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.io.Reader;
 import java.io.Writer;
+import java.util.HashMap;
+import java.util.Map;
 
 public class CsvLMSToSQL {
 
@@ -25,6 +27,14 @@ public class CsvLMSToSQL {
 	private static int lIndex = 0;
 	private static int mIndex = 0;
 	private static int sIndex = 0;
+	
+	private static Map<String, String> fileToTypeMap = new HashMap<String, String>();
+	
+	static {
+	    fileToTypeMap.put("wtage", "WeightForAgeLMS");
+	    fileToTypeMap.put("wtageinf", "WeightForAgeLMS");
+	    fileToTypeMap.put("statage", "HeightForAgeLMS");
+	}
 
 	/**
 	 * @param args
@@ -80,16 +90,20 @@ public class CsvLMSToSQL {
 		}
 		
 		String name = args[0];
-		if(name.equals("wtage")) {
-			dType = "WeightForAgeLMS";
-			sqlFilename = name + ".sql";
-			csvResourceName = "/csv/" + name + ".csv"; 
+		
+		sqlFilename = name + ".sql";
+        csvResourceName = "/csv/" + name + ".csv";
+        
+		dType = fileToTypeMap.get(name);
+		
+		if(dType == null) {
+		    showUsageAndExit();
 		}
 	}
 
 	private static void showUsageAndExit() {
 		System.out.println("Usage: java CsvLMSTOSQL <name>");
-		System.out.println("where <name>: wtage | wtageinf ");
+		System.out.println("where <name>: wtage | wtageinf | statage");
 		
 		System.exit(1);
 	}
