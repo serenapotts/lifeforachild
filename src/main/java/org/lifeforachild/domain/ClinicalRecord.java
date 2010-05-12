@@ -327,7 +327,7 @@ public class ClinicalRecord {
     
     public Float calculateWeightSD() {
     	if(weightKG == 0) {
-    	    return Float.NaN;
+    	    return new Float(0);
     	}
     	
         Float ageMonths = calculateAgeMonths(dateCompleted, child.getDateOfBirth());
@@ -337,7 +337,7 @@ public class ClinicalRecord {
     	
     	WeightForAgeLMS weightForAgeLMS = (WeightForAgeLMS) WeightForAgeLMS.findWeightForAgeLMSsBySexAndAgeMonthsOldEquals(child.getSex(), ageMonths).getSingleResult();
     	if(weightForAgeLMS == null) {
-    	    return Float.NaN;
+    	    return new Float(0);
     	}
     	else {
     	    double weightSDCalculated = calculateSD((double) weightKG, weightForAgeLMS); 
@@ -347,18 +347,18 @@ public class ClinicalRecord {
     
     public Float calculateHeightSD() {
         if(heightCM == null || heightCM.intValue() == 0) {
-            return Float.NaN;
+            return new Float(0);
         }
         
         Float ageMonths = calculateAgeMonths(dateCompleted, child.getDateOfBirth());
         //Just do 24-240 months, younger and older would be N/A
         if(ageMonths.floatValue() < 24 || ageMonths.floatValue() > 240) {
-            return Float.NaN;
+            return new Float(0);
         }
         
         HeightForAgeLMS heightForAgeLMS = (HeightForAgeLMS) HeightForAgeLMS.findHeightForAgeLMSsBySexAndAgeMonthsOldEquals(child.getSex(), ageMonths).getSingleResult();
         if(heightForAgeLMS == null) {
-            return Float.NaN;
+            return new Float(0);
         }
         else {
             double heightSDCalculated = calculateSD(heightCM.doubleValue(), heightForAgeLMS); 
@@ -368,17 +368,17 @@ public class ClinicalRecord {
     
     public Float calculateBmiSD() {
         if(bmi == null || bmi.intValue() == 0) {
-            return Float.NaN;
+            return new Float(0);
         }
         
         Float ageMonths = calculateAgeMonths(dateCompleted, child.getDateOfBirth());
         if(ageMonths.floatValue() < 24 || ageMonths.floatValue() > 240.5) {
-            return Float.NaN;
+            return new Float(0);
         }
        
         BMIForAgeLMS bmiForAgeLMS = (BMIForAgeLMS) BMIForAgeLMS.findBMIForAgeLMSsBySexAndAgeMonthsOldEquals(child.getSex(), ageMonths).getSingleResult();
         if(bmiForAgeLMS == null) {
-            return Float.NaN;
+            return new Float(0);
         }
         else {
             double bmiSDCalculated = calculateSD(bmi.doubleValue(), bmiForAgeLMS);
