@@ -199,13 +199,13 @@
             <br/>
             <div id="roo_clinicalRecord_acearb">
                 <label for="_acearb_id">Acearb:</label>
-                <form:input cssStyle="width:250px" id="_acearb_id" maxlength="30" path="acearb" size="0"/>
-                <br/>
                 <form:errors cssClass="errors" id="_acearb_error_id" path="acearb"/>
-                <spring:message arguments="Acearb" code="field.invalid" var="field_invalid"/>
-                <spring:message code="field.required" var="field_required"/>
-                <spring:message argumentSeparator="," arguments="Acearb," code="field.simple.validation" var="field_validation"/>
-                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_acearb_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : false}})); </script>
+                <form:select cssStyle="width:250px" id="_acearb_id" path="acearb">
+					<form:option value=""></form:option>
+                	<form:options items="${yesnotype_enum}" itemLabel="label"/>
+                </form:select>                 
+                <br/>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_acearb_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
             </div>
             <br/>
             <div id="roo_clinicalRecord_bpMedicationsOther">
@@ -649,24 +649,24 @@
             <br/>
             <div id="roo_clinicalRecord_diabetesLimitingAttendance">
                 <label for="_diabetesLimitingAttendance_id">Diabetes Limiting Attendance:</label>
-                <form:input cssStyle="width:250px" id="_diabetesLimitingAttendance_id" maxlength="30" path="diabetesLimitingAttendance" size="0"/>
-                <br/>
                 <form:errors cssClass="errors" id="_diabetesLimitingAttendance_error_id" path="diabetesLimitingAttendance"/>
-                <spring:message arguments="Diabetes Limiting Attendance" code="field.invalid" var="field_invalid"/>
-                <spring:message code="field.required" var="field_required"/>
-                <spring:message argumentSeparator="," arguments="Diabetes Limiting Attendance," code="field.simple.validation" var="field_validation"/>
-                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_diabetesLimitingAttendance_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : false}})); </script>
+                <form:select cssStyle="width:250px" id="_diabetesLimitingAttendance_id" path="diabetesLimitingAttendance">
+					<form:option value=""></form:option>
+                	<form:options items="${yesnotype_enum}" itemLabel="label"/>
+                </form:select>                 
+                <br/>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_diabetesLimitingAttendance_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
             </div>
             <br/>
             <div id="roo_clinicalRecord_appropriateGradeForAge">
                 <label for="_appropriateGradeForAge_id">Appropriate Grade For Age:</label>
-                <form:input cssStyle="width:250px" id="_appropriateGradeForAge_id" maxlength="30" path="appropriateGradeForAge" size="0"/>
-                <br/>
                 <form:errors cssClass="errors" id="_appropriateGradeForAge_error_id" path="appropriateGradeForAge"/>
-                <spring:message arguments="Appropriate Grade For Age" code="field.invalid" var="field_invalid"/>
-                <spring:message code="field.required" var="field_required"/>
-                <spring:message argumentSeparator="," arguments="Appropriate Grade For Age," code="field.simple.validation" var="field_validation"/>
-                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_appropriateGradeForAge_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : false}})); </script>
+                <form:select cssStyle="width:250px" id="_appropriateGradeForAge_id" path="appropriateGradeForAge">
+					<form:option value=""></form:option>
+                	<form:options items="${yesnotype_enum}" itemLabel="label"/>
+                </form:select>                 
+                <br/>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_appropriateGradeForAge_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
             </div>
             <br/>
             <div id="roo_clinicalRecord_diabetesCopingAbilities">
