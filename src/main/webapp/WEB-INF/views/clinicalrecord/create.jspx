@@ -8,6 +8,13 @@
         <spring:url value="/clinicalrecord" var="form_url"/>
         <form:form action="${form_url}" method="POST" modelAttribute="clinicalRecord">
             <form:errors cssClass="errors" delimiter="&lt;p/&gt;"/>
+            <!-- ========================================================================  
+            	READ ME:
+            	Don't indent tabs to format so can easily compare changes on diff when roo
+            	updates, otherwise doing a diff is pretty well impossible.
+            	========================================================================= -->
+            <div id="mainTabContainer" style="width:500px;height:400px">
+	           	<div id="general">
             <div id="roo_clinicalRecord_child">                
                  <label for="_child_id">Child:</label>
                  <div class="box" id="_child_id">
@@ -67,7 +74,16 @@
                 <br/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_literate_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
             </div>
-            <br/>            
+            <br/>          
+		</div>	   
+		<script type="text/javascript">
+			Spring.addDecoration(new Spring.ElementDecoration({
+				elementId : "general",
+				widgetType : "dijit.layout.ContentPane",
+				widgetAttrs : { title: "General" }
+				}));
+		</script>
+        <div id="diabetesCare">               
             <div id="roo_clinicalRecord_bloodGlucoseSelfMonitoringPerWeek">
                 <label for="_bloodGlucoseSelfMonitoringPerWeek_id">Blood Glucose Self Monitoring Per Week:</label>
                 <form:input cssStyle="width:250px" id="_bloodGlucoseSelfMonitoringPerWeek_id" maxlength="30" path="bloodGlucoseSelfMonitoringPerWeek" size="0"/>
@@ -238,6 +254,15 @@
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_laserRxInLast12Months_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
             </div>
             <br/>
+		</div>
+		<script type="text/javascript">
+			Spring.addDecoration(new Spring.ElementDecoration({
+				elementId : "diabetesCare",
+				widgetType : "dijit.layout.ContentPane",
+				widgetAttrs : { title: "Diabetes Care" }
+				}));
+		</script>	            
+        <div id="clinicalMeasures">            
             <div id="roo_clinicalRecord_weightKG">
                 <label for="_weightKG_id">Weight K G:</label>
                 <form:input cssStyle="width:250px" id="_weightKG_id" maxlength="30" path="weightKG" size="0"/>
@@ -350,6 +375,15 @@
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_ifMenarcheAge_id', widgetType : 'dijit.form.DateTextBox', widgetAttrs : {promptMessage: '${field_validation}', constraints: {datePattern : '${clinicalRecord_ifMenarcheAge_date_format}', required : false}, datePattern : '${clinicalRecord_ifMenarcheAge_date_format}'}})); </script>
             </div>
             <br/>
+		</div>	 
+		<script type="text/javascript">
+			Spring.addDecoration(new Spring.ElementDecoration({
+				elementId : "clinicalMeasures",
+				widgetType : "dijit.layout.ContentPane",
+				widgetAttrs : { title: "Clinical Measures" }
+				}));
+		</script>	
+		<div id="eyes">            
             <div id="roo_clinicalRecord_eyesExaminedInLastYear">
                 <label for="_eyesExaminedInLastYear_id">Eyes Examined In Last Year:</label>
                 <form:errors cssClass="errors" id="_eyesExaminedInLastYear_error_id" path="eyesExaminedInLastYear"/>
@@ -394,6 +428,15 @@
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_visualAcuityLeft_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : false}})); </script>
             </div>
             <br/>
+		</div>
+		<script type="text/javascript">
+			Spring.addDecoration(new Spring.ElementDecoration({
+				elementId : "eyes",
+				widgetType : "dijit.layout.ContentPane",
+				widgetAttrs : { title: "Eyes" },
+				}));
+		</script>			        
+        <div id="feet">            
             <div id="roo_clinicalRecord_feetExaminedInLastYear">
                 <label for="_feetExaminedInLastYear_id">Feet Examined In Last Year:</label>
                 <form:errors cssClass="errors" id="_feetExaminedInLastYear_error_id" path="feetExaminedInLastYear"/>
@@ -449,6 +492,15 @@
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_tuningForkAbnormal_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
             </div>
             <br/>
+		</div>
+		<script type="text/javascript">
+			Spring.addDecoration(new Spring.ElementDecoration({
+				elementId : "feet",
+				widgetType : "dijit.layout.ContentPane",
+				widgetAttrs : { title: "Feet" }
+				}));
+		</script>			        
+        <div id="labTesting">            
             <div id="roo_clinicalRecord_lastHbA1cInLast12Months">
                 <label for="_lastHbA1cInLast12Months_id">Last Hb A1c In Last12 Months:</label>
                 <form:errors cssClass="errors" id="_lastHbA1cInLast12Months_error_id" path="lastHbA1cInLast12Months"/>
@@ -625,6 +677,15 @@
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_fasted_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
             </div>
             <br/>
+		</div>
+		<script type="text/javascript">
+			Spring.addDecoration(new Spring.ElementDecoration({
+				elementId : "labTesting",
+				widgetType : "dijit.layout.ContentPane",
+				widgetAttrs : { title: "Lab Testing" }
+				}));
+		</script>			        
+        <div id="schooling">             
             <div id="roo_clinicalRecord_attendingSchool">
                 <label for="_attendingSchool_id">Attending School:</label>
                 <form:errors cssClass="errors" id="_attendingSchool_error_id" path="attendingSchool"/>
@@ -680,6 +741,15 @@
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_diabetesCopingAbilities_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
             </div>
             <br/>
+		</div>
+		<script type="text/javascript">
+			Spring.addDecoration(new Spring.ElementDecoration({
+				elementId : "schooling",
+				widgetType : "dijit.layout.ContentPane",
+				widgetAttrs : { title: "Schooling" }
+				}));
+		</script>			        
+        <div id="emergencies">              
             <div id="roo_clinicalRecord_numberOfSevereHypoglycaemiaEpisodes">
                 <label for="_numberOfSevereHypoglycaemiaEpisodes_id">Number Of Severe Hypoglycaemia Episodes:</label>
                 <form:input cssStyle="width:250px" id="_numberOfSevereHypoglycaemiaEpisodes_id" maxlength="30" path="numberOfSevereHypoglycaemiaEpisodes" size="0"/>
@@ -746,6 +816,20 @@
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_reasonHospitalAdmissionsNotEntered_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
             </div>
             <br/>
+		</div>
+		<script type="text/javascript">
+			Spring.addDecoration(new Spring.ElementDecoration({
+				elementId : "emergencies",
+				widgetType : "dijit.layout.ContentPane",
+				widgetAttrs : { title: "Emergencies" }
+				}));
+		</script>		            
+	</div>
+	<script type="text/javascript">
+		Spring.addDecoration(new Spring.ElementDecoration({
+			elementId : "mainTabContainer",
+			widgetType : "dijit.layout.TabContainer"}));
+	</script>              
             <form:hidden id="_exactAge_id" path="exactAge"/>
             <form:hidden id="_bmi_id" path="bmi"/>
             <form:hidden id="_insulinPerKg_id" path="insulinPerKg"/>
