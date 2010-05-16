@@ -15,11 +15,11 @@
                 <label for="_child_id">Child:</label>
 				<div class="box" id="_child_id">
                     <c:out value="${clinicalRecord.child}"/>
-                </div>
-                <form:hidden id="_child_id" path="child"/>
+                </div>                
             </div>
             <br/>
             </sec:authorize>
+            <form:hidden id="_child_id" path="child"/>
             <div id="roo_clinicalRecord_additionalComment">
                 <label for="_additionalComment_id">Additional Comment:</label>
                 <form:textarea cssStyle="width:250px" id="_additionalComment_id" path="additionalComment"/>
@@ -136,6 +136,15 @@
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_numberOfInsulinInjectionsPerDay_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', regExp: '-?[0-9]*', required : false}})); </script>
             </div>
             <br/>
+		</div>
+		<script type="text/javascript">
+			Spring.addDecoration(new Spring.ElementDecoration({
+				elementId : "diabetesCare",
+				widgetType : "dijit.layout.ContentPane",
+				widgetAttrs : { title: "Diabetes Care" }
+				}));
+		</script>	            
+        <div id="medications">             
             <div id="roo_clinicalRecord_longActingHuman">
                 <label for="_longActingHuman_id">Long Acting Human:</label>
                 <form:errors cssClass="errors" id="_longActingHuman_error_id" path="longActingHuman"/>
@@ -254,11 +263,11 @@
 		</div>
 		<script type="text/javascript">
 			Spring.addDecoration(new Spring.ElementDecoration({
-				elementId : "diabetesCare",
+				elementId : "medications",
 				widgetType : "dijit.layout.ContentPane",
-				widgetAttrs : { title: "Diabetes Care" }
+				widgetAttrs : { title: "Medications" }
 				}));
-		</script>	            
+		</script>            
         <div id="clinicalMeasures">             
             <div id="roo_clinicalRecord_weightKG">
                 <label for="_weightKG_id">Weight K G:</label>

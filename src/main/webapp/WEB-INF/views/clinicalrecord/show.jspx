@@ -153,6 +153,15 @@
 		            </div>
 		            <br/>
 		            <br/>
+				</div>
+				<script type="text/javascript">
+					Spring.addDecoration(new Spring.ElementDecoration({
+						elementId : "diabetesCare",
+						widgetType : "dijit.layout.ContentPane",
+						widgetAttrs : { title: "Diabetes Care" }
+						}));
+				</script>	            
+	            <div id="medications">		            
 		            <div id="roo_clinicalRecord_longActingHuman">
 		                <label for="_longActingHuman_id">Long Acting Human:</label>
 		                <div class="box" id="_longActingHuman_id">
@@ -233,9 +242,9 @@
 	            </div>
 				<script type="text/javascript">
 					Spring.addDecoration(new Spring.ElementDecoration({
-						elementId : "diabetesCare",
+						elementId : "medications",
 						widgetType : "dijit.layout.ContentPane",
-						widgetAttrs : { title: "Diabetes Care" }
+						widgetAttrs : { title: "Medications" }
 						}));
 				</script>	            
 	            <div id="clinicalMeasures">            
