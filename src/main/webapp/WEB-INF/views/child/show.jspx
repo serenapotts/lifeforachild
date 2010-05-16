@@ -73,27 +73,31 @@
 		                </div>
 		            </div>
 		            <br/>
-		            <div id="roo_child_dateOfDeath">
-		                <label for="_dateOfDeath_id">Date Of Death:</label>
-		                <div class="box" id="_dateOfDeath_id">
-		                    <fmt:formatDate pattern="${child_dateOfDeath_date_format}" value="${child.dateOfDeath}"/>
-		                </div>
-		            </div>
-		            <br/>
-		            <div id="roo_child_causeOfDeath">
-		                <label for="_causeOfDeath_id">Cause Of Death:</label>
-		                <div class="box" id="_causeOfDeath_id">
-		                    <c:out value="${child.causeOfDeath.label}"/>
-		                </div>
-		            </div>
-		            <br/>
-		            <div id="roo_child_causeOfDeathOther">
-		                <label for="_causeOfDeathOther_id">Cause Of Death Other:</label>
-		                <div class="box" id="_causeOfDeathOther_id">
-		                    <c:out value="${child.causeOfDeathOther}"/>
-		                </div>
-		            </div>
-		            <br/>
+		            <c:if test="${child.survivalStatus == 'DEAD'}">
+			            <div id="roo_child_dateOfDeath">
+			                <label for="_dateOfDeath_id">Date Of Death:</label>
+			                <div class="box" id="_dateOfDeath_id">
+			                    <fmt:formatDate pattern="${child_dateOfDeath_date_format}" value="${child.dateOfDeath}"/>
+			                </div>
+			            </div>
+			            <br/>
+			            <div id="roo_child_causeOfDeath">
+			                <label for="_causeOfDeath_id">Cause Of Death:</label>
+			                <div class="box" id="_causeOfDeath_id">
+			                    <c:out value="${child.causeOfDeath.label}"/>
+			                </div>
+			            </div>
+			            <br/>
+			            <c:if test="${child.causeOfDeath == 'OTHER_DIABETES_RELATED_CONDITION'}">
+				            <div id="roo_child_causeOfDeathOther">
+				                <label for="_causeOfDeathOther_id">Cause Of Death Other:</label>
+				                <div class="box" id="_causeOfDeathOther_id">
+				                    <c:out value="${child.causeOfDeathOther}"/>
+				                </div>
+				            </div>
+				            <br/>
+			            </c:if>
+		            </c:if>
 		            <div id="roo_child_dateOfRegistration">
 		                <label for="_dateOfRegistration_id">Date Of Registration:</label>
 		                <div class="box" id="_dateOfRegistration_id">
@@ -129,13 +133,15 @@
 		                </div>
 		            </div>
 		            <br/>
-		            <div id="roo_child_diabetesTypeOther">
-		                <label for="_diabetesTypeOther_id">Diabetes Type Other:</label>
-		                <div class="box" id="_diabetesTypeOther_id">
-		                    <c:out value="${child.diabetesTypeOther}"/>
-		                </div>
-		            </div>
-		            <br/>
+		            <c:if test="${child.diabetesType == 'OTHER'}">
+			            <div id="roo_child_diabetesTypeOther">
+			                <label for="_diabetesTypeOther_id">Diabetes Type Other:</label>
+			                <div class="box" id="_diabetesTypeOther_id">
+			                    <c:out value="${child.diabetesTypeOther}"/>
+			                </div>
+			            </div>
+			            <br/>
+		            </c:if>
 		            <div id="roo_child_createdOn">
 		                <label for="_createdOn_id">Created On:</label>
 		                <div class="box" id="_createdOn_id">
@@ -164,13 +170,6 @@
 		                </div>
 		            </div>
 		            <br/>		            
-		            <div id="roo_child_clinicalRecords">
-		                <label for="_clinicalRecords_id">Clinical Records:</label>
-		                <div class="box" id="_clinicalRecords_id">
-		                    <c:out value="${child.clinicalRecords}"/>
-		                </div>
-		            </div>
-		            <br/>
 				</div>
 				<script type="text/javascript">
 					Spring.addDecoration(new Spring.ElementDecoration({
