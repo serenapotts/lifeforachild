@@ -1,4 +1,4 @@
-<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:form="http://www.springframework.org/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:sec="http://www.springframework.org/security/tags" xmlns:form="http://www.springframework.org/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
     <jsp:output omit-xml-declaration="yes"/>
     <script type="text/javascript">dojo.require('dijit.TitlePane');dojo.require('dijit.form.FilteringSelect');dojo.require('dijit.form.SimpleTextarea');dojo.require('dijit.form.DateTextBox');</script>
     <div id="_title_div">
@@ -10,11 +10,12 @@
             <form:errors cssClass="errors" delimiter="&lt;p/&gt;"/>
             <!-- ========================================================================  
             	READ ME:
-            	Don't indent tabs to format so can easily compare changes on diff when roo
+            	Don't indent tabs to format xml nicely, so it is easy to compare changes on diff when roo
             	updates, otherwise doing a diff is pretty well impossible.
             	========================================================================= -->
-            <div id="mainTabContainer" style="width:500px;height:400px">
-	           	<div id="general">
+	<div id="mainTabContainer" style="width:500px;height:400px">
+       	<div id="general">
+       		<sec:authorize ifAllGranted="View Child Name">
             <div id="roo_clinicalRecord_child">                
                  <label for="_child_id">Child:</label>
                  <div class="box" id="_child_id">
@@ -23,6 +24,7 @@
                 <form:hidden id="_child_id" path="child"/>
             </div>
             <br/>
+            </sec:authorize>
             <div id="roo_clinicalRecord_additionalComment">
                 <label for="_additionalComment_id">Additional Comment:</label>
                 <form:textarea cssStyle="width:250px" id="_additionalComment_id" path="additionalComment"/>
