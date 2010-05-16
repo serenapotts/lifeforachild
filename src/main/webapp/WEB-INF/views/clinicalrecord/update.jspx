@@ -1,6 +1,21 @@
 <div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:sec="http://www.springframework.org/security/tags" xmlns:form="http://www.springframework.org/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
     <jsp:output omit-xml-declaration="yes"/>
-    <script type="text/javascript">dojo.require('dijit.TitlePane');dojo.require('dijit.form.FilteringSelect');dojo.require('dijit.form.SimpleTextarea');dojo.require('dijit.form.DateTextBox');</script>
+    <script type="text/javascript">
+    	dojo.require('dijit.TitlePane');
+    	dojo.require('dijit.form.FilteringSelect');
+    	dojo.require('dijit.form.SimpleTextarea');
+    	dojo.require('dijit.form.DateTextBox');
+
+    	dojo.addOnLoad(
+    			function(){
+    				if (dijit.byId("_oralAgents_id").value != 'YES')
+    			  	{
+    				  	// hide desc if no oral agent
+    					dojo.style(dijit.byId("roo_clinicalRecord_oralAgentsDescription").domNode, "display", "none");
+    			  	}
+    			}
+    		);    	
+    </script>
     <div id="_title_div">
         <spring:message code="label.clinicalrecord" var="entity_label"/>
         <spring:message arguments="${entity_label}" code="entity.update" var="title_msg"/>
@@ -186,7 +201,24 @@
                 	<form:options items="${yesnotype_enum}" itemLabel="label"/>
                 </form:select>
                 <br/>
-                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_oralAgents_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
+                <script type="text/javascript">Spring.addDecoration(
+                        new Spring.ElementDecoration({
+                            elementId : '_oralAgents_id', 
+                            widgetType: 'dijit.form.FilteringSelect', 
+                            widgetAttrs : {hasDownArrow : true,
+                            onChange : function(newValue) {
+		                		if (newValue == 'YES')
+		                		{
+			                		dojo.style(dijit.byId("roo_clinicalRecord_oralAgentsDescription").domNode, "display", "block");
+		                		}
+		                		else
+		                		{
+		                			dojo.style(dijit.byId("roo_clinicalRecord_oralAgentsDescription").domNode, "display", "none");
+		                		}
+                			}
+                		}
+                	})); 
+                </script>
             </div>
             <br/>
             <div id="roo_clinicalRecord_oralAgentsDescription">
@@ -195,8 +227,13 @@
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_oralAgentsDescription_id', widgetType: 'dijit.form.SimpleTextarea', widgetAttrs: {}})); </script>
                 <br/>
                 <form:errors cssClass="errors" id="_oralAgentsDescription_error_id" path="oralAgentsDescription"/>
-            </div>
-            <br/>
+                <br/>
+            </div>            
+            <script type="text/javascript">Spring.addDecoration(
+                    new Spring.ElementDecoration({
+                        elementId : 'roo_clinicalRecord_oralAgentsDescription', 
+                        widgetType: 'dijit.layout.ContentPane'})); 
+            </script> 
             <div id="roo_clinicalRecord_routineClinicReviewsLastYear">
                 <label for="_routineClinicReviewsLastYear_id">Routine Clinic Reviews Last Year:</label>
                 <form:input cssStyle="width:250px" id="_routineClinicReviewsLastYear_id" maxlength="30" path="routineClinicReviewsLastYear" size="0"/>

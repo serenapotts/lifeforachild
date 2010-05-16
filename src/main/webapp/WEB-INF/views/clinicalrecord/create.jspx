@@ -191,17 +191,39 @@
                 	<form:options items="${yesnotype_enum}" itemLabel="label"/>
                 </form:select>                 
                 <br/>
-                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_oralAgents_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
+                <script type="text/javascript">Spring.addDecoration(
+                        new Spring.ElementDecoration({
+                            elementId : '_oralAgents_id', 
+                            widgetType: 'dijit.form.FilteringSelect', 
+                            widgetAttrs : {hasDownArrow : true,
+                            onChange : function(newValue) {
+		                		if (newValue == 'YES')
+		                		{
+			                		dojo.style(dijit.byId("roo_clinicalRecord_oralAgentsDescription").domNode, "display", "block");
+		                		}
+		                		else
+		                		{
+		                			dojo.style(dijit.byId("roo_clinicalRecord_oralAgentsDescription").domNode, "display", "none");
+		                		}
+                			}
+                		}
+                	})); 
+                </script>
             </div>
             <br/>
-            <div id="roo_clinicalRecord_oralAgentsDescription">
+            <div id="roo_clinicalRecord_oralAgentsDescription" style="display:none">
                 <label for="_oralAgentsDescription_id">Oral Agents Description:</label>
                 <form:textarea cssStyle="width:250px" id="_oralAgentsDescription_id" path="oralAgentsDescription"/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_oralAgentsDescription_id', widgetType: 'dijit.form.SimpleTextarea', widgetAttrs: {}})); </script>
-                <br/>
+                <br/>               
                 <form:errors cssClass="errors" id="_oralAgentsDescription_error_id" path="oralAgentsDescription"/>
+                <br/>
             </div>
-            <br/>
+            <script type="text/javascript">Spring.addDecoration(
+                    new Spring.ElementDecoration({
+                        elementId : 'roo_clinicalRecord_oralAgentsDescription', 
+                        widgetType: 'dijit.layout.ContentPane'})); 
+            </script>              
             <div id="roo_clinicalRecord_routineClinicReviewsLastYear">
                 <label for="_routineClinicReviewsLastYear_id">Routine Clinic Reviews Last Year:</label>
                 <form:input cssStyle="width:250px" id="_routineClinicReviewsLastYear_id" maxlength="30" path="routineClinicReviewsLastYear" size="0"/>

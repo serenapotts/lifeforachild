@@ -190,13 +190,15 @@
 		                </div>
 		            </div>
 		            <br/>
-		            <div id="roo_clinicalRecord_oralAgentsDescription">
-		                <label for="_oralAgentsDescription_id">Oral Agents Description:</label>
-		                <div class="box" id="_oralAgentsDescription_id">
-		                    <c:out value="${clinicalRecord.oralAgentsDescription}"/>
-		                </div>
-		            </div>
-		            <br/>
+		            <c:if test="${clinicalRecord.oralAgents == 'YES'}">
+			            <div id="roo_clinicalRecord_oralAgentsDescription">
+			                <label for="_oralAgentsDescription_id">Oral Agents Description:</label>
+			                <div class="box" id="_oralAgentsDescription_id">
+			                    <c:out value="${clinicalRecord.oralAgentsDescription}"/>
+			                </div>
+			            </div>
+			            <br/>
+		            </c:if>
 		            <div id="roo_clinicalRecord_routineClinicReviewsLastYear">
 		                <label for="_routineClinicReviewsLastYear_id">Routine Clinic Reviews Last Year:</label>
 		                <div class="box" id="_routineClinicReviewsLastYear_id">
