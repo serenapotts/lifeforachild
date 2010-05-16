@@ -389,4 +389,92 @@ public class ClinicalRecord {
     private double calculateSD(double value, LMS lms) {
         return (Math.pow(value / lms.getM(), lms.getL()) - 1) / (lms.getL() * lms.getS());
     }
+    
+    public Float calculateBloodPressureSystolicSD() {
+        if (bloodPressureSystolicMMHg == null || bloodPressureSystolicMMHg.intValue() == 0) {
+            return new Float(0);
+        }
+
+        if (heightSD == null || heightSD.equals(new Float(0))) {
+            return new Float(0);
+        }
+        
+        
+        return null;
+    }
+    
+    private double calcExpectedSystolicBP() {
+        double age = this.getExactAge();
+        double heightSDValue = getHeightSD().floatValue();
+        
+        if(child.getSex() == SexType.MALE) {
+            return 102.19768 + 1.82416*(age-10) + 0.12776*Math.pow(age-10, 2) 
+                  + 0.00249*Math.pow((age-10), 3) - 0.00135*Math.pow((age-10), 4) 
+                  + 2.73157*(heightSDValue) - 0.19618*Math.pow(heightSDValue, 2) 
+                  - 0.04659*Math.pow(heightSDValue, 3) + 0.00947*Math.pow(heightSDValue, 4);
+            
+        }
+        else if(child.getSex() == SexType.FEMALE) {
+            return 102.01027 + 1.94397*(age-10) + 0.00598*Math.pow((age-10), 2) 
+                  - 0.00789*Math.pow((age-10), 3) - 0.00059*Math.pow((age-10), 4) 
+                  + 2.03526*(heightSDValue) - 0.02534*Math.pow(heightSDValue, 2) - 0.01884*Math.pow(heightSDValue, 3)
+                  + 0.00121*Math.pow(heightSDValue, 4);
+        }
+        else {
+            return 0;
+        }
+    }
+    
+    public Float calcSystolicBloodPressureSD() {
+        double expectedSystolicBP = calcExpectedSystolicBP();
+        
+        if(child.getSex() == SexType.MALE) {
+            double value = (bloodPressureSystolicMMHg - expectedSystolicBP) / 10.7128;
+            return new Float(value);
+        }
+        else if(child.getSex() == SexType.FEMALE) {
+            double value = (bloodPressureSystolicMMHg - expectedSystolicBP) / 10.4855;
+            return new Float(value);
+        }
+        else {
+            return new Float(0);
+        }
+    }
+    
+    private double calcExpectedDiastolicBP() {
+        double age = this.getExactAge();
+        double heightSDValue = getHeightSD().floatValue();
+        
+        if(child.getSex() == SexType.MALE) {
+            return 61.01207 + 0.68314*(age-10) - 0.09835*Math.pow((age-10), 2) 
+                  + 0.01711*Math.pow((age-10), 3) + 0.00045*Math.pow((age-10), 4)
+                  + 1.46993*(heightSDValue) - 0.07849*Math.pow(heightSDValue, 2)
+                  - 0.03114*Math.pow(heightSDValue, 3) - 0.00967*Math.pow(heightSDValue, 4); 
+        }
+        else if(child.getSex() == SexType.FEMALE) {
+            return 60.5051+1.01301*(age-10) + 0.01157*Math.pow((age-10), 2)
+                  + 0.00424*Math.pow((age-10), 3) - 0.00137*Math.pow((age-10), 4)
+                  + 1.16641*(heightSDValue) + 0.12795*Math.pow(heightSDValue, 2) 
+                  - 0.03869*Math.pow(heightSDValue, 3) - 0.00079*Math.pow(heightSDValue, 4); 
+        }
+        else {
+            return 0;
+        }
+    }
+    
+    public Float calcDiastolicBloodPressureSD() {
+        double expectedDiastolicBP = calcExpectedDiastolicBP();
+        
+        if(child.getSex() == SexType.MALE) {
+            double value = (bloodPressureDiastolicMMHg - expectedDiastolicBP) / 11.6032;
+            return new Float(value);
+        }
+        else if(child.getSex() == SexType.FEMALE) {
+            double value = (bloodPressureDiastolicMMHg - expectedDiastolicBP) / 10.9573;
+            return new Float(value);
+        }
+        else {
+            return new Float(0);
+        }
+    }
 }

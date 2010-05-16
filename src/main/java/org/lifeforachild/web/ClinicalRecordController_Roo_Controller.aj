@@ -58,6 +58,11 @@ privileged aspect ClinicalRecordController_Roo_Controller {
             clinicalRecord.setHeightSD(clinicalRecord.calculateHeightSD());
         }
         
+        if(clinicalRecord.getHeightSD() != null && !clinicalRecord.getHeightSD().equals(new Float(0))) {
+            clinicalRecord.setBloodPressureSystolicSD(clinicalRecord.calcSystolicBloodPressureSD());
+            clinicalRecord.setBloodPressureDiastolicSD(clinicalRecord.calcDiastolicBloodPressureSD());
+        }
+        
         clinicalRecord.persist();        
         return "redirect:/clinicalrecord/" + clinicalRecord.getId();        
     }    
@@ -141,6 +146,11 @@ privileged aspect ClinicalRecordController_Roo_Controller {
             clinicalRecord.setBmi(clinicalRecord.calculateBMI());
             clinicalRecord.setBmiSD(clinicalRecord.calculateBmiSD());
             clinicalRecord.setHeightSD(clinicalRecord.calculateHeightSD());
+        }
+        
+        if(clinicalRecord.getHeightSD() != null && !clinicalRecord.getHeightSD().equals(new Float(0))) {
+            clinicalRecord.setBloodPressureSystolicSD(clinicalRecord.calcSystolicBloodPressureSD());
+            clinicalRecord.setBloodPressureDiastolicSD(clinicalRecord.calcDiastolicBloodPressureSD());
         }
         
         clinicalRecord.merge();        
