@@ -78,6 +78,8 @@
 			<version>2.5.0</version>
 			<scope>provided</scope>
 		</dependency>
+
+		
 		<!-- ROO dependencies -->
 		<dependency>
 			<groupId>org.springframework.roo</groupId>
@@ -221,13 +223,20 @@
     <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>com.springsource.javax.servlet.jsp.jstl</artifactId>
-            <version>1.2.0</version>
+            <version>1.1.2</version>
         </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>com.springsource.javax.servlet.jsp</artifactId>
+            <version>2.1.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- 
     <dependency>
             <groupId>org.apache.el</groupId>
             <artifactId>com.springsource.org.apache.el</artifactId>
             <version>6.0.20</version>
-        </dependency>
+        </dependency> -->
     <dependency>
             <groupId>org.joda</groupId>
             <artifactId>com.springsource.org.joda.time</artifactId>
@@ -420,6 +429,18 @@
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>tomcat-maven-plugin</artifactId>
 				<version>1.0-beta-1</version>
+				<configuration>
+					<path>/lifeforachild-staging</path>
+					<url>http://localhost:8099/manager</url>
+					<!--  <url>http://localhost:8080/manager</url> -->
+					
+					<username>tomcat</username>
+	        		<password>tomcat</password> 
+	        		<!-- <username>admin</username>
+	        		<password>admin</password>-->
+	        		
+	        		<update>true</update>
+				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.mortbay.jetty</groupId>
