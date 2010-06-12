@@ -8,6 +8,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Max;
@@ -15,6 +16,8 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.roo.addon.entity.RooEntity;
 import org.springframework.roo.addon.javabean.RooJavaBean;
@@ -31,6 +34,10 @@ import org.springframework.roo.addon.tostring.RooToString;
 @RooJavaBean
 @RooToString
 public class ClinicalRecord {
+    
+    @Transient
+    private static final Log LOGGER = LogFactory.getLog(ClinicalRecord.class);
+    
     @ManyToOne(targetEntity = Child.class)
     @JoinColumn
     private Child child;
@@ -299,7 +306,9 @@ public class ClinicalRecord {
     
     public float calculateBMI() {
         float result = 0.0f;
-        if (heightCM != 0) result = weightKG / (heightCM * heightCM);
+        if (heightCM != null && !heightCM.equals(new Integer(0))) {
+            result = weightKG / (heightCM * heightCM / 10000);
+        }
         return result;
     }
     
@@ -335,12 +344,25 @@ public class ClinicalRecord {
 			ageMonths = new Float(240);
 		}
     	
-    	WeightForAgeLMS weightForAgeLMS = (WeightForAgeLMS) WeightForAgeLMS.findWeightForAgeLMSsBySexAndAgeMonthsOldEquals(child.getSex(), ageMonths).getSingleResult();
+    	WeightForAgeLMS weightForAgeLMS = null;
+    	try
+    	{
+    	    LOGGER.info("Look up WeightForAgeLMS for child sex: " + child.getSex() + ", age: " + ageMonths);
+    	    weightForAgeLMS = (WeightForAgeLMS) WeightForAgeLMS.findWeightForAgeLMSsBySexAndAgeMonthsOldEquals(child.getSex(), ageMonths).getSingleResult();
+    	}
+    	catch(Exception e)
+        {
+            LOGGER.error(e);
+        }
+    	
     	if(weightForAgeLMS == null) {
     	    return new Float(0);
     	}
     	else {
     	    double weightSDCalculated = calculateSD((double) weightKG, weightForAgeLMS); 
+            LOGGER.info("weight = " + weightKG);
+            LOGGER.info("calculated weightSD = " + weightSDCalculated);
+
             return new Float(weightSDCalculated);
     	}
     }
@@ -356,18 +378,30 @@ public class ClinicalRecord {
             return new Float(0);
         }
         
-        HeightForAgeLMS heightForAgeLMS = (HeightForAgeLMS) HeightForAgeLMS.findHeightForAgeLMSsBySexAndAgeMonthsOldEquals(child.getSex(), ageMonths).getSingleResult();
+        HeightForAgeLMS heightForAgeLMS = null;
+        try
+        {
+            LOGGER.info("Look up HeightForAgeLMS for child sex: " + child.getSex() + ", age: " + ageMonths);
+            heightForAgeLMS = (HeightForAgeLMS) HeightForAgeLMS.findHeightForAgeLMSsBySexAndAgeMonthsOldEquals(child.getSex(), ageMonths).getSingleResult();
+        }
+        catch(Exception e)
+        {
+            LOGGER.error(e);
+        }
+        
         if(heightForAgeLMS == null) {
             return new Float(0);
         }
         else {
-            double heightSDCalculated = calculateSD(heightCM.doubleValue(), heightForAgeLMS); 
+            double heightSDCalculated = calculateSD(heightCM.doubleValue(), heightForAgeLMS);
+            LOGGER.info("height = " + heightCM);
+            LOGGER.info("calculated HeightSD = " + heightSDCalculated);
             return new Float(heightSDCalculated);
         }
     }
     
     public Float calculateBmiSD() {
-        if(bmi == null || bmi.intValue() == 0) {
+        if(bmi == null || bmi.doubleValue() == 0) {
             return new Float(0);
         }
         
@@ -376,31 +410,31 @@ public class ClinicalRecord {
             return new Float(0);
         }
        
-        BMIForAgeLMS bmiForAgeLMS = (BMIForAgeLMS) BMIForAgeLMS.findBMIForAgeLMSsBySexAndAgeMonthsOldEquals(child.getSex(), ageMonths).getSingleResult();
+        BMIForAgeLMS bmiForAgeLMS = null;
+        try
+        {
+            LOGGER.info("Look up BMIForAgeLMS for child sex: " + child.getSex() + ", age: " + ageMonths);
+            bmiForAgeLMS = (BMIForAgeLMS) BMIForAgeLMS.findBMIForAgeLMSsBySexAndAgeMonthsOldEquals(child.getSex(), ageMonths).getSingleResult();
+        }
+        catch(Exception e)
+        {
+            LOGGER.error(e);
+        }
+        
         if(bmiForAgeLMS == null) {
             return new Float(0);
         }
         else {
             double bmiSDCalculated = calculateSD(bmi.doubleValue(), bmiForAgeLMS);
+            LOGGER.info("bmi = " + bmi);
+            LOGGER.info("calculated bmiSD = " + bmiSDCalculated);
+
             return new Float(bmiSDCalculated);
         }
     }
     
     private double calculateSD(double value, LMS lms) {
         return (Math.pow(value / lms.getM(), lms.getL()) - 1) / (lms.getL() * lms.getS());
-    }
-    
-    public Float calculateBloodPressureSystolicSD() {
-        if (bloodPressureSystolicMMHg == null || bloodPressureSystolicMMHg.intValue() == 0) {
-            return new Float(0);
-        }
-
-        if (heightSD == null || heightSD.equals(new Float(0))) {
-            return new Float(0);
-        }
-        
-        
-        return null;
     }
     
     private double calcExpectedSystolicBP() {
