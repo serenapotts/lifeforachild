@@ -37,21 +37,21 @@ public class ClinicalRecord {
     
     @Min(0L)
     @Max(56L)
-    @NotNull
+    @NotNull(message = "is required.")
     private Integer bloodGlucoseSelfMonitoringPerWeek;
 
     @Min(0L)
     @Max(21L)
-    @NotNull
+    @NotNull(message = "is required.")
     private Integer urineGlucoseSelfMonitoringPerWeek;
 
     @Enumerated
-    @NotNull
+    @NotNull(message = "is required.")
     private YesNoType adjustInsulinDoseIfNeeded;
 
     @Min(0L)
     @Max(200L)
-    @NotNull
+    @NotNull(message = "is required.")
     private Integer insulinUnitsPerDay;
 
     @Min(1L)
@@ -59,19 +59,19 @@ public class ClinicalRecord {
     private Integer numberOfInsulinInjectionsPerDay;
 
     @Enumerated
-    @NotNull
+    @NotNull(message = "is required.")
     private YesNoType longActingHuman;
 
     @Enumerated
-    @NotNull
+    @NotNull(message = "is required.")
     private YesNoType shortActingHuman;
 
     @Enumerated
-    @NotNull
+    @NotNull(message = "is required.")
     private YesNoType analog;
 
     @Enumerated
-    @NotNull
+    @NotNull(message = "is required.")
     private YesNoType oralAgents;
 
     @Size(max = 40)
@@ -79,11 +79,11 @@ public class ClinicalRecord {
 
     @Min(0L)
     @Max(50L)
-    @NotNull
+    @NotNull(message = "is required.")
     private Integer routineClinicReviewsLastYear;
 
     @Enumerated
-    @NotNull
+    @NotNull(message = "is required.")
     private YesNoType bpMedications;
 
     private YesNoType acearb;
@@ -95,10 +95,10 @@ public class ClinicalRecord {
     private String otherTreatments;
 
     @Enumerated
-    @NotNull
+    @NotNull(message = "is required.")
     private YesNoType LaserRxInLast12Months;
 
-    @NotNull
+    @NotNull(message = "is required.")
     @DecimalMin(value ="3.0")
     @DecimalMax(value = "120.0")
     private float weightKG;
@@ -115,26 +115,26 @@ public class ClinicalRecord {
     @Max(220L)
     private Integer bloodPressureDiastolicMMHg;
 
-    @NotNull
+    @NotNull(message = "is required.")
     @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(style = "S-")
     private Date dateOfMeasurement;
 
-    @NotNull
+    @NotNull(message = "is required.")
     @Min(1L)
     @Max(60L)
     private Integer age;
 
     @Enumerated
-    @NotNull
+    @NotNull(message = "is required.")
     private YesNoType hasPersistentHypertension;
 
     @Enumerated
-    @NotNull
+    @NotNull(message = "is required.")
     private YesNoType hasPubertyTannerB2_P2orGreater;
 
     @Enumerated
-    @NotNull
+    @NotNull(message = "is required.")
     private YesNoType menarche;
 
     @Temporal(TemporalType.TIMESTAMP)
@@ -142,7 +142,7 @@ public class ClinicalRecord {
     private Date ifMenarcheAge;
 
     @Enumerated
-    @NotNull
+    @NotNull(message = "is required.")
     private YesNoType eyesExaminedInLastYear;
 
     @Enumerated
@@ -155,7 +155,7 @@ public class ClinicalRecord {
     private String visualAcuityLeft;
 
     @Enumerated
-    @NotNull
+    @NotNull(message = "is required.")
     private YesNoType feetExaminedInLastYear;
 
     @Enumerated
@@ -171,13 +171,13 @@ public class ClinicalRecord {
     private YesNoType tuningForkAbnormal;
 
     @Enumerated
-    @NotNull
+    @NotNull(message = "is required.")
     private YesNoLaterType lastHbA1cInLast12Months;
 
     private float hbA1cPercentage;
 
     @Enumerated
-    @NotNull
+    @NotNull(message = "is required.")
     private HbA1cMethodType hbA1cMethod;
 
     @Size(max = 30)
@@ -188,7 +188,7 @@ public class ClinicalRecord {
     private float microalbuminuriaValue;
 
     @Enumerated
-    @NotNull
+    @NotNull(message = "is required.")
     private MicroalbuminuriaUnitsType microalbuminuriaUnitOfMeasure;
 
     private String Proteinuria_dipstick_other;
@@ -196,37 +196,37 @@ public class ClinicalRecord {
     private float creatinineValue;
 
     @Enumerated
-    @NotNull
+    @NotNull(message = "is required.")
     private CreatineUnitsType creatinineUnits;
 
     private float totalCholesterolValue;
 
     @Enumerated
-    @NotNull
+    @NotNull(message = "is required.")
     private MG_OR_MMOL_Type cholesterolUnits;
 
     private float hdlCholesterolValue;
 
     @Enumerated
-    @NotNull
+    @NotNull(message = "is required.")
     private MG_OR_MMOL_Type hdlUnits;
 
     private float triglyceridesValue;
 
     @Enumerated
-    @NotNull
+    @NotNull(message = "is required.")
     private MG_OR_MMOL_Type triglyceridesUnits;
 
     @Enumerated
-    @NotNull
+    @NotNull(message = "is required.")
     private YesNoUnkownType fasted;
 
     @Enumerated
-    @NotNull
+    @NotNull(message = "is required.")
     private YesNoType attendingSchool;
 
     @Enumerated
-    @NotNull
+    @NotNull(message = "is required.")
     private NotAttendingSchoolReasonType notAttendingSchoolWhy;
 
     private YesNoType diabetesLimitingAttendance;
@@ -234,7 +234,7 @@ public class ClinicalRecord {
     private YesNoType appropriateGradeForAge;
 
     @Enumerated
-    @NotNull
+    @NotNull(message = "is required.")
     private DiabetesCopingType diabetesCopingAbilities;
 
     @Min(0L)
@@ -242,7 +242,7 @@ public class ClinicalRecord {
     private Integer numberOfSevereHypoglycaemiaEpisodes;
 
     @Enumerated
-    @NotNull
+    @NotNull(message = "is required.")
     ReasonNotEnteringType reasonHypoglycaemiaEpisodesNotEntered;
 
     @Min(0L)
@@ -250,7 +250,7 @@ public class ClinicalRecord {
     private Integer numberKetoacidosisEpisodes;
 
     @Enumerated
-    @NotNull
+    @NotNull(message = "is required.")
     ReasonNotEnteringType reasonKetoacidosisEpisodesNotEntered;
 
     @Min(0L)
@@ -258,27 +258,27 @@ public class ClinicalRecord {
     private Integer numberOfHospitalAdmissionsRelatedToDiabetes;
 
     @Enumerated
-    @NotNull
+    @NotNull(message = "is required.")
     ReasonNotEnteringType reasonHospitalAdmissionsNotEntered;
 
     @Size(max = 100)
     private String additionalComment;
 
-    @NotNull
+    @NotNull(message = "is required.")
     @ManyToOne
     private User personCompletingForm;
 
-    @NotNull
+    @NotNull(message = "is required.")
     @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(style = "S-")
     private Date dateCompleted;
 
-    @NotNull
+    @NotNull(message = "is required.")
     @Size(max = 30)
     private String seniorPhysician;
 
     @Enumerated
-    @NotNull
+    @NotNull(message = "is required.")
     private YesNoNAType literate;
 
     private Float exactAge;
