@@ -66,11 +66,8 @@ privileged aspect ClinicalRecord_Roo_ToString {
         sb.append("AppropriateGradeForAge: ").append(getAppropriateGradeForAge()).append(", ");        
         sb.append("DiabetesCopingAbilities: ").append(getDiabetesCopingAbilities()).append(", ");        
         sb.append("NumberOfSevereHypoglycaemiaEpisodes: ").append(getNumberOfSevereHypoglycaemiaEpisodes()).append(", ");        
-        sb.append("ReasonHypoglycaemiaEpisodesNotEntered: ").append(getReasonHypoglycaemiaEpisodesNotEntered()).append(", ");        
         sb.append("NumberKetoacidosisEpisodes: ").append(getNumberKetoacidosisEpisodes()).append(", ");        
-        sb.append("ReasonKetoacidosisEpisodesNotEntered: ").append(getReasonKetoacidosisEpisodesNotEntered()).append(", ");        
         sb.append("NumberOfHospitalAdmissionsRelatedToDiabetes: ").append(getNumberOfHospitalAdmissionsRelatedToDiabetes()).append(", ");        
-        sb.append("ReasonHospitalAdmissionsNotEntered: ").append(getReasonHospitalAdmissionsNotEntered()).append(", ");        
         sb.append("AdditionalComment: ").append(getAdditionalComment()).append(", ");        
         sb.append("PersonCompletingForm: ").append(getPersonCompletingForm()).append(", ");        
         sb.append("DateCompleted: ").append(getDateCompleted()).append(", ");        

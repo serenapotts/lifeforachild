@@ -19,9 +19,9 @@
                         </sec:authorize>
                         <th>Country</th>
                         <th>Centre</th>
-                        <th/>
-                        <th/>
-                        <th/>
+                        <th>Show Child</th>
+                        <th>Update Child</th>
+                        <th>Delete Child</th>
                     </tr>
                 </thead>
                 <c:forEach items="${children}" var="child">

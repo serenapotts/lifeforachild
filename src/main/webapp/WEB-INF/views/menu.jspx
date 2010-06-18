@@ -10,7 +10,7 @@
                     <spring:url value="/child/form" var="web_mvc_jsp_create_child_menu_item_url"/>
                     <a href="${web_mvc_jsp_create_child_menu_item_url}">
                         <spring:message code="label.child" var="label_child"/>
-                        <spring:message arguments="${label_child}" code="global.menu.new"/>
+                        <spring:message arguments="${label_child}" code="child.menu.new"/>
                     </a>
                 </li>
             <li id="web_mvc_jsp_list_child_menu_item">
@@ -38,7 +38,7 @@
                     <spring:url value="/country?page=${empty param.page ? 1 : param.page}&amp;amp;size=${empty param.size ? 10 : param.size}" var="web_mvc_jsp_list_country_menu_item_url"/>
                     <a href="${web_mvc_jsp_list_country_menu_item_url}">
                         <spring:message code="label.countrys" var="label_countrys"/>
-                        <spring:message arguments="${label_countrys}" code="global.menu.list"/>
+                        <spring:message code="country.menu.list"/>
                     </a>
                 </li>
             </ul>

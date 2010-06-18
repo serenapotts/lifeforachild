@@ -63,7 +63,7 @@
             </div>
             <br/>
             <div id="roo_child_ethnicGroup">
-                <label for="_ethnicGroup_id">Ethnic Group:</label>
+                <label for="_ethnicGroup_id">Ethnic Group (Optional):</label>
                 <form:input cssStyle="width:250px" id="_ethnicGroup_id" maxlength="20" path="ethnicGroup" size="0"/>
                 <br/>
                 <form:errors cssClass="errors" id="_ethnicGroup_error_id" path="ethnicGroup"/>

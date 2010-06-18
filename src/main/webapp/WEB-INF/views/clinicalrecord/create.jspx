@@ -37,14 +37,7 @@
             <br/>
             </sec:authorize>
             <form:hidden id="_child_id" path="child"/>
-            <div id="roo_clinicalRecord_additionalComment">
-                <label for="_additionalComment_id">Additional Comment:</label>
-                <form:textarea cssStyle="width:250px" id="_additionalComment_id" path="additionalComment"/>
-                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_additionalComment_id', widgetType: 'dijit.form.SimpleTextarea', widgetAttrs: {}})); </script>
-                <br/>
-                <form:errors cssClass="errors" id="_additionalComment_error_id" path="additionalComment"/>
-            </div>
-            <br/>
+
             <div id="roo_clinicalRecord_personCompletingForm">
                 <c:if test="${not empty users}">
                     <label for="_personCompletingForm_id">Person Completing Form:</label>
@@ -77,18 +70,7 @@
                 <spring:message argumentSeparator="," arguments="Senior Physician,(${field_required})" code="field.simple.validation" var="field_validation"/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_seniorPhysician_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : true}})); </script>
             </div>
-            <br/>
-            <div id="roo_clinicalRecord_literate">
-                <label for="_literate_id">Literate:</label>
-                <form:select cssStyle="width:250px" id="_literate_id" path="literate">
-					<form:option value=""></form:option>
-                	<form:options items="${yesnonatype_enum}" itemLabel="label"/>
-                </form:select>                 
-                <br/>
-                <form:errors cssClass="errors" id="_literate_error_id" path="literate"/>
-                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_literate_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
-            </div>
-            <br/>          
+            <br/>       
 		</div>	   
 		<script type="text/javascript">
 			Spring.addDecoration(new Spring.ElementDecoration({
@@ -248,7 +230,7 @@
             </div>
             <br/>
             <div id="roo_clinicalRecord_bpMedications">
-                <label for="_bpMedications_id">Bp Medications:</label>
+                <label for="_bpMedications_id">BP Medications:</label>
                 <form:select cssStyle="width:250px" id="_bpMedications_id" path="bpMedications">
 					<form:option value=""></form:option>
                 	<form:options items="${yesnotype_enum}" itemLabel="label"/>
@@ -259,7 +241,7 @@
             </div>
             <br/>
             <div id="roo_clinicalRecord_acearb">
-                <label for="_acearb_id">Acearb:</label>
+                <label for="_acearb_id">ACE/ARB agents:</label>
                 <form:select cssStyle="width:250px" id="_acearb_id" path="acearb">
 					<form:option value=""></form:option>
                 	<form:options items="${yesnotype_enum}" itemLabel="label"/>
@@ -309,7 +291,7 @@
 		</script>	            
         <div id="clinicalMeasures">            
             <div id="roo_clinicalRecord_weightKG">
-                <label for="_weightKG_id">Weight K G:</label>
+                <label for="_weightKG_id">Weight kg:</label>
                 <form:input cssStyle="width:250px" id="_weightKG_id" maxlength="30" path="weightKG" size="0"/>
                 <br/>
                 <form:errors cssClass="errors" id="_weightKG_error_id" path="weightKG"/>
@@ -320,7 +302,7 @@
             </div>
             <br/>
             <div id="roo_clinicalRecord_heightCM">
-                <label for="_heightCM_id">Height C M:</label>
+                <label for="_heightCM_id">Height cm:</label>
                 <form:input cssStyle="width:250px" id="_heightCM_id" maxlength="30" path="heightCM" size="0"/>
                 <br/>
                 <form:errors cssClass="errors" id="_heightCM_error_id" path="heightCM"/>
@@ -331,7 +313,7 @@
             </div>
             <br/>
             <div id="roo_clinicalRecord_bloodPressureSystolicMMHg">
-                <label for="_bloodPressureSystolicMMHg_id">Blood Pressure Systolic M M Hg:</label>
+                <label for="_bloodPressureSystolicMMHg_id">Blood Pressure Systolic mm Hg:</label>
                 <form:input cssStyle="width:250px" id="_bloodPressureSystolicMMHg_id" maxlength="30" path="bloodPressureSystolicMMHg" size="0"/>
                 <br/>
                 <form:errors cssClass="errors" id="_bloodPressureSystolicMMHg_error_id" path="bloodPressureSystolicMMHg"/>
@@ -387,7 +369,7 @@
             </div>
             <br/>
             <div id="roo_clinicalRecord_hasPubertyTannerB2_P2orGreater">
-                <label for="_hasPubertyTannerB2_P2orGreater_id">Has Puberty Tanner B2_ P2or Greater:</label>
+                <label for="_hasPubertyTannerB2_P2orGreater_id">Has Puberty Tanner B2/P2 or greater:</label>
                 <form:select cssStyle="width:250px" id="_hasPubertyTannerB2_P2orGreater_id" path="hasPubertyTannerB2_P2orGreater">
 					<form:option value=""></form:option>
                 	<form:options items="${yesnotype_enum}" itemLabel="label"/>
@@ -441,7 +423,7 @@
             </div>
             <br/>
             <div id="roo_clinicalRecord_cateract">
-                <label for="_cateract_id">Cateract:</label>
+                <label for="_cateract_id">Cataract:</label>
                 <form:select cssStyle="width:250px" id="_cateract_id" path="cateract">
 					<form:option value=""></form:option>
                 	<form:options items="${yesnounkowntype_enum}" itemLabel="label"/>
@@ -547,7 +529,7 @@
 		</script>			        
         <div id="labTesting">            
             <div id="roo_clinicalRecord_lastHbA1cInLast12Months">
-                <label for="_lastHbA1cInLast12Months_id">Last Hb A1c In Last12 Months:</label>
+                <label for="_lastHbA1cInLast12Months_id">Last HbA1c In Last12 Months:</label>
                 <form:select cssStyle="width:250px" id="_lastHbA1cInLast12Months_id" path="lastHbA1cInLast12Months">
 					<form:option value=""></form:option>
                 	<form:options items="${yesnolatertype_enum}" itemLabel="label"/>
@@ -558,7 +540,7 @@
             </div>
             <br/>
             <div id="roo_clinicalRecord_hbA1cPercentage">
-                <label for="_hbA1cPercentage_id">Hb A1c Percentage:</label>
+                <label for="_hbA1cPercentage_id">HbA1c Percentage:</label>
                 <form:input cssStyle="width:250px" id="_hbA1cPercentage_id" maxlength="30" path="hbA1cPercentage" size="0"/>
                 <br/>
                 <form:errors cssClass="errors" id="_hbA1cPercentage_error_id" path="hbA1cPercentage"/>
@@ -569,7 +551,7 @@
             </div>
             <br/>
             <div id="roo_clinicalRecord_hbA1cMethod">
-                <label for="_hbA1cMethod_id">Hb A1c Method:</label>
+                <label for="_hbA1cMethod_id">HbA1c Method:</label>
                 <form:select cssStyle="width:250px" id="_hbA1cMethod_id" path="hbA1cMethod">
 					<form:option value=""></form:option>
                 	<form:options items="${hba1cmethodtype_enum}" itemLabel="label"/>
@@ -580,7 +562,7 @@
             </div>
             <br/>
             <div id="roo_clinicalRecord_hbA1cMethodOther">
-                <label for="_hbA1cMethodOther_id">Hb A1c Method Other:</label>
+                <label for="_hbA1cMethodOther_id">HbA1c Method Other:</label>
                 <form:input cssStyle="width:250px" id="_hbA1cMethodOther_id" maxlength="30" path="hbA1cMethodOther" size="0"/>
                 <br/>
                 <form:errors cssClass="errors" id="_hbA1cMethodOther_error_id" path="hbA1cMethodOther"/>
@@ -613,7 +595,7 @@
             </div>
             <br/>
             <div id="roo_clinicalRecord_proteinuria_dipstick_other">
-                <label for="_proteinuria_dipstick_other_id">Proteinuria_dipstick_other:</label>
+                <label for="_proteinuria_dipstick_other_id">Proteinuria - dipstick or other:</label>
                 <form:input cssStyle="width:250px" id="_Proteinuria_dipstick_other_id" maxlength="30" path="proteinuria_dipstick_other" size="0"/>
                 <br/>
                 <form:errors cssClass="errors" id="_Proteinuria_dipstick_other_error_id" path="proteinuria_dipstick_other"/>
@@ -668,7 +650,7 @@
             </div>
             <br/>
             <div id="roo_clinicalRecord_hdlCholesterolValue">
-                <label for="_hdlCholesterolValue_id">Hdl Cholesterol Value:</label>
+                <label for="_hdlCholesterolValue_id">HDL Cholesterol Value:</label>
                 <form:input cssStyle="width:250px" id="_hdlCholesterolValue_id" maxlength="30" path="hdlCholesterolValue" size="0"/>
                 <br/>
                 <form:errors cssClass="errors" id="_hdlCholesterolValue_error_id" path="hdlCholesterolValue"/>
@@ -679,7 +661,7 @@
             </div>
             <br/>
             <div id="roo_clinicalRecord_hdlUnits">
-                <label for="_hdlUnits_id">Hdl Units:</label>
+                <label for="_hdlUnits_id">HDL Units:</label>
                 <form:select cssStyle="width:250px" id="_hdlUnits_id" path="hdlUnits">
 					<form:option value=""></form:option>
                 	<form:options items="${mg_or_mmol_type_enum}" itemLabel="label"/>
@@ -743,7 +725,7 @@
             </div>
             <br/>
             <div id="roo_clinicalRecord_notAttendingSchoolWhy">
-                <label for="_notAttendingSchoolWhy_id">Not Attending School Why:</label>
+                <label for="_notAttendingSchoolWhy_id">If not attending School - Why:</label>
                 <form:select cssStyle="width:250px" id="_notAttendingSchoolWhy_id" path="notAttendingSchoolWhy">
 					<form:option value=""></form:option>
                 	<form:options items="${notattendingschoolreasontype_enum}" itemLabel="label"/>
@@ -786,6 +768,17 @@
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_diabetesCopingAbilities_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
             </div>
             <br/>
+                <div id="roo_clinicalRecord_literate">
+                <label for="_literate_id">Literate:</label>
+                <form:select cssStyle="width:250px" id="_literate_id" path="literate">
+					<form:option value=""></form:option>
+                	<form:options items="${yesnonatype_enum}" itemLabel="label"/>
+                </form:select>                 
+                <br/>
+                <form:errors cssClass="errors" id="_literate_error_id" path="literate"/>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_literate_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
+            </div>
+            <br/>   
 		</div>
 		<script type="text/javascript">
 			Spring.addDecoration(new Spring.ElementDecoration({
@@ -806,6 +799,7 @@
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_numberOfSevereHypoglycaemiaEpisodes_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', regExp: '-?[0-9]*', required : false}})); </script>
             </div>
             <br/>
+            <!-- 
             <div id="roo_clinicalRecord_reasonHypoglycaemiaEpisodesNotEntered">
                 <label for="_reasonHypoglycaemiaEpisodesNotEntered_id">Reason Hypoglycaemia Episodes Not Entered:</label>
                 <form:select cssStyle="width:250px" id="_reasonHypoglycaemiaEpisodesNotEntered_id" path="reasonHypoglycaemiaEpisodesNotEntered">
@@ -816,6 +810,7 @@
                 <form:errors cssClass="errors" id="_reasonHypoglycaemiaEpisodesNotEntered_error_id" path="reasonHypoglycaemiaEpisodesNotEntered"/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_reasonHypoglycaemiaEpisodesNotEntered_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
             </div>
+             -->
             <br/>
             <div id="roo_clinicalRecord_numberKetoacidosisEpisodes">
                 <label for="_numberKetoacidosisEpisodes_id">Number Ketoacidosis Episodes:</label>
@@ -828,6 +823,7 @@
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_numberKetoacidosisEpisodes_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', regExp: '-?[0-9]*', required : false}})); </script>
             </div>
             <br/>
+             <!--
             <div id="roo_clinicalRecord_reasonKetoacidosisEpisodesNotEntered">
                 <label for="_reasonKetoacidosisEpisodesNotEntered_id">Reason Ketoacidosis Episodes Not Entered:</label>
                 <form:select cssStyle="width:250px" id="_reasonKetoacidosisEpisodesNotEntered_id" path="reasonKetoacidosisEpisodesNotEntered">
@@ -839,6 +835,7 @@
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_reasonKetoacidosisEpisodesNotEntered_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
             </div>
             <br/>
+            -->
             <div id="roo_clinicalRecord_numberOfHospitalAdmissionsRelatedToDiabetes">
                 <label for="_numberOfHospitalAdmissionsRelatedToDiabetes_id">Number Of Hospital Admissions Related To Diabetes:</label>
                 <form:input cssStyle="width:250px" id="_numberOfHospitalAdmissionsRelatedToDiabetes_id" maxlength="30" path="numberOfHospitalAdmissionsRelatedToDiabetes" size="0"/>
@@ -850,6 +847,7 @@
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_numberOfHospitalAdmissionsRelatedToDiabetes_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', regExp: '-?[0-9]*', required : false}})); </script>
             </div>
             <br/>
+            <!--
             <div id="roo_clinicalRecord_reasonHospitalAdmissionsNotEntered">
                 <label for="_reasonHospitalAdmissionsNotEntered_id">Reason Hospital Admissions Not Entered:</label>
                 <form:select cssStyle="width:250px" id="_reasonHospitalAdmissionsNotEntered_id" path="reasonHospitalAdmissionsNotEntered">
@@ -859,6 +857,15 @@
                 <br/>
                 <form:errors cssClass="errors" id="_reasonHospitalAdmissionsNotEntered_error_id" path="reasonHospitalAdmissionsNotEntered"/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_reasonHospitalAdmissionsNotEntered_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
+            </div>
+            <br/>
+            -->
+                <div id="roo_clinicalRecord_additionalComment">
+                <label for="_additionalComment_id">Additional Comment about any aspect - optional:</label>
+                <form:textarea cssStyle="width:250px" id="_additionalComment_id" path="additionalComment"/>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_additionalComment_id', widgetType: 'dijit.form.SimpleTextarea', widgetAttrs: {}})); </script>
+                <br/>
+                <form:errors cssClass="errors" id="_additionalComment_error_id" path="additionalComment"/>
             </div>
             <br/>
 		</div>

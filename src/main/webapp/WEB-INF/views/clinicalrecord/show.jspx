@@ -583,6 +583,7 @@
 		            </div>
 		            <br/>
 		            <br/>
+		            <!-- 
 		            <div id="roo_clinicalRecord_reasonHypoglycaemiaEpisodesNotEntered">
 		                <label for="_reasonHypoglycaemiaEpisodesNotEntered_id">Reason Hypoglycaemia Episodes Not Entered:</label>
 		                <div class="box" id="_reasonHypoglycaemiaEpisodesNotEntered_id">
@@ -590,6 +591,7 @@
 		                </div>
 		            </div>
 		            <br/>
+		             -->
 		            <div id="roo_clinicalRecord_numberKetoacidosisEpisodes">
 		                <label for="_numberKetoacidosisEpisodes_id">Number Ketoacidosis Episodes:</label>
 		                <div class="box" id="_numberKetoacidosisEpisodes_id">
@@ -597,6 +599,7 @@
 		                </div>
 		            </div>
 		            <br/>
+		            <!-- 
 		            <div id="roo_clinicalRecord_reasonKetoacidosisEpisodesNotEntered">
 		                <label for="_reasonKetoacidosisEpisodesNotEntered_id">Reason Ketoacidosis Episodes Not Entered:</label>
 		                <div class="box" id="_reasonKetoacidosisEpisodesNotEntered_id">
@@ -604,6 +607,7 @@
 		                </div>
 		            </div>
 		            <br/>
+		             -->
 		            <div id="roo_clinicalRecord_numberOfHospitalAdmissionsRelatedToDiabetes">
 		                <label for="_numberOfHospitalAdmissionsRelatedToDiabetes_id">Number Of Hospital Admissions Related To Diabetes:</label>
 		                <div class="box" id="_numberOfHospitalAdmissionsRelatedToDiabetes_id">
@@ -612,6 +616,7 @@
 		            </div>
 		            <br/>
 		            <br/>
+		            <!-- 
 		            <div id="roo_clinicalRecord_reasonHospitalAdmissionsNotEntered">
 		                <label for="_reasonHospitalAdmissionsNotEntered_id">Reason Hospital Admissions Not Entered:</label>
 		                <div class="box" id="_reasonHospitalAdmissionsNotEntered_id">
@@ -619,6 +624,7 @@
 		                </div>
 		            </div>
 		            <br/>
+		             -->
 		        </div>
 				<script type="text/javascript">
 					Spring.addDecoration(new Spring.ElementDecoration({

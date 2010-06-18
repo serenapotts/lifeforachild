@@ -248,25 +248,20 @@ public class ClinicalRecord {
     @Max(20L)
     private Integer numberOfSevereHypoglycaemiaEpisodes;
 
-    @Enumerated
-    @NotNull(message = "is required.")
-    ReasonNotEnteringType reasonHypoglycaemiaEpisodesNotEntered;
+   // ReasonNotEnteringType reasonHypoglycaemiaEpisodesNotEntered;
 
     @Min(0L)
     @Max(10L)
     private Integer numberKetoacidosisEpisodes;
 
-    @Enumerated
-    @NotNull(message = "is required.")
-    ReasonNotEnteringType reasonKetoacidosisEpisodesNotEntered;
+
+    //ReasonNotEnteringType reasonKetoacidosisEpisodesNotEntered;
 
     @Min(0L)
     @Max(15L)
     private Integer numberOfHospitalAdmissionsRelatedToDiabetes;
 
-    @Enumerated
-    @NotNull(message = "is required.")
-    ReasonNotEnteringType reasonHospitalAdmissionsNotEntered;
+    //ReasonNotEnteringType reasonHospitalAdmissionsNotEntered;
 
     @Size(max = 100)
     private String additionalComment;

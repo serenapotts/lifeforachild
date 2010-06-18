@@ -11,7 +11,7 @@ import ar.com.fdvs.dj.domain.CustomExpression;
 public enum DiabetesType {
 	TYPE1("Type 1"),
 	TYPE2("Type 2"),
-	OTHER("Other");
+	OTHER("Diabetes Type Other – please specify");
 	
 	DiabetesType(String s) { label = s; }
     

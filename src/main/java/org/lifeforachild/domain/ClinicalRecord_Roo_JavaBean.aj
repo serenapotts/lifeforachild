@@ -482,15 +482,7 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
     
     public void ClinicalRecord.setNumberOfSevereHypoglycaemiaEpisodes(Integer numberOfSevereHypoglycaemiaEpisodes) {    
         this.numberOfSevereHypoglycaemiaEpisodes = numberOfSevereHypoglycaemiaEpisodes;        
-    }    
-    
-    public ReasonNotEnteringType ClinicalRecord.getReasonHypoglycaemiaEpisodesNotEntered() {    
-        return this.reasonHypoglycaemiaEpisodesNotEntered;        
-    }    
-    
-    public void ClinicalRecord.setReasonHypoglycaemiaEpisodesNotEntered(ReasonNotEnteringType reasonHypoglycaemiaEpisodesNotEntered) {    
-        this.reasonHypoglycaemiaEpisodesNotEntered = reasonHypoglycaemiaEpisodesNotEntered;        
-    }    
+    }       
     
     public Integer ClinicalRecord.getNumberKetoacidosisEpisodes() {    
         return this.numberKetoacidosisEpisodes;        
@@ -500,13 +492,6 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.numberKetoacidosisEpisodes = numberKetoacidosisEpisodes;        
     }    
     
-    public ReasonNotEnteringType ClinicalRecord.getReasonKetoacidosisEpisodesNotEntered() {    
-        return this.reasonKetoacidosisEpisodesNotEntered;        
-    }    
-    
-    public void ClinicalRecord.setReasonKetoacidosisEpisodesNotEntered(ReasonNotEnteringType reasonKetoacidosisEpisodesNotEntered) {    
-        this.reasonKetoacidosisEpisodesNotEntered = reasonKetoacidosisEpisodesNotEntered;        
-    }    
     
     public Integer ClinicalRecord.getNumberOfHospitalAdmissionsRelatedToDiabetes() {    
         return this.numberOfHospitalAdmissionsRelatedToDiabetes;        
@@ -514,15 +499,7 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
     
     public void ClinicalRecord.setNumberOfHospitalAdmissionsRelatedToDiabetes(Integer numberOfHospitalAdmissionsRelatedToDiabetes) {    
         this.numberOfHospitalAdmissionsRelatedToDiabetes = numberOfHospitalAdmissionsRelatedToDiabetes;        
-    }    
-    
-    public ReasonNotEnteringType ClinicalRecord.getReasonHospitalAdmissionsNotEntered() {    
-        return this.reasonHospitalAdmissionsNotEntered;        
-    }    
-    
-    public void ClinicalRecord.setReasonHospitalAdmissionsNotEntered(ReasonNotEnteringType reasonHospitalAdmissionsNotEntered) {    
-        this.reasonHospitalAdmissionsNotEntered = reasonHospitalAdmissionsNotEntered;        
-    }    
+    }        
     
     public String ClinicalRecord.getAdditionalComment() {    
         return this.additionalComment;        
