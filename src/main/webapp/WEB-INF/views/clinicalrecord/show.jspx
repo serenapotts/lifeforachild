@@ -59,13 +59,6 @@
 		                </div>
 		            </div>
 		            <br/>
-		            <div id="roo_clinicalRecord_bmi">
-		                <label for="_bmi_id">Body Mass Index:</label>
-		                <div class="box" id="_bmi_id">
-		                    <c:out value="${clinicalRecord.bmi}"/>
-		                </div>
-		            </div>
-		            <br/>
 		            <div id="roo_clinicalRecord_insulinPerKg">
 		                <label for="_insulinPerKg_id">Insulin Per KG:</label>
 		                <div class="box" id="_insulinPerKg_id">
@@ -73,41 +66,6 @@
 		                </div>
 		            </div>
 		            <br/>
-		            <div id="roo_clinicalRecord_heightSD">
-		                <label for="_heightSD_id">Height SD:</label>
-		                <div class="box" id="_heightSD_id">
-		                    <c:out value="${clinicalRecord.heightSD}"/>
-		                </div>
-		            </div>
-		            <br/>
-		            <div id="roo_clinicalRecord_weightSD">
-		                <label for="_weightSD_id">Weight SD:</label>
-		                <div class="box" id="_weightSD_id">
-		                    <c:out value="${clinicalRecord.weightSD}"/>
-		                </div>
-		            </div>
-		            <br/>
-		            <div id="roo_clinicalRecord_bmiSD">
-		                <label for="_bmiSD_id">Body Mass Index SD:</label>
-		                <div class="box" id="_bmiSD_id">
-		                    <c:out value="${clinicalRecord.bmiSD}"/>
-		                </div>
-		            </div>
-		            <br/>
-		            <div id="roo_clinicalRecord_bloodPressureSystolicSD">
-		                <label for="_bloodPressureSystolicSD_id">Blood Pressure Systolic SD:</label>
-		                <div class="box" id="_bloodPressureSystolicSD_id">
-		                    <c:out value="${clinicalRecord.bloodPressureSystolicSD}"/>
-		                </div>
-		            </div>
-		            <br/>
-		            <div id="roo_clinicalRecord_bloodPressureDiastolicSD">
-		                <label for="_bloodPressureDiastolicSD_id">Blood Pressure Diastolic SD:</label>
-		                <div class="box" id="_bloodPressureDiastolicSD_id">
-		                    <c:out value="${clinicalRecord.bloodPressureDiastolicSD}"/>
-		                </div>
-		            </div>		            
-		            <br/>			            
 		      	</div>	   
 				<script type="text/javascript">
 					Spring.addDecoration(new Spring.ElementDecoration({
@@ -251,33 +209,75 @@
 				</script>	            
 	            <div id="clinicalMeasures">            
 		            <div id="roo_clinicalRecord_weightKG">
-		                <label for="_weightKG_id">Weight K G:</label>
+		                <label for="_weightKG_id">Weight kg:</label>
 		                <div class="box" id="_weightKG_id">
 		                    <c:out value="${clinicalRecord.weightKG}"/>
 		                </div>
 		            </div>
 		            <br/>
+		            <div id="roo_clinicalRecord_weightSD">
+                        <label for="_weightSD_id">Weight SD:</label>
+                        <div class="box" id="_weightSD_id">
+                            <c:out value="${clinicalRecord.weightSD}"/>
+                        </div>
+                    </div>
+                    <br/>
 		            <div id="roo_clinicalRecord_heightCM">
-		                <label for="_heightCM_id">Height C M:</label>
+		                <label for="_heightCM_id">Height cm:</label>
 		                <div class="box" id="_heightCM_id">
 		                    <c:out value="${clinicalRecord.heightCM}"/>
 		                </div>
 		            </div>
 		            <br/>
+		            <div id="roo_clinicalRecord_heightSD">
+                        <label for="_heightSD_id">Height SD:</label>
+                        <div class="box" id="_heightSD_id">
+                            <c:out value="${clinicalRecord.heightSD}"/>
+                        </div>
+                    </div>
+                    <br/>
+                    <div id="roo_clinicalRecord_bmi">
+                        <label for="_bmi_id">Body Mass Index:</label>
+                        <div class="box" id="_bmi_id">
+                            <c:out value="${clinicalRecord.bmi}"/>
+                        </div>
+                    </div>
+                    <br/>
+                    <div id="roo_clinicalRecord_bmiSD">
+                        <label for="_bmiSD_id">Body Mass Index SD:</label>
+                        <div class="box" id="_bmiSD_id">
+                            <c:out value="${clinicalRecord.bmiSD}"/>
+                        </div>
+                    </div>
+                    <br/>
 		            <div id="roo_clinicalRecord_bloodPressureSystolicMMHg">
-		                <label for="_bloodPressureSystolicMMHg_id">Blood Pressure Systolic M M Hg:</label>
+		                <label for="_bloodPressureSystolicMMHg_id">Blood Pressure Systolic mm Hg:</label>
 		                <div class="box" id="_bloodPressureSystolicMMHg_id">
 		                    <c:out value="${clinicalRecord.bloodPressureSystolicMMHg}"/>
 		                </div>
 		            </div>
 		            <br/>
+		            <div id="roo_clinicalRecord_bloodPressureSystolicSD">
+                        <label for="_bloodPressureSystolicSD_id">Blood Pressure Systolic SD:</label>
+                        <div class="box" id="_bloodPressureSystolicSD_id">
+                            <c:out value="${clinicalRecord.bloodPressureSystolicSD}"/>
+                        </div>
+                    </div>
+                    <br/>
 		            <div id="roo_clinicalRecord_bloodPressureDiastolicMMHg">
-		                <label for="_bloodPressureDiastolicMMHg_id">Blood Pressure Diastolic M M Hg:</label>
+		                <label for="_bloodPressureDiastolicMMHg_id">Blood Pressure Diastolic mm Hg:</label>
 		                <div class="box" id="_bloodPressureDiastolicMMHg_id">
 		                    <c:out value="${clinicalRecord.bloodPressureDiastolicMMHg}"/>
 		                </div>
 		            </div>
 		            <br/>
+                    <div id="roo_clinicalRecord_bloodPressureDiastolicSD">
+                        <label for="_bloodPressureDiastolicSD_id">Blood Pressure Diastolic SD:</label>
+                        <div class="box" id="_bloodPressureDiastolicSD_id">
+                            <c:out value="${clinicalRecord.bloodPressureDiastolicSD}"/>
+                        </div>
+                    </div>      
+                    <br/>                       
 		            <div id="roo_clinicalRecord_dateOfMeasurement">
 		                <label for="_dateOfMeasurement_id">Date Of Measurement:</label>
 		                <div class="box" id="_dateOfMeasurement_id">
