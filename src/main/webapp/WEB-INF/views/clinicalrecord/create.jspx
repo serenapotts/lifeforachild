@@ -375,7 +375,7 @@
             </div>
             <br/>
             <div id="roo_clinicalRecord_bloodPressureDiastolicMMHg">
-                <label for="_bloodPressureDiastolicMMHg_id">Blood Pressure Diastolic M M Hg:</label>
+                <label for="_bloodPressureDiastolicMMHg_id">Blood Pressure Diastolic mm Hg:</label>
                 <form:input cssStyle="width:250px" id="_bloodPressureDiastolicMMHg_id" maxlength="30" path="bloodPressureDiastolicMMHg" size="0"/>
                 <br/>
                 <form:errors cssClass="errors" id="_bloodPressureDiastolicMMHg_error_id" path="bloodPressureDiastolicMMHg"/>
