@@ -1000,6 +1000,13 @@
 				widgetType : "dijit.layout.ContentPane",
 				widgetAttrs : { title: "Emergencies" }
 				}));
+			
+			console.debug(" test!")
+			var widget = dijit.byId("_dateOfMeasurement_id");
+			dojo.connect(widget, "onclick", function(){
+				 console.debug(" fired!");
+				 
+			});
 		</script>		            
 	</div>
 	<script type="text/javascript">

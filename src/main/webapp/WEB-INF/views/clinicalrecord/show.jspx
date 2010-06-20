@@ -165,21 +165,21 @@
 		            </div>
 		            <br/>
 		            <div id="roo_clinicalRecord_bpMedications">
-		                <label for="_bpMedications_id">Bp Medications:</label>
+		                <label for="_bpMedications_id">BP Medications:</label>
 		                <div class="box" id="_bpMedications_id">
 		                    <c:out value="${clinicalRecord.bpMedications}"/>
 		                </div>
 		            </div>
 		            <br/>
 		            <div id="roo_clinicalRecord_acearb">
-		                <label for="_acearb_id">Acearb:</label>
+		                <label for="_acearb_id">ACE/ARB agents:</label>
 		                <div class="box" id="_acearb_id">
 		                    <c:out value="${clinicalRecord.acearb}"/>
 		                </div>
 		            </div>
 		            <br/>
 		            <div id="roo_clinicalRecord_bpMedicationsOther">
-		                <label for="_bpMedicationsOther_id">Bp Medications Other:</label>
+		                <label for="_bpMedicationsOther_id">BP Medications Other:</label>
 		                <div class="box" id="_bpMedicationsOther_id">
 		                    <c:out value="${clinicalRecord.bpMedicationsOther}"/>
 		                </div>
@@ -193,7 +193,7 @@
 		            </div>
 		            <br/>
 		            <div id="roo_clinicalRecord_laserRxInLast12Months">
-		                <label for="_laserRxInLast12Months_id">Laser Rx In Last12 Months:</label>
+		                <label for="_laserRxInLast12Months_id">Laser Rx In Last 12 Months:</label>
 		                <div class="box" id="_laserRxInLast12Months_id">
 		                    <c:out value="${clinicalRecord.laserRxInLast12Months}"/>
 		                </div>
@@ -209,7 +209,7 @@
 				</script>	            
 	            <div id="clinicalMeasures">            
 		            <div id="roo_clinicalRecord_weightKG">
-		                <label for="_weightKG_id">Weight kg:</label>
+		                <label for="_weightKG_id">Weight Kg:</label>
 		                <div class="box" id="_weightKG_id">
 		                    <c:out value="${clinicalRecord.weightKG}"/>
 		                </div>
@@ -251,7 +251,7 @@
                     </div>
                     <br/>
 		            <div id="roo_clinicalRecord_bloodPressureSystolicMMHg">
-		                <label for="_bloodPressureSystolicMMHg_id">Blood Pressure Systolic mm Hg:</label>
+		                <label for="_bloodPressureSystolicMMHg_id">Blood Pressure Systolic mmHg:</label>
 		                <div class="box" id="_bloodPressureSystolicMMHg_id">
 		                    <c:out value="${clinicalRecord.bloodPressureSystolicMMHg}"/>
 		                </div>
@@ -265,7 +265,7 @@
                     </div>
                     <br/>
 		            <div id="roo_clinicalRecord_bloodPressureDiastolicMMHg">
-		                <label for="_bloodPressureDiastolicMMHg_id">Blood Pressure Diastolic mm Hg:</label>
+		                <label for="_bloodPressureDiastolicMMHg_id">Blood Pressure Diastolic mmHg:</label>
 		                <div class="box" id="_bloodPressureDiastolicMMHg_id">
 		                    <c:out value="${clinicalRecord.bloodPressureDiastolicMMHg}"/>
 		                </div>
@@ -300,7 +300,7 @@
 		            </div>
 		            <br/>
 		            <div id="roo_clinicalRecord_hasPubertyTannerB2_P2orGreater">
-		                <label for="_hasPubertyTannerB2_P2orGreater_id">Has Puberty Tanner B2_ P2or Greater:</label>
+		                <label for="_hasPubertyTannerB2_P2orGreater_id">Has Puberty Tanner B2/P2 or greater:</label>
 		                <div class="box" id="_hasPubertyTannerB2_P2orGreater_id">
 		                    <c:out value="${clinicalRecord.hasPubertyTannerB2_P2orGreater}"/>
 		                </div>
@@ -337,7 +337,7 @@
 		            </div>
 		            <br/>
 		            <div id="roo_clinicalRecord_cateract">
-		                <label for="_cateract_id">Cateract:</label>
+		                <label for="_cateract_id">Cataract:</label>
 		                <div class="box" id="_cateract_id">
 		                    <c:out value="${clinicalRecord.cateract}"/>
 		                </div>
@@ -432,7 +432,7 @@
 		            </div>
 		            <br/>
 		            <div id="roo_clinicalRecord_hbA1cMethodOther">
-		                <label for="_hbA1cMethodOther_id">Hb A1c Method Other:</label>
+		                <label for="_hbA1cMethodOther_id">HbA1c Method Other:</label>
 		                <div class="box" id="_hbA1cMethodOther_id">
 		                    <c:out value="${clinicalRecord.hbA1cMethodOther}"/>
 		                </div>
@@ -453,7 +453,7 @@
 		            </div>
 		            <br/>
 		            <div id="roo_clinicalRecord_proteinuria_dipstick_other">
-		                <label for="_proteinuria_dipstick_other_id">Proteinuria_dipstick_other:</label>
+		                <label for="_proteinuria_dipstick_other_id">Proteinuria - dipstick or other:</label>
 		                <div class="box" id="_proteinuria_dipstick_other_id">
 		                    <c:out value="${clinicalRecord.proteinuria_dipstick_other}"/>
 		                </div>
@@ -488,14 +488,14 @@
 		            </div>
 		            <br/>
 		            <div id="roo_clinicalRecord_hdlCholesterolValue">
-		                <label for="_hdlCholesterolValue_id">Hdl Cholesterol Value:</label>
+		                <label for="_hdlCholesterolValue_id">HDL Cholesterol Value:</label>
 		                <div class="box" id="_hdlCholesterolValue_id">
 		                    <c:out value="${clinicalRecord.hdlCholesterolValue}"/>
 		                </div>
 		            </div>
 		            <br/>
 		            <div id="roo_clinicalRecord_hdlUnits">
-		                <label for="_hdlUnits_id">Hdl Units:</label>
+		                <label for="_hdlUnits_id">HDL Units:</label>
 		                <div class="box" id="_hdlUnits_id">
 		                    <c:out value="${clinicalRecord.hdlUnits}"/>
 		                </div>
@@ -539,7 +539,7 @@
 		            </div>
 		            <br/>
 		            <div id="roo_clinicalRecord_notAttendingSchoolWhy">
-		                <label for="_notAttendingSchoolWhy_id">Not Attending School Why:</label>
+		                <label for="_notAttendingSchoolWhy_id">If not attending School - Why:</label>
 		                <div class="box" id="_notAttendingSchoolWhy_id">
 		                    <c:out value="${clinicalRecord.notAttendingSchoolWhy}"/>
 		                </div>
@@ -615,7 +615,7 @@
 		                </div>
 		            </div>
 		            <br/>
-		            <br/>
+		            <br/>   
 		            <!-- 
 		            <div id="roo_clinicalRecord_reasonHospitalAdmissionsNotEntered">
 		                <label for="_reasonHospitalAdmissionsNotEntered_id">Reason Hospital Admissions Not Entered:</label>
