@@ -1,6 +1,16 @@
 <div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:sec="http://www.springframework.org/security/tags" xmlns:form="http://www.springframework.org/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
     <jsp:output omit-xml-declaration="yes"/>
     <script type="text/javascript">dojo.require('dijit.TitlePane');dojo.require('dijit.form.FilteringSelect');dojo.require('dijit.form.SimpleTextarea');dojo.require('dijit.form.DateTextBox');</script>
+    <script type="text/javascript">
+        var generalHasError = false;
+        var diabetesCareHasError = false;
+        var medicationsHasError = false;
+        var clinicalMeasuresHasError = false;
+        var eyesHasError = false;
+        var feetHasError = false;
+        var labTestingHasError = false;
+        var schoolingHasError = false;
+    </script>
     <div id="_title_div">
         <spring:message code="label.clinicalrecord" var="entity_label"/>
         <spring:message arguments="${entity_label}" code="entity.create" var="title_msg"/>
@@ -58,6 +68,7 @@
                 <spring:message argumentSeparator="," arguments="Date Completed,(${field_required})" code="field.simple.validation" var="field_validation"/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_dateCompleted_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : true}})); </script>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_dateCompleted_id', widgetType : 'dijit.form.DateTextBox', widgetAttrs : {promptMessage: '${field_validation}', constraints: {datePattern : '${clinicalRecord_dateCompleted_date_format}', required : false}, datePattern : '${clinicalRecord_dateCompleted_date_format}'}})); </script>
+                <spring:bind path="clinicalRecord.dateCompleted"><c:if test="${status.error}"><script type="text/javascript">generalHasError = true;</script></c:if></spring:bind>
             </div>
             <br/>
             <div id="roo_clinicalRecord_seniorPhysician">
@@ -73,11 +84,22 @@
             <br/>       
 		</div>	   
 		<script type="text/javascript">
-			Spring.addDecoration(new Spring.ElementDecoration({
-				elementId : "general",
-				widgetType : "dijit.layout.ContentPane",
-				widgetAttrs : { title: "General" }
-				}));
+			 if(generalHasError == true)
+	         {
+				   Spring.addDecoration(new Spring.ElementDecoration({
+	                 elementId : "general",
+	                 widgetType : "dijit.layout.ContentPane",
+	                 widgetAttrs : { title: "General *" }
+	                 }));
+	         }
+	         else
+	         {
+	        	    Spring.addDecoration(new Spring.ElementDecoration({
+	                 elementId : "general",
+	                 widgetType : "dijit.layout.ContentPane",
+	                 widgetAttrs : { title: "General" }
+	                 }));
+	         }
 		</script>
         <div id="diabetesCare">               
             <div id="roo_clinicalRecord_bloodGlucoseSelfMonitoringPerWeek">
@@ -111,6 +133,7 @@
                 <br/>
                 <form:errors cssClass="errors" id="_adjustInsulinDoseIfNeeded_error_id" path="adjustInsulinDoseIfNeeded"/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_adjustInsulinDoseIfNeeded_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
+                <spring:bind path="clinicalRecord.adjustInsulinDoseIfNeeded"><c:if test="${status.error}"><script type="text/javascript">diabetesCareHasError = true;</script></c:if></spring:bind>
             </div>
             <br/>
             <div id="roo_clinicalRecord_insulinUnitsPerDay">
@@ -137,11 +160,22 @@
             <br/>
 		</div>
 		<script type="text/javascript">
-			Spring.addDecoration(new Spring.ElementDecoration({
-				elementId : "diabetesCare",
-				widgetType : "dijit.layout.ContentPane",
-				widgetAttrs : { title: "Diabetes Care" }
-				}));
+            if(diabetesCareHasError == true)
+            {
+                Spring.addDecoration(new Spring.ElementDecoration({
+                    elementId : "diabetesCare",
+                    widgetType : "dijit.layout.ContentPane",
+                    widgetAttrs : { title: "Diabetes Care *" }
+                    }));
+            }
+            else
+            {
+				Spring.addDecoration(new Spring.ElementDecoration({
+					elementId : "diabetesCare",
+					widgetType : "dijit.layout.ContentPane",
+					widgetAttrs : { title: "Diabetes Care" }
+					}));
+            }
 		</script>	            
         <div id="medications">            
             <div id="roo_clinicalRecord_longActingHuman">
@@ -153,6 +187,7 @@
                 <br/>
                 <form:errors cssClass="errors" id="_longActingHuman_error_id" path="longActingHuman"/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_longActingHuman_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
+                <spring:bind path="clinicalRecord.longActingHuman"><c:if test="${status.error}"><script type="text/javascript">medicationsHasError = true;</script></c:if></spring:bind>
             </div>
             <br/>
             <div id="roo_clinicalRecord_shortActingHuman">
@@ -164,6 +199,7 @@
                 <br/>
                 <form:errors cssClass="errors" id="_shortActingHuman_error_id" path="shortActingHuman"/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_shortActingHuman_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
+                <spring:bind path="clinicalRecord.shortActingHuman"><c:if test="${status.error}"><script type="text/javascript">medicationsHasError = true;</script></c:if></spring:bind>
             </div>
             <br/>
             <div id="roo_clinicalRecord_analog">
@@ -175,6 +211,7 @@
                 <br/>
                 <form:errors cssClass="errors" id="_analog_error_id" path="analog"/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_analog_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
+                <spring:bind path="clinicalRecord.analog"><c:if test="${status.error}"><script type="text/javascript">medicationsHasError = true;</script></c:if></spring:bind>
             </div>
             <br/>
             <div id="roo_clinicalRecord_oralAgents">
@@ -185,6 +222,7 @@
                 </form:select>                 
                 <br/>
                 <form:errors cssClass="errors" id="_oralAgents_error_id" path="oralAgents"/>
+                <spring:bind path="clinicalRecord.oralAgents"><c:if test="${status.error}"><script type="text/javascript">medicationsHasError = true;</script></c:if></spring:bind>                
                 <script type="text/javascript">Spring.addDecoration(
                         new Spring.ElementDecoration({
                             elementId : '_oralAgents_id', 
@@ -237,6 +275,7 @@
                 </form:select>                 
                 <br/>
                 <form:errors cssClass="errors" id="_bpMedications_error_id" path="bpMedications"/>
+                <spring:bind path="clinicalRecord.bpMedications"><c:if test="${status.error}"><script type="text/javascript">medicationsHasError = true;</script></c:if></spring:bind>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_bpMedications_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
             </div>
             <br/>
@@ -283,11 +322,22 @@
             <br/>
 		</div>
 		<script type="text/javascript">
-			Spring.addDecoration(new Spring.ElementDecoration({
-				elementId : "medications",
-				widgetType : "dijit.layout.ContentPane",
-				widgetAttrs : { title: "Medications" }
-				}));
+		    if(medicationsHasError == true)
+		    {
+				Spring.addDecoration(new Spring.ElementDecoration({
+					elementId : "medications",
+					widgetType : "dijit.layout.ContentPane",
+					widgetAttrs : { title: "Medications *" }
+					}));
+		    }
+		    else
+		    {
+		    	Spring.addDecoration(new Spring.ElementDecoration({
+                    elementId : "medications",
+                    widgetType : "dijit.layout.ContentPane",
+                    widgetAttrs : { title: "Medications" }
+                    }));
+		    }
 		</script>	            
         <div id="clinicalMeasures">            
             <div id="roo_clinicalRecord_weightKG">
@@ -299,6 +349,7 @@
                 <spring:message code="field.required" var="field_required"/>
                 <spring:message argumentSeparator="," arguments="Weight K G,(${field_required})" code="field.simple.validation" var="field_validation"/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_weightKG_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : true}})); </script>
+                <spring:bind path="clinicalRecord.weightKG"><c:if test="${status.error}"><script type="text/javascript">clinicalMeasuresHasError = true;</script></c:if></spring:bind>                
             </div>
             <br/>
             <div id="roo_clinicalRecord_heightCM">
@@ -344,6 +395,7 @@
                 <spring:message argumentSeparator="," arguments="Date Of Measurement,(${field_required})" code="field.simple.validation" var="field_validation"/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_dateOfMeasurement_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : true}})); </script>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_dateOfMeasurement_id', widgetType : 'dijit.form.DateTextBox', widgetAttrs : {promptMessage: '${field_validation}', constraints: {datePattern : '${clinicalRecord_dateOfMeasurement_date_format}', required : false}, datePattern : '${clinicalRecord_dateOfMeasurement_date_format}'}})); </script>
+                <spring:bind path="clinicalRecord.dateOfMeasurement"><c:if test="${status.error}"><script type="text/javascript">clinicalMeasuresHasError = true;</script></c:if></spring:bind>
             </div>
             <br/>
             <div id="roo_clinicalRecord_age">
@@ -366,6 +418,7 @@
                 <br/>
                 <form:errors cssClass="errors" id="_hasPersistentHypertension_error_id" path="hasPersistentHypertension"/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_hasPersistentHypertension_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
+                <spring:bind path="clinicalRecord.hasPersistentHypertension"><c:if test="${status.error}"><script type="text/javascript">clinicalMeasuresHasError = true;</script></c:if></spring:bind>
             </div>
             <br/>
             <div id="roo_clinicalRecord_hasPubertyTannerB2_P2orGreater">
@@ -377,6 +430,7 @@
                 <br/>
                 <form:errors cssClass="errors" id="_hasPubertyTannerB2_P2orGreater_error_id" path="hasPubertyTannerB2_P2orGreater"/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_hasPubertyTannerB2_P2orGreater_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
+                <spring:bind path="clinicalRecord.hasPubertyTannerB2_P2orGreater"><c:if test="${status.error}"><script type="text/javascript">clinicalMeasuresHasError = true;</script></c:if></spring:bind>
             </div>
             <br/>
             <div id="roo_clinicalRecord_menarche">
@@ -388,6 +442,7 @@
                 <br/>
                 <form:errors cssClass="errors" id="_menarche_error_id" path="menarche"/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_menarche_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
+                <spring:bind path="clinicalRecord.menarche"><c:if test="${status.error}"><script type="text/javascript">clinicalMeasuresHasError = true;</script></c:if></spring:bind>
             </div>
             <br/>
             <div id="roo_clinicalRecord_ifMenarcheAge">
@@ -404,11 +459,22 @@
             <br/>
 		</div>	 
 		<script type="text/javascript">
-			Spring.addDecoration(new Spring.ElementDecoration({
-				elementId : "clinicalMeasures",
-				widgetType : "dijit.layout.ContentPane",
-				widgetAttrs : { title: "Clinical Measures" }
-				}));
+		    if(clinicalMeasuresHasError == true)
+		    {
+				Spring.addDecoration(new Spring.ElementDecoration({
+					elementId : "clinicalMeasures",
+					widgetType : "dijit.layout.ContentPane",
+					widgetAttrs : { title: "Clinical Measures *" }
+					}));
+		    }
+		    else
+		    {
+		    	Spring.addDecoration(new Spring.ElementDecoration({
+                    elementId : "clinicalMeasures",
+                    widgetType : "dijit.layout.ContentPane",
+                    widgetAttrs : { title: "Clinical Measures" }
+                    }));
+		    }
 		</script>	
 		<div id="eyes">            
             <div id="roo_clinicalRecord_eyesExaminedInLastYear">
@@ -420,6 +486,7 @@
                 <br/>
                 <form:errors cssClass="errors" id="_eyesExaminedInLastYear_error_id" path="eyesExaminedInLastYear"/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_eyesExaminedInLastYear_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
+                <spring:bind path="clinicalRecord.eyesExaminedInLastYear"><c:if test="${status.error}"><script type="text/javascript">eyesHasError = true;</script></c:if></spring:bind>
             </div>
             <br/>
             <div id="roo_clinicalRecord_cateract">
@@ -457,11 +524,22 @@
             <br/>
 		</div>
 		<script type="text/javascript">
-			Spring.addDecoration(new Spring.ElementDecoration({
-				elementId : "eyes",
-				widgetType : "dijit.layout.ContentPane",
-				widgetAttrs : { title: "Eyes" },
-				}));
+		    if(eyesHasError == true)
+		    {
+				Spring.addDecoration(new Spring.ElementDecoration({
+					elementId : "eyes",
+					widgetType : "dijit.layout.ContentPane",
+					widgetAttrs : { title: "Eyes *" }
+					}));
+		    }
+		    else
+		    {
+		    	Spring.addDecoration(new Spring.ElementDecoration({
+                    elementId : "eyes",
+                    widgetType : "dijit.layout.ContentPane",
+                    widgetAttrs : { title: "Eyes" }
+                    }));
+		    }
 		</script>			        
         <div id="feet">            
             <div id="roo_clinicalRecord_feetExaminedInLastYear">
@@ -473,6 +551,7 @@
                 <br/>
                 <form:errors cssClass="errors" id="_feetExaminedInLastYear_error_id" path="feetExaminedInLastYear"/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_feetExaminedInLastYear_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
+                <spring:bind path="clinicalRecord.feetExaminedInLastYear"><c:if test="${status.error}"><script type="text/javascript">feetHasError = true;</script></c:if></spring:bind>
             </div>
             <br/>
             <div id="roo_clinicalRecord_monofilamentTested">
@@ -521,11 +600,22 @@
             <br/>
 		</div>
 		<script type="text/javascript">
-			Spring.addDecoration(new Spring.ElementDecoration({
-				elementId : "feet",
-				widgetType : "dijit.layout.ContentPane",
-				widgetAttrs : { title: "Feet" }
-				}));
+		    if(feetHasError == true)
+		    {
+				Spring.addDecoration(new Spring.ElementDecoration({
+					elementId : "feet",
+					widgetType : "dijit.layout.ContentPane",
+					widgetAttrs : { title: "Feet *" }
+					}));
+		    }
+		    else
+		    {
+		    	Spring.addDecoration(new Spring.ElementDecoration({
+                    elementId : "feet",
+                    widgetType : "dijit.layout.ContentPane",
+                    widgetAttrs : { title: "Feet" }
+                    }));
+		    }
 		</script>			        
         <div id="labTesting">            
             <div id="roo_clinicalRecord_lastHbA1cInLast12Months">
@@ -536,6 +626,7 @@
                 </form:select>                
                 <br/>
                 <form:errors cssClass="errors" id="_lastHbA1cInLast12Months_error_id" path="lastHbA1cInLast12Months"/>
+                <spring:bind path="clinicalRecord.lastHbA1cInLast12Months"><c:if test="${status.error}"><script type="text/javascript">labTestingHasError = true;</script></c:if></spring:bind>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_lastHbA1cInLast12Months_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
             </div>
             <br/>
@@ -558,6 +649,7 @@
                 </form:select>                 
                 <br/>
                 <form:errors cssClass="errors" id="_hbA1cMethod_error_id" path="hbA1cMethod"/>
+                <spring:bind path="clinicalRecord.hbA1cMethod"><c:if test="${status.error}"><script type="text/javascript">labTestingHasError = true;</script></c:if></spring:bind>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_hbA1cMethod_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
             </div>
             <br/>
@@ -577,6 +669,7 @@
                 <form:input cssStyle="width:250px" id="_microalbuminuriaValue_id" maxlength="30" path="microalbuminuriaValue" size="0"/>
                 <br/>
                 <form:errors cssClass="errors" id="_microalbuminuriaValue_error_id" path="microalbuminuriaValue"/>
+                <spring:bind path="clinicalRecord.microalbuminuriaValue"><c:if test="${status.error}"><script type="text/javascript">labTestingHasError = true;</script></c:if></spring:bind>
                 <spring:message arguments="Microalbuminuria Value" code="field.invalid" var="field_invalid"/>
                 <spring:message code="field.required" var="field_required"/>
                 <spring:message argumentSeparator="," arguments="Microalbuminuria Value," code="field.simple.validation" var="field_validation"/>
@@ -591,6 +684,7 @@
                 </form:select>                
                 <br/>
                 <form:errors cssClass="errors" id="_microalbuminuriaUnitOfMeasure_error_id" path="microalbuminuriaUnitOfMeasure"/>
+                <spring:bind path="clinicalRecord.microalbuminuriaUnitOfMeasure"><c:if test="${status.error}"><script type="text/javascript">labTestingHasError = true;</script></c:if></spring:bind>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_microalbuminuriaUnitOfMeasure_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
             </div>
             <br/>
@@ -624,6 +718,7 @@
                 </form:select>                               
                 <br/>
                 <form:errors cssClass="errors" id="_creatinineUnits_error_id" path="creatinineUnits"/>
+                <spring:bind path="clinicalRecord.creatinineUnits"><c:if test="${status.error}"><script type="text/javascript">labTestingHasError = true;</script></c:if></spring:bind>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_creatinineUnits_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
             </div>
             <br/>
@@ -646,6 +741,7 @@
                 </form:select>                                 
                 <br/>
                 <form:errors cssClass="errors" id="_cholesterolUnits_error_id" path="cholesterolUnits"/>
+                <spring:bind path="clinicalRecord.cholesterolUnits"><c:if test="${status.error}"><script type="text/javascript">labTestingHasError = true;</script></c:if></spring:bind>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_cholesterolUnits_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
             </div>
             <br/>
@@ -668,6 +764,7 @@
                 </form:select>                
                 <br/>
                 <form:errors cssClass="errors" id="_hdlUnits_error_id" path="hdlUnits"/>
+                <spring:bind path="clinicalRecord.hdlUnits"><c:if test="${status.error}"><script type="text/javascript">labTestingHasError = true;</script></c:if></spring:bind>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_hdlUnits_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
             </div>
             <br/>
@@ -690,6 +787,7 @@
                 </form:select>                
                 <br/>
                 <form:errors cssClass="errors" id="_triglyceridesUnits_error_id" path="triglyceridesUnits"/>
+                <spring:bind path="clinicalRecord.triglyceridesUnits"><c:if test="${status.error}"><script type="text/javascript">labTestingHasError = true;</script></c:if></spring:bind>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_triglyceridesUnits_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
             </div>
             <br/>
@@ -701,16 +799,28 @@
                 </form:select>                
                 <br/>
                 <form:errors cssClass="errors" id="_fasted_error_id" path="fasted"/>
+                <spring:bind path="clinicalRecord.fasted"><c:if test="${status.error}"><script type="text/javascript">labTestingHasError = true;</script></c:if></spring:bind>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_fasted_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
             </div>
             <br/>
 		</div>
 		<script type="text/javascript">
-			Spring.addDecoration(new Spring.ElementDecoration({
-				elementId : "labTesting",
-				widgetType : "dijit.layout.ContentPane",
-				widgetAttrs : { title: "Lab Testing" }
-				}));
+		    if(labTestingHasError == true)
+		    {
+				Spring.addDecoration(new Spring.ElementDecoration({
+					elementId : "labTesting",
+					widgetType : "dijit.layout.ContentPane",
+					widgetAttrs : { title: "Lab Testing *" }
+					}));
+		    }
+		    else
+		    {
+		    	Spring.addDecoration(new Spring.ElementDecoration({
+                    elementId : "labTesting",
+                    widgetType : "dijit.layout.ContentPane",
+                    widgetAttrs : { title: "Lab Testing" }
+                    }));
+		    }
 		</script>			        
         <div id="schooling">             
             <div id="roo_clinicalRecord_attendingSchool">
@@ -721,6 +831,7 @@
                 </form:select>                 
                 <br/>
                 <form:errors cssClass="errors" id="_attendingSchool_error_id" path="attendingSchool"/>
+                <spring:bind path="clinicalRecord.attendingSchool"><c:if test="${status.error}"><script type="text/javascript">schoolingHasError = true;</script></c:if></spring:bind>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_attendingSchool_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
             </div>
             <br/>
@@ -732,6 +843,7 @@
                 </form:select>                 
                 <br/>
                 <form:errors cssClass="errors" id="_notAttendingSchoolWhy_error_id" path="notAttendingSchoolWhy"/>
+                <spring:bind path="clinicalRecord.notAttendingSchoolWhy"><c:if test="${status.error}"><script type="text/javascript">schoolingHasError = true;</script></c:if></spring:bind>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_notAttendingSchoolWhy_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
             </div>
             <br/>
@@ -765,6 +877,7 @@
                 </form:select>                 
                 <br/>
                 <form:errors cssClass="errors" id="_diabetesCopingAbilities_error_id" path="diabetesCopingAbilities"/>
+                <spring:bind path="clinicalRecord.diabetesCopingAbilities"><c:if test="${status.error}"><script type="text/javascript">schoolingHasError = true;</script></c:if></spring:bind>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_diabetesCopingAbilities_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
             </div>
             <br/>
@@ -776,16 +889,28 @@
                 </form:select>                 
                 <br/>
                 <form:errors cssClass="errors" id="_literate_error_id" path="literate"/>
+                <spring:bind path="clinicalRecord.literate"><c:if test="${status.error}"><script type="text/javascript">schoolingHasError = true;</script></c:if></spring:bind>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_literate_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
             </div>
             <br/>   
 		</div>
 		<script type="text/javascript">
-			Spring.addDecoration(new Spring.ElementDecoration({
-				elementId : "schooling",
-				widgetType : "dijit.layout.ContentPane",
-				widgetAttrs : { title: "Schooling" }
-				}));
+		    if(schoolingHasError == true)
+		    {
+				Spring.addDecoration(new Spring.ElementDecoration({
+					elementId : "schooling",
+					widgetType : "dijit.layout.ContentPane",
+					widgetAttrs : { title: "Schooling *" }
+					}));
+		    }
+		    else
+		    {
+		    	Spring.addDecoration(new Spring.ElementDecoration({
+                    elementId : "schooling",
+                    widgetType : "dijit.layout.ContentPane",
+                    widgetAttrs : { title: "Schooling" }
+                    }));
+		    }
 		</script>			        
         <div id="emergencies">              
             <div id="roo_clinicalRecord_numberOfSevereHypoglycaemiaEpisodes">
