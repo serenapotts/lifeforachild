@@ -46,6 +46,7 @@ public class Child {
 	@Size(max=20)
 	private String individualId;
 	
+	@NotNull
     @Size(min = 1)
     private String initials;
     
