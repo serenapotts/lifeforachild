@@ -1,6 +1,20 @@
 <div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" xmlns:sec="http://www.springframework.org/security/tags" id="menu" version="2.0">
 	<jsp:output omit-xml-declaration="yes"/>
 	<ul id="roo_menu">
+    	<li id="web_mvc_jsp_search_category">
+            <h2>
+                <spring:message code="menu.category.web_mvc_jsp_search_category.label"/>
+            </h2>
+            <ul>
+                <li id="web_mvc_jsp_search_menu_item">
+                    <spring:url value="/search" var="web_mvc_jsp_search_menu_item_url"/>
+                    <a href="${web_mvc_jsp_search_menu_item_url}">
+                        <spring:message code="label.search" var="label_search"/>
+                        <spring:message arguments="${label_search}" code="search.menu.new"/>
+                    </a>
+                </li>
+            </ul>
+        </li>	      		
     	<li id="web_mvc_jsp_child_category">
             <h2>
                 <spring:message code="menu.category.web_mvc_jsp_child_category.label"/>
