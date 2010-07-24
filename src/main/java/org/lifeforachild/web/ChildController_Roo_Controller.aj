@@ -50,8 +50,8 @@ privileged aspect ChildController_Roo_Controller {
         
         // now that child is created auto generate individual id
         String id = StringUtil.padWithZeros(child.getId(), 4);
-        String countryId = StringUtil.padWithZeros(child.getCountry().getId(), 2);
-        String centreId = StringUtil.padWithZeros(child.getCentre().getId(), 2);
+        String countryId = StringUtil.padWithZeros(child.getCountry().getId(), 3);
+        String centreId = StringUtil.padWithZeros(child.getCentre().getId(), 3);
         child.setIndividualId(countryId + centreId + id);
         child.persist();
         return "redirect:/child/" + child.getId();        
