@@ -693,11 +693,30 @@
                 </form:select>                
                 <br/>
                 <form:errors cssClass="errors" id="_feetExaminedInLastYear_error_id" path="feetExaminedInLastYear"/>
-                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_feetExaminedInLastYear_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
                 <spring:bind path="clinicalRecord.feetExaminedInLastYear"><c:if test="${status.error}"><script type="text/javascript">feetHasError = true;</script></c:if></spring:bind>
+                <script type="text/javascript">Spring.addDecoration(
+                        new Spring.ElementDecoration({
+                            elementId : '_feetExaminedInLastYear_id', 
+                            widgetType: 'dijit.form.FilteringSelect', 
+                            widgetAttrs : {hasDownArrow : true,
+                            onChange : function(newValue) {
+		                		if (newValue == 'YES')
+		                		{
+			                		dojo.style(dijit.byId("roo_clinicalRecord_monofilamentTested").domNode, "display", "block");
+			                		dojo.style(dijit.byId("roo_clinicalRecord_tuningForkTested").domNode, "display", "block");
+		                		}
+		                		else
+		                		{
+		                			dojo.style(dijit.byId("roo_clinicalRecord_monofilamentTested").domNode, "display", "none");
+		                			dojo.style(dijit.byId("roo_clinicalRecord_tuningForkTested").domNode, "display", "none");
+		                		}
+                			}
+                		}
+                	})); 
+                </script>                
             </div>
             <br/>
-            <div id="roo_clinicalRecord_monofilamentTested">
+            <div id="roo_clinicalRecord_monofilamentTested" style="display:none">
                 <label for="_monofilamentTested_id">Monofilament Tested:</label>
                 <form:select cssStyle="width:250px" id="_monofilamentTested_id" path="monofilamentTested">
 					<form:option value=""></form:option>
@@ -705,10 +724,32 @@
                 </form:select>                
                 <br/>
                 <form:errors cssClass="errors" id="_monofilamentTested_error_id" path="monofilamentTested"/>
-                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_monofilamentTested_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
+                <script type="text/javascript">Spring.addDecoration(
+                        new Spring.ElementDecoration({
+                            elementId : '_monofilamentTested_id', 
+                            widgetType: 'dijit.form.FilteringSelect', 
+                            widgetAttrs : {hasDownArrow : true,
+                            onChange : function(newValue) {
+		                		if (newValue == 'YES')
+		                		{
+			                		dojo.style(dijit.byId("roo_clinicalRecord_monofilamentAbnormal").domNode, "display", "block");
+		                		}
+		                		else
+		                		{
+		                			dojo.style(dijit.byId("roo_clinicalRecord_monofilamentAbnormal").domNode, "display", "none");
+		                		}
+                			}
+                		}
+                	})); 
+                </script>
+                <br/>
             </div>
-            <br/>
-            <div id="roo_clinicalRecord_monofilamentAbnormal">
+            <script type="text/javascript">Spring.addDecoration(
+                    new Spring.ElementDecoration({
+                        elementId : 'roo_clinicalRecord_monofilamentTested', 
+                        widgetType: 'dijit.layout.ContentPane'})); 
+            </script>              
+            <div id="roo_clinicalRecord_monofilamentAbnormal" style="display:none">
                 <label for="_monofilamentAbnormal_id">Monofilament Abnormal:</label>
                 <form:select cssStyle="width:250px" id="_monofilamentAbnormal_id" path="monofilamentAbnormal">
 					<form:option value=""></form:option>
@@ -717,9 +758,14 @@
                 <br/>
                 <form:errors cssClass="errors" id="_monofilamentAbnormal_error_id" path="monofilamentAbnormal"/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_monofilamentAbnormal_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
+            	<br/>                
             </div>
-            <br/>
-            <div id="roo_clinicalRecord_tuningForkTested">
+            <script type="text/javascript">Spring.addDecoration(
+                    new Spring.ElementDecoration({
+                        elementId : 'roo_clinicalRecord_monofilamentAbnormal', 
+                        widgetType: 'dijit.layout.ContentPane'})); 
+            </script>              
+            <div id="roo_clinicalRecord_tuningForkTested" style="display:none">
                 <label for="_tuningForkTested_id">Tuning Fork Tested:</label>
                 <form:select cssStyle="width:250px" id="_tuningForkTested_id" path="tuningForkTested">
 					<form:option value=""></form:option>
@@ -727,10 +773,32 @@
                 </form:select>                
                 <br/>
                 <form:errors cssClass="errors" id="_tuningForkTested_error_id" path="tuningForkTested"/>
-                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_tuningForkTested_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
+                <script type="text/javascript">Spring.addDecoration(
+                        new Spring.ElementDecoration({
+                            elementId : '_tuningForkTested_id', 
+                            widgetType: 'dijit.form.FilteringSelect', 
+                            widgetAttrs : {hasDownArrow : true,
+                            onChange : function(newValue) {
+		                		if (newValue == 'YES')
+		                		{
+			                		dojo.style(dijit.byId("roo_clinicalRecord_tuningForkAbnormal").domNode, "display", "block");
+		                		}
+		                		else
+		                		{
+		                			dojo.style(dijit.byId("roo_clinicalRecord_tuningForkAbnormal").domNode, "display", "none");
+		                		}
+                			}
+                		}
+                	})); 
+                </script>
+            	<br/>                
             </div>
-            <br/>
-            <div id="roo_clinicalRecord_tuningForkAbnormal">
+            <script type="text/javascript">Spring.addDecoration(
+                    new Spring.ElementDecoration({
+                        elementId : 'roo_clinicalRecord_tuningForkTested', 
+                        widgetType: 'dijit.layout.ContentPane'})); 
+            </script>            
+            <div id="roo_clinicalRecord_tuningForkAbnormal" style="display:none">
                 <label for="_tuningForkAbnormal_id">Tuning Fork Abnormal:</label>
                 <form:select cssStyle="width:250px" id="_tuningForkAbnormal_id" path="tuningForkAbnormal">
 					<form:option value=""></form:option>
@@ -739,8 +807,13 @@
                 <br/>
                 <form:errors cssClass="errors" id="_tuningForkAbnormal_error_id" path="tuningForkAbnormal"/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_tuningForkAbnormal_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
+            	<br/>                
             </div>
-            <br/>
+            <script type="text/javascript">Spring.addDecoration(
+                    new Spring.ElementDecoration({
+                        elementId : 'roo_clinicalRecord_tuningForkAbnormal', 
+                        widgetType: 'dijit.layout.ContentPane'})); 
+            </script>            
 		</div>
 		<script type="text/javascript">
 		    if(feetHasError == true)

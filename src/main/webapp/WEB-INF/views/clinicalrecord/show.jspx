@@ -379,34 +379,40 @@
 		                </div>
 		            </div>
 		            <br/>
-		            <div id="roo_clinicalRecord_monofilamentTested">
-		                <label for="_monofilamentTested_id">Monofilament Tested:</label>
-		                <div class="box" id="_monofilamentTested_id">
-		                    <c:out value="${clinicalRecord.monofilamentTested}"/>
-		                </div>
-		            </div>
-		            <br/>
-		            <div id="roo_clinicalRecord_monofilamentAbnormal">
-		                <label for="_monofilamentAbnormal_id">Monofilament Abnormal:</label>
-		                <div class="box" id="_monofilamentAbnormal_id">
-		                    <c:out value="${clinicalRecord.monofilamentAbnormal}"/>
-		                </div>
-		            </div>
-		            <br/>
-		            <div id="roo_clinicalRecord_tuningForkTested">
-		                <label for="_tuningForkTested_id">Tuning Fork Tested:</label>
-		                <div class="box" id="_tuningForkTested_id">
-		                    <c:out value="${clinicalRecord.tuningForkTested}"/>
-		                </div>
-		            </div>
-		            <br/>
-		            <div id="roo_clinicalRecord_tuningForkAbnormal">
-		                <label for="_tuningForkAbnormal_id">Tuning Fork Abnormal:</label>
-		                <div class="box" id="_tuningForkAbnormal_id">
-		                    <c:out value="${clinicalRecord.tuningForkAbnormal}"/>
-		                </div>
-		            </div>
-		            <br/>
+		            <c:if test="${clinicalRecord.feetExaminedInLastYear == 'YES'}">
+			            <div id="roo_clinicalRecord_monofilamentTested">
+			                <label for="_monofilamentTested_id">Monofilament Tested:</label>
+			                <div class="box" id="_monofilamentTested_id">
+			                    <c:out value="${clinicalRecord.monofilamentTested}"/>
+			                </div>
+			            </div>
+			            <br/>
+			            <c:if test="${clinicalRecord.monofilamentTested == 'YES'}">
+				            <div id="roo_clinicalRecord_monofilamentAbnormal">
+				                <label for="_monofilamentAbnormal_id">Monofilament Abnormal:</label>
+				                <div class="box" id="_monofilamentAbnormal_id">
+				                    <c:out value="${clinicalRecord.monofilamentAbnormal}"/>
+				                </div>
+				            </div>
+				            <br/>
+			            </c:if>
+			            <div id="roo_clinicalRecord_tuningForkTested">
+			                <label for="_tuningForkTested_id">Tuning Fork Tested:</label>
+			                <div class="box" id="_tuningForkTested_id">
+			                    <c:out value="${clinicalRecord.tuningForkTested}"/>
+			                </div>
+			            </div>
+			            <br/>
+			            <c:if test="${clinicalRecord.tuningForkTested == 'YES'}">
+				            <div id="roo_clinicalRecord_tuningForkAbnormal">
+				                <label for="_tuningForkAbnormal_id">Tuning Fork Abnormal:</label>
+				                <div class="box" id="_tuningForkAbnormal_id">
+				                    <c:out value="${clinicalRecord.tuningForkAbnormal}"/>
+				                </div>
+				            </div>
+				            <br/>
+			            </c:if>
+		            </c:if>
 		        </div>
 				<script type="text/javascript">
 					Spring.addDecoration(new Spring.ElementDecoration({
