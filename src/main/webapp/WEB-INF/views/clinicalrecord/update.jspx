@@ -13,6 +13,12 @@
     				  	// hide desc if no oral agent
     					dojo.style(dijit.byId("roo_clinicalRecord_oralAgentsDescription").domNode, "display", "none");
     			  	}
+    				if (dijit.byId("_bpMedications_id").value != 'YES')
+    			  	{
+    				  	// hide desc if no oral agent
+    					dojo.style(dijit.byId("roo_clinicalRecord_acearb").domNode, "display", "none");
+    					dojo.style(dijit.byId("roo_clinicalRecord_bpMedicationsOther").domNode, "display", "none");
+    			  	}
     			}
     		);    	
     </script>
@@ -253,7 +259,26 @@
                 	<form:options items="${yesnotype_enum}" itemLabel="label"/>
                 </form:select>
                 <br/>
-                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_bpMedications_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
+                <script type="text/javascript">Spring.addDecoration(
+                        new Spring.ElementDecoration({
+                            elementId : '_bpMedications_id', 
+                            widgetType: 'dijit.form.FilteringSelect', 
+                            widgetAttrs : {hasDownArrow : true,
+                            onChange : function(newValue) {
+		                		if (newValue == 'YES')
+		                		{
+			                		dojo.style(dijit.byId("roo_clinicalRecord_acearb").domNode, "display", "block");
+			                		dojo.style(dijit.byId("roo_clinicalRecord_bpMedicationsOther").domNode, "display", "block");
+		                		}
+		                		else
+		                		{
+		                			dojo.style(dijit.byId("roo_clinicalRecord_acearb").domNode, "display", "none");
+		                			dojo.style(dijit.byId("roo_clinicalRecord_bpMedicationsOther").domNode, "display", "none");
+		                		}
+                			}
+                		}
+                	})); 
+                </script>               
             </div>
             <br/>
             <div id="roo_clinicalRecord_acearb">
@@ -265,8 +290,13 @@
                 </form:select>                 
                 <br/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_acearb_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
+            	<br/>                
             </div>
-            <br/>
+            <script type="text/javascript">Spring.addDecoration(
+                    new Spring.ElementDecoration({
+                        elementId : 'roo_clinicalRecord_acearb', 
+                        widgetType: 'dijit.layout.ContentPane'})); 
+            </script>  
             <div id="roo_clinicalRecord_bpMedicationsOther">
                 <label for="_bpMedicationsOther_id">Bp Medications Other:</label>
                 <form:input cssStyle="width:250px" id="_bpMedicationsOther_id" maxlength="30" path="bpMedicationsOther" size="0"/>
@@ -276,8 +306,13 @@
                 <spring:message code="field.required" var="field_required"/>
                 <spring:message argumentSeparator="," arguments="Bp Medications Other," code="field.simple.validation" var="field_validation"/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_bpMedicationsOther_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : false}})); </script>
+            	<br/>                
             </div>
-            <br/>
+            <script type="text/javascript">Spring.addDecoration(
+                    new Spring.ElementDecoration({
+                        elementId : 'roo_clinicalRecord_bpMedicationsOther', 
+                        widgetType: 'dijit.layout.ContentPane'})); 
+            </script>             
             <div id="roo_clinicalRecord_otherTreatments">
                 <label for="_otherTreatments_id">Other Treatments:</label>
                 <form:textarea cssStyle="width:250px" id="_otherTreatments_id" path="otherTreatments"/>

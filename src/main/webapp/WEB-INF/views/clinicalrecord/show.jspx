@@ -171,20 +171,22 @@
 		                </div>
 		            </div>
 		            <br/>
-		            <div id="roo_clinicalRecord_acearb">
-		                <label for="_acearb_id">ACE/ARB agents:</label>
-		                <div class="box" id="_acearb_id">
-		                    <c:out value="${clinicalRecord.acearb}"/>
-		                </div>
-		            </div>
-		            <br/>
-		            <div id="roo_clinicalRecord_bpMedicationsOther">
-		                <label for="_bpMedicationsOther_id">BP Medications Other:</label>
-		                <div class="box" id="_bpMedicationsOther_id">
-		                    <c:out value="${clinicalRecord.bpMedicationsOther}"/>
-		                </div>
-		            </div>
-		            <br/>
+		            <c:if test="${clinicalRecord.bpMedications == 'YES'}">
+			            <div id="roo_clinicalRecord_acearb">
+			                <label for="_acearb_id">ACE/ARB agents:</label>
+			                <div class="box" id="_acearb_id">
+			                    <c:out value="${clinicalRecord.acearb}"/>
+			                </div>
+			            </div>
+			            <br/>
+			            <div id="roo_clinicalRecord_bpMedicationsOther">
+			                <label for="_bpMedicationsOther_id">BP Medications Other:</label>
+			                <div class="box" id="_bpMedicationsOther_id">
+			                    <c:out value="${clinicalRecord.bpMedicationsOther}"/>
+			                </div>
+			            </div>
+			            <br/>
+		            </c:if>		            
 		            <div id="roo_clinicalRecord_otherTreatments">
 		                <label for="_otherTreatments_id">Other Treatments:</label>
 		                <div class="box" id="_otherTreatments_id">
