@@ -315,13 +315,15 @@
 		                </div>
 		            </div>
 		            <br/>
-		            <div id="roo_clinicalRecord_ifMenarcheAge">
-		                <label for="_ifMenarcheAge_id">If Menarche Age:</label>
-		                <div class="box" id="_ifMenarcheAge_id">
-		                    <fmt:formatDate pattern="${clinicalRecord_ifMenarcheAge_date_format}" value="${clinicalRecord.ifMenarcheAge}"/>
-		                </div>
-		            </div>
-		            <br/>				
+		            <c:if test="${clinicalRecord.menarche == 'YES'}">
+			            <div id="roo_clinicalRecord_ifMenarcheAge">
+			                <label for="_ifMenarcheAge_id">If Menarche Age:</label>
+			                <div class="box" id="_ifMenarcheAge_id">
+			                    <fmt:formatDate pattern="${clinicalRecord_ifMenarcheAge_date_format}" value="${clinicalRecord.ifMenarcheAge}"/>
+			                </div>
+			            </div>
+			            <br/>	
+		            </c:if>			
             	</div>	 
   				<script type="text/javascript">
 					Spring.addDecoration(new Spring.ElementDecoration({
@@ -338,27 +340,29 @@
 		                </div>
 		            </div>
 		            <br/>
-		            <div id="roo_clinicalRecord_cateract">
-		                <label for="_cateract_id">Cataract:</label>
-		                <div class="box" id="_cateract_id">
-		                    <c:out value="${clinicalRecord.cateract}"/>
-		                </div>
-		            </div>
-		            <br/>
-		            <div id="roo_clinicalRecord_visualAcuityRight">
-		                <label for="_visualAcuityRight_id">Visual Acuity Right:</label>
-		                <div class="box" id="_visualAcuityRight_id">
-		                    <c:out value="${clinicalRecord.visualAcuityRight}"/>
-		                </div>
-		            </div>
-		            <br/>
-		            <div id="roo_clinicalRecord_visualAcuityLeft">
-		                <label for="_visualAcuityLeft_id">Visual Acuity Left:</label>
-		                <div class="box" id="_visualAcuityLeft_id">
-		                    <c:out value="${clinicalRecord.visualAcuityLeft}"/>
-		                </div>
-		            </div>
-		            <br/>
+		            <c:if test="${clinicalRecord.eyesExaminedInLastYear == 'YES'}">
+			            <div id="roo_clinicalRecord_cateract">
+			                <label for="_cateract_id">Cataract:</label>
+			                <div class="box" id="_cateract_id">
+			                    <c:out value="${clinicalRecord.cateract}"/>
+			                </div>
+			            </div>
+			            <br/>
+			            <div id="roo_clinicalRecord_visualAcuityRight">
+			                <label for="_visualAcuityRight_id">Visual Acuity Right:</label>
+			                <div class="box" id="_visualAcuityRight_id">
+			                    <c:out value="${clinicalRecord.visualAcuityRight}"/>
+			                </div>
+			            </div>
+			            <br/>
+			            <div id="roo_clinicalRecord_visualAcuityLeft">
+			                <label for="_visualAcuityLeft_id">Visual Acuity Left:</label>
+			                <div class="box" id="_visualAcuityLeft_id">
+			                    <c:out value="${clinicalRecord.visualAcuityLeft}"/>
+			                </div>
+			            </div>
+			            <br/>
+		            </c:if>
 		        </div>
 				<script type="text/javascript">
 					Spring.addDecoration(new Spring.ElementDecoration({

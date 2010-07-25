@@ -526,11 +526,28 @@
                 </form:select>                
                 <br/>
                 <form:errors cssClass="errors" id="_menarche_error_id" path="menarche"/>
-                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_menarche_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
                 <spring:bind path="clinicalRecord.menarche"><c:if test="${status.error}"><script type="text/javascript">clinicalMeasuresHasError = true;</script></c:if></spring:bind>
+                <script type="text/javascript">Spring.addDecoration(
+                        new Spring.ElementDecoration({
+                            elementId : '_menarche_id', 
+                            widgetType: 'dijit.form.FilteringSelect', 
+                            widgetAttrs : {hasDownArrow : true,
+                            onChange : function(newValue) {
+		                		if (newValue == 'YES')
+		                		{
+			                		dojo.style(dijit.byId("roo_clinicalRecord_ifMenarcheAge").domNode, "display", "block");
+		                		}
+		                		else
+		                		{
+		                			dojo.style(dijit.byId("roo_clinicalRecord_ifMenarcheAge").domNode, "display", "none");
+		                		}
+                			}
+                		}
+                	})); 
+                </script>                
             </div>
             <br/>
-            <div id="roo_clinicalRecord_ifMenarcheAge">
+            <div id="roo_clinicalRecord_ifMenarcheAge" style="display:none">
                 <label for="_ifMenarcheAge_id">If Menarche Age:</label>
                 <form:input cssStyle="width:250px" id="_ifMenarcheAge_id" maxlength="30" path="ifMenarcheAge" size="0"/>
                 <br/>
@@ -540,8 +557,13 @@
                 <spring:message argumentSeparator="," arguments="If Menarche Age," code="field.simple.validation" var="field_validation"/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_ifMenarcheAge_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : false}})); </script>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_ifMenarcheAge_id', widgetType : 'dijit.form.DateTextBox', widgetAttrs : {promptMessage: '${field_validation}', constraints: {datePattern : '${clinicalRecord_ifMenarcheAge_date_format}', required : false}, datePattern : '${clinicalRecord_ifMenarcheAge_date_format}'}})); </script>
+            	<br/>                
             </div>
-            <br/>
+            <script type="text/javascript">Spring.addDecoration(
+                    new Spring.ElementDecoration({
+                        elementId : 'roo_clinicalRecord_ifMenarcheAge', 
+                        widgetType: 'dijit.layout.ContentPane'})); 
+            </script>             
 		</div>	 
 		<script type="text/javascript">
 		    if(clinicalMeasuresHasError == true)
@@ -570,11 +592,32 @@
                 </form:select>                
                 <br/>
                 <form:errors cssClass="errors" id="_eyesExaminedInLastYear_error_id" path="eyesExaminedInLastYear"/>
-                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_eyesExaminedInLastYear_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
                 <spring:bind path="clinicalRecord.eyesExaminedInLastYear"><c:if test="${status.error}"><script type="text/javascript">eyesHasError = true;</script></c:if></spring:bind>
+                <script type="text/javascript">Spring.addDecoration(
+                        new Spring.ElementDecoration({
+                            elementId : '_eyesExaminedInLastYear_id', 
+                            widgetType: 'dijit.form.FilteringSelect', 
+                            widgetAttrs : {hasDownArrow : true,
+                            onChange : function(newValue) {
+		                		if (newValue == 'YES')
+		                		{
+			                		dojo.style(dijit.byId("roo_clinicalRecord_cateract").domNode, "display", "block");
+			                		dojo.style(dijit.byId("roo_clinicalRecord_visualAcuityRight").domNode, "display", "block");
+			                		dojo.style(dijit.byId("roo_clinicalRecord_visualAcuityLeft").domNode, "display", "block");
+		                		}
+		                		else
+		                		{
+		                			dojo.style(dijit.byId("roo_clinicalRecord_cateract").domNode, "display", "none");
+		                			dojo.style(dijit.byId("roo_clinicalRecord_visualAcuityRight").domNode, "display", "none");
+		                			dojo.style(dijit.byId("roo_clinicalRecord_visualAcuityLeft").domNode, "display", "none");
+		                		}
+                			}
+                		}
+                	})); 
+                </script>                 
             </div>
             <br/>
-            <div id="roo_clinicalRecord_cateract">
+            <div id="roo_clinicalRecord_cateract" style="display:none">
                 <label for="_cateract_id">Cataract:</label>
                 <form:select cssStyle="width:250px" id="_cateract_id" path="cateract">
 					<form:option value=""></form:option>
@@ -583,9 +626,14 @@
                 <br/>
                 <form:errors cssClass="errors" id="_cateract_error_id" path="cateract"/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_cateract_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
+            	<br/>                
             </div>
-            <br/>
-            <div id="roo_clinicalRecord_visualAcuityRight">
+            <script type="text/javascript">Spring.addDecoration(
+                    new Spring.ElementDecoration({
+                        elementId : 'roo_clinicalRecord_cateract', 
+                        widgetType: 'dijit.layout.ContentPane'})); 
+            </script>             
+            <div id="roo_clinicalRecord_visualAcuityRight" style="display:none">
                 <label for="_visualAcuityRight_id">Visual Acuity Right:</label>
                 <form:input cssStyle="width:250px" id="_visualAcuityRight_id" maxlength="20" path="visualAcuityRight" size="0"/>
                 <br/>
@@ -594,9 +642,14 @@
                 <spring:message code="field.required" var="field_required"/>
                 <spring:message argumentSeparator="," arguments="Visual Acuity Right," code="field.simple.validation" var="field_validation"/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_visualAcuityRight_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : false}})); </script>
+            	<br/>                
             </div>
-            <br/>
-            <div id="roo_clinicalRecord_visualAcuityLeft">
+            <script type="text/javascript">Spring.addDecoration(
+                    new Spring.ElementDecoration({
+                        elementId : 'roo_clinicalRecord_visualAcuityRight', 
+                        widgetType: 'dijit.layout.ContentPane'})); 
+            </script>             
+            <div id="roo_clinicalRecord_visualAcuityLeft" style="display:none">
                 <label for="_visualAcuityLeft_id">Visual Acuity Left:</label>
                 <form:input cssStyle="width:250px" id="_visualAcuityLeft_id" maxlength="20" path="visualAcuityLeft" size="0"/>
                 <br/>
@@ -605,8 +658,13 @@
                 <spring:message code="field.required" var="field_required"/>
                 <spring:message argumentSeparator="," arguments="Visual Acuity Left," code="field.simple.validation" var="field_validation"/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_visualAcuityLeft_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : false}})); </script>
+            	<br/>                
             </div>
-            <br/>
+            <script type="text/javascript">Spring.addDecoration(
+                    new Spring.ElementDecoration({
+                        elementId : 'roo_clinicalRecord_visualAcuityLeft', 
+                        widgetType: 'dijit.layout.ContentPane'})); 
+            </script>             
 		</div>
 		<script type="text/javascript">
 		    if(eyesHasError == true)
