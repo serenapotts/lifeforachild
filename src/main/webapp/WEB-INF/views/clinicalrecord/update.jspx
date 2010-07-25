@@ -252,7 +252,7 @@
             </div>
             <br/>
             <div id="roo_clinicalRecord_bpMedications">
-                <label for="_bpMedications_id">Bp Medications:</label>
+                <label for="_bpMedications_id">BP Medications:</label>
                 <form:errors cssClass="errors" id="_bpMedications_error_id" path="bpMedications"/>
                 <form:select cssStyle="width:250px" id="_bpMedications_id" path="bpMedications">
                     <form:option value=""></form:option>
@@ -282,7 +282,7 @@
             </div>
             <br/>
             <div id="roo_clinicalRecord_acearb">
-                <label for="_acearb_id">Acearb:</label>
+                <label for="_acearb_id">ACE/ARB agents:</label>
                 <form:errors cssClass="errors" id="_acearb_error_id" path="acearb"/>
                 <form:select cssStyle="width:250px" id="_acearb_id" path="acearb">
 					<form:option value=""></form:option>
@@ -298,7 +298,7 @@
                         widgetType: 'dijit.layout.ContentPane'})); 
             </script>  
             <div id="roo_clinicalRecord_bpMedicationsOther">
-                <label for="_bpMedicationsOther_id">Bp Medications Other:</label>
+                <label for="_bpMedicationsOther_id">BP Medications Other:</label>
                 <form:input cssStyle="width:250px" id="_bpMedicationsOther_id" maxlength="30" path="bpMedicationsOther" size="0"/>
                 <br/>
                 <form:errors cssClass="errors" id="_bpMedicationsOther_error_id" path="bpMedicationsOther"/>
@@ -342,7 +342,7 @@
 		</script>            
         <div id="clinicalMeasures">             
             <div id="roo_clinicalRecord_weightKG">
-                <label for="_weightKG_id">Weight K G:</label>
+                <label for="_weightKG_id">Weight (kg):</label>
                 <form:input cssStyle="width:250px" id="_weightKG_id" maxlength="30" path="weightKG" size="0"/>
                 <br/>
                 <form:errors cssClass="errors" id="_weightKG_error_id" path="weightKG"/>
@@ -353,7 +353,7 @@
             </div>
             <br/>
             <div id="roo_clinicalRecord_heightCM">
-                <label for="_heightCM_id">Height C M:</label>
+                <label for="_heightCM_id">Height (cm):</label>
                 <form:input cssStyle="width:250px" id="_heightCM_id" maxlength="30" path="heightCM" size="0"/>
                 <br/>
                 <form:errors cssClass="errors" id="_heightCM_error_id" path="heightCM"/>
@@ -364,7 +364,7 @@
             </div>
             <br/>
             <div id="roo_clinicalRecord_bloodPressureSystolicMMHg">
-                <label for="_bloodPressureSystolicMMHg_id">Blood Pressure Systolic M M Hg:</label>
+                <label for="_bloodPressureSystolicMMHg_id">Blood Pressure Systolic (mmHg):</label>
                 <form:input cssStyle="width:250px" id="_bloodPressureSystolicMMHg_id" maxlength="30" path="bloodPressureSystolicMMHg" size="0"/>
                 <br/>
                 <form:errors cssClass="errors" id="_bloodPressureSystolicMMHg_error_id" path="bloodPressureSystolicMMHg"/>
@@ -375,7 +375,7 @@
             </div>
             <br/>
             <div id="roo_clinicalRecord_bloodPressureDiastolicMMHg">
-                <label for="_bloodPressureDiastolicMMHg_id">Blood Pressure Diastolic M M Hg:</label>
+                <label for="_bloodPressureDiastolicMMHg_id">Blood Pressure Diastolic (mmHg):</label>
                 <form:input cssStyle="width:250px" id="_bloodPressureDiastolicMMHg_id" maxlength="30" path="bloodPressureDiastolicMMHg" size="0"/>
                 <br/>
                 <form:errors cssClass="errors" id="_bloodPressureDiastolicMMHg_error_id" path="bloodPressureDiastolicMMHg"/>
@@ -420,7 +420,7 @@
             </div>
             <br/>
             <div id="roo_clinicalRecord_hasPubertyTannerB2_P2orGreater">
-                <label for="_hasPubertyTannerB2_P2orGreater_id">Has Puberty Tanner B2_ P2or Greater:</label>
+                <label for="_hasPubertyTannerB2_P2orGreater_id">Has Puberty Tanner B2/P2 or Greater:</label>
                 <form:errors cssClass="errors" id="_hasPubertyTannerB2_P2orGreater_error_id" path="hasPubertyTannerB2_P2orGreater"/>
                 <form:select cssStyle="width:250px" id="_hasPubertyTannerB2_P2orGreater_id" path="hasPubertyTannerB2_P2orGreater">
                     <form:option value=""></form:option>
@@ -580,7 +580,7 @@
 		</script>			        
         <div id="labTesting">            
             <div id="roo_clinicalRecord_lastHbA1cInLast12Months">
-                <label for="_lastHbA1cInLast12Months_id">Last Hb A1c In Last12 Months:</label>
+                <label for="_lastHbA1cInLast12Months_id">Last HbA1c In Last12 Months:</label>
                 <form:errors cssClass="errors" id="_lastHbA1cInLast12Months_error_id" path="lastHbA1cInLast12Months"/>
                 <form:select cssStyle="width:250px" id="_lastHbA1cInLast12Months_id" path="lastHbA1cInLast12Months">
                     <form:option value=""></form:option>
@@ -591,7 +591,7 @@
             </div>
             <br/>
             <div id="roo_clinicalRecord_hbA1cPercentage">
-                <label for="_hbA1cPercentage_id">Hb A1c Percentage:</label>
+                <label for="_hbA1cPercentage_id">HbA1c Percentage:</label>
                 <form:input cssStyle="width:250px" id="_hbA1cPercentage_id" maxlength="30" path="hbA1cPercentage" size="0"/>
                 <br/>
                 <form:errors cssClass="errors" id="_hbA1cPercentage_error_id" path="hbA1cPercentage"/>
@@ -602,7 +602,7 @@
             </div>
             <br/>
             <div id="roo_clinicalRecord_hbA1cMethod">
-                <label for="_hbA1cMethod_id">Hb A1c Method:</label>
+                <label for="_hbA1cMethod_id">HbA1c Method:</label>
                 <form:errors cssClass="errors" id="_hbA1cMethod_error_id" path="hbA1cMethod"/>
                 <form:select cssStyle="width:250px" id="_hbA1cMethod_id" path="hbA1cMethod">
                     <form:option value=""></form:option>
@@ -613,7 +613,7 @@
             </div>
             <br/>
             <div id="roo_clinicalRecord_hbA1cMethodOther">
-                <label for="_hbA1cMethodOther_id">Hb A1c Method Other:</label>
+                <label for="_hbA1cMethodOther_id">HbA1c Method Other:</label>
                 <form:input cssStyle="width:250px" id="_hbA1cMethodOther_id" maxlength="30" path="hbA1cMethodOther" size="0"/>
                 <br/>
                 <form:errors cssClass="errors" id="_hbA1cMethodOther_error_id" path="hbA1cMethodOther"/>
@@ -646,7 +646,7 @@
             </div>
             <br/>
             <div id="roo_clinicalRecord_proteinuria_dipstick_other">
-                <label for="_proteinuria_dipstick_other_id">Proteinuria_dipstick_other:</label>
+                <label for="_proteinuria_dipstick_other_id">Proteinuria - dipstick or other:</label>
                 <form:input cssStyle="width:250px" id="_Proteinuria_dipstick_other_id" maxlength="30" path="proteinuria_dipstick_other" size="0"/>
                 <br/>
                 <form:errors cssClass="errors" id="_Proteinuria_dipstick_other_error_id" path="proteinuria_dipstick_other"/>

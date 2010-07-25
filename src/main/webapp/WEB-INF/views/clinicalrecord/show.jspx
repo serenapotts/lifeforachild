@@ -211,7 +211,7 @@
 				</script>	            
 	            <div id="clinicalMeasures">            
 		            <div id="roo_clinicalRecord_weightKG">
-		                <label for="_weightKG_id">Weight Kg:</label>
+		                <label for="_weightKG_id">Weight (kg):</label>
 		                <div class="box" id="_weightKG_id">
 		                    <c:out value="${clinicalRecord.weightKG}"/>
 		                </div>
@@ -225,7 +225,7 @@
                     </div>
                     <br/>
 		            <div id="roo_clinicalRecord_heightCM">
-		                <label for="_heightCM_id">Height cm:</label>
+		                <label for="_heightCM_id">Height (cm):</label>
 		                <div class="box" id="_heightCM_id">
 		                    <c:out value="${clinicalRecord.heightCM}"/>
 		                </div>
@@ -253,7 +253,7 @@
                     </div>
                     <br/>
 		            <div id="roo_clinicalRecord_bloodPressureSystolicMMHg">
-		                <label for="_bloodPressureSystolicMMHg_id">Blood Pressure Systolic mmHg:</label>
+		                <label for="_bloodPressureSystolicMMHg_id">Blood Pressure Systolic (mmHg):</label>
 		                <div class="box" id="_bloodPressureSystolicMMHg_id">
 		                    <c:out value="${clinicalRecord.bloodPressureSystolicMMHg}"/>
 		                </div>
@@ -267,7 +267,7 @@
                     </div>
                     <br/>
 		            <div id="roo_clinicalRecord_bloodPressureDiastolicMMHg">
-		                <label for="_bloodPressureDiastolicMMHg_id">Blood Pressure Diastolic mmHg:</label>
+		                <label for="_bloodPressureDiastolicMMHg_id">Blood Pressure Diastolic (mmHg):</label>
 		                <div class="box" id="_bloodPressureDiastolicMMHg_id">
 		                    <c:out value="${clinicalRecord.bloodPressureDiastolicMMHg}"/>
 		                </div>
@@ -413,21 +413,21 @@
 				</script>			        
 		        <div id="labTesting">		            
 		            <div id="roo_clinicalRecord_lastHbA1cInLast12Months">
-		                <label for="_lastHbA1cInLast12Months_id">Last Hb A1c In Last12 Months:</label>
+		                <label for="_lastHbA1cInLast12Months_id">Last HbA1c In Last12 Months:</label>
 		                <div class="box" id="_lastHbA1cInLast12Months_id">
 		                    <c:out value="${clinicalRecord.lastHbA1cInLast12Months}"/>
 		                </div>
 		            </div>
 		            <br/>
 		            <div id="roo_clinicalRecord_hbA1cPercentage">
-		                <label for="_hbA1cPercentage_id">Hb A1c Percentage:</label>
+		                <label for="_hbA1cPercentage_id">HbA1c Percentage:</label>
 		                <div class="box" id="_hbA1cPercentage_id">
 		                    <c:out value="${clinicalRecord.hbA1cPercentage}"/>
 		                </div>
 		            </div>
 		            <br/>
 		            <div id="roo_clinicalRecord_hbA1cMethod">
-		                <label for="_hbA1cMethod_id">Hb A1c Method:</label>
+		                <label for="_hbA1cMethod_id">HbA1c Method:</label>
 		                <div class="box" id="_hbA1cMethod_id">
 		                    <c:out value="${clinicalRecord.hbA1cMethod}"/>
 		                </div>

@@ -370,7 +370,7 @@
 		</script>	            
         <div id="clinicalMeasures">            
             <div id="roo_clinicalRecord_weightKG">
-                <label for="_weightKG_id">Weight kg:</label>
+                <label for="_weightKG_id">Weight (kg):</label>
                 <form:input cssStyle="width:250px" id="_weightKG_id" maxlength="30" path="weightKG" size="0"/>
                 <br/>
                 <form:errors cssClass="errors" id="_weightKG_error_id" path="weightKG"/>
@@ -397,7 +397,7 @@
             
             
             <div id="roo_clinicalRecord_heightCM">
-                <label for="_heightCM_id">Height cm:</label>
+                <label for="_heightCM_id">Height (cm):</label>
                 <form:input cssStyle="width:250px" id="_heightCM_id" maxlength="30" path="heightCM" size="0"/>
                 <br/>
                 <form:errors cssClass="errors" id="_heightCM_error_id" path="heightCM"/>
@@ -422,7 +422,7 @@
             
             
             <div id="roo_clinicalRecord_bloodPressureSystolicMMHg">
-                <label for="_bloodPressureSystolicMMHg_id">Blood Pressure Systolic mm Hg:</label>
+                <label for="_bloodPressureSystolicMMHg_id">Blood Pressure Systolic (mmHg):</label>
                 <form:input cssStyle="width:250px" id="_bloodPressureSystolicMMHg_id" maxlength="30" path="bloodPressureSystolicMMHg" size="0"/>
                 <br/>
                 <form:errors cssClass="errors" id="_bloodPressureSystolicMMHg_error_id" path="bloodPressureSystolicMMHg"/>
@@ -447,7 +447,7 @@
             
             
             <div id="roo_clinicalRecord_bloodPressureDiastolicMMHg">
-                <label for="_bloodPressureDiastolicMMHg_id">Blood Pressure Diastolic mm Hg:</label>
+                <label for="_bloodPressureDiastolicMMHg_id">Blood Pressure Diastolic (mmHg):</label>
                 <form:input cssStyle="width:250px" id="_bloodPressureDiastolicMMHg_id" maxlength="30" path="bloodPressureDiastolicMMHg" size="0"/>
                 <br/>
                 <form:errors cssClass="errors" id="_bloodPressureDiastolicMMHg_error_id" path="bloodPressureDiastolicMMHg"/>
