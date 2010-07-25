@@ -1,8 +1,10 @@
 package org.lifeforachild.web;
 
-import java.lang.Long;
-import java.lang.String;
+import java.util.Date;
+
 import javax.validation.Valid;
+
+import org.lifeforachild.Util.SecurityUtil;
 import org.lifeforachild.domain.Child;
 import org.lifeforachild.domain.ClinicalRecord;
 import org.lifeforachild.domain.CreatineUnitsType;
@@ -15,8 +17,8 @@ import org.lifeforachild.domain.ReasonNotEnteringType;
 import org.lifeforachild.domain.User;
 import org.lifeforachild.domain.YesNoLaterType;
 import org.lifeforachild.domain.YesNoNAType;
-import org.lifeforachild.domain.YesNoUnkownType;
 import org.lifeforachild.domain.YesNoType;
+import org.lifeforachild.domain.YesNoUnkownType;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,7 +31,7 @@ privileged aspect ClinicalRecordController_Roo_Controller {
     @RequestMapping(value = "/clinicalrecord", method = RequestMethod.POST)    
     public String ClinicalRecordController.create(@Valid ClinicalRecord clinicalRecord, BindingResult result, ModelMap modelMap) {    
         if (clinicalRecord == null) throw new IllegalArgumentException("A clinicalRecord is required");        
-        if (result.hasErrors()) {        
+        if (result.hasErrors()) {                	        	
             modelMap.addAttribute("clinicalRecord", clinicalRecord);                       
             modelMap.addAttribute("creatineunitstype_enum", CreatineUnitsType.class.getEnumConstants());            
             modelMap.addAttribute("diabetescopingtype_enum", DiabetesCopingType.class.getEnumConstants());            
@@ -70,7 +72,12 @@ privileged aspect ClinicalRecordController_Roo_Controller {
     @RequestMapping(value = "/clinicalrecord/form/{id}", method = RequestMethod.GET)    
     public String ClinicalRecordController.createForm(@PathVariable("id") Long id, ModelMap modelMap) {  
     	ClinicalRecord record = new ClinicalRecord();
+    	// set child for record from child information passed when creating record
     	record.setChild(Child.findChild(id));
+    	// set person completing to the current user
+    	record.setPersonCompletingForm(SecurityUtil.getInstance().getApplicationUserForCurrentUser());
+    	// default date completed to today
+    	record.setDateCompleted(new Date());
         modelMap.addAttribute("clinicalRecord", record);
         modelMap.addAttribute("creatineunitstype_enum", CreatineUnitsType.class.getEnumConstants());        
         modelMap.addAttribute("diabetescopingtype_enum", DiabetesCopingType.class.getEnumConstants());        

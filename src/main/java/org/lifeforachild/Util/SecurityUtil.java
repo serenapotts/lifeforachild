@@ -1,6 +1,7 @@
 package org.lifeforachild.Util;
 
 import org.lifeforachild.domain.AllUserDetails;
+import org.lifeforachild.domain.User;
 import org.lifeforachild.domain.UserGroup;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -30,6 +31,16 @@ public class SecurityUtil {
 				return (AllUserDetails)principal;
 		}
 		return null;
+	}
+	
+	public User getApplicationUserForCurrentUser()
+	{
+		return getApplicationUser(getCurrentUser());
+	}
+	
+	public User getApplicationUser(AllUserDetails user)
+	{
+		return User.findUser(user.getId());
 	}
 	
 	public UserGroup getCurrentUserGroup()

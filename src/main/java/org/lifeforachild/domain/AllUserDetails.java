@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.User;
 
 public class AllUserDetails extends User {
 
+	long id;
 	String firstName;
 	String lastName;	
 	String userGroup;
@@ -16,7 +17,7 @@ public class AllUserDetails extends User {
 	public AllUserDetails(String username, String password, boolean enabled,
 			boolean accountNonExpired, boolean credentialsNonExpired,
 			boolean accountNonLocked, Collection<GrantedAuthority> authorities,
-			String firstName, String lastName, String userGroup, int county, int centre) {
+			String firstName, String lastName, String userGroup, int county, int centre, long id) {
 		super(username, password, enabled, accountNonExpired, 
 				credentialsNonExpired, accountNonLocked, authorities);
 		this.firstName = firstName;
@@ -24,6 +25,7 @@ public class AllUserDetails extends User {
 		this.userGroup = userGroup;
 		this.country = county;
 		this.centre = centre;
+		this.id = id;
 	}
 
 	public String getFirstName() {
@@ -45,6 +47,11 @@ public class AllUserDetails extends User {
 
 	public int getCentre() {
 		return centre;
+	}
+	
+	public long getId()
+	{
+		return id;
 	}
 
 }

@@ -48,13 +48,14 @@ public class CustomUserDetailsService implements UserDetailsService{
     	String userGroup = jt.queryForObject(USER_GROUP_BY_USERNAME_QUERY, params, String.class);
     	return new AllUserDetails(user.getUsername(), user.getPassword(), user.isEnabled(), user.isAccountNonExpired(),
 				user.isCredentialsNonExpired(), user.isAccountNonLocked(), authorities, user.getFirstName(),
-				user.getLastName(), userGroup, user.getCountry(), user.getCentre());
+				user.getLastName(), userGroup, user.getCountry(), user.getCentre(), user.getId());
     }
 			
     private List<AllUserDetails> loadUser(String username) {
     	JdbcTemplate jt = new JdbcTemplate(dataSource);
         return jt.query(USER_BY_USERNAME_QUERY, new String[] {username}, new RowMapper<AllUserDetails>() {
             public AllUserDetails mapRow(ResultSet rs, int rowNum) throws SQLException {
+            	long id = rs.getLong("id");
             	String username = rs.getString("username");
     			String password = rs.getString("password");
     			boolean enabled = rs.getBoolean("enabled");
@@ -63,7 +64,7 @@ public class CustomUserDetailsService implements UserDetailsService{
     			int country = rs.getInt("country");
     			int centre = rs.getInt("centre");
                 return new AllUserDetails(username, password, enabled, true, true, true, 
-                		AuthorityUtils.NO_AUTHORITIES, firstName, lastName, null, country, centre);
+                		AuthorityUtils.NO_AUTHORITIES, firstName, lastName, null, country, centre, id);
             }
         });
     }  
