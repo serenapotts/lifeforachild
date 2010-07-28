@@ -429,27 +429,31 @@
 		                </div>
 		            </div>
 		            <br/>
-		            <div id="roo_clinicalRecord_hbA1cPercentage">
-		                <label for="_hbA1cPercentage_id">HbA1c Percentage:</label>
-		                <div class="box" id="_hbA1cPercentage_id">
-		                    <c:out value="${clinicalRecord.hbA1cPercentage}"/>
-		                </div>
-		            </div>
-		            <br/>
-		            <div id="roo_clinicalRecord_hbA1cMethod">
-		                <label for="_hbA1cMethod_id">HbA1c Method:</label>
-		                <div class="box" id="_hbA1cMethod_id">
-		                    <c:out value="${clinicalRecord.hbA1cMethod}"/>
-		                </div>
-		            </div>
-		            <br/>
-		            <div id="roo_clinicalRecord_hbA1cMethodOther">
-		                <label for="_hbA1cMethodOther_id">HbA1c Method Other:</label>
-		                <div class="box" id="_hbA1cMethodOther_id">
-		                    <c:out value="${clinicalRecord.hbA1cMethodOther}"/>
-		                </div>
-		            </div>
-		            <br/>
+		            <c:if test="${clinicalRecord.lastHbA1cInLast12Months == 'YES'}">
+			            <div id="roo_clinicalRecord_hbA1cPercentage">
+			                <label for="_hbA1cPercentage_id">HbA1c Percentage:</label>
+			                <div class="box" id="_hbA1cPercentage_id">
+			                    <c:out value="${clinicalRecord.hbA1cPercentage}"/>
+			                </div>
+			            </div>
+			            <br/>
+			            <div id="roo_clinicalRecord_hbA1cMethod">
+			                <label for="_hbA1cMethod_id">HbA1c Method:</label>
+			                <div class="box" id="_hbA1cMethod_id">
+			                    <c:out value="${clinicalRecord.hbA1cMethod}"/>
+			                </div>
+			            </div>
+			            <br/>
+			            <c:if test="${clinicalRecord.hbA1cMethod == 'OTHER'}">
+				            <div id="roo_clinicalRecord_hbA1cMethodOther">
+				                <label for="_hbA1cMethodOther_id">HbA1c Method Other:</label>
+				                <div class="box" id="_hbA1cMethodOther_id">
+				                    <c:out value="${clinicalRecord.hbA1cMethodOther}"/>
+				                </div>
+				            </div>
+				            <br/>
+			            </c:if>
+		            </c:if>
 		            <div id="roo_clinicalRecord_microalbuminuriaValue">
 		                <label for="_microalbuminuriaValue_id">Microalbuminuria Value:</label>
 		                <div class="box" id="_microalbuminuriaValue_id">

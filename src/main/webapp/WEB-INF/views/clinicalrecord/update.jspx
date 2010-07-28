@@ -46,7 +46,17 @@
     			  	{
     				  	// hide fields if tuning fork not tested
     					dojo.style(dijit.byId("roo_clinicalRecord_tuningForkAbnormal").domNode, "display", "none");
-    			  	}    			  	
+    			  	}  
+    				if (dijit.byId("_lastHbA1cInLast12Months_id").value != 'YES')
+    				{
+    					dojo.style(dijit.byId("roo_clinicalRecord_hbA1cPercentage").domNode, "display", "none");
+    					dojo.style(dijit.byId("roo_clinicalRecord_hbA1cMethod").domNode, "display", "none");
+    				}  	
+    				if (dijit.byId("_hbA1cMethod_id").value != 'OTHER')
+    			  	{
+    				  	// hide fields if tuning fork not tested
+    					dojo.style(dijit.byId("roo_clinicalRecord_hbA1cMethodOther").domNode, "display", "none");
+    			  	}  
     			}
     		);    	
     </script>
@@ -748,7 +758,29 @@
                 	<form:options items="${yesnolatertype_enum}" itemLabel="label"/>
                 </form:select>
                 <br/>
-                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_lastHbA1cInLast12Months_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
+                <script type="text/javascript">Spring.addDecoration(
+                        new Spring.ElementDecoration({
+                            elementId : '_lastHbA1cInLast12Months_id', 
+                            widgetType: 'dijit.form.FilteringSelect', 
+                            widgetAttrs : {hasDownArrow : true,
+                            onChange : function(newValue) {
+		                		if (newValue == 'YES')
+		                		{
+			                		dojo.style(dijit.byId("roo_clinicalRecord_hbA1cPercentage").domNode, "display", "block");
+			                		dojo.style(dijit.byId("roo_clinicalRecord_hbA1cMethod").domNode, "display", "block");
+			                		if (dijit.byId("_hbA1cMethod_id").value == 'OTHER')
+			                			dojo.style(dijit.byId("roo_clinicalRecord_hbA1cMethodOther").domNode, "display", "block");
+		                		}
+		                		else
+		                		{
+		                			dojo.style(dijit.byId("roo_clinicalRecord_hbA1cPercentage").domNode, "display", "none");
+		                			dojo.style(dijit.byId("roo_clinicalRecord_hbA1cMethod").domNode, "display", "none");
+		                			dojo.style(dijit.byId("roo_clinicalRecord_hbA1cMethodOther").domNode, "display", "none");
+		                		}
+                			}
+                		}
+                	})); 
+                </script>
             </div>
             <br/>
             <div id="roo_clinicalRecord_hbA1cPercentage">
@@ -760,8 +792,13 @@
                 <spring:message code="field.required" var="field_required"/>
                 <spring:message argumentSeparator="," arguments="Hb A1c Percentage," code="field.simple.validation" var="field_validation"/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_hbA1cPercentage_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : false}})); </script>
+            	<br/>                
             </div>
-            <br/>
+            <script type="text/javascript">Spring.addDecoration(
+                    new Spring.ElementDecoration({
+                        elementId : 'roo_clinicalRecord_hbA1cPercentage', 
+                        widgetType: 'dijit.layout.ContentPane'})); 
+            </script>    
             <div id="roo_clinicalRecord_hbA1cMethod">
                 <label for="_hbA1cMethod_id">HbA1c Method:</label>
                 <form:errors cssClass="errors" id="_hbA1cMethod_error_id" path="hbA1cMethod"/>
@@ -770,9 +807,31 @@
                 	<form:options items="${hba1cmethodtype_enum}" itemLabel="label"/>
                 </form:select>
                 <br/>
-                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_hbA1cMethod_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
+                <script type="text/javascript">Spring.addDecoration(
+                        new Spring.ElementDecoration({
+                            elementId : '_hbA1cMethod_id', 
+                            widgetType: 'dijit.form.FilteringSelect', 
+                            widgetAttrs : {hasDownArrow : true,
+                            onChange : function(newValue) {
+		                		if (newValue == 'OTHER')
+		                		{
+			                		dojo.style(dijit.byId("roo_clinicalRecord_hbA1cMethodOther").domNode, "display", "block");
+		                		}
+		                		else
+		                		{
+		                			dojo.style(dijit.byId("roo_clinicalRecord_hbA1cMethodOther").domNode, "display", "none");
+		                		}
+                			}
+                		}
+                	})); 
+                </script>
+            	<br/>                
             </div>
-            <br/>
+            <script type="text/javascript">Spring.addDecoration(
+                    new Spring.ElementDecoration({
+                        elementId : 'roo_clinicalRecord_hbA1cMethod', 
+                        widgetType: 'dijit.layout.ContentPane'})); 
+            </script>
             <div id="roo_clinicalRecord_hbA1cMethodOther">
                 <label for="_hbA1cMethodOther_id">HbA1c Method Other:</label>
                 <form:input cssStyle="width:250px" id="_hbA1cMethodOther_id" maxlength="30" path="hbA1cMethodOther" size="0"/>
@@ -782,8 +841,13 @@
                 <spring:message code="field.required" var="field_required"/>
                 <spring:message argumentSeparator="," arguments="Hb A1c Method Other," code="field.simple.validation" var="field_validation"/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_hbA1cMethodOther_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : false}})); </script>
+            	<br/>                
             </div>
-            <br/>
+            <script type="text/javascript">Spring.addDecoration(
+                    new Spring.ElementDecoration({
+                        elementId : 'roo_clinicalRecord_hbA1cMethodOther', 
+                        widgetType: 'dijit.layout.ContentPane'})); 
+            </script> 
             <div id="roo_clinicalRecord_microalbuminuriaValue">
                 <label for="_microalbuminuriaValue_id">Microalbuminuria Value:</label>
                 <form:input cssStyle="width:250px" id="_microalbuminuriaValue_id" maxlength="30" path="microalbuminuriaValue" size="0"/>
