@@ -17,13 +17,6 @@
 		            </div>
 		            <br/>
 		            </sec:authorize>
-		            <div id="roo_clinicalRecord_additionalComment">
-		                <label for="_additionalComment_id">Additional Comment:</label>
-		                <div class="box" id="_additionalComment_id">
-		                    <c:out value="${clinicalRecord.additionalComment}"/>
-		                </div>
-		            </div>
-		            <br/>
 		            <div id="roo_clinicalRecord_personCompletingForm">
 		                <label for="_personCompletingForm_id">Person Completing Form:</label>
 		                <div class="box" id="_personCompletingForm_id">
@@ -42,13 +35,6 @@
 		                <label for="_seniorPhysician_id">Senior Physician:</label>
 		                <div class="box" id="_seniorPhysician_id">
 		                    <c:out value="${clinicalRecord.seniorPhysician}"/>
-		                </div>
-		            </div>
-		            <br/>
-		            <div id="roo_clinicalRecord_literate">
-		                <label for="_literate_id">Literate:</label>
-		                <div class="box" id="_literate_id">
-		                    <c:out value="${clinicalRecord.literate}"/>
 		                </div>
 		            </div>
 		            <br/>
@@ -586,6 +572,13 @@
 		                </div>
 		            </div>
 		            <br/>
+		            <div id="roo_clinicalRecord_literate">
+		                <label for="_literate_id">Literate:</label>
+		                <div class="box" id="_literate_id">
+		                    <c:out value="${clinicalRecord.literate}"/>
+		                </div>
+		            </div>
+		            <br/>		            
 		        </div>
 				<script type="text/javascript">
 					Spring.addDecoration(new Spring.ElementDecoration({
@@ -645,6 +638,13 @@
 		            </div>
 		            <br/>
 		             -->
+		            <div id="roo_clinicalRecord_additionalComment">
+		                <label for="_additionalComment_id">Additional Comment  about any aspect - optional:</label>
+		                <div class="box" id="_additionalComment_id">
+		                    <c:out value="${clinicalRecord.additionalComment}"/>
+		                </div>
+		            </div>
+		            <br/>		             
 		        </div>
 				<script type="text/javascript">
 					Spring.addDecoration(new Spring.ElementDecoration({

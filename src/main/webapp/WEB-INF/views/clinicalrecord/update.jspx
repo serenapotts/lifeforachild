@@ -88,14 +88,6 @@
             <br/>
             </sec:authorize>
             <form:hidden id="_child_id" path="child"/>
-            <div id="roo_clinicalRecord_additionalComment">
-                <label for="_additionalComment_id">Additional Comment:</label>
-                <form:textarea cssStyle="width:250px" id="_additionalComment_id" path="additionalComment"/>
-                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_additionalComment_id', widgetType: 'dijit.form.SimpleTextarea', widgetAttrs: {}})); </script>
-                <br/>
-                <form:errors cssClass="errors" id="_additionalComment_error_id" path="additionalComment"/>
-            </div>
-            <br/>
             <div id="roo_clinicalRecord_personCompletingForm">
                 <c:if test="${not empty users}">
                     <label for="_personCompletingForm_id">Person Completing Form:</label>
@@ -128,18 +120,7 @@
                 <spring:message argumentSeparator="," arguments="Senior Physician,(${field_required})" code="field.simple.validation" var="field_validation"/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_seniorPhysician_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : true}})); </script>
             </div>
-            <br/>
-            <div id="roo_clinicalRecord_literate">
-                <label for="_literate_id">Literate:</label>
-                <form:errors cssClass="errors" id="_literate_error_id" path="literate"/>
-                <form:select cssStyle="width:250px" id="_literate_id" path="literate">
-                	<form:option value=""></form:option>
-                	<form:options items="${yesnonatype_enum}" itemLabel="label"/>
-                </form:select>
-                <br/>
-                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_literate_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
-            </div>
-            <br/>         
+            <br/>        
         </div>	   
 		<script type="text/javascript">
 			Spring.addDecoration(new Spring.ElementDecoration({
@@ -1095,6 +1076,17 @@
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_diabetesCopingAbilities_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
             </div>
             <br/>
+            <div id="roo_clinicalRecord_literate">
+                <label for="_literate_id">Literate:</label>
+                <form:errors cssClass="errors" id="_literate_error_id" path="literate"/>
+                <form:select cssStyle="width:250px" id="_literate_id" path="literate">
+                	<form:option value=""></form:option>
+                	<form:options items="${yesnonatype_enum}" itemLabel="label"/>
+                </form:select>
+                <br/>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_literate_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
+            </div>
+            <br/>             
 		</div>
 		<script type="text/javascript">
 			Spring.addDecoration(new Spring.ElementDecoration({
@@ -1176,6 +1168,14 @@
             </div>
             <br/>
              -->
+            <div id="roo_clinicalRecord_additionalComment">
+                <label for="_additionalComment_id">Additional Comment  about any aspect - optional:</label>
+                <form:textarea cssStyle="width:250px" id="_additionalComment_id" path="additionalComment"/>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_additionalComment_id', widgetType: 'dijit.form.SimpleTextarea', widgetAttrs: {}})); </script>
+                <br/>
+                <form:errors cssClass="errors" id="_additionalComment_error_id" path="additionalComment"/>
+            </div>
+            <br/>             
 		</div>
 		<script type="text/javascript">
 			Spring.addDecoration(new Spring.ElementDecoration({
