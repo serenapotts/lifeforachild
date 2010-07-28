@@ -9,4 +9,9 @@ public enum YesNoType {
     String label;
     
     public String getLabel() { return label; }
+    
+    public String toString()
+    {
+    	return label;
+    }
 }

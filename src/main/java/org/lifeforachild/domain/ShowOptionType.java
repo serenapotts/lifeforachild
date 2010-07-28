@@ -12,5 +12,9 @@ public enum ShowOptionType {
     
     public String getLabel() { return label; }
 
+    public String toString()
+    {
+    	return label;
+    }
 }
 

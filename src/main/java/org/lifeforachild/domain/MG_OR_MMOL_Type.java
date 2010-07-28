@@ -9,4 +9,9 @@ public enum MG_OR_MMOL_Type {
     String label;
     
     public String getLabel() { return label; }
+    
+    public String toString()
+    {
+    	return label;
+    }    
 }

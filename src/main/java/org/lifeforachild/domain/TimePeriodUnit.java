@@ -20,6 +20,11 @@ public enum TimePeriodUnit {
     
     public String getLabel() { return label; }
     
+    public String toString()
+    {
+    	return label;
+    }
+    
     /**
      * Determines the from and to dates in a date range for a {@link TimePeriodUnit}
      * and the number of units.

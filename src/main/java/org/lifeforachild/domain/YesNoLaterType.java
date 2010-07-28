@@ -10,4 +10,9 @@ public enum YesNoLaterType {
     String label;
     
     public String getLabel() { return label; }
+    
+    public String toString()
+    {
+    	return label;
+    }
 }

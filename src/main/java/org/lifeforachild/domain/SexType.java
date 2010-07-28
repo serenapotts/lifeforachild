@@ -14,6 +14,11 @@ public enum SexType {
     
     public String getLabel() { return label; }
 
+    public String toString()
+    {
+    	return label;
+    }
+    
     /**
      * Custom Expression that formats a SexType enum in a report to display the label based
      * on the code.
