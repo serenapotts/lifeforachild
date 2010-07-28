@@ -143,11 +143,32 @@
                 <form:errors cssClass="errors" id="_insulinUnitsPerDay_error_id" path="insulinUnitsPerDay"/>
                 <spring:message code="field.invalid.integer" var="field_invalid"/>
                 <spring:message code="field.required" var="field_required"/>
-                <spring:message argumentSeparator="," arguments="Insulin Units Per Day,(${field_required})" code="field.simple.validation" var="field_validation"/>
-                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_insulinUnitsPerDay_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', regExp: '-?[0-9]*', required : true}})); </script>
+                <spring:message argumentSeparator="," arguments="Insulin Units Per Day (0-200),(${field_required})" code="field.simple.validation" var="field_validation"/>
+                <script type="text/javascript">
+                    Spring.addDecoration(new Spring.ElementDecoration({
+                        elementId : '_insulinUnitsPerDay_id', 
+                        widgetType : 'dijit.form.ValidationTextBox', 
+                        widgetAttrs : {promptMessage: '${field_validation}', 
+                                       invalidMessage: '${field_invalid}', 
+                                       regExp: '-?[0-9]*', 
+                                       required : true,
+                                       onKeyUp : function(event) {
+                                           var value = event.srcElement.value;
+                                           if (value > 0)
+                                           {
+                                               // show number of insulin injections per day field
+                                               dojo.style(dijit.byId("roo_clinicalRecord_numberOfInsulinInjectionsPerDay").domNode, "display", "block");
+                                           }
+				                           else
+				                           {
+                                               // hide number of insulin injections per day field
+                                               dojo.style(dijit.byId("roo_clinicalRecord_numberOfInsulinInjectionsPerDay").domNode, "display", "none");
+				                           }
+                    }}}));
+                </script>
             </div>
             <br/>
-            <div id="roo_clinicalRecord_numberOfInsulinInjectionsPerDay">
+            <div id="roo_clinicalRecord_numberOfInsulinInjectionsPerDay" style="display:none">
                 <label for="_numberOfInsulinInjectionsPerDay_id">Number Of Insulin Injections Per Day:</label>
                 <form:input cssStyle="width:250px" id="_numberOfInsulinInjectionsPerDay_id" maxlength="30" path="numberOfInsulinInjectionsPerDay" size="0"/>
                 <br/>
@@ -157,6 +178,12 @@
                 <spring:message argumentSeparator="," arguments="Number Of Insulin Injections Per Day," code="field.simple.validation" var="field_validation"/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_numberOfInsulinInjectionsPerDay_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', regExp: '-?[0-9]*', required : false}})); </script>
             </div>
+            <script type="text/javascript">
+                Spring.addDecoration(
+                    new Spring.ElementDecoration({
+                        elementId : 'roo_clinicalRecord_numberOfInsulinInjectionsPerDay', 
+                        widgetType: 'dijit.layout.ContentPane'})); 
+            </script> 
             <br/>
 		</div>
 		<script type="text/javascript">

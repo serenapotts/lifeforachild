@@ -5,7 +5,7 @@
         <spring:message code="label.clinicalrecord" var="entity_label"/>
         <spring:message arguments="${entity_label}" code="entity.show" var="title_msg"/>
         <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_title_div', widgetType : 'dijit.TitlePane', widgetAttrs : {title: '${title_msg}'}})); </script>
-        <c:if test="${not empty clinicalRecord}">       
+        <c:if test="${not empty clinicalRecord}">
 	        <div id="mainTabContainer" style="width:500px;height:400px">
 	           	<div id="general"> 
 	           		<sec:authorize ifAllGranted="View Child Name">
@@ -89,13 +89,15 @@
 		                </div>
 		            </div>
 		            <br/>
-		            <div id="roo_clinicalRecord_numberOfInsulinInjectionsPerDay">
-		                <label for="_numberOfInsulinInjectionsPerDay_id">Number Of Insulin Injections Per Day:</label>
-		                <div class="box" id="_numberOfInsulinInjectionsPerDay_id">
-		                    <c:out value="${clinicalRecord.numberOfInsulinInjectionsPerDay}"/>
-		                </div>
-		            </div>
-		            <br/>
+		            <c:if test="${clinicalRecord.insulinUnitsPerDay > 0}">
+			            <div id="roo_clinicalRecord_numberOfInsulinInjectionsPerDay">
+			                <label for="_numberOfInsulinInjectionsPerDay_id">Number Of Insulin Injections Per Day:</label>
+			                <div class="box" id="_numberOfInsulinInjectionsPerDay_id">
+			                    <c:out value="${clinicalRecord.numberOfInsulinInjectionsPerDay}"/>
+			                </div>
+			            </div>
+			            <br/>
+			        </c:if>
 		            <br/>
 				</div>
 				<script type="text/javascript">
@@ -354,7 +356,7 @@
 					Spring.addDecoration(new Spring.ElementDecoration({
 						elementId : "eyes",
 						widgetType : "dijit.layout.ContentPane",
-						widgetAttrs : { title: "Eyes" },
+						widgetAttrs : { title: "Eyes" }
 						}));
 				</script>			        
 		        <div id="feet">		            
