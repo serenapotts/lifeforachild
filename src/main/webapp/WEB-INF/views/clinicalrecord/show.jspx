@@ -554,27 +554,31 @@
 		                </div>
 		            </div>
 		            <br/>
-		            <div id="roo_clinicalRecord_notAttendingSchoolWhy">
-		                <label for="_notAttendingSchoolWhy_id">If not attending School - Why:</label>
-		                <div class="box" id="_notAttendingSchoolWhy_id">
-		                    <c:out value="${clinicalRecord.notAttendingSchoolWhy}"/>
-		                </div>
-		            </div>
-		            <br/>
-		            <div id="roo_clinicalRecord_diabetesLimitingAttendance">
-		                <label for="_diabetesLimitingAttendance_id">Diabetes Limiting Attendance:</label>
-		                <div class="box" id="_diabetesLimitingAttendance_id">
-		                    <c:out value="${clinicalRecord.diabetesLimitingAttendance}"/>
-		                </div>
-		            </div>
-		            <br/>
-		            <div id="roo_clinicalRecord_appropriateGradeForAge">
-		                <label for="_appropriateGradeForAge_id">Appropriate Grade For Age:</label>
-		                <div class="box" id="_appropriateGradeForAge_id">
-		                    <c:out value="${clinicalRecord.appropriateGradeForAge}"/>
-		                </div>
-		            </div>
-		            <br/>
+		            <c:if test="${clinicalRecord.attendingSchool == 'NO'}">
+			            <div id="roo_clinicalRecord_notAttendingSchoolWhy">
+			                <label for="_notAttendingSchoolWhy_id">If not attending School - Why:</label>
+			                <div class="box" id="_notAttendingSchoolWhy_id">
+			                    <c:out value="${clinicalRecord.notAttendingSchoolWhy}"/>
+			                </div>
+			            </div>
+			            <br/>
+		            </c:if>
+		            <c:if test="${clinicalRecord.attendingSchool == 'YES'}">
+			            <div id="roo_clinicalRecord_diabetesLimitingAttendance">
+			                <label for="_diabetesLimitingAttendance_id">Diabetes Limiting Attendance:</label>
+			                <div class="box" id="_diabetesLimitingAttendance_id">
+			                    <c:out value="${clinicalRecord.diabetesLimitingAttendance}"/>
+			                </div>
+			            </div>
+			            <br/>
+			            <div id="roo_clinicalRecord_appropriateGradeForAge">
+			                <label for="_appropriateGradeForAge_id">Appropriate Grade For Age:</label>
+			                <div class="box" id="_appropriateGradeForAge_id">
+			                    <c:out value="${clinicalRecord.appropriateGradeForAge}"/>
+			                </div>
+			            </div>
+			            <br/>
+		            </c:if>
 		            <div id="roo_clinicalRecord_diabetesCopingAbilities">
 		                <label for="_diabetesCopingAbilities_id">Diabetes Coping Abilities:</label>
 		                <div class="box" id="_diabetesCopingAbilities_id">
