@@ -23,6 +23,7 @@
                 <c:if test="${not empty users}">
                     <label for="_viewableBy_id">Viewable By:</label>
                     <form:select cssStyle="width:250px" id="_viewableBy_id" path="viewableBy">
+                    	<form:option value="0">All</form:option>
                         <form:options itemValue="id" items="${users}"/>
                     </form:select>
                     <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_viewableBy_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
@@ -32,9 +33,36 @@
             <div id="roo_report_reporttype">
                 <label for="_reporttype_id">Report Type:</label>
                 <form:errors cssClass="errors" id="_reporttype_error_id" path="reporttype"/>
-                <form:select cssStyle="width:250px" id="_reporttype_id" items="${reporttype_enum}" path="reporttype" itemLabel="label"/>
+                <form:select cssStyle="width:250px" id="_reporttype_id"  path="reporttype" >
+                	<form:option value=""></form:option>
+                	<form:options items="${reporttype_enum}" itemLabel="label"/>
+               	</form:select>
                 <br/>
-                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_reporttype_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
+                <script type="text/javascript">Spring.addDecoration(
+                        new Spring.ElementDecoration({
+                            elementId : '_reporttype_id', 
+                            widgetType: 'dijit.form.FilteringSelect', 
+                            widgetAttrs : {hasDownArrow : true,
+				                onChange : function(newValue) {
+			                		if (newValue == 'CHILD')
+			                		{
+				                		dojo.style(dijit.byId("roo_report_childfields").domNode, "display", "block");
+				                		dojo.style(dijit.byId("roo_report_clinicalrecordfields").domNode, "display", "none");
+			                		}
+			                		else if (newValue == "CLINICAL_RECORD")
+			                		{
+			                			dojo.style(dijit.byId("roo_report_clinicalrecordfields").domNode, "display", "block");;
+			                			dojo.style(dijit.byId("roo_report_childfields").domNode, "display", "none");
+			                		}
+			                		else
+			                		{
+			                			dojo.style(dijit.byId("roo_report_childfields").domNode, "display", "none");
+			                			dojo.style(dijit.byId("roo_report_clinicalrecordfields").domNode, "display", "none");
+			                		}
+                        		}
+                			}                            
+                       	})); 
+				</script>                    
             </div>
             <br/>
             <div id="roo_report_statustype">
@@ -133,7 +161,7 @@
             <div id="roo_report_country">
                 <c:if test="${not empty countrys}">
                     <label for="_country_id">Country:</label>
-                    <form:select cssStyle="width:250px" id="_country_id" path="country">
+                    <form:select cssStyle="width:250px" id="_country_id" path="country" >
                     	<form:option value="0">None</form:option>
                         <form:options itemValue="id" items="${countrys}"/>
                     </form:select>
@@ -141,24 +169,32 @@
                 </c:if>
             </div>
             <br/>
-                <div id="roo_report_childfields">
+                <div id="roo_report_childfields" style="display:none">
                 <label for="_childfields">Child Fields:</label>
                 <form:select cssStyle="width:250px" id="_childfields" items="${childfields_enum}" path="childfields" size="4" multiple="true" itemLabel="label"/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_childfields', widgetType: 'dijit.form.MultiSelect', widgetAttrs : {hasDownArrow : true}})); </script>
                 <br/>
                 <form:errors cssClass="errors" id="_childfields_error" path="childfields"/>
+            	<br/>                
             </div>
-            <br/>
-            <br/>
-            <div id="roo_report_clinicalrecordfields">
+            <script type="text/javascript">Spring.addDecoration(
+                    new Spring.ElementDecoration({
+                        elementId : 'roo_report_childfields', 
+                        widgetType: 'dijit.layout.ContentPane'})); 
+            </script>
+            <div id="roo_report_clinicalrecordfields" style="display:none">
                 <label for="_clinicalrecordfields">Clinical Record Fields:</label>
                 <form:select cssStyle="width:250px" id="_clinicalrecordfields" items="${clinicalrecordfields_enum}" path="clinicalrecordfields" size="4" multiple="true" itemLabel="label"/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_clinicalrecordfields', widgetType: 'dijit.form.MultiSelect', widgetAttrs : {hasDownArrow : true}})); </script>
                 <br/>
                 <form:errors cssClass="errors" id="_clinicalrecordfields_error" path="clinicalrecordfields"/>
+            	<br/>                
             </div>
-
-            <br/>
+            <script type="text/javascript">Spring.addDecoration(
+                    new Spring.ElementDecoration({
+                        elementId : 'roo_report_clinicalrecordfields', 
+                        widgetType: 'dijit.layout.ContentPane'})); 
+            </script>              
             <div id="roo_report_orderBy">
                 <label for="_orderBy_id">Order By:</label>
                 <form:input cssStyle="width:250px" id="_orderBy_id" maxlength="30" path="orderBy" size="0"/>
