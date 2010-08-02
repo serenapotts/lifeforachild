@@ -18,8 +18,8 @@ public class UserQuery extends BaseQuery {
     public static Criteria getUsersByAccessCriteria(EntityManager entityManager)
     {
     	Criteria criteria = ((Session)entityManager.getDelegate()).createCriteria(User.class);
-    	findCountryByAccessCriteria(criteria);
-    	findCentreByAccessCriteria(criteria);
+    	CountryQuery.findCountryByAccessCriteria(criteria);
+    	DiabetesCentreQuery.findCentreByAccessCriteria(criteria);
     	
     	UserGroup userGroup = SecurityUtil.getInstance().getCurrentUserGroup();
     	if (userGroup == null)

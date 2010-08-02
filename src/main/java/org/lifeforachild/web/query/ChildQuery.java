@@ -150,8 +150,8 @@ public class ChildQuery extends BaseQuery {
 	public static Criteria getChildrenByAccessCriteria(EntityManager entityManager)
 	{
 		Criteria criteria = ((Session)entityManager.getDelegate()).createCriteria(Child.class);
-		findCountryByAccessCriteria(criteria);
-    	findCentreByAccessCriteria(criteria);
+		CountryQuery.findCountryByAccessCriteria(criteria);
+    	DiabetesCentreQuery.findCentreByAccessCriteria(criteria);
     	return criteria;
 	}
 	

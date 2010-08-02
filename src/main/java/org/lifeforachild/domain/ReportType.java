@@ -2,7 +2,7 @@ package org.lifeforachild.domain;
 
 public enum ReportType {
 	CHILD("Child"),
-	CLINICAL_RECORD("Record");
+	CLINICAL_RECORD("Visit");
 	
 	ReportType(String s) { label = s; }
     

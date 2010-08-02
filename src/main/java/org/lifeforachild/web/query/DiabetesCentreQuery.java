@@ -32,6 +32,17 @@ public class DiabetesCentreQuery extends BaseQuery {
 		return criteria;
 	}	
 	
+    public static void findCentreByAccessCriteria(Criteria criteria)
+    {
+		Integer centre = SecurityUtil.getInstance().getCentre();
+		if (centre != null && centre != 0)
+		{
+			// have just country access to restrict to all centres in that country
+			criteria.createCriteria("centre")
+					.add(Restrictions.eq("id", new Long(centre)));
+		}    
+    }	
+    
 	public static List findCentreByAccess(EntityManager entityManager)
 	{
 		Criteria criteria = findCentreByAccessCriteria(entityManager);

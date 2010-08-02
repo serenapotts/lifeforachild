@@ -10,7 +10,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Version;
+
+import org.hibernate.Criteria;
 import org.lifeforachild.domain.Report;
+import org.lifeforachild.web.query.ReportQuery;
 import org.springframework.transaction.annotation.Transactional;
 
 privileged aspect Report_Roo_Entity {
@@ -84,8 +87,9 @@ privileged aspect Report_Roo_Entity {
         return (Long) entityManager().createQuery("select count(o) from Report o").getSingleResult();        
     }    
     
-    public static List<Report> Report.findAllReports() {    
-        return entityManager().createQuery("select o from Report o").getResultList();        
+    public static List<Report> Report.findAllReports() {  
+    	Criteria criteria = ReportQuery.findReportByUserAccessCriteria(entityManager());
+        return criteria.list();        
     }    
     
     public static Report Report.findReport(Long id) {    
@@ -94,7 +98,8 @@ privileged aspect Report_Roo_Entity {
     }    
     
     public static List<Report> Report.findReportEntries(int firstResult, int maxResults) {    
-        return entityManager().createQuery("select o from Report o").setFirstResult(firstResult).setMaxResults(maxResults).getResultList();        
+        List repots = ReportQuery.findReportByUserAccessCriteria(entityManager()).setFirstResult(firstResult).setMaxResults(maxResults).list();
+        return repots;
     }    
     
 }

@@ -23,6 +23,17 @@ public class CountryQuery extends BaseQuery {
 		return criteria;
 	}
 	
+    protected static void findCountryByAccessCriteria(Criteria criteria)
+    {
+		Integer country = SecurityUtil.getInstance().getCountry();
+		if (country != null && country != 0)
+		{
+			// have just country access to restrict to all centres in that country
+			criteria.createCriteria("country")
+					.add(Restrictions.eq("id", new Long(country)));
+		}    
+    }
+	
 	public static List<Country> findCountryByAccess(EntityManager entityManager)
 	{		
 		Criteria criteria = findCountryByAccessCriteria(entityManager);
