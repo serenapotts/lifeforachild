@@ -140,7 +140,6 @@ public class ClinicalRecord {
     private YesNoType hasPubertyTannerB2_P2orGreater;
 
     @Enumerated
-    @NotNull(message = "is required.")
     private YesNoType menarche;
 
     @Temporal(TemporalType.TIMESTAMP)

@@ -279,22 +279,24 @@
 		                </div>
 		            </div>
 		            <br/>
-		            <div id="roo_clinicalRecord_menarche">
-		                <label for="_menarche_id">Menarche:</label>
-		                <div class="box" id="_menarche_id">
-		                    <c:out value="${clinicalRecord.menarche}"/>
-		                </div>
-		            </div>
-		            <br/>
-		            <c:if test="${clinicalRecord.menarche == 'YES'}">
-			            <div id="roo_clinicalRecord_ifMenarcheAge">
-			                <label for="_ifMenarcheAge_id">If Menarche Age:</label>
-			                <div class="box" id="_ifMenarcheAge_id">
-			                    <fmt:formatDate pattern="${clinicalRecord_ifMenarcheAge_date_format}" value="${clinicalRecord.ifMenarcheAge}"/>
+		            <c:if test="${clinicalRecord.child.sex == 'FEMALE'}">
+			            <div id="roo_clinicalRecord_menarche">
+			                <label for="_menarche_id">Menarche:</label>
+			                <div class="box" id="_menarche_id">
+			                    <c:out value="${clinicalRecord.menarche}"/>
 			                </div>
 			            </div>
-			            <br/>	
-		            </c:if>			
+			            <br/>
+			            <c:if test="${clinicalRecord.menarche == 'YES'}">
+				            <div id="roo_clinicalRecord_ifMenarcheAge">
+				                <label for="_ifMenarcheAge_id">If Menarche Age:</label>
+				                <div class="box" id="_ifMenarcheAge_id">
+				                    <fmt:formatDate pattern="${clinicalRecord_ifMenarcheAge_date_format}" value="${clinicalRecord.ifMenarcheAge}"/>
+				                </div>
+				            </div>
+				            <br/>	
+			            </c:if>		
+		            </c:if>	
             	</div>	 
   				<script type="text/javascript">
 					Spring.addDecoration(new Spring.ElementDecoration({
