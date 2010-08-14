@@ -10,18 +10,18 @@
             <table width="550px">
                 <thead>
                     <tr>
-                        <th>Id</th>                        
-                       	<th>Individual Id</th>                        
+                        <th><spring:message code="child.list.id"/></th>                        
+                       	<th><spring:message code="child.list.individualId"/></th>                        
                         <sec:authorize ifAllGranted="View Child Name">
-	                        <th>Initials</th>
-	                        <th>First Name</th>
-	                        <th>Last Name</th>
+	                        <th><spring:message code="child.list.initials"/></th>
+	                        <th><spring:message code="child.list.firstName"/></th>
+	                        <th><spring:message code="child.list.lastName"/></th>
                         </sec:authorize>
-                        <th>Country</th>
-                        <th>Centre</th>
-                        <th>Show Child</th>
-                        <th>Update Child</th>
-                        <th>Delete Child</th>
+                        <th><spring:message code="child.list.country"/></th>
+                        <th><spring:message code="child.list.centre"/></th>
+                        <th><spring:message code="child.list.show"/></th>
+                        <th><spring:message code="child.list.update"/></th>
+                        <th><spring:message code="child.list.delete"/></th>
                     </tr>
                 </thead>
                 <c:forEach items="${children}" var="child">

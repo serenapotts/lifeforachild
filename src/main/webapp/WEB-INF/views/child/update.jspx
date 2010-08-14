@@ -47,7 +47,7 @@
 		            <br/>
 		            <sec:authorize ifAllGranted="View Child Name">
 			            <div id="roo_child_initials">
-			                <label for="_initials_id">Initials:</label>
+			                <label for="_initials_id"><spring:message code="child.initials"/></label>
 			                <form:input cssStyle="width:250px" id="_initials_id" maxlength="30" path="initials" size="0"/>
 			                <br/>
 			                <form:errors cssClass="errors" id="_initials_error_id" path="initials"/>
@@ -58,7 +58,7 @@
 			            </div>
 			            <br/>
 			            <div id="roo_child_name">
-			                <label for="_name_id">First Name:</label>
+			                <label for="_name_id"><spring:message code="child.firstName"/></label>
 			                <form:input cssStyle="width:250px" id="_name_id" maxlength="30" path="name" size="0"/>
 			                <br/>
 			                <form:errors cssClass="errors" id="_name_error_id" path="name"/>
@@ -69,7 +69,7 @@
 			            </div>
 			            <br/>
 						<div id="roo_child_lastName">
-			                <label for="_lastName_id">Last Name:</label>
+			                <label for="_lastName_id"><spring:message code="child.lastName"/></label>
 			                <form:input cssStyle="width:250px" id="_lastName_id" maxlength="30" path="lastName" size="0"/>
 			                <br/>
 			                <form:errors cssClass="errors" id="_lastName_error_id" path="lastName"/>
@@ -87,7 +87,7 @@
 		            </sec:authorize>            
 		            <div id="roo_child_country">
 		                <c:if test="${not empty countrys}">
-		                    <label for="_country_id">Country:</label>
+		                    <label for="_country_id"><spring:message code="child.country"/></label>
 		                    <form:select cssStyle="width:250px" id="_country_id" path="country">
 		                        <form:options itemValue="id" items="${countrys}"/>
 		                    </form:select>
@@ -97,7 +97,7 @@
 		            <br/>
 		            <div id="roo_child_centre">
 		                <c:if test="${not empty diabetescentres}">
-		                    <label for="_centre_id">Centre:</label>
+		                    <label for="_centre_id"><spring:message code="child.centre"/></label>
 		                    <form:select cssStyle="width:250px" id="_centre_id" path="centre">
 		                        <form:options itemValue="id" items="${diabetescentres}"/>
 		                    </form:select>
@@ -106,7 +106,7 @@
 		            </div>
 		            <br/>
 		            <div id="roo_child_ethnicGroup">
-		                <label for="_ethnicGroup_id">Ethnic Group:</label>
+		                <label for="_ethnicGroup_id"><spring:message code="child.ethnicGroup"/></label>
 		                <form:input cssStyle="width:250px" id="_ethnicGroup_id" maxlength="20" path="ethnicGroup" size="0"/>
 		                <br/>
 		                <form:errors cssClass="errors" id="_ethnicGroup_error_id" path="ethnicGroup"/>
@@ -117,7 +117,7 @@
 		            </div>
 		            <br/>
 		            <div id="roo_child_sex">
-		                <label for="_sex_id">Sex:</label>
+		                <label for="_sex_id"><spring:message code="child.sex"/></label>
 		                <form:errors cssClass="errors" id="_sex_error_id" path="sex"/>
 		                <form:select cssStyle="width:250px" id="_sex_id" items="${sextype_enum}" path="sex" itemLabel="label"/>
 		                <br/>
@@ -125,7 +125,7 @@
 		            </div>
 		            <br/>
 		            <div id="roo_child_survivalStatus">
-		                <label for="_survivalStatus_id">Survival Status:</label>
+		                <label for="_survivalStatus_id"><spring:message code="child.survivalStatus"/></label>
 		                <form:errors cssClass="errors" id="_survivalStatus_error_id" path="survivalStatus"/>
 		                <form:select cssStyle="width:250px" id="_survivalStatus_id" items="${survivalstatustype_enum}" path="survivalStatus" itemLabel="label"/>
 		                <br/>
@@ -155,7 +155,7 @@
 		            </div>
 		            <br/>
 		            <div id="roo_child_dateOfDeath">
-		                <label for="_dateOfDeath_id">Date Of Death:</label>
+		                <label for="_dateOfDeath_id"><spring:message code="child.dateOfDeath"/></label>
 		                <form:input cssStyle="width:250px" id="_dateOfDeath_id" maxlength="30" path="dateOfDeath" size="0"/>
 		                <br/>
 		                <form:errors cssClass="errors" id="_dateOfDeath_error_id" path="dateOfDeath"/>
@@ -171,7 +171,7 @@
 		                        widgetType: 'dijit.layout.ContentPane'})); 
 		            </script> 		            
 		            <div id="roo_child_causeOfDeath">
-		                <label for="_causeOfDeath_id">Cause Of Death:</label>
+		                <label for="_causeOfDeath_id"><spring:message code="child.causeOfDeath"/></label>
 		                <form:errors cssClass="errors" id="_causeOfDeath_error_id" path="causeOfDeath"/>
 		                <form:select cssStyle="width:250px" id="_causeOfDeath_id" items="${causeofdeathtype_enum}" path="causeOfDeath" itemLabel="label"/>
 		                <br/>
@@ -204,7 +204,7 @@
             			})); 
             		</script> 
 		            <div id="roo_child_causeOfDeathOther">
-		                <label for="_causeOfDeathOther_id">Cause Of Death Other:</label>
+		                <label for="_causeOfDeathOther_id"><spring:message code="child.causeOfDeathOther"/></label>
 		                <form:textarea cssStyle="width:250px" id="_causeOfDeathOther_id" path="causeOfDeathOther"/>
 		                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_causeOfDeathOther_id', widgetType: 'dijit.form.SimpleTextarea', widgetAttrs: {}})); </script>
 		                <br/>
@@ -217,7 +217,7 @@
 	                        widgetType: 'dijit.layout.ContentPane'})); 
             		</script> 		            
 		            <div id="roo_child_dateOfRegistration">
-		                <label for="_dateOfRegistration_id">Date Of Registration:</label>
+		                <label for="_dateOfRegistration_id"><spring:message code="child.dateOfReg"/></label>
 		                <form:input cssStyle="width:250px" id="_dateOfRegistration_id" maxlength="30" path="dateOfRegistration" size="0"/>
 		                <br/>
 		                <form:errors cssClass="errors" id="_dateOfRegistration_error_id" path="dateOfRegistration"/>
@@ -228,7 +228,7 @@
 		            </div>
 		            <br/>
 		            <div id="roo_child_dateOfBirth">
-		                <label for="_dateOfBirth_id">Date Of Birth:</label>
+		                <label for="_dateOfBirth_id"><spring:message code="child.dateOfBirth"/></label>
 		                <form:input cssStyle="width:250px" id="_dateOfBirth_id" maxlength="30" path="dateOfBirth" size="0"/>
 		                <br/>
 		                <form:errors cssClass="errors" id="_dateOfBirth_error_id" path="dateOfBirth"/>
@@ -239,7 +239,7 @@
 		            </div>
 		            <br/>
 		            <div id="roo_child_diabetesDiagnosed">
-		                <label for="_diabetesDiagnosed_id">Diabetes Diagnosed:</label>
+		                <label for="_diabetesDiagnosed_id"><spring:message code="child.diabetesDiagnosed"/></label>
 		                <form:input cssStyle="width:250px" id="_diabetesDiagnosed_id" maxlength="30" path="diabetesDiagnosed" size="0"/>
 		                <br/>
 		                <form:errors cssClass="errors" id="_diabetesDiagnosed_error_id" path="diabetesDiagnosed"/>
@@ -250,7 +250,7 @@
 		            </div>
 		            <br/>
 		            <div id="roo_child_insulinSince">
-		                <label for="_insulinSince_id">Insulin Since:</label>
+		                <label for="_insulinSince_id"><spring:message code="child.insulinStarted"/></label>
 		                <form:input cssStyle="width:250px" id="_insulinSince_id" maxlength="30" path="insulinSince" size="0"/>
 		                <br/>
 		                <form:errors cssClass="errors" id="_insulinSince_error_id" path="insulinSince"/>
@@ -261,7 +261,7 @@
 		            </div>
 		            <br/>
 		            <div id="roo_child_diabetesType">
-		                <label for="_diabetesType_id">Diabetes Type:</label>
+		                <label for="_diabetesType_id"><spring:message code="child.diabetesType"/></label>
 		                <form:errors cssClass="errors" id="_diabetesType_error_id" path="diabetesType"/>
 		                <form:select cssStyle="width:250px" id="_diabetesType_id" items="${diabetestype_enum}" path="diabetesType" itemLabel="label"/>
 		                <br/>
@@ -286,7 +286,7 @@
 		            </div>
 		            <br/>
 		            <div id="roo_child_diabetesTypeOther">
-		                <label for="_diabetesTypeOther_id">Diabetes Type Other:</label>
+		                <label for="_diabetesTypeOther_id"><spring:message code="child.diabetesTypeOther"/></label>
 		                <form:textarea cssStyle="width:250px" id="_diabetesTypeOther_id" path="diabetesTypeOther"/>
 		                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_diabetesTypeOther_id', widgetType: 'dijit.form.SimpleTextarea', widgetAttrs: {}})); </script>
 		                <br/>
@@ -302,7 +302,7 @@
 		            <form:hidden id="_updatedOn_id" path="updatedOn"/>
 		            <form:hidden id="_ageAtDiagnosis_id" path="ageAtDiagnosis"/>
 		            <div id="roo_child_distanceLivesFromCentre">
-		                <label for="_distanceLivesFromCentre_id">Distance Lives From Centre:</label>
+		                <label for="_distanceLivesFromCentre_id"><spring:message code="child.distanceFromCentre"/></label>
 		                <form:errors cssClass="errors" id="_distanceLivesFromCentre_error_id" path="distanceLivesFromCentre"/>
 		                <form:select cssStyle="width:250px" id="_distanceLivesFromCentre_id" items="${distancetype_enum}" path="distanceLivesFromCentre" itemLabel="label"/>
 		                <br/>

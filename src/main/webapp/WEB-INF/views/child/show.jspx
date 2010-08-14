@@ -15,21 +15,21 @@
             <br/>            
             <sec:authorize ifAllGranted="View Child Name">
 	            <div id="roo_child_initials">
-	                <label for="_initials_id">Initials:</label>
+	                <label for="_initials_id"><spring:message code="child.initials"/></label>
 	                <div class="box" id="_initials_id">
 	                    <c:out value="${child.initials}"/>
 	                </div>
 	            </div>
 	            <br/>
 	            <div id="roo_child_name">
-	                <label for="_name_id">First Name:</label>
+	                <label for="_name_id"><spring:message code="child.firstName"/></label>
 	                <div class="box" id="_name_id">
 	                    <c:out value="${child.name}"/>
 	                </div>
 	            </div>
 	            <br/>
 	            <div id="roo_child_lastName">
-	                <label for="_lastName_id">Last Name:</label>
+	                <label for="_lastName_id"><spring:message code="child.lastName"/></label>
 	                <div class="box" id="_lastName_id">
 	                    <c:out value="${child.lastName}"/>
 	                </div>
@@ -39,35 +39,35 @@
             <div id="mainTabContainer" style="width:550px;height:300px">
             	<div id="childInfo">
 		            <div id="roo_child_country">
-		                <label for="_country_id">Country:</label>
+		                <label for="_country_id"><spring:message code="child.country"/></label>
 		                <div class="box" id="_country_id">
 		                    <c:out value="${child.country}"/>
 		                </div>
 		            </div>
 		            <br/>
 		            <div id="roo_child_centre">
-		                <label for="_centre_id">Centre:</label>
+		                <label for="_centre_id"><spring:message code="child.centre"/></label>
 		                <div class="box" id="_centre_id">
 		                    <c:out value="${child.centre}"/>
 		                </div>
 		            </div>
 		            <br/>
 		            <div id="roo_child_ethnicGroup">
-		                <label for="_ethnicGroup_id">Ethnic Group:</label>
+		                <label for="_ethnicGroup_id"><spring:message code="child.ethnicGroup"/></label>
 		                <div class="box" id="_ethnicGroup_id">
 		                    <c:out value="${child.ethnicGroup}"/>
 		                </div>
 		            </div>
 		            <br/>
 		            <div id="roo_child_sex">
-		                <label for="_sex_id">Sex:</label>
+		                <label for="_sex_id"><spring:message code="child.sex"/></label>
 		                <div class="box" id="_sex_id">
 		                    <c:out value="${child.sex.label}"/>
 		                </div>
 		            </div>
 		            <br/>
 		            <div id="roo_child_survivalStatus">
-		                <label for="_survivalStatus_id">Survival Status:</label>
+		                <label for="_survivalStatus_id"><spring:message code="child.survivalStatus"/></label>
 		                <div class="box" id="_survivalStatus_id">
 		                    <c:out value="${child.survivalStatus.label}"/>
 		                </div>
@@ -75,14 +75,14 @@
 		            <br/>
 		            <c:if test="${child.survivalStatus == 'DEAD'}">
 			            <div id="roo_child_dateOfDeath">
-			                <label for="_dateOfDeath_id">Date Of Death:</label>
+			                <label for="_dateOfDeath_id"><spring:message code="child.dateOfDeath"/></label>
 			                <div class="box" id="_dateOfDeath_id">
 			                    <fmt:formatDate pattern="${child_dateOfDeath_date_format}" value="${child.dateOfDeath}"/>
 			                </div>
 			            </div>
 			            <br/>
 			            <div id="roo_child_causeOfDeath">
-			                <label for="_causeOfDeath_id">Cause Of Death:</label>
+			                <label for="_causeOfDeath_id"><spring:message code="child.causeOfDeath"/></label>
 			                <div class="box" id="_causeOfDeath_id">
 			                    <c:out value="${child.causeOfDeath.label}"/>
 			                </div>
@@ -90,7 +90,7 @@
 			            <br/>
 			            <c:if test="${child.causeOfDeath == 'OTHER_DIABETES_RELATED_CONDITION'}">
 				            <div id="roo_child_causeOfDeathOther">
-				                <label for="_causeOfDeathOther_id">Cause Of Death Other:</label>
+				                <label for="_causeOfDeathOther_id"><spring:message code="child.causeOfDeathOther"/></label>
 				                <div class="box" id="_causeOfDeathOther_id">
 				                    <c:out value="${child.causeOfDeathOther}"/>
 				                </div>
@@ -99,35 +99,35 @@
 			            </c:if>
 		            </c:if>
 		            <div id="roo_child_dateOfRegistration">
-		                <label for="_dateOfRegistration_id">Date Of Registration:</label>
+		                <label for="_dateOfRegistration_id"><spring:message code="child.dateOfReg"/></label>
 		                <div class="box" id="_dateOfRegistration_id">
 		                    <fmt:formatDate pattern="${child_dateOfRegistration_date_format}" value="${child.dateOfRegistration}"/>
 		                </div>
 		            </div>
 		            <br/>
 		            <div id="roo_child_dateOfBirth">
-		                <label for="_dateOfBirth_id">Date Of Birth:</label>
+		                <label for="_dateOfBirth_id"><spring:message code="child.dateOfBirth"/></label>
 		                <div class="box" id="_dateOfBirth_id">
 		                    <fmt:formatDate pattern="${child_dateOfBirth_date_format}" value="${child.dateOfBirth}"/>
 		                </div>
 		            </div>
 		            <br/>
 		            <div id="roo_child_diabetesDiagnosed">
-		                <label for="_diabetesDiagnosed_id">Diabetes Diagnosed:</label>
+		                <label for="_diabetesDiagnosed_id"><spring:message code="child.diabetesDiagnosed"/></label>
 		                <div class="box" id="_diabetesDiagnosed_id">
 		                    <fmt:formatDate pattern="${child_diabetesDiagnosed_date_format}" value="${child.diabetesDiagnosed}"/>
 		                </div>
 		            </div>
 		            <br/>
 		            <div id="roo_child_insulinSince">
-		                <label for="_insulinSince_id">Insulin Since:</label>
+		                <label for="_insulinSince_id"><spring:message code="child.insulinStarted"/></label>
 		                <div class="box" id="_insulinSince_id">
 		                    <fmt:formatDate pattern="${child_insulinSince_date_format}" value="${child.insulinSince}"/>
 		                </div>
 		            </div>
 		            <br/>
 		            <div id="roo_child_diabetesType">
-		                <label for="_diabetesType_id">Diabetes Type:</label>
+		                <label for="_diabetesType_id"><spring:message code="child.diabetesType"/></label>
 		                <div class="box" id="_diabetesType_id">
 		                    <c:out value="${child.diabetesType.label}"/>
 		                </div>
@@ -135,7 +135,7 @@
 		            <br/>
 		            <c:if test="${child.diabetesType == 'OTHER'}">
 			            <div id="roo_child_diabetesTypeOther">
-			                <label for="_diabetesTypeOther_id">Diabetes Type Other:</label>
+			                <label for="_diabetesTypeOther_id"><spring:message code="child.diabetesTypeOther"/></label>
 			                <div class="box" id="_diabetesTypeOther_id">
 			                    <c:out value="${child.diabetesTypeOther}"/>
 			                </div>
@@ -143,28 +143,28 @@
 			            <br/>
 		            </c:if>
 		            <div id="roo_child_createdOn">
-		                <label for="_createdOn_id">Created On:</label>
+		                <label for="_createdOn_id"><spring:message code="child.createdOn"/></label>
 		                <div class="box" id="_createdOn_id">
 		                    <fmt:formatDate pattern="${child_createdOn_date_format}" value="${child.createdOn}"/>
 		                </div>
 		            </div>
 		            <br/>
 		            <div id="roo_child_updatedOn">
-		                <label for="_updatedOn_id">Updated On:</label>
+		                <label for="_updatedOn_id"><spring:message code="child.updatedOn"/></label>
 		                <div class="box" id="_updatedOn_id">
 		                    <fmt:formatDate pattern="${child_updatedOn_date_format}" value="${child.updatedOn}"/>
 		                </div>
 		            </div>
 		            <br/>
 		            <div id="roo_child_distanceLivesFromCentre">
-		                <label for="_distanceLivesFromCentre_id">Distance Lives From Centre:</label>
+		                <label for="_distanceLivesFromCentre_id"><spring:message code="child.distanceFromCentre"/></label>
 		                <div class="box" id="_distanceLivesFromCentre_id">
 		                    <c:out value="${child.distanceLivesFromCentre.label}"/>
 		                </div>
 		            </div>
 		            <br/>
 		            <div id="roo_child_ageAtDiagnosis">
-		                <label for="_ageAtDiagnosis_id">Age At Diagnosis:</label>
+		                <label for="_ageAtDiagnosis_id"><spring:message code="child.ageAtDiagnosis"/></label>
 		                <div class="box" id="_ageAtDiagnosis_id">
 		                    <c:out value="${child.ageAtDiagnosis}"/>
 		                </div>
