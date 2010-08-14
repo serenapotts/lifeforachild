@@ -33,7 +33,7 @@
     	<a href="${url_es}" title="${lang_es}"><img src="${img_es}" alt="${lang_es}"/></a>
     	<c:out value=" "/>
     	
-    	<spring:url var="img_fr" value="/static/images/fr.gif" />
+    	<spring:url var="img_fr" value="/static/images/fr.png" />
     	<spring:url var="url_fr" value="">
     		<spring:param name="lang" value="fr" />
 			<c:if test="${not empty param.page}">
@@ -47,7 +47,7 @@
     	<a href="${url_fr}" title="${lang_fr}"><img src="${img_fr}" alt="${lang_fr}"/></a>
 		<c:out value=" "/>
 		    	
-    	<spring:url var="img_ru" value="/static/images/ru.gif" />
+    	<spring:url var="img_ru" value="/static/images/ru.png" />
     	<spring:url var="url_ru" value="">
     		<spring:param name="lang" value="ru" />
 			<c:if test="${not empty param.page}">
