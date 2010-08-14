@@ -367,7 +367,19 @@
 				widgetAttrs : { title: "Diabetes Care" }
 				}));
 		</script>          
-        <div id="clinicalMeasures">             
+        <div id="clinicalMeasures">     
+            <div id="roo_clinicalRecord_dateOfMeasurement">
+                <label for="_dateOfMeasurement_id">Date Of Measurement:</label>
+                <form:input cssStyle="width:250px" id="_dateOfMeasurement_id" maxlength="30" path="dateOfMeasurement" size="0"/>
+                <br/>
+                <form:errors cssClass="errors" id="_dateOfMeasurement_error_id" path="dateOfMeasurement"/>
+                <spring:message arguments="Date Of Measurement" code="field.invalid" var="field_invalid"/>
+                <spring:message code="field.required" var="field_required"/>
+                <spring:message argumentSeparator="," arguments="Date Of Measurement,(${field_required})" code="field.simple.validation" var="field_validation"/>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_dateOfMeasurement_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : true}})); </script>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_dateOfMeasurement_id', widgetType : 'dijit.form.DateTextBox', widgetAttrs : {promptMessage: '${field_validation}', constraints: {datePattern : '${clinicalRecord_dateOfMeasurement_date_format}', required : false}, datePattern : '${clinicalRecord_dateOfMeasurement_date_format}'}})); </script>
+            </div>
+            <br/>
             <div id="roo_clinicalRecord_weightKG">
                 <label for="_weightKG_id">Weight (kg):</label>
                 <form:input cssStyle="width:250px" id="_weightKG_id" maxlength="30" path="weightKG" size="0"/>
@@ -412,18 +424,7 @@
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_bloodPressureDiastolicMMHg_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', regExp: '-?[0-9]*', required : false}})); </script>
             </div>
             <br/>
-            <div id="roo_clinicalRecord_dateOfMeasurement">
-                <label for="_dateOfMeasurement_id">Date Of Measurement:</label>
-                <form:input cssStyle="width:250px" id="_dateOfMeasurement_id" maxlength="30" path="dateOfMeasurement" size="0"/>
-                <br/>
-                <form:errors cssClass="errors" id="_dateOfMeasurement_error_id" path="dateOfMeasurement"/>
-                <spring:message arguments="Date Of Measurement" code="field.invalid" var="field_invalid"/>
-                <spring:message code="field.required" var="field_required"/>
-                <spring:message argumentSeparator="," arguments="Date Of Measurement,(${field_required})" code="field.simple.validation" var="field_validation"/>
-                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_dateOfMeasurement_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : true}})); </script>
-                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_dateOfMeasurement_id', widgetType : 'dijit.form.DateTextBox', widgetAttrs : {promptMessage: '${field_validation}', constraints: {datePattern : '${clinicalRecord_dateOfMeasurement_date_format}', required : false}, datePattern : '${clinicalRecord_dateOfMeasurement_date_format}'}})); </script>
-            </div>
-            <br/>
+
             <div id="roo_clinicalRecord_age">
                 <label for="_age_id">Age:</label>
                 <form:input cssStyle="width:250px" id="_age_id" maxlength="30" path="age" size="0"/>

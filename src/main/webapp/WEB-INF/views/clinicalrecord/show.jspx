@@ -186,7 +186,15 @@
 						widgetAttrs : { title: "Diabetes Care" }
 						}));
 				</script>	            
-	            <div id="clinicalMeasures">            
+	            <div id="clinicalMeasures">    
+		            <div id="roo_clinicalRecord_dateOfMeasurement">
+		                <label for="_dateOfMeasurement_id">Date Of Measurement:</label>
+		                <div class="box" id="_dateOfMeasurement_id">
+		                    <fmt:formatDate pattern="${clinicalRecord_dateOfMeasurement_date_format}" value="${clinicalRecord.dateOfMeasurement}"/>
+		                </div>
+		            </div>
+		            <br/>
+	                    
 		            <div id="roo_clinicalRecord_weightKG">
 		                <label for="_weightKG_id">Weight (kg):</label>
 		                <div class="box" id="_weightKG_id">
@@ -257,13 +265,6 @@
                         </div>
                     </div>      
                     <br/>                       
-		            <div id="roo_clinicalRecord_dateOfMeasurement">
-		                <label for="_dateOfMeasurement_id">Date Of Measurement:</label>
-		                <div class="box" id="_dateOfMeasurement_id">
-		                    <fmt:formatDate pattern="${clinicalRecord_dateOfMeasurement_date_format}" value="${clinicalRecord.dateOfMeasurement}"/>
-		                </div>
-		            </div>
-		            <br/>
 		            <div id="roo_clinicalRecord_age">
 		                <label for="_age_id">Age:</label>
 		                <div class="box" id="_age_id">

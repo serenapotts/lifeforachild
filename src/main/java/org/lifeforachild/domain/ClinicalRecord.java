@@ -111,15 +111,15 @@ public class ClinicalRecord {
     private float weightKG;
 
     @Min(50L)
-    @Max(200L)
+    @Max(220L)
     private Integer heightCM;
-
-    @Min(20L)
-    @Max(130L)
-    private Integer bloodPressureSystolicMMHg;
 
     @Min(40L)
     @Max(220L)
+    private Integer bloodPressureSystolicMMHg;
+
+    @Min(20L)
+    @Max(130L)
     private Integer bloodPressureDiastolicMMHg;
 
     @NotNull(message = "is required.")
