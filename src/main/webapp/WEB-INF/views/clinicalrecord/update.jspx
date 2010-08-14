@@ -47,7 +47,7 @@
     				  	// hide fields if tuning fork not tested
     					dojo.style(dijit.byId("roo_clinicalRecord_tuningForkAbnormal").domNode, "display", "none");
     			  	}  
-    			  	if (dijit.byId("roo_clinicalRecord_insulinUnitsPerDay").value < 1)
+    			  	if (dijit.byId("roo_clinicalRecord_insulinUnitsPerDay").value &lt; 1)
     			  	{
     			  	    // hide fields
     			  		dojo.style(dijit.byId("roo_clinicalRecord_numberOfInsulinInjectionsPerDay").domNode, "display", "none");
@@ -215,16 +215,7 @@
                         elementId : 'roo_clinicalRecord_numberOfInsulinInjectionsPerDay', 
                         widgetType: 'dijit.layout.ContentPane'})); 
             </script> 
-            <br/>
-		</div>
-		<script type="text/javascript">
-			Spring.addDecoration(new Spring.ElementDecoration({
-				elementId : "diabetesCare",
-				widgetType : "dijit.layout.ContentPane",
-				widgetAttrs : { title: "Diabetes Care" }
-				}));
-		</script>	            
-        <div id="medications">             
+            <br/>            
             <div id="roo_clinicalRecord_longActingHuman">
                 <label for="_longActingHuman_id">Long Acting Human:</label>
                 <form:errors cssClass="errors" id="_longActingHuman_error_id" path="longActingHuman"/>
@@ -394,11 +385,11 @@
 		</div>
 		<script type="text/javascript">
 			Spring.addDecoration(new Spring.ElementDecoration({
-				elementId : "medications",
+				elementId : "diabetesCare",
 				widgetType : "dijit.layout.ContentPane",
-				widgetAttrs : { title: "Medications" }
+				widgetAttrs : { title: "Diabetes Care" }
 				}));
-		</script>            
+		</script>          
         <div id="clinicalMeasures">             
             <div id="roo_clinicalRecord_weightKG">
                 <label for="_weightKG_id">Weight (kg):</label>
