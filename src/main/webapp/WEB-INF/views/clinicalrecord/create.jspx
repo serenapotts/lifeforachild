@@ -1141,7 +1141,7 @@
 		</script>			        
         <div id="emergencies">              
             <div id="roo_clinicalRecord_numberOfSevereHypoglycaemiaEpisodes">
-                <label for="_numberOfSevereHypoglycaemiaEpisodes_id">Number Of Severe Hypoglycaemia Episodes:</label>
+                <label for="_numberOfSevereHypoglycaemiaEpisodes_id"><spring:message code="record.glyceamicEpisodes"/></label>
                 <form:input cssStyle="width:250px" id="_numberOfSevereHypoglycaemiaEpisodes_id" maxlength="30" path="numberOfSevereHypoglycaemiaEpisodes" size="0"/>
                 <br/>
                 <form:errors cssClass="errors" id="_numberOfSevereHypoglycaemiaEpisodes_error_id" path="numberOfSevereHypoglycaemiaEpisodes"/>
@@ -1165,7 +1165,7 @@
              -->
             <br/>
             <div id="roo_clinicalRecord_numberKetoacidosisEpisodes">
-                <label for="_numberKetoacidosisEpisodes_id">Number Ketoacidosis Episodes:</label>
+                <label for="_numberKetoacidosisEpisodes_id"><spring:message code="record.ketoacidosisEpisodes"/></label>
                 <form:input cssStyle="width:250px" id="_numberKetoacidosisEpisodes_id" maxlength="30" path="numberKetoacidosisEpisodes" size="0"/>
                 <br/>
                 <form:errors cssClass="errors" id="_numberKetoacidosisEpisodes_error_id" path="numberKetoacidosisEpisodes"/>
@@ -1189,7 +1189,7 @@
             <br/>
             -->
             <div id="roo_clinicalRecord_numberOfHospitalAdmissionsRelatedToDiabetes">
-                <label for="_numberOfHospitalAdmissionsRelatedToDiabetes_id">Number Of Hospital Admissions Related To Diabetes:</label>
+                <label for="_numberOfHospitalAdmissionsRelatedToDiabetes_id"><spring:message code="record.hospitalAdmissions"/></label>
                 <form:input cssStyle="width:250px" id="_numberOfHospitalAdmissionsRelatedToDiabetes_id" maxlength="30" path="numberOfHospitalAdmissionsRelatedToDiabetes" size="0"/>
                 <br/>
                 <form:errors cssClass="errors" id="_numberOfHospitalAdmissionsRelatedToDiabetes_error_id" path="numberOfHospitalAdmissionsRelatedToDiabetes"/>
@@ -1198,6 +1198,7 @@
                 <spring:message argumentSeparator="," arguments="Number Of Hospital Admissions Related To Diabetes," code="field.simple.validation" var="field_validation"/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_numberOfHospitalAdmissionsRelatedToDiabetes_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', regExp: '-?[0-9]*', required : false}})); </script>
             </div>
+            <br/>
             <br/>
             <!--
             <div id="roo_clinicalRecord_reasonHospitalAdmissionsNotEntered">
@@ -1212,7 +1213,7 @@
             </div>
             <br/>
             -->
-                <div id="roo_clinicalRecord_additionalComment">
+            <div id="roo_clinicalRecord_additionalComment">
                 <label for="_additionalComment_id">Additional Comment about any aspect - optional:</label>
                 <form:textarea cssStyle="width:250px" id="_additionalComment_id" path="additionalComment"/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_additionalComment_id', widgetType: 'dijit.form.SimpleTextarea', widgetAttrs: {}})); </script>

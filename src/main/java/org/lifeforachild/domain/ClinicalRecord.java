@@ -249,7 +249,7 @@ public class ClinicalRecord {
    // ReasonNotEnteringType reasonHypoglycaemiaEpisodesNotEntered;
 
     @Min(0L)
-    @Max(10L)
+    @Max(12L)
     private Integer numberKetoacidosisEpisodes;
 
 
