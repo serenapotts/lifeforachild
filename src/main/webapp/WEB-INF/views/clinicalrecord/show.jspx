@@ -265,13 +265,6 @@
                         </div>
                     </div>      
                     <br/>                       
-		            <div id="roo_clinicalRecord_age">
-		                <label for="_age_id">Age:</label>
-		                <div class="box" id="_age_id">
-		                    <c:out value="${clinicalRecord.age}"/>
-		                </div>
-		            </div>
-		            <br/>
 		            <div id="roo_clinicalRecord_hasPersistentHypertension">
 		                <label for="_hasPersistentHypertension_id">Has Persistent Hypertension:</label>
 		                <div class="box" id="_hasPersistentHypertension_id">

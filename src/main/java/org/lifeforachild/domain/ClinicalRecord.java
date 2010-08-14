@@ -127,14 +127,13 @@ public class ClinicalRecord {
     @DateTimeFormat(style = "S-")
     private Date dateOfMeasurement;
 
-    @NotNull(message = "is required.")
     @Min(1L)
     @Max(60L)
     private Integer age;
 
     @Enumerated
     @NotNull(message = "is required.")
-    private YesNoType hasPersistentHypertension;
+    private YesNoUnkownType hasPersistentHypertension;
 
     @Enumerated
     @NotNull(message = "is required.")

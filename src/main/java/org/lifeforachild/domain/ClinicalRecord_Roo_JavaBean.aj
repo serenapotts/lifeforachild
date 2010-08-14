@@ -11,7 +11,6 @@ import org.lifeforachild.domain.HbA1cMethodType;
 import org.lifeforachild.domain.MG_OR_MMOL_Type;
 import org.lifeforachild.domain.MicroalbuminuriaUnitsType;
 import org.lifeforachild.domain.NotAttendingSchoolReasonType;
-import org.lifeforachild.domain.ReasonNotEnteringType;
 import org.lifeforachild.domain.User;
 import org.lifeforachild.domain.YesNoLaterType;
 import org.lifeforachild.domain.YesNoNAType;
@@ -204,11 +203,11 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.age = age;        
     }    
     
-    public YesNoType ClinicalRecord.getHasPersistentHypertension() {    
+    public YesNoUnkownType ClinicalRecord.getHasPersistentHypertension() {    
         return this.hasPersistentHypertension;        
     }    
     
-    public void ClinicalRecord.setHasPersistentHypertension(YesNoType hasPersistentHypertension) {    
+    public void ClinicalRecord.setHasPersistentHypertension(YesNoUnkownType hasPersistentHypertension) {    
         this.hasPersistentHypertension = hasPersistentHypertension;        
     }    
     

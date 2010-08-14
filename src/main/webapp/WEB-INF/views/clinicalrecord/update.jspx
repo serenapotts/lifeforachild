@@ -425,23 +425,12 @@
             </div>
             <br/>
 
-            <div id="roo_clinicalRecord_age">
-                <label for="_age_id">Age:</label>
-                <form:input cssStyle="width:250px" id="_age_id" maxlength="30" path="age" size="0"/>
-                <br/>
-                <form:errors cssClass="errors" id="_age_error_id" path="age"/>
-                <spring:message code="field.invalid.integer" var="field_invalid"/>
-                <spring:message code="field.required" var="field_required"/>
-                <spring:message argumentSeparator="," arguments="Age,(${field_required})" code="field.simple.validation" var="field_validation"/>
-                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_age_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', regExp: '-?[0-9]*', required : true}})); </script>
-            </div>
-            <br/>
             <div id="roo_clinicalRecord_hasPersistentHypertension">
                 <label for="_hasPersistentHypertension_id">Has Persistent Hypertension:</label>
                 <form:errors cssClass="errors" id="_hasPersistentHypertension_error_id" path="hasPersistentHypertension"/>
                 <form:select cssStyle="width:250px" id="_hasPersistentHypertension_id" path="hasPersistentHypertension">
                     <form:option value=""></form:option>
-                	<form:options items="${yesnotype_enum}" itemLabel="label"/>
+                	<form:options items="${yesnounkowntype_enum}" itemLabel="label"/>
                 </form:select>
                 <br/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_hasPersistentHypertension_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
