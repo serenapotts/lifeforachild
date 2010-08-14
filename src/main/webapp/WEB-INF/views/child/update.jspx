@@ -336,9 +336,9 @@
 	               <table width="500px">		            
 		                <thead>
 		                    <tr>
-		                        <th>Id</th>
-		                        <th>Date Completed</th>
-		                        <th>Person Completed By</th>
+		                        <th><spring:message code="record.id"/></th>
+		                        <th><spring:message code="record.dateCompleted"/></th>
+		                        <th><spring:message code="record.personCompletedBy"/></th>
 		                        <th/>
                         		<th/>		                        
 		                    </tr>
@@ -356,7 +356,7 @@
 		                            <spring:url value="/clinicalrecord/${clinicalRecord.id}" var="show_form_url"/>
 		                            <spring:url value="/static/images/show.png" var="show_image_url"/>
 		                            <form:form action="${show_form_url}" method="GET">
-		                                <spring:message arguments="${entity_label}" code="entity.show" var="show_label"/>
+		                                <spring:message arguments="${entity_label}" code="record.show" var="show_label"/>
 		                                <input alt="${show_label}" class="image" src="${show_image_url}" title="${show_label}" type="image" value="${show_label}"/>
 		                            </form:form>
 		                        </td>
@@ -364,7 +364,7 @@
 		                            <spring:url value="/clinicalrecord/${clinicalRecord.id}/form" var="update_form_url"/>
 		                            <spring:url value="/static/images/update.png" var="update_image_url"/>
 		                            <form:form action="${update_form_url}" method="GET">
-		                                <spring:message arguments="${entity_label}" code="entity.update" var="update_label"/>
+		                                <spring:message arguments="${entity_label}" code="record.update" var="update_label"/>
 		                                <input alt="${update_label}" class="image" src="${update_image_url}" title="${update_label}" type="image" value="${update_label}"/>
 		                            </form:form>
 		                        </td>		                        
