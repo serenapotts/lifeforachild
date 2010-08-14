@@ -279,7 +279,7 @@ public class ClinicalRecord {
 
     @Enumerated
     @NotNull(message = "is required.")
-    private YesNoNAType literate;
+    private YesNoType literate;
 
     private Float exactAge;
     

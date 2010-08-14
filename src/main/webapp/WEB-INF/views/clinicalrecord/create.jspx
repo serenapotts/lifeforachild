@@ -1112,7 +1112,7 @@
                 <label for="_literate_id">Literate:</label>
                 <form:select cssStyle="width:250px" id="_literate_id" path="literate">
 					<form:option value=""></form:option>
-                	<form:options items="${yesnonatype_enum}" itemLabel="label"/>
+                	<form:options items="${yesnotype_enum}" itemLabel="label"/>
                 </form:select>                 
                 <br/>
                 <form:errors cssClass="errors" id="_literate_error_id" path="literate"/>

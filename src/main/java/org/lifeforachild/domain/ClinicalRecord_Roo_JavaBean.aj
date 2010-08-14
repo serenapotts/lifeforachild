@@ -532,11 +532,11 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.seniorPhysician = seniorPhysician;        
     }    
     
-    public YesNoNAType ClinicalRecord.getLiterate() {    
+    public YesNoType ClinicalRecord.getLiterate() {    
         return this.literate;        
     }    
     
-    public void ClinicalRecord.setLiterate(YesNoNAType literate) {    
+    public void ClinicalRecord.setLiterate(YesNoType literate) {    
         this.literate = literate;        
     }    
     

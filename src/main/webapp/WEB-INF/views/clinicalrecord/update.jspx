@@ -1063,7 +1063,7 @@
                 <form:errors cssClass="errors" id="_literate_error_id" path="literate"/>
                 <form:select cssStyle="width:250px" id="_literate_id" path="literate">
                 	<form:option value=""></form:option>
-                	<form:options items="${yesnonatype_enum}" itemLabel="label"/>
+                	<form:options items="${yesnotype_enum}" itemLabel="label"/>
                 </form:select>
                 <br/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_literate_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
