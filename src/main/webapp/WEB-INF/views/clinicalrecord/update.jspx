@@ -350,8 +350,8 @@
             <br/>
             <div id="roo_clinicalRecord_laserRxInLast12Months">
                 <label for="_laserRxInLast12Months_id">Laser Rx In Last12 Months:</label>
-                <form:errors cssClass="errors" id="_LaserRxInLast12Months_error_id" path="laserRxInLast12Months"/>
-                <form:select cssStyle="width:250px" id="_LaserRxInLast12Months_id" path="laserRxInLast12Months">
+                <form:errors cssClass="errors" id="_LaserRxInLast12Months_error_id" path="LaserRxInLast12Months"/>
+                <form:select cssStyle="width:250px" id="_LaserRxInLast12Months_id" path="LaserRxInLast12Months">
                     <form:option value=""></form:option>
                 	<form:options items="${yesnotype_enum}" itemLabel="label"/>
                 </form:select>
