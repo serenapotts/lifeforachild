@@ -311,7 +311,7 @@
 						widgetAttrs : { title: "Clinical Measures" }
 						}));
 				</script>	
-				<div id="eyes">             
+				<div id="eyesFeet">             
 		            <div id="roo_clinicalRecord_eyesExaminedInLastYear">
 		                <label for="_eyesExaminedInLastYear_id">Eyes Examined In Last Year:</label>
 		                <div class="box" id="_eyesExaminedInLastYear_id">
@@ -342,15 +342,6 @@
 			            </div>
 			            <br/>
 		            </c:if>
-		        </div>
-				<script type="text/javascript">
-					Spring.addDecoration(new Spring.ElementDecoration({
-						elementId : "eyes",
-						widgetType : "dijit.layout.ContentPane",
-						widgetAttrs : { title: "Eyes" }
-						}));
-				</script>			        
-		        <div id="feet">		            
 		            <div id="roo_clinicalRecord_feetExaminedInLastYear">
 		                <label for="_feetExaminedInLastYear_id">Feet Examined In Last Year:</label>
 		                <div class="box" id="_feetExaminedInLastYear_id">
@@ -395,9 +386,9 @@
 		        </div>
 				<script type="text/javascript">
 					Spring.addDecoration(new Spring.ElementDecoration({
-						elementId : "feet",
+						elementId : "eyesFeet",
 						widgetType : "dijit.layout.ContentPane",
-						widgetAttrs : { title: "Feet" }
+						widgetAttrs : { title: "Eyes &amp; Feet" }
 						}));
 				</script>			        
 		        <div id="labTesting">		            
