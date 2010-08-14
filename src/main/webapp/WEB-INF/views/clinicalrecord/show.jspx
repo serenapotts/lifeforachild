@@ -46,7 +46,7 @@
 		            </div>
 		            <br/>
 		            <div id="roo_clinicalRecord_insulinPerKg">
-		                <label for="_insulinPerKg_id">Insulin Per KG:</label>
+		                <label for="_insulinPerKg_id">Insulin Units/ Kg:</label>
 		                <div class="box" id="_insulinPerKg_id">
 		                    <c:out value="${clinicalRecord.insulinPerKg}"/>
 		                </div>
