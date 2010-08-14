@@ -89,15 +89,13 @@
 		                </div>
 		            </div>
 		            <br/>
-		            <c:if test="${clinicalRecord.insulinUnitsPerDay > 0}">
-			            <div id="roo_clinicalRecord_numberOfInsulinInjectionsPerDay">
-			                <label for="_numberOfInsulinInjectionsPerDay_id">Number Of Insulin Injections Per Day:</label>
-			                <div class="box" id="_numberOfInsulinInjectionsPerDay_id">
-			                    <c:out value="${clinicalRecord.numberOfInsulinInjectionsPerDay}"/>
-			                </div>
-			            </div>
-			            <br/>
-			        </c:if>
+		            <div id="roo_clinicalRecord_numberOfInsulinInjectionsPerDay">
+		                <label for="_numberOfInsulinInjectionsPerDay_id">Number Of Insulin Injections Per Day:</label>
+		                <div class="box" id="_numberOfInsulinInjectionsPerDay_id">
+		                    <c:out value="${clinicalRecord.numberOfInsulinInjectionsPerDay}"/>
+		                </div>
+		            </div>
+		            <br/>
 		            <br/>	            
 		            <div id="roo_clinicalRecord_longActingHuman">
 		                <label for="_longActingHuman_id">Long Acting Human:</label>

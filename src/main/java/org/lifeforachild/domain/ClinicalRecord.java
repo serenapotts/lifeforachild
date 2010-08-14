@@ -43,7 +43,7 @@ public class ClinicalRecord {
     private Child child;
     
     @Min(0L)
-    @Max(56L)
+    @Max(70L)
     @NotNull(message = "is required.")
     private Integer bloodGlucoseSelfMonitoringPerWeek;
 
@@ -61,7 +61,7 @@ public class ClinicalRecord {
     @NotNull(message = "is required.")
     private Integer insulinUnitsPerDay;
 
-    @Min(1L)
+    @Min(0L)
     @Max(9L)
     private Integer numberOfInsulinInjectionsPerDay;
 
