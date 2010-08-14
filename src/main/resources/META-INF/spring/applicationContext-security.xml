@@ -8,7 +8,7 @@
 
     <http auto-config="true" use-expressions="true">
     	<form-login default-target-url="/search" login-processing-url="/static/j_spring_security_check" login-page="/login" authentication-failure-url="/login?login_error=t"/>
-        <logout logout-url="/static/j_spring_security_logout"/>
+        <logout logout-url="/static/j_spring_security_logout" logout-success-url="/logout"/>
         <intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"/>
         <intercept-url pattern="/child/**" access="isAuthenticated()"/>
         <intercept-url pattern="/user/**" access="isAuthenticated()"/>

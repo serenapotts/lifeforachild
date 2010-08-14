@@ -18,6 +18,7 @@
 	
 	<!-- selects a static view for rendering without the need for an explicit controller -->
 	<mvc:view-controller path="/login"/>
+	<mvc:view-controller path="/logout"/>
     <mvc:view-controller path="/index"/>
 	<mvc:view-controller path="/uncaughtException"/>
 	<mvc:view-controller path="/resourceNotFound"/>
