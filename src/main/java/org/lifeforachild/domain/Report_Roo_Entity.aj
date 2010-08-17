@@ -88,18 +88,18 @@ privileged aspect Report_Roo_Entity {
     }    
     
     public static List<Report> Report.findAllReports() {  
-    	Criteria criteria = ReportQuery.findReportByUserAccessCriteria(entityManager());
-        return criteria.list();        
+    	ReportQuery reportQuery = new ReportQuery();
+    	return reportQuery.findByAccess(entityManager());
     }    
     
-    public static Report Report.findReport(Long id) {    
-        if (id == null) throw new IllegalArgumentException("An identifier is required to retrieve an instance of Report");        
-        return entityManager().find(Report.class, id);        
+    public static Report Report.findReport(Long id) {     
+        ReportQuery reportQuery = new ReportQuery();
+        return (Report)reportQuery.findByAccess(entityManager(), id); 
     }    
     
-    public static List<Report> Report.findReportEntries(int firstResult, int maxResults) {    
-        List repots = ReportQuery.findReportByUserAccessCriteria(entityManager()).setFirstResult(firstResult).setMaxResults(maxResults).list();
-        return repots;
+    public static List<Report> Report.findReportEntries(int firstResult, int maxResults) { 
+    	ReportQuery reportQuery = new ReportQuery();
+        return reportQuery.findEntries(entityManager(), firstResult, maxResults);
     }    
     
 }

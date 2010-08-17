@@ -141,7 +141,7 @@ public class Child {
     }    
     
     public static java.util.List<Child> findChildren(Search search) {     	
-    	return ChildQuery.getQuery(entityManager(), search);        
+    	return new ChildQuery().getQuery(entityManager(), search);        
     }    
 
 }

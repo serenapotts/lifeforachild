@@ -20,9 +20,12 @@ import org.lifeforachild.domain.ShowOptionType;
 import org.lifeforachild.domain.StatusType;
 import org.lifeforachild.domain.TimePeriodUnit;
 
-public class ChildQuery extends BaseQuery {
+public class ChildQuery extends BaseQuery<Child> {
 
-	public static List getQuery(EntityManager entityManager, Search search)
+	public ChildQuery()
+	{}
+	
+	public List<Child> getQuery(EntityManager entityManager, Search search)
 	{		
 		String id = search.getId();
 		String name = search.getName();
@@ -51,7 +54,7 @@ public class ChildQuery extends BaseQuery {
 		return getQuery(entityManager, id, name, timePeriod, timePeriodUnit, fromDate, toDate, centreId, countryId);
 	}
 	
-	public static List getQuery(EntityManager entityManager, Report report)
+	public static List<Child> getQuery(EntityManager entityManager, Report report)
 	{
 		DiabetesCentre centre = report.getCentre();
 		Country country = report.getCountry();
@@ -63,14 +66,14 @@ public class ChildQuery extends BaseQuery {
 				report.getAge(), report.getOrderBy(), report.getThenOrderBy());
 	}
 	
-	private static List getQuery(EntityManager entityManager, String id, String name, String timePeriod, 
+	private static List<Child> getQuery(EntityManager entityManager, String id, String name, String timePeriod, 
 			TimePeriodUnit timePeriodUnit, Date from, Date to, Long diabetesCentre, Long country)
 	{
 		return getQuery(entityManager, id, name, timePeriod, timePeriodUnit, from, to, diabetesCentre, country, null,
 				null, null, null, null);
 	}
 	
-	private static List getQuery(EntityManager entityManager, String id, String name, String timePeriod, 
+	private static List<Child> getQuery(EntityManager entityManager, String id, String name, String timePeriod, 
 			TimePeriodUnit timePeriodUnit, Date from, Date to, Long diabetesCentre, Long country,
 			StatusType statusType, ShowOptionType showOptionType, String age, String orderBy, String thenOrderBy)
 	{
@@ -147,17 +150,11 @@ public class ChildQuery extends BaseQuery {
 			//builder.orderBy(thenOrderBy);			
 	}
 	
-	public static Criteria getChildrenByAccessCriteria(EntityManager entityManager)
-	{
+	public Criteria findByAccessCriteria(EntityManager entityManager)
+	{		
 		Criteria criteria = ((Session)entityManager.getDelegate()).createCriteria(Child.class);
 		CountryQuery.findCountryByAccessCriteria(criteria);
     	DiabetesCentreQuery.findCentreByAccessCriteria(criteria);
     	return criteria;
-	}
-	
-	public static List<Child> getChildrenByAccess(EntityManager entityManager)
-	{
-		Criteria criteria = getChildrenByAccessCriteria(entityManager);
-		return criteria.list();
-	}
+	}	
 }

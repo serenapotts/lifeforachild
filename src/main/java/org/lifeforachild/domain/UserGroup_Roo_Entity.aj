@@ -82,21 +82,24 @@ privileged aspect UserGroup_Roo_Entity {
     }    
     
     public static long UserGroup.countUserGroups() {    
-    	Criteria criteria = UserGroupQuery.findUserGroupsByAccessCriteria(entityManager());
-        return UserGroupQuery.count(criteria);       
+    	UserGroupQuery userGroupQuery = new UserGroupQuery();
+    	Criteria criteria = userGroupQuery.findByAccessCriteria(entityManager());
+        return userGroupQuery.count(criteria);       
     }    
     
-    public static List<UserGroup> UserGroup.findAllUserGroups() {    
-        return UserGroupQuery.findUserGroupsByAccess(entityManager());        
+    public static List<UserGroup> UserGroup.findAllUserGroups() {
+    	UserGroupQuery userGroupQuery = new UserGroupQuery();
+        return userGroupQuery.findByAccess(entityManager());        
     }    
     
-    public static UserGroup UserGroup.findUserGroup(Long id) {    
-        if (id == null) throw new IllegalArgumentException("An identifier is required to retrieve an instance of UserGroup");        
-        return entityManager().find(UserGroup.class, id);        
+    public static UserGroup UserGroup.findUserGroup(Long id) {
+    	UserGroupQuery userGroupQuery = new UserGroupQuery();   
+    	return (UserGroup)userGroupQuery.findByAccess(entityManager(), id); 
     }    
     
-    public static List<UserGroup> UserGroup.findUserGroupEntries(int firstResult, int maxResults) {    
-        return UserGroupQuery.findUserGroupsByAccessCriteria(entityManager()).setFirstResult(firstResult).setMaxResults(maxResults).list();        
+    public static List<UserGroup> UserGroup.findUserGroupEntries(int firstResult, int maxResults) {  
+    	UserGroupQuery userGroupQuery = new UserGroupQuery();
+        return userGroupQuery.findEntries(entityManager(), firstResult, maxResults);        
     }    
     
         

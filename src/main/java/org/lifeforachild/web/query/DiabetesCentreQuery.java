@@ -1,7 +1,5 @@
 package org.lifeforachild.web.query;
 
-import java.util.List;
-
 import javax.persistence.EntityManager;
 
 import org.hibernate.Criteria;
@@ -10,9 +8,9 @@ import org.hibernate.criterion.Restrictions;
 import org.lifeforachild.Util.SecurityUtil;
 import org.lifeforachild.domain.DiabetesCentre;
 
-public class DiabetesCentreQuery extends BaseQuery {
+public class DiabetesCentreQuery extends BaseQuery<DiabetesCentre> {
 	
-	public static Criteria findCentreByAccessCriteria(EntityManager entityManager)
+	public Criteria findByAccessCriteria(EntityManager entityManager)
 	{
 		Criteria criteria = ((Session)entityManager.getDelegate()).createCriteria(DiabetesCentre.class);
 		Integer centre = SecurityUtil.getInstance().getCentre();
@@ -42,10 +40,5 @@ public class DiabetesCentreQuery extends BaseQuery {
 					.add(Restrictions.eq("id", new Long(centre)));
 		}    
     }	
-    
-	public static List findCentreByAccess(EntityManager entityManager)
-	{
-		Criteria criteria = findCentreByAccessCriteria(entityManager);
-		return criteria.list();
-	}
+
 }

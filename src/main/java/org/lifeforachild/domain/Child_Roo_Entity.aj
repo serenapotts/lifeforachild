@@ -1,8 +1,7 @@
 package org.lifeforachild.domain;
 
-import java.lang.Integer;
-import java.lang.Long;
 import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.EntityManager;
 import javax.persistence.GeneratedValue;
@@ -12,10 +11,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Version;
 
 import org.hibernate.Criteria;
-import org.lifeforachild.domain.Child;
 import org.lifeforachild.web.query.ChildQuery;
-import org.lifeforachild.web.query.UserGroupQuery;
-import org.lifeforachild.web.query.UserQuery;
 import org.springframework.transaction.annotation.Transactional;
 
 privileged aspect Child_Roo_Entity {
@@ -86,21 +82,24 @@ privileged aspect Child_Roo_Entity {
     }    
     
     public static long Child.countChildren() {    
-    	Criteria criteria = ChildQuery.getChildrenByAccessCriteria(entityManager());
-        return ChildQuery.count(criteria);        
+    	ChildQuery childQuery = new ChildQuery();
+    	Criteria criteria = childQuery.findByAccessCriteria(entityManager());
+        return childQuery.count(criteria);        
     }    
     
-    public static List<Child> Child.findAllChildren() {    
-        return ChildQuery.getChildrenByAccess(entityManager());        
+    public static List<Child> Child.findAllChildren() {  
+    	ChildQuery childQuery = new ChildQuery();
+        return (List<Child>)childQuery.findByAccess(entityManager());        
     }    
     
-    public static Child Child.findChild(Long id) {    
-        if (id == null) throw new IllegalArgumentException("An identifier is required to retrieve an instance of Child");        
-        return entityManager().find(Child.class, id);        
+    public static Child Child.findChild(Long id) {  
+    	ChildQuery childQuery = new ChildQuery();
+    	return (Child)childQuery.findByAccess(entityManager(), id);    
     }    
     
-    public static List<Child> Child.findChildEntries(int firstResult, int maxResults) {    
-        return ChildQuery.getChildrenByAccessCriteria(entityManager()).setFirstResult(firstResult).setMaxResults(maxResults).list();        
+    public static List<Child> Child.findChildEntries(int firstResult, int maxResults) {  
+    	ChildQuery childQuery = new ChildQuery();
+        return (List<Child>)childQuery.findEntries(entityManager(), firstResult, maxResults);        
     }    
     
 }

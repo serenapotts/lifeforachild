@@ -19,6 +19,7 @@ import org.lifeforachild.domain.YesNoLaterType;
 import org.lifeforachild.domain.YesNoNAType;
 import org.lifeforachild.domain.YesNoType;
 import org.lifeforachild.domain.YesNoUnkownType;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -108,19 +109,9 @@ privileged aspect ClinicalRecordController_Roo_Controller {
     }    
     
     @RequestMapping(value = "/clinicalrecord", method = RequestMethod.GET)    
-    public String ClinicalRecordController.list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, ModelMap modelMap) {    
-        if (page != null || size != null) {        
-            int sizeNo = size == null ? 10 : size.intValue();            
-            modelMap.addAttribute("clinicalrecords", ClinicalRecord.findClinicalRecordEntries(page == null ? 0 : (page.intValue() - 1) * sizeNo, sizeNo));            
-            float nrOfPages = (float) ClinicalRecord.countClinicalRecords() / sizeNo;            
-            modelMap.addAttribute("maxPages", (int) ((nrOfPages > (int) nrOfPages || nrOfPages == 0.0) ? nrOfPages + 1 : nrOfPages));            
-        } else {        
-            modelMap.addAttribute("clinicalrecords", ClinicalRecord.findAllClinicalRecords());            
-        }        
-        modelMap.addAttribute("clinicalRecord_dateOfMeasurement_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));        
-        modelMap.addAttribute("clinicalRecord_ifMenarcheAge_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));        
-        modelMap.addAttribute("clinicalRecord_dateCompleted_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));        
-        return "clinicalrecord/list";        
+    public String ClinicalRecordController.list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, ModelMap modelMap) {
+    	// users should never be able to view this page they have to go through the child
+    	throw new AccessDeniedException("Denied");
     }    
     
     @RequestMapping(method = RequestMethod.PUT)    

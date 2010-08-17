@@ -10,7 +10,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Version;
+
+import org.hibernate.Criteria;
 import org.lifeforachild.domain.ClinicalRecord;
+import org.lifeforachild.web.query.ChildQuery;
+import org.lifeforachild.web.query.ClinicalRecordQuery;
 import org.springframework.transaction.annotation.Transactional;
 
 privileged aspect ClinicalRecord_Roo_Entity {
@@ -81,20 +85,24 @@ privileged aspect ClinicalRecord_Roo_Entity {
     }    
     
     public static long ClinicalRecord.countClinicalRecords() {    
-        return (Long) entityManager().createQuery("select count(o) from ClinicalRecord o").getSingleResult();        
+    	ClinicalRecordQuery clinicalRecordQuery = new ClinicalRecordQuery();
+    	Criteria criteria = clinicalRecordQuery.findByAccessCriteria(entityManager());
+        return clinicalRecordQuery.count(criteria);        
     }    
     
-    public static List<ClinicalRecord> ClinicalRecord.findAllClinicalRecords() {    
-        return entityManager().createQuery("select o from ClinicalRecord o").getResultList();        
+    public static List<ClinicalRecord> ClinicalRecord.findAllClinicalRecords() {  
+    	ClinicalRecordQuery clinicalRecordQuery = new ClinicalRecordQuery();
+        return (List<ClinicalRecord>)clinicalRecordQuery.findByAccess(entityManager());       
     }    
     
     public static ClinicalRecord ClinicalRecord.findClinicalRecord(Long id) {    
-        if (id == null) throw new IllegalArgumentException("An identifier is required to retrieve an instance of ClinicalRecord");        
-        return entityManager().find(ClinicalRecord.class, id);        
+    	ClinicalRecordQuery clinicalRecordQuery = new ClinicalRecordQuery();
+    	return (ClinicalRecord)clinicalRecordQuery.findByAccess(entityManager(), id);       
     }    
     
-    public static List<ClinicalRecord> ClinicalRecord.findClinicalRecordEntries(int firstResult, int maxResults) {    
-        return entityManager().createQuery("select o from ClinicalRecord o").setFirstResult(firstResult).setMaxResults(maxResults).getResultList();        
+    public static List<ClinicalRecord> ClinicalRecord.findClinicalRecordEntries(int firstResult, int maxResults) {
+    	ClinicalRecordQuery clinicalRecordQuery = new ClinicalRecordQuery();
+    	return (List<ClinicalRecord>)clinicalRecordQuery.findEntries(entityManager(), firstResult, maxResults);        
     }    
     
 }

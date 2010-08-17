@@ -83,21 +83,24 @@ privileged aspect DiabetesCentre_Roo_Entity {
     }    
     
     public static long DiabetesCentre.countDiabetesCentres() {    
-    	Criteria criteria = DiabetesCentreQuery.findCentreByAccessCriteria(entityManager());
-        return UserQuery.count(criteria);        
+    	DiabetesCentreQuery diabetesCentreQuery = new DiabetesCentreQuery();
+    	Criteria criteria = diabetesCentreQuery.findByAccessCriteria(entityManager());
+        return diabetesCentreQuery.count(criteria);        
     }    
     
-    public static List<DiabetesCentre> DiabetesCentre.findAllDiabetesCentres() {    
-    	return DiabetesCentreQuery.findCentreByAccess(entityManager());       
+    public static List<DiabetesCentre> DiabetesCentre.findAllDiabetesCentres() { 
+    	DiabetesCentreQuery diabetesCentreQuery = new DiabetesCentreQuery();
+    	return diabetesCentreQuery.findByAccess(entityManager());       
     }    
     
-    public static DiabetesCentre DiabetesCentre.findDiabetesCentre(Long id) {    
-        if (id == null) throw new IllegalArgumentException("An identifier is required to retrieve an instance of DiabetesCentre");        
-        return entityManager().find(DiabetesCentre.class, id);        
+    public static DiabetesCentre DiabetesCentre.findDiabetesCentre(Long id) {
+    	DiabetesCentreQuery diabetesCentreQuery = new DiabetesCentreQuery();
+    	return (DiabetesCentre)diabetesCentreQuery.findByAccess(entityManager(), id);      
     }    
     
-    public static List<DiabetesCentre> DiabetesCentre.findDiabetesCentreEntries(int firstResult, int maxResults) {    
-        return DiabetesCentreQuery.findCentreByAccessCriteria(entityManager()).setFirstResult(firstResult).setMaxResults(maxResults).list();        
+    public static List<DiabetesCentre> DiabetesCentre.findDiabetesCentreEntries(int firstResult, int maxResults) { 
+    	DiabetesCentreQuery diabetesCentreQuery = new DiabetesCentreQuery();
+        return diabetesCentreQuery.findEntries(entityManager(), firstResult, maxResults);        
     }    
     
 }

@@ -59,6 +59,7 @@
 				<prop key=".NoSuchRequestHandlingMethodException">resourceNotFound</prop>
 				<prop key=".TypeMismatchException">resourceNotFound</prop>
 				<prop key=".lang.Exception">uncaughtException</prop>
+				<prop key=".AccessDeniedException">accessDenied</prop>
 			</props>
 		</property>
 	</bean>

@@ -11,6 +11,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Version;
 
 import org.hibernate.Criteria;
+import org.lifeforachild.web.query.ChildQuery;
 import org.lifeforachild.web.query.CountryQuery;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -81,22 +82,25 @@ privileged aspect Country_Roo_Entity {
         return em;        
     }    
     
-    public static long Country.countCountrys() {    
-    	Criteria criteria = CountryQuery.findCountryByAccessCriteria(entityManager());
-        return CountryQuery.count(criteria);        
+    public static long Country.countCountrys() {   
+    	CountryQuery countryQuery = new CountryQuery();
+    	Criteria criteria = countryQuery.findByAccessCriteria(entityManager());
+        return countryQuery.count(criteria);        
     }    
     
-    public static List<Country> Country.findAllCountrys() {    
-        return CountryQuery.findCountryByAccess(entityManager());        
+    public static List<Country> Country.findAllCountrys() {   
+    	CountryQuery countryQuery = new CountryQuery();
+        return countryQuery.findByAccess(entityManager());        
     }    
     
-    public static Country Country.findCountry(Long id) {    
-        if (id == null) throw new IllegalArgumentException("An identifier is required to retrieve an instance of Country");        
-        return entityManager().find(Country.class, id);        
+    public static Country Country.findCountry(Long id) { 
+    	CountryQuery countryQuery = new CountryQuery();
+    	return (Country)countryQuery.findByAccess(entityManager(), id);       
     }    
     
-    public static List<Country> Country.findCountryEntries(int firstResult, int maxResults) {    
-        return CountryQuery.findCountryByAccessCriteria(entityManager()).setFirstResult(firstResult).setMaxResults(maxResults).list();        
+    public static List<Country> Country.findCountryEntries(int firstResult, int maxResults) {  
+    	CountryQuery countryQuery = new CountryQuery();
+        return countryQuery.findEntries(entityManager(), firstResult, maxResults);        
     }    
     
 }

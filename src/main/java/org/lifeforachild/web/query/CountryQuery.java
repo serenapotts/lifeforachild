@@ -1,7 +1,5 @@
 package org.lifeforachild.web.query;
 
-import java.util.List;
-
 import javax.persistence.EntityManager;
 
 import org.hibernate.Criteria;
@@ -10,9 +8,9 @@ import org.hibernate.criterion.Restrictions;
 import org.lifeforachild.Util.SecurityUtil;
 import org.lifeforachild.domain.Country;
 
-public class CountryQuery extends BaseQuery {
+public class CountryQuery extends BaseQuery<Country> {
 
-	public static Criteria findCountryByAccessCriteria(EntityManager entityManager)
+	public Criteria findByAccessCriteria(EntityManager entityManager)
 	{
 		Criteria criteria = ((Session)entityManager.getDelegate()).createCriteria(Country.class);
 		Integer country = SecurityUtil.getInstance().getCountry();
@@ -33,11 +31,5 @@ public class CountryQuery extends BaseQuery {
 					.add(Restrictions.eq("id", new Long(country)));
 		}    
     }
-	
-	public static List<Country> findCountryByAccess(EntityManager entityManager)
-	{		
-		Criteria criteria = findCountryByAccessCriteria(entityManager);
-		return criteria.list();
-	}
 		
 }

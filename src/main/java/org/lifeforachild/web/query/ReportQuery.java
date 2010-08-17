@@ -10,9 +10,9 @@ import org.lifeforachild.Util.SecurityUtil;
 import org.lifeforachild.domain.AllUserDetails;
 import org.lifeforachild.domain.Report;
 
-public class ReportQuery extends BaseQuery {
+public class ReportQuery extends BaseQuery<Report> {
 
-	public static Criteria findReportByUserAccessCriteria(EntityManager entityManager)
+	public Criteria findByAccessCriteria(EntityManager entityManager)
 	{
 		Criteria criteria = ((Session)entityManager.getDelegate()).createCriteria(Report.class);
 		AllUserDetails user = SecurityUtil.getInstance().getCurrentUser();
@@ -21,4 +21,5 @@ public class ReportQuery extends BaseQuery {
 			.add(Restrictions.or(Restrictions.isNull("viewableBy"), Restrictions.eq("vb.id", user.getId())));			
 		return criteria;
 	}
+
 }

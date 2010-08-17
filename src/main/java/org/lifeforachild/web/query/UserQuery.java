@@ -1,7 +1,5 @@
 package org.lifeforachild.web.query;
 
-import java.util.List;
-
 import javax.persistence.EntityManager;
 
 import org.hibernate.Criteria;
@@ -13,9 +11,9 @@ import org.lifeforachild.domain.User;
 import org.lifeforachild.domain.UserGroup;
 import org.lifeforachild.enums.UserGroups;
 
-public class UserQuery extends BaseQuery {
+public class UserQuery extends BaseQuery<User> {
 
-    public static Criteria getUsersByAccessCriteria(EntityManager entityManager)
+    public Criteria findByAccessCriteria(EntityManager entityManager)
     {
     	Criteria criteria = ((Session)entityManager.getDelegate()).createCriteria(User.class);
     	CountryQuery.findCountryByAccessCriteria(criteria);
@@ -45,9 +43,5 @@ public class UserQuery extends BaseQuery {
 
     	return criteria;
     }    
-    
-    public static List<User> getUsersByAccess(EntityManager entityManager)
-    {
-    	return getUsersByAccessCriteria(entityManager).list();
-    }
+
 }

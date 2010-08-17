@@ -6,6 +6,10 @@
 		<put-attribute name="body" value="/WEB-INF/views/index.jspx"/>
 	</definition>
 	
+	<definition extends="default" name="accessDenied">
+		<put-attribute name="body" value="/WEB-INF/views/accessDenied.jspx"/>
+	</definition>	
+	
 	<definition extends="public" name="dataAccessFailure">
 		<put-attribute name="body" value="/WEB-INF/views/dataAccessFailure.jspx"/>
 	</definition>

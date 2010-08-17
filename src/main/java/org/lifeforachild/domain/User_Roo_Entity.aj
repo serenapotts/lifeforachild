@@ -81,22 +81,26 @@ privileged aspect User_Roo_Entity {
         return em;        
     }    
     
-    public static long User.countUsers() {    
-        Criteria criteria = UserQuery.getUsersByAccessCriteria(entityManager());
-        return UserQuery.count(criteria);
+    public static long User.countUsers() {  
+    	UserQuery userQuery = new UserQuery();
+        Criteria criteria = userQuery.findByAccessCriteria(entityManager());
+        return userQuery.count(criteria);
     }    
     
-    public static List<User> User.findAllUsers() {    
-        return UserQuery.getUsersByAccess(entityManager());       
+    public static List<User> User.findAllUsers() 
+    {    
+    	UserQuery userQuery = new UserQuery();
+        return userQuery.findByAccess(entityManager());       
     }    
     
     public static User User.findUser(Long id) {    
-        if (id == null) throw new IllegalArgumentException("An identifier is required to retrieve an instance of User");        
-        return entityManager().find(User.class, id);        
+    	UserQuery userQuery = new UserQuery();
+    	return (User)userQuery.findByAccess(entityManager(), id);        
     }     
     
     public static List<User> User.findUserEntries(int firstResult, int maxResults) {    
-        return UserQuery.getUsersByAccessCriteria(entityManager()).setFirstResult(firstResult).setMaxResults(maxResults).list();        
+    	UserQuery userQuery = new UserQuery();
+        return userQuery.findEntries(entityManager(), firstResult, maxResults);        
     }    
     
 

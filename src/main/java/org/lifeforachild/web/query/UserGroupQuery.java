@@ -12,12 +12,11 @@ import org.lifeforachild.Util.SecurityUtil;
 import org.lifeforachild.domain.UserGroup;
 import org.lifeforachild.enums.UserGroups;
 
-public class UserGroupQuery extends BaseQuery {
+public class UserGroupQuery extends BaseQuery<UserGroup> {
     
-    public static Criteria findUserGroupsByAccessCriteria(EntityManager entityManager) {
+    public Criteria findByAccessCriteria(EntityManager entityManager) {
     	UserGroup userGroup = SecurityUtil.getInstance().getCurrentUserGroup();
     	Criteria criteria = ((Session)entityManager.getDelegate()).createCriteria(UserGroup.class);
-    	String query = null;
     	if (userGroup == null)
     		return null;
     	else if (userGroup.getGroupName().equals(UserGroups.PROGRAM_MANAGER.getName()))
@@ -40,10 +39,11 @@ public class UserGroupQuery extends BaseQuery {
     	return null;
     }    
     
-    public static List<UserGroup> findUserGroupsByAccess(EntityManager entityManager) {
-    	Criteria criteria = findUserGroupsByAccessCriteria(entityManager);
+    public List<UserGroup> findByAccess(EntityManager entityManager) {
+    	Criteria criteria = findByAccessCriteria(entityManager);
     	if (criteria != null)
     		return criteria.list();
     	return null;
-    }  
+    }
+
 }
