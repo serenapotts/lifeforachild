@@ -13,6 +13,7 @@ import javax.persistence.Version;
 
 import org.hibernate.Criteria;
 import org.lifeforachild.domain.Report;
+import org.lifeforachild.web.query.ClinicalRecordQuery;
 import org.lifeforachild.web.query.ReportQuery;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -84,7 +85,9 @@ privileged aspect Report_Roo_Entity {
     }    
     
     public static long Report.countReports() {    
-        return (Long) entityManager().createQuery("select count(o) from Report o").getSingleResult();        
+    	ReportQuery reportQuery = new ReportQuery();
+    	Criteria criteria = reportQuery.findByAccessCriteria(entityManager());
+        return reportQuery.count(criteria);       
     }    
     
     public static List<Report> Report.findAllReports() {  
