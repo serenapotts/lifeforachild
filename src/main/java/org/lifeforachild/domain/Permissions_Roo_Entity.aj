@@ -10,7 +10,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Version;
+
+import org.hibernate.Criteria;
 import org.lifeforachild.domain.Permissions;
+import org.lifeforachild.web.query.PermissionsQuery;
+import org.lifeforachild.web.query.UserGroupQuery;
 import org.springframework.transaction.annotation.Transactional;
 
 privileged aspect Permissions_Roo_Entity {
@@ -81,20 +85,24 @@ privileged aspect Permissions_Roo_Entity {
     }    
     
     public static long Permissions.countPermissionses() {    
-        return (Long) entityManager().createQuery("select count(o) from Permissions o").getSingleResult();        
+    	PermissionsQuery permissionsQuery = new PermissionsQuery();
+    	Criteria criteria = permissionsQuery.findByAccessCriteria(entityManager());
+        return permissionsQuery.count(criteria);        
     }    
     
-    public static List<Permissions> Permissions.findAllPermissionses() {    
-        return entityManager().createQuery("select o from Permissions o").getResultList();        
+    public static List<Permissions> Permissions.findAllPermissionses() {  
+    	PermissionsQuery permissionsQuery = new PermissionsQuery();
+    	return permissionsQuery.findByAccess(entityManager());       
     }    
     
-    public static Permissions Permissions.findPermissions(Long id) {    
-        if (id == null) throw new IllegalArgumentException("An identifier is required to retrieve an instance of Permissions");        
-        return entityManager().find(Permissions.class, id);        
+    public static Permissions Permissions.findPermissions(Long id) {   
+    	PermissionsQuery permissionsQuery = new PermissionsQuery();
+    	return (Permissions)permissionsQuery.findByAccess(entityManager(), id);         
     }    
     
-    public static List<Permissions> Permissions.findPermissionsEntries(int firstResult, int maxResults) {    
-        return entityManager().createQuery("select o from Permissions o").setFirstResult(firstResult).setMaxResults(maxResults).getResultList();        
+    public static List<Permissions> Permissions.findPermissionsEntries(int firstResult, int maxResults) {
+    	PermissionsQuery permissionsQuery = new PermissionsQuery();
+    	return permissionsQuery.findEntries(entityManager(), firstResult, maxResults);        
     }    
     
 }

@@ -6,24 +6,25 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
                         http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.0.xsd">
 
-    <http auto-config="true" use-expressions="true">
+    <http auto-config="true" use-expressions="true" access-denied-page="/app/accessDenied">
     	<form-login default-target-url="/search" login-processing-url="/static/j_spring_security_check" login-page="/login" authentication-failure-url="/login?login_error=t"/>
         <logout logout-url="/static/j_spring_security_logout" logout-success-url="/logout"/>
         <intercept-url pattern="/child/**" access="isAuthenticated()"/>
-        <intercept-url pattern="/user/**" access="isAuthenticated()"/>
-        <intercept-url pattern="/usergroup/**" access="isAuthenticated()"/>    
-        <intercept-url pattern="/search/**" access="isAuthenticated()"/>             
+        <intercept-url pattern="/user/**" access="isAuthenticated() and hasRole('User Administation')"/>
+        <intercept-url pattern="/usergroup/**" access="isAuthenticated() and hasRole('User Administation')"/>    
+        <intercept-url pattern="/search/**" access="isAuthenticated()"/>   
+		<intercept-url pattern="/search" access="isAuthenticated()"/>          
         <intercept-url pattern="/clinicalrecord/**" access="isAuthenticated()"/>        
         <intercept-url pattern="/country/**" access="isAuthenticated()"/>
         <intercept-url pattern="/diabetescentre/**" access="isAuthenticated()"/>
         <intercept-url pattern="/reportgenerator/**" access="isAuthenticated()"/>
         <intercept-url pattern="/excelgenerator/**" access="isAuthenticated()"/>
         <intercept-url pattern="/pdfgenerator/**" access="isAuthenticated()"/>
-        <intercept-url pattern="/permissions/**" access="isAuthenticated()"/>
+        <intercept-url pattern="/permissions/**" access="isAuthenticated() and hasRole('User Administation')"/>
         <intercept-url pattern="/report/**" access="isAuthenticated()"/>
         <intercept-url pattern="/resources/**" access="permitAll" />
         <intercept-url pattern="/static/**" access="permitAll" />
-        <intercept-url pattern="/**" access="permitAll" />                
+        <intercept-url pattern="/**" access="permitAll" />            
     </http>
 
     <authentication-manager alias="authenticationManager">
@@ -33,5 +34,5 @@
      <beans:bean id="customUserDetailsService" class="org.lifeforachild.web.service.CustomUserDetailsService">
 		<beans:property name="dataSource" ref="dataSource"/>
  	</beans:bean> 
-               
+             
 </beans:beans>
