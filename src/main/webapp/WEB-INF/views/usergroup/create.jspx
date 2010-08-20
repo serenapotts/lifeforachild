@@ -22,7 +22,7 @@
             <div id="roo_userGroup_permissions">
                 <c:if test="${not empty permissionses}">
                     <label for="_permissions_id">Permissions:</label>
-                    <form:select cssStyle="width:250px" id="_permissions_id" path="permissions">
+                    <form:select cssStyle="width:250px; height:250px" id="_permissions_id" path="permissions">
                         <form:options itemValue="id" items="${permissionses}"/>
                     </form:select>
                 </c:if>
