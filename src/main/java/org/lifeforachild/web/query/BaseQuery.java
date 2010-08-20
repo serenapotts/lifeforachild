@@ -23,6 +23,7 @@ public abstract class BaseQuery<T> {
 	public Object findByAccess(EntityManager entityManager, Long id)
 	{
 		if (id == null) throw new IllegalArgumentException("An identifier is required to retrieve an instance");
+		else if (id == 0) return null;
         Criteria criteria = findByAccessCriteria(entityManager);
     	criteria.add(Restrictions.eq("id", id));
     	Object obj = criteria.uniqueResult();
