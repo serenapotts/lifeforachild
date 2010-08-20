@@ -71,7 +71,6 @@
                 <c:if test="${not empty countrys}">
                     <label for="_country_id">Country:</label>
                     <form:select cssStyle="width:250px" id="_country_id" path="country">
-                    	<form:option value=""></form:option>
                         <form:options itemValue="id" items="${countrys}"/>                        
                     </form:select>
                     <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_country_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
