@@ -27,13 +27,6 @@
                 </div>
             </div>
             <br/>
-            <div id="roo_user_password">
-                <label for="_password_id">Password:</label>
-                <div class="box" id="_password_id">
-                    <c:out value="${user.password}"/>
-                </div>
-            </div>
-            <br/>
             <div id="roo_user_enabled">
                 <label for="_enabled_id">Enabled:</label>
                 <div class="box" id="_enabled_id">
