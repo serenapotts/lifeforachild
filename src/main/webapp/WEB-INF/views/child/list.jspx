@@ -12,7 +12,7 @@
                     <tr>
                         <th><spring:message code="child.list.id"/></th>                        
                        	<th><spring:message code="child.list.individualId"/></th>                        
-                        <sec:authorize ifAllGranted="View Child Name">
+                        <sec:authorize ifAllGranted="VIEW_CHILD_NAME">
 	                        <th><spring:message code="child.list.initials"/></th>
 	                        <th><spring:message code="child.list.firstName"/></th>
 	                        <th><spring:message code="child.list.lastName"/></th>
@@ -20,8 +20,12 @@
                         <th><spring:message code="child.list.country"/></th>
                         <th><spring:message code="child.list.centre"/></th>
                         <th><spring:message code="child.list.show"/></th>
-                        <th><spring:message code="child.list.update"/></th>
-                        <th><spring:message code="child.list.delete"/></th>
+                        <sec:authorize ifAllGranted="EDIT_CHILD">
+                        	<th><spring:message code="child.list.update"/></th>
+                        </sec:authorize>
+                        <sec:authorize ifAllGranted="CAN_DELETE">
+                        	<th><spring:message code="child.list.delete"/></th>
+                        </sec:authorize>
                     </tr>
                 </thead>
                 <c:forEach items="${children}" var="child">
@@ -30,7 +34,7 @@
                         <td>
                             <c:out value="${child.individualId}"/>
                         </td>                        
-                        <sec:authorize ifAllGranted="View Child Name">
+                        <sec:authorize ifAllGranted="VIEW_CHILD_NAME">
 	                        <td>
 	                            <c:out value="${child.initials}"/>
 	                        </td>
@@ -55,28 +59,32 @@
                                 <input alt="${show_label}" class="image" src="${show_image_url}" title="${show_label}" type="image" value="${show_label}"/>
                             </form:form>
                         </td>
-                        <td>
-                            <spring:url value="/child/${child.id}/form" var="update_form_url"/>
-                            <spring:url value="/static/images/update.png" var="update_image_url"/>
-                            <form:form action="${update_form_url}" method="GET">
-                                <spring:message arguments="${entity_label}" code="entity.update" var="update_label"/>
-                                <input alt="${update_label}" class="image" src="${update_image_url}" title="${update_label}" type="image" value="${update_label}"/>
-                            </form:form>
-                        </td>
-                        <td>
-                            <spring:url value="/child/${child.id}" var="delete_form_url"/>
-                            <spring:url value="/static/images/delete.png" var="delete_image_url"/>
-                            <form:form action="${delete_form_url}" method="DELETE">
-                                <spring:message arguments="${entity_label}" code="entity.delete" var="delete_label"/>
-                                <input alt="${delete_label}" class="image" src="${delete_image_url}" title="${delete_label}" type="image" value="${delete_label}"/>
-                                <c:if test="${not empty param.page}">
-                                    <input name="page" type="hidden" value="${param.page}"/>
-                                </c:if>
-                                <c:if test="${not empty param.size}">
-                                    <input name="size" type="hidden" value="${param.size}"/>
-                                </c:if>
-                            </form:form>
-                        </td>
+                        <sec:authorize ifAllGranted="EDIT_CHILD">
+	                        <td>
+	                            <spring:url value="/child/${child.id}/form" var="update_form_url"/>
+	                            <spring:url value="/static/images/update.png" var="update_image_url"/>
+	                            <form:form action="${update_form_url}" method="GET">
+	                                <spring:message arguments="${entity_label}" code="entity.update" var="update_label"/>
+	                                <input alt="${update_label}" class="image" src="${update_image_url}" title="${update_label}" type="image" value="${update_label}"/>
+	                            </form:form>
+	                        </td>
+                        </sec:authorize>
+                        <sec:authorize ifAllGranted="CAN_DELETE">
+	                        <td>
+	                            <spring:url value="/child/${child.id}" var="delete_form_url"/>
+	                            <spring:url value="/static/images/delete.png" var="delete_image_url"/>
+	                            <form:form action="${delete_form_url}" method="DELETE">
+	                                <spring:message arguments="${entity_label}" code="entity.delete" var="delete_label"/>
+	                                <input alt="${delete_label}" class="image" src="${delete_image_url}" title="${delete_label}" type="image" value="${delete_label}"/>
+	                                <c:if test="${not empty param.page}">
+	                                    <input name="page" type="hidden" value="${param.page}"/>
+	                                </c:if>
+	                                <c:if test="${not empty param.size}">
+	                                    <input name="size" type="hidden" value="${param.size}"/>
+	                                </c:if>
+	                            </form:form>
+	                        </td>
+                        </sec:authorize>
                     </tr>
                 </c:forEach>
                 <tr class="footer">

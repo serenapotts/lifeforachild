@@ -54,7 +54,7 @@ public class ChildQuery extends BaseQuery<Child> {
 		return getQuery(entityManager, id, name, timePeriod, timePeriodUnit, fromDate, toDate, centreId, countryId);
 	}
 	
-	public static List<Child> getQuery(EntityManager entityManager, Report report)
+	public List<Child> getQuery(EntityManager entityManager, Report report)
 	{
 		DiabetesCentre centre = report.getCentre();
 		Country country = report.getCountry();
@@ -66,18 +66,19 @@ public class ChildQuery extends BaseQuery<Child> {
 				report.getAge(), report.getOrderBy(), report.getThenOrderBy());
 	}
 	
-	private static List<Child> getQuery(EntityManager entityManager, String id, String name, String timePeriod, 
+	private List<Child> getQuery(EntityManager entityManager, String id, String name, String timePeriod, 
 			TimePeriodUnit timePeriodUnit, Date from, Date to, Long diabetesCentre, Long country)
 	{
 		return getQuery(entityManager, id, name, timePeriod, timePeriodUnit, from, to, diabetesCentre, country, null,
 				null, null, null, null);
 	}
 	
-	private static List<Child> getQuery(EntityManager entityManager, String id, String name, String timePeriod, 
+	private List<Child> getQuery(EntityManager entityManager, String id, String name, String timePeriod, 
 			TimePeriodUnit timePeriodUnit, Date from, Date to, Long diabetesCentre, Long country,
 			StatusType statusType, ShowOptionType showOptionType, String age, String orderBy, String thenOrderBy)
 	{
-		Criteria criteria = ((Session)entityManager.getDelegate()).createCriteria(Child.class);
+		// restrict to only what they have access to by default
+		Criteria criteria = findByAccessCriteria(entityManager);
 		searchByID(criteria, id);
 		searchByName(criteria, name);
 		searchByTimePeriod(criteria, timePeriod, timePeriodUnit);
@@ -92,20 +93,20 @@ public class ChildQuery extends BaseQuery<Child> {
 
 	}
 	
-	private static void searchByID(Criteria criteria, String id)
+	private void searchByID(Criteria criteria, String id)
 	{
 		if (!StringUtil.isEmpty(id))
 			criteria.add(Restrictions.eq("individualId", id) );
 	}
 	
-	private static void searchByName(Criteria criteria, String name)
+	private void searchByName(Criteria criteria, String name)
 	{
 		if (!StringUtil.isEmpty(name))
 			criteria.add(Restrictions.like(Child.NAME_COLUMN, name) );
 	}	
 	
 	
-	private static void searchByTimePeriod(Criteria criteria, String timePeriod, TimePeriodUnit timePeriodUnit)
+	private void searchByTimePeriod(Criteria criteria, String timePeriod, TimePeriodUnit timePeriodUnit)
 	{
 		if (!StringUtil.isEmpty(timePeriod) && timePeriodUnit != TimePeriodUnit.NONE)
 		{
@@ -116,34 +117,34 @@ public class ChildQuery extends BaseQuery<Child> {
 //					Restrictions.le(propertyName, dateRange.getToDate())) );
 		}
 	}	
-	private static void searchByShowOptionType(Criteria criteria,
+	private void searchByShowOptionType(Criteria criteria,
 			ShowOptionType showOptionType) {
 		
 	}
 
 
 
-	private static void searchByAge(Criteria criteria, String age) {
+	private void searchByAge(Criteria criteria, String age) {
 		
 	}
 
-	private static void searchByStatusType(Criteria criteria,
+	private void searchByStatusType(Criteria criteria,
 			StatusType statusType) {
 		
 	}
 
-	private static void searchByCountry(Criteria criteria, Long country) {
+	private void searchByCountry(Criteria criteria, Long country) {
 		if (country != null)
 			criteria.add(Restrictions.eq("country.id", country) );
 	}
 
-	private static void searchByDiabetesCentre(Criteria criteria,
+	private void searchByDiabetesCentre(Criteria criteria,
 			Long diabetesCentre) {
 		if (diabetesCentre != null)
 			criteria.add(Restrictions.eq("centre.id", diabetesCentre) );
 	}
 
-	private static void orderBy(Criteria criteria, String orderBy, String thenOrderBy) {
+	private void orderBy(Criteria criteria, String orderBy, String thenOrderBy) {
 		//if (!StringUtil.isEmpty(orderBy))
 			//builder.orderBy(orderBy);
 		//if (!StringUtil.isEmpty(thenOrderBy))

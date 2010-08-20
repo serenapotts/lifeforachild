@@ -45,7 +45,7 @@
                 		<form:hidden id="_individualId_id" path="individualId"/>
                 	</div>
 		            <br/>
-		            <sec:authorize ifAllGranted="View Child Name">
+		            <sec:authorize ifAllGranted="VIEW_CHILD_NAME">
 			            <div id="roo_child_initials">
 			                <label for="_initials_id"><spring:message code="child.initials"/></label>
 			                <form:input cssStyle="width:250px" id="_initials_id" maxlength="30" path="initials" size="0"/>
@@ -80,7 +80,7 @@
 			            </div>
 			            <br/>	            
 		            </sec:authorize>
-		            <sec:authorize ifNotGranted="View Child Name">
+		            <sec:authorize ifNotGranted="VIEW_CHILD_NAME">
 		            	<form:hidden id="_initials_id" path="initials"/>
 		            	<form:hidden id="_name_id" path="name"/>	
 		            	<form:hidden id="_lastName_id" path="lastName"/>	        

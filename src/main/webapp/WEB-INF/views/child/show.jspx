@@ -13,7 +13,7 @@
                 </div>
             </div>
             <br/>            
-            <sec:authorize ifAllGranted="View Child Name">
+            <sec:authorize ifAllGranted="VIEW_CHILD_NAME">
 	            <div id="roo_child_initials">
 	                <label for="_initials_id"><spring:message code="child.initials"/></label>
 	                <div class="box" id="_initials_id">

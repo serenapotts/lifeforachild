@@ -37,7 +37,7 @@
             	========================================================================= -->
 	<div id="mainTabContainer" style="width:500px;height:400px">
        	<div id="general">
-       		<sec:authorize ifAllGranted="View Child Name">
+       		<sec:authorize ifAllGranted="VIEW_CHILD_NAME">
             <div id="roo_clinicalRecord_child">                
                  <label for="_child_id">Child:</label>
                  <div class="box" id="_child_id">

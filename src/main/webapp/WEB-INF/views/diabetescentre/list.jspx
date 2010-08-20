@@ -1,4 +1,4 @@
-<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:fmt="http://java.sun.com/jsp/jstl/fmt" xmlns:fn="http://java.sun.com/jsp/jstl/functions" xmlns:form="http://www.springframework.org/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:roo="urn:jsptagdir:/WEB-INF/tags" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:sec="http://www.springframework.org/security/tags" xmlns:fmt="http://java.sun.com/jsp/jstl/fmt" xmlns:fn="http://java.sun.com/jsp/jstl/functions" xmlns:form="http://www.springframework.org/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:roo="urn:jsptagdir:/WEB-INF/tags" xmlns:spring="http://www.springframework.org/tags" version="2.0">
     <jsp:output omit-xml-declaration="yes"/>
     <script type="text/javascript">dojo.require('dijit.TitlePane');</script>
     <div id="_title_div">
@@ -15,7 +15,9 @@
                         <th>Country</th>
                         <th/>
                         <th/>
-                        <th/>
+                        <sec:authorize ifAllGranted="CAN_DELETE">
+                        	<th/>
+                        </sec:authorize>
                     </tr>
                 </thead>
                 <c:forEach items="${diabetescentres}" var="diabetesCentre">
@@ -34,7 +36,7 @@
                                 <spring:message arguments="${entity_label}" code="entity.show" var="show_label"/>
                                 <input alt="${show_label}" class="image" src="${show_image_url}" title="${show_label}" type="image" value="${show_label}"/>
                             </form:form>
-                        </td>
+                        </td>                        
                         <td>
                             <spring:url value="/diabetescentre/${diabetesCentre.id}/form" var="update_form_url"/>
                             <spring:url value="/static/images/update.png" var="update_image_url"/>
@@ -43,20 +45,22 @@
                                 <input alt="${update_label}" class="image" src="${update_image_url}" title="${update_label}" type="image" value="${update_label}"/>
                             </form:form>
                         </td>
-                        <td>
-                            <spring:url value="/diabetescentre/${diabetesCentre.id}" var="delete_form_url"/>
-                            <spring:url value="/static/images/delete.png" var="delete_image_url"/>
-                            <form:form action="${delete_form_url}" method="DELETE">
-                                <spring:message arguments="${entity_label}" code="entity.delete" var="delete_label"/>
-                                <input alt="${delete_label}" class="image" src="${delete_image_url}" title="${delete_label}" type="image" value="${delete_label}"/>
-                                <c:if test="${not empty param.page}">
-                                    <input name="page" type="hidden" value="${param.page}"/>
-                                </c:if>
-                                <c:if test="${not empty param.size}">
-                                    <input name="size" type="hidden" value="${param.size}"/>
-                                </c:if>
-                            </form:form>
-                        </td>
+                        <sec:authorize ifAllGranted="CAN_DELETE">
+	                        <td>
+	                            <spring:url value="/diabetescentre/${diabetesCentre.id}" var="delete_form_url"/>
+	                            <spring:url value="/static/images/delete.png" var="delete_image_url"/>
+	                            <form:form action="${delete_form_url}" method="DELETE">
+	                                <spring:message arguments="${entity_label}" code="entity.delete" var="delete_label"/>
+	                                <input alt="${delete_label}" class="image" src="${delete_image_url}" title="${delete_label}" type="image" value="${delete_label}"/>
+	                                <c:if test="${not empty param.page}">
+	                                    <input name="page" type="hidden" value="${param.page}"/>
+	                                </c:if>
+	                                <c:if test="${not empty param.size}">
+	                                    <input name="size" type="hidden" value="${param.size}"/>
+	                                </c:if>
+	                            </form:form>
+	                        </td>
+                        </sec:authorize>
                     </tr>
                 </c:forEach>
                 <tr class="footer">

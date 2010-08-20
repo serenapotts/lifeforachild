@@ -101,7 +101,7 @@ public class ChildReportGenerator extends ReportGenerator {
 	public List buildQuery(Report report) {
 		// TODO build query based on report object
 		
-		return ChildQuery.getQuery(report.getEntityManager(), report);		
+		return new ChildQuery().getQuery(report.getEntityManager(), report);		
 		//return "select * from Child";
 	}
 	
