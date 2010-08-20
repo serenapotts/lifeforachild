@@ -11,6 +11,8 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Version;
 
 import org.hibernate.Criteria;
+import org.lifeforachild.Util.SecurityUtil;
+import org.lifeforachild.enums.UserGroups;
 import org.lifeforachild.web.query.DiabetesCentreQuery;
 import org.lifeforachild.web.query.UserQuery;
 import org.springframework.transaction.annotation.Transactional;
@@ -92,6 +94,26 @@ privileged aspect DiabetesCentre_Roo_Entity {
     	DiabetesCentreQuery diabetesCentreQuery = new DiabetesCentreQuery();
     	return diabetesCentreQuery.findByAccess(entityManager());       
     }    
+    
+    public static List<DiabetesCentre> DiabetesCentre.findAllDiabetesCentres(boolean addBlank) { 
+    	List<DiabetesCentre> centres = findAllDiabetesCentres();
+    	if (addBlank)
+    	{
+    		DiabetesCentre blankCentre = new DiabetesCentre();
+    		blankCentre.id = new Long(0);
+    		blankCentre.setName("");
+        	
+    		UserGroup userGroup = SecurityUtil.getInstance().getCurrentUserGroup();
+        	if (userGroup == null)
+        		// TODO this will cause null pointer
+        		return null;
+        	else if (userGroup.getGroupName().equals(UserGroups.PROGRAM_MANAGER.getName()) ||
+        			userGroup.getGroupName().equals(UserGroups.PMS_ASSISTANTS.getName()))
+        		// they can see all countries so allow blank
+        		centres.add(0, blankCentre);    	
+    	}
+    	return centres;     
+    }  
     
     public static DiabetesCentre DiabetesCentre.findDiabetesCentre(Long id) {
     	DiabetesCentreQuery diabetesCentreQuery = new DiabetesCentreQuery();

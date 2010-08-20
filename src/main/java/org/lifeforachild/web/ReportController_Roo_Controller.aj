@@ -29,8 +29,8 @@ privileged aspect ReportController_Roo_Controller {
             modelMap.addAttribute("report", report);            
             modelMap.addAttribute("childfields_enum", ChildFields.class.getEnumConstants());            
             modelMap.addAttribute("clinicalrecordfields_enum", ClinicalRecordFields.class.getEnumConstants());            
-            modelMap.addAttribute("countrys", Country.findAllCountrys());            
-            modelMap.addAttribute("diabetescentres", DiabetesCentre.findAllDiabetesCentres());            
+            modelMap.addAttribute("countrys", Country.findAllCountrys(true));            
+            modelMap.addAttribute("diabetescentres", DiabetesCentre.findAllDiabetesCentres(true));            
             modelMap.addAttribute("reporttype_enum", ReportType.class.getEnumConstants());            
             modelMap.addAttribute("showoptiontype_enum", ShowOptionType.class.getEnumConstants());            
             modelMap.addAttribute("statustype_enum", StatusType.class.getEnumConstants());            
@@ -41,7 +41,7 @@ privileged aspect ReportController_Roo_Controller {
             return "report/create";            
         }        
         report.persist();        
-        return "redirect:/report/" + report.getId();        
+        return "redirect:/reportgenerator/" + report.getId();        
     }    
     
     @RequestMapping(value = "/report/form", method = RequestMethod.GET)    
@@ -49,8 +49,8 @@ privileged aspect ReportController_Roo_Controller {
         modelMap.addAttribute("report", new Report());        
         modelMap.addAttribute("childfields_enum", ChildFields.class.getEnumConstants());        
         modelMap.addAttribute("clinicalrecordfields_enum", ClinicalRecordFields.class.getEnumConstants());        
-        modelMap.addAttribute("countrys", Country.findAllCountrys());        
-        modelMap.addAttribute("diabetescentres", DiabetesCentre.findAllDiabetesCentres());        
+        modelMap.addAttribute("countrys", Country.findAllCountrys(true));        
+        modelMap.addAttribute("diabetescentres", DiabetesCentre.findAllDiabetesCentres(true));        
         modelMap.addAttribute("reporttype_enum", ReportType.class.getEnumConstants());        
         modelMap.addAttribute("showoptiontype_enum", ShowOptionType.class.getEnumConstants());        
         modelMap.addAttribute("statustype_enum", StatusType.class.getEnumConstants());        
@@ -92,8 +92,8 @@ privileged aspect ReportController_Roo_Controller {
             modelMap.addAttribute("report", report);            
             modelMap.addAttribute("childfields_enum", ChildFields.class.getEnumConstants());            
             modelMap.addAttribute("clinicalrecordfields_enum", ClinicalRecordFields.class.getEnumConstants());            
-            modelMap.addAttribute("countrys", Country.findAllCountrys());            
-            modelMap.addAttribute("diabetescentres", DiabetesCentre.findAllDiabetesCentres());            
+            modelMap.addAttribute("countrys", Country.findAllCountrys(true));            
+            modelMap.addAttribute("diabetescentres", DiabetesCentre.findAllDiabetesCentres(true));            
             modelMap.addAttribute("reporttype_enum", ReportType.class.getEnumConstants());            
             modelMap.addAttribute("showoptiontype_enum", ShowOptionType.class.getEnumConstants());            
             modelMap.addAttribute("statustype_enum", StatusType.class.getEnumConstants());            
@@ -113,8 +113,8 @@ privileged aspect ReportController_Roo_Controller {
         modelMap.addAttribute("report", Report.findReport(id));        
         modelMap.addAttribute("childfields_enum", ChildFields.class.getEnumConstants());        
         modelMap.addAttribute("clinicalrecordfields_enum", ClinicalRecordFields.class.getEnumConstants());        
-        modelMap.addAttribute("countrys", Country.findAllCountrys());        
-        modelMap.addAttribute("diabetescentres", DiabetesCentre.findAllDiabetesCentres());        
+        modelMap.addAttribute("countrys", Country.findAllCountrys(true));        
+        modelMap.addAttribute("diabetescentres", DiabetesCentre.findAllDiabetesCentres(true));        
         modelMap.addAttribute("reporttype_enum", ReportType.class.getEnumConstants());        
         modelMap.addAttribute("showoptiontype_enum", ShowOptionType.class.getEnumConstants());        
         modelMap.addAttribute("statustype_enum", StatusType.class.getEnumConstants());        

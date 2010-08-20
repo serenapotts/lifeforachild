@@ -11,6 +11,8 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Version;
 
 import org.hibernate.Criteria;
+import org.lifeforachild.Util.SecurityUtil;
+import org.lifeforachild.enums.UserGroups;
 import org.lifeforachild.web.query.ChildQuery;
 import org.lifeforachild.web.query.CountryQuery;
 import org.springframework.transaction.annotation.Transactional;
@@ -92,7 +94,27 @@ privileged aspect Country_Roo_Entity {
     	CountryQuery countryQuery = new CountryQuery();
         return countryQuery.findByAccess(entityManager());        
     }    
-    
+
+    public static List<Country> Country.findAllCountrys(boolean addBlank) {   
+    	List<Country> countries = findAllCountrys();
+    	if (addBlank)
+    	{
+    		Country blankCountry = new Country();
+        	blankCountry.id = new Long(0);
+        	blankCountry.setName("");
+        	
+    		UserGroup userGroup = SecurityUtil.getInstance().getCurrentUserGroup();
+        	if (userGroup == null)
+        		// TODO this will cause null pointer
+        		return null;
+        	else if (userGroup.getGroupName().equals(UserGroups.PROGRAM_MANAGER.getName()) ||
+        			userGroup.getGroupName().equals(UserGroups.PMS_ASSISTANTS.getName()))
+        		// they can see all countries so allow blank
+        		countries.add(0, blankCountry);    	
+    	}
+    	return countries;
+    }    
+
     public static Country Country.findCountry(Long id) { 
     	CountryQuery countryQuery = new CountryQuery();
     	return (Country)countryQuery.findByAccess(entityManager(), id);       

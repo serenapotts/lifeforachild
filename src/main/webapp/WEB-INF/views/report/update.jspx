@@ -162,8 +162,7 @@
             <div id="roo_report_centre">
                 <c:if test="${not empty diabetescentres}">
                     <label for="_centre_id">Centre:</label>
-                    <form:select cssStyle="width:250px" id="_centre_id" path="centre">     
-                    	<form:option value="0">None</form:option>               	
+                    <form:select cssStyle="width:250px" id="_centre_id" path="centre">           	
                         <form:options itemValue="id" items="${diabetescentres}"/>
                     </form:select>
                     <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_centre_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
@@ -174,7 +173,6 @@
                 <c:if test="${not empty countrys}">
                     <label for="_country_id">Country:</label>
                     <form:select cssStyle="width:250px" id="_country_id" path="country">
-                    	<form:option value="0">None</form:option>
                         <form:options itemValue="id" items="${countrys}"/>
                     </form:select>
                     <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_country_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
