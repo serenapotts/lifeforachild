@@ -15,4 +15,5 @@ public class Permissions {
 	
 	@NotNull
 	String name;
+	String description;
 }

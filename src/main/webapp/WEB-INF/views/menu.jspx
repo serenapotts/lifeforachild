@@ -99,7 +99,7 @@
                 </li>
             </ul>
         </li>
-		<sec:authorize ifAllGranted="User Administation">
+		<sec:authorize ifAllGranted="USER_ADMIN">
 		<li id="web_mvc_jsp_user_category">
             <h2>
                 <spring:message code="menu.category.web_mvc_jsp_user_category.label"/>
@@ -121,6 +121,8 @@
                 </li>
             </ul>
         </li>
+        </sec:authorize>
+        <sec:authorize ifAllGranted="USER_GROUP_ADMIN">
     	<li id="web_mvc_jsp_usergroup_category">
             <h2>
                 <spring:message code="menu.category.web_mvc_jsp_usergroup_category.label"/>
@@ -138,27 +140,6 @@
                     <a href="${web_mvc_jsp_list_usergroup_menu_item_url}">
                         <spring:message code="label.usergroups" var="label_usergroups"/>
                         <spring:message arguments="${label_usergroups}" code="global.menu.list"/>
-                    </a>
-                </li>
-            </ul>
-        </li>
-    	<li id="web_mvc_jsp_permissions_category">
-            <h2>
-                <spring:message code="menu.category.web_mvc_jsp_permissions_category.label"/>
-            </h2>
-            <ul>
-                <li id="web_mvc_jsp_create_permissions_menu_item">
-                    <spring:url value="/permissions/form" var="web_mvc_jsp_create_permissions_menu_item_url"/>
-                    <a href="${web_mvc_jsp_create_permissions_menu_item_url}">
-                        <spring:message code="label.permissions" var="label_permissions"/>
-                        <spring:message arguments="${label_permissions}" code="global.menu.new"/>
-                    </a>
-                </li>
-            <li id="web_mvc_jsp_list_permissions_menu_item">
-                    <spring:url value="/permissions?page=${empty param.page ? 1 : param.page}&amp;amp;size=${empty param.size ? 10 : param.size}" var="web_mvc_jsp_list_permissions_menu_item_url"/>
-                    <a href="${web_mvc_jsp_list_permissions_menu_item_url}">
-                        <spring:message code="label.permissionses" var="label_permissionses"/>
-                        <spring:message arguments="${label_permissionses}" code="global.menu.list"/>
                     </a>
                 </li>
             </ul>

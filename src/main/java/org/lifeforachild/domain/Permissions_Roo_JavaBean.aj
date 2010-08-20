@@ -12,4 +12,11 @@ privileged aspect Permissions_Roo_JavaBean {
         this.name = name;        
     }    
     
+    public String Permissions.getDescription() {    
+        return this.description;        
+    }    
+    
+    public void Permissions.setDescription(String description) {    
+        this.description = description;        
+    } 
 }
