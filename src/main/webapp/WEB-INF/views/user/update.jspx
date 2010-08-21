@@ -43,7 +43,7 @@
             <br/>
             <div id="roo_user_password">
                 <label for="_password_id">Password:</label>
-                <form:password cssStyle="width:250px" id="_password_id" maxlength="30" path="password" size="0"/>
+                <form:password showPassword="true" cssStyle="width:250px" id="_password_id" maxlength="30" path="password" size="0"/>
                 <br/>
                 <form:errors cssClass="errors" id="_password_error_id" path="password"/>
                 <spring:message arguments="Password" code="field.invalid" var="field_invalid"/>
@@ -95,6 +95,7 @@
             </div>
             <form:hidden id="_id_id" path="id"/>
             <form:hidden id="_version_id" path="version"/>
+            <form:hidden id="_oldPassword_id" path="oldPassword"/>
         </form:form>
     </div>
 </div>

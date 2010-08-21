@@ -71,4 +71,11 @@ privileged aspect User_Roo_JavaBean {
         this.centre = centre;        
     }    
     
+    public String User.getOldPassword() {    
+        return this.oldPassword;        
+    }    
+    
+    public void User.setOldPassword(String oldPassword) {    
+        this.oldPassword = oldPassword;        
+    }    
 }

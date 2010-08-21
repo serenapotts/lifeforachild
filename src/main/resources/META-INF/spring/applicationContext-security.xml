@@ -28,11 +28,13 @@
     </http>
 
     <authentication-manager alias="authenticationManager">
-    	<authentication-provider user-service-ref="customUserDetailsService"/>
+    	<authentication-provider user-service-ref="customUserDetailsService">
+    		<password-encoder hash="sha"/>
+    	</authentication-provider>
 	</authentication-manager>
              
      <beans:bean id="customUserDetailsService" class="org.lifeforachild.web.service.CustomUserDetailsService">
 		<beans:property name="dataSource" ref="dataSource"/>
  	</beans:bean> 
-             
+              		          
 </beans:beans>

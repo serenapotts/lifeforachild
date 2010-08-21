@@ -43,4 +43,6 @@ public class User {
 	
 	@ManyToOne
 	DiabetesCentre centre;
+	
+	String oldPassword;
 }
