@@ -1,16 +1,9 @@
 package org.lifeforachild.domain;
 
-import java.lang.String;
 import java.util.Date;
 import java.util.Set;
-import org.lifeforachild.domain.CauseOfDeathType;
-import org.lifeforachild.domain.ClinicalRecord;
-import org.lifeforachild.domain.Country;
-import org.lifeforachild.domain.DiabetesCentre;
-import org.lifeforachild.domain.DiabetesType;
-import org.lifeforachild.domain.DistanceType;
-import org.lifeforachild.domain.SexType;
-import org.lifeforachild.domain.SurvivalStatusType;
+
+import org.lifeforachild.security.SimpleStringCipher;
 
 privileged aspect Child_Roo_JavaBean {
     
@@ -30,20 +23,40 @@ privileged aspect Child_Roo_JavaBean {
         this.initials = initials;        
     }    
     
-    public String Child.getName() {    
-        return this.name;        
+    public String Child.getName() {  
+    	try
+    	{
+    		return SimpleStringCipher.decrypt(this.name);   
+    	} catch (Exception e) {
+    		return this.name;
+    	}    	
     }    
     
     public void Child.setName(String name) {    
-        this.name = name;        
+    	try
+    	{
+    		this.name =  SimpleStringCipher.encrypt(name);   
+    	} catch (Exception e) {
+    		this.name = name;
+    	}
     }    
     
-    public String Child.getLastName() {    
-        return this.lastName;        
+    public String Child.getLastName() { 
+    	try
+    	{    	
+    		return SimpleStringCipher.decrypt(this.lastName);
+    	} catch (Exception e) {
+    		return this.name;
+    	}    	
     }    
     
-    public void Child.setLastName(String lastName) {    
-        this.lastName = lastName;        
+    public void Child.setLastName(String lastName) {
+    	try
+    	{    	
+    		this.lastName = SimpleStringCipher.encrypt(lastName);     
+		} catch (Exception e) {
+			this.lastName = lastName;
+		}        
     }    
     
     public Country Child.getCountry() {    
