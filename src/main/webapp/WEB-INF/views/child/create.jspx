@@ -6,6 +6,8 @@
         <spring:message arguments="${entity_label}" code="entity.create" var="title_msg"/>
         <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_title_div', widgetType : 'dijit.TitlePane', widgetAttrs : {title: '${title_msg}'}})); </script>
         <spring:url value="/child" var="form_url"/>
+        <spring:message code="field.invalid.date" var="field_invalid_date"/>
+        <spring:message code="field.date.tooltip" var="field_date_tooltip"/>        
         <form:form action="${form_url}" method="POST" modelAttribute="child">
             <form:errors cssClass="errors" delimiter="&lt;p/&gt;"/>
             <form:hidden id="_individualId_id" path="individualId"/>
@@ -75,23 +77,23 @@
             <br/>
             <div id="roo_child_sex">
                 <label for="_sex_id"><spring:message code="child.sex"/></label>
-                <form:errors cssClass="errors" id="_sex_error_id" path="sex"/>
                 <form:select cssStyle="width:250px" id="_sex_id" path="sex">
                 	<form:option value=""></form:option>
                 	<form:options items="${sextype_enum}" itemLabel="label"/>
                 </form:select>
                 <br/>
+                <form:errors cssClass="errors" id="_sex_error_id" path="sex"/>                
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_sex_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
             </div>
             <br/>
             <div id="roo_child_survivalStatus">
                 <label for="_survivalStatus_id"><spring:message code="child.survivalStatus"/></label>
-                <form:errors cssClass="errors" id="_survivalStatus_error_id" path="survivalStatus"/>
                 <form:select cssStyle="width:250px" id="_survivalStatus_id" path="survivalStatus">
                 	<form:option value=""></form:option>
                 	<form:options items="${survivalstatustype_enum}" itemLabel="label"/>
                 </form:select>
                 <br/>
+                <form:errors cssClass="errors" id="_survivalStatus_error_id" path="survivalStatus"/>                
                 <script type="text/javascript">Spring.addDecoration(
                         new Spring.ElementDecoration({
                             elementId : '_survivalStatus_id', 
@@ -125,7 +127,7 @@
                 <spring:message arguments="Date Of Death" code="field.invalid" var="field_invalid"/>
                 <spring:message code="field.required" var="field_required"/>
                 <spring:message argumentSeparator="," arguments="Date Of Death," code="field.simple.validation" var="field_validation"/>              
-                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_dateOfDeath_id', widgetType : 'dijit.form.DateTextBox', widgetAttrs : {promptMessage: '${field_validation}', constraints: {datePattern : '${child_dateOfDeath_date_format}', required : false}, datePattern : '${child_dateOfDeath_date_format}'}})); </script>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_dateOfDeath_id', widgetType : 'dijit.form.DateTextBox', widgetAttrs : {promptMessage: '${field_date_tooltip}', invalidMessage: '${field_invalid_date}', popupClass: '', constraints: {datePattern : '${child_dateOfDeath_date_format}', required : false}, datePattern : '${child_dateOfDeath_date_format}'}})); </script>
             	<br/>                
             </div>
             <script type="text/javascript">Spring.addDecoration(
@@ -135,12 +137,12 @@
             </script>             
             <div id="roo_child_causeOfDeath" style="display:none">
                 <label for="_causeOfDeath_id"><spring:message code="child.causeOfDeath"/></label>
-                <form:errors cssClass="errors" id="_causeOfDeath_error_id" path="causeOfDeath"/>
                 <form:select cssStyle="width:250px" id="_causeOfDeath_id" path="causeOfDeath">
                 	<form:option value=""></form:option>
                 	<form:options items="${causeofdeathtype_enum}" itemLabel="label"/>
                 </form:select>
                 <br/>
+                <form:errors cssClass="errors" id="_causeOfDeath_error_id" path="causeOfDeath"/>                
                 <script type="text/javascript">Spring.addDecoration(
                         new Spring.ElementDecoration({
                             elementId : '_causeOfDeath_id', 
@@ -197,7 +199,7 @@
                 <spring:message arguments="Date Of Birth" code="field.invalid" var="field_invalid"/>
                 <spring:message code="field.required" var="field_required"/>
                 <spring:message argumentSeparator="," arguments="Date Of Birth,(${field_required})" code="field.simple.validation" var="field_validation"/>
-                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_dateOfBirth_id', widgetType : 'dijit.form.DateTextBox', widgetAttrs : {promptMessage: '${field_validation}', constraints: {datePattern : '${child_dateOfBirth_date_format}', required : false}, datePattern : '${child_dateOfBirth_date_format}'}})); </script>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_dateOfBirth_id', widgetType : 'dijit.form.DateTextBox', widgetAttrs : {promptMessage: '${field_date_tooltip}', invalidMessage: '${field_invalid_date}', popupClass: '', constraints: {datePattern : '${child_dateOfBirth_date_format}', required : false}, datePattern : '${child_dateOfBirth_date_format}'}})); </script>
             </div>
             <br/>
             <div id="roo_child_diabetesDiagnosed">
@@ -208,7 +210,7 @@
                 <spring:message arguments="Diabetes Diagnosed" code="field.invalid" var="field_invalid"/>
                 <spring:message code="field.required" var="field_required"/>
                 <spring:message argumentSeparator="," arguments="Diabetes Diagnosed,(${field_required})" code="field.simple.validation" var="field_validation"/>
-                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_diabetesDiagnosed_id', widgetType : 'dijit.form.DateTextBox', widgetAttrs : {promptMessage: '${field_validation}', constraints: {datePattern : '${child_diabetesDiagnosed_date_format}', required : false}, datePattern : '${child_diabetesDiagnosed_date_format}'}})); </script>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_diabetesDiagnosed_id', widgetType : 'dijit.form.DateTextBox', widgetAttrs : {promptMessage: '${field_date_tooltip}', invalidMessage: '${field_invalid_date}', popupClass: '', constraints: {datePattern : '${child_diabetesDiagnosed_date_format}', required : false}, datePattern : '${child_diabetesDiagnosed_date_format}'}})); </script>
             </div>
             <br/>
             <div id="roo_child_insulinSince">
@@ -219,17 +221,17 @@
                 <spring:message arguments="Insulin Since" code="field.invalid" var="field_invalid"/>
                 <spring:message code="field.required" var="field_required"/>
                 <spring:message argumentSeparator="," arguments="Insulin Since,(${field_required})" code="field.simple.validation" var="field_validation"/>
-                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_insulinSince_id', widgetType : 'dijit.form.DateTextBox', widgetAttrs : {promptMessage: '${field_validation}', constraints: {datePattern : '${child_insulinSince_date_format}', required : false}, datePattern : '${child_insulinSince_date_format}'}})); </script>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_insulinSince_id', widgetType : 'dijit.form.DateTextBox', widgetAttrs : {promptMessage: '${field_date_tooltip}', invalidMessage: '${field_invalid_date}', popupClass: '', constraints: {datePattern : '${child_insulinSince_date_format}', required : false}, datePattern : '${child_insulinSince_date_format}'}})); </script>
             </div>
             <br/>
             <div id="roo_child_diabetesType">
                 <label for="_diabetesType_id"><spring:message code="child.diabetesType"/></label>
-                <form:errors cssClass="errors" id="_diabetesType_error_id" path="diabetesType"/>
                 <form:select cssStyle="width:250px" id="_diabetesType_id" path="diabetesType">
                 	<form:option value=""></form:option>
                 	<form:options items="${diabetestype_enum}" itemLabel="label"/>
                 </form:select>
                 <br/>
+                <form:errors cssClass="errors" id="_diabetesType_error_id" path="diabetesType"/>                
                 <script type="text/javascript">Spring.addDecoration(
                         new Spring.ElementDecoration({
                             elementId : '_diabetesType_id', 
@@ -268,12 +270,12 @@
             <form:hidden id="_ageAtDiagnosis_id" path="ageAtDiagnosis"/>
             <div id="roo_child_distanceLivesFromCentre">
                 <label for="_distanceLivesFromCentre_id"><spring:message code="child.distanceFromCentre"/></label>
-                <form:errors cssClass="errors" id="_distanceLivesFromCentre_error_id" path="distanceLivesFromCentre"/>
                 <form:select cssStyle="width:250px" id="_distanceLivesFromCentre_id" path="distanceLivesFromCentre">
 					<form:option value=""></form:option>
                 	<form:options items="${distancetype_enum}" itemLabel="label"/>
                 </form:select>                
                 <br/>
+                <form:errors cssClass="errors" id="_distanceLivesFromCentre_error_id" path="distanceLivesFromCentre"/>                
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_distanceLivesFromCentre_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
             </div>
             <br/>
