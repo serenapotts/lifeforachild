@@ -184,7 +184,7 @@ public class ClinicalRecord {
     private float hbA1cPercentage;
 
     @Enumerated
-    @NotNull(message = "is required.")
+    //@NotNull(message = "is required.")
     private HbA1cMethodType hbA1cMethod;
 
     @Size(max = 30)
@@ -195,7 +195,7 @@ public class ClinicalRecord {
     private float microalbuminuriaValue;
 
     @Enumerated
-    @NotNull(message = "is required.")
+    //@NotNull(message = "is required.")
     private MicroalbuminuriaUnitsType microalbuminuriaUnitOfMeasure;
 
     private String Proteinuria_dipstick_other;
@@ -203,25 +203,25 @@ public class ClinicalRecord {
     private float creatinineValue;
 
     @Enumerated
-    @NotNull(message = "is required.")
+    //@NotNull(message = "is required.")
     private CreatineUnitsType creatinineUnits;
 
     private float totalCholesterolValue;
 
     @Enumerated
-    @NotNull(message = "is required.")
+    //@NotNull(message = "is required.")
     private MG_OR_MMOL_Type cholesterolUnits;
 
     private float hdlCholesterolValue;
 
     @Enumerated
-    @NotNull(message = "is required.")
+    //@NotNull(message = "is required.")
     private MG_OR_MMOL_Type hdlUnits;
 
     private float triglyceridesValue;
 
     @Enumerated
-    @NotNull(message = "is required.")
+    //@NotNull(message = "is required.")
     private MG_OR_MMOL_Type triglyceridesUnits;
 
     @Enumerated
@@ -233,7 +233,7 @@ public class ClinicalRecord {
     private YesNoType attendingSchool;
 
     @Enumerated
-    @NotNull(message = "is required.")
+    //@NotNull(message = "is required.")
     private NotAttendingSchoolReasonType notAttendingSchoolWhy;
 
     private YesNoType diabetesLimitingAttendance;
