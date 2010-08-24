@@ -179,6 +179,8 @@ public class ClinicalRecord {
     @NotNull(message = "is required.")
     private YesNoLaterType lastHbA1cInLast12Months;
 
+    @DecimalMin(value = "2.0")
+    @DecimalMax(value = "20.0")
     private float hbA1cPercentage;
 
     @Enumerated

@@ -387,7 +387,7 @@
 				</script>			        
 		        <div id="labTesting">		            
 		            <div id="roo_clinicalRecord_lastHbA1cInLast12Months">
-		                <label for="_lastHbA1cInLast12Months_id">Last HbA1c In Last12 Months:</label>
+		                <label for="_lastHbA1cInLast12Months_id"><spring:message code="record.lastHbA1c"/></label>
 		                <div class="box" id="_lastHbA1cInLast12Months_id">
 		                    <c:out value="${clinicalRecord.lastHbA1cInLast12Months}"/>
 		                </div>
@@ -395,7 +395,7 @@
 		            <br/>
 		            <c:if test="${clinicalRecord.lastHbA1cInLast12Months == 'YES'}">
 			            <div id="roo_clinicalRecord_hbA1cPercentage">
-			                <label for="_hbA1cPercentage_id">HbA1c Percentage:</label>
+			                <label for="_hbA1cPercentage_id"><spring:message code="record.hbA1cPercentage"/></label>
 			                <div class="box" id="_hbA1cPercentage_id">
 			                    <c:out value="${clinicalRecord.hbA1cPercentage}"/>
 			                </div>

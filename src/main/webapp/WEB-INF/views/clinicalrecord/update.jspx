@@ -723,7 +723,7 @@
 		</script>				        
         <div id="labTesting">            
             <div id="roo_clinicalRecord_lastHbA1cInLast12Months">
-                <label for="_lastHbA1cInLast12Months_id">Last HbA1c In Last12 Months:</label>
+                <label for="_lastHbA1cInLast12Months_id"><spring:message code="record.lastHbA1c"/></label>
                 <form:errors cssClass="errors" id="_lastHbA1cInLast12Months_error_id" path="lastHbA1cInLast12Months"/>
                 <form:select cssStyle="width:250px" id="_lastHbA1cInLast12Months_id" path="lastHbA1cInLast12Months">
                     <form:option value=""></form:option>
@@ -756,14 +756,15 @@
             </div>
             <br/>
             <div id="roo_clinicalRecord_hbA1cPercentage">
-                <label for="_hbA1cPercentage_id">HbA1c Percentage:</label>
+                <label for="_hbA1cPercentage_id"><spring:message code="record.hbA1cPercentage"/></label>
                 <form:input cssStyle="width:250px" id="_hbA1cPercentage_id" maxlength="30" path="hbA1cPercentage" size="0"/>
                 <br/>
                 <form:errors cssClass="errors" id="_hbA1cPercentage_error_id" path="hbA1cPercentage"/>
                 <spring:message arguments="Hb A1c Percentage" code="field.invalid" var="field_invalid"/>
                 <spring:message code="field.required" var="field_required"/>
                 <spring:message argumentSeparator="," arguments="Hb A1c Percentage," code="field.simple.validation" var="field_validation"/>
-                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_hbA1cPercentage_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : false}})); </script>
+                <spring:message code="record.hbA1cPercentage.tooltip" var="field_hbA1cPercentage_tooltip"/>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_hbA1cPercentage_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_hbA1cPercentage_tooltip}', invalidMessage: '${field_invalid}', required : false}})); </script>
             	<br/>                
             </div>
             <script type="text/javascript">Spring.addDecoration(
