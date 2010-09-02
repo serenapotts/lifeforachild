@@ -155,11 +155,11 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.LaserRxInLast12Months = LaserRxInLast12Months;        
     }    
     
-    public float ClinicalRecord.getWeightKG() {    
+    public Float ClinicalRecord.getWeightKG() {    
         return this.weightKG;        
     }    
     
-    public void ClinicalRecord.setWeightKG(float weightKG) {    
+    public void ClinicalRecord.setWeightKG(Float weightKG) {    
         this.weightKG = weightKG;        
     }    
     
@@ -315,11 +315,11 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.lastHbA1cInLast12Months = lastHbA1cInLast12Months;        
     }    
     
-    public float ClinicalRecord.getHbA1cPercentage() {    
+    public Float ClinicalRecord.getHbA1cPercentage() {    
         return this.hbA1cPercentage;        
     }    
     
-    public void ClinicalRecord.setHbA1cPercentage(float hbA1cPercentage) {    
+    public void ClinicalRecord.setHbA1cPercentage(Float hbA1cPercentage) {    
         this.hbA1cPercentage = hbA1cPercentage;        
     }    
     
@@ -339,11 +339,11 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.hbA1cMethodOther = hbA1cMethodOther;        
     }    
     
-    public float ClinicalRecord.getMicroalbuminuriaValue() {    
+    public Float ClinicalRecord.getMicroalbuminuriaValue() {    
         return this.microalbuminuriaValue;        
     }    
     
-    public void ClinicalRecord.setMicroalbuminuriaValue(float microalbuminuriaValue) {    
+    public void ClinicalRecord.setMicroalbuminuriaValue(Float microalbuminuriaValue) {    
         this.microalbuminuriaValue = microalbuminuriaValue;        
     }    
     
@@ -363,11 +363,11 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.Proteinuria_dipstick_other = Proteinuria_dipstick_other;        
     }    
     
-    public float ClinicalRecord.getCreatinineValue() {    
+    public Float ClinicalRecord.getCreatinineValue() {    
         return this.creatinineValue;        
     }    
     
-    public void ClinicalRecord.setCreatinineValue(float creatinineValue) {    
+    public void ClinicalRecord.setCreatinineValue(Float creatinineValue) {    
         this.creatinineValue = creatinineValue;        
     }    
     
@@ -379,11 +379,11 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.creatinineUnits = creatinineUnits;        
     }    
     
-    public float ClinicalRecord.getTotalCholesterolValue() {    
+    public Float ClinicalRecord.getTotalCholesterolValue() {    
         return this.totalCholesterolValue;        
     }    
     
-    public void ClinicalRecord.setTotalCholesterolValue(float totalCholesterolValue) {    
+    public void ClinicalRecord.setTotalCholesterolValue(Float totalCholesterolValue) {    
         this.totalCholesterolValue = totalCholesterolValue;        
     }    
     
@@ -395,11 +395,11 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.cholesterolUnits = cholesterolUnits;        
     }    
     
-    public float ClinicalRecord.getHdlCholesterolValue() {    
+    public Float ClinicalRecord.getHdlCholesterolValue() {    
         return this.hdlCholesterolValue;        
     }    
     
-    public void ClinicalRecord.setHdlCholesterolValue(float hdlCholesterolValue) {    
+    public void ClinicalRecord.setHdlCholesterolValue(Float hdlCholesterolValue) {    
         this.hdlCholesterolValue = hdlCholesterolValue;        
     }    
     
@@ -411,11 +411,11 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.hdlUnits = hdlUnits;        
     }    
     
-    public float ClinicalRecord.getTriglyceridesValue() {    
+    public Float ClinicalRecord.getTriglyceridesValue() {    
         return this.triglyceridesValue;        
     }    
     
-    public void ClinicalRecord.setTriglyceridesValue(float triglyceridesValue) {    
+    public void ClinicalRecord.setTriglyceridesValue(Float triglyceridesValue) {    
         this.triglyceridesValue = triglyceridesValue;        
     }    
     

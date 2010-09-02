@@ -108,7 +108,7 @@ public class ClinicalRecord {
     @NotNull(message = "is required.")
     @DecimalMin(value ="3.0")
     @DecimalMax(value = "120.0")
-    private float weightKG;
+    private Float weightKG;
 
     @Min(50L)
     @Max(220L)
@@ -181,7 +181,7 @@ public class ClinicalRecord {
 
     @DecimalMin(value = "2.0")
     @DecimalMax(value = "20.0")
-    private float hbA1cPercentage;
+    private Float hbA1cPercentage;
 
     @Enumerated
     //@NotNull(message = "is required.")
@@ -192,7 +192,7 @@ public class ClinicalRecord {
 
     @DecimalMin(value = "0.1")
     @DecimalMax(value = "9999.9")
-    private float microalbuminuriaValue;
+    private Float microalbuminuriaValue;
 
     @Enumerated
     //@NotNull(message = "is required.")
@@ -200,25 +200,25 @@ public class ClinicalRecord {
 
     private String Proteinuria_dipstick_other;
 
-    private float creatinineValue;
+    private Float creatinineValue;
 
     @Enumerated
     //@NotNull(message = "is required.")
     private CreatineUnitsType creatinineUnits;
 
-    private float totalCholesterolValue;
+    private Float totalCholesterolValue;
 
     @Enumerated
     //@NotNull(message = "is required.")
     private MG_OR_MMOL_Type cholesterolUnits;
 
-    private float hdlCholesterolValue;
+    private Float hdlCholesterolValue;
 
     @Enumerated
     //@NotNull(message = "is required.")
     private MG_OR_MMOL_Type hdlUnits;
 
-    private float triglyceridesValue;
+    private Float triglyceridesValue;
 
     @Enumerated
     //@NotNull(message = "is required.")
