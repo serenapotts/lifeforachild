@@ -37,7 +37,7 @@
             	Don't indent tabs to format xml nicely, so it is easy to compare changes on diff when roo
             	updates, otherwise doing a diff is pretty well impossible.
             	========================================================================= -->
-	<div id="mainTabContainer" style="width:500px;height:400px">
+	<div id="mainTabContainer" style="width:500px;height:600px">
        	<div id="general">
        		<sec:authorize ifAllGranted="VIEW_CHILD_NAME">
             <div id="roo_clinicalRecord_child">                
