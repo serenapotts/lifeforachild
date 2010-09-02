@@ -39,7 +39,7 @@
 		            </div>
 		            <br/>
 		            <div id="roo_clinicalRecord_exactAge">
-		                <label for="_exactAge_id">Exact Age:</label>
+		                <label for="_exactAge_id">Exact Age on Measurement Date:</label>
 		                <div class="box" id="_exactAge_id">
 		                    <c:out value="${clinicalRecord.exactAge}"/>
 		                </div>
