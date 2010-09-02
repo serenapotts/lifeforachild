@@ -1,5 +1,6 @@
 <div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:sec="http://www.springframework.org/security/tags" xmlns:form="http://www.springframework.org/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
     <jsp:output omit-xml-declaration="yes"/>
+	<script type="text/javascript" src="/lifeforachild/static/js/unsaved.js"/>    
     <script type="text/javascript">
     	dojo.require('dijit.TitlePane');
     	dojo.require('dijit.form.FilteringSelect');
@@ -1184,7 +1185,7 @@
             <div class="submit" id="roo_clinicalRecord_submit">
                 <spring:message code="button.update" var="update_button"/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ValidateAllDecoration({elementId:'proceed', event:'onclick'}));</script>
-                <input id="proceed" type="submit" value="${update_button}"/>
+                <input id="proceed" type="submit" value="${update_button}" onclick="setBunload(false);"/>
             </div>
             <form:hidden id="_id_id" path="id"/>
             <form:hidden id="_version_id" path="version"/>

@@ -11,6 +11,7 @@
         var labTestingHasError = false;
         var schoolingHasError = false;
     </script>
+	<script type="text/javascript" src="/lifeforachild/static/js/unsaved.js"/>
     <div id="_title_div">
         <spring:message code="label.clinicalrecord" var="entity_label"/>
         <spring:message arguments="${entity_label}" code="entity.create" var="title_msg"/>
@@ -1252,7 +1253,7 @@
             <div class="submit" id="roo_clinicalRecord_submit">
                 <spring:message code="button.save" var="save_button"/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ValidateAllDecoration({elementId:'proceed', event:'onclick'}));</script>
-                <input id="proceed" type="submit" value="${save_button}"/>
+                <input id="proceed" type="submit" value="${save_button}" onclick="setBunload(false);"/>
             </div>
         </form:form>
     </div>
