@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.Disjunction;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.lifeforachild.Util.SecurityUtil;
 import org.lifeforachild.domain.UserGroup;
@@ -17,6 +18,7 @@ public class UserGroupQuery extends BaseQuery<UserGroup> {
     public Criteria findByAccessCriteria(EntityManager entityManager) {
     	UserGroup userGroup = SecurityUtil.getInstance().getCurrentUserGroup();
     	Criteria criteria = ((Session)entityManager.getDelegate()).createCriteria(UserGroup.class);
+    	criteria.addOrder(Order.asc("groupName"));
     	if (userGroup == null)
     		return null;
     	else if (userGroup.getGroupName().equals(UserGroups.PROGRAM_MANAGER.getName()))

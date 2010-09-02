@@ -4,6 +4,7 @@ import javax.persistence.EntityManager;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.lifeforachild.Util.SecurityUtil;
 import org.lifeforachild.domain.DiabetesCentre;
@@ -26,6 +27,7 @@ public class DiabetesCentreQuery extends BaseQuery<DiabetesCentre> {
 			// have specific centre access so restrict to that centre
 			criteria.add(Restrictions.eq("id", new Long(centre)));			
 		}		
+		criteria.addOrder(Order.asc("name"));
 		// else can access all centres as no centre set
 		return criteria;
 	}	

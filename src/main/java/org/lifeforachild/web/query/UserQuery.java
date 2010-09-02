@@ -5,6 +5,7 @@ import javax.persistence.EntityManager;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.Disjunction;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.lifeforachild.Util.SecurityUtil;
 import org.lifeforachild.domain.User;
@@ -16,6 +17,7 @@ public class UserQuery extends BaseQuery<User> {
     public Criteria findByAccessCriteria(EntityManager entityManager)
     {
     	Criteria criteria = ((Session)entityManager.getDelegate()).createCriteria(User.class);
+    	criteria.addOrder(Order.asc("firstName"));
     	CountryQuery.findCountryByAccessCriteria(criteria);
     	DiabetesCentreQuery.findCentreByAccessCriteria(criteria);
     	
