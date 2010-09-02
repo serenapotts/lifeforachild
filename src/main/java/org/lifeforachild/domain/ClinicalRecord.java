@@ -53,7 +53,7 @@ public class ClinicalRecord {
     private Integer urineGlucoseSelfMonitoringPerWeek;
 
     @Enumerated
-    @NotNull(message = "is required.")
+    //@NotNull(message = "is required.")
     private YesNoType adjustInsulinDoseIfNeeded;
 
     @Min(0L)
@@ -78,7 +78,7 @@ public class ClinicalRecord {
     private YesNoType analog;
 
     @Enumerated
-    @NotNull(message = "is required.")
+    //@NotNull(message = "is required.")
     private YesNoType oralAgents;
 
     @Size(max = 40)
