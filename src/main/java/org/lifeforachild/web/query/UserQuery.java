@@ -11,9 +11,20 @@ import org.lifeforachild.Util.SecurityUtil;
 import org.lifeforachild.domain.User;
 import org.lifeforachild.domain.UserGroup;
 import org.lifeforachild.enums.UserGroups;
+import org.springframework.security.access.AccessDeniedException;
 
 public class UserQuery extends BaseQuery<User> {
 
+	public User findUser(EntityManager entityManager, Long id)
+	{
+		Criteria criteria = ((Session)entityManager.getDelegate()).createCriteria(User.class);
+		criteria.add(Restrictions.eq("id", id));
+    	Object obj = criteria.uniqueResult();
+    	if (obj == null)
+    		throw new AccessDeniedException("Denied");
+    	return (User)obj;
+	}
+	
     public Criteria findByAccessCriteria(EntityManager entityManager)
     {
     	Criteria criteria = ((Session)entityManager.getDelegate()).createCriteria(User.class);

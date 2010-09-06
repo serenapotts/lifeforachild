@@ -94,8 +94,14 @@ privileged aspect User_Roo_Entity {
     }    
     
     public static User User.findUser(Long id) {    
+    	return findUser(id, true);       
+    }     
+    
+    public static User User.findUser(Long id, boolean byAccess) {    
     	UserQuery userQuery = new UserQuery();
-    	return (User)userQuery.findByAccess(entityManager(), id);        
+    	if (byAccess)
+    		return (User)userQuery.findByAccess(entityManager(), id);
+    	return userQuery.findUser(entityManager(), id);
     }     
     
     public static List<User> User.findUserEntries(int firstResult, int maxResults) {    

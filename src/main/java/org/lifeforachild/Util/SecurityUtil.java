@@ -1,5 +1,8 @@
 package org.lifeforachild.Util;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.lifeforachild.domain.AllUserDetails;
 import org.lifeforachild.domain.User;
 import org.lifeforachild.domain.UserGroup;
@@ -38,9 +41,16 @@ public class SecurityUtil {
 		return getApplicationUser(getCurrentUser());
 	}
 	
+	public List<User> getApplicationUserForCurrentUserAsList()
+	{
+		List<User> users = new ArrayList<User>();
+		users.add(getApplicationUser(getCurrentUser()));
+		return users;
+	}
+	
 	public User getApplicationUser(AllUserDetails user)
 	{
-		return User.findUser(user.getId());
+		return User.findUser(user.getId(), false);
 	}
 	
 	public UserGroup getCurrentUserGroup()
