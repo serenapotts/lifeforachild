@@ -284,6 +284,7 @@ public class ClinicalRecord {
     private YesNoType literate;
 
     private Float exactAge;
+    private Float exactAgeMonths;
     
     private Float bmi;
     
@@ -302,13 +303,16 @@ public class ClinicalRecord {
     public float calculateBMI() {
         float result = 0.0f;
         if (heightCM != null && !heightCM.equals(new Integer(0))) {
-            result = weightKG / (heightCM * heightCM / 10000);
+            result = (float) (weightKG.floatValue() / (heightCM * heightCM / 10000.0));
         }
+        
+        LOGGER.info("Weight: " + weightKG + ", Height: " + heightCM + ", BMI: " + result);
+        
         return result;
     }
     
     public float calculateExactAge() {
-        return calculateAge(dateCompleted, child.getDateOfBirth());
+        return calculateAge(dateOfMeasurement, child.getDateOfBirth());
     }
 
     public float calculateInsulinPerKg() {
@@ -319,8 +323,8 @@ public class ClinicalRecord {
         return (float) ((date.getTime() - dob.getTime()) / (1000 * 60 * 60 * 24 * 365.25));
     }
     
-	private static Float calculateAgeMonths(Date date, Date dob) {
-		float ageMonthsExact = calculateAge(date, dob) * 12;
+	public Float calculateExactAgeMonths() {
+		float ageMonthsExact = exactAge * 12;
 		double lowMidPoint = Math.floor(ageMonthsExact) + 0.5;
 		if (ageMonthsExact <= lowMidPoint) {
 			return new Float(lowMidPoint);
@@ -334,7 +338,7 @@ public class ClinicalRecord {
     	    return new Float(0);
     	}
     	
-        Float ageMonths = calculateAgeMonths(dateCompleted, child.getDateOfBirth());
+        Float ageMonths = exactAgeMonths;
 		if (ageMonths.compareTo(new Float(240)) > 0) {
 			ageMonths = new Float(240);
 		}
@@ -344,6 +348,7 @@ public class ClinicalRecord {
     	{
     	    LOGGER.info("Look up WeightForAgeLMS for child sex: " + child.getSex() + ", age: " + ageMonths);
     	    weightForAgeLMS = (WeightForAgeLMS) WeightForAgeLMS.findWeightForAgeLMSsBySexAndAgeMonthsOldEquals(child.getSex(), ageMonths).getSingleResult();
+    	    logLMS(weightForAgeLMS);
     	}
     	catch(Exception e)
         {
@@ -367,7 +372,7 @@ public class ClinicalRecord {
             return new Float(0);
         }
         
-        Float ageMonths = calculateAgeMonths(dateCompleted, child.getDateOfBirth());
+        Float ageMonths = exactAgeMonths;
         //Just do 24-240 months, younger and older would be N/A
         if(ageMonths.floatValue() < 24 || ageMonths.floatValue() > 240) {
             return new Float(0);
@@ -378,6 +383,7 @@ public class ClinicalRecord {
         {
             LOGGER.info("Look up HeightForAgeLMS for child sex: " + child.getSex() + ", age: " + ageMonths);
             heightForAgeLMS = (HeightForAgeLMS) HeightForAgeLMS.findHeightForAgeLMSsBySexAndAgeMonthsOldEquals(child.getSex(), ageMonths).getSingleResult();
+            logLMS(heightForAgeLMS);
         }
         catch(Exception e)
         {
@@ -395,12 +401,24 @@ public class ClinicalRecord {
         }
     }
     
+    private void logLMS(LMS lms)
+    {
+        if(lms != null)
+        {
+            LOGGER.info("L: " + lms.getL() + ", M: " + lms.getM() + ", S: " + lms.getS());
+        }
+        else
+        {
+            LOGGER.info("LMS is null.");
+        }
+    }
+    
     public Float calculateBmiSD() {
         if(bmi == null || bmi.doubleValue() == 0) {
             return new Float(0);
         }
         
-        Float ageMonths = calculateAgeMonths(dateCompleted, child.getDateOfBirth());
+        Float ageMonths = exactAgeMonths;
         if(ageMonths.floatValue() < 24 || ageMonths.floatValue() > 240.5) {
             return new Float(0);
         }
@@ -410,6 +428,7 @@ public class ClinicalRecord {
         {
             LOGGER.info("Look up BMIForAgeLMS for child sex: " + child.getSex() + ", age: " + ageMonths);
             bmiForAgeLMS = (BMIForAgeLMS) BMIForAgeLMS.findBMIForAgeLMSsBySexAndAgeMonthsOldEquals(child.getSex(), ageMonths).getSingleResult();
+            logLMS(bmiForAgeLMS);
         }
         catch(Exception e)
         {

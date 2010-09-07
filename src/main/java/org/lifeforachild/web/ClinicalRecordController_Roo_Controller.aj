@@ -52,6 +52,8 @@ privileged aspect ClinicalRecordController_Roo_Controller {
             return "clinicalrecord/create";            
         }        
         clinicalRecord.setExactAge(clinicalRecord.calculateExactAge());
+        clinicalRecord.setExactAgeMonths(clinicalRecord.calculateExactAgeMonths());
+        
         clinicalRecord.setInsulinPerKg(clinicalRecord.calculateInsulinPerKg());
         clinicalRecord.setWeightSD(clinicalRecord.calculateWeightSD());
         
@@ -137,6 +139,8 @@ privileged aspect ClinicalRecordController_Roo_Controller {
             return "clinicalrecord/update";            
         }                
         clinicalRecord.setExactAge(clinicalRecord.calculateExactAge());
+        clinicalRecord.setExactAgeMonths(clinicalRecord.calculateExactAgeMonths());
+        
         clinicalRecord.setInsulinPerKg(clinicalRecord.calculateInsulinPerKg());
         clinicalRecord.setWeightSD(clinicalRecord.calculateWeightSD());
         
@@ -152,7 +156,7 @@ privileged aspect ClinicalRecordController_Roo_Controller {
         }
         
         clinicalRecord.merge();        
-        return "redirect:/clinicalrecord/" + clinicalRecord.getId();        
+        return "redirect:/clinicalrecord/" + clinicalRecord.getId();
     }    
     
     @RequestMapping(value = "/clinicalrecord/{id}/form", method = RequestMethod.GET)    

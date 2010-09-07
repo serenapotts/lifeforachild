@@ -546,7 +546,11 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
     
     public void ClinicalRecord.setExactAge(Float exactAge) {    
         this.exactAge = exactAge;        
-    }    
+    }  
+    
+    public void ClinicalRecord.setExactAgeMonths(Float exactAgeMonths) {    
+        this.exactAgeMonths = exactAgeMonths;        
+    } 
     
     public Float ClinicalRecord.getBmi() {    
         return this.bmi;        
