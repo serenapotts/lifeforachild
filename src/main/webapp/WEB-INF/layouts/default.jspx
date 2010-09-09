@@ -59,7 +59,7 @@
 					</c:if>			    
 				    
 				    <roo:language />
-				    <roo:theme />
+				    <!-- <roo:theme /> -->
 				    				    
 				    <spring:url var="logo" value="/static/images/springsource-logo.png" />
 				    <spring:message code="global.sponsored" var="sponsored"/>
