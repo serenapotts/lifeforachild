@@ -93,8 +93,9 @@ privileged aspect User_Roo_Entity {
         return userQuery.findByAccess(entityManager());       
     }    
     
-    public static User User.findUser(Long id) {    
-    	return findUser(id, true);       
+    public static User User.findUser(Long id) { 
+    	// set to false so any queries for users in fields will work
+    	return findUser(id, false);       
     }     
     
     public static User User.findUser(Long id, boolean byAccess) {    

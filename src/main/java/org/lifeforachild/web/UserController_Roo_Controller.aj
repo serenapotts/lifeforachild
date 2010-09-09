@@ -43,7 +43,7 @@ privileged aspect UserController_Roo_Controller {
     @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)    
     public String UserController.show(@PathVariable("id") Long id, ModelMap modelMap) {    
         if (id == null) throw new IllegalArgumentException("An Identifier is required");        
-        modelMap.addAttribute("user", User.findUser(id));        
+        modelMap.addAttribute("user", User.findUser(id, true));        
         return "user/show";        
     }    
     
@@ -82,7 +82,7 @@ privileged aspect UserController_Roo_Controller {
     @RequestMapping(value = "/user/{id}/form", method = RequestMethod.GET)    
     public String UserController.updateForm(@PathVariable("id") Long id, ModelMap modelMap) {    
         if (id == null) throw new IllegalArgumentException("An Identifier is required");    
-        User user = User.findUser(id);
+        User user = User.findUser(id, true);
         user.setOldPassword(user.getPassword());
         modelMap.addAttribute("user", user);        
         modelMap.addAttribute("countrys", Country.findAllCountrys(true));        
@@ -94,7 +94,7 @@ privileged aspect UserController_Roo_Controller {
     @RequestMapping(value = "/user/{id}", method = RequestMethod.DELETE)    
     public String UserController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size) {    
         if (id == null) throw new IllegalArgumentException("An Identifier is required");        
-        User.findUser(id).remove();        
+        User.findUser(id, true).remove();        
         return "redirect:/user?page=" + ((page == null) ? "1" : page.toString()) + "&size=" + ((size == null) ? "10" : size.toString());        
     }    
     
