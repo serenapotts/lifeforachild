@@ -13,6 +13,7 @@ import org.lifeforachild.domain.HbA1cMethodType;
 import org.lifeforachild.domain.MG_OR_MMOL_Type;
 import org.lifeforachild.domain.MicroalbuminuriaUnitsType;
 import org.lifeforachild.domain.NotAttendingSchoolReasonType;
+import org.lifeforachild.domain.Permissions;
 import org.lifeforachild.domain.ReasonNotEnteringType;
 import org.lifeforachild.domain.User;
 import org.lifeforachild.domain.YesNoLaterType;
@@ -26,12 +27,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import java.util.ArrayList;
+import java.util.List;
 
 privileged aspect ClinicalRecordController_Roo_Controller {
     
     @RequestMapping(value = "/clinicalrecord", method = RequestMethod.POST)    
     public String ClinicalRecordController.create(@Valid ClinicalRecord clinicalRecord, BindingResult result, ModelMap modelMap) {    
-        if (clinicalRecord == null) throw new IllegalArgumentException("A clinicalRecord is required");        
+    	SecurityUtil.getInstance().checkPermission(Permissions.CREATE_RECORD);
+    	if (clinicalRecord == null) throw new IllegalArgumentException("A clinicalRecord is required");        
         if (result.hasErrors()) {                	        	
             modelMap.addAttribute("clinicalRecord", clinicalRecord);                       
             modelMap.addAttribute("creatineunitstype_enum", CreatineUnitsType.class.getEnumConstants());            
@@ -74,6 +78,7 @@ privileged aspect ClinicalRecordController_Roo_Controller {
     
     @RequestMapping(value = "/clinicalrecord/form/{id}", method = RequestMethod.GET)    
     public String ClinicalRecordController.createForm(@PathVariable("id") Long id, ModelMap modelMap) {  
+    	SecurityUtil.getInstance().checkPermission(Permissions.CREATE_RECORD);
     	ClinicalRecord record = new ClinicalRecord();
     	// set child for record from child information passed when creating record
     	record.setChild(Child.findChild(id));
@@ -118,7 +123,8 @@ privileged aspect ClinicalRecordController_Roo_Controller {
     
     @RequestMapping(method = RequestMethod.PUT)    
     public String ClinicalRecordController.update(@Valid ClinicalRecord clinicalRecord, BindingResult result, ModelMap modelMap) {    
-        if (clinicalRecord == null) throw new IllegalArgumentException("A clinicalRecord is required");        
+    	SecurityUtil.getInstance().checkPermission(Permissions.EDIT_RECORD);
+    	if (clinicalRecord == null) throw new IllegalArgumentException("A clinicalRecord is required");        
         if (result.hasErrors()) {        
             modelMap.addAttribute("clinicalRecord", clinicalRecord);                       
             modelMap.addAttribute("creatineunitstype_enum", CreatineUnitsType.class.getEnumConstants());            
@@ -160,9 +166,13 @@ privileged aspect ClinicalRecordController_Roo_Controller {
     }    
     
     @RequestMapping(value = "/clinicalrecord/{id}/form", method = RequestMethod.GET)    
-    public String ClinicalRecordController.updateForm(@PathVariable("id") Long id, ModelMap modelMap) {    
-        if (id == null) throw new IllegalArgumentException("An Identifier is required");        
-        modelMap.addAttribute("clinicalRecord", ClinicalRecord.findClinicalRecord(id));                
+    public String ClinicalRecordController.updateForm(@PathVariable("id") Long id, ModelMap modelMap) {
+    	SecurityUtil.getInstance().checkPermission(Permissions.EDIT_RECORD);
+        if (id == null) throw new IllegalArgumentException("An Identifier is required");  
+        ClinicalRecord record = ClinicalRecord.findClinicalRecord(id);
+        List<User> users = new ArrayList<User>();
+        users.add(record.getPersonCompletingForm());
+        modelMap.addAttribute("clinicalRecord", record);                
         modelMap.addAttribute("creatineunitstype_enum", CreatineUnitsType.class.getEnumConstants());        
         modelMap.addAttribute("diabetescopingtype_enum", DiabetesCopingType.class.getEnumConstants());        
         modelMap.addAttribute("hba1cmethodtype_enum", HbA1cMethodType.class.getEnumConstants());        
@@ -170,7 +180,7 @@ privileged aspect ClinicalRecordController_Roo_Controller {
         modelMap.addAttribute("microalbuminuriaunitstype_enum", MicroalbuminuriaUnitsType.class.getEnumConstants());        
         modelMap.addAttribute("notattendingschoolreasontype_enum", NotAttendingSchoolReasonType.class.getEnumConstants());        
         modelMap.addAttribute("reasonnotenteringtype_enum", ReasonNotEnteringType.class.getEnumConstants());        
-        modelMap.addAttribute("users", SecurityUtil.getInstance().getApplicationUserForCurrentUserAsList());        
+        modelMap.addAttribute("users", users);        
         modelMap.addAttribute("yesnolatertype_enum", YesNoLaterType.class.getEnumConstants());        
         modelMap.addAttribute("yesnonatype_enum", YesNoNAType.class.getEnumConstants());  
         modelMap.addAttribute("yesnotype_enum", YesNoType.class.getEnumConstants()); 
@@ -182,7 +192,8 @@ privileged aspect ClinicalRecordController_Roo_Controller {
     }    
     
     @RequestMapping(value = "/clinicalrecord/{id}", method = RequestMethod.DELETE)    
-    public String ClinicalRecordController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size) {    
+    public String ClinicalRecordController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size) {
+    	SecurityUtil.getInstance().checkPermission(Permissions.EDIT_RECORD);
         if (id == null) throw new IllegalArgumentException("An Identifier is required");        
         ClinicalRecord.findClinicalRecord(id).remove();        
         return "redirect:/clinicalrecord?page=" + ((page == null) ? "1" : page.toString()) + "&size=" + ((size == null) ? "10" : size.toString());        
