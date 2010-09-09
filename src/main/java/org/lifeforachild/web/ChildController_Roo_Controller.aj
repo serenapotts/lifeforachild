@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.validation.Valid;
 
+import org.lifeforachild.Util.SecurityUtil;
 import org.lifeforachild.Util.StringUtil;
 import org.lifeforachild.domain.CauseOfDeathType;
 import org.lifeforachild.domain.Child;
@@ -12,6 +13,7 @@ import org.lifeforachild.domain.Country;
 import org.lifeforachild.domain.DiabetesCentre;
 import org.lifeforachild.domain.DiabetesType;
 import org.lifeforachild.domain.DistanceType;
+import org.lifeforachild.domain.Permissions;
 import org.lifeforachild.domain.SexType;
 import org.lifeforachild.domain.SurvivalStatusType;
 import org.springframework.ui.ModelMap;
@@ -24,7 +26,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 privileged aspect ChildController_Roo_Controller {
     
     @RequestMapping(value = "/child", method = RequestMethod.POST)    
-    public String ChildController.create(@Valid Child child, BindingResult result, ModelMap modelMap) {    
+    public String ChildController.create(@Valid Child child, BindingResult result, ModelMap modelMap) { 
+    	SecurityUtil.getInstance().checkPermission(Permissions.CREATE_CHILD);
         if (child == null) throw new IllegalArgumentException("A child is required");        
         if (result.hasErrors()) {        
             modelMap.addAttribute("child", child);            
@@ -59,6 +62,7 @@ privileged aspect ChildController_Roo_Controller {
     
     @RequestMapping(value = "/child/form", method = RequestMethod.GET)    
     public String ChildController.createForm(ModelMap modelMap) {  
+    	SecurityUtil.getInstance().checkPermission(Permissions.CREATE_CHILD);
     	Child child = new Child();
         child.setCreatedOn(new Date());
         child.setUpdatedOn(new Date()); 
@@ -117,7 +121,8 @@ privileged aspect ChildController_Roo_Controller {
     }    
     
     @RequestMapping(method = RequestMethod.PUT)    
-    public String ChildController.update(@Valid Child child, BindingResult result, ModelMap modelMap) {    
+    public String ChildController.update(@Valid Child child, BindingResult result, ModelMap modelMap) {  
+    	SecurityUtil.getInstance().checkPermission(Permissions.EDIT_CHILD);
         if (child == null) throw new IllegalArgumentException("A child is required");        
         if (result.hasErrors()) {        
             modelMap.addAttribute("child", child);            
@@ -145,7 +150,8 @@ privileged aspect ChildController_Roo_Controller {
     }    
     
     @RequestMapping(value = "/child/{id}/form", method = RequestMethod.GET)    
-    public String ChildController.updateForm(@PathVariable("id") Long id, ModelMap modelMap) {    
+    public String ChildController.updateForm(@PathVariable("id") Long id, ModelMap modelMap) { 
+    	SecurityUtil.getInstance().checkPermission(Permissions.EDIT_CHILD);
         if (id == null) throw new IllegalArgumentException("An Identifier is required");     
         Child child = Child.findChild(id);
         child.setUpdatedOn(new Date()); 
@@ -170,7 +176,8 @@ privileged aspect ChildController_Roo_Controller {
     }    
     
     @RequestMapping(value = "/child/{id}", method = RequestMethod.DELETE)    
-    public String ChildController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size) {    
+    public String ChildController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size) {
+    	SecurityUtil.getInstance().checkPermission(Permissions.EDIT_CHILD);
         if (id == null) throw new IllegalArgumentException("An Identifier is required");        
         Child.findChild(id).remove();        
         return "redirect:/child?page=" + ((page == null) ? "1" : page.toString()) + "&size=" + ((size == null) ? "10" : size.toString());        

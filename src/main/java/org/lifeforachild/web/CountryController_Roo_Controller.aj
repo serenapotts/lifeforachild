@@ -3,8 +3,11 @@ package org.lifeforachild.web;
 import java.lang.Long;
 import java.lang.String;
 import javax.validation.Valid;
+
+import org.lifeforachild.Util.SecurityUtil;
 import org.lifeforachild.domain.Country;
 import org.lifeforachild.domain.DiabetesCentre;
+import org.lifeforachild.domain.Permissions;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,7 +18,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 privileged aspect CountryController_Roo_Controller {
     
     @RequestMapping(value = "/country", method = RequestMethod.POST)    
-    public String CountryController.create(@Valid Country country, BindingResult result, ModelMap modelMap) {    
+    public String CountryController.create(@Valid Country country, BindingResult result, ModelMap modelMap) {
+    	SecurityUtil.getInstance().checkPermission(Permissions.CREATE_COUNTRY);
         if (country == null) throw new IllegalArgumentException("A country is required");        
         if (result.hasErrors()) {        
             modelMap.addAttribute("country", country);            
@@ -28,20 +32,23 @@ privileged aspect CountryController_Roo_Controller {
     
     @RequestMapping(value = "/country/form", method = RequestMethod.GET)    
     public String CountryController.createForm(ModelMap modelMap) {    
+    	SecurityUtil.getInstance().checkPermission(Permissions.CREATE_COUNTRY);
         modelMap.addAttribute("country", new Country());        
         modelMap.addAttribute("diabetescentres", DiabetesCentre.findAllDiabetesCentres());        
         return "country/create";        
     }    
     
     @RequestMapping(value = "/country/{id}", method = RequestMethod.GET)    
-    public String CountryController.show(@PathVariable("id") Long id, ModelMap modelMap) {    
+    public String CountryController.show(@PathVariable("id") Long id, ModelMap modelMap) { 
+    	SecurityUtil.getInstance().checkPermission(Permissions.CREATE_COUNTRY);
         if (id == null) throw new IllegalArgumentException("An Identifier is required");        
         modelMap.addAttribute("country", Country.findCountry(id));        
         return "country/show";        
     }    
     
     @RequestMapping(value = "/country", method = RequestMethod.GET)    
-    public String CountryController.list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, ModelMap modelMap) {    
+    public String CountryController.list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, ModelMap modelMap) {
+    	SecurityUtil.getInstance().checkPermission(Permissions.CREATE_COUNTRY);
         if (page != null || size != null) {        
             int sizeNo = size == null ? 10 : size.intValue();            
             modelMap.addAttribute("countrys", Country.findCountryEntries(page == null ? 0 : (page.intValue() - 1) * sizeNo, sizeNo));            
@@ -54,7 +61,8 @@ privileged aspect CountryController_Roo_Controller {
     }    
     
     @RequestMapping(method = RequestMethod.PUT)    
-    public String CountryController.update(@Valid Country country, BindingResult result, ModelMap modelMap) {    
+    public String CountryController.update(@Valid Country country, BindingResult result, ModelMap modelMap) { 
+    	SecurityUtil.getInstance().checkPermission(Permissions.EDIT_COUNTRY);
         if (country == null) throw new IllegalArgumentException("A country is required");        
         if (result.hasErrors()) {        
             modelMap.addAttribute("country", country);            
@@ -66,7 +74,8 @@ privileged aspect CountryController_Roo_Controller {
     }    
     
     @RequestMapping(value = "/country/{id}/form", method = RequestMethod.GET)    
-    public String CountryController.updateForm(@PathVariable("id") Long id, ModelMap modelMap) {    
+    public String CountryController.updateForm(@PathVariable("id") Long id, ModelMap modelMap) { 
+    	SecurityUtil.getInstance().checkPermission(Permissions.EDIT_COUNTRY);
         if (id == null) throw new IllegalArgumentException("An Identifier is required");        
         modelMap.addAttribute("country", Country.findCountry(id));        
         modelMap.addAttribute("diabetescentres", DiabetesCentre.findAllDiabetesCentres());        
@@ -75,7 +84,8 @@ privileged aspect CountryController_Roo_Controller {
     
     @RequestMapping(value = "/country/{id}", method = RequestMethod.DELETE)    
     public String CountryController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size) {    
-        if (id == null) throw new IllegalArgumentException("An Identifier is required");        
+    	SecurityUtil.getInstance().checkPermission(Permissions.EDIT_COUNTRY);
+    	if (id == null) throw new IllegalArgumentException("An Identifier is required");        
         Country.findCountry(id).remove();        
         return "redirect:/country?page=" + ((page == null) ? "1" : page.toString()) + "&size=" + ((size == null) ? "10" : size.toString());        
     }    

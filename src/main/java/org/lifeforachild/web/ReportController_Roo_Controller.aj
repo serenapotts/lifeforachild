@@ -3,10 +3,13 @@ package org.lifeforachild.web;
 import java.lang.Long;
 import java.lang.String;
 import javax.validation.Valid;
+
+import org.lifeforachild.Util.SecurityUtil;
 import org.lifeforachild.domain.ChildFields;
 import org.lifeforachild.domain.ClinicalRecordFields;
 import org.lifeforachild.domain.Country;
 import org.lifeforachild.domain.DiabetesCentre;
+import org.lifeforachild.domain.Permissions;
 import org.lifeforachild.domain.Report;
 import org.lifeforachild.domain.ReportType;
 import org.lifeforachild.domain.ShowOptionType;
@@ -23,7 +26,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 privileged aspect ReportController_Roo_Controller {
     
     @RequestMapping(value = "/report", method = RequestMethod.POST)    
-    public String ReportController.create(@Valid Report report, BindingResult result, ModelMap modelMap) {    
+    public String ReportController.create(@Valid Report report, BindingResult result, ModelMap modelMap) { 
+    	SecurityUtil.getInstance().checkPermission(Permissions.CREATE_REPORT);
         if (report == null) throw new IllegalArgumentException("A report is required");        
         if (result.hasErrors()) {        
             modelMap.addAttribute("report", report);            
@@ -46,6 +50,7 @@ privileged aspect ReportController_Roo_Controller {
     
     @RequestMapping(value = "/report/form", method = RequestMethod.GET)    
     public String ReportController.createForm(ModelMap modelMap) {    
+    	SecurityUtil.getInstance().checkPermission(Permissions.CREATE_REPORT);
         modelMap.addAttribute("report", new Report());        
         modelMap.addAttribute("childfields_enum", ChildFields.class.getEnumConstants());        
         modelMap.addAttribute("clinicalrecordfields_enum", ClinicalRecordFields.class.getEnumConstants());        
@@ -62,7 +67,8 @@ privileged aspect ReportController_Roo_Controller {
     }    
     
     @RequestMapping(value = "/report/{id}", method = RequestMethod.GET)    
-    public String ReportController.show(@PathVariable("id") Long id, ModelMap modelMap) {    
+    public String ReportController.show(@PathVariable("id") Long id, ModelMap modelMap) {  
+    	SecurityUtil.getInstance().checkPermission(Permissions.VIEW_REPORT);
         if (id == null) throw new IllegalArgumentException("An Identifier is required");        
         modelMap.addAttribute("report_fromDate_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));        
         modelMap.addAttribute("report_toDate_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));        
@@ -72,7 +78,8 @@ privileged aspect ReportController_Roo_Controller {
     
     @RequestMapping(value = "/report", method = RequestMethod.GET)    
     public String ReportController.list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, ModelMap modelMap) {    
-        if (page != null || size != null) {        
+    	SecurityUtil.getInstance().checkPermission(Permissions.VIEW_REPORT);
+    	if (page != null || size != null) {        
             int sizeNo = size == null ? 10 : size.intValue();            
             modelMap.addAttribute("reports", Report.findReportEntries(page == null ? 0 : (page.intValue() - 1) * sizeNo, sizeNo));            
             float nrOfPages = (float) Report.countReports() / sizeNo;            
@@ -87,7 +94,8 @@ privileged aspect ReportController_Roo_Controller {
     
     @RequestMapping(method = RequestMethod.PUT)    
     public String ReportController.update(@Valid Report report, BindingResult result, ModelMap modelMap) {    
-        if (report == null) throw new IllegalArgumentException("A report is required");        
+    	SecurityUtil.getInstance().checkPermission(Permissions.EDIT_REPORT);
+    	if (report == null) throw new IllegalArgumentException("A report is required");        
         if (result.hasErrors()) {        
             modelMap.addAttribute("report", report);            
             modelMap.addAttribute("childfields_enum", ChildFields.class.getEnumConstants());            
@@ -108,7 +116,8 @@ privileged aspect ReportController_Roo_Controller {
     }    
     
     @RequestMapping(value = "/report/{id}/form", method = RequestMethod.GET)    
-    public String ReportController.updateForm(@PathVariable("id") Long id, ModelMap modelMap) {    
+    public String ReportController.updateForm(@PathVariable("id") Long id, ModelMap modelMap) {
+    	SecurityUtil.getInstance().checkPermission(Permissions.EDIT_REPORT);
         if (id == null) throw new IllegalArgumentException("An Identifier is required");        
         modelMap.addAttribute("report", Report.findReport(id));        
         modelMap.addAttribute("childfields_enum", ChildFields.class.getEnumConstants());        
@@ -127,7 +136,8 @@ privileged aspect ReportController_Roo_Controller {
     
     @RequestMapping(value = "/report/{id}", method = RequestMethod.DELETE)    
     public String ReportController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size) {    
-        if (id == null) throw new IllegalArgumentException("An Identifier is required");        
+    	SecurityUtil.getInstance().checkPermission(Permissions.EDIT_REPORT);
+    	if (id == null) throw new IllegalArgumentException("An Identifier is required");        
         Report.findReport(id).remove();        
         return "redirect:/report?page=" + ((page == null) ? "1" : page.toString()) + "&size=" + ((size == null) ? "10" : size.toString());        
     }    

@@ -1,12 +1,16 @@
 package org.lifeforachild.Util;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import org.lifeforachild.domain.AllUserDetails;
 import org.lifeforachild.domain.User;
 import org.lifeforachild.domain.UserGroup;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.GrantedAuthorityImpl;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 public class SecurityUtil {
@@ -80,4 +84,22 @@ public class SecurityUtil {
 			return -1;
 		return user.getCentre();
 	}	
+	
+	public void checkPermission(String permission)
+	{
+		Collection<GrantedAuthority> ga = getCurrentUser().getAuthorities();
+		GrantedAuthorityImpl role = new GrantedAuthorityImpl(permission);
+		boolean found = false;
+		for (GrantedAuthority authority: ga)
+		{
+			if (authority instanceof GrantedAuthorityImpl 
+					&& ((GrantedAuthorityImpl)authority).equals(role))
+			{
+				found = true;
+				break;
+			}
+		}
+		if (!found)
+			throw new AccessDeniedException("Denied");
+	}
 }
