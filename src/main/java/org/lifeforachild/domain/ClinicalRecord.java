@@ -244,7 +244,7 @@ public class ClinicalRecord {
     private MG_OR_MMOL_Type triglyceridesUnits;
 
     @Enumerated
-    @NotNull(message = "is required.")
+    //@NotNull(message = "is required.")
     private YesNoUnkownType fasted;
 
     @Enumerated
