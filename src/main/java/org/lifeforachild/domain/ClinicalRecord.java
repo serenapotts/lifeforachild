@@ -190,34 +190,53 @@ public class ClinicalRecord {
     @Size(max = 30)
     private String hbA1cMethodOther;
 
+    @Enumerated
+    @NotNull(message = "is required.")
+    private YesNoLaterType microalbuminuriaInLast12Months;
+    
     @DecimalMin(value = "0.1")
     @DecimalMax(value = "9999.9")
     private Float microalbuminuriaValue;
 
-    @Enumerated
     //@NotNull(message = "is required.")
-    private MicroalbuminuriaUnitsType microalbuminuriaUnitOfMeasure;
+    private String microalbuminuriaUnitOfMeasure;
 
     private String Proteinuria_dipstick_other;
 
+    @Enumerated
+    @NotNull(message = "is required.")
+    private YesNoLaterType creatinineInLast12Months;
+    
     private Float creatinineValue;
 
     @Enumerated
     //@NotNull(message = "is required.")
     private CreatineUnitsType creatinineUnits;
 
+    @Enumerated
+    @NotNull(message = "is required.")
+    private YesNoLaterType totalCholesterolInLast12Months;
+    
     private Float totalCholesterolValue;
 
     @Enumerated
     //@NotNull(message = "is required.")
     private MG_OR_MMOL_Type cholesterolUnits;
 
+    @Enumerated
+    @NotNull(message = "is required.")
+    private YesNoLaterType hdlCholesterolInLast12Months;
+    
     private Float hdlCholesterolValue;
 
     @Enumerated
     //@NotNull(message = "is required.")
     private MG_OR_MMOL_Type hdlUnits;
 
+    @Enumerated
+    @NotNull(message = "is required.")
+    private YesNoLaterType triglyceridesInLast12Months;
+    
     private Float triglyceridesValue;
 
     @Enumerated

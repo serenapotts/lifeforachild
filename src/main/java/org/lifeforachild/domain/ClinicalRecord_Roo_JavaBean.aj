@@ -339,6 +339,14 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.hbA1cMethodOther = hbA1cMethodOther;        
     }    
     
+    public YesNoLaterType ClinicalRecord.getMicroalbuminuriaInLast12Months() {    
+        return this.microalbuminuriaInLast12Months;        
+    }    
+    
+    public void ClinicalRecord.setMicroalbuminuriaInLast12Months(YesNoLaterType microalbuminuriaInLast12Months) {    
+        this.microalbuminuriaInLast12Months = microalbuminuriaInLast12Months;        
+    } 
+    
     public Float ClinicalRecord.getMicroalbuminuriaValue() {    
         return this.microalbuminuriaValue;        
     }    
@@ -347,11 +355,11 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.microalbuminuriaValue = microalbuminuriaValue;        
     }    
     
-    public MicroalbuminuriaUnitsType ClinicalRecord.getMicroalbuminuriaUnitOfMeasure() {    
+    public String ClinicalRecord.getMicroalbuminuriaUnitOfMeasure() {    
         return this.microalbuminuriaUnitOfMeasure;        
     }    
     
-    public void ClinicalRecord.setMicroalbuminuriaUnitOfMeasure(MicroalbuminuriaUnitsType microalbuminuriaUnitOfMeasure) {    
+    public void ClinicalRecord.setMicroalbuminuriaUnitOfMeasure(String microalbuminuriaUnitOfMeasure) {    
         this.microalbuminuriaUnitOfMeasure = microalbuminuriaUnitOfMeasure;        
     }    
     
@@ -362,6 +370,14 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
     public void ClinicalRecord.setProteinuria_dipstick_other(String Proteinuria_dipstick_other) {    
         this.Proteinuria_dipstick_other = Proteinuria_dipstick_other;        
     }    
+    
+    public YesNoLaterType ClinicalRecord.getCreatinineInLast12Months() {    
+        return this.creatinineInLast12Months;        
+    }    
+    
+    public void ClinicalRecord.setCreatinineInLast12Months(YesNoLaterType creatinineInLast12Months) {    
+        this.creatinineInLast12Months = creatinineInLast12Months;        
+    } 
     
     public Float ClinicalRecord.getCreatinineValue() {    
         return this.creatinineValue;        
@@ -379,6 +395,14 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.creatinineUnits = creatinineUnits;        
     }    
     
+    public YesNoLaterType ClinicalRecord.getTotalCholesterolInLast12Months() {    
+        return this.lastHbA1cInLast12Months;        
+    }    
+    
+    public void ClinicalRecord.setTotalCholesterolInLast12Months(YesNoLaterType totalCholesterolInLast12Months) {    
+        this.totalCholesterolInLast12Months = totalCholesterolInLast12Months;        
+    } 
+    
     public Float ClinicalRecord.getTotalCholesterolValue() {    
         return this.totalCholesterolValue;        
     }    
@@ -395,6 +419,14 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.cholesterolUnits = cholesterolUnits;        
     }    
     
+    public YesNoLaterType ClinicalRecord.getHdlCholesterolInLast12Months() {    
+        return this.hdlCholesterolInLast12Months;        
+    }    
+    
+    public void ClinicalRecord.setHdlCholesterolInLast12Months(YesNoLaterType hdlCholesterolInLast12Months) {    
+        this.hdlCholesterolInLast12Months = hdlCholesterolInLast12Months;        
+    } 
+    
     public Float ClinicalRecord.getHdlCholesterolValue() {    
         return this.hdlCholesterolValue;        
     }    
@@ -410,6 +442,14 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
     public void ClinicalRecord.setHdlUnits(MG_OR_MMOL_Type hdlUnits) {    
         this.hdlUnits = hdlUnits;        
     }    
+    
+    public YesNoLaterType ClinicalRecord.getTriglyceridesInLast12Months() {    
+        return this.triglyceridesInLast12Months;        
+    }    
+    
+    public void ClinicalRecord.setTriglyceridesInLast12Months(YesNoLaterType triglyceridesInLast12Months) {    
+        this.triglyceridesInLast12Months = triglyceridesInLast12Months;        
+    } 
     
     public Float ClinicalRecord.getTriglyceridesValue() {    
         return this.triglyceridesValue;        
