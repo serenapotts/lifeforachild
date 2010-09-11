@@ -65,7 +65,8 @@ privileged aspect ChildController_Roo_Controller {
     	SecurityUtil.getInstance().checkPermission(Permissions.CREATE_CHILD);
     	Child child = new Child();
         child.setCreatedOn(new Date());
-        child.setUpdatedOn(new Date()); 
+        child.setUpdatedOn(new Date());
+        child.setIsDeleted(false);        
         modelMap.addAttribute("child", child);     	    
         modelMap.addAttribute("causeofdeathtype_enum", CauseOfDeathType.class.getEnumConstants());        
         modelMap.addAttribute("clinicalrecords", ClinicalRecord.findAllClinicalRecords());        
@@ -179,7 +180,9 @@ privileged aspect ChildController_Roo_Controller {
     public String ChildController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size) {
     	SecurityUtil.getInstance().checkPermission(Permissions.EDIT_CHILD);
         if (id == null) throw new IllegalArgumentException("An Identifier is required");        
-        Child.findChild(id).remove();        
+        Child child = Child.findChild(id);  
+        child.setIsDeleted(true);
+        child.persist();
         return "redirect:/child?page=" + ((page == null) ? "1" : page.toString()) + "&size=" + ((size == null) ? "10" : size.toString());        
     }    
     

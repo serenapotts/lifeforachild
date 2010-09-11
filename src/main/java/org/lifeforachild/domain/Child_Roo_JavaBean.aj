@@ -186,6 +186,14 @@ privileged aspect Child_Roo_JavaBean {
     public void Child.setUpdatedOn(Date updatedOn) {    
         this.updatedOn = updatedOn;        
     }    
+   
+    public boolean Child.getIsDeleted() {    
+        return this.isDeleted;        
+    }    
+    
+    public void Child.setIsDeleted(boolean isDeleted) {    
+        this.isDeleted = isDeleted;        
+    }
     
     public DistanceType Child.getDistanceLivesFromCentre() {    
         return this.distanceLivesFromCentre;        

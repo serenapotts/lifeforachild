@@ -124,6 +124,8 @@ public class Child {
     @DateTimeFormat(style = "S-")
     private Date updatedOn;
 
+    private Boolean isDeleted;
+    
     @Enumerated
     @NotNull
     private DistanceType distanceLivesFromCentre;

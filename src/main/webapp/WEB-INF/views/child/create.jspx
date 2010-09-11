@@ -268,6 +268,7 @@
             </script>            
             <form:hidden id="_createdOn_id" path="createdOn"/>
             <form:hidden id="_updatedOn_id" path="updatedOn"/>
+            <form:hidden id="_isDeleted_id" path="isDeleted"/>
             <form:hidden id="_ageAtDiagnosis_id" path="ageAtDiagnosis"/>
             <div id="roo_child_distanceLivesFromCentre">
                 <label for="_distanceLivesFromCentre_id"><spring:message code="child.distanceFromCentre"/></label>

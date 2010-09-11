@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Restrictions;
 import org.lifeforachild.Util.StringUtil;
 import org.lifeforachild.domain.Child;
@@ -154,6 +155,7 @@ public class ChildQuery extends BaseQuery<Child> {
 	public Criteria findByAccessCriteria(EntityManager entityManager)
 	{		
 		Criteria criteria = ((Session)entityManager.getDelegate()).createCriteria(Child.class);
+		criteria.add(Restrictions.eq("isDeleted", false));
 		CountryQuery.findCountryByAccessCriteria(criteria);
     	DiabetesCentreQuery.findCentreByAccessCriteria(criteria);
     	return criteria;
