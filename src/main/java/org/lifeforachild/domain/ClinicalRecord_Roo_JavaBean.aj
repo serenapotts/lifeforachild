@@ -396,7 +396,7 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
     }    
     
     public YesNoLaterType ClinicalRecord.getTotalCholesterolInLast12Months() {    
-        return this.lastHbA1cInLast12Months;        
+        return this.totalCholesterolInLast12Months;        
     }    
     
     public void ClinicalRecord.setTotalCholesterolInLast12Months(YesNoLaterType totalCholesterolInLast12Months) {    
