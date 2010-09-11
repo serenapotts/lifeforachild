@@ -10,7 +10,7 @@
 	           	<div id="general"> 
 	           		<sec:authorize ifAllGranted="VIEW_CHILD_NAME">
 		            <div id="roo_clinicalRecord_child">
-		                <label for="_child_id">Child:</label>
+		                <label  class="record" for="_child_id">Child:</label>
 		                <div class="box" id="_child_id">
 		                    <c:out value="${clinicalRecord.child}"/>
 		                </div>
@@ -18,35 +18,35 @@
 		            <br/>
 		            </sec:authorize>
 		            <div id="roo_clinicalRecord_personCompletingForm">
-		                <label for="_personCompletingForm_id">Person Completing Form:</label>
+		                <label  class="record" for="_personCompletingForm_id">Person Completing Form:</label>
 		                <div class="box" id="_personCompletingForm_id">
 		                    <c:out value="${clinicalRecord.personCompletingForm}"/>
 		                </div>
 		            </div>
 		            <br/>
 		            <div id="roo_clinicalRecord_dateCompleted">
-		                <label for="_dateCompleted_id">Date Completed:</label>
+		                <label  class="record" for="_dateCompleted_id">Date Completed:</label>
 		                <div class="box" id="_dateCompleted_id">
 		                    <fmt:formatDate pattern="${clinicalRecord_dateCompleted_date_format}" value="${clinicalRecord.dateCompleted}"/>
 		                </div>
 		            </div>
 		            <br/>
 		            <div id="roo_clinicalRecord_seniorPhysician">
-		                <label for="_seniorPhysician_id">Senior Physician:</label>
+		                <label  class="record" for="_seniorPhysician_id">Senior Physician:</label>
 		                <div class="box" id="_seniorPhysician_id">
 		                    <c:out value="${clinicalRecord.seniorPhysician}"/>
 		                </div>
 		            </div>
 		            <br/>
 		            <div id="roo_clinicalRecord_exactAge">
-		                <label for="_exactAge_id">Exact Age on Measurement Date:</label>
+		                <label  class="record" for="_exactAge_id">Exact Age on Measurement Date:</label>
 		                <div class="box" id="_exactAge_id">
 		                    <c:out value="${clinicalRecord.exactAge}"/>
 		                </div>
 		            </div>
 		            <br/>
 		            <div id="roo_clinicalRecord_insulinPerKg">
-		                <label for="_insulinPerKg_id">Insulin Units/ Kg:</label>
+		                <label  class="record" for="_insulinPerKg_id">Insulin Units/ Kg:</label>
 		                <div class="box" id="_insulinPerKg_id">
 		                    <c:out value="${clinicalRecord.insulinPerKg}"/>
 		                </div>
@@ -62,64 +62,70 @@
 				</script>
 	            <div id="diabetesCare">		      	         
 		            <div id="roo_clinicalRecord_bloodGlucoseSelfMonitoringPerWeek">
-		                <label for="_bloodGlucoseSelfMonitoringPerWeek_id">Blood Glucose Self Monitoring Per Week:</label>
+		                <label  class="record" for="_bloodGlucoseSelfMonitoringPerWeek_id">Blood Glucose Self Monitoring Per Week:</label>
 		                <div class="box" id="_bloodGlucoseSelfMonitoringPerWeek_id">
 		                    <c:out value="${clinicalRecord.bloodGlucoseSelfMonitoringPerWeek}"/>
 		                </div>
 		            </div>
 		            <br/>
 		            <div id="roo_clinicalRecord_urineGlucoseSelfMonitoringPerWeek">
-		                <label for="_urineGlucoseSelfMonitoringPerWeek_id">Urine Glucose Self Monitoring Per Week:</label>
+		                <label  class="record" for="_urineGlucoseSelfMonitoringPerWeek_id">Urine Glucose Self Monitoring Per Week:</label>
 		                <div class="box" id="_urineGlucoseSelfMonitoringPerWeek_id">
 		                    <c:out value="${clinicalRecord.urineGlucoseSelfMonitoringPerWeek}"/>
 		                </div>
 		            </div>
 		            <br/>
 		            <div id="roo_clinicalRecord_adjustInsulinDoseIfNeeded">
-		                <label for="_adjustInsulinDoseIfNeeded_id">Adjust Insulin Dose If Needed:</label>
+		                <label  class="record" for="_adjustInsulinDoseIfNeeded_id">Adjust Insulin Dose If Needed:</label>
 		                <div class="box" id="_adjustInsulinDoseIfNeeded_id">
 		                    <c:out value="${clinicalRecord.adjustInsulinDoseIfNeeded}"/>
+		                    <c:if test="${clinicalRecord.adjustInsulinDoseIfNeeded == null}">
+		                    	<br/>
+		                    </c:if>
 		                </div>
 		            </div>
 		            <br/>
 		            <div id="roo_clinicalRecord_insulinUnitsPerDay">
-		                <label for="_insulinUnitsPerDay_id">Insulin Units Per Day:</label>
+		                <label  class="record" for="_insulinUnitsPerDay_id">Insulin Units Per Day:</label>
 		                <div class="box" id="_insulinUnitsPerDay_id">
 		                    <c:out value="${clinicalRecord.insulinUnitsPerDay}"/>
 		                </div>
+		                
 		            </div>
 		            <br/>
 		            <div id="roo_clinicalRecord_numberOfInsulinInjectionsPerDay">
-		                <label for="_numberOfInsulinInjectionsPerDay_id">Number Of Insulin Injections Per Day:</label>
+		                <label  class="record" for="_numberOfInsulinInjectionsPerDay_id">Number Of Insulin Injections Per Day:</label>
 		                <div class="box" id="_numberOfInsulinInjectionsPerDay_id">
 		                    <c:out value="${clinicalRecord.numberOfInsulinInjectionsPerDay}"/>
 		                </div>
+	                    <c:if test="${clinicalRecord.numberOfInsulinInjectionsPerDay == null}">
+	                    	<br/>
+	                    </c:if>		                
 		            </div>
-		            <br/>
 		            <br/>	            
 		            <div id="roo_clinicalRecord_longActingHuman">
-		                <label for="_longActingHuman_id">Long Acting Human:</label>
+		                <label  class="record" for="_longActingHuman_id">Long Acting Human:</label>
 		                <div class="box" id="_longActingHuman_id">
 		                    <c:out value="${clinicalRecord.longActingHuman}"/>
 		                </div>
 		            </div>
 		            <br/>
 		            <div id="roo_clinicalRecord_shortActingHuman">
-		                <label for="_shortActingHuman_id">Short Acting Human:</label>
+		                <label  class="record" for="_shortActingHuman_id">Short Acting Human:</label>
 		                <div class="box" id="_shortActingHuman_id">
 		                    <c:out value="${clinicalRecord.shortActingHuman}"/>
 		                </div>
 		            </div>
 		            <br/>
 		            <div id="roo_clinicalRecord_analog">
-		                <label for="_analog_id">Analog:</label>
+		                <label  class="record" for="_analog_id">Analog:</label>
 		                <div class="box" id="_analog_id">
 		                    <c:out value="${clinicalRecord.analog}"/>
 		                </div>
 		            </div>
 		            <br/>
 		            <div id="roo_clinicalRecord_oralAgents">
-		                <label for="_oralAgents_id">Oral Agents:</label>
+		                <label  class="record" for="_oralAgents_id">Oral Agents:</label>
 		                <div class="box" id="_oralAgents_id">
 		                    <c:out value="${clinicalRecord.oralAgents}"/>
 		                </div>
@@ -127,7 +133,7 @@
 		            <br/>
 		            <c:if test="${clinicalRecord.oralAgents == 'YES'}">
 			            <div id="roo_clinicalRecord_oralAgentsDescription">
-			                <label for="_oralAgentsDescription_id">Oral Agents Description:</label>
+			                <label  class="record" for="_oralAgentsDescription_id">Oral Agents Description:</label>
 			                <div class="box" id="_oralAgentsDescription_id">
 			                    <c:out value="${clinicalRecord.oralAgentsDescription}"/>
 			                </div>
@@ -135,14 +141,14 @@
 			            <br/>
 		            </c:if>
 		            <div id="roo_clinicalRecord_routineClinicReviewsLastYear">
-		                <label for="_routineClinicReviewsLastYear_id">Routine Clinic Reviews Last Year:</label>
+		                <label  class="record" for="_routineClinicReviewsLastYear_id">Routine Clinic Reviews Last Year:</label>
 		                <div class="box" id="_routineClinicReviewsLastYear_id">
 		                    <c:out value="${clinicalRecord.routineClinicReviewsLastYear}"/>
 		                </div>
 		            </div>
 		            <br/>
 		            <div id="roo_clinicalRecord_bpMedications">
-		                <label for="_bpMedications_id">BP Medications:</label>
+		                <label  class="record" for="_bpMedications_id">BP Medications:</label>
 		                <div class="box" id="_bpMedications_id">
 		                    <c:out value="${clinicalRecord.bpMedications}"/>
 		                </div>
@@ -150,14 +156,14 @@
 		            <br/>
 		            <c:if test="${clinicalRecord.bpMedications == 'YES'}">
 			            <div id="roo_clinicalRecord_acearb">
-			                <label for="_acearb_id">ACE/ARB agents:</label>
+			                <label  class="record" for="_acearb_id">ACE/ARB agents:</label>
 			                <div class="box" id="_acearb_id">
 			                    <c:out value="${clinicalRecord.acearb}"/>
 			                </div>
 			            </div>
 			            <br/>
 			            <div id="roo_clinicalRecord_bpMedicationsOther">
-			                <label for="_bpMedicationsOther_id">BP Medications Other:</label>
+			                <label  class="record" for="_bpMedicationsOther_id">BP Medications Other:</label>
 			                <div class="box" id="_bpMedicationsOther_id">
 			                    <c:out value="${clinicalRecord.bpMedicationsOther}"/>
 			                </div>
@@ -165,14 +171,17 @@
 			            <br/>
 		            </c:if>		            
 		            <div id="roo_clinicalRecord_otherTreatments">
-		                <label for="_otherTreatments_id">Other Treatments:</label>
+		                <label  class="record" for="_otherTreatments_id">Other Treatments:</label>
 		                <div class="box" id="_otherTreatments_id">
 		                    <c:out value="${clinicalRecord.otherTreatments}"/>
 		                </div>
+	                    <c:if test="${clinicalRecord.otherTreatments == null}">
+	                    	<br/>
+	                    </c:if>			                
 		            </div>
 		            <br/>
 		            <div id="roo_clinicalRecord_laserRxInLast12Months">
-		                <label for="_laserRxInLast12Months_id">Laser Rx In Last 12 Months:</label>
+		                <label  class="record" for="_laserRxInLast12Months_id">Laser Rx In Last 12 Months:</label>
 		                <div class="box" id="_laserRxInLast12Months_id">
 		                    <c:out value="${clinicalRecord.laserRxInLast12Months}"/>
 		                </div>
@@ -188,7 +197,7 @@
 				</script>	            
 	            <div id="clinicalMeasures">    
 		            <div id="roo_clinicalRecord_dateOfMeasurement">
-		                <label for="_dateOfMeasurement_id">Date Of Measurement:</label>
+		                <label  class="record" for="_dateOfMeasurement_id">Date Of Measurement:</label>
 		                <div class="box" id="_dateOfMeasurement_id">
 		                    <fmt:formatDate pattern="${clinicalRecord_dateOfMeasurement_date_format}" value="${clinicalRecord.dateOfMeasurement}"/>
 		                </div>
@@ -196,84 +205,108 @@
 		            <br/>
 	                    
 		            <div id="roo_clinicalRecord_weightKG">
-		                <label for="_weightKG_id">Weight (kg):</label>
+		                <label  class="record" for="_weightKG_id">Weight (kg):</label>
 		                <div class="box" id="_weightKG_id">
 		                    <c:out value="${clinicalRecord.weightKG}"/>
 		                </div>
 		            </div>
 		            <br/>
 		            <div id="roo_clinicalRecord_weightSD">
-                        <label for="_weightSD_id">Weight SD:</label>
+                        <label  class="record" for="_weightSD_id">Weight SD:</label>
                         <div class="box" id="_weightSD_id">
                             <c:out value="${clinicalRecord.weightSD}"/>
                         </div>
                     </div>
                     <br/>
 		            <div id="roo_clinicalRecord_heightCM">
-		                <label for="_heightCM_id">Height (cm):</label>
+		                <label  class="record" for="_heightCM_id">Height (cm):</label>
 		                <div class="box" id="_heightCM_id">
 		                    <c:out value="${clinicalRecord.heightCM}"/>
 		                </div>
+	                    <c:if test="${clinicalRecord.heightCM == null}">
+	                    	<br/>
+	                    </c:if>		                
 		            </div>
 		            <br/>
 		            <div id="roo_clinicalRecord_heightSD">
-                        <label for="_heightSD_id">Height SD:</label>
+                        <label  class="record" for="_heightSD_id">Height SD:</label>
                         <div class="box" id="_heightSD_id">
                             <c:out value="${clinicalRecord.heightSD}"/>
                         </div>
+	                    <c:if test="${clinicalRecord.heightSD == null}">
+	                    	<br/>
+	                    </c:if>		                                        
                     </div>
                     <br/>
                     <div id="roo_clinicalRecord_bmi">
-                        <label for="_bmi_id">Body Mass Index:</label>
+                        <label  class="record" for="_bmi_id">Body Mass Index:</label>
                         <div class="box" id="_bmi_id">
                             <c:out value="${clinicalRecord.bmi}"/>
                         </div>
+	                    <c:if test="${clinicalRecord.bmi == null}">
+	                    	<br/>
+	                    </c:if>		                                        
                     </div>
                     <br/>
                     <div id="roo_clinicalRecord_bmiSD">
-                        <label for="_bmiSD_id">Body Mass Index SD:</label>
+                        <label  class="record" for="_bmiSD_id">Body Mass Index SD:</label>
                         <div class="box" id="_bmiSD_id">
                             <c:out value="${clinicalRecord.bmiSD}"/>
                         </div>
+                        <c:if test="${clinicalRecord.bmiSD == null}">
+	                    	<br/>
+	                    </c:if>
                     </div>
                     <br/>
 		            <div id="roo_clinicalRecord_bloodPressureSystolicMMHg">
-		                <label for="_bloodPressureSystolicMMHg_id">Blood Pressure Systolic (mmHg):</label>
+		                <label  class="record" for="_bloodPressureSystolicMMHg_id">Blood Pressure Systolic (mmHg):</label>
 		                <div class="box" id="_bloodPressureSystolicMMHg_id">
 		                    <c:out value="${clinicalRecord.bloodPressureSystolicMMHg}"/>
 		                </div>
+		                <c:if test="${clinicalRecord.bloodPressureSystolicMMHg == null}">
+	                    	<br/>
+	                    </c:if>
 		            </div>
 		            <br/>
 		            <div id="roo_clinicalRecord_bloodPressureSystolicSD">
-                        <label for="_bloodPressureSystolicSD_id">Blood Pressure Systolic SD:</label>
+                        <label  class="record" for="_bloodPressureSystolicSD_id">Blood Pressure Systolic SD:</label>
                         <div class="box" id="_bloodPressureSystolicSD_id">
                             <c:out value="${clinicalRecord.bloodPressureSystolicSD}"/>
                         </div>
+                        <c:if test="${clinicalRecord.bloodPressureSystolicSD == null}">
+	                    	<br/>
+	                    </c:if>
                     </div>
                     <br/>
 		            <div id="roo_clinicalRecord_bloodPressureDiastolicMMHg">
-		                <label for="_bloodPressureDiastolicMMHg_id">Blood Pressure Diastolic (mmHg):</label>
+		                <label  class="record" for="_bloodPressureDiastolicMMHg_id">Blood Pressure Diastolic (mmHg):</label>
 		                <div class="box" id="_bloodPressureDiastolicMMHg_id">
 		                    <c:out value="${clinicalRecord.bloodPressureDiastolicMMHg}"/>
 		                </div>
+		                <c:if test="${clinicalRecord.bloodPressureDiastolicMMHg == null}">
+	                    	<br/>
+	                    </c:if>
 		            </div>
 		            <br/>
                     <div id="roo_clinicalRecord_bloodPressureDiastolicSD">
-                        <label for="_bloodPressureDiastolicSD_id">Blood Pressure Diastolic SD:</label>
+                        <label  class="record" for="_bloodPressureDiastolicSD_id">Blood Pressure Diastolic SD:</label>
                         <div class="box" id="_bloodPressureDiastolicSD_id">
                             <c:out value="${clinicalRecord.bloodPressureDiastolicSD}"/>
                         </div>
+                        <c:if test="${clinicalRecord.bloodPressureDiastolicSD == null}">
+	                    	<br/>
+	                    </c:if>
                     </div>      
                     <br/>                       
 		            <div id="roo_clinicalRecord_hasPersistentHypertension">
-		                <label for="_hasPersistentHypertension_id">Has Persistent Hypertension:</label>
+		                <label  class="record" for="_hasPersistentHypertension_id">Has Persistent Hypertension:</label>
 		                <div class="box" id="_hasPersistentHypertension_id">
 		                    <c:out value="${clinicalRecord.hasPersistentHypertension}"/>
 		                </div>
 		            </div>
 		            <br/>
 		            <div id="roo_clinicalRecord_hasPubertyTannerB2_P2orGreater">
-		                <label for="_hasPubertyTannerB2_P2orGreater_id">Has Puberty Tanner B2/P2 or greater:</label>
+		                <label  class="record" for="_hasPubertyTannerB2_P2orGreater_id">Has Puberty Tanner B2/P2 or greater:</label>
 		                <div class="box" id="_hasPubertyTannerB2_P2orGreater_id">
 		                    <c:out value="${clinicalRecord.hasPubertyTannerB2_P2orGreater}"/>
 		                </div>
@@ -281,7 +314,7 @@
 		            <br/>
 		            <c:if test="${clinicalRecord.child.sex == 'FEMALE'}">
 			            <div id="roo_clinicalRecord_menarche">
-			                <label for="_menarche_id">Menarche:</label>
+			                <label  class="record" for="_menarche_id">Menarche:</label>
 			                <div class="box" id="_menarche_id">
 			                    <c:out value="${clinicalRecord.menarche}"/>
 			                </div>
@@ -289,7 +322,7 @@
 			            <br/>
 			            <c:if test="${clinicalRecord.menarche == 'YES'}">
 				            <div id="roo_clinicalRecord_ifMenarcheAge">
-				                <label for="_ifMenarcheAge_id">If Menarche Age:</label>
+				                <label  class="record" for="_ifMenarcheAge_id">If Menarche Age:</label>
 				                <div class="box" id="_ifMenarcheAge_id">
 				                    <fmt:formatDate pattern="${clinicalRecord_ifMenarcheAge_date_format}" value="${clinicalRecord.ifMenarcheAge}"/>
 				                </div>
@@ -307,7 +340,7 @@
 				</script>	
 				<div id="eyesFeet">             
 		            <div id="roo_clinicalRecord_eyesExaminedInLastYear">
-		                <label for="_eyesExaminedInLastYear_id">Eyes Examined In Last Year:</label>
+		                <label  class="record" for="_eyesExaminedInLastYear_id">Eyes Examined In Last Year:</label>
 		                <div class="box" id="_eyesExaminedInLastYear_id">
 		                    <c:out value="${clinicalRecord.eyesExaminedInLastYear}"/>
 		                </div>
@@ -315,21 +348,21 @@
 		            <br/>
 		            <c:if test="${clinicalRecord.eyesExaminedInLastYear == 'YES'}">
 			            <div id="roo_clinicalRecord_cateract">
-			                <label for="_cateract_id">Cataract:</label>
+			                <label  class="record" for="_cateract_id">Cataract:</label>
 			                <div class="box" id="_cateract_id">
 			                    <c:out value="${clinicalRecord.cateract}"/>
 			                </div>
 			            </div>
 			            <br/>
 			            <div id="roo_clinicalRecord_visualAcuityRight">
-			                <label for="_visualAcuityRight_id">Visual Acuity Right:</label>
+			                <label  class="record" for="_visualAcuityRight_id">Visual Acuity Right:</label>
 			                <div class="box" id="_visualAcuityRight_id">
 			                    <c:out value="${clinicalRecord.visualAcuityRight}"/>
 			                </div>
 			            </div>
 			            <br/>
 			            <div id="roo_clinicalRecord_visualAcuityLeft">
-			                <label for="_visualAcuityLeft_id">Visual Acuity Left:</label>
+			                <label  class="record" for="_visualAcuityLeft_id">Visual Acuity Left:</label>
 			                <div class="box" id="_visualAcuityLeft_id">
 			                    <c:out value="${clinicalRecord.visualAcuityLeft}"/>
 			                </div>
@@ -337,7 +370,7 @@
 			            <br/>
 		            </c:if>
 		            <div id="roo_clinicalRecord_feetExaminedInLastYear">
-		                <label for="_feetExaminedInLastYear_id">Feet Examined In Last Year:</label>
+		                <label  class="record" for="_feetExaminedInLastYear_id">Feet Examined In Last Year:</label>
 		                <div class="box" id="_feetExaminedInLastYear_id">
 		                    <c:out value="${clinicalRecord.feetExaminedInLastYear}"/>
 		                </div>
@@ -345,7 +378,7 @@
 		            <br/>
 		            <c:if test="${clinicalRecord.feetExaminedInLastYear == 'YES'}">
 			            <div id="roo_clinicalRecord_monofilamentTested">
-			                <label for="_monofilamentTested_id">Monofilament Tested:</label>
+			                <label  class="record" for="_monofilamentTested_id">Monofilament Tested:</label>
 			                <div class="box" id="_monofilamentTested_id">
 			                    <c:out value="${clinicalRecord.monofilamentTested}"/>
 			                </div>
@@ -353,7 +386,7 @@
 			            <br/>
 			            <c:if test="${clinicalRecord.monofilamentTested == 'YES'}">
 				            <div id="roo_clinicalRecord_monofilamentAbnormal">
-				                <label for="_monofilamentAbnormal_id">Monofilament Abnormal:</label>
+				                <label  class="record" for="_monofilamentAbnormal_id">Monofilament Abnormal:</label>
 				                <div class="box" id="_monofilamentAbnormal_id">
 				                    <c:out value="${clinicalRecord.monofilamentAbnormal}"/>
 				                </div>
@@ -361,7 +394,7 @@
 				            <br/>
 			            </c:if>
 			            <div id="roo_clinicalRecord_tuningForkTested">
-			                <label for="_tuningForkTested_id">Tuning Fork Tested:</label>
+			                <label  class="record" for="_tuningForkTested_id">Tuning Fork Tested:</label>
 			                <div class="box" id="_tuningForkTested_id">
 			                    <c:out value="${clinicalRecord.tuningForkTested}"/>
 			                </div>
@@ -369,7 +402,7 @@
 			            <br/>
 			            <c:if test="${clinicalRecord.tuningForkTested == 'YES'}">
 				            <div id="roo_clinicalRecord_tuningForkAbnormal">
-				                <label for="_tuningForkAbnormal_id">Tuning Fork Abnormal:</label>
+				                <label  class="record" for="_tuningForkAbnormal_id">Tuning Fork Abnormal:</label>
 				                <div class="box" id="_tuningForkAbnormal_id">
 				                    <c:out value="${clinicalRecord.tuningForkAbnormal}"/>
 				                </div>
@@ -387,7 +420,7 @@
 				</script>			        
 		        <div id="labTesting">		            
 		            <div id="roo_clinicalRecord_lastHbA1cInLast12Months">
-		                <label for="_lastHbA1cInLast12Months_id"><spring:message code="record.lastHbA1c"/></label>
+		                <label  class="record" for="_lastHbA1cInLast12Months_id"><spring:message code="record.lastHbA1c"/></label>
 		                <div class="box" id="_lastHbA1cInLast12Months_id">
 		                    <c:out value="${clinicalRecord.lastHbA1cInLast12Months}"/>
 		                </div>
@@ -395,111 +428,156 @@
 		            <br/>
 		            <c:if test="${clinicalRecord.lastHbA1cInLast12Months == 'YES'}">
 			            <div id="roo_clinicalRecord_hbA1cPercentage">
-			                <label for="_hbA1cPercentage_id"><spring:message code="record.hbA1cPercentage"/></label>
+			                <label  class="record" for="_hbA1cPercentage_id"><spring:message code="record.hbA1cPercentage"/></label>
 			                <div class="box" id="_hbA1cPercentage_id">
 			                    <c:out value="${clinicalRecord.hbA1cPercentage}"/>
 			                </div>
+			                <c:if test="${clinicalRecord.hbA1cPercentage == null}">
+		                    	<br/>
+		                    </c:if>
 			            </div>
 			            <br/>
 			            <div id="roo_clinicalRecord_hbA1cMethod">
-			                <label for="_hbA1cMethod_id">HbA1c Method:</label>
+			                <label  class="record" for="_hbA1cMethod_id">HbA1c Method:</label>
 			                <div class="box" id="_hbA1cMethod_id">
 			                    <c:out value="${clinicalRecord.hbA1cMethod}"/>
 			                </div>
+			                <c:if test="${clinicalRecord.hbA1cMethod == null}">
+		                    	<br/>
+		                    </c:if>
 			            </div>
 			            <br/>
 			            <c:if test="${clinicalRecord.hbA1cMethod == 'OTHER'}">
 				            <div id="roo_clinicalRecord_hbA1cMethodOther">
-				                <label for="_hbA1cMethodOther_id">HbA1c Method Other:</label>
+				                <label  class="record" for="_hbA1cMethodOther_id">HbA1c Method Other:</label>
 				                <div class="box" id="_hbA1cMethodOther_id">
 				                    <c:out value="${clinicalRecord.hbA1cMethodOther}"/>
 				                </div>
 				            </div>
+				            <c:if test="${clinicalRecord.hbA1cMethodOther == null}">
+		                    	<br/>
+		                    </c:if>
 				            <br/>
 			            </c:if>
 		            </c:if>
 		            <div id="roo_clinicalRecord_microalbuminuriaValue">
-		                <label for="_microalbuminuriaValue_id">Microalbuminuria Value:</label>
+		                <label  class="record" for="_microalbuminuriaValue_id">Microalbuminuria Value:</label>
 		                <div class="box" id="_microalbuminuriaValue_id">
 		                    <c:out value="${clinicalRecord.microalbuminuriaValue}"/>
 		                </div>
+		                <c:if test="${clinicalRecord.microalbuminuriaValue == null}">
+	                    	<br/>
+	                    </c:if>
 		            </div>
 		            <br/>
 		            <div id="roo_clinicalRecord_microalbuminuriaUnitOfMeasure">
-		                <label for="_microalbuminuriaUnitOfMeasure_id">Microalbuminuria Unit Of Measure:</label>
+		                <label  class="record" for="_microalbuminuriaUnitOfMeasure_id">Microalbuminuria Unit Of Measure:</label>
 		                <div class="box" id="_microalbuminuriaUnitOfMeasure_id">
 		                    <c:out value="${clinicalRecord.microalbuminuriaUnitOfMeasure}"/>
 		                </div>
+		                <c:if test="${clinicalRecord.microalbuminuriaUnitOfMeasure == null}">
+	                    	<br/>
+	                    </c:if>
 		            </div>
 		            <br/>
 		            <div id="roo_clinicalRecord_proteinuria_dipstick_other">
-		                <label for="_proteinuria_dipstick_other_id">Proteinuria - dipstick or other:</label>
+		                <label  class="record" for="_proteinuria_dipstick_other_id">Proteinuria - dipstick or other:</label>
 		                <div class="box" id="_proteinuria_dipstick_other_id">
 		                    <c:out value="${clinicalRecord.proteinuria_dipstick_other}"/>
 		                </div>
+		                <c:if test="${clinicalRecord.proteinuria_dipstick_other == null}">
+	                    	<br/>
+	                    </c:if>
 		            </div>
 		            <br/>
 		            <div id="roo_clinicalRecord_creatinineValue">
-		                <label for="_creatinineValue_id">Creatinine Value:</label>
+		                <label  class="record" for="_creatinineValue_id">Creatinine Value:</label>
 		                <div class="box" id="_creatinineValue_id">
 		                    <c:out value="${clinicalRecord.creatinineValue}"/>
 		                </div>
+		                <c:if test="${clinicalRecord.creatinineValue == null}">
+	                    	<br/>
+	                    </c:if>
 		            </div>
 		            <br/>
 		            <div id="roo_clinicalRecord_creatinineUnits">
-		                <label for="_creatinineUnits_id">Creatinine Units:</label>
+		                <label  class="record" for="_creatinineUnits_id">Creatinine Units:</label>
 		                <div class="box" id="_creatinineUnits_id">
 		                    <c:out value="${clinicalRecord.creatinineUnits}"/>
 		                </div>
+		                <c:if test="${clinicalRecord.creatinineUnits == null}">
+	                    	<br/>
+	                    </c:if>
 		            </div>
 		            <br/>
 		            <div id="roo_clinicalRecord_totalCholesterolValue">
-		                <label for="_totalCholesterolValue_id">Total Cholesterol Value:</label>
+		                <label  class="record" for="_totalCholesterolValue_id">Total Cholesterol Value:</label>
 		                <div class="box" id="_totalCholesterolValue_id">
 		                    <c:out value="${clinicalRecord.totalCholesterolValue}"/>
 		                </div>
+		                <c:if test="${clinicalRecord.totalCholesterolValue == null}">
+	                    	<br/>
+	                    </c:if>
 		            </div>
 		            <br/>
 		            <div id="roo_clinicalRecord_cholesterolUnits">
-		                <label for="_cholesterolUnits_id">Cholesterol Units:</label>
+		                <label  class="record" for="_cholesterolUnits_id">Cholesterol Units:</label>
 		                <div class="box" id="_cholesterolUnits_id">
 		                    <c:out value="${clinicalRecord.cholesterolUnits}"/>
 		                </div>
-		            </div>
-		            <br/>
-		            <div id="roo_clinicalRecord_hdlCholesterolValue">
-		                <label for="_hdlCholesterolValue_id">HDL Cholesterol Value:</label>
-		                <div class="box" id="_hdlCholesterolValue_id">
-		                    <c:out value="${clinicalRecord.hdlCholesterolValue}"/>
-		                </div>
-		            </div>
-		            <br/>
-		            <div id="roo_clinicalRecord_hdlUnits">
-		                <label for="_hdlUnits_id">HDL Units:</label>
-		                <div class="box" id="_hdlUnits_id">
-		                    <c:out value="${clinicalRecord.hdlUnits}"/>
-		                </div>
-		            </div>
-		            <br/>
-		            <div id="roo_clinicalRecord_triglyceridesValue">
-		                <label for="_triglyceridesValue_id">Triglycerides Value:</label>
-		                <div class="box" id="_triglyceridesValue_id">
-		                    <c:out value="${clinicalRecord.triglyceridesValue}"/>
-		                </div>
-		            </div>
-		            <br/>
-		            <div id="roo_clinicalRecord_triglyceridesUnits">
-		                <label for="_triglyceridesUnits_id">Triglycerides Units:</label>
-		                <div class="box" id="_triglyceridesUnits_id">
-		                    <c:out value="${clinicalRecord.triglyceridesUnits}"/>
-		                </div>
+		                <c:if test="${clinicalRecord.cholesterolUnits == null}">
+	                    	<br/>
+	                    </c:if>
 		            </div>
 		            <br/>
 		            <div id="roo_clinicalRecord_fasted">
-		                <label for="_fasted_id">Fasted:</label>
+		                <label  class="record" for="_fasted_id">Fasted:</label>
 		                <div class="box" id="_fasted_id">
 		                    <c:out value="${clinicalRecord.fasted}"/>
 		                </div>
+		                <c:if test="${clinicalRecord.fasted == null}">
+	                    	<br/>
+	                    </c:if>
+		            </div>
+		            <br/>		            
+		            <div id="roo_clinicalRecord_hdlCholesterolValue">
+		                <label  class="record" for="_hdlCholesterolValue_id">HDL Cholesterol Value:</label>
+		                <div class="box" id="_hdlCholesterolValue_id">
+		                    <c:out value="${clinicalRecord.hdlCholesterolValue}"/>
+		                </div>
+		                <c:if test="${clinicalRecord.hdlCholesterolValue == null}">
+	                    	<br/>
+	                    </c:if>
+		            </div>
+		            <br/>
+		            <div id="roo_clinicalRecord_hdlUnits">
+		                <label  class="record" for="_hdlUnits_id">HDL Units:</label>
+		                <div class="box" id="_hdlUnits_id">
+		                    <c:out value="${clinicalRecord.hdlUnits}"/>
+		                </div>
+		                <c:if test="${clinicalRecord.hdlUnits == null}">
+	                    	<br/>
+	                    </c:if>
+		            </div>
+		            <br/>
+		            <div id="roo_clinicalRecord_triglyceridesValue">
+		                <label  class="record" for="_triglyceridesValue_id">Triglycerides Value:</label>
+		                <div class="box" id="_triglyceridesValue_id">
+		                    <c:out value="${clinicalRecord.triglyceridesValue}"/>
+		                </div>
+		                <c:if test="${clinicalRecord.triglyceridesValue == null}">
+	                    	<br/>
+	                    </c:if>
+		            </div>
+		            <br/>
+		            <div id="roo_clinicalRecord_triglyceridesUnits">
+		                <label  class="record" for="_triglyceridesUnits_id">Triglycerides Units:</label>
+		                <div class="box" id="_triglyceridesUnits_id">
+		                    <c:out value="${clinicalRecord.triglyceridesUnits}"/>
+		                </div>
+		                <c:if test="${clinicalRecord.triglyceridesUnits == null}">
+	                    	<br/>
+	                    </c:if>
 		            </div>
 		            <br/>
 		        </div>
@@ -512,7 +590,7 @@
 				</script>			        
 		        <div id="schooling">            
 		            <div id="roo_clinicalRecord_attendingSchool">
-		                <label for="_attendingSchool_id">Attending School:</label>
+		                <label  class="record" for="_attendingSchool_id">Attending School:</label>
 		                <div class="box" id="_attendingSchool_id">
 		                    <c:out value="${clinicalRecord.attendingSchool}"/>
 		                </div>
@@ -520,7 +598,7 @@
 		            <br/>
 		            <c:if test="${clinicalRecord.attendingSchool == 'NO'}">
 			            <div id="roo_clinicalRecord_notAttendingSchoolWhy">
-			                <label for="_notAttendingSchoolWhy_id">If not attending School - Why:</label>
+			                <label  class="record" for="_notAttendingSchoolWhy_id">If not attending School - Why:</label>
 			                <div class="box" id="_notAttendingSchoolWhy_id">
 			                    <c:out value="${clinicalRecord.notAttendingSchoolWhy}"/>
 			                </div>
@@ -529,14 +607,14 @@
 		            </c:if>
 		            <c:if test="${clinicalRecord.attendingSchool == 'YES'}">
 			            <div id="roo_clinicalRecord_diabetesLimitingAttendance">
-			                <label for="_diabetesLimitingAttendance_id">Diabetes Limiting Attendance:</label>
+			                <label  class="record" for="_diabetesLimitingAttendance_id">Diabetes Limiting Attendance:</label>
 			                <div class="box" id="_diabetesLimitingAttendance_id">
 			                    <c:out value="${clinicalRecord.diabetesLimitingAttendance}"/>
 			                </div>
 			            </div>
 			            <br/>
 			            <div id="roo_clinicalRecord_appropriateGradeForAge">
-			                <label for="_appropriateGradeForAge_id">Appropriate Grade For Age:</label>
+			                <label  class="record" for="_appropriateGradeForAge_id">Appropriate Grade For Age:</label>
 			                <div class="box" id="_appropriateGradeForAge_id">
 			                    <c:out value="${clinicalRecord.appropriateGradeForAge}"/>
 			                </div>
@@ -544,14 +622,14 @@
 			            <br/>
 		            </c:if>
 		            <div id="roo_clinicalRecord_diabetesCopingAbilities">
-		                <label for="_diabetesCopingAbilities_id">Diabetes Coping Abilities:</label>
+		                <label  class="record" for="_diabetesCopingAbilities_id">Diabetes Coping Abilities:</label>
 		                <div class="box" id="_diabetesCopingAbilities_id">
 		                    <c:out value="${clinicalRecord.diabetesCopingAbilities}"/>
 		                </div>
 		            </div>
 		            <br/>
 		            <div id="roo_clinicalRecord_literate">
-		                <label for="_literate_id">Literate:</label>
+		                <label  class="record" for="_literate_id">Literate:</label>
 		                <div class="box" id="_literate_id">
 		                    <c:out value="${clinicalRecord.literate}"/>
 		                </div>
@@ -567,16 +645,18 @@
 				</script>			        
 		        <div id="emergencies">		            
 		            <div id="roo_clinicalRecord_numberOfSevereHypoglycaemiaEpisodes">
-		                <label for="_numberOfSevereHypoglycaemiaEpisodes_id"><spring:message code="record.glyceamicEpisodes"/></label>
+		                <label  class="record" for="_numberOfSevereHypoglycaemiaEpisodes_id"><spring:message code="record.glyceamicEpisodes"/></label>
 		                <div class="box" id="_numberOfSevereHypoglycaemiaEpisodes_id">
 		                    <c:out value="${clinicalRecord.numberOfSevereHypoglycaemiaEpisodes}"/>
-		                </div>
+		                </div><c:if test="${clinicalRecord.numberOfSevereHypoglycaemiaEpisodes == null}">
+	                    	<br/>
+	                    </c:if>		                
 		            </div>
 		            <br/>
 		            <br/>
 		            <!-- 
 		            <div id="roo_clinicalRecord_reasonHypoglycaemiaEpisodesNotEntered">
-		                <label for="_reasonHypoglycaemiaEpisodesNotEntered_id">Reason Hypoglycaemia Episodes Not Entered:</label>
+		                <label  class="record" for="_reasonHypoglycaemiaEpisodesNotEntered_id">Reason Hypoglycaemia Episodes Not Entered:</label>
 		                <div class="box" id="_reasonHypoglycaemiaEpisodesNotEntered_id">
 		                    <c:out value="${clinicalRecord.reasonHypoglycaemiaEpisodesNotEntered}"/>
 		                </div>
@@ -584,16 +664,18 @@
 		            <br/>
 		             -->
 		            <div id="roo_clinicalRecord_numberKetoacidosisEpisodes">
-		                <label for="_numberKetoacidosisEpisodes_id"><spring:message code="record.ketoacidosisEpisodes"/></label>
+		                <label  class="record" for="_numberKetoacidosisEpisodes_id"><spring:message code="record.ketoacidosisEpisodes"/></label>
 		                <div class="box" id="_numberKetoacidosisEpisodes_id">
 		                    <c:out value="${clinicalRecord.numberKetoacidosisEpisodes}"/>
 		                </div>
+		                <c:if test="${clinicalRecord.numberKetoacidosisEpisodes == null}">
+	                    	<br/>
+	                    </c:if>
 		            </div>
-		            <br/>
 		            <br/>
 		            <!-- 
 		            <div id="roo_clinicalRecord_reasonKetoacidosisEpisodesNotEntered">
-		                <label for="_reasonKetoacidosisEpisodesNotEntered_id">Reason Ketoacidosis Episodes Not Entered:</label>
+		                <label  class="record" for="_reasonKetoacidosisEpisodesNotEntered_id">Reason Ketoacidosis Episodes Not Entered:</label>
 		                <div class="box" id="_reasonKetoacidosisEpisodesNotEntered_id">
 		                    <c:out value="${clinicalRecord.reasonKetoacidosisEpisodesNotEntered}"/>
 		                </div>
@@ -601,17 +683,19 @@
 		            <br/>
 		             -->
 		            <div id="roo_clinicalRecord_numberOfHospitalAdmissionsRelatedToDiabetes">
-		                <label for="_numberOfHospitalAdmissionsRelatedToDiabetes_id"><spring:message code="record.hospitalAdmissions"/></label>
+		                <label  class="record" for="_numberOfHospitalAdmissionsRelatedToDiabetes_id"><spring:message code="record.hospitalAdmissions"/></label>
 		                <div class="box" id="_numberOfHospitalAdmissionsRelatedToDiabetes_id">
 		                    <c:out value="${clinicalRecord.numberOfHospitalAdmissionsRelatedToDiabetes}"/>
 		                </div>
+		                <c:if test="${clinicalRecord.numberOfHospitalAdmissionsRelatedToDiabetes == null}">
+	                    	<br/>
+	                    </c:if>
 		            </div>
 		            <br/>
 		            <br/>   
-		            <br/>
 		            <!-- 
 		            <div id="roo_clinicalRecord_reasonHospitalAdmissionsNotEntered">
-		                <label for="_reasonHospitalAdmissionsNotEntered_id">Reason Hospital Admissions Not Entered:</label>
+		                <label  class="record" for="_reasonHospitalAdmissionsNotEntered_id">Reason Hospital Admissions Not Entered:</label>
 		                <div class="box" id="_reasonHospitalAdmissionsNotEntered_id">
 		                    <c:out value="${clinicalRecord.reasonHospitalAdmissionsNotEntered}"/>
 		                </div>
@@ -619,7 +703,7 @@
 		            <br/>
 		             -->
 		            <div id="roo_clinicalRecord_additionalComment">
-		                <label for="_additionalComment_id">Additional Comment  about any aspect - optional:</label>
+		                <label  class="record" for="_additionalComment_id">Additional Comment  about any aspect - optional:</label>
 		                <div class="box" id="_additionalComment_id">
 		                    <c:out value="${clinicalRecord.additionalComment}"/>
 		                </div>

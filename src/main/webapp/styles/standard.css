@@ -95,12 +95,21 @@ body {
 
 #footer a:link {color: #7db223;}
 
+label.record {
+	width:300px;
+	float:left;
+	margin-left: 5px;
+	margin-top: 0px;
+}
+
 label {
 	width:200px;
 	float:left;
 	margin-left: 5px;
 	margin-top: 0px;
 }
+
+
 
 input {
 	height:20px;
