@@ -1,6 +1,5 @@
 <div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:sec="http://www.springframework.org/security/tags" xmlns:form="http://www.springframework.org/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
-    <jsp:output omit-xml-declaration="yes"/>
-	<script type="text/javascript" src="/lifeforachild/static/js/unsaved.js"/>    
+    <jsp:output omit-xml-declaration="yes"/>        
     <script type="text/javascript">
     	dojo.require('dijit.TitlePane');
     	dojo.require('dijit.form.FilteringSelect');
@@ -20,7 +19,7 @@
     					dojo.style(dijit.byId("roo_clinicalRecord_acearb").domNode, "display", "none");
     					dojo.style(dijit.byId("roo_clinicalRecord_bpMedicationsOther").domNode, "display", "none");
     			  	}
-    				if (dijit.byId("_menarche_id").value != 'YES')
+    				if (dijit.byId("_menarche_id") != null &amp;&amp; dijit.byId("_menarche_id").value != 'YES')
     			  	{
     				  	// hide fields if not menarche
     					dojo.style(dijit.byId("roo_clinicalRecord_ifMenarcheAge").domNode, "display", "none");
@@ -70,6 +69,7 @@
     			}
     		);    	
     </script>
+    <script type="text/javascript" src="/lifeforachild/static/js/unsaved.js"/>    
     <div id="_title_div">
         <spring:message code="label.clinicalrecord" var="entity_label"/>
         <spring:message arguments="${entity_label}" code="entity.update" var="title_msg"/>
@@ -821,6 +821,37 @@
                         elementId : 'roo_clinicalRecord_hbA1cMethodOther', 
                         widgetType: 'dijit.layout.ContentPane'})); 
             </script> 
+            <div id="roo_clinicalRecord_microalbuminuriaInLast12Months">
+                <label for="_microalbuminuriaInLast12Months_id"><spring:message code="record.lastMicroalbuminuria"/></label>
+                <form:select cssStyle="width:250px" id="_microalbuminuriaInLast12Months_id" path="microalbuminuriaInLast12Months">
+					<form:option value=""></form:option>
+                	<form:options items="${yesnolatertype_enum}" itemLabel="label"/>
+                </form:select>                
+                <br/>
+                <form:errors cssClass="errors" id="_lmicroalbuminuriaInLast12Months_error_id" path="microalbuminuriaInLast12Months"/>
+                <spring:bind path="clinicalRecord.microalbuminuriaInLast12Months"><c:if test="${status.error}"><script type="text/javascript">labTestingHasError = true;</script></c:if></spring:bind>
+                <script type="text/javascript">Spring.addDecoration(
+                        new Spring.ElementDecoration({
+                            elementId : '_microalbuminuriaInLast12Months_id', 
+                            widgetType: 'dijit.form.FilteringSelect', 
+                            widgetAttrs : {hasDownArrow : true,
+                            onChange : function(newValue) {
+		                		if (newValue == 'YES')
+		                		{
+			                		dojo.style(dijit.byId("roo_clinicalRecord_microalbuminuriaValue").domNode, "display", "block");
+			                		dojo.style(dijit.byId("roo_clinicalRecord_microalbuminuriaUnitOfMeasure").domNode, "display", "block");
+		                		}
+		                		else
+		                		{
+		                			dojo.style(dijit.byId("roo_clinicalRecord_microalbuminuriaValue").domNode, "display", "none");
+		                			dojo.style(dijit.byId("roo_clinicalRecord_microalbuminuriaUnitOfMeasure").domNode, "display", "none");
+		                		}
+                			}
+                		}
+                	})); 
+                </script>
+            </div>
+            <br/>            
             <div id="roo_clinicalRecord_microalbuminuriaValue">
                 <label for="_microalbuminuriaValue_id">Microalbuminuria Value:</label>
                 <form:input cssStyle="width:250px" id="_microalbuminuriaValue_id" maxlength="30" path="microalbuminuriaValue" size="0"/>
@@ -835,9 +866,12 @@
             <div id="roo_clinicalRecord_microalbuminuriaUnitOfMeasure">
                 <label for="_microalbuminuriaUnitOfMeasure_id">Microalbuminuria Unit Of Measure:</label>
                 <form:errors cssClass="errors" id="_microalbuminuriaUnitOfMeasure_error_id" path="microalbuminuriaUnitOfMeasure"/>
-                <form:input cssStyle="width:250px" id="_microalbuminuriaUnitOfMeasure_id" path="microalbuminuriaUnitOfMeasure"/>
+                <form:select cssStyle="width:250px" id="_microalbuminuriaUnitOfMeasure_id" path="microalbuminuriaUnitOfMeasure">
+                    <form:option value=""></form:option>
+                	<form:options items="${microalbuminuriaunitstype_enum}" itemLabel="label"/>
+                </form:select>
                 <br/>
-                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_microalbuminuriaUnitOfMeasure_id', widgetType: 'dijit.form.ValidationTextBox'})); </script>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_microalbuminuriaUnitOfMeasure_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
             </div>
             <br/>
             <div id="roo_clinicalRecord_proteinuria_dipstick_other">
@@ -851,6 +885,37 @@
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_Proteinuria_dipstick_other_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : false}})); </script>
             </div>
             <br/>
+            <div id="roo_clinicalRecord_creatinineInLast12Months">
+                <label for="_creatinineInLast12Months_id"><spring:message code="record.lastCreatinine"/></label>
+                <form:select cssStyle="width:250px" id="_creatinineInLast12Months_id" path="creatinineInLast12Months">
+					<form:option value=""></form:option>
+                	<form:options items="${yesnolatertype_enum}" itemLabel="label"/>
+                </form:select>                
+                <br/>
+                <form:errors cssClass="errors" id="_lcreatinineInLast12Months_error_id" path="creatinineInLast12Months"/>
+                <spring:bind path="clinicalRecord.creatinineInLast12Months"><c:if test="${status.error}"><script type="text/javascript">labTestingHasError = true;</script></c:if></spring:bind>
+                <script type="text/javascript">Spring.addDecoration(
+                        new Spring.ElementDecoration({
+                            elementId : '_creatinineInLast12Months_id', 
+                            widgetType: 'dijit.form.FilteringSelect', 
+                            widgetAttrs : {hasDownArrow : true,
+                            onChange : function(newValue) {
+		                		if (newValue == 'YES')
+		                		{
+			                		dojo.style(dijit.byId("roo_clinicalRecord_creatinineValue").domNode, "display", "block");
+			                		dojo.style(dijit.byId("roo_clinicalRecord_creatinineUnits").domNode, "display", "block");
+		                		}
+		                		else
+		                		{
+		                			dojo.style(dijit.byId("roo_clinicalRecord_creatinineValue").domNode, "display", "none");
+		                			dojo.style(dijit.byId("roo_clinicalRecord_creatinineUnits").domNode, "display", "none");
+		                		}
+                			}
+                		}
+                	})); 
+                </script>
+            </div>
+            <br/>                
             <div id="roo_clinicalRecord_creatinineValue">
                 <label for="_creatinineValue_id">Creatinine Value:</label>
                 <form:input cssStyle="width:250px" id="_creatinineValue_id" maxlength="30" path="creatinineValue" size="0"/>
@@ -873,6 +938,37 @@
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_creatinineUnits_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
             </div>
             <br/>
+            <div id="roo_clinicalRecord_totalCholesterolInLast12Months">
+                <label for="_totalCholesterolInLast12Months_id"><spring:message code="record.lastCholesterol"/></label>
+                <form:select cssStyle="width:250px" id="_totalCholesterolInLast12Months_id" path="totalCholesterolInLast12Months">
+					<form:option value=""></form:option>
+                	<form:options items="${yesnolatertype_enum}" itemLabel="label"/>
+                </form:select>                
+                <br/>
+                <form:errors cssClass="errors" id="_ltotalCholesterolInLast12Months_error_id" path="totalCholesterolInLast12Months"/>
+                <spring:bind path="clinicalRecord.totalCholesterolInLast12Months"><c:if test="${status.error}"><script type="text/javascript">labTestingHasError = true;</script></c:if></spring:bind>
+                <script type="text/javascript">Spring.addDecoration(
+                        new Spring.ElementDecoration({
+                            elementId : '_totalCholesterolInLast12Months_id', 
+                            widgetType: 'dijit.form.FilteringSelect', 
+                            widgetAttrs : {hasDownArrow : true,
+                            onChange : function(newValue) {
+		                		if (newValue == 'YES')
+		                		{
+			                		dojo.style(dijit.byId("roo_clinicalRecord_totalCholesterolValue").domNode, "display", "block");
+			                		dojo.style(dijit.byId("roo_clinicalRecord_cholesterolUnits").domNode, "display", "block");
+		                		}
+		                		else
+		                		{
+		                			dojo.style(dijit.byId("roo_clinicalRecord_totalCholesterolValue").domNode, "display", "none");
+		                			dojo.style(dijit.byId("roo_clinicalRecord_cholesterolUnits").domNode, "display", "none");
+		                		}
+                			}
+                		}
+                	})); 
+                </script>
+            </div>
+            <br/>             
             <div id="roo_clinicalRecord_totalCholesterolValue">
                 <label for="_totalCholesterolValue_id">Total Cholesterol Value:</label>
                 <form:input cssStyle="width:250px" id="_totalCholesterolValue_id" maxlength="30" path="totalCholesterolValue" size="0"/>
@@ -895,6 +991,37 @@
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_cholesterolUnits_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
             </div>
             <br/>
+            <div id="roo_clinicalRecord_hdlCholesterolInLast12Months">
+                <label for="_hdlCholesterolInLast12Months_id"><spring:message code="record.lastHdlCholesterol"/></label>
+                <form:select cssStyle="width:250px" id="_hdlCholesterolInLast12Months_id" path="hdlCholesterolInLast12Months">
+					<form:option value=""></form:option>
+                	<form:options items="${yesnolatertype_enum}" itemLabel="label"/>
+                </form:select>                
+                <br/>
+                <form:errors cssClass="errors" id="_lhdlCholesterolInLast12Months_error_id" path="hdlCholesterolInLast12Months"/>
+                <spring:bind path="clinicalRecord.hdlCholesterolInLast12Months"><c:if test="${status.error}"><script type="text/javascript">labTestingHasError = true;</script></c:if></spring:bind>
+                <script type="text/javascript">Spring.addDecoration(
+                        new Spring.ElementDecoration({
+                            elementId : '_hdlCholesterolInLast12Months_id', 
+                            widgetType: 'dijit.form.FilteringSelect', 
+                            widgetAttrs : {hasDownArrow : true,
+                            onChange : function(newValue) {
+		                		if (newValue == 'YES')
+		                		{
+			                		dojo.style(dijit.byId("roo_clinicalRecord_hdlCholesterolValue").domNode, "display", "block");
+			                		dojo.style(dijit.byId("roo_clinicalRecord_hdlUnits").domNode, "display", "block");
+		                		}
+		                		else
+		                		{
+		                			dojo.style(dijit.byId("roo_clinicalRecord_hdlCholesterolValue").domNode, "display", "none");
+		                			dojo.style(dijit.byId("roo_clinicalRecord_hdlUnits").domNode, "display", "none");
+		                		}
+                			}
+                		}
+                	})); 
+                </script>
+            </div>
+            <br/>                  
             <div id="roo_clinicalRecord_hdlCholesterolValue">
                 <label for="_hdlCholesterolValue_id">Hdl Cholesterol Value:</label>
                 <form:input cssStyle="width:250px" id="_hdlCholesterolValue_id" maxlength="30" path="hdlCholesterolValue" size="0"/>
@@ -917,6 +1044,37 @@
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_hdlUnits_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
             </div>
             <br/>
+            <div id="roo_clinicalRecord_triglyceridesInLast12Months">
+                <label for="_triglyceridesInLast12Months_id"><spring:message code="record.lastTriglycerides"/></label>
+                <form:select cssStyle="width:250px" id="_triglyceridesInLast12Months_id" path="triglyceridesInLast12Months">
+					<form:option value=""></form:option>
+                	<form:options items="${yesnolatertype_enum}" itemLabel="label"/>
+                </form:select>                
+                <br/>
+                <form:errors cssClass="errors" id="_ltriglyceridesInLast12Months_error_id" path="triglyceridesInLast12Months"/>
+                <spring:bind path="clinicalRecord.triglyceridesInLast12Months"><c:if test="${status.error}"><script type="text/javascript">labTestingHasError = true;</script></c:if></spring:bind>
+                <script type="text/javascript">Spring.addDecoration(
+                        new Spring.ElementDecoration({
+                            elementId : '_triglyceridesInLast12Months_id', 
+                            widgetType: 'dijit.form.FilteringSelect', 
+                            widgetAttrs : {hasDownArrow : true,
+                            onChange : function(newValue) {
+		                		if (newValue == 'YES')
+		                		{
+			                		dojo.style(dijit.byId("roo_clinicalRecord_triglyceridesValue").domNode, "display", "block");
+			                		dojo.style(dijit.byId("roo_clinicalRecord_triglyceridesUnits").domNode, "display", "block");
+		                		}
+		                		else
+		                		{
+		                			dojo.style(dijit.byId("roo_clinicalRecord_triglyceridesValue").domNode, "display", "none");
+		                			dojo.style(dijit.byId("roo_clinicalRecord_triglyceridesUnits").domNode, "display", "none");
+		                		}
+                			}
+                		}
+                	})); 
+                </script>
+            </div>
+            <br/>                 
             <div id="roo_clinicalRecord_triglyceridesValue">
                 <label for="_triglyceridesValue_id">Triglycerides Value:</label>
                 <form:input cssStyle="width:250px" id="_triglyceridesValue_id" maxlength="30" path="triglyceridesValue" size="0"/>
