@@ -137,6 +137,9 @@
 			                <div class="box" id="_oralAgentsDescription_id">
 			                    <c:out value="${clinicalRecord.oralAgentsDescription}"/>
 			                </div>
+	                        <c:if test="${clinicalRecord.oralAgentsDescription == ''}">
+		                    	<br/>
+		                    </c:if>			                
 			            </div>
 			            <br/>
 		            </c:if>
@@ -166,7 +169,9 @@
 			                <label  class="record" for="_bpMedicationsOther_id">BP Medications Other:</label>
 			                <div class="box" id="_bpMedicationsOther_id">
 			                    <c:out value="${clinicalRecord.bpMedicationsOther}"/>
-			                </div>
+			                </div><c:if test="${clinicalRecord.bpMedicationsOther == ''}">
+		                    	<br/>
+		                    </c:if>			                
 			            </div>
 			            <br/>
 		            </c:if>		            
@@ -175,7 +180,7 @@
 		                <div class="box" id="_otherTreatments_id">
 		                    <c:out value="${clinicalRecord.otherTreatments}"/>
 		                </div>
-	                    <c:if test="${clinicalRecord.otherTreatments == null}">
+	                    <c:if test="${clinicalRecord.otherTreatments == ''}">
 	                    	<br/>
 	                    </c:if>			                
 		            </div>
@@ -352,6 +357,9 @@
 			                <div class="box" id="_cateract_id">
 			                    <c:out value="${clinicalRecord.cateract}"/>
 			                </div>
+			                <c:if test="${clinicalRecord.cateract == null}">
+		                    	<br/>
+		                    </c:if>
 			            </div>
 			            <br/>
 			            <div id="roo_clinicalRecord_visualAcuityRight">
@@ -359,6 +367,9 @@
 			                <div class="box" id="_visualAcuityRight_id">
 			                    <c:out value="${clinicalRecord.visualAcuityRight}"/>
 			                </div>
+			                <c:if test="${clinicalRecord.visualAcuityRight == ''}">
+		                    	<br/>
+		                    </c:if>
 			            </div>
 			            <br/>
 			            <div id="roo_clinicalRecord_visualAcuityLeft">
@@ -366,6 +377,9 @@
 			                <div class="box" id="_visualAcuityLeft_id">
 			                    <c:out value="${clinicalRecord.visualAcuityLeft}"/>
 			                </div>
+			                <c:if test="${clinicalRecord.visualAcuityLeft == ''}">
+		                    	<br/>
+		                    </c:if>
 			            </div>
 			            <br/>
 		            </c:if>
@@ -373,7 +387,7 @@
 		                <label  class="record" for="_feetExaminedInLastYear_id">Feet Examined In Last Year:</label>
 		                <div class="box" id="_feetExaminedInLastYear_id">
 		                    <c:out value="${clinicalRecord.feetExaminedInLastYear}"/>
-		                </div>
+		                </div>		                
 		            </div>
 		            <br/>
 		            <c:if test="${clinicalRecord.feetExaminedInLastYear == 'YES'}">
@@ -382,6 +396,9 @@
 			                <div class="box" id="_monofilamentTested_id">
 			                    <c:out value="${clinicalRecord.monofilamentTested}"/>
 			                </div>
+			                <c:if test="${clinicalRecord.monofilamentTested == null}">
+			                    	<br/>
+			                    </c:if>
 			            </div>
 			            <br/>
 			            <c:if test="${clinicalRecord.monofilamentTested == 'YES'}">
@@ -390,6 +407,9 @@
 				                <div class="box" id="_monofilamentAbnormal_id">
 				                    <c:out value="${clinicalRecord.monofilamentAbnormal}"/>
 				                </div>
+				                <c:if test="${clinicalRecord.monofilamentAbnormal == null}">
+			                    	<br/>
+			                    </c:if>
 				            </div>
 				            <br/>
 			            </c:if>
@@ -398,6 +418,9 @@
 			                <div class="box" id="_tuningForkTested_id">
 			                    <c:out value="${clinicalRecord.tuningForkTested}"/>
 			                </div>
+			                <c:if test="${clinicalRecord.tuningForkTested == null}">
+		                    	<br/>
+		                    </c:if>
 			            </div>
 			            <br/>
 			            <c:if test="${clinicalRecord.tuningForkTested == 'YES'}">
@@ -483,7 +506,7 @@
 			                <div class="box" id="_microalbuminuriaUnitOfMeasure_id">
 			                    <c:out value="${clinicalRecord.microalbuminuriaUnitOfMeasure}"/>
 			                </div>
-			                <c:if test="${clinicalRecord.microalbuminuriaUnitOfMeasure == null}">
+			                <c:if test="${clinicalRecord.microalbuminuriaUnitOfMeasure == ''}">
 		                    	<br/>
 		                    </c:if>
 			            </div>
@@ -494,7 +517,7 @@
 		                <div class="box" id="_proteinuria_dipstick_other_id">
 		                    <c:out value="${clinicalRecord.proteinuria_dipstick_other}"/>
 		                </div>
-		                <c:if test="${clinicalRecord.proteinuria_dipstick_other == null}">
+		                <c:if test="${clinicalRecord.proteinuria_dipstick_other == ''}">
 	                    	<br/>
 	                    </c:if>
 		            </div>
@@ -647,6 +670,9 @@
 			                <div class="box" id="_notAttendingSchoolWhy_id">
 			                    <c:out value="${clinicalRecord.notAttendingSchoolWhy}"/>
 			                </div>
+			                <c:if test="${clinicalRecord.notAttendingSchoolWhy == null}">
+		                    	<br/>
+		                    </c:if>
 			            </div>
 			            <br/>
 		            </c:if>
@@ -656,6 +682,9 @@
 			                <div class="box" id="_diabetesLimitingAttendance_id">
 			                    <c:out value="${clinicalRecord.diabetesLimitingAttendance}"/>
 			                </div>
+			                <c:if test="${clinicalRecord.diabetesLimitingAttendance == null}">
+		                    	<br/>
+		                    </c:if>
 			            </div>
 			            <br/>
 			            <div id="roo_clinicalRecord_appropriateGradeForAge">
@@ -663,6 +692,9 @@
 			                <div class="box" id="_appropriateGradeForAge_id">
 			                    <c:out value="${clinicalRecord.appropriateGradeForAge}"/>
 			                </div>
+			                <c:if test="${clinicalRecord.appropriateGradeForAge == null}">
+		                    	<br/>
+		                    </c:if>
 			            </div>
 			            <br/>
 		            </c:if>
