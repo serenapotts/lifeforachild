@@ -10,6 +10,95 @@
         var feetHasError = false;
         var labTestingHasError = false;
         var schoolingHasError = false;
+
+    	dojo.addOnLoad(
+    			function(){
+    				if (dijit.byId("_oralAgents_id").value != 'YES')
+    			  	{
+    				  	// hide desc if no oral agent
+    					dojo.style(dijit.byId("roo_clinicalRecord_oralAgentsDescription").domNode, "display", "none");
+    			  	}
+    				if (dijit.byId("_bpMedications_id").value != 'YES')
+    			  	{
+    				  	// hide fields if no BP medications
+    					dojo.style(dijit.byId("roo_clinicalRecord_acearb").domNode, "display", "none");
+    					dojo.style(dijit.byId("roo_clinicalRecord_bpMedicationsOther").domNode, "display", "none");
+    			  	}
+    				if (dijit.byId("_menarche_id") != null &amp;&amp; dijit.byId("_menarche_id").value != 'YES')
+    			  	{
+    				  	// hide fields if not menarche
+    					dojo.style(dijit.byId("roo_clinicalRecord_ifMenarcheAge").domNode, "display", "none");
+    			  	}  
+    				if (dijit.byId("_eyesExaminedInLastYear_id").value != 'YES')
+    			  	{
+    				  	// hide fields if eyes not examined
+    					dojo.style(dijit.byId("roo_clinicalRecord_cateract").domNode, "display", "none");
+    					dojo.style(dijit.byId("roo_clinicalRecord_visualAcuityRight").domNode, "display", "none");
+    					dojo.style(dijit.byId("roo_clinicalRecord_visualAcuityLeft").domNode, "display", "none");
+    			  	}  			  	
+    				if (dijit.byId("_feetExaminedInLastYear_id").value != 'YES')
+    			  	{
+    				  	// hide fields if feet not examined
+    					dojo.style(dijit.byId("roo_clinicalRecord_monofilamentTested").domNode, "display", "none");
+    					dojo.style(dijit.byId("roo_clinicalRecord_tuningForkTested").domNode, "display", "none");
+    			  	}   
+    				if (dijit.byId("_monofilamentTested_id").value != 'YES')
+    			  	{
+    				  	// hide fields if monofilament not tested
+    					dojo.style(dijit.byId("roo_clinicalRecord_monofilamentAbnormal").domNode, "display", "none");
+    			  	}
+    				if (dijit.byId("_tuningForkTested_id").value != 'YES')
+    			  	{
+    				  	// hide fields if tuning fork not tested
+    					dojo.style(dijit.byId("roo_clinicalRecord_tuningForkAbnormal").domNode, "display", "none");
+    			  	}  
+    				if (dijit.byId("_lastHbA1cInLast12Months_id").value != 'YES')
+    				{
+    					dojo.style(dijit.byId("roo_clinicalRecord_hbA1cPercentage").domNode, "display", "none");
+    					dojo.style(dijit.byId("roo_clinicalRecord_hbA1cMethod").domNode, "display", "none");
+    				}  	
+    				if (dijit.byId("_hbA1cMethod_id").value != 'OTHER')
+    			  	{
+    				  	// hide fields if tuning fork not tested
+    					dojo.style(dijit.byId("roo_clinicalRecord_hbA1cMethodOther").domNode, "display", "none");
+    			  	}  
+    				if (dijit.byId("_attendingSchool_id").value == 'YES')
+    				{
+    					dojo.style(dijit.byId("roo_clinicalRecord_notAttendingSchoolWhy").domNode, "display", "none");
+    				} 
+    				if (dijit.byId("_attendingSchool_id").value == 'NO')
+    				{
+    					dojo.style(dijit.byId("roo_clinicalRecord_diabetesLimitingAttendance").domNode, "display", "none");
+    					dojo.style(dijit.byId("roo_clinicalRecord_appropriateGradeForAge").domNode, "display", "none");
+    				} 
+    				if (dijit.byId("_triglyceridesInLast12Months_id").value != 'YES')
+    				{
+    					dojo.style(dijit.byId("roo_clinicalRecord_triglyceridesValue").domNode, "display", "none");
+            			dojo.style(dijit.byId("roo_clinicalRecord_triglyceridesUnits").domNode, "display", "none");
+    				} 
+    				if (dijit.byId("_hdlCholesterolInLast12Months_id").value != 'YES')
+    				{
+    					dojo.style(dijit.byId("roo_clinicalRecord_hdlCholesterolValue").domNode, "display", "none");
+            			dojo.style(dijit.byId("roo_clinicalRecord_hdlUnits").domNode, "display", "none");
+    				} 
+    				if (dijit.byId("_microalbuminuriaInLast12Months_id").value != 'YES')
+    				{
+    					dojo.style(dijit.byId("roo_clinicalRecord_microalbuminuriaValue").domNode, "display", "none");
+    					dojo.style(dijit.byId("roo_clinicalRecord_microalbuminuriaUnitOfMeasure").domNode, "display", "none");
+    				}  
+    				if (dijit.byId("_creatinineInLast12Months_id").value != 'YES')
+    				{
+    					dojo.style(dijit.byId("roo_clinicalRecord_creatinineValue").domNode, "display", "none");
+            			dojo.style(dijit.byId("roo_clinicalRecord_creatinineUnits").domNode, "display", "none");
+    				}     	
+    				if (dijit.byId("_totalCholesterolInLast12Months_id").value != 'YES')
+    				{
+    					dojo.style(dijit.byId("roo_clinicalRecord_totalCholesterolValue").domNode, "display", "none");
+            			dojo.style(dijit.byId("roo_clinicalRecord_cholesterolUnits").domNode, "display", "none");
+            			dojo.style(dijit.byId("roo_clinicalRecord_fasted").domNode, "display", "none");
+    				} 
+    			}
+    		);    	        
     </script>
 	<script type="text/javascript" src="/lifeforachild/static/js/unsaved.js"/>
     <div id="_title_div">
@@ -233,7 +322,7 @@
                 </script>
             </div>
             <br/>
-            <div id="roo_clinicalRecord_oralAgentsDescription" style="display:none">
+            <div id="roo_clinicalRecord_oralAgentsDescription">
                 <label for="_oralAgentsDescription_id">Oral Agents Description:</label>
                 <form:textarea cssStyle="width:250px" id="_oralAgentsDescription_id" path="oralAgentsDescription"/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_oralAgentsDescription_id', widgetType: 'dijit.form.SimpleTextarea', widgetAttrs: {}})); </script>
@@ -288,7 +377,7 @@
                 </script>
             </div>
             <br/>
-            <div id="roo_clinicalRecord_acearb"  style="display:none">
+            <div id="roo_clinicalRecord_acearb">
                 <label for="_acearb_id">ACE/ARB agents:</label>
                 <form:select cssStyle="width:250px" id="_acearb_id" path="acearb">
 					<form:option value=""></form:option>
@@ -304,7 +393,7 @@
                         elementId : 'roo_clinicalRecord_acearb', 
                         widgetType: 'dijit.layout.ContentPane'})); 
             </script>               
-            <div id="roo_clinicalRecord_bpMedicationsOther"  style="display:none">
+            <div id="roo_clinicalRecord_bpMedicationsOther">
                 <label for="_bpMedicationsOther_id">Bp Medications Other:</label>
                 <form:input cssStyle="width:250px" id="_bpMedicationsOther_id" maxlength="30" path="bpMedicationsOther" size="0"/>
                 <br/>
@@ -477,7 +566,7 @@
 	                </script>                
 	            </div>
 	            <br/>
-	            <div id="roo_clinicalRecord_ifMenarcheAge" style="display:none">
+	            <div id="roo_clinicalRecord_ifMenarcheAge">
 	                <label for="_ifMenarcheAge_id"><spring:message code="record.menarcheAge"/></label>
 	                <form:input cssStyle="width:250px" id="_ifMenarcheAge_id" maxlength="30" path="ifMenarcheAge" size="0"/>
 	                <br/>
@@ -547,7 +636,7 @@
                 </script>                 
             </div>
             <br/>
-            <div id="roo_clinicalRecord_cateract" style="display:none">
+            <div id="roo_clinicalRecord_cateract">
                 <label for="_cateract_id">Cataract:</label>
                 <form:select cssStyle="width:250px" id="_cateract_id" path="cateract">
 					<form:option value=""></form:option>
@@ -563,7 +652,7 @@
                         elementId : 'roo_clinicalRecord_cateract', 
                         widgetType: 'dijit.layout.ContentPane'})); 
             </script>             
-            <div id="roo_clinicalRecord_visualAcuityRight" style="display:none">
+            <div id="roo_clinicalRecord_visualAcuityRight">
                 <label for="_visualAcuityRight_id">Visual Acuity Right:</label>
                 <form:input cssStyle="width:250px" id="_visualAcuityRight_id" maxlength="20" path="visualAcuityRight" size="0"/>
                 <br/>
@@ -579,7 +668,7 @@
                         elementId : 'roo_clinicalRecord_visualAcuityRight', 
                         widgetType: 'dijit.layout.ContentPane'})); 
             </script>             
-            <div id="roo_clinicalRecord_visualAcuityLeft" style="display:none">
+            <div id="roo_clinicalRecord_visualAcuityLeft">
                 <label for="_visualAcuityLeft_id">Visual Acuity Left:</label>
                 <form:input cssStyle="width:250px" id="_visualAcuityLeft_id" maxlength="20" path="visualAcuityLeft" size="0"/>
                 <br/>
@@ -630,7 +719,7 @@
                 </script>                
             </div>
             <br/>
-            <div id="roo_clinicalRecord_monofilamentTested" style="display:none">
+            <div id="roo_clinicalRecord_monofilamentTested">
                 <label for="_monofilamentTested_id">Monofilament Tested:</label>
                 <form:select cssStyle="width:250px" id="_monofilamentTested_id" path="monofilamentTested">
 					<form:option value=""></form:option>
@@ -663,7 +752,7 @@
                         elementId : 'roo_clinicalRecord_monofilamentTested', 
                         widgetType: 'dijit.layout.ContentPane'})); 
             </script>              
-            <div id="roo_clinicalRecord_monofilamentAbnormal" style="display:none">
+            <div id="roo_clinicalRecord_monofilamentAbnormal">
                 <label for="_monofilamentAbnormal_id">Monofilament Abnormal:</label>
                 <form:select cssStyle="width:250px" id="_monofilamentAbnormal_id" path="monofilamentAbnormal">
 					<form:option value=""></form:option>
@@ -679,7 +768,7 @@
                         elementId : 'roo_clinicalRecord_monofilamentAbnormal', 
                         widgetType: 'dijit.layout.ContentPane'})); 
             </script>              
-            <div id="roo_clinicalRecord_tuningForkTested" style="display:none">
+            <div id="roo_clinicalRecord_tuningForkTested">
                 <label for="_tuningForkTested_id">Tuning Fork Tested:</label>
                 <form:select cssStyle="width:250px" id="_tuningForkTested_id" path="tuningForkTested">
 					<form:option value=""></form:option>
@@ -712,7 +801,7 @@
                         elementId : 'roo_clinicalRecord_tuningForkTested', 
                         widgetType: 'dijit.layout.ContentPane'})); 
             </script>            
-            <div id="roo_clinicalRecord_tuningForkAbnormal" style="display:none">
+            <div id="roo_clinicalRecord_tuningForkAbnormal">
                 <label for="_tuningForkAbnormal_id">Tuning Fork Abnormal:</label>
                 <form:select cssStyle="width:250px" id="_tuningForkAbnormal_id" path="tuningForkAbnormal">
 					<form:option value=""></form:option>
@@ -782,7 +871,7 @@
                 </script>
             </div>
             <br/>
-            <div id="roo_clinicalRecord_hbA1cPercentage" style="display:none">
+            <div id="roo_clinicalRecord_hbA1cPercentage">
                 <label for="_hbA1cPercentage_id"><spring:message code="record.hbA1cPercentage"/></label>
                 <form:input cssStyle="width:250px" id="_hbA1cPercentage_id" maxlength="30" path="hbA1cPercentage" size="0"/>
                 <br/>
@@ -799,7 +888,7 @@
                         elementId : 'roo_clinicalRecord_hbA1cPercentage', 
                         widgetType: 'dijit.layout.ContentPane'})); 
             </script>             
-            <div id="roo_clinicalRecord_hbA1cMethod" style="display:none">
+            <div id="roo_clinicalRecord_hbA1cMethod">
                 <label for="_hbA1cMethod_id">HbA1c Method:</label>
                 <form:select cssStyle="width:250px" id="_hbA1cMethod_id" path="hbA1cMethod">
 					<form:option value=""></form:option>
@@ -833,7 +922,7 @@
                         elementId : 'roo_clinicalRecord_hbA1cMethod', 
                         widgetType: 'dijit.layout.ContentPane'})); 
             </script> 
-            <div id="roo_clinicalRecord_hbA1cMethodOther" style="display:none">
+            <div id="roo_clinicalRecord_hbA1cMethodOther">
                 <label for="_hbA1cMethodOther_id">HbA1c Method Other:</label>
                 <form:input cssStyle="width:250px" id="_hbA1cMethodOther_id" maxlength="30" path="hbA1cMethodOther" size="0"/>
                 <br/>
@@ -880,7 +969,7 @@
                 </script>
             </div>
             <br/>
-            <div id="roo_clinicalRecord_microalbuminuriaValue" style="display:none">
+            <div id="roo_clinicalRecord_microalbuminuriaValue">
                 <label for="_microalbuminuriaValue_id">Microalbuminuria Value:</label>
                 <form:input cssStyle="width:250px" id="_microalbuminuriaValue_id" maxlength="30" path="microalbuminuriaValue" size="0"/>
                 <br/>
@@ -897,13 +986,13 @@
                         elementId : 'roo_clinicalRecord_microalbuminuriaValue', 
                         widgetType: 'dijit.layout.ContentPane'})); 
             </script>             
-            <div id="roo_clinicalRecord_microalbuminuriaUnitOfMeasure" style="display:none">
+            <div id="roo_clinicalRecord_microalbuminuriaUnitOfMeasure">
                 <label for="_microalbuminuriaUnitOfMeasure_id">Microalbuminuria Unit Of Measure:</label>
-                <form:input cssStyle="width:250px" id="_microalbuminuriaUnitOfMeasure_id" path="microalbuminuriaUnitOfMeasure"/>               
+                <form:input cssStyle="width:250px" id="_microalbuminuriaUnitOfMeasure_id" maxlength="30" path="microalbuminuriaUnitOfMeasure" size="0"/>               
                 <br/>
                 <form:errors cssClass="errors" id="_microalbuminuriaUnitOfMeasure_error_id" path="microalbuminuriaUnitOfMeasure"/>
                 <spring:bind path="clinicalRecord.microalbuminuriaUnitOfMeasure"><c:if test="${status.error}"><script type="text/javascript">labTestingHasError = true;</script></c:if></spring:bind>
-                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_microalbuminuriaUnitOfMeasure_id', widgetType: 'dijit.form.ValidationTextBox'})); </script>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_microalbuminuriaUnitOfMeasure_id', widgetType: 'dijit.form.ValidationTextBox', widgetAttrs : {hasDownArrow : true}})); </script>
             	<br/>                
             </div>
             <script type="text/javascript">Spring.addDecoration(
@@ -953,7 +1042,7 @@
                 </script>
             </div>
             <br/>            
-            <div id="roo_clinicalRecord_creatinineValue" style="display:none">
+            <div id="roo_clinicalRecord_creatinineValue">
                 <label for="_creatinineValue_id">Creatinine Value:</label>
                 <form:input cssStyle="width:250px" id="_creatinineValue_id" maxlength="30" path="creatinineValue" size="0"/>
                 <br/>
@@ -969,7 +1058,7 @@
                         elementId : 'roo_clinicalRecord_creatinineValue', 
                         widgetType: 'dijit.layout.ContentPane'})); 
             </script>
-            <div id="roo_clinicalRecord_creatinineUnits" style="display:none">
+            <div id="roo_clinicalRecord_creatinineUnits">
                 <label for="_creatinineUnits_id">Creatinine Units:</label>
                 <form:select cssStyle="width:250px" id="_creatinineUnits_id" path="creatinineUnits">
 					<form:option value=""></form:option>
@@ -1019,7 +1108,7 @@
                 </script>
             </div>
             <br/>             
-            <div id="roo_clinicalRecord_totalCholesterolValue" style="display:none">
+            <div id="roo_clinicalRecord_totalCholesterolValue">
                 <label for="_totalCholesterolValue_id">Cholesterol Value:</label>
                 <form:input cssStyle="width:250px" id="_totalCholesterolValue_id" maxlength="30" path="totalCholesterolValue" size="0"/>
                 <br/>
@@ -1035,7 +1124,7 @@
                         elementId : 'roo_clinicalRecord_totalCholesterolValue', 
                         widgetType: 'dijit.layout.ContentPane'})); 
             </script>
-            <div id="roo_clinicalRecord_cholesterolUnits" style="display:none">
+            <div id="roo_clinicalRecord_cholesterolUnits">
                 <label for="_cholesterolUnits_id">Cholesterol Units:</label>
                 <form:select cssStyle="width:250px" id="_cholesterolUnits_id" path="cholesterolUnits">
 					<form:option value=""></form:option>
@@ -1052,7 +1141,7 @@
                         elementId : 'roo_clinicalRecord_cholesterolUnits', 
                         widgetType: 'dijit.layout.ContentPane'})); 
             </script>
-            <div id="roo_clinicalRecord_fasted" style="display:none">
+            <div id="roo_clinicalRecord_fasted">
                 <label for="_fasted_id">Fasted:</label>
                 <form:select cssStyle="width:250px" id="_fasted_id" path="fasted">
 					<form:option value=""></form:option>
@@ -1100,7 +1189,7 @@
                 </script>
             </div>
             <br/>             
-            <div id="roo_clinicalRecord_hdlCholesterolValue" style="display:none">
+            <div id="roo_clinicalRecord_hdlCholesterolValue">
                 <label for="_hdlCholesterolValue_id">HDL Cholesterol Value:</label>
                 <form:input cssStyle="width:250px" id="_hdlCholesterolValue_id" maxlength="30" path="hdlCholesterolValue" size="0"/>
                 <br/>
@@ -1116,7 +1205,7 @@
                         elementId : 'roo_clinicalRecord_hdlCholesterolValue', 
                         widgetType: 'dijit.layout.ContentPane'})); 
             </script>
-            <div id="roo_clinicalRecord_hdlUnits" style="display:none">
+            <div id="roo_clinicalRecord_hdlUnits">
                 <label for="_hdlUnits_id">HDL Cholesterol Units:</label>
                 <form:select cssStyle="width:250px" id="_hdlUnits_id" path="hdlUnits">
 					<form:option value=""></form:option>
@@ -1164,7 +1253,7 @@
                 </script>
             </div>
             <br/>             
-            <div id="roo_clinicalRecord_triglyceridesValue" style="display:none">
+            <div id="roo_clinicalRecord_triglyceridesValue">
                 <label for="_triglyceridesValue_id">Triglycerides Value:</label>
                 <form:input cssStyle="width:250px" id="_triglyceridesValue_id" maxlength="30" path="triglyceridesValue" size="0"/>
                 <br/>
@@ -1180,7 +1269,7 @@
                         elementId : 'roo_clinicalRecord_triglyceridesValue', 
                         widgetType: 'dijit.layout.ContentPane'})); 
             </script>
-            <div id="roo_clinicalRecord_triglyceridesUnits" style="display:none">
+            <div id="roo_clinicalRecord_triglyceridesUnits">
                 <label for="_triglyceridesUnits_id">Triglycerides Units:</label>
                 <form:select cssStyle="width:250px" id="_triglyceridesUnits_id" path="triglyceridesUnits">
 					<form:option value=""></form:option>
@@ -1256,7 +1345,7 @@
                 </script>
             </div>
             <br/>
-            <div id="roo_clinicalRecord_notAttendingSchoolWhy" style="display:none">
+            <div id="roo_clinicalRecord_notAttendingSchoolWhy">
                 <label for="_notAttendingSchoolWhy_id">If not attending School - Why:</label>
                 <form:select cssStyle="width:250px" id="_notAttendingSchoolWhy_id" path="notAttendingSchoolWhy">
 					<form:option value=""></form:option>
@@ -1273,7 +1362,7 @@
                         elementId : 'roo_clinicalRecord_notAttendingSchoolWhy', 
                         widgetType: 'dijit.layout.ContentPane'})); 
             </script> 
-            <div id="roo_clinicalRecord_diabetesLimitingAttendance" style="display:none">
+            <div id="roo_clinicalRecord_diabetesLimitingAttendance">
                 <label for="_diabetesLimitingAttendance_id">Diabetes Limiting Attendance:</label>
                 <form:select cssStyle="width:250px" id="_diabetesLimitingAttendance_id" path="diabetesLimitingAttendance">
 					<form:option value=""></form:option>
@@ -1289,7 +1378,7 @@
                         elementId : 'roo_clinicalRecord_diabetesLimitingAttendance', 
                         widgetType: 'dijit.layout.ContentPane'})); 
             </script> 
-            <div id="roo_clinicalRecord_appropriateGradeForAge" style="display:none">
+            <div id="roo_clinicalRecord_appropriateGradeForAge">
                 <label for="_appropriateGradeForAge_id">Appropriate Grade For Age:</label>
                 <form:select cssStyle="width:250px" id="_appropriateGradeForAge_id" path="appropriateGradeForAge">
 					<form:option value=""></form:option>
