@@ -17,6 +17,8 @@ public class UserQuery extends BaseQuery<User> {
 
 	public User findUser(EntityManager entityManager, Long id)
 	{
+		if (id == 0)
+    		return null;
 		Criteria criteria = ((Session)entityManager.getDelegate()).createCriteria(User.class);
 		criteria.add(Restrictions.eq("id", id));
     	Object obj = criteria.uniqueResult();
