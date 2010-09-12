@@ -20,7 +20,7 @@ public class Permissions {
 	public static final String CREATE_COUNTRY = "CREATE_COUNTRY";	
 	public static final String EDIT_COUNTRY = "EDIT_COUNTRY";
 	public static final String CREATE_CENTRE = "CREATE_CENTRE";
-	public static final String EDIT_CENTRE = "EDITEDIT_CENTRE_RECORD";
+	public static final String EDIT_CENTRE = "EDIT_CENTRE";
 	public static final String VIEW_REPORT = "VIEW_REPORT";
 	public static final String EDIT_REPORT = "EDIT_REPORT";
 	public static final String CREATE_REPORT = "CREATE_REPORT";	
@@ -28,4 +28,7 @@ public class Permissions {
 	@NotNull
 	String name;
 	String description;
+    
+	private Boolean isDeleted; 
+    
 }

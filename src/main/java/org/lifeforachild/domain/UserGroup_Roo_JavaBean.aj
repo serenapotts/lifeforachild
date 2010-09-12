@@ -22,4 +22,11 @@ privileged aspect UserGroup_Roo_JavaBean {
         this.permissions = permissions;        
     }    
     
+    public boolean UserGroup.getIsDeleted() {    
+        return this.isDeleted;        
+    }    
+    
+    public void UserGroup.setIsDeleted(boolean isDeleted) {    
+        this.isDeleted = isDeleted;        
+    }    
 }

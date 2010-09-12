@@ -33,7 +33,9 @@ privileged aspect CountryController_Roo_Controller {
     @RequestMapping(value = "/country/form", method = RequestMethod.GET)    
     public String CountryController.createForm(ModelMap modelMap) {    
     	SecurityUtil.getInstance().checkPermission(Permissions.CREATE_COUNTRY);
-        modelMap.addAttribute("country", new Country());        
+    	Country country = new Country();
+    	country.setIsDeleted(false); 
+        modelMap.addAttribute("country", country);        
         modelMap.addAttribute("diabetescentres", DiabetesCentre.findAllDiabetesCentres());        
         return "country/create";        
     }    
@@ -86,7 +88,9 @@ privileged aspect CountryController_Roo_Controller {
     public String CountryController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size) {    
     	SecurityUtil.getInstance().checkPermission(Permissions.EDIT_COUNTRY);
     	if (id == null) throw new IllegalArgumentException("An Identifier is required");        
-        Country.findCountry(id).remove();        
+        Country country = Country.findCountry(id);    
+        country.setIsDeleted(true);
+        country.persist();
         return "redirect:/country?page=" + ((page == null) ? "1" : page.toString()) + "&size=" + ((size == null) ? "10" : size.toString());        
     }    
     

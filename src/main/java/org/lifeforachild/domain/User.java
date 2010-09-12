@@ -45,4 +45,6 @@ public class User {
 	DiabetesCentre centre;
 	
 	String oldPassword;
+	
+    private Boolean isDeleted;	
 }

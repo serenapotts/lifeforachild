@@ -26,4 +26,6 @@ public class Country {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "country")
     private Set<DiabetesCentre> diabetesCentres = new HashSet<DiabetesCentre>();
+    
+    private Boolean isDeleted;
 }

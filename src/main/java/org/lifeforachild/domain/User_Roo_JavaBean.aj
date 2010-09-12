@@ -78,4 +78,12 @@ privileged aspect User_Roo_JavaBean {
     public void User.setOldPassword(String oldPassword) {    
         this.oldPassword = oldPassword;        
     }    
+    
+    public boolean User.getIsDeleted() {    
+        return this.isDeleted;        
+    }    
+    
+    public void User.setIsDeleted(boolean isDeleted) {    
+        this.isDeleted = isDeleted;        
+    }    
 }

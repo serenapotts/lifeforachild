@@ -77,6 +77,8 @@ public class Report {
 
     private String thenOrderBy;
     
+    private Boolean isDeleted;
+    
     public EntityManager getEntityManager()
     {
     	return entityManager();

@@ -32,8 +32,10 @@ privileged aspect UserController_Roo_Controller {
     }    
     
     @RequestMapping(value = "/user/form", method = RequestMethod.GET)    
-    public String UserController.createForm(ModelMap modelMap) {    
-        modelMap.addAttribute("user", new User());        
+    public String UserController.createForm(ModelMap modelMap) {
+    	User user = new User();
+    	user.setIsDeleted(false);
+        modelMap.addAttribute("user", user);        
         modelMap.addAttribute("countrys", Country.findAllCountrys(true));        
         modelMap.addAttribute("diabetescentres", DiabetesCentre.findAllDiabetesCentres(true));        
         modelMap.addAttribute("usergroups", UserGroup.findAllUserGroups());        
@@ -94,7 +96,9 @@ privileged aspect UserController_Roo_Controller {
     @RequestMapping(value = "/user/{id}", method = RequestMethod.DELETE)    
     public String UserController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size) {    
         if (id == null) throw new IllegalArgumentException("An Identifier is required");        
-        User.findUser(id, true).remove();        
+        User user = User.findUser(id, true);
+        user.setIsDeleted(true);
+        user.persist();
         return "redirect:/user?page=" + ((page == null) ? "1" : page.toString()) + "&size=" + ((size == null) ? "10" : size.toString());        
     }    
     

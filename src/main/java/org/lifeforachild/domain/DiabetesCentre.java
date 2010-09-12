@@ -29,4 +29,6 @@ public class DiabetesCentre {
     @ManyToOne(targetEntity = Country.class)
     @JoinColumn
     private Country country;
+    
+    private Boolean isDeleted;    
 }

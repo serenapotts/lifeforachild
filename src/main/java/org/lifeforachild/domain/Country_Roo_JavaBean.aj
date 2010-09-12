@@ -20,6 +20,13 @@ privileged aspect Country_Roo_JavaBean {
     
     public void Country.setDiabetesCentres(Set<DiabetesCentre> diabetesCentres) {    
         this.diabetesCentres = diabetesCentres;        
+    }   
+    
+    public boolean Country.getIsDeleted() {    
+        return this.isDeleted;        
     }    
     
+    public void Country.setIsDeleted(boolean isDeleted) {    
+        this.isDeleted = isDeleted;        
+    }    
 }

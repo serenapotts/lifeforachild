@@ -33,7 +33,9 @@ privileged aspect DiabetesCentreController_Roo_Controller {
     @RequestMapping(value = "/diabetescentre/form", method = RequestMethod.GET)    
     public String DiabetesCentreController.createForm(ModelMap modelMap) {    
     	SecurityUtil.getInstance().checkPermission(Permissions.CREATE_CENTRE);
-        modelMap.addAttribute("diabetesCentre", new DiabetesCentre());        
+    	DiabetesCentre centre = new DiabetesCentre();
+    	centre.setIsDeleted(false);
+        modelMap.addAttribute("diabetesCentre", centre);        
         modelMap.addAttribute("countrys", Country.findAllCountrys());        
         return "diabetescentre/create";        
     }    
@@ -86,7 +88,9 @@ privileged aspect DiabetesCentreController_Roo_Controller {
     public String DiabetesCentreController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size) {    
     	SecurityUtil.getInstance().checkPermission(Permissions.EDIT_CENTRE);
     	if (id == null) throw new IllegalArgumentException("An Identifier is required");        
-        DiabetesCentre.findDiabetesCentre(id).remove();        
+    	DiabetesCentre centre = DiabetesCentre.findDiabetesCentre(id);
+    	centre.setIsDeleted(true);
+    	centre.persist();
         return "redirect:/diabetescentre?page=" + ((page == null) ? "1" : page.toString()) + "&size=" + ((size == null) ? "10" : size.toString());        
     }    
     

@@ -1419,7 +1419,8 @@
             <form:hidden id="_weightSD_id" path="weightSD"/>
             <form:hidden id="_bmiSD_id" path="bmiSD"/>
             <form:hidden id="_BloodPressureSystolicSD_id" path="BloodPressureSystolicSD"/>
-            <form:hidden id="_BloodPressureDiastolicSD_id" path="BloodPressureDiastolicSD"/>            
+            <form:hidden id="_BloodPressureDiastolicSD_id" path="BloodPressureDiastolicSD"/>
+            <form:hidden id="_isDeleted_id" path="isDeleted"/>            
             <div class="submit" id="roo_clinicalRecord_submit">
                 <spring:message code="button.update" var="update_button"/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ValidateAllDecoration({elementId:'proceed', event:'onclick'}));</script>

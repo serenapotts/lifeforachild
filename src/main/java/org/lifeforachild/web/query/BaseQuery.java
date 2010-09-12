@@ -36,12 +36,15 @@ public abstract class BaseQuery<T> {
 	public List<T> findByAccess(EntityManager entityManager)
 	{
 		Criteria criteria = findByAccessCriteria(entityManager);
+		criteria.add(Restrictions.eq("isDeleted", false));
 		return criteria.list();		
 	}
 	
 	public List<T> findEntries(EntityManager entityManager, int firstResult, int maxResults) 
 	{
-		return findByAccessCriteria(entityManager).setFirstResult(firstResult).setMaxResults(maxResults).list();
+		Criteria criteria = findByAccessCriteria(entityManager);
+		criteria.add(Restrictions.eq("isDeleted", false));
+		return criteria.setFirstResult(firstResult).setMaxResults(maxResults).list();
 	}
 	
 	abstract public Criteria findByAccessCriteria(EntityManager entityManager);

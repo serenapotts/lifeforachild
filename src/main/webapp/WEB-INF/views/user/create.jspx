@@ -87,6 +87,7 @@
                 </c:if>
             </div>
             <br/>
+            <form:hidden id="_isDeleted_id" path="isDeleted"/>
             <div class="submit" id="roo_user_submit">
                 <spring:message code="button.save" var="save_button"/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ValidateAllDecoration({elementId:'proceed', event:'onclick'}));</script>

@@ -23,4 +23,6 @@ public class UserGroup {
 
     @ManyToMany(cascade = CascadeType.ALL)
     private Set<Permissions> permissions = new HashSet<Permissions>();
+    
+    private Boolean isDeleted;    
 }

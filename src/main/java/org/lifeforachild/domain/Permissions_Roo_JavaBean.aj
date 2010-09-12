@@ -1,6 +1,7 @@
 package org.lifeforachild.domain;
 
 import java.lang.String;
+import java.util.Date;
 
 privileged aspect Permissions_Roo_JavaBean {
     
@@ -18,5 +19,13 @@ privileged aspect Permissions_Roo_JavaBean {
     
     public void Permissions.setDescription(String description) {    
         this.description = description;        
-    } 
+    }  
+   
+    public boolean Permissions.getIsDeleted() {    
+        return this.isDeleted;        
+    }
+    
+    public void Permissions.setIsDeleted(boolean isDeleted) {    
+        this.isDeleted = isDeleted;        
+    }
 }

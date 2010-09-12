@@ -319,6 +319,8 @@ public class ClinicalRecord {
     
     private Float BloodPressureDiastolicSD;    
     
+    private Boolean isDeleted;    
+    
     public float calculateBMI() {
         float result = 0.0f;
         if (heightCM != null && !heightCM.equals(new Integer(0))) {

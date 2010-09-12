@@ -150,4 +150,11 @@ privileged aspect Report_Roo_JavaBean {
         this.thenOrderBy = thenOrderBy;        
     }    
     
+    public boolean Report.getIsDeleted() {    
+        return this.isDeleted;        
+    }    
+    
+    public void Report.setIsDeleted(boolean isDeleted) {    
+        this.isDeleted = isDeleted;        
+    }    
 }

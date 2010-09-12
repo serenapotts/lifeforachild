@@ -648,4 +648,11 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.BloodPressureDiastolicSD = BloodPressureDiastolicSD;        
     }    
     
+    public boolean ClinicalRecord.getIsDeleted() {    
+        return this.isDeleted;        
+    }    
+    
+    public void ClinicalRecord.setIsDeleted(boolean isDeleted) {    
+        this.isDeleted = isDeleted;        
+    }    
 }

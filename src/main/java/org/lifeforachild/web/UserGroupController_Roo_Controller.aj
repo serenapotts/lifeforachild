@@ -27,8 +27,10 @@ privileged aspect UserGroupController_Roo_Controller {
     }    
     
     @RequestMapping(value = "/usergroup/form", method = RequestMethod.GET)    
-    public String UserGroupController.createForm(ModelMap modelMap) {    
-        modelMap.addAttribute("userGroup", new UserGroup());        
+    public String UserGroupController.createForm(ModelMap modelMap) { 
+    	UserGroup usergroup = new UserGroup();
+    	usergroup.setIsDeleted(true);
+        modelMap.addAttribute("userGroup", usergroup);        
         modelMap.addAttribute("permissionses", Permissions.findAllPermissionses());        
         return "usergroup/create";        
     }    
@@ -76,7 +78,9 @@ privileged aspect UserGroupController_Roo_Controller {
     @RequestMapping(value = "/usergroup/{id}", method = RequestMethod.DELETE)    
     public String UserGroupController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size) {    
         if (id == null) throw new IllegalArgumentException("An Identifier is required");        
-        UserGroup.findUserGroup(id).remove();        
+        UserGroup usergroup = UserGroup.findUserGroup(id);
+        usergroup.setIsDeleted(true);
+        usergroup.persist();
         return "redirect:/usergroup?page=" + ((page == null) ? "1" : page.toString()) + "&size=" + ((size == null) ? "10" : size.toString());        
     }    
     

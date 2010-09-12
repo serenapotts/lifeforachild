@@ -51,7 +51,9 @@ privileged aspect ReportController_Roo_Controller {
     @RequestMapping(value = "/report/form", method = RequestMethod.GET)    
     public String ReportController.createForm(ModelMap modelMap) {    
     	SecurityUtil.getInstance().checkPermission(Permissions.CREATE_REPORT);
-        modelMap.addAttribute("report", new Report());        
+    	Report report = new Report();
+    	report.setIsDeleted(false);
+        modelMap.addAttribute("report", report);        
         modelMap.addAttribute("childfields_enum", ChildFields.class.getEnumConstants());        
         modelMap.addAttribute("clinicalrecordfields_enum", ClinicalRecordFields.class.getEnumConstants());        
         modelMap.addAttribute("countrys", Country.findAllCountrys(true));        
@@ -138,7 +140,9 @@ privileged aspect ReportController_Roo_Controller {
     public String ReportController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size) {    
     	SecurityUtil.getInstance().checkPermission(Permissions.EDIT_REPORT);
     	if (id == null) throw new IllegalArgumentException("An Identifier is required");        
-        Report.findReport(id).remove();        
+        Report report = Report.findReport(id);
+        report.setIsDeleted(true);
+        report.persist();
         return "redirect:/report?page=" + ((page == null) ? "1" : page.toString()) + "&size=" + ((size == null) ? "10" : size.toString());        
     }    
     

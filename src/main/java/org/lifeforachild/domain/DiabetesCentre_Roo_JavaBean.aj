@@ -21,6 +21,13 @@ privileged aspect DiabetesCentre_Roo_JavaBean {
         this.address = address;        
     }    
     
+    public boolean DiabetesCentre.getIsDeleted() {    
+        return this.isDeleted;        
+    }    
+    
+    public void DiabetesCentre.setIsDeleted(boolean isDeleted) {    
+        this.isDeleted = isDeleted;        
+    }    
     public Country DiabetesCentre.getCountry() {    
         return this.country;        
     }    

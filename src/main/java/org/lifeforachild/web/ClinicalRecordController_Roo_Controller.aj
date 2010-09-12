@@ -82,6 +82,7 @@ privileged aspect ClinicalRecordController_Roo_Controller {
     	ClinicalRecord record = new ClinicalRecord();
     	// set child for record from child information passed when creating record
     	record.setChild(Child.findChild(id));
+    	record.setIsDeleted(false); 
     	// set person completing to the current user
     	//record.setPersonCompletingForm(SecurityUtil.getInstance().getApplicationUserForCurrentUser());
     	// default date completed to today
@@ -195,7 +196,9 @@ privileged aspect ClinicalRecordController_Roo_Controller {
     public String ClinicalRecordController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size) {
     	SecurityUtil.getInstance().checkPermission(Permissions.EDIT_RECORD);
         if (id == null) throw new IllegalArgumentException("An Identifier is required");        
-        ClinicalRecord.findClinicalRecord(id).remove();        
+        ClinicalRecord record = ClinicalRecord.findClinicalRecord(id);
+        record.setIsDeleted(true);
+        record.persist();
         return "redirect:/clinicalrecord?page=" + ((page == null) ? "1" : page.toString()) + "&size=" + ((size == null) ? "10" : size.toString());        
     }    
     
