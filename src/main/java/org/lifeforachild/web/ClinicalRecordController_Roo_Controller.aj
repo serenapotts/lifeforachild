@@ -1,6 +1,8 @@
 package org.lifeforachild.web;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -20,22 +22,24 @@ import org.lifeforachild.domain.YesNoLaterType;
 import org.lifeforachild.domain.YesNoNAType;
 import org.lifeforachild.domain.YesNoType;
 import org.lifeforachild.domain.YesNoUnkownType;
+import org.lifeforachild.web.validation.ClinicalRecordValidator;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import java.util.ArrayList;
-import java.util.List;
+import org.springframework.validation.Errors;
 
 privileged aspect ClinicalRecordController_Roo_Controller {
     
     @RequestMapping(value = "/clinicalrecord", method = RequestMethod.POST)    
     public String ClinicalRecordController.create(@Valid ClinicalRecord clinicalRecord, BindingResult result, ModelMap modelMap) {    
     	SecurityUtil.getInstance().checkPermission(Permissions.CREATE_RECORD);
-    	if (clinicalRecord == null) throw new IllegalArgumentException("A clinicalRecord is required");        
+    	if (clinicalRecord == null) throw new IllegalArgumentException("A clinicalRecord is required");
+    	validate(result, clinicalRecord);
         if (result.hasErrors()) {                	        	
             modelMap.addAttribute("clinicalRecord", clinicalRecord);                       
             modelMap.addAttribute("creatineunitstype_enum", CreatineUnitsType.class.getEnumConstants());            
@@ -125,7 +129,8 @@ privileged aspect ClinicalRecordController_Roo_Controller {
     @RequestMapping(method = RequestMethod.PUT)    
     public String ClinicalRecordController.update(@Valid ClinicalRecord clinicalRecord, BindingResult result, ModelMap modelMap) {    
     	SecurityUtil.getInstance().checkPermission(Permissions.EDIT_RECORD);
-    	if (clinicalRecord == null) throw new IllegalArgumentException("A clinicalRecord is required");        
+    	if (clinicalRecord == null) throw new IllegalArgumentException("A clinicalRecord is required");
+    	validate(result, clinicalRecord);
         if (result.hasErrors()) {        
             modelMap.addAttribute("clinicalRecord", clinicalRecord);                       
             modelMap.addAttribute("creatineunitstype_enum", CreatineUnitsType.class.getEnumConstants());            
@@ -201,5 +206,13 @@ privileged aspect ClinicalRecordController_Roo_Controller {
         record.persist();
         return "redirect:/clinicalrecord?page=" + ((page == null) ? "1" : page.toString()) + "&size=" + ((size == null) ? "10" : size.toString());        
     }    
+    
+    public void ClinicalRecordController.validate(BindingResult result, ClinicalRecord clinicalRecord)
+    {
+    	Errors errors = new BindException(result);
+    	ClinicalRecordValidator validator = new ClinicalRecordValidator();
+    	validator.validate(clinicalRecord, errors);
+    	//result.addAllErrors(errors);
+    }
     
 }

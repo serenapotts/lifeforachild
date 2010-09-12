@@ -327,7 +327,7 @@
 			            <br/>
 			            <c:if test="${clinicalRecord.menarche == 'YES'}">
 				            <div id="roo_clinicalRecord_ifMenarcheAge">
-				                <label  class="record" for="_ifMenarcheAge_id">If Menarche Age:</label>
+				                <label  class="record" for="_ifMenarcheAge_id"><spring:message code="record.menarcheAge"/></label>
 				                <div class="box" id="_ifMenarcheAge_id">
 				                    <fmt:formatDate pattern="${clinicalRecord_ifMenarcheAge_date_format}" value="${clinicalRecord.ifMenarcheAge}"/>
 				                </div>

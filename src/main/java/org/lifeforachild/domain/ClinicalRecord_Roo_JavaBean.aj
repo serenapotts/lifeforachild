@@ -211,19 +211,19 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.hasPersistentHypertension = hasPersistentHypertension;        
     }    
     
-    public YesNoType ClinicalRecord.getHasPubertyTannerB2_P2orGreater() {    
+    public YesNoUnkownType ClinicalRecord.getHasPubertyTannerB2_P2orGreater() {    
         return this.hasPubertyTannerB2_P2orGreater;        
     }    
     
-    public void ClinicalRecord.setHasPubertyTannerB2_P2orGreater(YesNoType hasPubertyTannerB2_P2orGreater) {    
+    public void ClinicalRecord.setHasPubertyTannerB2_P2orGreater(YesNoUnkownType hasPubertyTannerB2_P2orGreater) {    
         this.hasPubertyTannerB2_P2orGreater = hasPubertyTannerB2_P2orGreater;        
     }    
     
-    public YesNoType ClinicalRecord.getMenarche() {    
+    public YesNoUnkownType ClinicalRecord.getMenarche() {    
         return this.menarche;        
     }    
     
-    public void ClinicalRecord.setMenarche(YesNoType menarche) {    
+    public void ClinicalRecord.setMenarche(YesNoUnkownType menarche) {    
         this.menarche = menarche;        
     }    
     

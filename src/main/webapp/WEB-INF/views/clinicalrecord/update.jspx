@@ -468,7 +468,7 @@
                 <form:errors cssClass="errors" id="_hasPubertyTannerB2_P2orGreater_error_id" path="hasPubertyTannerB2_P2orGreater"/>
                 <form:select cssStyle="width:250px" id="_hasPubertyTannerB2_P2orGreater_id" path="hasPubertyTannerB2_P2orGreater">
                     <form:option value=""></form:option>
-                	<form:options items="${yesnotype_enum}" itemLabel="label"/>
+                	<form:options items="${yesnounkowntype_enum}" itemLabel="label"/>
                 </form:select>
                 <br/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_hasPubertyTannerB2_P2orGreater_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
@@ -480,7 +480,7 @@
 	                <form:errors cssClass="errors" id="_menarche_error_id" path="menarche"/>
 	                <form:select cssStyle="width:250px" id="_menarche_id" path="menarche">
 	                    <form:option value=""></form:option>
-	                	<form:options items="${yesnotype_enum}" itemLabel="label"/>
+	                	<form:options items="${yesnounkowntype_enum}" itemLabel="label"/>
 	                </form:select>
 	                <br/>
 	                <script type="text/javascript">Spring.addDecoration(
@@ -505,7 +505,7 @@
 	            </div>
 	            <br/>
 	            <div id="roo_clinicalRecord_ifMenarcheAge">
-	                <label for="_ifMenarcheAge_id">If Menarche Age:</label>
+	                <label for="_ifMenarcheAge_id"><spring:message code="record.menarcheAge"/></label>
 	                <form:input cssStyle="width:250px" id="_ifMenarcheAge_id" maxlength="30" path="ifMenarcheAge" size="0"/>
 	                <br/>
 	                <form:errors cssClass="errors" id="_ifMenarcheAge_error_id" path="ifMenarcheAge"/>

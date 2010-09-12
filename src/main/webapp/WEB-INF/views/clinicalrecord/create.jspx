@@ -439,7 +439,7 @@
                 <label for="_hasPubertyTannerB2_P2orGreater_id">Has Puberty Tanner B2/P2 or greater:</label>
                 <form:select cssStyle="width:250px" id="_hasPubertyTannerB2_P2orGreater_id" path="hasPubertyTannerB2_P2orGreater">
 					<form:option value=""></form:option>
-                	<form:options items="${yesnotype_enum}" itemLabel="label"/>
+                	<form:options items="${yesnounkowntype_enum}" itemLabel="label"/>
                 </form:select>                
                 <br/>
                 <form:errors cssClass="errors" id="_hasPubertyTannerB2_P2orGreater_error_id" path="hasPubertyTannerB2_P2orGreater"/>
@@ -452,7 +452,7 @@
 	                <label for="_menarche_id">Menarche:</label>
 	                <form:select cssStyle="width:250px" id="_menarche_id" path="menarche">
 						<form:option value=""></form:option>
-	                	<form:options items="${yesnotype_enum}" itemLabel="label"/>
+	                	<form:options items="${yesnounkowntype_enum}" itemLabel="label"/>
 	                </form:select>                
 	                <br/>
 	                <form:errors cssClass="errors" id="_menarche_error_id" path="menarche"/>
@@ -478,7 +478,7 @@
 	            </div>
 	            <br/>
 	            <div id="roo_clinicalRecord_ifMenarcheAge" style="display:none">
-	                <label for="_ifMenarcheAge_id">If Menarche Age:</label>
+	                <label for="_ifMenarcheAge_id"><spring:message code="record.menarcheAge"/></label>
 	                <form:input cssStyle="width:250px" id="_ifMenarcheAge_id" maxlength="30" path="ifMenarcheAge" size="0"/>
 	                <br/>
 	                <form:errors cssClass="errors" id="_ifMenarcheAge_error_id" path="ifMenarcheAge"/>

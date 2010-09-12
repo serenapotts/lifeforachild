@@ -66,15 +66,15 @@ public class ClinicalRecord {
     private Integer numberOfInsulinInjectionsPerDay;
 
     @Enumerated
-    @NotNull(message = "is required.")
+    //@NotNull(message = "is required.")
     private YesNoType longActingHuman;
 
     @Enumerated
-    @NotNull(message = "is required.")
+    //@NotNull(message = "is required.")
     private YesNoType shortActingHuman;
 
     @Enumerated
-    @NotNull(message = "is required.")
+    //@NotNull(message = "is required.")
     private YesNoType analog;
 
     @Enumerated
@@ -137,10 +137,10 @@ public class ClinicalRecord {
 
     @Enumerated
     @NotNull(message = "is required.")
-    private YesNoType hasPubertyTannerB2_P2orGreater;
+    private YesNoUnkownType hasPubertyTannerB2_P2orGreater;
 
     @Enumerated
-    private YesNoType menarche;
+    private YesNoUnkownType menarche;
 
     @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(style = "S-")
