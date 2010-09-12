@@ -66,19 +66,15 @@ public class ClinicalRecord {
     private Integer numberOfInsulinInjectionsPerDay;
 
     @Enumerated
-    //@NotNull(message = "is required.")
     private YesNoType longActingHuman;
 
     @Enumerated
-    //@NotNull(message = "is required.")
     private YesNoType shortActingHuman;
 
     @Enumerated
-    //@NotNull(message = "is required.")
     private YesNoType analog;
 
     @Enumerated
-    //@NotNull(message = "is required.")
     private YesNoType oralAgents;
 
     @Size(max = 40)
@@ -184,7 +180,6 @@ public class ClinicalRecord {
     private Float hbA1cPercentage;
 
     @Enumerated
-    //@NotNull(message = "is required.")
     private HbA1cMethodType hbA1cMethod;
 
     @Size(max = 30)
@@ -198,7 +193,6 @@ public class ClinicalRecord {
     @DecimalMax(value = "9999.9")
     private Float microalbuminuriaValue;
 
-    //@NotNull(message = "is required.")
     private String microalbuminuriaUnitOfMeasure;
 
     private String Proteinuria_dipstick_other;
@@ -210,7 +204,6 @@ public class ClinicalRecord {
     private Float creatinineValue;
 
     @Enumerated
-    //@NotNull(message = "is required.")
     private CreatineUnitsType creatinineUnits;
 
     @Enumerated
@@ -220,7 +213,6 @@ public class ClinicalRecord {
     private Float totalCholesterolValue;
 
     @Enumerated
-    //@NotNull(message = "is required.")
     private MG_OR_MMOL_Type cholesterolUnits;
 
     @Enumerated
@@ -230,7 +222,6 @@ public class ClinicalRecord {
     private Float hdlCholesterolValue;
 
     @Enumerated
-    //@NotNull(message = "is required.")
     private MG_OR_MMOL_Type hdlUnits;
 
     @Enumerated
@@ -240,11 +231,9 @@ public class ClinicalRecord {
     private Float triglyceridesValue;
 
     @Enumerated
-    //@NotNull(message = "is required.")
     private MG_OR_MMOL_Type triglyceridesUnits;
 
     @Enumerated
-    //@NotNull(message = "is required.")
     private YesNoUnkownType fasted;
 
     @Enumerated
