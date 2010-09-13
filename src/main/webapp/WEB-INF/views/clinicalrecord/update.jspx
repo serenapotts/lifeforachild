@@ -93,9 +93,19 @@
             			dojo.style(dijit.byId("roo_clinicalRecord_fasted").domNode, "display", "none");
     				} 
     			}
-    		);    	
-    </script>
-    <script type="text/javascript" src="/lifeforachild/static/js/unsaved.js"/>    
+    		);  
+
+		function unloadMess(){
+		    mess = "You haven't saved yet!"
+		    return mess;
+		}
+	
+		function setBunload(on){
+		    window.onbeforeunload = (on) ? unloadMess : null;
+		}
+	
+		setBunload(true);
+    </script>   
     <div id="_title_div">
         <spring:message code="label.clinicalrecord" var="entity_label"/>
         <spring:message arguments="${entity_label}" code="entity.update" var="title_msg"/>
@@ -105,17 +115,31 @@
         <spring:message code="field.invalid.date" var="field_invalid_date"/>
         <spring:message code="field.date.tooltip" var="field_date_tooltip"/>         
             <form:errors cssClass="errors" delimiter="&lt;p/&gt;"/>
+    <div id="roo_clinicalRecord_individualId">
+        <label for="_individualId_id">Individual Id:</label>
+        <div class="box" id="_individualId_id">
+            <c:out value="${clinicalRecord.child.individualId}"/>
+        </div>
+    </div>
+    <br/>    
+    <div id="roo_clinicalRecord_centre">
+        <label for="_centre_id"><spring:message code="child.centre"/></label>
+        <div class="box" id="_centre_id">
+            <c:out value="${clinicalRecord.child.centre}"/>
+        </div>
+    </div>
+    <br/>    
+	<sec:authorize ifAllGranted="VIEW_CHILD_NAME">
+	    <div id="roo_clinicalRecord_child">                
+	         <label for="_child_id">Child:</label>
+	         <div class="box" id="_child_id">
+	            <c:out value="${clinicalRecord.child}"/>
+	        </div>                
+	    </div>
+	    <br/>
+    </sec:authorize>            
     <div id="mainTabContainer" style="width:500px;height:600px">
    		<div id="general">
-   			<sec:authorize ifAllGranted="VIEW_CHILD_NAME">
-            <div id="roo_clinicalRecord_child">                
-                <label for="_child_id">Child:</label>
-				<div class="box" id="_child_id">
-                    <c:out value="${clinicalRecord.child}"/>
-                </div>                
-            </div>
-            <br/>
-            </sec:authorize>
             <form:hidden id="_child_id" path="child"/>
             <div id="roo_clinicalRecord_personCompletingForm">
                 <c:if test="${not empty users}">

@@ -6,6 +6,29 @@
         <spring:message arguments="${entity_label}" code="entity.show" var="title_msg"/>
         <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_title_div', widgetType : 'dijit.TitlePane', widgetAttrs : {title: '${title_msg}'}})); </script>
         <c:if test="${not empty clinicalRecord}">
+		    <div id="roo_clinicalRecord_individualId">
+		        <label for="_individualId_id">Individual Id:</label>
+		        <div class="box" id="_individualId_id">
+		            <c:out value="${clinicalRecord.child.individualId}"/>
+		        </div>
+		    </div>
+		    <br/>    
+		    <div id="roo_clinicalRecord_centre">
+		        <label for="_centre_id"><spring:message code="child.centre"/></label>
+		        <div class="box" id="_centre_id">
+		            <c:out value="${clinicalRecord.child.centre}"/>
+		        </div>
+		    </div>
+		    <br/>    
+			<sec:authorize ifAllGranted="VIEW_CHILD_NAME">
+			    <div id="roo_clinicalRecord_child">                
+			         <label for="_child_id">Child:</label>
+			         <div class="box" id="_child_id">
+			            <c:out value="${clinicalRecord.child}"/>
+			        </div>                
+			    </div>
+			    <br/>
+		    </sec:authorize>        
 	        <div id="mainTabContainer" style="width:500px;height:600px">
 	           	<div id="general"> 
 	           		<sec:authorize ifAllGranted="VIEW_CHILD_NAME">

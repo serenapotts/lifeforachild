@@ -101,7 +101,6 @@ public class Child {
     @DateTimeFormat(style = "S-")
     private Date diabetesDiagnosed;
 
-    @NotNull
     @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(style = "S-")
     private Date insulinSince;

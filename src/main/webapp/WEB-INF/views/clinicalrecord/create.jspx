@@ -1,7 +1,8 @@
 <div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:sec="http://www.springframework.org/security/tags" xmlns:form="http://www.springframework.org/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
     <jsp:output omit-xml-declaration="yes"/>
-    <script type="text/javascript">dojo.require('dijit.TitlePane');dojo.require('dijit.form.FilteringSelect');dojo.require('dijit.form.SimpleTextarea');dojo.require('dijit.form.DateTextBox');</script>
     <script type="text/javascript">
+    	dojo.require('dijit.TitlePane');dojo.require('dijit.form.FilteringSelect');dojo.require('dijit.form.SimpleTextarea');dojo.require('dijit.form.DateTextBox');
+    	
         var generalHasError = false;
         var diabetesCareHasError = false;
         var medicationsHasError = false;
@@ -99,8 +100,18 @@
     				} 
     			}
     		);    	        
-    </script>
-	<script type="text/javascript" src="/lifeforachild/static/js/unsaved.js"/>
+
+		function unloadMess(){
+		    mess = "You haven't saved yet!"
+		    return mess;
+		}
+	
+		function setBunload(on){
+		    window.onbeforeunload = (on) ? unloadMess : null;
+		}
+	
+		setBunload(true);	
+	</script>
     <div id="_title_div">
         <spring:message code="label.clinicalrecord" var="entity_label"/>
         <spring:message arguments="${entity_label}" code="entity.create" var="title_msg"/>
@@ -126,17 +137,31 @@
             	Don't indent tabs to format xml nicely, so it is easy to compare changes on diff when roo
             	updates, otherwise doing a diff is pretty well impossible.
             	========================================================================= -->
+    <div id="roo_clinicalRecord_individualId">
+        <label for="_individualId_id">Individual Id:</label>
+        <div class="box" id="_individualId_id">
+            <c:out value="${clinicalRecord.child.individualId}"/>
+        </div>
+    </div>
+    <br/>    
+    <div id="roo_clinicalRecord_centre">
+        <label for="_centre_id"><spring:message code="child.centre"/></label>
+        <div class="box" id="_centre_id">
+            <c:out value="${clinicalRecord.child.centre}"/>
+        </div>
+    </div>
+    <br/>    
+	<sec:authorize ifAllGranted="VIEW_CHILD_NAME">
+	    <div id="roo_clinicalRecord_child">                
+	         <label for="_child_id">Child:</label>
+	         <div class="box" id="_child_id">
+	            <c:out value="${clinicalRecord.child}"/>
+	        </div>                
+	    </div>
+	    <br/>
+    </sec:authorize>
 	<div id="mainTabContainer" style="width:500px;height:600px">
        	<div id="general">
-       		<sec:authorize ifAllGranted="VIEW_CHILD_NAME">
-            <div id="roo_clinicalRecord_child">                
-                 <label for="_child_id">Child:</label>
-                 <div class="box" id="_child_id">
-                    <c:out value="${clinicalRecord.child}"/>
-                </div>                
-            </div>
-            <br/>
-            </sec:authorize>
             <form:hidden id="_child_id" path="child"/>
 
             <div id="roo_clinicalRecord_personCompletingForm">
