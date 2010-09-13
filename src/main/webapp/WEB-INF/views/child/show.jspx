@@ -57,6 +57,9 @@
 		                <div class="box" id="_ethnicGroup_id">
 		                    <c:out value="${child.ethnicGroup}"/>
 		                </div>
+		                <c:if test="${child.ethnicGroup == ''}">
+	                    	<br/>
+	                    </c:if>
 		            </div>
 		            <br/>
 		            <div id="roo_child_sex">
@@ -79,6 +82,9 @@
 			                <div class="box" id="_dateOfDeath_id">
 			                    <fmt:formatDate pattern="${child_dateOfDeath_date_format}" value="${child.dateOfDeath}"/>
 			                </div>
+			                <c:if test="${child.dateOfDeath == null}">
+		                    	<br/>
+		                    </c:if>
 			            </div>
 			            <br/>
 			            <div id="roo_child_causeOfDeath">
@@ -86,6 +92,9 @@
 			                <div class="box" id="_causeOfDeath_id">
 			                    <c:out value="${child.causeOfDeath.label}"/>
 			                </div>
+			                <c:if test="${child.causeOfDeath == null}">
+		                    	<br/>
+		                    </c:if>
 			            </div>
 			            <br/>
 			            <c:if test="${child.causeOfDeath == 'OTHER_DIABETES_RELATED_CONDITION'}">
@@ -94,6 +103,9 @@
 				                <div class="box" id="_causeOfDeathOther_id">
 				                    <c:out value="${child.causeOfDeathOther}"/>
 				                </div>
+				                <c:if test="${child.causeOfDeathOther == ''}">
+	                    	<br/>
+	                    </c:if>
 				            </div>
 				            <br/>
 			            </c:if>
@@ -124,6 +136,9 @@
 		                <div class="box" id="_insulinSince_id">
 		                    <fmt:formatDate pattern="${child_insulinSince_date_format}" value="${child.insulinSince}"/>
 		                </div>
+		                <c:if test="${child.insulinSince == null}">
+	                    	<br/>
+	                    </c:if>
 		            </div>
 		            <br/>
 		            <div id="roo_child_diabetesType">
@@ -139,6 +154,9 @@
 			                <div class="box" id="_diabetesTypeOther_id">
 			                    <c:out value="${child.diabetesTypeOther}"/>
 			                </div>
+			                <c:if test="${child.diabetesTypeOther == ''}">
+	                    	<br/>
+	                    </c:if>
 			            </div>
 			            <br/>
 		            </c:if>
