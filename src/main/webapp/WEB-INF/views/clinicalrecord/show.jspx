@@ -131,6 +131,9 @@
 		                <div class="box" id="_longActingHuman_id">
 		                    <c:out value="${clinicalRecord.longActingHuman}"/>
 		                </div>
+		                <c:if test="${clinicalRecord.longActingHuman == null}">
+	                    	<br/>
+	                    </c:if>
 		            </div>
 		            <br/>
 		            <div id="roo_clinicalRecord_shortActingHuman">
@@ -138,6 +141,9 @@
 		                <div class="box" id="_shortActingHuman_id">
 		                    <c:out value="${clinicalRecord.shortActingHuman}"/>
 		                </div>
+		                <c:if test="${clinicalRecord.shortActingHuman == null}">
+	                    	<br/>
+	                    </c:if>
 		            </div>
 		            <br/>
 		            <div id="roo_clinicalRecord_analog">
@@ -145,6 +151,9 @@
 		                <div class="box" id="_analog_id">
 		                    <c:out value="${clinicalRecord.analog}"/>
 		                </div>
+		                <c:if test="${clinicalRecord.analog == null}">
+	                    	<br/>
+	                    </c:if>
 		            </div>
 		            <br/>
 		            <div id="roo_clinicalRecord_oralAgents">
@@ -152,6 +161,9 @@
 		                <div class="box" id="_oralAgents_id">
 		                    <c:out value="${clinicalRecord.oralAgents}"/>
 		                </div>
+		                <c:if test="${clinicalRecord.oralAgents == null}">
+	                    	<br/>
+	                    </c:if>
 		            </div>
 		            <br/>
 		            <c:if test="${clinicalRecord.oralAgents == 'YES'}">
@@ -229,103 +241,137 @@
 		                <div class="box" id="_dateOfMeasurement_id">
 		                    <fmt:formatDate pattern="${clinicalRecord_dateOfMeasurement_date_format}" value="${clinicalRecord.dateOfMeasurement}"/>
 		                </div>
+		                <c:if test="${clinicalRecord.dateOfMeasurement == null}">
+	                    	<br/>
+	                    </c:if>
 		            </div>
 		            <br/>
-	                    
-		            <div id="roo_clinicalRecord_weightKG">
-		                <label  class="record" for="_weightKG_id">Weight (kg):</label>
-		                <div class="box" id="_weightKG_id">
-		                    <c:out value="${clinicalRecord.weightKG}"/>
+	                <div id="roo_clinicalRecord_weightInLast12Months">
+		                <label  class="record" for="_weightInLast12Months_id"><spring:message code="record.weightInLast12Months"/></label>
+		                <div class="box" id="_weightInLast12Months_id">
+		                    <c:out value="${clinicalRecord.weightInLast12Months}"/>
 		                </div>
 		            </div>
 		            <br/>
-		            <div id="roo_clinicalRecord_weightSD">
-                        <label  class="record" for="_weightSD_id">Weight SD:</label>
-                        <div class="box" id="_weightSD_id">
-                            <c:out value="${clinicalRecord.weightSD}"/>
-                        </div>
-                    </div>
-                    <br/>
-		            <div id="roo_clinicalRecord_heightCM">
-		                <label  class="record" for="_heightCM_id">Height (cm):</label>
-		                <div class="box" id="_heightCM_id">
-		                    <c:out value="${clinicalRecord.heightCM}"/>
+		            <c:if test="${clinicalRecord.weightInLast12Months == 'YES'}">
+			            <div id="roo_clinicalRecord_weightKG">
+			                <label  class="record" for="_weightKG_id">Weight (kg):</label>
+			                <div class="box" id="_weightKG_id">
+			                    <c:out value="${clinicalRecord.weightKG}"/>
+			                </div>
+			                <c:if test="${clinicalRecord.weightKG == null}">
+		                    	<br/>
+		                    </c:if>
+			            </div>
+			            <br/>
+			            <div id="roo_clinicalRecord_weightSD">
+	                        <label  class="record" for="_weightSD_id">Weight SD:</label>
+	                        <div class="box" id="_weightSD_id">
+	                            <c:out value="${clinicalRecord.weightSD}"/>
+	                        </div>
+	                    </div>
+	                    <br/>
+			        </c:if>                  
+			        <div id="roo_clinicalRecord_heightInLast12Months">
+		                <label  class="record" for="_heightInLast12Months_id"><spring:message code="record.heightInLast12Months"/></label>
+		                <div class="box" id="_heightInLast12Months_id">
+		                    <c:out value="${clinicalRecord.heightInLast12Months}"/>
 		                </div>
-	                    <c:if test="${clinicalRecord.heightCM == null}">
-	                    	<br/>
-	                    </c:if>		                
 		            </div>
 		            <br/>
-		            <div id="roo_clinicalRecord_heightSD">
-                        <label  class="record" for="_heightSD_id">Height SD:</label>
-                        <div class="box" id="_heightSD_id">
-                            <c:out value="${clinicalRecord.heightSD}"/>
-                        </div>
-	                    <c:if test="${clinicalRecord.heightSD == null}">
-	                    	<br/>
-	                    </c:if>		                                        
-                    </div>
-                    <br/>
-                    <div id="roo_clinicalRecord_bmi">
-                        <label  class="record" for="_bmi_id">Body Mass Index:</label>
-                        <div class="box" id="_bmi_id">
-                            <c:out value="${clinicalRecord.bmi}"/>
-                        </div>
-	                    <c:if test="${clinicalRecord.bmi == null}">
-	                    	<br/>
-	                    </c:if>		                                        
-                    </div>
-                    <br/>
-                    <div id="roo_clinicalRecord_bmiSD">
-                        <label  class="record" for="_bmiSD_id">Body Mass Index SD:</label>
-                        <div class="box" id="_bmiSD_id">
-                            <c:out value="${clinicalRecord.bmiSD}"/>
-                        </div>
-                        <c:if test="${clinicalRecord.bmiSD == null}">
-	                    	<br/>
-	                    </c:if>
-                    </div>
-                    <br/>
-		            <div id="roo_clinicalRecord_bloodPressureSystolicMMHg">
-		                <label  class="record" for="_bloodPressureSystolicMMHg_id">Blood Pressure Systolic (mmHg):</label>
-		                <div class="box" id="_bloodPressureSystolicMMHg_id">
-		                    <c:out value="${clinicalRecord.bloodPressureSystolicMMHg}"/>
+		            <c:if test="${clinicalRecord.heightInLast12Months == 'YES'}">
+			            <div id="roo_clinicalRecord_heightCM">
+			                <label  class="record" for="_heightCM_id">Height (cm):</label>
+			                <div class="box" id="_heightCM_id">
+			                    <c:out value="${clinicalRecord.heightCM}"/>
+			                </div>
+		                    <c:if test="${clinicalRecord.heightCM == null}">
+		                    	<br/>
+		                    </c:if>		                
+			            </div>
+			            <br/>
+			            <div id="roo_clinicalRecord_heightSD">
+	                        <label  class="record" for="_heightSD_id">Height SD:</label>
+	                        <div class="box" id="_heightSD_id">
+	                            <c:out value="${clinicalRecord.heightSD}"/>
+	                        </div>
+		                    <c:if test="${clinicalRecord.heightSD == null}">
+		                    	<br/>
+		                    </c:if>		                                        
+	                    </div>
+	                    <br/>
+                    </c:if>
+		            <c:if test="${clinicalRecord.heightInLast12Months == 'YES' &amp;&amp; clinicalRecord.weightInLast12Months == 'YES'}">
+	                    <div id="roo_clinicalRecord_bmi">
+	                        <label  class="record" for="_bmi_id">Body Mass Index:</label>
+	                        <div class="box" id="_bmi_id">
+	                            <c:out value="${clinicalRecord.bmi}"/>
+	                        </div>
+		                    <c:if test="${clinicalRecord.bmi == null}">
+		                    	<br/>
+		                    </c:if>		                                        
+	                    </div>
+	                    <br/>
+	                    <div id="roo_clinicalRecord_bmiSD">
+	                        <label  class="record" for="_bmiSD_id">Body Mass Index SD:</label>
+	                        <div class="box" id="_bmiSD_id">
+	                            <c:out value="${clinicalRecord.bmiSD}"/>
+	                        </div>
+	                        <c:if test="${clinicalRecord.bmiSD == null}">
+		                    	<br/>
+		                    </c:if>
+	                    </div>
+	                    <br/>	                    
+                    </c:if>                    
+                    <div id="roo_clinicalRecord_BPInLast12Months">
+		                <label  class="record" for="_BPInLast12Months_id"><spring:message code="record.BPInLast12Months"/></label>
+		                <div class="box" id="_BPInLast12Months_id">
+		                    <c:out value="${clinicalRecord.BPInLast12Months}"/>
 		                </div>
-		                <c:if test="${clinicalRecord.bloodPressureSystolicMMHg == null}">
-	                    	<br/>
-	                    </c:if>
 		            </div>
 		            <br/>
-		            <div id="roo_clinicalRecord_bloodPressureSystolicSD">
-                        <label  class="record" for="_bloodPressureSystolicSD_id">Blood Pressure Systolic SD:</label>
-                        <div class="box" id="_bloodPressureSystolicSD_id">
-                            <c:out value="${clinicalRecord.bloodPressureSystolicSD}"/>
-                        </div>
-                        <c:if test="${clinicalRecord.bloodPressureSystolicSD == null}">
-	                    	<br/>
-	                    </c:if>
-                    </div>
-                    <br/>
-		            <div id="roo_clinicalRecord_bloodPressureDiastolicMMHg">
-		                <label  class="record" for="_bloodPressureDiastolicMMHg_id">Blood Pressure Diastolic (mmHg):</label>
-		                <div class="box" id="_bloodPressureDiastolicMMHg_id">
-		                    <c:out value="${clinicalRecord.bloodPressureDiastolicMMHg}"/>
-		                </div>
-		                <c:if test="${clinicalRecord.bloodPressureDiastolicMMHg == null}">
-	                    	<br/>
-	                    </c:if>
-		            </div>
-		            <br/>
-                    <div id="roo_clinicalRecord_bloodPressureDiastolicSD">
-                        <label  class="record" for="_bloodPressureDiastolicSD_id">Blood Pressure Diastolic SD:</label>
-                        <div class="box" id="_bloodPressureDiastolicSD_id">
-                            <c:out value="${clinicalRecord.bloodPressureDiastolicSD}"/>
-                        </div>
-                        <c:if test="${clinicalRecord.bloodPressureDiastolicSD == null}">
-	                    	<br/>
-	                    </c:if>
-                    </div>      
-                    <br/>                       
+					<c:if test="${clinicalRecord.BPInLast12Months == 'YES'}">
+			            <div id="roo_clinicalRecord_bloodPressureSystolicMMHg">
+			                <label  class="record" for="_bloodPressureSystolicMMHg_id">Blood Pressure Systolic (mmHg):</label>
+			                <div class="box" id="_bloodPressureSystolicMMHg_id">
+			                    <c:out value="${clinicalRecord.bloodPressureSystolicMMHg}"/>
+			                </div>
+			                <c:if test="${clinicalRecord.bloodPressureSystolicMMHg == null}">
+		                    	<br/>
+		                    </c:if>
+			            </div>
+			            <br/>
+			            <div id="roo_clinicalRecord_bloodPressureSystolicSD">
+	                        <label  class="record" for="_bloodPressureSystolicSD_id">Blood Pressure Systolic SD:</label>
+	                        <div class="box" id="_bloodPressureSystolicSD_id">
+	                            <c:out value="${clinicalRecord.bloodPressureSystolicSD}"/>
+	                        </div>
+	                        <c:if test="${clinicalRecord.bloodPressureSystolicSD == null}">
+		                    	<br/>
+		                    </c:if>
+	                    </div>
+	                    <br/>
+			            <div id="roo_clinicalRecord_bloodPressureDiastolicMMHg">
+			                <label  class="record" for="_bloodPressureDiastolicMMHg_id">Blood Pressure Diastolic (mmHg):</label>
+			                <div class="box" id="_bloodPressureDiastolicMMHg_id">
+			                    <c:out value="${clinicalRecord.bloodPressureDiastolicMMHg}"/>
+			                </div>
+			                <c:if test="${clinicalRecord.bloodPressureDiastolicMMHg == null}">
+		                    	<br/>
+		                    </c:if>
+			            </div>
+			            <br/>
+	                    <div id="roo_clinicalRecord_bloodPressureDiastolicSD">
+	                        <label  class="record" for="_bloodPressureDiastolicSD_id">Blood Pressure Diastolic SD:</label>
+	                        <div class="box" id="_bloodPressureDiastolicSD_id">
+	                            <c:out value="${clinicalRecord.bloodPressureDiastolicSD}"/>
+	                        </div>
+	                        <c:if test="${clinicalRecord.bloodPressureDiastolicSD == null}">
+		                    	<br/>
+		                    </c:if>
+	                    </div>      
+	                    <br/>     
+                    </c:if>                  
 		            <div id="roo_clinicalRecord_hasPersistentHypertension">
 		                <label  class="record" for="_hasPersistentHypertension_id">Has Persistent Hypertension:</label>
 		                <div class="box" id="_hasPersistentHypertension_id">
