@@ -172,6 +172,41 @@ public class ClinicalRecordValidator implements Validator {
 			if (record.getAppropriateGradeForAge() == null)
 				errors.rejectValue("appropriateGradeForAge", REQUIRED);
 		}
+		
+		if (record.getWeightInLast12Months() != null && record.getWeightInLast12Months().equals(YesNoType.YES))
+		{
+			if (record.getWeightKG() == null)
+				errors.rejectValue("weightKG", REQUIRED);
+		}
+		
+		if (record.getHeightInLast12Months() != null && record.getHeightInLast12Months().equals(YesNoType.YES))
+		{
+			if (record.getHeightCM() == null)
+				errors.rejectValue("heightCM", REQUIRED);
+		}
+		
+		if (record.getBPInLast12Months() != null && record.getBPInLast12Months().equals(YesNoType.YES))
+		{
+			if (record.getBloodPressureDiastolicMMHg() == null)
+				errors.rejectValue("bloodPressureDiastolicMMHg", REQUIRED);
+			if (record.getBloodPressureSystolicMMHg() == null)
+				errors.rejectValue("bloodPressureSystolicMMHg", REQUIRED);
+		}		
+		
+		// if any of the measurements are yes then date of measurement needs to be compelted
+		if ((record.getWeightInLast12Months() != null && record.getWeightInLast12Months().equals(YesNoType.YES))
+			|| (record.getHeightInLast12Months() != null && record.getHeightInLast12Months().equals(YesNoType.YES))
+			|| (record.getBPInLast12Months() != null && record.getBPInLast12Months().equals(YesNoType.YES)))
+		{
+			if (record.getDateOfMeasurement() == null)
+				errors.rejectValue("dateOfMeasurement", REQUIRED);
+		}
+		
+		String seniorPhys = record.getSeniorPhysician();
+		if (seniorPhys == null || (seniorPhys != null && seniorPhys.isEmpty()))
+		{
+			errors.rejectValue("seniorPhysician", REQUIRED);
+		}
 	}
 
 }
