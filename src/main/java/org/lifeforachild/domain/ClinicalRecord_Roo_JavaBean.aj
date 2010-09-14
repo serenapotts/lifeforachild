@@ -155,6 +155,14 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.LaserRxInLast12Months = LaserRxInLast12Months;        
     }    
     
+    public YesNoType ClinicalRecord.getWeightInLast12Months() {    
+        return this.weightInLast12Months;        
+    }    
+    
+    public void ClinicalRecord.setWeightInLast12Months(YesNoType weightInLast12Months) {    
+        this.weightInLast12Months = weightInLast12Months;        
+    }   
+    
     public Float ClinicalRecord.getWeightKG() {    
         return this.weightKG;        
     }    
@@ -163,6 +171,14 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.weightKG = weightKG;        
     }    
     
+    public YesNoType ClinicalRecord.getHeightInLast12Months() {    
+        return this.heightInLast12Months;        
+    }    
+    
+    public void ClinicalRecord.setHeightInLast12Months(YesNoType heightInLast12Months) {    
+        this.heightInLast12Months = heightInLast12Months;        
+    }   
+    
     public Integer ClinicalRecord.getHeightCM() {    
         return this.heightCM;        
     }    
@@ -170,6 +186,14 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
     public void ClinicalRecord.setHeightCM(Integer heightCM) {    
         this.heightCM = heightCM;        
     }    
+    
+    public YesNoType ClinicalRecord.getBPInLast12Months() {    
+        return this.BPInLast12Months;        
+    }    
+    
+    public void ClinicalRecord.setBPInLast12Months(YesNoType BPInLast12Months) {    
+        this.BPInLast12Months = BPInLast12Months;        
+    }   
     
     public Integer ClinicalRecord.getBloodPressureSystolicMMHg() {    
         return this.bloodPressureSystolicMMHg;        
@@ -193,14 +217,6 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
     
     public void ClinicalRecord.setDateOfMeasurement(Date dateOfMeasurement) {    
         this.dateOfMeasurement = dateOfMeasurement;        
-    }    
-    
-    public Integer ClinicalRecord.getAge() {    
-        return this.age;        
-    }    
-    
-    public void ClinicalRecord.setAge(Integer age) {    
-        this.age = age;        
     }    
     
     public YesNoUnkownType ClinicalRecord.getHasPersistentHypertension() {    
@@ -654,5 +670,6 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
     
     public void ClinicalRecord.setIsDeleted(boolean isDeleted) {    
         this.isDeleted = isDeleted;        
-    }    
+    }
+      
 }

@@ -101,15 +101,26 @@ public class ClinicalRecord {
     @NotNull(message = "is required.")
     private YesNoType LaserRxInLast12Months;
 
+    @Enumerated
     @NotNull(message = "is required.")
+    private YesNoType weightInLast12Months;
+    
     @DecimalMin(value ="3.0")
     @DecimalMax(value = "120.0")
     private Float weightKG;
 
+    @Enumerated
+    @NotNull(message = "is required.")
+    private YesNoType heightInLast12Months;
+    
     @Min(50L)
     @Max(220L)
     private Integer heightCM;
 
+    @Enumerated
+    @NotNull(message = "is required.")
+    private YesNoType BPInLast12Months;
+    
     @Min(40L)
     @Max(220L)
     private Integer bloodPressureSystolicMMHg;
@@ -118,14 +129,9 @@ public class ClinicalRecord {
     @Max(130L)
     private Integer bloodPressureDiastolicMMHg;
 
-    @NotNull(message = "is required.")
     @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(style = "S-")
     private Date dateOfMeasurement;
-
-    @Min(1L)
-    @Max(60L)
-    private Integer age;
 
     @Enumerated
     @NotNull(message = "is required.")
@@ -312,7 +318,7 @@ public class ClinicalRecord {
     
     public float calculateBMI() {
         float result = 0.0f;
-        if (heightCM != null && !heightCM.equals(new Integer(0))) {
+        if (weightKG != null && heightCM != null && !heightCM.equals(new Integer(0))) {
             result = (float) (weightKG.floatValue() / (heightCM * heightCM / 10000.0));
         }
         
@@ -322,15 +328,19 @@ public class ClinicalRecord {
     }
     
     public float calculateExactAge() {
-        return calculateAge(dateOfMeasurement, child.getDateOfBirth());
+        return calculateAge(dateOfMeasurement == null ? dateCompleted : dateOfMeasurement, child.getDateOfBirth());
     }
-
-    public float calculateInsulinPerKg() {
+ 
+    public Float calculateInsulinPerKg() {
+    	if (weightKG == null)
+    		return null;
         return insulinUnitsPerDay / weightKG;
     }
 
-    public static float calculateAge(Date date, Date dob) {
-        return (float) ((date.getTime() - dob.getTime()) / (1000 * 60 * 60 * 24 * 365.25));
+    public static Float calculateAge(Date date, Date dob) {
+    	if (date != null)
+    		return (float) ((date.getTime() - dob.getTime()) / (1000 * 60 * 60 * 24 * 365.25));
+    	return null;
     }
     
 	public Float calculateExactAgeMonths() {
@@ -344,7 +354,7 @@ public class ClinicalRecord {
 	}
     
     public Float calculateWeightSD() {
-    	if(weightKG == 0) {
+    	if(weightKG == null || weightKG == 0) {
     	    return new Float(0);
     	}
     	

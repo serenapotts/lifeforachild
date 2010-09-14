@@ -29,8 +29,7 @@ privileged aspect ClinicalRecord_Roo_ToString {
         sb.append("HeightCM: ").append(getHeightCM()).append(", ");        
         sb.append("BloodPressureSystolicMMHg: ").append(getBloodPressureSystolicMMHg()).append(", ");        
         sb.append("BloodPressureDiastolicMMHg: ").append(getBloodPressureDiastolicMMHg()).append(", ");        
-        sb.append("DateOfMeasurement: ").append(getDateOfMeasurement()).append(", ");        
-        sb.append("Age: ").append(getAge()).append(", ");        
+        sb.append("DateOfMeasurement: ").append(getDateOfMeasurement()).append(", ");               
         sb.append("HasPersistentHypertension: ").append(getHasPersistentHypertension()).append(", ");        
         sb.append("HasPubertyTannerB2_P2orGreater: ").append(getHasPubertyTannerB2_P2orGreater()).append(", ");        
         sb.append("Menarche: ").append(getMenarche()).append(", ");        
