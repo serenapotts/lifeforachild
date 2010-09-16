@@ -133,6 +133,17 @@
         <form:form action="${form_url}" method="PUT" modelAttribute="clinicalRecord">
         <spring:message code="field.invalid.date" var="field_invalid_date"/>
         <spring:message code="field.date.tooltip" var="field_date_tooltip"/>         
+        <spring:hasBindErrors name="clinicalRecord">
+	        <div id="mainErrorContainer" class="dijitContentPane dijitTabPane dijitTabContainerTop-dijitContentPane" style="width:500px;height:150px">
+	            <h3>You have errors in your input:</h3>
+	            <ul class="errors" style="margin-left: 0px">
+	             <c:forEach items="${errors.allErrors}" var="error">
+	             <li><spring:message code="${error.code}" text="${error.defaultMessage}" /></li>
+	          </c:forEach>
+	         </ul>
+	        </div>
+        </spring:hasBindErrors> 
+              
             <form:errors cssClass="errors" delimiter="&lt;p/&gt;"/>
     <div id="roo_clinicalRecord_individualId">
         <label for="_individualId_id">Individual Id:</label>
@@ -224,13 +235,13 @@
             </div>
             <br/>
             <div id="roo_clinicalRecord_adjustInsulinDoseIfNeeded">
-                <label for="_adjustInsulinDoseIfNeeded_id">Adjust Insulin Dose If Needed:</label>
-                <form:errors cssClass="errors" id="_adjustInsulinDoseIfNeeded_error_id" path="adjustInsulinDoseIfNeeded"/>
+                <label for="_adjustInsulinDoseIfNeeded_id">Adjust Insulin Dose If Needed:</label>                
                 <form:select cssStyle="width:250px" id="_adjustInsulinDoseIfNeeded_id" path="adjustInsulinDoseIfNeeded">
                 	<form:option value=""></form:option>
                 	<form:options items="${yesnotype_enum}" itemLabel="label"/>
                 </form:select>
                 <br/>
+                <form:errors cssClass="errors" id="_adjustInsulinDoseIfNeeded_error_id" path="adjustInsulinDoseIfNeeded"/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_adjustInsulinDoseIfNeeded_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
             </div>
             <br/>
@@ -264,46 +275,46 @@
             </div>
             <br/>            
             <div id="roo_clinicalRecord_longActingHuman">
-                <label for="_longActingHuman_id">Long Acting Human:</label>
-                <form:errors cssClass="errors" id="_longActingHuman_error_id" path="longActingHuman"/>
+                <label for="_longActingHuman_id">Long Acting Human:</label>                
                 <form:select cssStyle="width:250px" id="_longActingHuman_id" path="longActingHuman">
                     <form:option value=""></form:option>
                 	<form:options items="${yesnotype_enum}" itemLabel="label"/>
                 </form:select>
                 <br/>
+                <form:errors cssClass="errors" id="_longActingHuman_error_id" path="longActingHuman"/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_longActingHuman_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
             </div>
             <br/>
             <div id="roo_clinicalRecord_shortActingHuman">
-                <label for="_shortActingHuman_id">Short Acting Human:</label>
-                <form:errors cssClass="errors" id="_shortActingHuman_error_id" path="shortActingHuman"/>
+                <label for="_shortActingHuman_id">Short Acting Human:</label>                
                 <form:select cssStyle="width:250px" id="_shortActingHuman_id" path="shortActingHuman">
                     <form:option value=""></form:option>
                 	<form:options items="${yesnotype_enum}" itemLabel="label"/>
                 </form:select>
                 <br/>
+                <form:errors cssClass="errors" id="_shortActingHuman_error_id" path="shortActingHuman"/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_shortActingHuman_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
             </div>
             <br/>
             <div id="roo_clinicalRecord_analog">
-                <label for="_analog_id">Analog:</label>
-                <form:errors cssClass="errors" id="_analog_error_id" path="analog"/>
+                <label for="_analog_id">Analog:</label>                
                 <form:select cssStyle="width:250px" id="_analog_id" path="analog">
                     <form:option value=""></form:option>
                 	<form:options items="${yesnotype_enum}" itemLabel="label"/>
                 </form:select>
                 <br/>
+                <form:errors cssClass="errors" id="_analog_error_id" path="analog"/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_analog_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
             </div>
             <br/>
             <div id="roo_clinicalRecord_oralAgents">
-                <label for="_oralAgents_id">Oral Agents:</label>
-                <form:errors cssClass="errors" id="_oralAgents_error_id" path="oralAgents"/>
+                <label for="_oralAgents_id">Oral Agents:</label>                
                 <form:select cssStyle="width:250px" id="_oralAgents_id" path="oralAgents">
                     <form:option value=""></form:option>
                 	<form:options items="${yesnotype_enum}" itemLabel="label"/>
                 </form:select>
                 <br/>
+                <form:errors cssClass="errors" id="_oralAgents_error_id" path="oralAgents"/>
                 <script type="text/javascript">Spring.addDecoration(
                         new Spring.ElementDecoration({
                             elementId : '_oralAgents_id', 
@@ -349,13 +360,13 @@
             </div>
             <br/>
             <div id="roo_clinicalRecord_bpMedications">
-                <label for="_bpMedications_id">BP Medications:</label>
-                <form:errors cssClass="errors" id="_bpMedications_error_id" path="bpMedications"/>
+                <label for="_bpMedications_id">BP Medications:</label>                
                 <form:select cssStyle="width:250px" id="_bpMedications_id" path="bpMedications">
                     <form:option value=""></form:option>
                 	<form:options items="${yesnotype_enum}" itemLabel="label"/>
                 </form:select>
                 <br/>
+                <form:errors cssClass="errors" id="_bpMedications_error_id" path="bpMedications"/>
                 <script type="text/javascript">Spring.addDecoration(
                         new Spring.ElementDecoration({
                             elementId : '_bpMedications_id', 
@@ -379,13 +390,13 @@
             </div>
             <br/>
             <div id="roo_clinicalRecord_acearb">
-                <label for="_acearb_id">ACE/ARB agents:</label>
-                <form:errors cssClass="errors" id="_acearb_error_id" path="acearb"/>
+                <label for="_acearb_id">ACE/ARB agents:</label>                
                 <form:select cssStyle="width:250px" id="_acearb_id" path="acearb">
 					<form:option value=""></form:option>
                 	<form:options items="${yesnotype_enum}" itemLabel="label"/>
                 </form:select>                 
                 <br/>
+                <form:errors cssClass="errors" id="_acearb_error_id" path="acearb"/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_acearb_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
             	<br/>                
             </div>
@@ -419,13 +430,13 @@
             </div>
             <br/>
             <div id="roo_clinicalRecord_laserRxInLast12Months">
-                <label for="_laserRxInLast12Months_id">Laser Rx In Last12 Months:</label>
-                <form:errors cssClass="errors" id="_LaserRxInLast12Months_error_id" path="LaserRxInLast12Months"/>
+                <label for="_laserRxInLast12Months_id">Laser Rx In Last12 Months:</label>                
                 <form:select cssStyle="width:250px" id="_LaserRxInLast12Months_id" path="LaserRxInLast12Months">
                     <form:option value=""></form:option>
                 	<form:options items="${yesnotype_enum}" itemLabel="label"/>
                 </form:select>
                 <br/>
+                <form:errors cssClass="errors" id="_LaserRxInLast12Months_error_id" path="LaserRxInLast12Months"/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_laserRxInLast12Months_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
             </div>
             <br/>
@@ -526,10 +537,9 @@
                 <form:input cssStyle="width:250px" id="_heightCM_id" maxlength="30" path="heightCM" size="0"/>
                 <br/>
                 <form:errors cssClass="errors" id="_heightCM_error_id" path="heightCM"/>
-                <spring:message code="field.invalid.integer" var="field_invalid"/>
                 <spring:message code="field.required" var="field_required"/>
                 <spring:message argumentSeparator="," arguments="Height C M," code="field.simple.validation" var="field_validation"/>
-                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_heightCM_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', regExp: '-?[0-9]*', required : false}})); </script>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_heightCM_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}'}})); </script>
                 <br/>
             </div>
             <script type="text/javascript">Spring.addDecoration(
@@ -600,36 +610,36 @@
                         widgetType: 'dijit.layout.ContentPane'})); 
             </script> 
             <div id="roo_clinicalRecord_hasPersistentHypertension">
-                <label for="_hasPersistentHypertension_id">Has Persistent Hypertension:</label>
-                <form:errors cssClass="errors" id="_hasPersistentHypertension_error_id" path="hasPersistentHypertension"/>
+                <label for="_hasPersistentHypertension_id">Has Persistent Hypertension:</label>               
                 <form:select cssStyle="width:250px" id="_hasPersistentHypertension_id" path="hasPersistentHypertension">
                     <form:option value=""></form:option>
                 	<form:options items="${yesnounkowntype_enum}" itemLabel="label"/>
                 </form:select>
                 <br/>
+                <form:errors cssClass="errors" id="_hasPersistentHypertension_error_id" path="hasPersistentHypertension"/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_hasPersistentHypertension_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
             </div>
             <br/>
             <div id="roo_clinicalRecord_hasPubertyTannerB2_P2orGreater">
-                <label for="_hasPubertyTannerB2_P2orGreater_id">Has Puberty Tanner B2/P2 or Greater:</label>
-                <form:errors cssClass="errors" id="_hasPubertyTannerB2_P2orGreater_error_id" path="hasPubertyTannerB2_P2orGreater"/>
+                <label for="_hasPubertyTannerB2_P2orGreater_id">Has Puberty Tanner B2/P2 or Greater:</label>                
                 <form:select cssStyle="width:250px" id="_hasPubertyTannerB2_P2orGreater_id" path="hasPubertyTannerB2_P2orGreater">
                     <form:option value=""></form:option>
                 	<form:options items="${yesnounkowntype_enum}" itemLabel="label"/>
                 </form:select>
                 <br/>
+                <form:errors cssClass="errors" id="_hasPubertyTannerB2_P2orGreater_error_id" path="hasPubertyTannerB2_P2orGreater"/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_hasPubertyTannerB2_P2orGreater_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
             </div>
             <br/>
             <c:if test="${clinicalRecord.child.sex == 'FEMALE'}">
 	            <div id="roo_clinicalRecord_menarche">
-	                <label for="_menarche_id">Menarche:</label>
-	                <form:errors cssClass="errors" id="_menarche_error_id" path="menarche"/>
+	                <label for="_menarche_id">Menarche:</label>	                
 	                <form:select cssStyle="width:250px" id="_menarche_id" path="menarche">
 	                    <form:option value=""></form:option>
 	                	<form:options items="${yesnounkowntype_enum}" itemLabel="label"/>
 	                </form:select>
 	                <br/>
+	                <form:errors cssClass="errors" id="_menarche_error_id" path="menarche"/>
 	                <script type="text/javascript">Spring.addDecoration(
 	                        new Spring.ElementDecoration({
 	                            elementId : '_menarche_id', 
@@ -678,13 +688,13 @@
 		</script>	
 		<div id="eyesFeet">             
             <div id="roo_clinicalRecord_eyesExaminedInLastYear">
-                <label for="_eyesExaminedInLastYear_id">Eyes Examined In Last Year:</label>
-                <form:errors cssClass="errors" id="_eyesExaminedInLastYear_error_id" path="eyesExaminedInLastYear"/>
+                <label for="_eyesExaminedInLastYear_id">Eyes Examined In Last Year:</label>                
                 <form:select cssStyle="width:250px" id="_eyesExaminedInLastYear_id" path="eyesExaminedInLastYear">
                     <form:option value=""></form:option>
                 	<form:options items="${yesnotype_enum}" itemLabel="label"/>
                 </form:select>
                 <br/>
+                <form:errors cssClass="errors" id="_eyesExaminedInLastYear_error_id" path="eyesExaminedInLastYear"/>
                 <script type="text/javascript">Spring.addDecoration(
                         new Spring.ElementDecoration({
                             elementId : '_eyesExaminedInLastYear_id', 
@@ -711,13 +721,13 @@
             </div>
             <br/>
             <div id="roo_clinicalRecord_cateract">
-                <label for="_cateract_id">Cateract:</label>
-                <form:errors cssClass="errors" id="_cateract_error_id" path="cateract"/>
+                <label for="_cateract_id">Cateract:</label>                
                 <form:select cssStyle="width:250px" id="_cateract_id" path="cateract">
                     <form:option value=""></form:option>
                 	<form:options items="${yesnounkowntype_enum}" itemLabel="label"/>
                 </form:select>
                 <br/>
+                <form:errors cssClass="errors" id="_cateract_error_id" path="cateract"/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_cateract_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
             	<br/>                
             </div>
@@ -759,13 +769,13 @@
                         widgetType: 'dijit.layout.ContentPane'})); 
             </script>                                    
             <div id="roo_clinicalRecord_feetExaminedInLastYear">
-                <label for="_feetExaminedInLastYear_id">Feet Examined In Last Year:</label>
-                <form:errors cssClass="errors" id="_feetExaminedInLastYear_error_id" path="feetExaminedInLastYear"/>
+                <label for="_feetExaminedInLastYear_id">Feet Examined In Last Year:</label>               
                 <form:select cssStyle="width:250px" id="_feetExaminedInLastYear_id" path="feetExaminedInLastYear">
                     <form:option value=""></form:option>
                 	<form:options items="${yesnotype_enum}" itemLabel="label"/>
                 </form:select>
                 <br/>
+                <form:errors cssClass="errors" id="_feetExaminedInLastYear_error_id" path="feetExaminedInLastYear"/>
                 <script type="text/javascript">Spring.addDecoration(
                         new Spring.ElementDecoration({
                             elementId : '_feetExaminedInLastYear_id', 
@@ -789,13 +799,13 @@
             </div>
             <br/>
             <div id="roo_clinicalRecord_monofilamentTested">
-                <label for="_monofilamentTested_id">Monofilament Tested:</label>
-                <form:errors cssClass="errors" id="_monofilamentTested_error_id" path="monofilamentTested"/>
+                <label for="_monofilamentTested_id">Monofilament Tested:</label>                
                 <form:select cssStyle="width:250px" id="_monofilamentTested_id" path="monofilamentTested">
                     <form:option value=""></form:option>
                 	<form:options items="${yesnotype_enum}" itemLabel="label"/>
                 </form:select>
                 <br/>
+                <form:errors cssClass="errors" id="_monofilamentTested_error_id" path="monofilamentTested"/>
                 <script type="text/javascript">Spring.addDecoration(
                         new Spring.ElementDecoration({
                             elementId : '_monofilamentTested_id', 
@@ -822,13 +832,13 @@
                         widgetType: 'dijit.layout.ContentPane'})); 
             </script> 
             <div id="roo_clinicalRecord_monofilamentAbnormal">
-                <label for="_monofilamentAbnormal_id">Monofilament Abnormal:</label>
-                <form:errors cssClass="errors" id="_monofilamentAbnormal_error_id" path="monofilamentAbnormal"/>
+                <label for="_monofilamentAbnormal_id">Monofilament Abnormal:</label>                
                 <form:select cssStyle="width:250px" id="_monofilamentAbnormal_id" path="monofilamentAbnormal">
                     <form:option value=""></form:option>
                 	<form:options items="${yesnotype_enum}" itemLabel="label"/>
                 </form:select>
                 <br/>
+                <form:errors cssClass="errors" id="_monofilamentAbnormal_error_id" path="monofilamentAbnormal"/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_monofilamentAbnormal_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
             	<br/>                
             </div>
@@ -838,13 +848,13 @@
                         widgetType: 'dijit.layout.ContentPane'})); 
             </script> 
             <div id="roo_clinicalRecord_tuningForkTested">
-                <label for="_tuningForkTested_id">Tuning Fork Tested:</label>
-                <form:errors cssClass="errors" id="_tuningForkTested_error_id" path="tuningForkTested"/>
+                <label for="_tuningForkTested_id">Tuning Fork Tested:</label>                
                 <form:select cssStyle="width:250px" id="_tuningForkTested_id" path="tuningForkTested">
                     <form:option value=""></form:option>
                 	<form:options items="${yesnotype_enum}" itemLabel="label"/>
                 </form:select>
                 <br/>
+                <form:errors cssClass="errors" id="_tuningForkTested_error_id" path="tuningForkTested"/>
                 <script type="text/javascript">Spring.addDecoration(
                         new Spring.ElementDecoration({
                             elementId : '_tuningForkTested_id', 
@@ -871,13 +881,13 @@
                         widgetType: 'dijit.layout.ContentPane'})); 
             </script> 
             <div id="roo_clinicalRecord_tuningForkAbnormal">
-                <label for="_tuningForkAbnormal_id">Tuning Fork Abnormal:</label>
-                <form:errors cssClass="errors" id="_tuningForkAbnormal_error_id" path="tuningForkAbnormal"/>
+                <label for="_tuningForkAbnormal_id">Tuning Fork Abnormal:</label>                
                 <form:select cssStyle="width:250px" id="_tuningForkAbnormal_id" path="tuningForkAbnormal">
                     <form:option value=""></form:option>
                 	<form:options items="${yesnotype_enum}" itemLabel="label"/>
                 </form:select>
                 <br/>
+                <form:errors cssClass="errors" id="_tuningForkAbnormal_error_id" path="tuningForkAbnormal"/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_tuningForkAbnormal_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
             	<br/>                
             </div>
@@ -896,13 +906,13 @@
 		</script>				        
         <div id="labTesting">            
             <div id="roo_clinicalRecord_lastHbA1cInLast12Months">
-                <label for="_lastHbA1cInLast12Months_id"><spring:message code="record.lastHbA1c"/></label>
-                <form:errors cssClass="errors" id="_lastHbA1cInLast12Months_error_id" path="lastHbA1cInLast12Months"/>
+                <label for="_lastHbA1cInLast12Months_id"><spring:message code="record.lastHbA1c"/></label>                
                 <form:select cssStyle="width:250px" id="_lastHbA1cInLast12Months_id" path="lastHbA1cInLast12Months">
                     <form:option value=""></form:option>
                 	<form:options items="${yesnolatertype_enum}" itemLabel="label"/>
                 </form:select>
                 <br/>
+                <form:errors cssClass="errors" id="_lastHbA1cInLast12Months_error_id" path="lastHbA1cInLast12Months"/>
                 <script type="text/javascript">Spring.addDecoration(
                         new Spring.ElementDecoration({
                             elementId : '_lastHbA1cInLast12Months_id', 
@@ -946,13 +956,13 @@
                         widgetType: 'dijit.layout.ContentPane'})); 
             </script>    
             <div id="roo_clinicalRecord_hbA1cMethod">
-                <label for="_hbA1cMethod_id">HbA1c Method:</label>
-                <form:errors cssClass="errors" id="_hbA1cMethod_error_id" path="hbA1cMethod"/>
+                <label for="_hbA1cMethod_id">HbA1c Method:</label>                
                 <form:select cssStyle="width:250px" id="_hbA1cMethod_id" path="hbA1cMethod">
                     <form:option value=""></form:option>
                 	<form:options items="${hba1cmethodtype_enum}" itemLabel="label"/>
                 </form:select>
                 <br/>
+                <form:errors cssClass="errors" id="_hbA1cMethod_error_id" path="hbA1cMethod"/>
                 <script type="text/javascript">Spring.addDecoration(
                         new Spring.ElementDecoration({
                             elementId : '_hbA1cMethod_id', 
@@ -1043,10 +1053,13 @@
             </script> 
             <div id="roo_clinicalRecord_microalbuminuriaUnitOfMeasure">
                 <label for="_microalbuminuriaUnitOfMeasure_id">Microalbuminuria Unit Of Measure:</label>                
-                <form:input cssStyle="width:250px" id="_microalbuminuriaUnitOfMeasure_id" maxlength="30" path="microalbuminuriaUnitOfMeasure" size="0"/>
+                <form:select cssStyle="width:250px" id="_microalbuminuriaUnitOfMeasure_id" path="microalbuminuriaUnitOfMeasure">
+                    <form:option value=""></form:option>
+                	<form:options items="${microalbuminuriaunitstype_enum}" itemLabel="label"/>
+                </form:select>
                 <br/>
                 <form:errors cssClass="errors" id="_microalbuminuriaUnitOfMeasure_error_id" path="microalbuminuriaUnitOfMeasure"/>
-                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_microalbuminuriaUnitOfMeasure_id', widgetType: 'dijit.form.ValidationTextBox', widgetAttrs : {hasDownArrow : true}})); </script>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_microalbuminuriaUnitOfMeasure_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
             	<br/>                
             </div>
             <script type="text/javascript">Spring.addDecoration(

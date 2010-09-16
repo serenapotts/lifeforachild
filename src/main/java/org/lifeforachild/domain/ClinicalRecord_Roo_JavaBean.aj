@@ -179,11 +179,11 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.heightInLast12Months = heightInLast12Months;        
     }   
     
-    public Integer ClinicalRecord.getHeightCM() {    
+    public Float ClinicalRecord.getHeightCM() {    
         return this.heightCM;        
     }    
     
-    public void ClinicalRecord.setHeightCM(Integer heightCM) {    
+    public void ClinicalRecord.setHeightCM(Float heightCM) {    
         this.heightCM = heightCM;        
     }    
     
@@ -363,19 +363,19 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.microalbuminuriaInLast12Months = microalbuminuriaInLast12Months;        
     } 
     
-    public Float ClinicalRecord.getMicroalbuminuriaValue() {    
+    public String ClinicalRecord.getMicroalbuminuriaValue() {    
         return this.microalbuminuriaValue;        
     }    
     
-    public void ClinicalRecord.setMicroalbuminuriaValue(Float microalbuminuriaValue) {    
+    public void ClinicalRecord.setMicroalbuminuriaValue(String microalbuminuriaValue) {    
         this.microalbuminuriaValue = microalbuminuriaValue;        
     }    
     
-    public String ClinicalRecord.getMicroalbuminuriaUnitOfMeasure() {    
+    public MicroalbuminuriaUnitsType ClinicalRecord.getMicroalbuminuriaUnitOfMeasure() {    
         return this.microalbuminuriaUnitOfMeasure;        
     }    
     
-    public void ClinicalRecord.setMicroalbuminuriaUnitOfMeasure(String microalbuminuriaUnitOfMeasure) {    
+    public void ClinicalRecord.setMicroalbuminuriaUnitOfMeasure(MicroalbuminuriaUnitsType microalbuminuriaUnitOfMeasure) {    
         this.microalbuminuriaUnitOfMeasure = microalbuminuriaUnitOfMeasure;        
     }    
     

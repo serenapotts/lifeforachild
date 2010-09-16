@@ -12,7 +12,6 @@ import org.springframework.validation.Validator;
 
 public class ClinicalRecordValidator implements Validator {
 
-	public static String REQUIRED = "field.required";
 	@Override
 	public boolean supports(Class<?> clazz) {
 		// TODO Auto-generated method stub
@@ -28,7 +27,7 @@ public class ClinicalRecordValidator implements Validator {
 		{
 			// number injections mandatory when units greater than zero
 			if (record.getNumberOfInsulinInjectionsPerDay() == null)
-				errors.rejectValue("numberOfInsulinInjectionsPerDay", REQUIRED);
+				errors.rejectValue("numberOfInsulinInjectionsPerDay", "numberOfInsulinInjectionsPerDay.required");
 		}
 		
 		Integer numInjs = record.getNumberOfInsulinInjectionsPerDay();
@@ -36,11 +35,11 @@ public class ClinicalRecordValidator implements Validator {
 		{
 			// mandatory when number injections is greater than zero
 			if (record.getLongActingHuman() == null)
-				errors.rejectValue("longActingHuman", REQUIRED);
+				errors.rejectValue("longActingHuman", "longActingHuman.required");
 			if (record.getShortActingHuman() == null)
-				errors.rejectValue("shortActingHuman", REQUIRED);
+				errors.rejectValue("shortActingHuman", "shortActingHuman.required");
 			if (record.getAnalog() == null)
-				errors.rejectValue("analog", REQUIRED);
+				errors.rejectValue("analog", "analog.required");
 		}	
 		
 		Child child = record.getChild(); 		
@@ -48,24 +47,25 @@ public class ClinicalRecordValidator implements Validator {
 		{
 			// menarche is mandatory if child is female
 			if (record.getMenarche() == null)
-				errors.rejectValue("menarche", REQUIRED);
+				errors.rejectValue("menarche", "menarche.required");
 			else if (record.getMenarche().equals(YesNoUnkownType.YES) && record.getIfMenarcheAge() == null)
-				errors.rejectValue("ifMenarcheAge", REQUIRED);				
+				errors.rejectValue("ifMenarcheAge", "ifMenarcheAge.required");				
 		}
 		
-		if (record.getOralAgents() != null && (record.getOralAgentsDescription() == null
+		if (record.getOralAgents() != null && record.getOralAgents().equals(YesNoType.YES) 
+				&& (record.getOralAgentsDescription() == null
 			|| (record.getOralAgentsDescription() != null && record.getOralAgentsDescription().isEmpty())))
 			// if completed description required
-			errors.rejectValue("oralAgentsDescription", REQUIRED);
+			errors.rejectValue("oralAgentsDescription", "oralAgentsDescription.required");
 			
 		if (record.getBpMedications() != null && record.getBpMedications().equals(YesNoType.YES))
 		{
 			// when BP meds is yes these are required
 			if(record.getAcearb() == null)
-				errors.rejectValue("acearb", REQUIRED);
+				errors.rejectValue("acearb", "acearb.required");
 			if(record.getBpMedicationsOther() == null 
 					|| (record.getBpMedicationsOther() != null && record.getBpMedicationsOther().isEmpty()))
-				errors.rejectValue("bpMedicationsOther", REQUIRED);
+				errors.rejectValue("bpMedicationsOther", "bpMedicationsOther.required");
 		}
 		
 		if (record.getEyesExaminedInLastYear() != null 
@@ -73,7 +73,7 @@ public class ClinicalRecordValidator implements Validator {
 		{
 			// if eyes examined then cateract required
 			if (record.getCateract() == null)
-				errors.rejectValue("cateract", REQUIRED);
+				errors.rejectValue("cateract", "cateract.required");
 		}
 		
 		if (record.getFeetExaminedInLastYear() != null
@@ -81,41 +81,41 @@ public class ClinicalRecordValidator implements Validator {
 		{
 			// if feet examined monofilament required
 			if (record.getMonofilamentTested() == null)
-				errors.rejectValue("monofilamentTested", REQUIRED);
+				errors.rejectValue("monofilamentTested", "monofilamentTested.required");
 			else if (record.getMonofilamentTested().equals(YesNoType.YES) 
 					&& record.getMonofilamentAbnormal() == null)
-				errors.rejectValue("monofilamentAbnormal", REQUIRED);		
+				errors.rejectValue("monofilamentAbnormal", "monofilamentAbnormal.required");		
 			
 			// if feet examined tuning fork required
 			if (record.getTuningForkTested() == null)
-				errors.rejectValue("tuningForkTested", REQUIRED);
+				errors.rejectValue("tuningForkTested", "tuningForkTested.required");
 			else if (record.getTuningForkTested().equals(YesNoType.YES) 
 					&& record.getTuningForkAbnormal() == null)
-				errors.rejectValue("tuningForkAbnormal", REQUIRED);				
+				errors.rejectValue("tuningForkAbnormal", "tuningForkAbnormal.required");				
 		}
 		
 		if (record.getLastHbA1cInLast12Months() != null 
 				&& record.getLastHbA1cInLast12Months().equals(YesNoType.YES))
 		{
 			if (record.getHbA1cPercentage() == null)
-				errors.rejectValue("hbA1cPercentage", REQUIRED);	
+				errors.rejectValue("hbA1cPercentage", "hbA1cPercentage.required");	
 			if (record.getHbA1cMethod() == null)
-				errors.rejectValue("hbA1cMethod", REQUIRED);
+				errors.rejectValue("hbA1cMethod", "hbA1cMethod.required");
 			else if (record.getHbA1cMethod().equals(HbA1cMethodType.OTHER) 
 					&& (record.getHbA1cMethodOther() == null 
 					|| (record.getHbA1cMethodOther() != null && record.getHbA1cMethodOther().isEmpty())))
-				errors.rejectValue("hbA1cMethodOther", REQUIRED);
+				errors.rejectValue("hbA1cMethodOther", "hbA1cMethodOther.required");
 		}
 		
 		if (record.getMicroalbuminuriaInLast12Months() != null 
 				&& record.getMicroalbuminuriaInLast12Months().equals(YesNoLaterType.YES))
 		{
 			// if micro yes then need to complete value and units
-			if (record.getMicroalbuminuriaValue() == null)
-				errors.rejectValue("microalbuminuriaValue", REQUIRED);
-			if (record.getMicroalbuminuriaUnitOfMeasure() == null
-					|| (record.getMicroalbuminuriaUnitOfMeasure() != null && record.getMicroalbuminuriaUnitOfMeasure().isEmpty()))
-				errors.rejectValue("microalbuminuriaUnitOfMeasure", REQUIRED);
+			if (record.getMicroalbuminuriaValue() == null
+					|| (record.getMicroalbuminuriaValue() != null && record.getMicroalbuminuriaValue().isEmpty()))
+				errors.rejectValue("microalbuminuriaValue", "microalbuminuriaValue.required");
+			if (record.getMicroalbuminuriaUnitOfMeasure() == null)
+				errors.rejectValue("microalbuminuriaUnitOfMeasure", "microalbuminuriaUnitOfMeasure.required");
 		}
 		
 		if (record.getCreatinineInLast12Months() != null 
@@ -123,9 +123,9 @@ public class ClinicalRecordValidator implements Validator {
 		{
 			// if creatinine yes then need to complete value and units
 			if (record.getCreatinineValue() == null)
-				errors.rejectValue("creatinineValue", REQUIRED);
+				errors.rejectValue("creatinineValue", "creatinineValue.required");
 			if (record.getCreatinineUnits() == null)
-				errors.rejectValue("creatinineUnits", REQUIRED);
+				errors.rejectValue("creatinineUnits", "creatinineUnits.required");
 		}		
 		
 		if (record.getTotalCholesterolInLast12Months() != null 
@@ -133,11 +133,11 @@ public class ClinicalRecordValidator implements Validator {
 		{
 			// if Cholesterol yes then need to complete value and units
 			if (record.getTotalCholesterolValue() == null)
-				errors.rejectValue("totalCholesterolValue", REQUIRED);
+				errors.rejectValue("totalCholesterolValue", "cholesterolValue.required");
 			if (record.getCholesterolUnits() == null)
-				errors.rejectValue("cholesterolUnits", REQUIRED);
+				errors.rejectValue("cholesterolUnits", "cholesterolUnits.required");
 			if (record.getFasted() == null)
-				errors.rejectValue("fasted", REQUIRED);
+				errors.rejectValue("fasted", "fasted.required");
 		}
 		
 		if (record.getHdlCholesterolInLast12Months() != null 
@@ -145,9 +145,9 @@ public class ClinicalRecordValidator implements Validator {
 		{
 			// if HDL holesterol yes then need to complete value and units
 			if (record.getHdlCholesterolValue() == null)
-				errors.rejectValue("hdlCholesterolValue", REQUIRED);
+				errors.rejectValue("hdlCholesterolValue", "hdlCholesterolValue.required");
 			if (record.getHdlUnits() == null)
-				errors.rejectValue("hdlUnits", REQUIRED);
+				errors.rejectValue("hdlUnits", "hdlUnits.required");
 		}	
 		
 		if (record.getTriglyceridesInLast12Months() != null 
@@ -155,42 +155,42 @@ public class ClinicalRecordValidator implements Validator {
 		{
 			// if Triglycerides yes then need to complete value and units
 			if (record.getTriglyceridesValue() == null)
-				errors.rejectValue("triglyceridesValue", REQUIRED);
+				errors.rejectValue("triglyceridesValue", "triglyceridesValue.required");
 			if (record.getTriglyceridesUnits() == null)
-				errors.rejectValue("triglyceridesUnits", REQUIRED);
+				errors.rejectValue("triglyceridesUnits", "triglyceridesUnits.required");
 		}
 		
 		if (record.getAttendingSchool() != null && record.getAttendingSchool().equals(YesNoType.NO))
 		{
 			if (record.getNotAttendingSchoolWhy() == null)
-				errors.rejectValue("notAttendingSchoolWhy", REQUIRED);
+				errors.rejectValue("notAttendingSchoolWhy", "notAttendingSchoolWhy.required");
 		}
 		if (record.getAttendingSchool() != null && record.getAttendingSchool().equals(YesNoType.YES))
 		{
 			if (record.getDiabetesLimitingAttendance() == null)
-				errors.rejectValue("diabetesLimitingAttendance", REQUIRED);
+				errors.rejectValue("diabetesLimitingAttendance", "diabetesLimitAttend.required");
 			if (record.getAppropriateGradeForAge() == null)
-				errors.rejectValue("appropriateGradeForAge", REQUIRED);
+				errors.rejectValue("appropriateGradeForAge", "appAgeForGrade.required");
 		}
 		
 		if (record.getWeightInLast12Months() != null && record.getWeightInLast12Months().equals(YesNoType.YES))
 		{
 			if (record.getWeightKG() == null)
-				errors.rejectValue("weightKG", REQUIRED);
+				errors.rejectValue("weightKG", "weight.required");
 		}
 		
 		if (record.getHeightInLast12Months() != null && record.getHeightInLast12Months().equals(YesNoType.YES))
 		{
 			if (record.getHeightCM() == null)
-				errors.rejectValue("heightCM", REQUIRED);
+				errors.rejectValue("heightCM", "height.required");
 		}
 		
 		if (record.getBPInLast12Months() != null && record.getBPInLast12Months().equals(YesNoType.YES))
 		{
 			if (record.getBloodPressureDiastolicMMHg() == null)
-				errors.rejectValue("bloodPressureDiastolicMMHg", REQUIRED);
+				errors.rejectValue("bloodPressureDiastolicMMHg", "bpdiastolic.required");
 			if (record.getBloodPressureSystolicMMHg() == null)
-				errors.rejectValue("bloodPressureSystolicMMHg", REQUIRED);
+				errors.rejectValue("bloodPressureSystolicMMHg", "bpsystolic.required");
 		}		
 		
 		// if any of the measurements are yes then date of measurement needs to be compelted
@@ -199,13 +199,13 @@ public class ClinicalRecordValidator implements Validator {
 			|| (record.getBPInLast12Months() != null && record.getBPInLast12Months().equals(YesNoType.YES)))
 		{
 			if (record.getDateOfMeasurement() == null)
-				errors.rejectValue("dateOfMeasurement", REQUIRED);
+				errors.rejectValue("dateOfMeasurement", "dom.required");
 		}
 		
 		String seniorPhys = record.getSeniorPhysician();
 		if (seniorPhys == null || (seniorPhys != null && seniorPhys.isEmpty()))
 		{
-			errors.rejectValue("seniorPhysician", REQUIRED);
+			errors.rejectValue("seniorPhysician", "seniorPhysician.required");
 		}
 	}
 

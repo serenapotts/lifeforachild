@@ -143,7 +143,7 @@
                    <h3>You have errors in your input:</h3>
                    <ul class="errors" style="margin-left: 0px">
                     <c:forEach items="${errors.allErrors}" var="error">
-	                   <li><spring:message code="${error.code}" text="${error.field} ${error.defaultMessage}" /></li>
+	                   <li><spring:message code="${error.code}" text="${error.defaultMessage}" /></li>
 	                </c:forEach>
                 </ul>
                </div>
@@ -581,10 +581,9 @@
                 <form:input cssStyle="width:250px" id="_heightCM_id" maxlength="30" path="heightCM" size="0"/>
                 <br/>
                 <form:errors cssClass="errors" id="_heightCM_error_id" path="heightCM"/>
-                <spring:message code="field.invalid.integer" var="field_invalid"/>
                 <spring:message code="field.required" var="field_required"/>
                 <spring:message argumentSeparator="," arguments="Height C M," code="field.simple.validation" var="field_validation"/>
-                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_heightCM_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', regExp: '-?[0-9]*', required : false}})); </script>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_heightCM_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}'}})); </script>
                 <br/>
             </div>
             <script type="text/javascript">Spring.addDecoration(
@@ -1130,11 +1129,14 @@
             </script>             
             <div id="roo_clinicalRecord_microalbuminuriaUnitOfMeasure">
                 <label for="_microalbuminuriaUnitOfMeasure_id">Microalbuminuria Unit Of Measure:</label>
-                <form:input cssStyle="width:250px" id="_microalbuminuriaUnitOfMeasure_id" maxlength="30" path="microalbuminuriaUnitOfMeasure" size="0"/>               
+                <form:select cssStyle="width:250px" id="_microalbuminuriaUnitOfMeasure_id" path="microalbuminuriaUnitOfMeasure">
+                    <form:option value=""></form:option>
+                	<form:options items="${microalbuminuriaunitstype_enum}" itemLabel="label"/>
+                </form:select>               
                 <br/>
                 <form:errors cssClass="errors" id="_microalbuminuriaUnitOfMeasure_error_id" path="microalbuminuriaUnitOfMeasure"/>
                 <spring:bind path="clinicalRecord.microalbuminuriaUnitOfMeasure"><c:if test="${status.error}"><script type="text/javascript">labTestingHasError = true;</script></c:if></spring:bind>
-                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_microalbuminuriaUnitOfMeasure_id', widgetType: 'dijit.form.ValidationTextBox', widgetAttrs : {hasDownArrow : true}})); </script>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_microalbuminuriaUnitOfMeasure_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
             	<br/>                
             </div>
             <script type="text/javascript">Spring.addDecoration(
