@@ -212,7 +212,6 @@ privileged aspect ClinicalRecordController_Roo_Controller {
     	Errors errors = new BindException(result);
     	ClinicalRecordValidator validator = new ClinicalRecordValidator();
     	validator.validate(clinicalRecord, errors);
-    	//result.addAllErrors(errors);
     }
     
 }
