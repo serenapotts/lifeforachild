@@ -117,7 +117,7 @@ public class ClinicalRecord {
     private Float heightCM;
 
     @Enumerated
-    @NotNull(message = "BP last 12 monthsis required.")
+    @NotNull(message = "BP last 12 months is required.")
     private YesNoType BPInLast12Months;
     
     @Min(40L)

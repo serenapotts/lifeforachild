@@ -1,7 +1,44 @@
 <div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:form="http://www.springframework.org/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
-    <jsp:output omit-xml-declaration="yes"/>
-	<script type="text/javascript" src="/lifeforachild/static/js/unsaved.js"/>    
-    <script type="text/javascript">dojo.require('dijit.TitlePane');dojo.require('dijit.form.FilteringSelect');dojo.require('dijit.form.DateTextBox');dojo.require('dijit.form.SimpleTextarea');</script>
+    <jsp:output omit-xml-declaration="yes"/>  
+    <script type="text/javascript">
+    	dojo.require('dijit.TitlePane');
+    	dojo.require('dijit.form.FilteringSelect');
+    	dojo.require('dijit.form.DateTextBox');
+    	dojo.require('dijit.form.SimpleTextarea');
+
+    	dojo.addOnLoad(
+			function(){
+				if (dijit.byId("_survivalStatus_id").value != 'DEAD')
+			  	{
+				  	// hide death values as not dead
+					dojo.style(dijit.byId("roo_child_dateOfDeath").domNode, "display", "none");
+					dojo.style(dijit.byId("roo_child_causeOfDeath").domNode, "display", "none");
+					dojo.style(dijit.byId("roo_child_causeOfDeathOther").domNode, "display", "none");				  
+			  	}
+				else if (dijit.byId("_causeOfDeath_id").value != 'OTHER_DIABETES_RELATED_CONDITION')
+				{
+					// hide death other as other not selected
+					dojo.style(dijit.byId("roo_child_causeOfDeathOther").domNode, "display", "none");
+				}
+
+				if (dijit.byId("_diabetesType_id").value != 'OTHER')
+			  	{
+					dojo.style(dijit.byId("roo_child_diabetesTypeOther").domNode, "display", "none");
+			  	}
+			}
+		);  
+
+		function unloadMess(){
+		    mess = "You haven't saved yet!"
+		    return mess;
+		}
+	
+		function setBunload(on){
+		    window.onbeforeunload = (on) ? unloadMess : null;
+		}
+	
+		setBunload(true);    	
+    </script>
     <div id="_title_div">
         <spring:message code="label.child" var="entity_label"/>
         <spring:message arguments="${entity_label}" code="entity.create" var="title_msg"/>
@@ -120,7 +157,7 @@
 				</script>
             </div>           
             <br/>
-            <div id="roo_child_dateOfDeath" style="display:none">
+            <div id="roo_child_dateOfDeath">
                 <label for="_dateOfDeath_id"><spring:message code="child.dateOfDeath"/></label>
                 <form:input cssStyle="width:250px" id="_dateOfDeath_id" maxlength="30" path="dateOfDeath" size="0"/>
                 <br/>
@@ -136,7 +173,7 @@
                         elementId : 'roo_child_dateOfDeath', 
                         widgetType: 'dijit.layout.ContentPane'})); 
             </script>             
-            <div id="roo_child_causeOfDeath" style="display:none">
+            <div id="roo_child_causeOfDeath">
                 <label for="_causeOfDeath_id"><spring:message code="child.causeOfDeath"/></label>
                 <form:select cssStyle="width:250px" id="_causeOfDeath_id" path="causeOfDeath">
                 	<form:option value=""></form:option>
@@ -168,7 +205,7 @@
                         elementId : 'roo_child_causeOfDeath', 
                         widgetType: 'dijit.layout.ContentPane'})); 
             </script>             
-            <div id="roo_child_causeOfDeathOther" style="display:none">
+            <div id="roo_child_causeOfDeathOther">
                 <label for="_causeOfDeathOther_id"><spring:message code="child.causeOfDeathOther"/></label>
                 <form:textarea cssStyle="width:250px" id="_causeOfDeathOther_id" path="causeOfDeathOther"/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_causeOfDeathOther_id', widgetType: 'dijit.form.SimpleTextarea', widgetAttrs: {}})); </script>
@@ -253,7 +290,7 @@
                 </script>
             </div>
             <br/>
-            <div id="roo_child_diabetesTypeOther" style="display:none">
+            <div id="roo_child_diabetesTypeOther">
                 <label for="_diabetesTypeOther_id"><spring:message code="child.diabetesTypeOther"/></label>
                 <form:textarea cssStyle="width:250px" id="_diabetesTypeOther_id" path="diabetesTypeOther"/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_diabetesTypeOther_id', widgetType: 'dijit.form.SimpleTextarea', widgetAttrs: {}})); </script>
