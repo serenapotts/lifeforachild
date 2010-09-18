@@ -15,6 +15,7 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.Length;
 import org.lifeforachild.web.query.ChildQuery;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.roo.addon.entity.RooEntity;
@@ -48,15 +49,15 @@ public class Child {
 	private String individualId;
 	
 	@NotNull
-    @Size(min = 1)
+    @Length(min = 1, max = 255)
     private String initials;
     
     @NotNull
-    @Size(max = 30)
+    @Length(max = 30)
     private String name;
     
     @NotNull
-    @Size(max = 30)
+    @Length(max = 30)
     private String lastName;
     
 	@ManyToOne
@@ -65,7 +66,7 @@ public class Child {
 	@ManyToOne
 	DiabetesCentre centre;    
 
-    @Size(max = 20)
+	@Length(max = 20)
     private String ethnicGroup;
 
     @Enumerated
@@ -83,7 +84,7 @@ public class Child {
     @Enumerated
     private CauseOfDeathType causeOfDeath;
 
-    @Size(max = 60)
+    @Length(max = 60)
     private String causeOfDeathOther;
 
     @NotNull
@@ -110,7 +111,7 @@ public class Child {
     private DiabetesType diabetesType;
 
     @NotNull
-    @Size(max = 60)
+    @Length(max = 60)
     private String diabetesTypeOther;
 
     @NotNull
