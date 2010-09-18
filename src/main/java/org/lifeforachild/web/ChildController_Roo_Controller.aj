@@ -22,13 +22,17 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.lifeforachild.web.validation.ChildValidator;
+import org.springframework.validation.BindException;
+import org.springframework.validation.Errors;
 
 privileged aspect ChildController_Roo_Controller {
     
     @RequestMapping(value = "/child", method = RequestMethod.POST)    
     public String ChildController.create(@Valid Child child, BindingResult result, ModelMap modelMap) { 
     	SecurityUtil.getInstance().checkPermission(Permissions.CREATE_CHILD);
-        if (child == null) throw new IllegalArgumentException("A child is required");        
+        if (child == null) throw new IllegalArgumentException("A child is required"); 
+        validate(result, child);
         if (result.hasErrors()) {        
             modelMap.addAttribute("child", child);            
             modelMap.addAttribute("causeofdeathtype_enum", CauseOfDeathType.class.getEnumConstants());            
@@ -124,7 +128,8 @@ privileged aspect ChildController_Roo_Controller {
     @RequestMapping(method = RequestMethod.PUT)    
     public String ChildController.update(@Valid Child child, BindingResult result, ModelMap modelMap) {  
     	SecurityUtil.getInstance().checkPermission(Permissions.EDIT_CHILD);
-        if (child == null) throw new IllegalArgumentException("A child is required");        
+        if (child == null) throw new IllegalArgumentException("A child is required");   
+        validate(result, child);
         if (result.hasErrors()) {        
             modelMap.addAttribute("child", child);            
             modelMap.addAttribute("causeofdeathtype_enum", CauseOfDeathType.class.getEnumConstants());            
@@ -185,5 +190,11 @@ privileged aspect ChildController_Roo_Controller {
         child.persist();
         return "redirect:/child?page=" + ((page == null) ? "1" : page.toString()) + "&size=" + ((size == null) ? "10" : size.toString());        
     }    
+    
+	public void ChildController.validate(BindingResult result, Child child) {
+		Errors errors = new BindException(result);
+		ChildValidator validator = new ChildValidator();
+		validator.validate(child, errors);
+	}    
     
 }
