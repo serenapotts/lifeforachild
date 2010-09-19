@@ -3,8 +3,11 @@ package org.lifeforachild.web;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.text.ParseException;
+import java.text.DecimalFormat;
 import java.util.Calendar;
 
+import org.lifeforachild.domain.Child;
+import org.lifeforachild.domain.ClinicalRecord;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,19 +17,25 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class AgeController {
 	
-	@RequestMapping("/ajax/age/{measureDate}/{dob}")
-	public @ResponseBody String calculateAge(@PathVariable String measureDate, @PathVariable String dob) {
-		// TODO make this locale independent
-		try {
-		SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy");
-		Date measDate = dateFormat.parse(measureDate);
-		Date dobDate = dateFormat.parse(dob);
+	@RequestMapping("/ajax/age/{measureDate}/{childId}")
+	public @ResponseBody String calculateAge(@PathVariable String measureDate, @PathVariable String childId) {
 		
-		// Just after years so daylight saving won't make a hugh difference
-			return Integer.toString((int)((measDate.getTime() - dobDate.getTime())/(1000*60*60*24*365.25)));
-		}catch(ParseException e) {
-			return "";
+		try {
+		Child child = Child.findChild(Long.parseLong(childId));
+		if (child != null)
+		{
+			Date dobDate = child.getDateOfBirth();
+			
+			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+			Date measDate = dateFormat.parse(measureDate);
+			
+			// Just after years so daylight saving won't make a huge difference
+			return new DecimalFormat("0.##").format(ClinicalRecord.calculateAge(measDate, dobDate));
 		}
+		}catch(ParseException e) {
+			return e.getMessage();
+		}
+		return "";
 	}
 
 }

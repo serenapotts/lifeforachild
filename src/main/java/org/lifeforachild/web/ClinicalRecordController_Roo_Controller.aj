@@ -59,6 +59,7 @@ privileged aspect ClinicalRecordController_Roo_Controller {
             modelMap.addAttribute("clinicalRecord_dateCompleted_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));            
             return "clinicalrecord/create";            
         }        
+        // still set age in case click update without clicking out of dom field
         clinicalRecord.setExactAge(clinicalRecord.calculateExactAge());
         clinicalRecord.setExactAgeMonths(clinicalRecord.calculateExactAgeMonths());
         
