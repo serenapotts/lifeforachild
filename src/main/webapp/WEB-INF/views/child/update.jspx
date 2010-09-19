@@ -26,18 +26,7 @@
 					dojo.style(dijit.byId("roo_child_diabetesTypeOther").domNode, "display", "none");
 			  	}
 			}
-		);    		
-
-		function unloadMess(){
-		    mess = "You haven't saved yet!"
-		    return mess;
-		}
-	
-		function setBunload(on){
-		    window.onbeforeunload = (on) ? unloadMess : null;
-		}
-	
-		setBunload(true);
+		);
     </script>
     <div id="_title_div">
         <spring:message code="label.child" var="entity_label"/>
