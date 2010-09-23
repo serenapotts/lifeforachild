@@ -30,7 +30,7 @@
 	                </li>
                 </sec:authorize>
             	<li id="web_mvc_jsp_list_child_menu_item">
-                    <spring:url value="/child?size=${empty param.size ? 10 : param.size}" var="web_mvc_jsp_list_child_menu_item_url"/>
+                    <spring:url value="/child?size=${empty param.size ? 20 : param.size}" var="web_mvc_jsp_list_child_menu_item_url"/>
                     <a href="${web_mvc_jsp_list_child_menu_item_url}">
                         <spring:message code="label.children" var="label_children"/>
                         <spring:message arguments="${label_children}" code="global.menu.list"/>
@@ -52,7 +52,7 @@
 	                    </a>
 	                </li>
 	            <li id="web_mvc_jsp_list_country_menu_item">
-	                    <spring:url value="/country?size=${empty param.size ? 10 : param.size}" var="web_mvc_jsp_list_country_menu_item_url"/>
+	                    <spring:url value="/country?size=${empty param.size ? 20 : param.size}" var="web_mvc_jsp_list_country_menu_item_url"/>
 	                    <a href="${web_mvc_jsp_list_country_menu_item_url}">
 	                        <spring:message code="label.countrys" var="label_countrys"/>
 	                        <spring:message code="country.menu.list"/>
@@ -75,7 +75,7 @@
 	                    </a>
 	                </li>
 	            <li id="web_mvc_jsp_list_diabetescentre_menu_item">
-	                    <spring:url value="/diabetescentre?size=${empty param.size ? 10 : param.size}" var="web_mvc_jsp_list_diabetescentre_menu_item_url"/>
+	                    <spring:url value="/diabetescentre?size=${empty param.size ? 20 : param.size}" var="web_mvc_jsp_list_diabetescentre_menu_item_url"/>
 	                    <a href="${web_mvc_jsp_list_diabetescentre_menu_item_url}">
 	                        <spring:message code="label.diabetescentres" var="label_diabetescentres"/>
 	                        <spring:message arguments="${label_diabetescentres}" code="global.menu.list"/>
@@ -100,7 +100,7 @@
 		                </li>
 	                </sec:authorize>
 	            <li id="web_mvc_jsp_list_report_menu_item">
-	                    <spring:url value="/report?size=${empty param.size ? 10 : param.size}" var="web_mvc_jsp_list_report_menu_item_url"/>
+	                    <spring:url value="/report?size=${empty param.size ? 20 : param.size}" var="web_mvc_jsp_list_report_menu_item_url"/>
 	                    <a href="${web_mvc_jsp_list_report_menu_item_url}">
 	                        <spring:message code="label.reports" var="label_reports"/>
 	                        <spring:message arguments="${label_reports}" code="global.menu.list"/>
@@ -123,7 +123,7 @@
 	                    </a>
 	                </li>
 	            <li id="web_mvc_jsp_list_user_menu_item">
-	                    <spring:url value="/user?size=${empty param.size ? 10 : param.size}" var="web_mvc_jsp_list_user_menu_item_url"/>
+	                    <spring:url value="/user?size=${empty param.size ? 20 : param.size}" var="web_mvc_jsp_list_user_menu_item_url"/>
 	                    <a href="${web_mvc_jsp_list_user_menu_item_url}">
 	                        <spring:message code="label.users" var="label_users"/>
 	                        <spring:message arguments="${label_users}" code="global.menu.list"/>
@@ -146,7 +146,7 @@
 	                    </a>
 	                </li>
 	            <li id="web_mvc_jsp_list_usergroup_menu_item">
-	                    <spring:url value="/usergroup?size=${empty param.size ? 10 : param.size}" var="web_mvc_jsp_list_usergroup_menu_item_url"/>
+	                    <spring:url value="/usergroup?size=${empty param.size ? 20 : param.size}" var="web_mvc_jsp_list_usergroup_menu_item_url"/>
 	                    <a href="${web_mvc_jsp_list_usergroup_menu_item_url}">
 	                        <spring:message code="label.usergroups" var="label_usergroups"/>
 	                        <spring:message arguments="${label_usergroups}" code="global.menu.list"/>
