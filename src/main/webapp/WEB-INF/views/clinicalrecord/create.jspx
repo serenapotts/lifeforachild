@@ -157,7 +157,7 @@
             	updates, otherwise doing a diff is pretty well impossible.
             	========================================================================= -->
     <div id="roo_clinicalRecord_individualId">
-        <label for="_individualId_id">Individual Id:</label>
+        <label for="_individualId_id"><spring:message code="child.individualId"/></label>
         <div class="box" id="_individualId_id">
             <c:out value="${clinicalRecord.child.individualId}"/>
         </div>
