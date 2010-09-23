@@ -5,7 +5,7 @@ public enum ClinicalRecordFields {
     DIABETES_CARE("Diabetes Care"), 
     TYPES_INSULIN("Types of Insulin"), 
     CLINICAL_MEASURES("Clinical Measures"), 
-    PEBERTAL_STATUS("Perbertal Status"), 
+    PEBERTAL_STATUS("Pubertal Status"), 
     EYES("Eyes"), FEET("Feet"), 
     LAB_TESTING("Lab Testing"), 
     SCHOOL_STATUS("School Status"), 
