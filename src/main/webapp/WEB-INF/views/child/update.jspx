@@ -341,6 +341,7 @@
 		                    <tr>
 		                        <th><spring:message code="record.id"/></th>
 		                        <th><spring:message code="record.dateCompleted"/></th>
+		                        <th><spring:message code="record.dateOfMeasurement"/></th>
 		                        <th><spring:message code="record.personCompletedBy"/></th>
 		                        <th/>
                         		<th/>		                        
@@ -351,6 +352,9 @@
 		                        <td>${clinicalRecord.id}</td>
 		                        <td>
 		                            <fmt:formatDate pattern="${clinicalRecord_dateCompleted_date_format}" value="${clinicalRecord.dateCompleted}"/>
+		                        </td>
+		                        <td>
+		                            <fmt:formatDate pattern="${clinicalRecord_dateCompleted_date_format}" value="${clinicalRecord.dateOfMeasurement}"/>
 		                        </td>
 		                        <td>
 		                        	<c:out value="${clinicalRecord.personCompletingForm}"/>
