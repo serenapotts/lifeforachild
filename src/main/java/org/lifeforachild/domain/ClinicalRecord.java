@@ -256,12 +256,14 @@ public class ClinicalRecord {
 
     @Min(0L)
     @Max(20L)
+    @NotNull(message = "Number of severe hypoglycaemia episodes is required.")
     private Integer numberOfSevereHypoglycaemiaEpisodes;
 
    // ReasonNotEnteringType reasonHypoglycaemiaEpisodesNotEntered;
 
     @Min(0L)
     @Max(12L)
+    @NotNull(message = "Number of ketoacidosis episodes is required.")
     private Integer numberKetoacidosisEpisodes;
 
 
@@ -269,6 +271,7 @@ public class ClinicalRecord {
 
     @Min(0L)
     @Max(15L)
+    @NotNull(message = "Number of hospital admissions is required.")
     private Integer numberOfHospitalAdmissionsRelatedToDiabetes;
 
     //ReasonNotEnteringType reasonHospitalAdmissionsNotEntered;
