@@ -102,4 +102,10 @@ privileged aspect Child_Roo_Entity {
         return (List<Child>)childQuery.findEntries(entityManager(), firstResult, maxResults);        
     }    
     
+    public static long Child.numberChildrenInCentre(Long countryId, Long centreId)
+    {
+    	ChildQuery childQuery = new ChildQuery();
+    	return childQuery.numberChildrenInCentre(entityManager(), countryId, centreId); 
+    }
+    
 }

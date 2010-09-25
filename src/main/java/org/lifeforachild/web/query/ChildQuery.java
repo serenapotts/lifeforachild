@@ -159,4 +159,12 @@ public class ChildQuery extends BaseQuery<Child> {
     	DiabetesCentreQuery.findCentreByAccessCriteria(criteria);
     	return criteria;
 	}	
+	
+	public long numberChildrenInCentre(EntityManager entityManager, Long countryId, Long centreId)
+	{
+		Criteria criteria = ((Session)entityManager.getDelegate()).createCriteria(Child.class);
+		criteria.createCriteria("country").add(Restrictions.eq("id", new Long(countryId)));
+		criteria.createCriteria("centre").add(Restrictions.eq("id", new Long(centreId)));
+		return count(criteria);
+	}
 }

@@ -56,10 +56,14 @@ privileged aspect ChildController_Roo_Controller {
         child.persist();  
         
         // now that child is created auto generate individual id
-        String id = StringUtil.padWithZeros(child.getId(), 4);
-        String countryId = StringUtil.padWithZeros(child.getCountry().getId(), 3);
-        String centreId = StringUtil.padWithZeros(child.getCentre().getId(), 3);
-        child.setIndividualId(countryId + centreId + id);
+        Long countryId = child.getCountry().getId();
+        Long centreId = child.getCentre().getId();
+        // TODO is there a better way to do this as could cause a race condition and two have the same id but unlikely
+        long centreChildCount = child.numberChildrenInCentre(countryId, centreId);
+        String id = StringUtil.padWithZeros(centreChildCount, 4);
+        String paddedCountryId = StringUtil.padWithZeros(countryId, 3);
+        String paddedCentreId = StringUtil.padWithZeros(centreId, 3);
+        child.setIndividualId(paddedCountryId + paddedCentreId + id);
         child.persist();
         return "redirect:/child/" + child.getId();        
     }    
