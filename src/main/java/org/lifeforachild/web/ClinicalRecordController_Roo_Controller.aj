@@ -65,17 +65,13 @@ privileged aspect ClinicalRecordController_Roo_Controller {
         
         clinicalRecord.setInsulinPerKg(clinicalRecord.calculateInsulinPerKg());
         clinicalRecord.setWeightSD(clinicalRecord.calculateWeightSD());
+        clinicalRecord.setHeightSD(clinicalRecord.calculateHeightSD());
         
-        if (clinicalRecord.getHeightCM() != null) {
-            clinicalRecord.setBmi(clinicalRecord.calculateBMI());
-            clinicalRecord.setBmiSD(clinicalRecord.calculateBmiSD());
-            clinicalRecord.setHeightSD(clinicalRecord.calculateHeightSD());
-        }
+        clinicalRecord.setBmi(clinicalRecord.calculateBMI());
+        clinicalRecord.setBmiSD(clinicalRecord.calculateBmiSD());
         
-        if(clinicalRecord.getHeightSD() != null && !clinicalRecord.getHeightSD().equals(new Float(0))) {
-            clinicalRecord.setBloodPressureSystolicSD(clinicalRecord.calcSystolicBloodPressureSD());
-            clinicalRecord.setBloodPressureDiastolicSD(clinicalRecord.calcDiastolicBloodPressureSD());
-        }
+        clinicalRecord.setBloodPressureSystolicSD(clinicalRecord.calcSystolicBloodPressureSD());
+        clinicalRecord.setBloodPressureDiastolicSD(clinicalRecord.calcDiastolicBloodPressureSD());
         
         clinicalRecord.persist();        
         return "redirect:/clinicalrecord/" + clinicalRecord.getId();        
@@ -157,16 +153,12 @@ privileged aspect ClinicalRecordController_Roo_Controller {
         clinicalRecord.setInsulinPerKg(clinicalRecord.calculateInsulinPerKg());
         clinicalRecord.setWeightSD(clinicalRecord.calculateWeightSD());
         
-        if (clinicalRecord.getHeightCM() != null) {
-            clinicalRecord.setBmi(clinicalRecord.calculateBMI());
-            clinicalRecord.setBmiSD(clinicalRecord.calculateBmiSD());
-            clinicalRecord.setHeightSD(clinicalRecord.calculateHeightSD());
-        }
+        clinicalRecord.setBmi(clinicalRecord.calculateBMI());
+        clinicalRecord.setBmiSD(clinicalRecord.calculateBmiSD());
+        clinicalRecord.setHeightSD(clinicalRecord.calculateHeightSD());
         
-        if(clinicalRecord.getHeightSD() != null && !clinicalRecord.getHeightSD().equals(new Float(0))) {
-            clinicalRecord.setBloodPressureSystolicSD(clinicalRecord.calcSystolicBloodPressureSD());
-            clinicalRecord.setBloodPressureDiastolicSD(clinicalRecord.calcDiastolicBloodPressureSD());
-        }
+        clinicalRecord.setBloodPressureSystolicSD(clinicalRecord.calcSystolicBloodPressureSD());
+        clinicalRecord.setBloodPressureDiastolicSD(clinicalRecord.calcDiastolicBloodPressureSD());
         
         clinicalRecord.merge();        
         return "redirect:/clinicalrecord/" + clinicalRecord.getId();

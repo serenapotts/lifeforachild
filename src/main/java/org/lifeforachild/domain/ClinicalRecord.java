@@ -1,5 +1,7 @@
 package org.lifeforachild.domain;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -18,6 +20,7 @@ import javax.validation.constraints.Size;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.lifeforachild.Util.DecimalUtil;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.roo.addon.entity.RooEntity;
 import org.springframework.roo.addon.javabean.RooJavaBean;
@@ -315,10 +318,11 @@ public class ClinicalRecord {
     
     private Boolean isDeleted;    
     
-    public float calculateBMI() {
-        float result = 0.0f;
+    public Float calculateBMI() {
+        Float result = null;
         if (weightKG != null && heightCM != null && !heightCM.equals(new Integer(0))) {
             result = (float) (weightKG.floatValue() / (heightCM * heightCM / 10000.0));
+            result = (float) DecimalUtil.roundToTwoDecimals(result);
         }
         
         LOGGER.info("Weight: " + weightKG + ", Height: " + heightCM + ", BMI: " + result);
@@ -333,13 +337,18 @@ public class ClinicalRecord {
     public Float calculateInsulinPerKg() {
     	if (weightKG == null)
     		return null;
-        return insulinUnitsPerDay / weightKG;
+        double value = insulinUnitsPerDay / weightKG;
+        value = DecimalUtil.roundToTwoDecimals(value);
+    	return (float) value;
     }
 
     public static Float calculateAge(Date date, Date dob) {
+        float result = 0.0f;
     	if (date != null)
-    		return (float) ((date.getTime() - dob.getTime()) / (1000 * 60 * 60 * 24 * 365.25));
-    	return null;
+    		result = (float) ((date.getTime() - dob.getTime()) / (1000 * 60 * 60 * 24 * 365.25));
+    	
+    	result = (float) DecimalUtil.roundToTwoDecimals(result);
+    	return result;
     }
     
 	public Float calculateExactAgeMonths() {
@@ -354,12 +363,13 @@ public class ClinicalRecord {
     
     public Float calculateWeightSD() {
     	if(weightKG == null || weightKG == 0) {
-    	    return new Float(0);
+    	    return null;
     	}
     	
         Float ageMonths = exactAgeMonths;
-		if (ageMonths.compareTo(new Float(240)) > 0) {
-			ageMonths = new Float(240);
+        //calculated age is under 2 years or over 20 years, Weight SD should be left blank
+		if (ageMonths.floatValue() < 24 || ageMonths.floatValue() > 240) {
+			return null;
 		}
     	
     	WeightForAgeLMS weightForAgeLMS = null;
@@ -371,14 +381,16 @@ public class ClinicalRecord {
     	}
     	catch(Exception e)
         {
-            LOGGER.error(e);
+            LOGGER.error("Exception while getting WeightLMS.", e);
         }
     	
     	if(weightForAgeLMS == null) {
-    	    return new Float(0);
+    	    return null;
     	}
     	else {
-    	    double weightSDCalculated = calculateSD((double) weightKG, weightForAgeLMS); 
+    	    double weightSDCalculated = calculateSD((double) weightKG, weightForAgeLMS);
+    	    weightSDCalculated = DecimalUtil.roundToTwoDecimals(weightSDCalculated);
+    	    
             LOGGER.info("weight = " + weightKG);
             LOGGER.info("calculated weightSD = " + weightSDCalculated);
 
@@ -388,13 +400,18 @@ public class ClinicalRecord {
     
     public Float calculateHeightSD() {
         if(heightCM == null || heightCM.intValue() == 0) {
-            return new Float(0);
+            return null;
         }
         
         Float ageMonths = exactAgeMonths;
-        //Just do 24-240 months, younger and older would be N/A
-        if(ageMonths.floatValue() < 24 || ageMonths.floatValue() > 240) {
-            return new Float(0);
+        //calculated age is under 2 years, heightSD is left blank
+        if(ageMonths.floatValue() < 24){
+            return null;
+        }
+        
+        //calculated age is over 20 years, Height SD should calculate as per that for 240 months (20 years)
+        if(ageMonths.floatValue() > 240) {
+            ageMonths = new Float(240);
         }
         
         HeightForAgeLMS heightForAgeLMS = null;
@@ -406,14 +423,15 @@ public class ClinicalRecord {
         }
         catch(Exception e)
         {
-            LOGGER.error(e);
+            LOGGER.error("Exception while getting HeightLMS.", e);
         }
         
         if(heightForAgeLMS == null) {
-            return new Float(0);
+            return null;
         }
         else {
             double heightSDCalculated = calculateSD(heightCM.doubleValue(), heightForAgeLMS);
+            heightSDCalculated = DecimalUtil.roundToTwoDecimals(heightSDCalculated);
             LOGGER.info("height = " + heightCM);
             LOGGER.info("calculated HeightSD = " + heightSDCalculated);
             return new Float(heightSDCalculated);
@@ -434,12 +452,13 @@ public class ClinicalRecord {
     
     public Float calculateBmiSD() {
         if(bmi == null || bmi.doubleValue() == 0) {
-            return new Float(0);
+            return null;
         }
         
         Float ageMonths = exactAgeMonths;
+        //BMI LMS table has value for 240.5, so we take that into consideration
         if(ageMonths.floatValue() < 24 || ageMonths.floatValue() > 240.5) {
-            return new Float(0);
+            return null;
         }
        
         BMIForAgeLMS bmiForAgeLMS = null;
@@ -455,10 +474,11 @@ public class ClinicalRecord {
         }
         
         if(bmiForAgeLMS == null) {
-            return new Float(0);
+            return null;
         }
         else {
             double bmiSDCalculated = calculateSD(bmi.doubleValue(), bmiForAgeLMS);
+            bmiSDCalculated = DecimalUtil.roundToTwoDecimals(bmiSDCalculated);
             LOGGER.info("bmi = " + bmi);
             LOGGER.info("calculated bmiSD = " + bmiSDCalculated);
 
@@ -493,18 +513,25 @@ public class ClinicalRecord {
     }
     
     public Float calcSystolicBloodPressureSD() {
+        if(heightSD == null || heightSD.floatValue() == 0)
+        {
+            return null;
+        }
+        
         double expectedSystolicBP = calcExpectedSystolicBP();
         
         if(child.getSex() == SexType.MALE) {
             double value = (bloodPressureSystolicMMHg - expectedSystolicBP) / 10.7128;
+            value = DecimalUtil.roundToTwoDecimals(value);
             return new Float(value);
         }
         else if(child.getSex() == SexType.FEMALE) {
             double value = (bloodPressureSystolicMMHg - expectedSystolicBP) / 10.4855;
+            value = DecimalUtil.roundToTwoDecimals(value);
             return new Float(value);
         }
         else {
-            return new Float(0);
+            return null;
         }
     }
     
@@ -530,18 +557,25 @@ public class ClinicalRecord {
     }
     
     public Float calcDiastolicBloodPressureSD() {
+        if(heightSD == null || heightSD.floatValue() == 0)
+        {
+            return null;
+        }
+        
         double expectedDiastolicBP = calcExpectedDiastolicBP();
         
         if(child.getSex() == SexType.MALE) {
             double value = (bloodPressureDiastolicMMHg - expectedDiastolicBP) / 11.6032;
+            value = DecimalUtil.roundToTwoDecimals(value);
             return new Float(value);
         }
         else if(child.getSex() == SexType.FEMALE) {
             double value = (bloodPressureDiastolicMMHg - expectedDiastolicBP) / 10.9573;
+            value = DecimalUtil.roundToTwoDecimals(value);
             return new Float(value);
         }
         else {
-            return new Float(0);
+            return null;
         }
     }
 }
