@@ -1,4 +1,4 @@
-package org.lifeforachild.web;
+package org.lifeforachild.web.ajax;
 
 import java.util.Date;
 import java.text.SimpleDateFormat;
