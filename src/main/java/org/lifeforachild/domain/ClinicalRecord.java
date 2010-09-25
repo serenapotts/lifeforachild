@@ -161,6 +161,9 @@ public class ClinicalRecord {
     @Size(max = 20)
     private String visualAcuityLeft;
 
+    @Size(max = 100)
+    private String eyesComment;
+    
     @Enumerated
     @NotNull(message = "Feet examined is required.")
     private YesNoType feetExaminedInLastYear;
@@ -177,6 +180,9 @@ public class ClinicalRecord {
     @Enumerated
     private YesNoType tuningForkAbnormal;
 
+    @Size(max = 100)
+    private String feetComment;
+    
     @Enumerated
     @NotNull(message = "HbA1c in last 12 months is required.")
     private YesNoLaterType lastHbA1cInLast12Months;

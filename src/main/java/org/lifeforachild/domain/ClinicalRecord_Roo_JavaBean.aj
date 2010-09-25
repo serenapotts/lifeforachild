@@ -283,6 +283,14 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.visualAcuityLeft = visualAcuityLeft;        
     }    
     
+    public String ClinicalRecord.getEyesComment() {    
+        return this.eyesComment;        
+    }    
+    
+    public void ClinicalRecord.setEyesComment(String eyesComment) {    
+        this.eyesComment = eyesComment;        
+    }       
+    
     public YesNoType ClinicalRecord.getFeetExaminedInLastYear() {    
         return this.feetExaminedInLastYear;        
     }    
@@ -322,6 +330,14 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
     public void ClinicalRecord.setTuningForkAbnormal(YesNoType tuningForkAbnormal) {    
         this.tuningForkAbnormal = tuningForkAbnormal;        
     }    
+    
+    public String ClinicalRecord.getFeetComment() {    
+        return this.feetComment;        
+    }    
+    
+    public void ClinicalRecord.setFeetComment(String feetComment) {    
+        this.feetComment = feetComment;        
+    }   
     
     public YesNoLaterType ClinicalRecord.getLastHbA1cInLast12Months() {    
         return this.lastHbA1cInLast12Months;        

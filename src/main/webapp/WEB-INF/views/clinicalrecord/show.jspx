@@ -451,6 +451,13 @@
 		                    </c:if>
 			            </div>
 			            <br/>
+			            <div id="roo_clinicalRecord_eyesComment">
+			                <label  class="record" for="_eyesComment_id"><spring:message code="record.eyesComment"/></label>
+			                <div class="box" id="_eyesComment_id">
+			                    <c:out value="${clinicalRecord.eyesComment}"/>
+			                </div>
+			            </div>
+			            <br/>			            
 		            </c:if>
 		            <div id="roo_clinicalRecord_feetExaminedInLastYear">
 		                <label  class="record" for="_feetExaminedInLastYear_id">Feet Examined In Last Year:</label>
@@ -501,6 +508,13 @@
 				            </div>
 				            <br/>
 			            </c:if>
+			            <div id="roo_clinicalRecord_feetComment">
+			                <label  class="record" for="_feetComment_id"><spring:message code="record.feetComment"/></label>
+			                <div class="box" id="_feetComment_id">
+			                    <c:out value="${clinicalRecord.feetComment}"/>
+			                </div>
+			            </div>
+			            <br/>			            
 		            </c:if>
 		        </div>
 				<script type="text/javascript">

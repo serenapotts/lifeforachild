@@ -36,12 +36,14 @@
     					dojo.style(dijit.byId("roo_clinicalRecord_cateract").domNode, "display", "none");
     					dojo.style(dijit.byId("roo_clinicalRecord_visualAcuityRight").domNode, "display", "none");
     					dojo.style(dijit.byId("roo_clinicalRecord_visualAcuityLeft").domNode, "display", "none");
+    					dojo.style(dijit.byId("roo_clinicalRecord_eyesComment").domNode, "display", "none");
     			  	}  			  	
     				if (dijit.byId("_feetExaminedInLastYear_id").value != 'YES')
     			  	{
     				  	// hide fields if feet not examined
     					dojo.style(dijit.byId("roo_clinicalRecord_monofilamentTested").domNode, "display", "none");
     					dojo.style(dijit.byId("roo_clinicalRecord_tuningForkTested").domNode, "display", "none");
+    					dojo.style(dijit.byId("roo_clinicalRecord_feetComment").domNode, "display", "none");
     			  	}   
     				if (dijit.byId("_monofilamentTested_id") != null &amp;&amp; dijit.byId("_monofilamentTested_id").value != 'YES')
     			  	{
@@ -815,12 +817,14 @@
 			                		dojo.style(dijit.byId("roo_clinicalRecord_cateract").domNode, "display", "block");
 			                		dojo.style(dijit.byId("roo_clinicalRecord_visualAcuityRight").domNode, "display", "block");
 			                		dojo.style(dijit.byId("roo_clinicalRecord_visualAcuityLeft").domNode, "display", "block");
+			                		dojo.style(dijit.byId("roo_clinicalRecord_eyesComment").domNode, "display", "block");
 		                		}
 		                		else
 		                		{
 		                			dojo.style(dijit.byId("roo_clinicalRecord_cateract").domNode, "display", "none");
 		                			dojo.style(dijit.byId("roo_clinicalRecord_visualAcuityRight").domNode, "display", "none");
 		                			dojo.style(dijit.byId("roo_clinicalRecord_visualAcuityLeft").domNode, "display", "none");
+		                			dojo.style(dijit.byId("roo_clinicalRecord_eyesComment").domNode, "display", "none");
 		                		}
                 			}
                 		}
@@ -875,7 +879,20 @@
                     new Spring.ElementDecoration({
                         elementId : 'roo_clinicalRecord_visualAcuityLeft', 
                         widgetType: 'dijit.layout.ContentPane'})); 
-            </script>                       
+            </script>             
+            <div id="roo_clinicalRecord_eyesComment">
+                <label for="_eyesComment_id"><spring:message code="record.eyesComment"/></label>
+                <form:textarea cssStyle="width:250px" id="_eyesComment_id" path="eyesComment"/>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_eyesComment_id', widgetType: 'dijit.form.SimpleTextarea', widgetAttrs: {}})); </script>
+                <br/>
+                <form:errors cssClass="errors" id="_eyesComment_error_id" path="eyesComment"/>
+            	<br/>                
+            </div>
+            <script type="text/javascript">Spring.addDecoration(
+                    new Spring.ElementDecoration({
+                        elementId : 'roo_clinicalRecord_eyesComment', 
+                        widgetType: 'dijit.layout.ContentPane'})); 
+            </script>
             <div id="roo_clinicalRecord_feetExaminedInLastYear">
                 <label for="_feetExaminedInLastYear_id">Feet Examined In Last Year:</label>
                 <form:select cssStyle="width:250px" id="_feetExaminedInLastYear_id" path="feetExaminedInLastYear">
@@ -897,13 +914,15 @@
 			                		dojo.style(dijit.byId("roo_clinicalRecord_tuningForkTested").domNode, "display", "block");
 			                		dojo.style(dijit.byId("roo_clinicalRecord_monofilamentAbnormal").domNode, "display", "block");
 			                		dojo.style(dijit.byId("roo_clinicalRecord_tuningForkAbnormal").domNode, "display", "block");
+			                		dojo.style(dijit.byId("roo_clinicalRecord_feetComment").domNode, "display", "block");
 		                		}
 		                		else
 		                		{
 		                			dojo.style(dijit.byId("roo_clinicalRecord_monofilamentTested").domNode, "display", "none");
 		                			dojo.style(dijit.byId("roo_clinicalRecord_tuningForkTested").domNode, "display", "none");
-		                			dojo.style(dijit.byId("roo_clinicalRecord_tuningForkTested").domNode, "display", "none");
+		                			dojo.style(dijit.byId("roo_clinicalRecord_monofilamentAbnormal").domNode, "display", "none");
 		                			dojo.style(dijit.byId("roo_clinicalRecord_tuningForkAbnormal").domNode, "display", "none");
+		                			dojo.style(dijit.byId("roo_clinicalRecord_feetComment").domNode, "display", "none");
 		                		}
                 			}
                 		}
@@ -1008,7 +1027,20 @@
                     new Spring.ElementDecoration({
                         elementId : 'roo_clinicalRecord_tuningForkAbnormal', 
                         widgetType: 'dijit.layout.ContentPane'})); 
-            </script>            
+            </script>    
+            <div id="roo_clinicalRecord_feetComment">
+                <label for="_feetComment_id"><spring:message code="record.feetComment"/></label>
+                <form:textarea cssStyle="width:250px" id="_feetComment_id" path="feetComment"/>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_feetComment_id', widgetType: 'dijit.form.SimpleTextarea', widgetAttrs: {}})); </script>
+                <br/>
+                <form:errors cssClass="errors" id="_feetComment_error_id" path="feetComment"/>
+            	<br/>                
+            </div>
+            <script type="text/javascript">Spring.addDecoration(
+                    new Spring.ElementDecoration({
+                        elementId : 'roo_clinicalRecord_feetComment', 
+                        widgetType: 'dijit.layout.ContentPane'})); 
+            </script>  
 		</div>
 		<script type="text/javascript">
 		    if(eyesHasError == true)
