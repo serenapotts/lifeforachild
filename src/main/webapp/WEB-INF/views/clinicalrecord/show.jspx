@@ -237,7 +237,7 @@
 				</script>	            
 	            <div id="clinicalMeasures">    
 		            <div id="roo_clinicalRecord_dateOfMeasurement">
-		                <label  class="record" for="_dateOfMeasurement_id">Date Of Measurement:</label>
+		                <label  class="record" for="_dateOfMeasurement_id"><spring:message code="record.dateOfMeasurement"/></label>
 		                <div class="box" id="_dateOfMeasurement_id">
 		                    <fmt:formatDate pattern="${clinicalRecord_dateOfMeasurement_date_format}" value="${clinicalRecord.dateOfMeasurement}"/>
 		                </div>
@@ -398,7 +398,7 @@
 				            <div id="roo_clinicalRecord_ifMenarcheAge">
 				                <label  class="record" for="_ifMenarcheAge_id"><spring:message code="record.menarcheAge"/></label>
 				                <div class="box" id="_ifMenarcheAge_id">
-				                    <fmt:formatDate pattern="${clinicalRecord_ifMenarcheAge_date_format}" value="${clinicalRecord.ifMenarcheAge}"/>
+				                	<c:out value="${clinicalRecord.ifMenarcheAge}"/>
 				                </div>
 				            </div>
 				            <br/>	

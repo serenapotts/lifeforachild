@@ -457,7 +457,7 @@
 		</script>          
         <div id="clinicalMeasures">     
             <div id="roo_clinicalRecord_dateOfMeasurement">
-                <label for="_dateOfMeasurement_id">Date Of Measurement:</label>
+                <label for="_dateOfMeasurement_id"><spring:message code="record.dateOfMeasurement"/></label>
                 <form:input cssStyle="width:250px" id="_dateOfMeasurement_id" maxlength="30" path="dateOfMeasurement" size="0"/>
                 <br/>
                 <form:errors cssClass="errors" id="_dateOfMeasurement_error_id" path="dateOfMeasurement"/>
@@ -719,7 +719,7 @@
 	                <spring:message arguments="If Menarche Age" code="field.invalid" var="field_invalid"/>
 	                <spring:message code="field.required" var="field_required"/>
 	                <spring:message argumentSeparator="," arguments="If Menarche Age," code="field.simple.validation" var="field_validation"/>
-	                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_ifMenarcheAge_id', widgetType : 'dijit.form.DateTextBox', widgetAttrs : {promptMessage: '${field_date_tooltip}', invalidMessage: '${field_invalid_date}', popupClass: '', constraints: {max: new Date(), datePattern : '${clinicalRecord_ifMenarcheAge_date_format}', required : false}, datePattern : '${clinicalRecord_ifMenarcheAge_date_format}'}})); </script>
+	                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_ifMenarcheAge_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : false}})); </script>
 	            	<br/>                
 	            </div>
 	            <script type="text/javascript">Spring.addDecoration(

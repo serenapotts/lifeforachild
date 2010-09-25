@@ -243,11 +243,11 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.menarche = menarche;        
     }    
     
-    public Date ClinicalRecord.getIfMenarcheAge() {    
+    public String ClinicalRecord.getIfMenarcheAge() {    
         return this.ifMenarcheAge;        
     }    
     
-    public void ClinicalRecord.setIfMenarcheAge(Date ifMenarcheAge) {    
+    public void ClinicalRecord.setIfMenarcheAge(String ifMenarcheAge) {    
         this.ifMenarcheAge = ifMenarcheAge;        
     }    
     

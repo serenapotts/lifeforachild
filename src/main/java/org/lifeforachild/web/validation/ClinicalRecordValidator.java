@@ -48,7 +48,8 @@ public class ClinicalRecordValidator implements Validator {
 			// menarche is mandatory if child is female
 			if (record.getMenarche() == null)
 				errors.rejectValue("menarche", "menarche.required");
-			else if (record.getMenarche().equals(YesNoUnkownType.YES) && record.getIfMenarcheAge() == null)
+			else if (record.getMenarche().equals(YesNoUnkownType.YES) && (record.getIfMenarcheAge() == null
+					|| (record.getIfMenarcheAge() != null && record.getIfMenarcheAge().isEmpty())))
 				errors.rejectValue("ifMenarcheAge", "ifMenarcheAge.required");				
 		}
 		

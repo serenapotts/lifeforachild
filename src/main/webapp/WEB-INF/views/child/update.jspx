@@ -339,10 +339,10 @@
 	               <table width="500px">		            
 		                <thead>
 		                    <tr>
-		                        <th><spring:message code="record.id"/></th>
-		                        <th><spring:message code="record.dateCompleted"/></th>
-		                        <th><spring:message code="record.dateOfMeasurement"/></th>
-		                        <th><spring:message code="record.personCompletedBy"/></th>
+		                        <th><spring:message code="record.list.id"/></th>
+		                        <th><spring:message code="record.list.dateCompleted"/></th>
+		                        <th><spring:message code="record.list.dateOfMeasurement"/></th>
+		                        <th><spring:message code="record.list.personCompletedBy"/></th>
 		                        <th/>
                         		<th/>		                        
 		                    </tr>

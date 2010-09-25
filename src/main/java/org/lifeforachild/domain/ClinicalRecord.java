@@ -146,9 +146,7 @@ public class ClinicalRecord {
     @Enumerated
     private YesNoUnkownType menarche;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @DateTimeFormat(style = "S-")
-    private Date ifMenarcheAge;
+    private String ifMenarcheAge;
 
     @Enumerated
     @NotNull(message = "Eyes examined is required.")
