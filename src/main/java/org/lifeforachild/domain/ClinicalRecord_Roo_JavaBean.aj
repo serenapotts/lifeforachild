@@ -43,11 +43,11 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.urineGlucoseSelfMonitoringPerWeek = urineGlucoseSelfMonitoringPerWeek;        
     }    
     
-    public YesNoType ClinicalRecord.getAdjustInsulinDoseIfNeeded() {    
+    public WhoAdjustsInsulinType ClinicalRecord.getAdjustInsulinDoseIfNeeded() {    
         return this.adjustInsulinDoseIfNeeded;        
     }    
     
-    public void ClinicalRecord.setAdjustInsulinDoseIfNeeded(YesNoType adjustInsulinDoseIfNeeded) {    
+    public void ClinicalRecord.setAdjustInsulinDoseIfNeeded(WhoAdjustsInsulinType adjustInsulinDoseIfNeeded) {    
         this.adjustInsulinDoseIfNeeded = adjustInsulinDoseIfNeeded;        
     }    
     

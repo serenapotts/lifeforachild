@@ -99,7 +99,7 @@
 		            </div>
 		            <br/>
 		            <div id="roo_clinicalRecord_adjustInsulinDoseIfNeeded">
-		                <label  class="record" for="_adjustInsulinDoseIfNeeded_id">Adjust Insulin Dose If Needed:</label>
+		                <label  class="record" for="_adjustInsulinDoseIfNeeded_id"><spring:message code="record.whoAdjustsInsulinDose"/></label>
 		                <div class="box" id="_adjustInsulinDoseIfNeeded_id">
 		                    <c:out value="${clinicalRecord.adjustInsulinDoseIfNeeded}"/>
 		                    <c:if test="${clinicalRecord.adjustInsulinDoseIfNeeded == null}">
@@ -112,8 +112,7 @@
 		                <label  class="record" for="_insulinUnitsPerDay_id">Insulin Units Per Day:</label>
 		                <div class="box" id="_insulinUnitsPerDay_id">
 		                    <c:out value="${clinicalRecord.insulinUnitsPerDay}"/>
-		                </div>
-		                
+		                </div>		                
 		            </div>
 		            <br/>
 		            <div id="roo_clinicalRecord_numberOfInsulinInjectionsPerDay">

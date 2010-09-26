@@ -18,6 +18,7 @@ import org.lifeforachild.domain.NotAttendingSchoolReasonType;
 import org.lifeforachild.domain.Permissions;
 import org.lifeforachild.domain.ReasonNotEnteringType;
 import org.lifeforachild.domain.User;
+import org.lifeforachild.domain.WhoAdjustsInsulinType;
 import org.lifeforachild.domain.YesNoLaterType;
 import org.lifeforachild.domain.YesNoNAType;
 import org.lifeforachild.domain.YesNoType;
@@ -48,7 +49,8 @@ privileged aspect ClinicalRecordController_Roo_Controller {
             modelMap.addAttribute("mg_or_mmol_type_enum", MG_OR_MMOL_Type.class.getEnumConstants());            
             modelMap.addAttribute("microalbuminuriaunitstype_enum", MicroalbuminuriaUnitsType.class.getEnumConstants());            
             modelMap.addAttribute("notattendingschoolreasontype_enum", NotAttendingSchoolReasonType.class.getEnumConstants());            
-            modelMap.addAttribute("reasonnotenteringtype_enum", ReasonNotEnteringType.class.getEnumConstants());            
+            modelMap.addAttribute("reasonnotenteringtype_enum", ReasonNotEnteringType.class.getEnumConstants()); 
+            modelMap.addAttribute("whoAdjustsInsulinType_enum", WhoAdjustsInsulinType.class.getEnumConstants());
             modelMap.addAttribute("users", SecurityUtil.getInstance().getApplicationUserForCurrentUserAsList());            
             modelMap.addAttribute("yesnolatertype_enum", YesNoLaterType.class.getEnumConstants());            
             modelMap.addAttribute("yesnonatype_enum", YesNoNAType.class.getEnumConstants());     
@@ -94,7 +96,8 @@ privileged aspect ClinicalRecordController_Roo_Controller {
         modelMap.addAttribute("mg_or_mmol_type_enum", MG_OR_MMOL_Type.class.getEnumConstants());        
         modelMap.addAttribute("microalbuminuriaunitstype_enum", MicroalbuminuriaUnitsType.class.getEnumConstants());        
         modelMap.addAttribute("notattendingschoolreasontype_enum", NotAttendingSchoolReasonType.class.getEnumConstants());        
-        modelMap.addAttribute("reasonnotenteringtype_enum", ReasonNotEnteringType.class.getEnumConstants());        
+        modelMap.addAttribute("reasonnotenteringtype_enum", ReasonNotEnteringType.class.getEnumConstants()); 
+        modelMap.addAttribute("whoAdjustsInsulinType_enum", WhoAdjustsInsulinType.class.getEnumConstants());
         modelMap.addAttribute("users", SecurityUtil.getInstance().getApplicationUserForCurrentUserAsList());        
         modelMap.addAttribute("yesnolatertype_enum", YesNoLaterType.class.getEnumConstants());        
         modelMap.addAttribute("yesnonatype_enum", YesNoNAType.class.getEnumConstants());       
@@ -133,7 +136,8 @@ privileged aspect ClinicalRecordController_Roo_Controller {
             modelMap.addAttribute("mg_or_mmol_type_enum", MG_OR_MMOL_Type.class.getEnumConstants());            
             modelMap.addAttribute("microalbuminuriaunitstype_enum", MicroalbuminuriaUnitsType.class.getEnumConstants());            
             modelMap.addAttribute("notattendingschoolreasontype_enum", NotAttendingSchoolReasonType.class.getEnumConstants());            
-            modelMap.addAttribute("reasonnotenteringtype_enum", ReasonNotEnteringType.class.getEnumConstants());            
+            modelMap.addAttribute("reasonnotenteringtype_enum", ReasonNotEnteringType.class.getEnumConstants()); 
+            modelMap.addAttribute("whoAdjustsInsulinType_enum", WhoAdjustsInsulinType.class.getEnumConstants());
             modelMap.addAttribute("users", SecurityUtil.getInstance().getApplicationUserForCurrentUserAsList());            
             modelMap.addAttribute("yesnolatertype_enum", YesNoLaterType.class.getEnumConstants());            
             modelMap.addAttribute("yesnonatype_enum", YesNoNAType.class.getEnumConstants()); 
@@ -174,7 +178,8 @@ privileged aspect ClinicalRecordController_Roo_Controller {
         modelMap.addAttribute("mg_or_mmol_type_enum", MG_OR_MMOL_Type.class.getEnumConstants());        
         modelMap.addAttribute("microalbuminuriaunitstype_enum", MicroalbuminuriaUnitsType.class.getEnumConstants());        
         modelMap.addAttribute("notattendingschoolreasontype_enum", NotAttendingSchoolReasonType.class.getEnumConstants());        
-        modelMap.addAttribute("reasonnotenteringtype_enum", ReasonNotEnteringType.class.getEnumConstants());        
+        modelMap.addAttribute("reasonnotenteringtype_enum", ReasonNotEnteringType.class.getEnumConstants());   
+        modelMap.addAttribute("whoAdjustsInsulinType_enum", WhoAdjustsInsulinType.class.getEnumConstants());
         modelMap.addAttribute("users", users);        
         modelMap.addAttribute("yesnolatertype_enum", YesNoLaterType.class.getEnumConstants());        
         modelMap.addAttribute("yesnonatype_enum", YesNoNAType.class.getEnumConstants());  

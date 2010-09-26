@@ -268,10 +268,10 @@
             </div>
             <br/>
             <div id="roo_clinicalRecord_adjustInsulinDoseIfNeeded">
-                <label for="_adjustInsulinDoseIfNeeded_id">Adjust Insulin Dose If Needed:</label>
+                <label for="_adjustInsulinDoseIfNeeded_id"><spring:message code="record.whoAdjustsInsulinDose"/></label>
                 <form:select cssStyle="width:250px" id="_adjustInsulinDoseIfNeeded_id" path="adjustInsulinDoseIfNeeded">
 					<form:option value=""></form:option>
-                	<form:options items="${yesnotype_enum}" itemLabel="label"/>
+                	<form:options items="${whoAdjustsInsulinType_enum}" itemLabel="label"/>
                 </form:select>                
                 <br/>
                 <form:errors cssClass="errors" id="_adjustInsulinDoseIfNeeded_error_id" path="adjustInsulinDoseIfNeeded"/>

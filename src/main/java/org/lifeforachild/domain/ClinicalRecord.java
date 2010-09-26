@@ -56,7 +56,7 @@ public class ClinicalRecord {
     private Integer urineGlucoseSelfMonitoringPerWeek;
 
     @Enumerated
-    private YesNoType adjustInsulinDoseIfNeeded;
+    private WhoAdjustsInsulinType adjustInsulinDoseIfNeeded;
 
     @Min(0L)
     @Max(200L)
