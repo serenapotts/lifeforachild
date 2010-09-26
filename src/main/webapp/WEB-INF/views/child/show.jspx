@@ -52,8 +52,18 @@
 		                </div>
 		            </div>
 		            <br/>
+		            <div id="roo_child_localMedicalNumber">
+		                <label for="_localMedicalNumber_id"><spring:message code="child.show.localMedicalNumber"/></label>
+		                <div class="box" id="_localMedicalNumber_id">
+		                    <c:out value="${child.localMedicalNumber}"/>
+		                </div>
+		                <c:if test="${child.localMedicalNumber == ''}">
+	                    	<br/>
+	                    </c:if>
+		            </div>
+		            <br/>		            
 		            <div id="roo_child_ethnicGroup">
-		                <label for="_ethnicGroup_id"><spring:message code="child.ethnicGroup"/></label>
+		                <label for="_ethnicGroup_id"><spring:message code="child.show.ethnicGroup"/></label>
 		                <div class="box" id="_ethnicGroup_id">
 		                    <c:out value="${child.ethnicGroup}"/>
 		                </div>

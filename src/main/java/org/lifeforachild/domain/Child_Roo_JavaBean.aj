@@ -75,6 +75,14 @@ privileged aspect Child_Roo_JavaBean {
         this.centre = centre;        
     }    
     
+    public String Child.getLocalMedicalNumber() {    
+        return this.localMedicalNumber;        
+    }    
+    
+    public void Child.setLocalMedicalNumber(String localMedicalNumber) {    
+        this.localMedicalNumber = localMedicalNumber;        
+    }  
+    
     public String Child.getEthnicGroup() {    
         return this.ethnicGroup;        
     }    

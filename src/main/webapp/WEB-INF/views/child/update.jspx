@@ -107,6 +107,17 @@
 		                </c:if>
 		            </div>
 		            <br/>
+		            <div id="roo_child_localMedicalNumber">
+		                <label for="_localMedicalNumber_id"><spring:message code="child.localMedicalNumber"/></label>
+		                <form:input cssStyle="width:250px" id="_localMedicalNumber_id" maxlength="20" path="localMedicalNumber" size="0"/>
+		                <br/>
+		                <form:errors cssClass="errors" id="_localMedicalNumber_error_id" path="localMedicalNumber"/>
+		                <spring:message arguments="Ethnic Group" code="field.invalid" var="field_invalid"/>
+		                <spring:message code="field.required" var="field_required"/>
+		                <spring:message argumentSeparator="," arguments="Ethnic Group," code="field.simple.validation" var="field_validation"/>
+		                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_localMedicalNumber_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : false}})); </script>
+		            </div>
+		            <br/> 		            
 		            <div id="roo_child_ethnicGroup">
 		                <label for="_ethnicGroup_id"><spring:message code="child.ethnicGroup"/></label>
 		                <form:input cssStyle="width:250px" id="_ethnicGroup_id" maxlength="20" path="ethnicGroup" size="0"/>

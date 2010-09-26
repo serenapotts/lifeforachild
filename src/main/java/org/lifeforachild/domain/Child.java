@@ -65,6 +65,8 @@ public class Child {
 	
 	@ManyToOne
 	DiabetesCentre centre;    
+	
+	private String localMedicalNumber;
 
 	@Length(max = 20)
     private String ethnicGroup;
