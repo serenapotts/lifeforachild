@@ -446,7 +446,7 @@
                         widgetType: 'dijit.layout.ContentPane'})); 
             </script>               
             <div id="roo_clinicalRecord_bpMedicationsOther">
-                <label for="_bpMedicationsOther_id">Bp Medications Other:</label>
+                <label for="_bpMedicationsOther_id">BP Medications Other:</label>
                 <form:input cssStyle="width:250px" id="_bpMedicationsOther_id" maxlength="30" path="bpMedicationsOther" size="0"/>
                 <br/>
                 <form:errors cssClass="errors" id="_bpMedicationsOther_error_id" path="bpMedicationsOther"/>
