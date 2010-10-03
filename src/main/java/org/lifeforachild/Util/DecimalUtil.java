@@ -1,5 +1,7 @@
 package org.lifeforachild.Util;
 
+import java.text.DecimalFormat;
+
 public class DecimalUtil
 {
     public static double roundToTwoDecimals(double number)
@@ -8,5 +10,10 @@ public class DecimalUtil
         result = Math.round(result);
         result = result / 100;
         return result;
+    }
+    
+    public static String format(float value)
+    {
+    	return new DecimalFormat("0.##").format(value);
     }
 }

@@ -1,10 +1,10 @@
 package org.lifeforachild.web.ajax;
 
-import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.lifeforachild.Util.DecimalUtil;
 import org.lifeforachild.domain.Child;
 import org.lifeforachild.domain.ClinicalRecord;
 import org.springframework.stereotype.Controller;
@@ -37,7 +37,7 @@ public class BmiSDController
                 Float bmi = ClinicalRecord.calculateBMI(weightKGValue, heightCMValue);
                 Float bmiSD = ClinicalRecord.calculateBmiSD(exactAgeMonths, child.getSex(), bmi);
 
-                return new DecimalFormat("0.##").format(bmiSD);
+                return DecimalUtil.format(bmiSD);
             }
         }
         catch (ParseException e)

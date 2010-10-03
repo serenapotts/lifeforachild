@@ -6,33 +6,27 @@ import java.util.Date;
 
 import org.lifeforachild.Util.DecimalUtil;
 import org.lifeforachild.domain.Child;
-import org.lifeforachild.domain.ClinicalRecord;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-@RequestMapping("/ajax/age/*/*")
+@RequestMapping("/ajax/ageAtDiagnosis/*/*")
 @Controller
-public class AgeController {
+public class AgeAtDiagnosisController {
 	
-	@RequestMapping("/ajax/age/{measureDate}/{childId}")
-	public @ResponseBody String calculateAge(@PathVariable String measureDate, @PathVariable String childId) {
+	@RequestMapping("/ajax/ageAtDiagnosis/{diabetesDiagnosed}/{dateOfBirth}")
+	public @ResponseBody String calculateAgeAtDiagnosis(@PathVariable String diabetesDiagnosed, @PathVariable String dateOfBirth) {
 		
-		try {
-		Child child = Child.findChild(Long.parseLong(childId));
-		if (child != null)
-		{
-			Date dobDate = child.getDateOfBirth();
-			
+		try {				
 			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-			Date measDate = dateFormat.parse(measureDate);
+			Date dd = dateFormat.parse(diabetesDiagnosed);
+			Date dob = dateFormat.parse(dateOfBirth);
 			
 			// Just after years so daylight saving won't make a huge difference
-			return DecimalUtil.format(ClinicalRecord.calculateAge(measDate, dobDate));
-		}
+			return DecimalUtil.format(Child.calculatedAgeAtDiabetesDiagnosis(dd, dob));
 		}catch(ParseException e) {
-			return e.getMessage();
+			e.printStackTrace();
 		}
 		return "";
 	}

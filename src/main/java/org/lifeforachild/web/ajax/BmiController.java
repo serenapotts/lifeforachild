@@ -1,7 +1,6 @@
 package org.lifeforachild.web.ajax;
 
-import java.text.DecimalFormat;
-
+import org.lifeforachild.Util.DecimalUtil;
 import org.lifeforachild.domain.ClinicalRecord;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,7 +19,7 @@ public class BmiController
             Float weightKGValue = Float.parseFloat(weightKG);
             Float heightCMValue = Float.parseFloat(heightCM);
 
-            return new DecimalFormat("0.##").format(ClinicalRecord.calculateBMI(weightKGValue, heightCMValue));
+            return DecimalUtil.format(ClinicalRecord.calculateBMI(weightKGValue, heightCMValue));
         }
         catch (NumberFormatException e)
         {

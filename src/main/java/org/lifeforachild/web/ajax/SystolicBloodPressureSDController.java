@@ -1,10 +1,10 @@
 package org.lifeforachild.web.ajax;
 
-import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.lifeforachild.Util.DecimalUtil;
 import org.lifeforachild.domain.Child;
 import org.lifeforachild.domain.ClinicalRecord;
 import org.springframework.stereotype.Controller;
@@ -37,7 +37,7 @@ public class SystolicBloodPressureSDController
                 Float heightSD = ClinicalRecord.calculateHeightSD(exactAgeMonths, child.getSex(), heightCMValue);
                 Float bloodPressureSystolicSD = ClinicalRecord.calcSystolicBloodPressureSD(age, child.getSex(), heightSD, bloodPressureSystolicMMHgValue);
 
-                return new DecimalFormat("0.##").format(bloodPressureSystolicSD);
+                return DecimalUtil.format(bloodPressureSystolicSD);
             }
         }
         catch (ParseException e)
