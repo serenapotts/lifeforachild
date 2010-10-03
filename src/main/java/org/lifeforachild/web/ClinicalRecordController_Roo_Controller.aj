@@ -17,6 +17,7 @@ import org.lifeforachild.domain.MicroalbuminuriaUnitsType;
 import org.lifeforachild.domain.NotAttendingSchoolReasonType;
 import org.lifeforachild.domain.Permissions;
 import org.lifeforachild.domain.ReasonNotEnteringType;
+import org.lifeforachild.domain.SexType;
 import org.lifeforachild.domain.User;
 import org.lifeforachild.domain.WhoAdjustsInsulinType;
 import org.lifeforachild.domain.YesNoLaterType;
@@ -28,11 +29,11 @@ import org.springframework.security.access.AccessDeniedException;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.validation.Errors;
 
 privileged aspect ClinicalRecordController_Roo_Controller {
     
@@ -62,17 +63,21 @@ privileged aspect ClinicalRecordController_Roo_Controller {
         }        
         // still set age in case click update without clicking out of dom field
         clinicalRecord.setExactAge(clinicalRecord.calculateExactAge());
-        clinicalRecord.setExactAgeMonths(clinicalRecord.calculateExactAgeMonths());
+        clinicalRecord.setExactAgeMonths(ClinicalRecord.calculateExactAgeMonths(clinicalRecord.getExactAge()));
+        
+        Float exactAge = clinicalRecord.getExactAge();
+        Float exactAgeMonths = clinicalRecord.getExactAgeMonths();
+        SexType childSex = clinicalRecord.getChild().getSex();
         
         clinicalRecord.setInsulinPerKg(clinicalRecord.calculateInsulinPerKg());
-        clinicalRecord.setWeightSD(clinicalRecord.calculateWeightSD());
-        clinicalRecord.setHeightSD(clinicalRecord.calculateHeightSD());
+        clinicalRecord.setWeightSD(ClinicalRecord.calculateWeightSD(exactAgeMonths, childSex, clinicalRecord.getWeightKG()));
+        clinicalRecord.setHeightSD(ClinicalRecord.calculateHeightSD(exactAgeMonths, childSex, clinicalRecord.getHeightCM()));
         
-        clinicalRecord.setBmi(clinicalRecord.calculateBMI());
-        clinicalRecord.setBmiSD(clinicalRecord.calculateBmiSD());
+        clinicalRecord.setBmi(ClinicalRecord.calculateBMI(clinicalRecord.getWeightKG(), clinicalRecord.getHeightCM()));
+        clinicalRecord.setBmiSD(ClinicalRecord.calculateBmiSD(exactAgeMonths, childSex, clinicalRecord.getBmi()));
         
-        clinicalRecord.setBloodPressureSystolicSD(clinicalRecord.calcSystolicBloodPressureSD());
-        clinicalRecord.setBloodPressureDiastolicSD(clinicalRecord.calcDiastolicBloodPressureSD());
+        clinicalRecord.setBloodPressureSystolicSD(ClinicalRecord.calcSystolicBloodPressureSD(exactAge, childSex, clinicalRecord.getHeightSD(), clinicalRecord.getBloodPressureSystolicSD()));
+        clinicalRecord.setBloodPressureDiastolicSD(clinicalRecord.calcDiastolicBloodPressureSD(exactAge, childSex, clinicalRecord.getHeightSD(), clinicalRecord.getBloodPressureDiastolicSD()));
         
         clinicalRecord.persist();        
         return "redirect:/clinicalrecord/" + clinicalRecord.getId();        
@@ -146,19 +151,25 @@ privileged aspect ClinicalRecordController_Roo_Controller {
             modelMap.addAttribute("clinicalRecord_dateOfMeasurement_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));                        
             modelMap.addAttribute("clinicalRecord_dateCompleted_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));            
             return "clinicalrecord/update";            
-        }                
-        clinicalRecord.setExactAge(clinicalRecord.calculateExactAge());
-        clinicalRecord.setExactAgeMonths(clinicalRecord.calculateExactAgeMonths());
+        }
         
         clinicalRecord.setInsulinPerKg(clinicalRecord.calculateInsulinPerKg());
-        clinicalRecord.setWeightSD(clinicalRecord.calculateWeightSD());
         
-        clinicalRecord.setBmi(clinicalRecord.calculateBMI());
-        clinicalRecord.setBmiSD(clinicalRecord.calculateBmiSD());
-        clinicalRecord.setHeightSD(clinicalRecord.calculateHeightSD());
+        clinicalRecord.setExactAge(clinicalRecord.calculateExactAge());
+        clinicalRecord.setExactAgeMonths(ClinicalRecord.calculateExactAgeMonths(clinicalRecord.getExactAge()));
+
+        Float exactAge = clinicalRecord.getExactAge();
+        Float exactAgeMonths = clinicalRecord.getExactAgeMonths();
+        SexType childSex = clinicalRecord.getChild().getSex();
         
-        clinicalRecord.setBloodPressureSystolicSD(clinicalRecord.calcSystolicBloodPressureSD());
-        clinicalRecord.setBloodPressureDiastolicSD(clinicalRecord.calcDiastolicBloodPressureSD());
+        clinicalRecord.setWeightSD(ClinicalRecord.calculateWeightSD(exactAgeMonths, childSex, clinicalRecord.getWeightKG()));
+        clinicalRecord.setHeightSD(ClinicalRecord.calculateHeightSD(exactAgeMonths, childSex, clinicalRecord.getHeightCM()));
+        
+        clinicalRecord.setBmi(ClinicalRecord.calculateBMI(clinicalRecord.getWeightKG(), clinicalRecord.getHeightCM()));
+        clinicalRecord.setBmiSD(ClinicalRecord.calculateBmiSD(exactAgeMonths, childSex, clinicalRecord.getBmi()));
+        
+        clinicalRecord.setBloodPressureSystolicSD(ClinicalRecord.calcSystolicBloodPressureSD(exactAge, childSex, clinicalRecord.getHeightSD(), clinicalRecord.getBloodPressureSystolicSD()));
+        clinicalRecord.setBloodPressureDiastolicSD(ClinicalRecord.calcDiastolicBloodPressureSD(exactAge, childSex, clinicalRecord.getHeightSD(), clinicalRecord.getBloodPressureDiastolicSD()));
         
         clinicalRecord.merge();        
         return "redirect:/clinicalrecord/" + clinicalRecord.getId();
