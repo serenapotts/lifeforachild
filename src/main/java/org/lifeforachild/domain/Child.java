@@ -60,9 +60,11 @@ public class Child {
     @Length(max = 30)
     private String lastName;
     
+    @NotNull
 	@ManyToOne
 	Country country;
 	
+    @NotNull
 	@ManyToOne
 	DiabetesCentre centre;    
 	
@@ -134,8 +136,12 @@ public class Child {
     
     private Float ageAtDiagnosis;
 
+    public static float calculatedAgeAtDiabetesDiagnosis(Date diabetesDiagnosed, Date dateOfBirth) {
+    	return ClinicalRecord.calculateAge(diabetesDiagnosed, dateOfBirth);
+    }
+    
     public float calculatedAgeAtDiabetesDiagnosis() {
-        return ClinicalRecord.calculateAge(diabetesDiagnosed, dateOfBirth);
+        return calculatedAgeAtDiabetesDiagnosis(diabetesDiagnosed, dateOfBirth);
     }
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "child")

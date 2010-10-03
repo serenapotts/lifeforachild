@@ -16,15 +16,16 @@ import org.lifeforachild.domain.DistanceType;
 import org.lifeforachild.domain.Permissions;
 import org.lifeforachild.domain.SexType;
 import org.lifeforachild.domain.SurvivalStatusType;
+import org.lifeforachild.web.validation.ChildValidator;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.lifeforachild.web.validation.ChildValidator;
-import org.springframework.validation.BindException;
-import org.springframework.validation.Errors;
+import java.util.List;
 
 privileged aspect ChildController_Roo_Controller {
     
@@ -34,11 +35,13 @@ privileged aspect ChildController_Roo_Controller {
         if (child == null) throw new IllegalArgumentException("A child is required"); 
         validate(result, child);
         if (result.hasErrors()) {        
+        	Country country = child.getCountry();
             modelMap.addAttribute("child", child);            
             modelMap.addAttribute("causeofdeathtype_enum", CauseOfDeathType.class.getEnumConstants());            
             modelMap.addAttribute("clinicalrecords", ClinicalRecord.findAllClinicalRecords());            
-            modelMap.addAttribute("countrys", Country.findAllCountrys());            
-            modelMap.addAttribute("diabetescentres", DiabetesCentre.findAllDiabetesCentres());            
+            modelMap.addAttribute("countrys", Country.findAllCountrys());  
+            List<DiabetesCentre> centres = (country == null) ? null : DiabetesCentre.findAllDiabetesCentres(true, country.getId());
+            modelMap.addAttribute("diabetescentres", centres);            
             modelMap.addAttribute("diabetestype_enum", DiabetesType.class.getEnumConstants());            
             modelMap.addAttribute("distancetype_enum", DistanceType.class.getEnumConstants());            
             modelMap.addAttribute("sextype_enum", SexType.class.getEnumConstants());            
@@ -79,7 +82,7 @@ privileged aspect ChildController_Roo_Controller {
         modelMap.addAttribute("causeofdeathtype_enum", CauseOfDeathType.class.getEnumConstants());        
         modelMap.addAttribute("clinicalrecords", ClinicalRecord.findAllClinicalRecords());        
         modelMap.addAttribute("countrys", Country.findAllCountrys());        
-        modelMap.addAttribute("diabetescentres", DiabetesCentre.findAllDiabetesCentres());        
+        modelMap.addAttribute("diabetescentres", null);        
         modelMap.addAttribute("diabetestype_enum", DiabetesType.class.getEnumConstants());        
         modelMap.addAttribute("distancetype_enum", DistanceType.class.getEnumConstants());        
         modelMap.addAttribute("sextype_enum", SexType.class.getEnumConstants());        
@@ -138,8 +141,10 @@ privileged aspect ChildController_Roo_Controller {
             modelMap.addAttribute("child", child);            
             modelMap.addAttribute("causeofdeathtype_enum", CauseOfDeathType.class.getEnumConstants());            
             modelMap.addAttribute("clinicalrecords", ClinicalRecord.findAllClinicalRecords());            
-            modelMap.addAttribute("countrys", Country.findAllCountrys());            
-            modelMap.addAttribute("diabetescentres", DiabetesCentre.findAllDiabetesCentres());            
+            modelMap.addAttribute("countrys", Country.findAllCountrys());      
+            Country country = child.getCountry();
+            List<DiabetesCentre> centres = (country == null) ? null : DiabetesCentre.findAllDiabetesCentres(true, country.getId());
+            modelMap.addAttribute("diabetescentres", centres);           
             modelMap.addAttribute("diabetestype_enum", DiabetesType.class.getEnumConstants());            
             modelMap.addAttribute("distancetype_enum", DistanceType.class.getEnumConstants());            
             modelMap.addAttribute("sextype_enum", SexType.class.getEnumConstants());            
@@ -168,8 +173,10 @@ privileged aspect ChildController_Roo_Controller {
         modelMap.addAttribute("child", child);     
         modelMap.addAttribute("causeofdeathtype_enum", CauseOfDeathType.class.getEnumConstants());        
         modelMap.addAttribute("clinicalrecords", ClinicalRecord.findAllClinicalRecords());        
-        modelMap.addAttribute("countrys", Country.findAllCountrys());        
-        modelMap.addAttribute("diabetescentres", DiabetesCentre.findAllDiabetesCentres());        
+        modelMap.addAttribute("countrys", Country.findAllCountrys());  
+        Country country = child.getCountry();
+        List<DiabetesCentre> centres = (country == null) ? null : DiabetesCentre.findAllDiabetesCentres(true, country.getId());
+        modelMap.addAttribute("diabetescentres", centres);        
         modelMap.addAttribute("diabetestype_enum", DiabetesType.class.getEnumConstants());        
         modelMap.addAttribute("distancetype_enum", DistanceType.class.getEnumConstants());        
         modelMap.addAttribute("sextype_enum", SexType.class.getEnumConstants());        

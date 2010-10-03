@@ -91,12 +91,20 @@ privileged aspect DiabetesCentre_Roo_Entity {
     }    
     
     public static List<DiabetesCentre> DiabetesCentre.findAllDiabetesCentres() { 
+    	return findAllDiabetesCentres(null);
+    }
+    
+    public static List<DiabetesCentre> DiabetesCentre.findAllDiabetesCentres(Long countryId) { 
     	DiabetesCentreQuery diabetesCentreQuery = new DiabetesCentreQuery();
-    	return diabetesCentreQuery.findByAccess(entityManager());       
+    	return diabetesCentreQuery.findByCountryAccess(entityManager(), countryId);       
     }    
     
     public static List<DiabetesCentre> DiabetesCentre.findAllDiabetesCentres(boolean addBlank) { 
-    	List<DiabetesCentre> centres = findAllDiabetesCentres();
+    	return findAllDiabetesCentres(addBlank, null);
+    }
+    
+    public static List<DiabetesCentre> DiabetesCentre.findAllDiabetesCentres(boolean addBlank, Long countryId) {    
+    	List<DiabetesCentre> centres = findAllDiabetesCentres(countryId);
     	if (addBlank)
     	{
     		DiabetesCentre blankCentre = new DiabetesCentre();
@@ -115,7 +123,12 @@ privileged aspect DiabetesCentre_Roo_Entity {
     	return centres;     
     }  
     
+    public static DiabetesCentre DiabetesCentre.findDiabetesCentre(String id) {
+    	return findDiabetesCentre(Long.parseLong(id));
+    }
+    
     public static DiabetesCentre DiabetesCentre.findDiabetesCentre(Long id) {
+    	if (id == null) return null;
     	DiabetesCentreQuery diabetesCentreQuery = new DiabetesCentreQuery();
     	return (DiabetesCentre)diabetesCentreQuery.findByAccess(entityManager(), id);      
     }    

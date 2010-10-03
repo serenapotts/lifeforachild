@@ -116,6 +116,7 @@ privileged aspect Country_Roo_Entity {
     }    
 
     public static Country Country.findCountry(Long id) { 
+    	if (id == null) return null;
     	CountryQuery countryQuery = new CountryQuery();
     	return (Country)countryQuery.findByAccess(entityManager(), id);       
     }    

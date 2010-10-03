@@ -5,6 +5,7 @@
     	dojo.require('dijit.form.FilteringSelect');
     	dojo.require('dijit.form.DateTextBox');
     	dojo.require('dijit.form.SimpleTextarea');
+    	dojo.require('dojo.data.ItemFileReadStore');
 
     	dojo.addOnLoad(
 			function(){
@@ -86,20 +87,58 @@
                 <c:if test="${not empty countrys}">
                     <label for="_country_id"><spring:message code="child.country"/></label>
                     <form:select cssStyle="width:250px" id="_country_id" path="country">
+                    	<form:option value=""></form:option>
                         <form:options itemValue="id" items="${countrys}"/>
                     </form:select>
-                    <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_country_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
+                    <br/>
+                    <form:errors cssClass="errors" id="_country_error_id" path="country"/>
+                    <script type="text/javascript">Spring.addDecoration(
+                            new Spring.ElementDecoration({
+                                elementId : '_country_id', 
+                                widgetType: 'dijit.form.FilteringSelect', 
+                                widgetAttrs : {hasDownArrow : true,
+                            	onChange : function(newValue) {
+                            		console.debug(document.location.href);
+	                        		var centreSelect = dijit.byId('_centre_id');
+	                        		centreSelect.setDisabled(true);
+
+	                        		// after save and there are errors the url changes
+	                        		var url = 'ajax/centre/' + newValue;
+	                        		// first create url
+	                        		if (document.location.href.indexOf('/form') != -1)
+		                        		url = '../ajax/centre/' + newValue;
+	                        			                        		
+									var newDataStore = new dojo.data.ItemFileReadStore({
+										id: 'centres',
+										urlPreventCache : true, 
+										url: url});
+									
+									newDataStore.data = newDataStore._jsonData;
+									centreSelect.store = newDataStore;
+
+									 var resetCentres = function(items, request){
+										 centreSelect.setDisplayedValue("");
+										 centreSelect.setDisabled(false);									 
+									 }
+
+									 var gotError = function(error, request){
+									 displayError("The request to the centre has failed. " + error);
+									 }
+
+									 newDataStore.fetch({onComplete: resetCentres, onError: gotError});
+	                    		}
+                                }})); </script>
                 </c:if>
             </div>
             <br/>
-            <div id="roo_child_centre">
-                <c:if test="${not empty diabetescentres}">
-                    <label for="_centre_id"><spring:message code="child.centre"/></label>
-                    <form:select cssStyle="width:250px" id="_centre_id" path="centre">
-                        <form:options itemValue="id" items="${diabetescentres}"/>
-                    </form:select>
-                    <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_centre_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
-                </c:if>
+            <div id="roo_child_centre">                
+	            <label for="_centre_id"><spring:message code="child.centre"/></label>
+	            <form:select cssStyle="width:250px" id="_centre_id" path="centre">
+                	<form:options itemValue="id" items="${diabetescentres}"/>
+	            </form:select>
+	            <br/>
+	            <form:errors cssClass="errors" id="_centre_error_id" path="centre"/>
+	            <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_centre_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>                
             </div>
             <br/>
             <div id="roo_child_localMedicalNumber">

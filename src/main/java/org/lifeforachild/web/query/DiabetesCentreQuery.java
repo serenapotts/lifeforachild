@@ -1,5 +1,7 @@
 package org.lifeforachild.web.query;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 
 import org.hibernate.Criteria;
@@ -13,16 +15,21 @@ public class DiabetesCentreQuery extends BaseQuery<DiabetesCentre> {
 	
 	public Criteria findByAccessCriteria(EntityManager entityManager)
 	{
+		return findByAccessCriteria(entityManager, null);
+	}
+	
+	public Criteria findByAccessCriteria(EntityManager entityManager, Long countryId)
+	{
 		Criteria criteria = ((Session)entityManager.getDelegate()).createCriteria(DiabetesCentre.class);
 		Integer centre = SecurityUtil.getInstance().getCentre();
-		Integer country = SecurityUtil.getInstance().getCountry();
-		if (centre != null && centre == 0 && country != null && country != 0)
+		//Integer country = SecurityUtil.getInstance().getCountry();
+		if (countryId != null && countryId != 0)
 		{
 			// have just country access to restrict to all centres in that country
 			criteria.createCriteria("country")
-					.add(Restrictions.eq("id", new Long(country)));
+					.add(Restrictions.eq("id", countryId));
 		}			
-		else if (centre != null && centre != 0)
+		if (centre != null && centre != 0)
 		{
 			// have specific centre access so restrict to that centre
 			criteria.add(Restrictions.eq("id", new Long(centre)));			
@@ -42,5 +49,12 @@ public class DiabetesCentreQuery extends BaseQuery<DiabetesCentre> {
 					.add(Restrictions.eq("id", new Long(centre)));
 		}    
     }	
+    
+	public List<DiabetesCentre> findByCountryAccess(EntityManager entityManager, Long countryId)
+	{
+		Criteria criteria = findByAccessCriteria(entityManager, countryId);
+		criteria.add(Restrictions.eq("isDeleted", false));
+		return criteria.list();		
+	}
 
 }
