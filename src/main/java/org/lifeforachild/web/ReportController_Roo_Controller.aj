@@ -2,6 +2,8 @@ package org.lifeforachild.web;
 
 import java.lang.Long;
 import java.lang.String;
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.lifeforachild.Util.SecurityUtil;
@@ -57,7 +59,9 @@ privileged aspect ReportController_Roo_Controller {
         modelMap.addAttribute("childfields_enum", ChildFields.class.getEnumConstants());        
         modelMap.addAttribute("clinicalrecordfields_enum", ClinicalRecordFields.class.getEnumConstants());        
         modelMap.addAttribute("countrys", Country.findAllCountrys(true));        
-        modelMap.addAttribute("diabetescentres", DiabetesCentre.findAllDiabetesCentres(true));        
+        Country country = report.getCountry();
+        List<DiabetesCentre> centres = (country == null) ? null : DiabetesCentre.findAllDiabetesCentres(true, country.getId());
+        modelMap.addAttribute("diabetescentres", centres);      
         modelMap.addAttribute("reporttype_enum", ReportType.class.getEnumConstants());        
         modelMap.addAttribute("showoptiontype_enum", ShowOptionType.class.getEnumConstants());        
         modelMap.addAttribute("statustype_enum", StatusType.class.getEnumConstants());        
@@ -103,7 +107,9 @@ privileged aspect ReportController_Roo_Controller {
             modelMap.addAttribute("childfields_enum", ChildFields.class.getEnumConstants());            
             modelMap.addAttribute("clinicalrecordfields_enum", ClinicalRecordFields.class.getEnumConstants());            
             modelMap.addAttribute("countrys", Country.findAllCountrys(true));            
-            modelMap.addAttribute("diabetescentres", DiabetesCentre.findAllDiabetesCentres(true));            
+            Country country = report.getCountry();
+            List<DiabetesCentre> centres = (country == null) ? null : DiabetesCentre.findAllDiabetesCentres(true, country.getId());
+            modelMap.addAttribute("diabetescentres", centres);            
             modelMap.addAttribute("reporttype_enum", ReportType.class.getEnumConstants());            
             modelMap.addAttribute("showoptiontype_enum", ShowOptionType.class.getEnumConstants());            
             modelMap.addAttribute("statustype_enum", StatusType.class.getEnumConstants());            
@@ -120,12 +126,15 @@ privileged aspect ReportController_Roo_Controller {
     @RequestMapping(value = "/report/{id}/form", method = RequestMethod.GET)    
     public String ReportController.updateForm(@PathVariable("id") Long id, ModelMap modelMap) {
     	SecurityUtil.getInstance().checkPermission(Permissions.EDIT_REPORT);
-        if (id == null) throw new IllegalArgumentException("An Identifier is required");        
-        modelMap.addAttribute("report", Report.findReport(id));        
+        if (id == null) throw new IllegalArgumentException("An Identifier is required");
+        Report report = Report.findReport(id);
+        modelMap.addAttribute("report", report);        
         modelMap.addAttribute("childfields_enum", ChildFields.class.getEnumConstants());        
         modelMap.addAttribute("clinicalrecordfields_enum", ClinicalRecordFields.class.getEnumConstants());        
         modelMap.addAttribute("countrys", Country.findAllCountrys(true));        
-        modelMap.addAttribute("diabetescentres", DiabetesCentre.findAllDiabetesCentres(true));        
+        Country country = report.getCountry();
+        List<DiabetesCentre> centres = (country == null) ? null : DiabetesCentre.findAllDiabetesCentres(true, country.getId());
+        modelMap.addAttribute("diabetescentres", centres);        
         modelMap.addAttribute("reporttype_enum", ReportType.class.getEnumConstants());        
         modelMap.addAttribute("showoptiontype_enum", ShowOptionType.class.getEnumConstants());        
         modelMap.addAttribute("statustype_enum", StatusType.class.getEnumConstants());        

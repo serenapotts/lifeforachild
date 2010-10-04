@@ -44,7 +44,7 @@ public class SearchController {
     	modelMap.addAttribute("_reporttype", ReportType.class.getEnumConstants());
     	modelMap.addAttribute("_timeperiodunit", TimePeriodUnit.class.getEnumConstants());
     	modelMap.addAttribute("countrys", Country.findAllCountrys());
-    	modelMap.addAttribute("diabetescentres", DiabetesCentre.findAllDiabetesCentres());
+    	modelMap.addAttribute("diabetescentres", null);
     	return "index";
     }
 

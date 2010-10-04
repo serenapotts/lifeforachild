@@ -1,5 +1,7 @@
 package org.lifeforachild.web;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.lifeforachild.domain.Country;
@@ -23,7 +25,9 @@ privileged aspect UserController_Roo_Controller {
         if (result.hasErrors()) {        
             modelMap.addAttribute("user", user);            
             modelMap.addAttribute("countrys", Country.findAllCountrys(true));            
-            modelMap.addAttribute("diabetescentres", DiabetesCentre.findAllDiabetesCentres(true));            
+            Country country = user.getCountry();
+            List<DiabetesCentre> centres = (country == null) ? null : DiabetesCentre.findAllDiabetesCentres(true, country.getId());
+            modelMap.addAttribute("diabetescentres", centres);           
             modelMap.addAttribute("usergroups", UserGroup.findAllUserGroups());            
             return "user/create";            
         }        
@@ -37,7 +41,7 @@ privileged aspect UserController_Roo_Controller {
     	user.setIsDeleted(false);
         modelMap.addAttribute("user", user);        
         modelMap.addAttribute("countrys", Country.findAllCountrys(true));        
-        modelMap.addAttribute("diabetescentres", DiabetesCentre.findAllDiabetesCentres(true));        
+        modelMap.addAttribute("diabetescentres", null);        
         modelMap.addAttribute("usergroups", UserGroup.findAllUserGroups());        
         return "user/create";        
     }    
@@ -68,7 +72,9 @@ privileged aspect UserController_Roo_Controller {
         if (result.hasErrors()) {        
             modelMap.addAttribute("user", user);            
             modelMap.addAttribute("countrys", Country.findAllCountrys(true));            
-            modelMap.addAttribute("diabetescentres", DiabetesCentre.findAllDiabetesCentres(true));            
+            Country country = user.getCountry();
+            List<DiabetesCentre> centres = (country == null) ? null : DiabetesCentre.findAllDiabetesCentres(true, country.getId());
+            modelMap.addAttribute("diabetescentres", centres);            
             modelMap.addAttribute("usergroups", UserGroup.findAllUserGroups());            
             return "user/update";            
         }        
@@ -88,7 +94,9 @@ privileged aspect UserController_Roo_Controller {
         user.setOldPassword(user.getPassword());
         modelMap.addAttribute("user", user);        
         modelMap.addAttribute("countrys", Country.findAllCountrys(true));        
-        modelMap.addAttribute("diabetescentres", DiabetesCentre.findAllDiabetesCentres(true));        
+        Country country = user.getCountry();
+        List<DiabetesCentre> centres = (country == null) ? null : DiabetesCentre.findAllDiabetesCentres(true, country.getId());
+        modelMap.addAttribute("diabetescentres", centres);        
         modelMap.addAttribute("usergroups", UserGroup.findAllUserGroups()); 
         return "user/update";        
     }    
