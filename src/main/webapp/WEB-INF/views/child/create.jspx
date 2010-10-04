@@ -98,6 +98,8 @@
                                 widgetType: 'dijit.form.FilteringSelect', 
                                 widgetAttrs : {hasDownArrow : true,
                             	onChange : function(newValue) {
+                            		if (newValue == null || newValue == '')
+                                		return;
                             		console.debug(document.location.href);
 	                        		var centreSelect = dijit.byId('_centre_id');
 	                        		centreSelect.setDisabled(true);
@@ -287,7 +289,58 @@
                 <spring:message arguments="Date Of Birth" code="field.invalid" var="field_invalid"/>
                 <spring:message code="field.required" var="field_required"/>
                 <spring:message argumentSeparator="," arguments="Date Of Birth,(${field_required})" code="field.simple.validation" var="field_validation"/>
-                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_dateOfBirth_id', widgetType : 'dijit.form.DateTextBox', widgetAttrs : {promptMessage: '${field_date_tooltip}', invalidMessage: '${field_invalid_date}', popupClass: '', constraints: {max: new Date(), datePattern : '${child_dateOfBirth_date_format}', required : false}, datePattern : '${child_dateOfBirth_date_format}'}})); </script>
+                <script type="text/javascript">
+                	Spring.addDecoration(
+                        	new Spring.ElementDecoration({
+                            	elementId : '_dateOfBirth_id', 
+                            	widgetType : 'dijit.form.DateTextBox', 
+                            	widgetAttrs : {
+                            		promptMessage: '${field_date_tooltip}', 
+                            		invalidMessage: '${field_invalid_date}', 
+                            		popupClass: '', 
+                            		constraints: {max: new Date(), datePattern : '${child_dateOfBirth_date_format}', required : false},
+                            		datePattern : '${child_dateOfBirth_date_format}',
+                                   	onChange : function(newValue) {   
+                               			console.debug(" got click!");                                		 	
+                                   		var dob = dijit.byId("_dateOfBirth_id").attr("value");
+                                   		var dd = dijit.byId("_diabetesDiagnosed_id").attr("value");
+                                   		 
+                                   		if (dob != null &amp;&amp; dd != null)
+                                   		{
+                                   			var dobStr = dojo.date.stamp.toISOString(dob, {selector:'date'});
+                                   			var ddStr = dojo.date.stamp.toISOString(dd, {selector:'date'});
+                                   			
+                                   		    var ageURL = '../ajax/ageAtDiagnosis/' + ddStr + '/' + dobStr;
+                                   		 	if (document.location.href.indexOf('/form') == -1)
+                                   		 		ageURL = 'ajax/ageAtDiagnosis/' + ddStr + '/' + dobStr;
+                                   		 	
+                                   		    console.debug(" Doing Ajax call for Age at diagnosis" + ageURL);
+                                   		    dojo.xhrGet( { // 
+                                   		        // The following URL must match that used to test the server.
+                                   		        url: ageURL, 
+                                   		        preventCache: true,
+                                   		        handleAs: "text",
+                                   		        timeout: 10000, // Time in milliseconds
+
+                                   		        // The LOAD function will be called on a successful response.
+                                   		        load: function(response, ioArgs) { 
+                                   		          console.log("got back response ", response);
+                                   		          
+                                   		          dijit.byId("_ageAtDiagnosis_id").setValue(response);
+                                   		          return response; // 
+                                   		        },
+
+                                   		        // The ERROR function will be called in an error case.
+                                   		        error: function(response, ioArgs) { // 
+                                   		          console.error(response," - HTTP status code: ", ioArgs.xhr.status); //
+                                   		          return response; // 
+                                   		          }
+                                   		        }); 
+	                           			}
+                                    }
+                                 }
+                            })); 
+                 </script>
             </div>
             <br/>
             <div id="roo_child_diabetesDiagnosed">
@@ -298,7 +351,56 @@
                 <spring:message arguments="Diabetes Diagnosed" code="field.invalid" var="field_invalid"/>
                 <spring:message code="field.required" var="field_required"/>
                 <spring:message argumentSeparator="," arguments="Diabetes Diagnosed,(${field_required})" code="field.simple.validation" var="field_validation"/>
-                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_diabetesDiagnosed_id', widgetType : 'dijit.form.DateTextBox', widgetAttrs : {promptMessage: '${field_date_tooltip}', invalidMessage: '${field_invalid_date}', popupClass: '', constraints: {max: new Date(), datePattern : '${child_diabetesDiagnosed_date_format}', required : false}, datePattern : '${child_diabetesDiagnosed_date_format}'}})); </script>
+                <script type="text/javascript">
+                	Spring.addDecoration(
+                        new Spring.ElementDecoration({
+                            elementId : '_diabetesDiagnosed_id', 
+                            widgetType : 'dijit.form.DateTextBox', 
+                            widgetAttrs : {
+                            	promptMessage: '${field_date_tooltip}', 
+                            	invalidMessage: '${field_invalid_date}', 
+                            	popupClass: '', 
+                            	constraints: {max: new Date(), datePattern : '${child_diabetesDiagnosed_date_format}', required : false}, 
+                            	datePattern : '${child_diabetesDiagnosed_date_format}',
+                            	onChange : function(newValue) {   
+                           			console.debug(" got click!");                                		 	
+                               		var dob = dijit.byId("_dateOfBirth_id").attr("value");
+                               		var dd = dijit.byId("_diabetesDiagnosed_id").attr("value");
+                               		 
+                               		if (dob != null &amp;&amp; dd != null)
+                               		{
+                               			var dobStr = dojo.date.stamp.toISOString(dob, {selector:'date'});
+                               			var ddStr = dojo.date.stamp.toISOString(dd, {selector:'date'});
+                               			
+                               		    var ageURL = '../ajax/ageAtDiagnosis/' + ddStr + '/' + dobStr;
+                               		 	if (document.location.href.indexOf('/form') == -1)
+                               		 		ageURL = 'ajax/ageAtDiagnosis/' + ddStr + '/' + dobStr;
+                               		 	
+                               		    console.debug(" Doing Ajax call for Age at diagnosis" + ageURL);
+                               		    dojo.xhrGet( { // 
+                               		        // The following URL must match that used to test the server.
+                               		        url: ageURL, 
+                               		        preventCache: true,
+                               		        handleAs: "text",
+                               		        timeout: 10000, // Time in milliseconds
+
+                               		        // The LOAD function will be called on a successful response.
+                               		        load: function(response, ioArgs) { 
+                               		          console.log("got back response ", response);
+                               		          
+                               		          dijit.byId("_ageAtDiagnosis_id").setValue(response);
+                               		          return response; // 
+                               		        },
+
+                               		        // The ERROR function will be called in an error case.
+                               		        error: function(response, ioArgs) { // 
+                               		          console.error(response," - HTTP status code: ", ioArgs.xhr.status); //
+                               		          return response; // 
+                               		          }
+                               		        }); 
+                           			}
+                                }}})); 
+                </script>
             </div>
             <br/>
             <div id="roo_child_insulinSince">
@@ -356,7 +458,6 @@
             <form:hidden id="_createdOn_id" path="createdOn"/>
             <form:hidden id="_updatedOn_id" path="updatedOn"/>
             <form:hidden id="_isDeleted_id" path="isDeleted"/>
-            <form:hidden id="_ageAtDiagnosis_id" path="ageAtDiagnosis"/>
             <div id="roo_child_distanceLivesFromCentre">
                 <label for="_distanceLivesFromCentre_id"><spring:message code="child.distanceFromCentre"/></label>
                 <form:select cssStyle="width:250px" id="_distanceLivesFromCentre_id" path="distanceLivesFromCentre">
@@ -368,6 +469,13 @@
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_distanceLivesFromCentre_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
             </div>
             <br/>
+            <div id="roo_clinicalRecord_ageAtDiagnosis">
+                <label for="_exactAge_id"><spring:message code="child.ageAtDiagnosis"/></label>
+                <form:input cssStyle="width:250px; border:0" id="_ageAtDiagnosis_id" maxlength="30" path="ageAtDiagnosis" size="0"/>
+               	<br/>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_ageAtDiagnosis_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {readOnly : true}})); </script>
+            </div>
+            <br/> 
             <div class="submit" id="roo_child_submit">
                 <spring:message code="button.save" var="save_button"/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ValidateAllDecoration({elementId:'proceed', event:'onclick'}));</script>

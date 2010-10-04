@@ -170,6 +170,20 @@
 			            </div>
 			            <br/>
 		            </c:if>
+		            <div id="roo_child_distanceLivesFromCentre">
+		                <label for="_distanceLivesFromCentre_id"><spring:message code="child.distanceFromCentre"/></label>
+		                <div class="box" id="_distanceLivesFromCentre_id">
+		                    <c:out value="${child.distanceLivesFromCentre.label}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <div id="roo_child_ageAtDiagnosis">
+		                <label for="_ageAtDiagnosis_id"><spring:message code="child.ageAtDiagnosis"/></label>
+		                <div class="box" id="_ageAtDiagnosis_id">
+		                    <c:out value="${child.ageAtDiagnosis}"/>
+		                </div>
+		            </div>
+		            <br/>
 		            <div id="roo_child_createdOn">
 		                <label for="_createdOn_id"><spring:message code="child.createdOn"/></label>
 		                <div class="box" id="_createdOn_id">
@@ -184,20 +198,6 @@
 		                </div>
 		            </div>
 		            <br/>
-		            <div id="roo_child_distanceLivesFromCentre">
-		                <label for="_distanceLivesFromCentre_id"><spring:message code="child.distanceFromCentre"/></label>
-		                <div class="box" id="_distanceLivesFromCentre_id">
-		                    <c:out value="${child.distanceLivesFromCentre.label}"/>
-		                </div>
-		            </div>
-		            <br/>
-		            <div id="roo_child_ageAtDiagnosis">
-		                <label for="_ageAtDiagnosis_id"><spring:message code="child.ageAtDiagnosis"/></label>
-		                <div class="box" id="_ageAtDiagnosis_id">
-		                    <c:out value="${child.ageAtDiagnosis}"/>
-		                </div>
-		            </div>
-		            <br/>		            
 				</div>
 				<script type="text/javascript">
 					Spring.addDecoration(new Spring.ElementDecoration({
