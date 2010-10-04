@@ -56,7 +56,8 @@
                                 widgetType: 'dijit.form.FilteringSelect', 
                                 widgetAttrs : {hasDownArrow : true,
                             	onChange : function(newValue) {
-                            		console.debug(document.location.href);
+	                            	if (newValue == null || newValue == '')
+	                            		return;
 	                        		var centreSelect = dijit.byId('_centre_id');
 	                        		centreSelect.setDisabled(true);
 

@@ -172,35 +172,36 @@
 	                        widgetType: 'dijit.form.FilteringSelect', 
 	                        widgetAttrs : {hasDownArrow : true,
 	                    	onChange : function(newValue) {
-	                    		console.debug(document.location.href);
-	                 		var centreSelect = dijit.byId('_centre_id');
-	                 		centreSelect.setDisabled(true);
-	
-	                 		// after save and there are errors the url changes
-	                 		var url = '../ajax/centre/' + newValue;
-	                 		// first create url
-	                 		if (document.location.href.indexOf('/form') != -1)
-	                  		url = '../../ajax/centre/' + newValue;
-	                 			                        		
-							var newDataStore = new dojo.data.ItemFileReadStore({
-								id: 'centres', 
-								urlPreventCache : true,
-								url: url});
+		                    	if (newValue == null || newValue == '')
+	                        		return;
+		                 		var centreSelect = dijit.byId('_centre_id');
+		                 		centreSelect.setDisabled(true);
+		
+		                 		// after save and there are errors the url changes
+		                 		var url = '../ajax/centre/' + newValue;
+		                 		// first create url
+		                 		if (document.location.href.indexOf('/form') != -1)
+		                  		url = '../../ajax/centre/' + newValue;
+		                 			                        		
+								var newDataStore = new dojo.data.ItemFileReadStore({
+									id: 'centres', 
+									urlPreventCache : true,
+									url: url});
+								
+								newDataStore.data = newDataStore._jsonData;
+								centreSelect.store = newDataStore;
 							
-							newDataStore.data = newDataStore._jsonData;
-							centreSelect.store = newDataStore;
-						
-							 var resetCentres = function(items, request){
-								 centreSelect.setDisplayedValue("");
-								 centreSelect.setDisabled(false);									 
-							 }
-						
-							 var gotError = function(error, request){
-							 displayError("The request to the centre has failed. " + error);
-							 }
-						
-							 newDataStore.fetch({onComplete: resetCentres, onError: gotError});
-	             		}
+								 var resetCentres = function(items, request){
+									 centreSelect.setDisplayedValue("");
+									 centreSelect.setDisabled(false);									 
+								 }
+							
+								 var gotError = function(error, request){
+								 displayError("The request to the centre has failed. " + error);
+								 }
+							
+								 newDataStore.fetch({onComplete: resetCentres, onError: gotError});
+		             		}
                      }})); </script>
                 </c:if>
             </div>
