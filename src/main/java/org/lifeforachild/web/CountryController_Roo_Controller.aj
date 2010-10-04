@@ -22,8 +22,7 @@ privileged aspect CountryController_Roo_Controller {
     	SecurityUtil.getInstance().checkPermission(Permissions.CREATE_COUNTRY);
         if (country == null) throw new IllegalArgumentException("A country is required");        
         if (result.hasErrors()) {        
-            modelMap.addAttribute("country", country);            
-            modelMap.addAttribute("diabetescentres", DiabetesCentre.findAllDiabetesCentres());            
+            modelMap.addAttribute("country", country);                       
             return "country/create";            
         }        
         country.persist();        
@@ -35,8 +34,7 @@ privileged aspect CountryController_Roo_Controller {
     	SecurityUtil.getInstance().checkPermission(Permissions.CREATE_COUNTRY);
     	Country country = new Country();
     	country.setIsDeleted(false); 
-        modelMap.addAttribute("country", country);        
-        modelMap.addAttribute("diabetescentres", DiabetesCentre.findAllDiabetesCentres());        
+        modelMap.addAttribute("country", country);              
         return "country/create";        
     }    
     
@@ -67,8 +65,7 @@ privileged aspect CountryController_Roo_Controller {
     	SecurityUtil.getInstance().checkPermission(Permissions.EDIT_COUNTRY);
         if (country == null) throw new IllegalArgumentException("A country is required");        
         if (result.hasErrors()) {        
-            modelMap.addAttribute("country", country);            
-            modelMap.addAttribute("diabetescentres", DiabetesCentre.findAllDiabetesCentres());            
+            modelMap.addAttribute("country", country);                       
             return "country/update";            
         }        
         country.merge();        
@@ -79,8 +76,7 @@ privileged aspect CountryController_Roo_Controller {
     public String CountryController.updateForm(@PathVariable("id") Long id, ModelMap modelMap) { 
     	SecurityUtil.getInstance().checkPermission(Permissions.EDIT_COUNTRY);
         if (id == null) throw new IllegalArgumentException("An Identifier is required");        
-        modelMap.addAttribute("country", Country.findCountry(id));        
-        modelMap.addAttribute("diabetescentres", DiabetesCentre.findAllDiabetesCentres());        
+        modelMap.addAttribute("country", Country.findCountry(id));            
         return "country/update";        
     }    
     
