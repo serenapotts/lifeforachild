@@ -102,15 +102,7 @@ privileged aspect Country_Roo_Entity {
     		Country blankCountry = new Country();
         	blankCountry.id = new Long(0);
         	blankCountry.setName("");
-        	
-    		UserGroup userGroup = SecurityUtil.getInstance().getCurrentUserGroup();
-        	if (userGroup == null)
-        		// TODO this will cause null pointer
-        		return null;
-        	else if (userGroup.getGroupName().equals(UserGroups.PROGRAM_MANAGER.getName()) ||
-        			userGroup.getGroupName().equals(UserGroups.PMS_ASSISTANTS.getName()))
-        		// they can see all countries so allow blank
-        		countries.add(0, blankCountry);    	
+        	countries.add(0, blankCountry);    	
     	}
     	return countries;
     }    
