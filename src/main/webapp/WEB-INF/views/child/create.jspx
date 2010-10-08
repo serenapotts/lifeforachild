@@ -10,6 +10,11 @@
     	// this is needed because of the previous import for some reason the next javascript block gets ignored
     	function dummy() {}   	
     </script>
+    <script type="text/javascript" src="/lifeforachild/static/js/CountryCentreFtns.js"/>  
+    <script type="text/javascript">
+    	// this is needed because of the previous import for some reason the next javascript block gets ignored
+    	function dummy() {}   	
+    </script>    
     <div id="_title_div">
         <spring:message code="label.child" var="entity_label"/>
         <spring:message arguments="${entity_label}" code="entity.create" var="title_msg"/>
