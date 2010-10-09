@@ -69,7 +69,7 @@ privileged aspect ClinicalRecordController_Roo_Controller {
         Float exactAgeMonths = clinicalRecord.getExactAgeMonths();
         SexType childSex = clinicalRecord.getChild().getSex();
         
-        clinicalRecord.setInsulinPerKg(clinicalRecord.calculateInsulinPerKg());
+        clinicalRecord.setInsulinPerKg(clinicalRecord.calculateInsulinPerKg(clinicalRecord.getWeightKG(), clinicalRecord.getInsulinUnitsPerDay()));
         clinicalRecord.setWeightSD(ClinicalRecord.calculateWeightSD(exactAgeMonths, childSex, clinicalRecord.getWeightKG()));
         clinicalRecord.setHeightSD(ClinicalRecord.calculateHeightSD(exactAgeMonths, childSex, clinicalRecord.getHeightCM()));
         
@@ -153,7 +153,7 @@ privileged aspect ClinicalRecordController_Roo_Controller {
             return "clinicalrecord/update";            
         }
         
-        clinicalRecord.setInsulinPerKg(clinicalRecord.calculateInsulinPerKg());
+        clinicalRecord.setInsulinPerKg(clinicalRecord.calculateInsulinPerKg(clinicalRecord.getWeightKG(), clinicalRecord.getInsulinUnitsPerDay()));
         
         clinicalRecord.setExactAge(clinicalRecord.calculateExactAge());
         clinicalRecord.setExactAgeMonths(ClinicalRecord.calculateExactAgeMonths(clinicalRecord.getExactAge()));

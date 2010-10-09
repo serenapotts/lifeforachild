@@ -32,7 +32,7 @@ public class AgeController {
 			return DecimalUtil.format(ClinicalRecord.calculateAge(measDate, dobDate));
 		}
 		}catch(ParseException e) {
-			return e.getMessage();
+			e.printStackTrace();
 		}
 		return "";
 	}

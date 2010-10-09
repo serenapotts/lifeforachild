@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-@RequestMapping("/ajax/heightSD/*/*")
+@RequestMapping("/ajax/heightSD/*/*/*")
 @Controller
 public class HeightSDController
 {
@@ -39,11 +39,11 @@ public class HeightSDController
         }
         catch (ParseException e)
         {
-            return e.getMessage();
+        	e.printStackTrace();
         }
         catch (NumberFormatException e)
         {
-            return e.getMessage();
+        	e.printStackTrace();
         }
         return "";
     }

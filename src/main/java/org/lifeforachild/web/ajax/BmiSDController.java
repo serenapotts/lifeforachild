@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-@RequestMapping("/ajax/bmiSD/*/*")
+@RequestMapping("/ajax/bmiSD/*/*/*/*")
 @Controller
 public class BmiSDController
 {
     @RequestMapping("/ajax/bmiSD/{measureDate}/{childId}/{weightKG}/{heightCM}")
-    public @ResponseBody String calculateHeightSD(@PathVariable String measureDate, @PathVariable String childId, @PathVariable String weightKG, @PathVariable String heightCM)
+    public @ResponseBody String calculateBmiSD(@PathVariable String measureDate, @PathVariable String childId, @PathVariable String weightKG, @PathVariable String heightCM)
     {
         try
         {
@@ -42,11 +42,11 @@ public class BmiSDController
         }
         catch (ParseException e)
         {
-            return e.getMessage();
+        	e.printStackTrace();
         }
         catch (NumberFormatException e)
         {
-            return e.getMessage();
+        	e.printStackTrace();
         }
         return "";
     }

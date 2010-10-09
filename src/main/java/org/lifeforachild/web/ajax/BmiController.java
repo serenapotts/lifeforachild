@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class BmiController
 {
     @RequestMapping("/ajax/bmi/{weightKG}/{heightCM}")
-    public @ResponseBody String calculateWeightSD(@PathVariable String weightKG, @PathVariable String heightCM)
+    public @ResponseBody String calculateBMI(@PathVariable String weightKG, @PathVariable String heightCM)
     {
         try
         {
@@ -23,7 +23,8 @@ public class BmiController
         }
         catch (NumberFormatException e)
         {
-            return e.getMessage();
+        	e.printStackTrace();
         }
+        return "";
     }
 }

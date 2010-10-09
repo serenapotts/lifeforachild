@@ -336,7 +336,7 @@ public class ClinicalRecord {
         return calculateAge(dateOfMeasurement == null ? dateCompleted : dateOfMeasurement, child.getDateOfBirth());
     }
  
-    public Float calculateInsulinPerKg() {
+    public static Float calculateInsulinPerKg(Float weightKG, Integer insulinUnitsPerDay) {
     	if (weightKG == null)
     		return null;
         double value = insulinUnitsPerDay / weightKG;

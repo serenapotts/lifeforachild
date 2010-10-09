@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-@RequestMapping("/ajax/systolicBloodPressureSD/*/*")
+@RequestMapping("/ajax/systolicBloodPressureSD/*/*/*/*")
 @Controller
 public class SystolicBloodPressureSDController
 {
     @RequestMapping("/ajax/systolicBloodPressureSD/{measureDate}/{childId}/{heightCM}/{bloodPressureSystolicMMHg}")
-    public @ResponseBody String calculateWeightSD(@PathVariable String measureDate, @PathVariable String childId, @PathVariable String heightCM, @PathVariable String bloodPressureSystolicMMHg)
+    public @ResponseBody String calculateSystolicBloodPressureSD(@PathVariable String measureDate, @PathVariable String childId, @PathVariable String heightCM, @PathVariable String bloodPressureSystolicMMHg)
     {
         try
         {
@@ -42,11 +42,11 @@ public class SystolicBloodPressureSDController
         }
         catch (ParseException e)
         {
-            return e.getMessage();
+        	e.printStackTrace();
         }
         catch (NumberFormatException e)
         {
-            return e.getMessage();
+        	e.printStackTrace();
         }
         return "";
     }

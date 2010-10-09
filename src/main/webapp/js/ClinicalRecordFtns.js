@@ -400,46 +400,205 @@ function attendingSchoolOnChange(newValue) {
 	}
 }
 
-
 //needed for the create page
-function updateAgeFromCreate(newValue) {                                 		 	
+function updateDateOfMeasFromCreate(newValue) {                                 		 	
 	updateAge("");
+	updateBMISD("");
+	updateWeightSD("")
+	updateHeightSD("");
+	updateDiastolicBP("");
 }
 
 //Url's different for ajax call for update page
-function updateAgeFromUpdate(newValue) {
+function updateDateOfMeasFromUpdate(newValue) {
 	updateAge("../");
+	updateBMISD("../");
+	updateWeightSD("../");
+	updateHeightSD("../");
+	updateDiastolicBP("../");
+	updateSystolicBP("../");
+}
+
+//needed for the create page
+function updateWeightFromCreate(newValue) {                                 		 	
+	updateWeightSD("");
+	updateBMI("");
+	updateBMISD("");
+	updateInsulinUnitsPerKg("");
+	updateSystolicBP("");
+}
+
+//Url's different for ajax call for update page
+function updateWeightFromUpdate(newValue) {
+	updateWeightSD("../");
+	updateBMI("../");
+	updateBMISD("../");
+	updateInsulinUnitsPerKg("../");
+}
+
+//needed for the create page
+function updateHeightFromCreate(newValue) {                                 		 	
+	updateHeightSD("");
+	updateBMI("");
+	updateBMISD("");
+	updateDiastolicBP("");
+	updateSystolicBP("");
+}
+
+//Url's different for ajax call for update page
+function updateHeightFromUpdate(newValue) {
+	updateHeightSD("../");
+	updateBMI("../");
+	updateBMISD("../");
+	updateDiastolicBP("../");
+	updateSystolicBP("../");
+}
+
+//needed for the create page
+function updateInsulinUnitsPerDayFromCreate(newValue) {                                 		 	
+	updateInsulinUnitsPerKg("");
+}
+
+//Url's different for ajax call for update page
+function updateInsulinUnitsPerDayFromUpdate(newValue) {
+	updateInsulinUnitsPerKg("../");
+}
+
+//needed for the create page
+function updateDiasBPFromCreate(newValue) {                                 		 	
+	updateDiastolicBP("");
+}
+
+//Url's different for ajax call for update page
+function updateDiasBPFromUpdate(newValue) {
+	updateDiastolicBP("../");
+}
+
+//needed for the create page
+function updateSysBPFromCreate(newValue) {                                 		 	
+	updateSystolicBP("");
+}
+
+//Url's different for ajax call for update page
+function updateSysBPFromUpdate(newValue) {
+	updateSystolicBP("../");
 }
 
 function updateAge(prefix) {
-	 console.debug(" got click!");
-	 var measurementDate = dijit.byId("_dateOfMeasurement_id").attr("value");
-	 var measurementDateStr = '';
+	 var measurementDate = dijit.byId("_dateOfMeasurement_id").value;
 	 if (measurementDate != null)
 	 {
-	    measurementDateStr = dojo.date.stamp.toISOString(measurementDate, {selector:'date'});
-	    var ageURL = '../../ajax/age/' + measurementDateStr + '/' + dojo.byId("_child_id").value;
-	    console.debug(" Doing Ajax call for Age " + ageURL);
-	    dojo.xhrGet( { // 
-	        // The following URL must match that used to test the server.
-	        url: ageURL, 
-	        preventCache: true,
-	        handleAs: "text",
-	        timeout: 10000, // Time in milliseconds
-
-	        // The LOAD function will be called on a successful response.
-	        load: function(response, ioArgs) { 
-	          console.log("got back response ", response);
-	          
-	          dijit.byId("_exactAge_id").setValue(response);
-	          return response; // 
-	        },
-
-	        // The ERROR function will be called in an error case.
-	        error: function(response, ioArgs) { // 
-	          console.error(response," - HTTP status code: ", ioArgs.xhr.status); //
-	          return response; // 
-	          }
-	        });
+	    var measurementDateStr = dojo.date.stamp.toISOString(measurementDate, {selector:'date'});
+	    var url = prefix + '../ajax/age/' + measurementDateStr + '/' + dojo.byId("_child_id").value;
+	    updateFieldViaAjax("_exactAge_id", url);
 	 } 
+}
+
+function updateBMI(prefix) {
+	 var height = dijit.byId("_heightCM_id").value;
+	 var weight = dijit.byId("_weightKG_id").value;	 
+	 if (weight != null && height != null)
+	 {
+	    var url = prefix + '../ajax/bmi/' + weight + '/' + height;
+	    updateFieldViaAjax("_bmi_id", url);
+	 } 
+}
+
+function updateBMISD(prefix) {
+	 var measurementDate = dijit.byId("_dateOfMeasurement_id").value;
+	 var height = dijit.byId("_heightCM_id").value;
+	 var weight = dijit.byId("_weightKG_id").value;
+	 if (measurementDate != null && weight != null && height != null)
+	 {
+		var measurementDateStr = dojo.date.stamp.toISOString(measurementDate, {selector:'date'});
+	    var url = prefix + '../ajax/bmiSD/' + measurementDateStr + '/' + dojo.byId("_child_id").value + '/' 
+	    	+ weight + '/' + height;
+	    updateFieldViaAjax("_bmiSD_id", url);
+	 } 
+}
+
+function updateInsulinUnitsPerKg(prefix) {
+	 var weight = dijit.byId("_weightKG_id").value;
+	 var insulinUnitsPerDay = dijit.byId("_insulinUnitsPerDay_id").value;
+	 if (weight != null && insulinUnitsPerDay != null)
+	 {
+	    var url = prefix + '../ajax/insulinUnitsPerKg/' + weight + '/' + insulinUnitsPerDay;
+	    updateFieldViaAjax("_insulinPerKg_id", url);
+	 } 
+}
+
+function updateWeightSD(prefix) {
+	 var measurementDate = dijit.byId("_dateOfMeasurement_id").value;
+	 var weight = dijit.byId("_weightKG_id").value;
+	 if (measurementDate != null && weight != null)
+	 {
+	    measurementDateStr = dojo.date.stamp.toISOString(measurementDate, {selector:'date'});
+	    var url = prefix + '../ajax/weightSD/' + measurementDateStr + '/' + dojo.byId("_child_id").value+
+    	'/' + weight;
+	    updateFieldViaAjax("_weightSD_id", url);
+	 } 
+}
+
+function updateHeightSD(prefix) {
+	 var measurementDate = dijit.byId("_dateOfMeasurement_id").value;
+	 var height = dijit.byId("_heightCM_id").value;
+	 if (measurementDate != null && height != null)
+	 {
+	    var measurementDateStr = dojo.date.stamp.toISOString(measurementDate, {selector:'date'});
+	    var url = prefix + '../ajax/heightSD/' + measurementDateStr + '/' + dojo.byId("_child_id").value +
+	    	'/' + height;
+	    updateFieldViaAjax("_heightSD_id", url);
+	 } 
+}
+
+function updateDiastolicBP(prefix) {
+	 var measurementDate = dijit.byId("_dateOfMeasurement_id").value;
+	 var height = dijit.byId("_heightCM_id").value;
+	 var bpDias = dijit.byId("_bloodPressureDiastolicMMHg_id").value;
+	 if (measurementDate != null && height != null && bpDias != null)
+	 {
+	    var measurementDateStr = dojo.date.stamp.toISOString(measurementDate, {selector:'date'});
+	    var url = prefix + '../ajax/diastolicBloodPressureSD/' + measurementDateStr + '/' + dojo.byId("_child_id").value
+	    + '/' + height + '/' + bpDias;
+	    updateFieldViaAjax("_bloodPressureDiastolicSD_id", url);
+	 } 
+}
+
+function updateSystolicBP(prefix) {
+	 var measurementDate = dijit.byId("_dateOfMeasurement_id").value;
+	 var height = dijit.byId("_heightCM_id").value;
+	 var bpSys = dijit.byId("_bloodPressureSystolicMMHg_id").value;
+	 if (measurementDate != null && height != null && bpSys != null)
+	 {
+	    var measurementDateStr = dojo.date.stamp.toISOString(measurementDate, {selector:'date'});
+	    var url = prefix + '../ajax/systolicBloodPressureSD/' + measurementDateStr + '/' + dojo.byId("_child_id").value
+	    	+ '/' + height + '/' + bpSys;
+	    updateFieldViaAjax("_bloodPressureSystolicSD_id", url);
+	 } 
+}
+
+function updateFieldViaAjax(fieldName, url)
+{
+	console.debug(" Doing Ajax call for Age " + url);
+	dojo.xhrGet( { // 
+	    // The following URL must match that used to test the server.
+	    url: url, 
+	    preventCache: true,
+	    handleAs: "text",
+	    timeout: 10000, // Time in milliseconds
+	
+	    // The LOAD function will be called on a successful response.
+	    load: function(response, ioArgs) { 
+	      console.log("got back response ", response);
+	      
+	      dijit.byId(fieldName).setValue(response);
+	      return response; // 
+	    },
+	
+	    // The ERROR function will be called in an error case.
+	    error: function(response, ioArgs) { // 
+	      console.error(response," - HTTP status code: ", ioArgs.xhr.status); //
+	      return response; // 
+	    }
+    });
 }
