@@ -10,7 +10,7 @@ function countryOnChangeFromUpdate(newValue) {
 
 function countryOnChange(newValue, prefix) {
 	var centreSelect = dijit.byId('_centre_id');
-	if (newValue == null || newValue == '')
+	if (newValue == null || newValue == '' || newValue == '0')
 	{
 		centreSelect.store = "";
 		return;

@@ -18,6 +18,11 @@
     			}
     		);    			    	        	
     	</script>
+    <script type="text/javascript" src="/lifeforachild/static/js/CountryCentreFtns.js"/>  
+    <script type="text/javascript">
+    	// this is needed because of the previous import for some reason the next javascript block gets ignored
+    	function dummy() {}   	
+    </script>        	
     <div id="_title_div">
         <spring:message code="label.report" var="entity_label"/>
         <spring:message arguments="${entity_label}" code="entity.update" var="title_msg"/>
@@ -170,38 +175,9 @@
 	                    new Spring.ElementDecoration({
 	                        elementId : '_country_id', 
 	                        widgetType: 'dijit.form.FilteringSelect', 
-	                        widgetAttrs : {hasDownArrow : true,
-	                    	onChange : function(newValue) {
-		                    	if (newValue == null || newValue == '')
-	                        		return;
-		                 		var centreSelect = dijit.byId('_centre_id');
-		                 		centreSelect.setDisabled(true);
-		
-		                 		// after save and there are errors the url changes
-		                 		var url = '../ajax/centre/' + newValue;
-		                 		// first create url
-		                 		if (document.location.href.indexOf('/form') != -1)
-		                  		url = '../../ajax/centre/' + newValue;
-		                 			                        		
-								var newDataStore = new dojo.data.ItemFileReadStore({
-									id: 'centres', 
-									urlPreventCache : true,
-									url: url});
-								
-								newDataStore.data = newDataStore._jsonData;
-								centreSelect.store = newDataStore;
-							
-								 var resetCentres = function(items, request){
-									 centreSelect.setDisplayedValue("");
-									 centreSelect.setDisabled(false);									 
-								 }
-							
-								 var gotError = function(error, request){
-								 displayError("The request to the centre has failed. " + error);
-								 }
-							
-								 newDataStore.fetch({onComplete: resetCentres, onError: gotError});
-		             		}
+	                        widgetAttrs : {
+	                        	hasDownArrow : true,
+	                    		onChange : countryOnChangeFromUpdate
                      }})); </script>
                 </c:if>
             </div>
