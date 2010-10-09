@@ -94,7 +94,13 @@
                	<br/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_exactAge_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {readOnly : true}})); </script>
             </div>
-            <br/>                           
+            <br/>      
+            <div id="roo_clinicalRecord_insulinPerKg">
+	            <label for="_insulinPerKg_id">Insulin Units/ Kg:</label>
+	            <form:input cssStyle="width:250px; border:0" id="_insulinPerKg_id" maxlength="30" path="insulinPerKg" size="0"/>               	
+             	<script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_insulinPerKg_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {readOnly : true}})); </script>
+	         </div>
+	         <br/>
         </div>	   
 		<script type="text/javascript">
 			Spring.addDecoration(new Spring.ElementDecoration({
@@ -379,6 +385,18 @@
                         elementId : 'roo_clinicalRecord_weightKG', 
                         widgetType: 'dijit.layout.ContentPane'})); 
             </script> 
+             <div id="roo_clinicalRecord_weightSD">
+                <label for="_weightSD_id">Weight SD:</label>
+				<form:input cssStyle="width:250px; border:0" id="_weightSD_id" maxlength="30" path="weightSD" size="0"/>
+               	<br/>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_weightSD_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {readOnly : true}})); </script>
+                <br/>                            
+            </div>
+            <script type="text/javascript">Spring.addDecoration(
+                    new Spring.ElementDecoration({
+                        elementId : 'roo_clinicalRecord_weightSD', 
+                        widgetType: 'dijit.layout.ContentPane'})); 
+            </script> 
             <div id="roo_clinicalRecord_heightInLast12Months">
                 <label for="_heightInLast12Months_id"><spring:message code="record.heightInLast12Months"/></label>                
                 <form:select cssStyle="width:250px" id="_heightInLast12Months_id" path="heightInLast12Months">
@@ -413,6 +431,42 @@
                         elementId : 'roo_clinicalRecord_heightCM', 
                         widgetType: 'dijit.layout.ContentPane'})); 
             </script> 
+			<div id="roo_clinicalRecord_heightSD">
+                <label for="_heightSD_id">Height SD:</label>
+                <form:input cssStyle="width:250px; border:0" id="_heightSD_id" maxlength="30" path="heightSD" size="0"/>
+               	<br/>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_heightSD_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {readOnly : true}})); </script>
+                <br/>
+            </div>
+            <script type="text/javascript">Spring.addDecoration(
+                    new Spring.ElementDecoration({
+                        elementId : 'roo_clinicalRecord_heightSD', 
+                        widgetType: 'dijit.layout.ContentPane'})); 
+            </script> 
+			<div id="roo_clinicalRecord_bmi">
+                <label for="_bmi_id">Body Mass Index:</label>
+                <form:input cssStyle="width:250px; border:0" id="_bmi_id" maxlength="30" path="bmi" size="0"/>
+               	<br/>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_bmi_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {readOnly : true}})); </script>		                                        
+                <br/>
+            </div>
+            <script type="text/javascript">Spring.addDecoration(
+                    new Spring.ElementDecoration({
+                        elementId : 'roo_clinicalRecord_bmi', 
+                        widgetType: 'dijit.layout.ContentPane'})); 
+            </script> 
+            <div id="roo_clinicalRecord_bmiSD">
+                <label for="_bmiSD_id">Body Mass Index SD:</label>
+                <form:input cssStyle="width:250px; border:0" id="_bmiSD_id" maxlength="30" path="bmiSD" size="0"/>
+               	<br/>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_bmiSD_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {readOnly : true}})); </script>
+                <br/>
+            </div>
+            <script type="text/javascript">Spring.addDecoration(
+                    new Spring.ElementDecoration({
+                        elementId : 'roo_clinicalRecord_bmiSD', 
+                        widgetType: 'dijit.layout.ContentPane'})); 
+            </script>                      
             <div id="roo_clinicalRecord_BPInLast12Months">
                 <label for="_BPInLast12Months_id"><spring:message code="record.BPInLast12Months"/></label>                
                 <form:select cssStyle="width:250px" id="_BPInLast12Months_id" path="BPInLast12Months">
@@ -448,6 +502,17 @@
                         elementId : 'roo_clinicalRecord_bloodPressureSystolicMMHg', 
                         widgetType: 'dijit.layout.ContentPane'})); 
             </script> 
+			<div id="roo_clinicalRecord_bloodPressureSystolicSD">
+                <label for="_bloodPressureSystolicSD_id">Blood Pressure Systolic SD:</label>
+                <form:input cssStyle="width:250px; border:0" id="_bloodPressureSystolicSD_id" maxlength="30" path="bloodPressureSystolicSD" size="0"/>
+               	<br/>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_bloodPressureSystolicSD_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {readOnly : true}})); </script>
+            </div>
+            <script type="text/javascript">Spring.addDecoration(
+                    new Spring.ElementDecoration({
+                        elementId : 'roo_clinicalRecord_bloodPressureSystolicSD', 
+                        widgetType: 'dijit.layout.ContentPane'})); 
+            </script>           
             <div id="roo_clinicalRecord_bloodPressureDiastolicMMHg">
                 <label for="_bloodPressureDiastolicMMHg_id">Blood Pressure Diastolic (mmHg):</label>
                 <form:input cssStyle="width:250px" id="_bloodPressureDiastolicMMHg_id" maxlength="30" path="bloodPressureDiastolicMMHg" size="0"/>
@@ -462,6 +527,17 @@
             <script type="text/javascript">Spring.addDecoration(
                     new Spring.ElementDecoration({
                         elementId : 'roo_clinicalRecord_bloodPressureDiastolicMMHg', 
+                        widgetType: 'dijit.layout.ContentPane'})); 
+            </script> 
+            <div id="roo_clinicalRecord_bloodPressureDiastolicSD">
+                <label for="_bloodPressureDiastolicSD_id">Blood Pressure Diastolic SD:</label>
+                <form:input cssStyle="width:250px; border:0" id="_bloodPressureDiastolicSD_id" maxlength="30" path="bloodPressureDiastolicSD" size="0"/>
+               	<br/>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_bloodPressureDiastolicSD_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {readOnly : true}})); </script>
+            </div>
+            <script type="text/javascript">Spring.addDecoration(
+                    new Spring.ElementDecoration({
+                        elementId : 'roo_clinicalRecord_bloodPressureDiastolicSD', 
                         widgetType: 'dijit.layout.ContentPane'})); 
             </script> 
             <div id="roo_clinicalRecord_hasPersistentHypertension">
@@ -1300,13 +1376,6 @@
 			elementId : "mainTabContainer",
 			widgetType : "dijit.layout.TabContainer"}));
 	</script>            
-            <form:hidden id="_bmi_id" path="bmi"/>
-            <form:hidden id="_insulinPerKg_id" path="insulinPerKg"/>
-            <form:hidden id="_heightSD_id" path="heightSD"/>
-            <form:hidden id="_weightSD_id" path="weightSD"/>
-            <form:hidden id="_bmiSD_id" path="bmiSD"/>
-            <form:hidden id="_BloodPressureSystolicSD_id" path="BloodPressureSystolicSD"/>
-            <form:hidden id="_BloodPressureDiastolicSD_id" path="BloodPressureDiastolicSD"/>
             <form:hidden id="_isDeleted_id" path="isDeleted"/>            
             <div class="submit" id="roo_clinicalRecord_submit">
                 <spring:message code="button.update" var="update_button"/>

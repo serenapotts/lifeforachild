@@ -109,15 +109,25 @@ dojo.addOnLoad(
 		if (dijit.byId("_weightInLast12Months_id").value != 'YES')
 		{
 			dojo.style(dijit.byId("roo_clinicalRecord_weightKG").domNode, "display", "none");
+			dojo.style(dijit.byId("roo_clinicalRecord_weightSD").domNode, "display", "none");			
 		} 
 		if (dijit.byId("_heightInLast12Months_id").value != 'YES')
 		{
 			dojo.style(dijit.byId("roo_clinicalRecord_heightCM").domNode, "display", "none");
+			dojo.style(dijit.byId("roo_clinicalRecord_heightSD").domNode, "display", "none");			
 		} 
+		if (dijit.byId("_heightInLast12Months_id").value != 'YES' && 
+				dijit.byId("_weightInLast12Months_id").value != 'YES')
+		{
+			dojo.style(dijit.byId("roo_clinicalRecord_bmi").domNode, "display", "none");
+			dojo.style(dijit.byId("roo_clinicalRecord_bmiSD").domNode, "display", "none");
+		}
 		if (dijit.byId("_BPInLast12Months_id").value != 'YES')
 		{
 			dojo.style(dijit.byId("roo_clinicalRecord_bloodPressureSystolicMMHg").domNode, "display", "none");
 			dojo.style(dijit.byId("roo_clinicalRecord_bloodPressureDiastolicMMHg").domNode, "display", "none");
+			dojo.style(dijit.byId("roo_clinicalRecord_bloodPressureDiastolicSD").domNode, "display", "none");
+			dojo.style(dijit.byId("roo_clinicalRecord_bloodPressureSystolicSD").domNode, "display", "none");
 		}      				
 	}
 );    	        
@@ -151,10 +161,27 @@ function weightInLast12MonthsOnChange(newValue) {
 	if (newValue == 'YES')
 	{
 		dojo.style(dijit.byId("roo_clinicalRecord_weightKG").domNode, "display", "block");
+		dojo.style(dijit.byId("roo_clinicalRecord_weightSD").domNode, "display", "block");		
 	}
 	else
 	{
 		dojo.style(dijit.byId("roo_clinicalRecord_weightKG").domNode, "display", "none");
+		dojo.style(dijit.byId("roo_clinicalRecord_weightSD").domNode, "display", "none");
+	}
+	updateBMIFields(newValue, dijit.byId("_heightInLast12Months_id").value);
+}
+
+function updateBMIFields(weightValue, heightValue)
+{
+	if (weightValue == 'YES' && heightValue == 'YES')
+	{
+		dojo.style(dijit.byId("roo_clinicalRecord_bmi").domNode, "display", "block");
+		dojo.style(dijit.byId("roo_clinicalRecord_bmiSD").domNode, "display", "block");
+	}
+	else
+	{
+		dojo.style(dijit.byId("roo_clinicalRecord_bmi").domNode, "display", "none");
+		dojo.style(dijit.byId("roo_clinicalRecord_bmiSD").domNode, "display", "none");
 	}
 }
 
@@ -162,11 +189,14 @@ function heightInLast12MonthsOnChange(newValue) {
 	if (newValue == 'YES')
 	{
 		dojo.style(dijit.byId("roo_clinicalRecord_heightCM").domNode, "display", "block");
+		dojo.style(dijit.byId("roo_clinicalRecord_heightSD").domNode, "display", "block");
 	}
 	else
 	{
 		dojo.style(dijit.byId("roo_clinicalRecord_heightCM").domNode, "display", "none");
+		dojo.style(dijit.byId("roo_clinicalRecord_heightSD").domNode, "display", "none");
 	}
+	updateBMIFields(dijit.byId("_weightInLast12Months_id").value, newValue);
 }
 
 function bpInLast12MonthsOnChange(newValue) {
@@ -174,11 +204,15 @@ function bpInLast12MonthsOnChange(newValue) {
 	{
 		dojo.style(dijit.byId("roo_clinicalRecord_bloodPressureSystolicMMHg").domNode, "display", "block");
 		dojo.style(dijit.byId("roo_clinicalRecord_bloodPressureDiastolicMMHg").domNode, "display", "block");
+		dojo.style(dijit.byId("roo_clinicalRecord_bloodPressureDiastolicSD").domNode, "display", "block");
+		dojo.style(dijit.byId("roo_clinicalRecord_bloodPressureSystolicSD").domNode, "display", "block");				
 	}
 	else
 	{
 		dojo.style(dijit.byId("roo_clinicalRecord_bloodPressureSystolicMMHg").domNode, "display", "none");
 		dojo.style(dijit.byId("roo_clinicalRecord_bloodPressureDiastolicMMHg").domNode, "display", "none");
+		dojo.style(dijit.byId("roo_clinicalRecord_bloodPressureDiastolicSD").domNode, "display", "none");
+		dojo.style(dijit.byId("roo_clinicalRecord_bloodPressureSystolicSD").domNode, "display", "none");
 	}
 }
 
