@@ -331,11 +331,7 @@ public class ClinicalRecord {
         
         return result;
     }
-    
-    public float calculateExactAge() {
-        return calculateAge(dateOfMeasurement == null ? dateCompleted : dateOfMeasurement, child.getDateOfBirth());
-    }
- 
+     
     public static Float calculateInsulinPerKg(Float weightKG, Integer insulinUnitsPerDay) {
     	if (weightKG == null)
     		return null;
@@ -345,9 +341,9 @@ public class ClinicalRecord {
     }
 
     public static Float calculateAge(Date date, Date dob) {
-        float result = 0.0f;
-    	if (date != null)
-    		result = (float) ((date.getTime() - dob.getTime()) / (1000 * 60 * 60 * 24 * 365.25));
+    	if (date == null)
+    		return null;
+        float result = (float) ((date.getTime() - dob.getTime()) / (1000 * 60 * 60 * 24 * 365.25));
     	
     	result = (float) DecimalUtil.roundToTwoDecimals(result);
     	return result;

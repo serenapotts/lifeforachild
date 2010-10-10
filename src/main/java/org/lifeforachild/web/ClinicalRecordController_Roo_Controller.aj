@@ -62,7 +62,7 @@ privileged aspect ClinicalRecordController_Roo_Controller {
             return "clinicalrecord/create";            
         }        
         // still set age in case click update without clicking out of dom field
-        clinicalRecord.setExactAge(clinicalRecord.calculateExactAge());
+        clinicalRecord.setExactAge(clinicalRecord.calculateAge(clinicalRecord.getDateOfMeasurement(), clinicalRecord.getChild().getDateOfBirth()));
         clinicalRecord.setExactAgeMonths(ClinicalRecord.calculateExactAgeMonths(clinicalRecord.getExactAge()));
         
         Float exactAge = clinicalRecord.getExactAge();
@@ -155,7 +155,7 @@ privileged aspect ClinicalRecordController_Roo_Controller {
         
         clinicalRecord.setInsulinPerKg(clinicalRecord.calculateInsulinPerKg(clinicalRecord.getWeightKG(), clinicalRecord.getInsulinUnitsPerDay()));
         
-        clinicalRecord.setExactAge(clinicalRecord.calculateExactAge());
+        clinicalRecord.setExactAge(clinicalRecord.calculateAge(clinicalRecord.getDateOfMeasurement(), clinicalRecord.getChild().getDateOfBirth()));
         clinicalRecord.setExactAgeMonths(ClinicalRecord.calculateExactAgeMonths(clinicalRecord.getExactAge()));
 
         Float exactAge = clinicalRecord.getExactAge();
