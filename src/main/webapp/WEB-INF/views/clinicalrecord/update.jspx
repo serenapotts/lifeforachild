@@ -99,8 +99,8 @@
 	            <label for="_insulinPerKg_id">Insulin Units/ Kg:</label>
 	            <form:input cssStyle="width:250px; border:0" id="_insulinPerKg_id" maxlength="30" path="insulinPerKg" size="0"/>               	
              	<script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_insulinPerKg_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {readOnly : true}})); </script>
-	         </div>
-	         <br/>
+	        </div>
+	        <br/>
         </div>	   
 		<script type="text/javascript">
 			Spring.addDecoration(new Spring.ElementDecoration({

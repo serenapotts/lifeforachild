@@ -406,7 +406,8 @@ function updateDateOfMeasFromCreate(newValue) {
 	updateBMISD("");
 	updateWeightSD("")
 	updateHeightSD("");
-	updateDiastolicBP("");
+	updateDiastolicBloodPressureSD("");
+	updateSystolicBloodPressureSD("");
 }
 
 //Url's different for ajax call for update page
@@ -415,8 +416,8 @@ function updateDateOfMeasFromUpdate(newValue) {
 	updateBMISD("../");
 	updateWeightSD("../");
 	updateHeightSD("../");
-	updateDiastolicBP("../");
-	updateSystolicBP("../");
+	updateDiastolicBloodPressureSD("../");
+	updateSystolicBloodPressureSD("../");
 }
 
 //needed for the create page
@@ -425,7 +426,6 @@ function updateWeightFromCreate(newValue) {
 	updateBMI("");
 	updateBMISD("");
 	updateInsulinUnitsPerKg("");
-	updateSystolicBP("");
 }
 
 //Url's different for ajax call for update page
@@ -441,8 +441,8 @@ function updateHeightFromCreate(newValue) {
 	updateHeightSD("");
 	updateBMI("");
 	updateBMISD("");
-	updateDiastolicBP("");
-	updateSystolicBP("");
+	updateDiastolicBloodPressureSD("");
+	updateSystolicBloodPressureSD("");
 }
 
 //Url's different for ajax call for update page
@@ -450,8 +450,8 @@ function updateHeightFromUpdate(newValue) {
 	updateHeightSD("../");
 	updateBMI("../");
 	updateBMISD("../");
-	updateDiastolicBP("../");
-	updateSystolicBP("../");
+	updateDiastolicBloodPressureSD("../");
+	updateSystolicBloodPressureSD("../");
 }
 
 //needed for the create page
@@ -466,41 +466,41 @@ function updateInsulinUnitsPerDayFromUpdate(newValue) {
 
 //needed for the create page
 function updateDiasBPFromCreate(newValue) {                                 		 	
-	updateDiastolicBP("");
+	updateDiastolicBloodPressureSD("");
 }
 
 //Url's different for ajax call for update page
 function updateDiasBPFromUpdate(newValue) {
-	updateDiastolicBP("../");
+	updateDiastolicBloodPressureSD("../");
 }
 
 //needed for the create page
 function updateSysBPFromCreate(newValue) {                                 		 	
-	updateSystolicBP("");
+	updateSystolicBloodPressureSD("");
 }
 
 //Url's different for ajax call for update page
 function updateSysBPFromUpdate(newValue) {
-	updateSystolicBP("../");
+	updateSystolicBloodPressureSD("../");
 }
 
 function updateAge(prefix) {
 	 var measurementDate = dijit.byId("_dateOfMeasurement_id").value;
-	 if (measurementDate != null)
+	 if (!isEmpty(measurementDate))
 	 {
 	    var measurementDateStr = dojo.date.stamp.toISOString(measurementDate, {selector:'date'});
-	    var url = prefix + '../ajax/age/' + measurementDateStr + '/' + dojo.byId("_child_id").value;
-	    updateFieldViaAjax("_exactAge_id", url);
+	    var url = 'ajax/age/' + measurementDateStr + '/' + dojo.byId("_child_id").value;
+	    updateFieldViaAjax("_exactAge_id", url, prefix);
 	 } 
 }
 
 function updateBMI(prefix) {
 	 var height = dijit.byId("_heightCM_id").value;
 	 var weight = dijit.byId("_weightKG_id").value;	 
-	 if (weight != null && height != null)
+	 if (!isEmpty(weight) && !isEmpty(height))
 	 {
-	    var url = prefix + '../ajax/bmi/' + weight + '/' + height;
-	    updateFieldViaAjax("_bmi_id", url);
+	    var url = 'ajax/bmi/' + weight + '/' + height;
+	    updateFieldViaAjax("_bmi_id", url, prefix);
 	 } 
 }
 
@@ -508,77 +508,81 @@ function updateBMISD(prefix) {
 	 var measurementDate = dijit.byId("_dateOfMeasurement_id").value;
 	 var height = dijit.byId("_heightCM_id").value;
 	 var weight = dijit.byId("_weightKG_id").value;
-	 if (measurementDate != null && weight != null && height != null)
+	 if (!isEmpty(measurementDate) && !isEmpty(weight) && !isEmpty(height))
 	 {
 		var measurementDateStr = dojo.date.stamp.toISOString(measurementDate, {selector:'date'});
-	    var url = prefix + '../ajax/bmiSD/' + measurementDateStr + '/' + dojo.byId("_child_id").value + '/' 
+	    var url = 'ajax/bmiSD/' + measurementDateStr + '/' + dojo.byId("_child_id").value + '/' 
 	    	+ weight + '/' + height;
-	    updateFieldViaAjax("_bmiSD_id", url);
+	    updateFieldViaAjax("_bmiSD_id", url, prefix);
 	 } 
 }
 
 function updateInsulinUnitsPerKg(prefix) {
 	 var weight = dijit.byId("_weightKG_id").value;
 	 var insulinUnitsPerDay = dijit.byId("_insulinUnitsPerDay_id").value;
-	 if (weight != null && insulinUnitsPerDay != null)
+	 if (!isEmpty(weight) && !isEmpty(insulinUnitsPerDay))
 	 {
-	    var url = prefix + '../ajax/insulinUnitsPerKg/' + weight + '/' + insulinUnitsPerDay;
-	    updateFieldViaAjax("_insulinPerKg_id", url);
+	    var url = 'ajax/insulinUnitsPerKg/' + weight + '/' + insulinUnitsPerDay;
+	    updateFieldViaAjax("_insulinPerKg_id", url, prefix);
 	 } 
 }
 
 function updateWeightSD(prefix) {
 	 var measurementDate = dijit.byId("_dateOfMeasurement_id").value;
 	 var weight = dijit.byId("_weightKG_id").value;
-	 if (measurementDate != null && weight != null)
+	 if (!isEmpty(measurementDate) && !isEmpty(weight))
 	 {
 	    measurementDateStr = dojo.date.stamp.toISOString(measurementDate, {selector:'date'});
-	    var url = prefix + '../ajax/weightSD/' + measurementDateStr + '/' + dojo.byId("_child_id").value+
+	    var url = 'ajax/weightSD/' + measurementDateStr + '/' + dojo.byId("_child_id").value+
     	'/' + weight;
-	    updateFieldViaAjax("_weightSD_id", url);
+	    updateFieldViaAjax("_weightSD_id", url, prefix);
 	 } 
 }
 
 function updateHeightSD(prefix) {
 	 var measurementDate = dijit.byId("_dateOfMeasurement_id").value;
 	 var height = dijit.byId("_heightCM_id").value;
-	 if (measurementDate != null && height != null)
+	 if (!isEmpty(measurementDate) && !isEmpty(height))
 	 {
 	    var measurementDateStr = dojo.date.stamp.toISOString(measurementDate, {selector:'date'});
-	    var url = prefix + '../ajax/heightSD/' + measurementDateStr + '/' + dojo.byId("_child_id").value +
+	    var url = 'ajax/heightSD/' + measurementDateStr + '/' + dojo.byId("_child_id").value +
 	    	'/' + height;
-	    updateFieldViaAjax("_heightSD_id", url);
+	    updateFieldViaAjax("_heightSD_id", url, prefix);
 	 } 
 }
 
-function updateDiastolicBP(prefix) {
+function updateDiastolicBloodPressureSD(prefix) {
 	 var measurementDate = dijit.byId("_dateOfMeasurement_id").value;
 	 var height = dijit.byId("_heightCM_id").value;
 	 var bpDias = dijit.byId("_bloodPressureDiastolicMMHg_id").value;
-	 if (measurementDate != null && height != null && bpDias != null)
+	 if (!isEmpty(measurementDate) && !isEmpty(height) && !isEmpty(bpDias))
 	 {
 	    var measurementDateStr = dojo.date.stamp.toISOString(measurementDate, {selector:'date'});
-	    var url = prefix + '../ajax/diastolicBloodPressureSD/' + measurementDateStr + '/' + dojo.byId("_child_id").value
+	    var url = 'ajax/diastolicBloodPressureSD/' + measurementDateStr + '/' + dojo.byId("_child_id").value
 	    + '/' + height + '/' + bpDias;
-	    updateFieldViaAjax("_bloodPressureDiastolicSD_id", url);
+	    updateFieldViaAjax("_bloodPressureDiastolicSD_id", url, prefix);
 	 } 
 }
 
-function updateSystolicBP(prefix) {
+function updateSystolicBloodPressureSD(prefix) {
 	 var measurementDate = dijit.byId("_dateOfMeasurement_id").value;
 	 var height = dijit.byId("_heightCM_id").value;
 	 var bpSys = dijit.byId("_bloodPressureSystolicMMHg_id").value;
-	 if (measurementDate != null && height != null && bpSys != null)
+	 if (!isEmpty(measurementDate) && !isEmpty(height) && !isEmpty(bpSys))
 	 {
 	    var measurementDateStr = dojo.date.stamp.toISOString(measurementDate, {selector:'date'});
-	    var url = prefix + '../ajax/systolicBloodPressureSD/' + measurementDateStr + '/' + dojo.byId("_child_id").value
+	    var url = 'ajax/systolicBloodPressureSD/' + measurementDateStr + '/' + dojo.byId("_child_id").value
 	    	+ '/' + height + '/' + bpSys;
-	    updateFieldViaAjax("_bloodPressureSystolicSD_id", url);
+	    updateFieldViaAjax("_bloodPressureSystolicSD_id", url, prefix);
 	 } 
 }
 
-function updateFieldViaAjax(fieldName, url)
+function updateFieldViaAjax(fieldName, url, prefix)
 {
+	if (document.location.href.indexOf('/form') != -1)
+    	url = "../../" + url;
+	else
+		url = prefix + url;
 	console.debug(" Doing Ajax call for Age " + url);
 	dojo.xhrGet( { // 
 	    // The following URL must match that used to test the server.
@@ -601,4 +605,11 @@ function updateFieldViaAjax(fieldName, url)
 	      return response; // 
 	    }
     });
+}
+
+function isEmpty(value)
+{
+	if (value == null || value == '')
+		return true
+	return false;
 }

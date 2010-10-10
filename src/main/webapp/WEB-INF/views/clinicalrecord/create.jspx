@@ -101,7 +101,13 @@
                	<br/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_exactAge_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {readOnly : true}})); </script>
             </div>
-            <br/>                  
+            <br/>    
+            <div id="roo_clinicalRecord_insulinPerKg">
+	            <label for="_insulinPerKg_id">Insulin Units/ Kg:</label>
+	            <form:input cssStyle="width:250px; border:0" id="_insulinPerKg_id" maxlength="30" path="insulinPerKg" size="0"/>               	
+             	<script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_insulinPerKg_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {readOnly : true}})); </script>
+	        </div>
+	        <br/>              
 		</div>	   
 		<script type="text/javascript">
 			 if(generalHasError == true)
@@ -170,7 +176,8 @@
                         widgetType : 'dijit.form.ValidationTextBox', 
                         widgetAttrs : {promptMessage: '${field_validation}', 
                                        invalidMessage: '${field_invalid}', 
-                                       regExp: '-?[0-9]*'                                       
+                                       regExp: '-?[0-9]*',
+                                       onChange : updateInsulinUnitsPerDayFromCreate                                       
                                        }}));
                 </script>
             </div>
@@ -375,7 +382,7 @@
                             	popupClass: '', 
                             	constraints: {max: new Date(), datePattern : '${clinicalRecord_dateOfMeasurement_date_format}', required : false}, 
                             	datePattern : '${clinicalRecord_dateOfMeasurement_date_format}',
-                            	onChange : updateAgeFromCreate
+                            	onChange : updateDateOfMeasFromCreate
                              }
                     	})); </script>
 
@@ -409,13 +416,34 @@
                 <spring:message arguments="Weight K G" code="field.invalid" var="field_invalid"/>
                 <spring:message code="field.required" var="field_required"/>
                 <spring:message argumentSeparator="," arguments="Weight K G,(${field_required})" code="field.simple.validation" var="field_validation"/>
-                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_weightKG_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}'}})); </script>
+                <script type="text/javascript">Spring.addDecoration(
+                        new Spring.ElementDecoration({
+                            elementId : '_weightKG_id', 
+                            widgetType : 'dijit.form.ValidationTextBox', 
+                            widgetAttrs : {
+                            	promptMessage: '${field_validation}', 
+                            	invalidMessage: '${field_invalid}',
+                            	onChange : updateWeightFromCreate
+                        }})); 
+                </script>
                 <spring:bind path="clinicalRecord.weightKG"><c:if test="${status.error}"><script type="text/javascript">clinicalMeasuresHasError = true;</script></c:if></spring:bind>                
                 <br/>
             </div>
             <script type="text/javascript">Spring.addDecoration(
                     new Spring.ElementDecoration({
                         elementId : 'roo_clinicalRecord_weightKG', 
+                        widgetType: 'dijit.layout.ContentPane'})); 
+            </script> 
+            <div id="roo_clinicalRecord_weightSD">
+                <label for="_weightSD_id">Weight SD:</label>
+				<form:input cssStyle="width:250px; border:0" id="_weightSD_id" maxlength="30" path="weightSD" size="0"/>
+               	<br/>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_weightSD_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {readOnly : true}})); </script>
+                <br/>                            
+            </div>
+            <script type="text/javascript">Spring.addDecoration(
+                    new Spring.ElementDecoration({
+                        elementId : 'roo_clinicalRecord_weightSD', 
                         widgetType: 'dijit.layout.ContentPane'})); 
             </script> 
             <div id="roo_clinicalRecord_heightInLast12Months">
@@ -444,7 +472,16 @@
                 <form:errors cssClass="errors" id="_heightCM_error_id" path="heightCM"/>
                 <spring:message code="field.required" var="field_required"/>
                 <spring:message argumentSeparator="," arguments="Height C M," code="field.simple.validation" var="field_validation"/>
-                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_heightCM_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}'}})); </script>
+                <script type="text/javascript">Spring.addDecoration(
+                        new Spring.ElementDecoration({
+                            elementId : '_heightCM_id', 
+                            widgetType : 'dijit.form.ValidationTextBox', 
+                            widgetAttrs : {
+                            	promptMessage: '${field_validation}', 
+                            	invalidMessage: '${field_invalid}',
+								onChange : updateHeightFromCreate
+                        }})); 
+                </script>
                 <br/>
             </div>
             <script type="text/javascript">Spring.addDecoration(
@@ -452,6 +489,42 @@
                         elementId : 'roo_clinicalRecord_heightCM', 
                         widgetType: 'dijit.layout.ContentPane'})); 
             </script> 
+			<div id="roo_clinicalRecord_heightSD">
+                <label for="_heightSD_id">Height SD:</label>
+                <form:input cssStyle="width:250px; border:0" id="_heightSD_id" maxlength="30" path="heightSD" size="0"/>
+               	<br/>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_heightSD_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {readOnly : true}})); </script>
+                <br/>
+            </div>
+            <script type="text/javascript">Spring.addDecoration(
+                    new Spring.ElementDecoration({
+                        elementId : 'roo_clinicalRecord_heightSD', 
+                        widgetType: 'dijit.layout.ContentPane'})); 
+            </script> 
+            <div id="roo_clinicalRecord_bmi">
+                <label for="_bmi_id">Body Mass Index:</label>
+                <form:input cssStyle="width:250px; border:0" id="_bmi_id" maxlength="30" path="bmi" size="0"/>
+               	<br/>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_bmi_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {readOnly : true}})); </script>		                                        
+                <br/>
+            </div>
+            <script type="text/javascript">Spring.addDecoration(
+                    new Spring.ElementDecoration({
+                        elementId : 'roo_clinicalRecord_bmi', 
+                        widgetType: 'dijit.layout.ContentPane'})); 
+            </script> 
+            <div id="roo_clinicalRecord_bmiSD">
+                <label for="_bmiSD_id">Body Mass Index SD:</label>
+                <form:input cssStyle="width:250px; border:0" id="_bmiSD_id" maxlength="30" path="bmiSD" size="0"/>
+               	<br/>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_bmiSD_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {readOnly : true}})); </script>
+                <br/>
+            </div>
+            <script type="text/javascript">Spring.addDecoration(
+                    new Spring.ElementDecoration({
+                        elementId : 'roo_clinicalRecord_bmiSD', 
+                        widgetType: 'dijit.layout.ContentPane'})); 
+            </script>            
             <div id="roo_clinicalRecord_BPInLast12Months">
                 <label for="_BPInLast12Months_id"><spring:message code="record.BPInLast12Months"/></label>                
                 <form:select cssStyle="width:250px" id="_BPInLast12Months_id" path="BPInLast12Months">
@@ -479,7 +552,18 @@
                 <spring:message code="field.invalid.integer" var="field_invalid"/>
                 <spring:message code="field.required" var="field_required"/>
                 <spring:message argumentSeparator="," arguments="Blood Pressure Systolic M M Hg," code="field.simple.validation" var="field_validation"/>
-                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_bloodPressureSystolicMMHg_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', regExp: '-?[0-9]*', required : false}})); </script>
+                <script type="text/javascript">Spring.addDecoration(
+                        new Spring.ElementDecoration({
+                            elementId : '_bloodPressureSystolicMMHg_id', 
+                            widgetType : 'dijit.form.ValidationTextBox', 
+                            widgetAttrs : {
+                            	promptMessage: '${field_validation}', 
+                            	invalidMessage: '${field_invalid}', 
+                            	regExp: '-?[0-9]*', 
+                            	required : false,
+                            	onChange : updateSysBPFromCreate
+                        }})); 
+                </script>
                 <br/>
             </div>
             <script type="text/javascript">Spring.addDecoration(
@@ -487,6 +571,18 @@
                         elementId : 'roo_clinicalRecord_bloodPressureSystolicMMHg', 
                         widgetType: 'dijit.layout.ContentPane'})); 
             </script>     
+            <div id="roo_clinicalRecord_bloodPressureSystolicSD">
+                <label for="_bloodPressureSystolicSD_id">Blood Pressure Systolic SD:</label>
+                <form:input cssStyle="width:250px; border:0" id="_bloodPressureSystolicSD_id" maxlength="30" path="bloodPressureSystolicSD" size="0"/>
+               	<br/>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_bloodPressureSystolicSD_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {readOnly : true}})); </script>
+                <br/>
+            </div>
+            <script type="text/javascript">Spring.addDecoration(
+                    new Spring.ElementDecoration({
+                        elementId : 'roo_clinicalRecord_bloodPressureSystolicSD', 
+                        widgetType: 'dijit.layout.ContentPane'})); 
+            </script>
             <div id="roo_clinicalRecord_bloodPressureDiastolicMMHg">
                 <label for="_bloodPressureDiastolicMMHg_id">Blood Pressure Diastolic (mmHg):</label>
                 <form:input cssStyle="width:250px" id="_bloodPressureDiastolicMMHg_id" maxlength="30" path="bloodPressureDiastolicMMHg" size="0"/>
@@ -495,7 +591,18 @@
                 <spring:message code="field.invalid.integer" var="field_invalid"/>
                 <spring:message code="field.required" var="field_required"/>
                 <spring:message argumentSeparator="," arguments="Blood Pressure Diastolic M M Hg," code="field.simple.validation" var="field_validation"/>
-                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_bloodPressureDiastolicMMHg_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', regExp: '-?[0-9]*', required : false}})); </script>
+                <script type="text/javascript">Spring.addDecoration(
+                        new Spring.ElementDecoration({
+                            elementId : '_bloodPressureDiastolicMMHg_id', 
+                            widgetType : 'dijit.form.ValidationTextBox', 
+                            widgetAttrs : {
+                            	promptMessage: '${field_validation}', 
+                            	invalidMessage: '${field_invalid}', 
+                            	regExp: '-?[0-9]*', 
+                            	required : false,
+                            	onChange: updateDiasBPFromCreate
+                        }}));
+                </script>
                 <br/>
             </div>
             <script type="text/javascript">Spring.addDecoration(
@@ -503,6 +610,18 @@
                         elementId : 'roo_clinicalRecord_bloodPressureDiastolicMMHg', 
                         widgetType: 'dijit.layout.ContentPane'})); 
             </script>      
+            <div id="roo_clinicalRecord_bloodPressureDiastolicSD">
+                <label for="_bloodPressureDiastolicSD_id">Blood Pressure Diastolic SD:</label>
+                <form:input cssStyle="width:250px; border:0" id="_bloodPressureDiastolicSD_id" maxlength="30" path="bloodPressureDiastolicSD" size="0"/>
+               	<br/>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_bloodPressureDiastolicSD_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {readOnly : true}})); </script>
+                <br/>
+            </div>
+            <script type="text/javascript">Spring.addDecoration(
+                    new Spring.ElementDecoration({
+                        elementId : 'roo_clinicalRecord_bloodPressureDiastolicSD', 
+                        widgetType: 'dijit.layout.ContentPane'})); 
+            </script> 
             <div id="roo_clinicalRecord_hasPersistentHypertension">
                 <label for="_hasPersistentHypertension_id">Has Persistent Hypertension:</label>
                 <form:select cssStyle="width:250px" id="_hasPersistentHypertension_id" path="hasPersistentHypertension">
