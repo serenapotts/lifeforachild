@@ -15,12 +15,22 @@ privileged aspect Child_Roo_JavaBean {
         this.individualId = individualId;        
     }    
     
-    public String Child.getInitials() {    
-        return this.initials;        
+    public String Child.getInitials() {  
+    	try
+    	{
+    		return SimpleStringCipher.decrypt(this.initials);   
+    	} catch (Exception e) {
+    		return this.initials;
+    	}          
     }    
     
     public void Child.setInitials(String initials) {    
-        this.initials = initials;        
+        try
+    	{
+    		this.initials =  SimpleStringCipher.encrypt(initials);   
+    	} catch (Exception e) {
+    		this.initials = initials;
+    	}
     }    
     
     public String Child.getName() {  
