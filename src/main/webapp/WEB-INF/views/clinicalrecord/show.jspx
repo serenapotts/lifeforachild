@@ -882,14 +882,26 @@
 					elementId : "mainTabContainer",
 					widgetType : "dijit.layout.TabContainer"}));
 			</script>
-			<sec:authorize ifAllGranted="EDIT_RECORD">   
-				<br/>
-				<spring:url value="/clinicalrecord/${clinicalRecord.id}/form" var="update_form_url"/>
-	            <form:form action="${update_form_url}" method="GET">
-	                <spring:message arguments="${entity_label}" code="record.edit" var="update_label"/>
-	                <input alt="${update_label}" id="proceed" title="${update_label}" type="submit" value="${update_label}"/>
-	            </form:form>
-            </sec:authorize>			      
+			<table>
+				<tr>
+			<sec:authorize ifAllGranted="EDIT_RECORD">
+				<td>   
+					<spring:url value="/clinicalrecord/${clinicalRecord.id}/form" var="update_form_url"/>
+		            <form:form action="${update_form_url}" method="GET">
+		                <spring:message arguments="${entity_label}" code="record.edit" var="update_label"/>
+		                <input alt="${update_label}" id="proceed" title="${update_label}" type="submit" value="${update_label}"/>
+		            </form:form>
+		        </td>
+            </sec:authorize>	
+            		<td>
+			            <spring:url value="/clinicalrecord/form/${clinicalRecord.child.id}" var="create_url"/>
+			            <form:form action="${create_url}" method="GET">
+			                <spring:message arguments="${entity_label}" code="record.create" var="create_label"/>
+			                <input alt="${create_label}" id="proceed" title="${create_label}" type="submit" value="${create_label}"/>
+			            </form:form>
+            		</td>
+            	</tr>		 
+            </table>     
         </c:if>
         <c:if test="${empty clinicalRecord}">
             <spring:message arguments="${entity_label}" code="entity.not.found.single"/>
