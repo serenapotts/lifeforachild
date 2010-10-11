@@ -38,7 +38,10 @@
     <div id="roo_clinicalRecord_individualId">
         <label for="_individualId_id"><spring:message code="child.individualId"/></label>
         <div class="box" id="_individualId_id">
-            <c:out value="${clinicalRecord.child.individualId}"/>
+            <spring:url value="/child/${clinicalRecord.child.id}/form" var="update_child_url"/>
+            <a href="${update_child_url}">
+            	<c:out value="${clinicalRecord.child.individualId}"/>
+            </a>
         </div>
     </div>
     <br/>    
