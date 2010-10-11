@@ -101,6 +101,10 @@
 	            <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_centre_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
             </div>
             <br/>
+            <form:hidden id="_createdOn_id" path="createdOn"/>
+            <form:hidden id="_updatedOn_id" path="updatedOn"/>
+            <form:hidden id="_createdBy_id" path="createdBy"/>
+            <form:hidden id="_updatedBy_id" path="updatedBy"/>
             <form:hidden id="_isDeleted_id" path="isDeleted"/>
             <div class="submit" id="roo_user_submit">
                 <spring:message code="button.save" var="save_button"/>

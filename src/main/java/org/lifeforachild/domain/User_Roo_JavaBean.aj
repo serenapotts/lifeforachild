@@ -1,6 +1,8 @@
 package org.lifeforachild.domain;
 
 import java.lang.String;
+import java.util.Date;
+
 import org.lifeforachild.domain.Country;
 import org.lifeforachild.domain.DiabetesCentre;
 import org.lifeforachild.domain.UserGroup;
@@ -86,4 +88,36 @@ privileged aspect User_Roo_JavaBean {
     public void User.setIsDeleted(boolean isDeleted) {    
         this.isDeleted = isDeleted;        
     }    
+    
+    public Date User.getCreatedOn() {    
+        return this.createdOn;        
+    }    
+    
+    public void User.setCreatedOn(Date createdOn) {    
+        this.createdOn = createdOn;        
+    }    
+    
+    public Date User.getUpdatedOn() {    
+        return this.updatedOn;        
+    }    
+    
+    public void User.setUpdatedOn(Date updatedOn) {    
+        this.updatedOn = updatedOn;        
+    }    
+    
+    public String User.getCreatedBy() {    
+        return this.createdBy;        
+    }    
+    
+    public void User.setCreatedBy(String createdBy) {    
+        this.createdBy = createdBy;        
+    }    
+    
+    public String User.getUpdatedBy() {    
+        return this.updatedBy;        
+    }    
+    
+    public void User.setUpdatedBy(String updatedBy) {    
+        this.updatedBy = updatedBy;        
+    }        
 }

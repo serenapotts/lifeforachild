@@ -40,6 +40,14 @@ public class SecurityUtil {
 		return null;
 	}
 	
+	public String getCurrentUsername()
+	{
+		AllUserDetails user = getCurrentUser();
+		if (user == null)
+			return "";
+		return user.getUsername();
+	}
+	
 	public User getApplicationUserForCurrentUser()
 	{
 		return getApplicationUser(getCurrentUser());

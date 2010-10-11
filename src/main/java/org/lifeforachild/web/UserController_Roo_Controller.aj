@@ -1,9 +1,11 @@
 package org.lifeforachild.web;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.validation.Valid;
 
+import org.lifeforachild.Util.SecurityUtil;
 import org.lifeforachild.domain.Country;
 import org.lifeforachild.domain.DiabetesCentre;
 import org.lifeforachild.domain.User;
@@ -39,6 +41,11 @@ privileged aspect UserController_Roo_Controller {
     public String UserController.createForm(ModelMap modelMap) {
     	User user = new User();
     	user.setIsDeleted(false);
+    	user.setCreatedOn(new Date());
+    	user.setUpdatedOn(new Date());    	
+    	String username = SecurityUtil.getInstance().getCurrentUsername();
+    	user.setCreatedBy(username);
+    	user.setUpdatedBy(username);
         modelMap.addAttribute("user", user);        
         modelMap.addAttribute("countrys", Country.findAllCountrys(true));        
         modelMap.addAttribute("diabetescentres", null);        
@@ -91,6 +98,9 @@ privileged aspect UserController_Roo_Controller {
     public String UserController.updateForm(@PathVariable("id") Long id, ModelMap modelMap) {    
         if (id == null) throw new IllegalArgumentException("An Identifier is required");    
         User user = User.findUser(id, true);
+        user.setUpdatedOn(new Date());
+        String username = SecurityUtil.getInstance().getCurrentUsername();
+        user.setUpdatedBy(username);
         user.setOldPassword(user.getPassword());
         modelMap.addAttribute("user", user);        
         modelMap.addAttribute("countrys", Country.findAllCountrys(true));        
