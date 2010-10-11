@@ -132,17 +132,6 @@
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_urineGlucoseSelfMonitoringPerWeek_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', regExp: '-?[0-9]*'}})); </script>
             </div>
             <br/>
-            <div id="roo_clinicalRecord_adjustInsulinDoseIfNeeded">
-                <label for="_adjustInsulinDoseIfNeeded_id"><spring:message code="record.whoAdjustsInsulinDose"/></label>                
-                <form:select cssStyle="width:250px" id="_adjustInsulinDoseIfNeeded_id" path="adjustInsulinDoseIfNeeded">
-                	<form:option value=""></form:option>
-                	<form:options items="${whoAdjustsInsulinType_enum}" itemLabel="label"/>
-                </form:select>
-                <br/>
-                <form:errors cssClass="errors" id="_adjustInsulinDoseIfNeeded_error_id" path="adjustInsulinDoseIfNeeded"/>
-                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_adjustInsulinDoseIfNeeded_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
-            </div>
-            <br/>
             <div id="roo_clinicalRecord_insulinUnitsPerDay">
                 <label for="_insulinUnitsPerDay_id">Insulin Units Per Day:</label>
                 <form:input cssStyle="width:250px" id="_insulinUnitsPerDay_id" maxlength="30" path="insulinUnitsPerDay" size="0"/>
@@ -158,11 +147,28 @@
                         widgetAttrs : {promptMessage: '${field_validation}', 
                                        invalidMessage: '${field_invalid}', 
                                        regExp: '-?[0-9]*',
+                                       intermediateChanges : true,
                                        onChange : updateInsulinUnitsPerDayFromUpdate                                        
                                        }}));
                 </script>
             </div>
             <br/>
+            <div id="roo_clinicalRecord_adjustInsulinDoseIfNeeded">
+                <label for="_adjustInsulinDoseIfNeeded_id"><spring:message code="record.whoAdjustsInsulinDose"/></label>                
+                <form:select cssStyle="width:250px" id="_adjustInsulinDoseIfNeeded_id" path="adjustInsulinDoseIfNeeded">
+                	<form:option value=""></form:option>
+                	<form:options items="${whoAdjustsInsulinType_enum}" itemLabel="label"/>
+                </form:select>
+                <br/>
+                <form:errors cssClass="errors" id="_adjustInsulinDoseIfNeeded_error_id" path="adjustInsulinDoseIfNeeded"/>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_adjustInsulinDoseIfNeeded_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
+                <br/>  
+            </div>   
+            <script type="text/javascript">Spring.addDecoration(
+                    new Spring.ElementDecoration({
+                        elementId : 'roo_clinicalRecord_adjustInsulinDoseIfNeeded', 
+                        widgetType: 'dijit.layout.ContentPane'})); 
+            </script>        
             <div id="roo_clinicalRecord_numberOfInsulinInjectionsPerDay">
                 <label for="_numberOfInsulinInjectionsPerDay_id">Number Of Insulin Injections Per Day:</label>
                 <form:input cssStyle="width:250px" id="_numberOfInsulinInjectionsPerDay_id" maxlength="30" path="numberOfInsulinInjectionsPerDay" size="0"/>

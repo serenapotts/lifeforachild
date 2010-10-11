@@ -128,10 +128,26 @@ dojo.addOnLoad(
 			dojo.style(dijit.byId("roo_clinicalRecord_bloodPressureDiastolicMMHg").domNode, "display", "none");
 			dojo.style(dijit.byId("roo_clinicalRecord_bloodPressureDiastolicSD").domNode, "display", "none");
 			dojo.style(dijit.byId("roo_clinicalRecord_bloodPressureSystolicSD").domNode, "display", "none");
-		}      				
+		}      	
+		if (dijit.byId("_insulinUnitsPerDay_id").value != null && 
+				dijit.byId("_insulinUnitsPerDay_id").value <= 0)
+		{
+			dojo.style(dijit.byId("roo_clinicalRecord_adjustInsulinDoseIfNeeded").domNode, "display", "none");
+		}
 	}
 );    	        
 
+function insulinUnitsPerDayUpdateDepFields(newValue)
+{
+	if (newValue != null && newValue > 0)
+	{
+		dojo.style(dijit.byId("roo_clinicalRecord_adjustInsulinDoseIfNeeded").domNode, "display", "block");
+	}
+	else
+	{
+		dojo.style(dijit.byId("roo_clinicalRecord_adjustInsulinDoseIfNeeded").domNode, "display", "none");
+	}
+}
 
 function oralAgentsOnChange(newValue) {
 	if (newValue == 'YES')
@@ -457,11 +473,13 @@ function updateHeightFromUpdate(newValue) {
 //needed for the create page
 function updateInsulinUnitsPerDayFromCreate(newValue) {                                 		 	
 	updateInsulinUnitsPerKg("");
+	insulinUnitsPerDayUpdateDepFields(newValue);
 }
 
 //Url's different for ajax call for update page
 function updateInsulinUnitsPerDayFromUpdate(newValue) {
 	updateInsulinUnitsPerKg("../");
+	insulinUnitsPerDayUpdateDepFields(newValue);
 }
 
 //needed for the create page
