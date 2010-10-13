@@ -301,22 +301,22 @@ public class ClinicalRecord {
     @NotNull(message = "Literate is required.")
     private YesNoType literate;
 
-    private Float exactAge;
-    private Float exactAgeMonths;
+    private Float exactAge = null;
+    private Float exactAgeMonths = null;
     
-    private Float bmi;
+    private Float bmi = null;
     
-    private Float insulinPerKg;
+    private Float insulinPerKg = null;
     
-    private Float heightSD;
+    private Float heightSD = null;
     
-    private Float weightSD;
+    private Float weightSD = null;
     
-    private Float bmiSD;
+    private Float bmiSD = null;
     
-    private Float BloodPressureSystolicSD;
+    private Float BloodPressureSystolicSD = null;
     
-    private Float BloodPressureDiastolicSD;    
+    private Float BloodPressureDiastolicSD = null;    
     
     private Boolean isDeleted;    
     
@@ -349,7 +349,9 @@ public class ClinicalRecord {
     	return result;
     }
     
-	public static Float calculateExactAgeMonths(float exactAgeInput) {
+	public static Float calculateExactAgeMonths(Float exactAgeInput) {
+		if (exactAgeInput == null)
+			return null;
 		float ageMonthsExact = exactAgeInput * 12;
 		double lowMidPoint = Math.floor(ageMonthsExact) + 0.5;
 		if (ageMonthsExact <= lowMidPoint) {
