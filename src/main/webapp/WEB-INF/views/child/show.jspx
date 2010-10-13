@@ -57,7 +57,7 @@
 		                <div class="box" id="_localMedicalNumber_id">
 		                    <c:out value="${child.localMedicalNumber}"/>
 		                </div>
-		                <c:if test="${child.localMedicalNumber == ''}">
+		                <c:if test="${child.localMedicalNumber == '' || child.localMedicalNumber == null}">
 	                    	<br/>
 	                    </c:if>
 		            </div>
