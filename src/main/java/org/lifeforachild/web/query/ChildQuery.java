@@ -141,7 +141,7 @@ public class ChildQuery extends BaseQuery<Child> {
 
 	private void searchByDiabetesCentre(Criteria criteria,
 			Long diabetesCentre) {
-		if (diabetesCentre != null)
+		if (diabetesCentre != null && diabetesCentre != 0)
 			criteria.add(Restrictions.eq("centre.id", diabetesCentre) );
 	}
 
