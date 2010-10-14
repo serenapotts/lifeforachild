@@ -36,7 +36,7 @@
 	            </div>
 	            <br/>	            
             </sec:authorize>
-            <div id="mainTabContainer" style="width:550px;height:500px">
+            <div id="mainTabContainer" style="width:500px;height:600px">
             	<div id="childInfo">
 		            <div id="roo_child_country">
 		                <label for="_country_id"><spring:message code="child.country"/></label>
@@ -214,7 +214,7 @@
                          <c:out value="Create Visit"/>
                      </a>
 			        <c:if test="${not empty child.clinicalRecords}">			            
-		               <table width="500px">		            
+		               <table width="450px">		            
 			                <thead>
 			                    <tr>
 			                        <th><spring:message code="record.list.id"/></th>

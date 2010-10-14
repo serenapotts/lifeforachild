@@ -23,7 +23,7 @@ body {
 	/* fix max-width incompatibility in IE6 */
 	width:expression(document.body.clientWidth > 800? "800px": "auto" );
 	
-	overflow:hidden;
+	overflow:auto;
 	display:block;
 	margin-top: 90px;
 }
@@ -31,7 +31,8 @@ body {
 /* header and footer elements */
 
 #main {
-	overflow:hidden;
+	float:left;
+	position:relative;
 	display:box;
 }
 

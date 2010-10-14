@@ -7,7 +7,7 @@
         <spring:message arguments="${entity_label_plural}" code="entity.list.all" var="title_msg"/>
         <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_title_div', widgetType : 'dijit.TitlePane', widgetAttrs : {title: '${title_msg}'}})); </script>
         <c:if test="${not empty usergroups}">
-            <table width="550px">
+            <table width="500px">
                 <thead>
                     <tr>
                         <th>Id</th>
