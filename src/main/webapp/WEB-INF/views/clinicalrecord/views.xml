@@ -10,4 +10,7 @@
     <definition extends="default" name="clinicalrecord/update">
         <put-attribute name="body" value="/WEB-INF/views/clinicalrecord/update.jspx"/>
     </definition>
+    <definition extends="printDefault" name="clinicalrecord/print">
+        <put-attribute name="body" value="/WEB-INF/views/clinicalrecord/print.jspx"/>
+    </definition>    
 </tiles-definitions>

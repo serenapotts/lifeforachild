@@ -201,6 +201,17 @@ privileged aspect ClinicalRecordController_Roo_Controller {
         return "clinicalrecord/update";        
     }    
     
+    @RequestMapping(value = "/clinicalrecord/{id}/print", method = RequestMethod.GET)    
+    public String ClinicalRecordController.printForm(@PathVariable("id") Long id, ModelMap modelMap) {
+    	SecurityUtil.getInstance().checkPermission(Permissions.EDIT_RECORD);
+        if (id == null) throw new IllegalArgumentException("An Identifier is required");  
+        ClinicalRecord record = ClinicalRecord.findClinicalRecord(id);
+        modelMap.addAttribute("clinicalRecord", record);                
+        modelMap.addAttribute("clinicalRecord_dateOfMeasurement_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));                
+        modelMap.addAttribute("clinicalRecord_dateCompleted_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));        
+        return "clinicalrecord/print";  
+    }
+    
     @RequestMapping(value = "/clinicalrecord/{id}", method = RequestMethod.DELETE)    
     public String ClinicalRecordController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size) {
     	SecurityUtil.getInstance().checkPermission(Permissions.EDIT_RECORD);

@@ -1,0 +1,771 @@
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:sec="http://www.springframework.org/security/tags" xmlns:fmt="http://java.sun.com/jsp/jstl/fmt" xmlns:form="http://www.springframework.org/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+    <jsp:output omit-xml-declaration="yes"/>   
+    <script type="text/javascript">
+		window.print();
+	</script>
+    <c:if test="${not empty clinicalRecord}">
+	    <table style="background:none;">
+		    <tr id="roo_clinicalRecord_individualId">
+		        <td for="_individualId_id">Individual Id:</td>
+		        <td class="box" id="_individualId_id">		            
+		            <spring:url value="/child/${clinicalRecord.child.id}/form" var="update_child_url"/>
+		            <a href="${update_child_url}">
+		            	<c:out value="${clinicalRecord.child.individualId}"/>
+		            </a>
+		        </td>
+		    </tr>
+	    
+		    <tr id="roo_clinicalRecord_centre">
+		        <td for="_centre_id"><spring:message code="child.centre"/></td>
+		        <td class="box" id="_centre_id">
+		            <c:out value="${clinicalRecord.child.centre}"/>
+		        </td>
+		    </tr>
+	    
+			<sec:authorize ifAllGranted="VIEW_CHILD_NAME">
+			    <tr id="roo_clinicalRecord_child">                
+			         <td for="_child_id">Child:</td>
+			         <td class="box" id="_child_id">
+			            <c:out value="${clinicalRecord.child}"/>
+			        </td>                
+			    </tr>
+		
+		    </sec:authorize>        
+	        <sec:authorize ifAllGranted="VIEW_CHILD_NAME">
+	           <tr id="roo_clinicalRecord_child">
+	               <td  class="record" for="_child_id">Child:</td>
+	               <td class="box" id="_child_id">
+	                   <c:out value="${clinicalRecord.child}"/>
+	               </td>
+	           </tr>
+	           
+			</sec:authorize>
+	        <tr id="roo_clinicalRecord_personCompletingForm">
+	            <td  class="record" for="_personCompletingForm_id">Person Completing Form:</td>
+	            <td class="box" id="_personCompletingForm_id">
+	                <c:out value="${clinicalRecord.personCompletingForm}"/>
+	            </td>
+	        </tr>
+	        
+	        <tr id="roo_clinicalRecord_dateCompleted">
+	            <td  class="record" for="_dateCompleted_id">Date Completed:</td>
+	            <td class="box" id="_dateCompleted_id">
+	                <fmt:formatDate pattern="${clinicalRecord_dateCompleted_date_format}" value="${clinicalRecord.dateCompleted}"/>
+	            </td>
+	        </tr>
+	        
+	        <tr id="roo_clinicalRecord_seniorPhysician">
+	            <td  class="record" for="_seniorPhysician_id">Senior Physician:</td>
+	            <td class="box" id="_seniorPhysician_id">
+	                <c:out value="${clinicalRecord.seniorPhysician}"/>
+	            </td>
+	        </tr>
+	        
+	        <tr id="roo_clinicalRecord_exactAge">
+	            <td  class="record" for="_exactAge_id">Exact Age on Measurement Date:</td>
+	            <td class="box" id="_exactAge_id">
+	                <c:out value="${clinicalRecord.exactAge}"/>
+	            </td>
+	        </tr>
+	        
+	        <tr id="roo_clinicalRecord_insulinPerKg">
+	            <td  class="record" for="_insulinPerKg_id">Insulin Units/ Kg:</td>
+	            <td class="box" id="_insulinPerKg_id">
+	                <c:out value="${clinicalRecord.insulinPerKg}"/>
+	            </td>
+	        </tr>
+	        
+		         
+	        <tr id="roo_clinicalRecord_bloodGlucoseSelfMonitoringPerWeek">
+	            <td  class="record" for="_bloodGlucoseSelfMonitoringPerWeek_id">Blood Glucose Self Monitoring Per Week:</td>
+	            <td class="box" id="_bloodGlucoseSelfMonitoringPerWeek_id">
+	                <c:out value="${clinicalRecord.bloodGlucoseSelfMonitoringPerWeek}"/>
+	            </td>
+	        </tr>
+	        
+	        <tr id="roo_clinicalRecord_urineGlucoseSelfMonitoringPerWeek">
+	            <td  class="record" for="_urineGlucoseSelfMonitoringPerWeek_id">Urine Glucose Self Monitoring Per Week:</td>
+	            <td class="box" id="_urineGlucoseSelfMonitoringPerWeek_id">
+	                <c:out value="${clinicalRecord.urineGlucoseSelfMonitoringPerWeek}"/>
+	            </td>
+	        </tr>
+	        
+	        <tr id="roo_clinicalRecord_adjustInsulinDoseIfNeeded">
+	            <td  class="record" for="_adjustInsulinDoseIfNeeded_id"><spring:message code="record.whoAdjustsInsulinDose"/></td>
+	            <td class="box" id="_adjustInsulinDoseIfNeeded_id">
+	                <c:out value="${clinicalRecord.adjustInsulinDoseIfNeeded}"/>
+	                <c:if test="${clinicalRecord.adjustInsulinDoseIfNeeded == null}">
+	                	
+	                </c:if>
+	            </td>
+	        </tr>
+	        
+	        <tr id="roo_clinicalRecord_insulinUnitsPerDay">
+	            <td  class="record" for="_insulinUnitsPerDay_id">Insulin Units Per Day:</td>
+	            <td class="box" id="_insulinUnitsPerDay_id">
+	                <c:out value="${clinicalRecord.insulinUnitsPerDay}"/>
+	            </td>		                
+	        </tr>
+	        
+	        <tr id="roo_clinicalRecord_numberOfInsulinInjectionsPerDay">
+	            <td  class="record" for="_numberOfInsulinInjectionsPerDay_id">Number Of Insulin Injections Per Day:</td>
+	            <td class="box" id="_numberOfInsulinInjectionsPerDay_id">
+	                <c:out value="${clinicalRecord.numberOfInsulinInjectionsPerDay}"/>
+	            </td>		                
+	        </tr>
+	        	            
+	        <tr id="roo_clinicalRecord_longActingHuman">
+	            <td  class="record" for="_longActingHuman_id">Long Acting Human:</td>
+	            <td class="box" id="_longActingHuman_id">
+	                <c:out value="${clinicalRecord.longActingHuman}"/>
+	            </td>
+	        </tr>
+	        
+	        <tr id="roo_clinicalRecord_shortActingHuman">
+	            <td  class="record" for="_shortActingHuman_id">Short Acting Human:</td>
+	            <td class="box" id="_shortActingHuman_id">
+	                <c:out value="${clinicalRecord.shortActingHuman}"/>
+	            </td>
+	        </tr>
+	        
+	        <tr id="roo_clinicalRecord_analog">
+	            <td  class="record" for="_analog_id">Analog:</td>
+	            <td class="box" id="_analog_id">
+	                <c:out value="${clinicalRecord.analog}"/>
+	            </td>
+	            <c:if test="${clinicalRecord.analog == null}">
+	               	
+	               </c:if>
+	        </tr>
+	        
+	        <tr id="roo_clinicalRecord_oralAgents">
+	            <td  class="record" for="_oralAgents_id">Oral Agents:</td>
+	            <td class="box" id="_oralAgents_id">
+	                <c:out value="${clinicalRecord.oralAgents}"/>
+	            </td>
+	            <c:if test="${clinicalRecord.oralAgents == null}">
+	               	
+	               </c:if>
+	        </tr>
+	        
+	        <c:if test="${clinicalRecord.oralAgents == 'YES'}">
+	            <tr id="roo_clinicalRecord_oralAgentsDescription">
+	                <td  class="record" for="_oralAgentsDescription_id">Oral Agents Description:</td>
+	                <td class="box" id="_oralAgentsDescription_id">
+	                    <c:out value="${clinicalRecord.oralAgentsDescription}"/>
+	                </td>		                
+	            </tr>
+	            
+	        </c:if>
+	        <tr id="roo_clinicalRecord_routineClinicReviewsLastYear">
+	            <td  class="record" for="_routineClinicReviewsLastYear_id">Routine Clinic Reviews Last Year:</td>
+	            <td class="box" id="_routineClinicReviewsLastYear_id">
+	                <c:out value="${clinicalRecord.routineClinicReviewsLastYear}"/>
+	            </td>
+	        </tr>
+	        
+	        <tr id="roo_clinicalRecord_bpMedications">
+	            <td  class="record" for="_bpMedications_id">BP Medications:</td>
+	            <td class="box" id="_bpMedications_id">
+	                <c:out value="${clinicalRecord.bpMedications}"/>
+	            </td>
+	        </tr>
+		            
+		    <c:if test="${clinicalRecord.bpMedications == 'YES'}">
+		        <tr id="roo_clinicalRecord_acearb">
+		            <td  class="record" for="_acearb_id">ACE/ARB agents:</td>
+		            <td class="box" id="_acearb_id">
+		                <c:out value="${clinicalRecord.acearb}"/>
+		            </td>
+		        </tr>
+		        
+		        <tr id="roo_clinicalRecord_bpMedicationsOther">
+		            <td  class="record" for="_bpMedicationsOther_id">BP Medications Other:</td>
+		            <td class="box" id="_bpMedicationsOther_id">
+		                <c:out value="${clinicalRecord.bpMedicationsOther}"/>
+		            </td><c:if test="${clinicalRecord.bpMedicationsOther == ''}">
+		               	
+		               </c:if>			                
+		        </tr>
+		        
+	       </c:if>		            
+	       <tr id="roo_clinicalRecord_otherTreatments">
+	           <td  class="record" for="_otherTreatments_id">Other Treatments:</td>
+	           <td class="box" id="_otherTreatments_id">
+	               <c:out value="${clinicalRecord.otherTreatments}"/>
+	           </td>
+	              <c:if test="${clinicalRecord.otherTreatments == ''}">
+	              	
+	              </c:if>			                
+	       </tr>
+	       
+	       <tr id="roo_clinicalRecord_laserRxInLast12Months">
+	           <td  class="record" for="_laserRxInLast12Months_id">Laser Rx In Last 12 Months:</td>
+	           <td class="box" id="_laserRxInLast12Months_id">
+	               <c:out value="${clinicalRecord.laserRxInLast12Months}"/>
+	           </td>
+	       </tr>
+		       
+		
+	       <tr id="roo_clinicalRecord_dateOfMeasurement">
+	           <td  class="record" for="_dateOfMeasurement_id"><spring:message code="record.dateOfMeasurement"/></td>
+	           <td class="box" id="_dateOfMeasurement_id">
+	               <fmt:formatDate pattern="${clinicalRecord_dateOfMeasurement_date_format}" value="${clinicalRecord.dateOfMeasurement}"/>
+	           </td>
+	           <c:if test="${clinicalRecord.dateOfMeasurement == null}">
+	              	
+	              </c:if>
+	       </tr>
+		       
+		   <tr id="roo_clinicalRecord_weightInLast12Months">
+	           <td  class="record" for="_weightInLast12Months_id"><spring:message code="record.weightInLast12Months"/></td>
+	           <td class="box" id="_weightInLast12Months_id">
+	               <c:out value="${clinicalRecord.weightInLast12Months}"/>
+	           </td>
+	       </tr>
+		       
+		   <c:if test="${clinicalRecord.weightInLast12Months == 'YES'}">
+		       <tr id="roo_clinicalRecord_weightKG">
+		           <td  class="record" for="_weightKG_id">Weight (kg):</td>
+		           <td class="box" id="_weightKG_id">
+		               <c:out value="${clinicalRecord.weightKG}"/>
+		           </td>
+		           <c:if test="${clinicalRecord.weightKG == null}">
+		              	
+		              </c:if>
+		       </tr>
+		       
+		       <tr id="roo_clinicalRecord_weightSD">
+		              <td  class="record" for="_weightSD_id">Weight SD:</td>
+		              <td class="box" id="_weightSD_id">
+		                  <c:out value="${clinicalRecord.weightSD}"/>
+		              </td>
+		          </tr>	             
+		    </c:if>                  
+		   	<tr id="roo_clinicalRecord_heightInLast12Months">
+		          <td  class="record" for="_heightInLast12Months_id"><spring:message code="record.heightInLast12Months"/></td>
+		          <td class="box" id="_heightInLast12Months_id">
+		              <c:out value="${clinicalRecord.heightInLast12Months}"/>
+		          </td>
+		    </tr>
+		      
+		    <c:if test="${clinicalRecord.heightInLast12Months == 'YES'}">
+		       <tr id="roo_clinicalRecord_heightCM">
+		           <td  class="record" for="_heightCM_id">Height (cm):</td>
+		           <td class="box" id="_heightCM_id">
+		               <c:out value="${clinicalRecord.heightCM}"/>
+		           </td>
+		              <c:if test="${clinicalRecord.heightCM == null}">
+		              	
+		              </c:if>		                
+		       </tr>
+		       
+		       <tr id="roo_clinicalRecord_heightSD">
+		                 <td  class="record" for="_heightSD_id">Height SD:</td>
+		                 <td class="box" id="_heightSD_id">
+		                     <c:out value="${clinicalRecord.heightSD}"/>
+		                 </td>
+		              <c:if test="${clinicalRecord.heightSD == null}">
+		              	
+		              </c:if>		                                        
+		             </tr>
+		             
+			</c:if>
+	        <c:if test="${clinicalRecord.heightInLast12Months == 'YES' &amp;&amp; clinicalRecord.weightInLast12Months == 'YES'}">
+	             <tr id="roo_clinicalRecord_bmi">
+	                 <td  class="record" for="_bmi_id">Body Mass Index:</td>
+	                 <td class="box" id="_bmi_id">
+	                     <c:out value="${clinicalRecord.bmi}"/>
+	                 </td>
+	              <c:if test="${clinicalRecord.bmi == null}">
+	              	
+	              </c:if>		                                        
+	             </tr>
+	             
+	             <tr id="roo_clinicalRecord_bmiSD">
+	                 <td  class="record" for="_bmiSD_id">Body Mass Index SD:</td>
+	                 <td class="box" id="_bmiSD_id">
+	                     <c:out value="${clinicalRecord.bmiSD}"/>
+	                 </td>
+	                 <c:if test="${clinicalRecord.bmiSD == null}">
+	              	
+	              </c:if>
+	             </tr>                   	                   
+			</c:if>                    
+	        <tr id="roo_clinicalRecord_BPInLast12Months">
+	             <td  class="record" for="_BPInLast12Months_id"><spring:message code="record.BPInLast12Months"/></td>
+	             <td class="box" id="_BPInLast12Months_id">
+	                 <c:out value="${clinicalRecord.BPInLast12Months}"/>
+	             </td>
+	         </tr>
+	            
+			<c:if test="${clinicalRecord.BPInLast12Months == 'YES'}">
+		            <tr id="roo_clinicalRecord_bloodPressureSystolicMMHg">
+		                <td  class="record" for="_bloodPressureSystolicMMHg_id">Blood Pressure Systolic (mmHg):</td>
+		                <td class="box" id="_bloodPressureSystolicMMHg_id">
+		                    <c:out value="${clinicalRecord.bloodPressureSystolicMMHg}"/>
+		                </td>
+		                <c:if test="${clinicalRecord.bloodPressureSystolicMMHg == null}">
+	                    	
+	                    </c:if>
+		            </tr>
+		            
+		            <tr id="roo_clinicalRecord_bloodPressureSystolicSD">
+	                       <td  class="record" for="_bloodPressureSystolicSD_id">Blood Pressure Systolic SD:</td>
+	                       <td class="box" id="_bloodPressureSystolicSD_id">
+	                           <c:out value="${clinicalRecord.bloodPressureSystolicSD}"/>
+	                       </td>
+	                       <c:if test="${clinicalRecord.bloodPressureSystolicSD == null}">
+	                    	
+	                    </c:if>
+	                   </tr>
+	                   
+		            <tr id="roo_clinicalRecord_bloodPressureDiastolicMMHg">
+		                <td  class="record" for="_bloodPressureDiastolicMMHg_id">Blood Pressure Diastolic (mmHg):</td>
+		                <td class="box" id="_bloodPressureDiastolicMMHg_id">
+		                    <c:out value="${clinicalRecord.bloodPressureDiastolicMMHg}"/>
+		                </td>
+		                <c:if test="${clinicalRecord.bloodPressureDiastolicMMHg == null}">
+	                    	
+	                    </c:if>
+		            </tr>
+		            
+	                   <tr id="roo_clinicalRecord_bloodPressureDiastolicSD">
+	                       <td  class="record" for="_bloodPressureDiastolicSD_id">Blood Pressure Diastolic SD:</td>
+	                       <td class="box" id="_bloodPressureDiastolicSD_id">
+	                           <c:out value="${clinicalRecord.bloodPressureDiastolicSD}"/>
+	                       </td>
+	                       <c:if test="${clinicalRecord.bloodPressureDiastolicSD == null}">
+	                    	
+	                    </c:if>
+	                   </tr>      
+	                        
+	               </c:if>                  
+	            <tr id="roo_clinicalRecord_hasPersistentHypertension">
+	                <td  class="record" for="_hasPersistentHypertension_id">Has Persistent Hypertension:</td>
+	                <td class="box" id="_hasPersistentHypertension_id">
+	                    <c:out value="${clinicalRecord.hasPersistentHypertension}"/>
+	                </td>
+	            </tr>
+	            
+	            <tr id="roo_clinicalRecord_hasPubertyTannerB2_P2orGreater">
+	                <td  class="record" for="_hasPubertyTannerB2_P2orGreater_id">Has Puberty Tanner B2/P2 or greater:</td>
+	                <td class="box" id="_hasPubertyTannerB2_P2orGreater_id">
+	                    <c:out value="${clinicalRecord.hasPubertyTannerB2_P2orGreater}"/>
+	                </td>
+	            </tr>
+	            
+	            <c:if test="${clinicalRecord.child.sex == 'FEMALE'}">
+		            <tr id="roo_clinicalRecord_menarche">
+		                <td  class="record" for="_menarche_id">Menarche:</td>
+		                <td class="box" id="_menarche_id">
+		                    <c:out value="${clinicalRecord.menarche}"/>
+		                </td>
+		            </tr>
+		            
+		            <c:if test="${clinicalRecord.menarche == 'YES'}">
+			            <tr id="roo_clinicalRecord_ifMenarcheAge">
+			                <td  class="record" for="_ifMenarcheAge_id"><spring:message code="record.menarcheAge"/></td>
+			                <td class="box" id="_ifMenarcheAge_id">
+			                	<c:out value="${clinicalRecord.ifMenarcheAge}"/>
+			                </td>
+			            </tr>
+			            	
+		            </c:if>		
+	            </c:if>	
+	                       
+	            <tr id="roo_clinicalRecord_eyesExaminedInLastYear">
+	                <td  class="record" for="_eyesExaminedInLastYear_id">Eyes Examined In Last Year:</td>
+	                <td class="box" id="_eyesExaminedInLastYear_id">
+	                    <c:out value="${clinicalRecord.eyesExaminedInLastYear}"/>
+	                </td>
+	            </tr>
+	            
+	            <c:if test="${clinicalRecord.eyesExaminedInLastYear == 'YES'}">
+		            <tr id="roo_clinicalRecord_cateract">
+		                <td  class="record" for="_cateract_id">Cataract:</td>
+		                <td class="box" id="_cateract_id">
+		                    <c:out value="${clinicalRecord.cateract}"/>
+		                </td>
+		                <c:if test="${clinicalRecord.cateract == null}">
+	                    	
+	                    </c:if>
+		            </tr>
+		            
+		            <tr id="roo_clinicalRecord_visualAcuityRight">
+		                <td  class="record" for="_visualAcuityRight_id">Visual Acuity Right:</td>
+		                <td class="box" id="_visualAcuityRight_id">
+		                    <c:out value="${clinicalRecord.visualAcuityRight}"/>
+		                </td>
+		                <c:if test="${clinicalRecord.visualAcuityRight == ''}">
+	                    	
+	                    </c:if>
+		            </tr>
+		            
+		            <tr id="roo_clinicalRecord_visualAcuityLeft">
+		                <td  class="record" for="_visualAcuityLeft_id">Visual Acuity Left:</td>
+		                <td class="box" id="_visualAcuityLeft_id">
+		                    <c:out value="${clinicalRecord.visualAcuityLeft}"/>
+		                </td>
+		                <c:if test="${clinicalRecord.visualAcuityLeft == ''}">
+	                    	
+	                    </c:if>
+		            </tr>
+		            
+		            <tr id="roo_clinicalRecord_eyesComment">
+		                <td  class="record" for="_eyesComment_id"><spring:message code="record.eyesComment"/></td>
+		                <td class="box" id="_eyesComment_id">
+		                    <c:out value="${clinicalRecord.eyesComment}"/>
+		                </td>
+		            </tr>
+		            			            
+	            </c:if>
+	            <tr id="roo_clinicalRecord_feetExaminedInLastYear">
+	                <td  class="record" for="_feetExaminedInLastYear_id">Feet Examined In Last Year:</td>
+	                <td class="box" id="_feetExaminedInLastYear_id">
+	                    <c:out value="${clinicalRecord.feetExaminedInLastYear}"/>
+	                </td>		                
+	            </tr>
+	            
+	            <c:if test="${clinicalRecord.feetExaminedInLastYear == 'YES'}">
+		            <tr id="roo_clinicalRecord_monofilamentTested">
+		                <td  class="record" for="_monofilamentTested_id">Monofilament Tested:</td>
+		                <td class="box" id="_monofilamentTested_id">
+		                    <c:out value="${clinicalRecord.monofilamentTested}"/>
+		                </td>
+		                <c:if test="${clinicalRecord.monofilamentTested == null}">
+		                    	
+		                    </c:if>
+		            </tr>
+		            
+		            <c:if test="${clinicalRecord.monofilamentTested == 'YES'}">
+			            <tr id="roo_clinicalRecord_monofilamentAbnormal">
+			                <td  class="record" for="_monofilamentAbnormal_id">Monofilament Abnormal:</td>
+			                <td class="box" id="_monofilamentAbnormal_id">
+			                    <c:out value="${clinicalRecord.monofilamentAbnormal}"/>
+			                </td>
+			                <c:if test="${clinicalRecord.monofilamentAbnormal == null}">
+		                    	
+		                    </c:if>
+			            </tr>
+			            
+		            </c:if>
+		            <tr id="roo_clinicalRecord_tuningForkTested">
+		                <td  class="record" for="_tuningForkTested_id">Tuning Fork Tested:</td>
+		                <td class="box" id="_tuningForkTested_id">
+		                    <c:out value="${clinicalRecord.tuningForkTested}"/>
+		                </td>
+		                <c:if test="${clinicalRecord.tuningForkTested == null}">
+	                    	
+	                    </c:if>
+		            </tr>
+		            
+		            <c:if test="${clinicalRecord.tuningForkTested == 'YES'}">
+			            <tr id="roo_clinicalRecord_tuningForkAbnormal">
+			                <td  class="record" for="_tuningForkAbnormal_id">Tuning Fork Abnormal:</td>
+			                <td class="box" id="_tuningForkAbnormal_id">
+			                    <c:out value="${clinicalRecord.tuningForkAbnormal}"/>
+			                </td>
+			            </tr>
+			            
+		            </c:if>
+		            <tr id="roo_clinicalRecord_feetComment">
+		                <td  class="record" for="_feetComment_id"><spring:message code="record.feetComment"/></td>
+		                <td class="box" id="_feetComment_id">
+		                    <c:out value="${clinicalRecord.feetComment}"/>
+		                </td>
+		            </tr>
+		            			            
+	            </c:if>
+	            
+	            <tr id="roo_clinicalRecord_lastHbA1cInLast12Months">
+	                <td  class="record" for="_lastHbA1cInLast12Months_id"><spring:message code="record.lastHbA1c"/></td>
+	                <td class="box" id="_lastHbA1cInLast12Months_id">
+	                    <c:out value="${clinicalRecord.lastHbA1cInLast12Months}"/>
+	                </td>
+	            </tr>
+	            
+	            <c:if test="${clinicalRecord.lastHbA1cInLast12Months == 'YES'}">
+		            <tr id="roo_clinicalRecord_hbA1cPercentage">
+		                <td  class="record" for="_hbA1cPercentage_id"><spring:message code="record.hbA1cPercentage"/></td>
+		                <td class="box" id="_hbA1cPercentage_id">
+		                    <c:out value="${clinicalRecord.hbA1cPercentage}"/>
+		                </td>
+		                <c:if test="${clinicalRecord.hbA1cPercentage == null}">
+	                    	
+	                    </c:if>
+		            </tr>
+		            
+		            <tr id="roo_clinicalRecord_hbA1cMethod">
+		                <td  class="record" for="_hbA1cMethod_id">HbA1c Method:</td>
+		                <td class="box" id="_hbA1cMethod_id">
+		                    <c:out value="${clinicalRecord.hbA1cMethod}"/>
+		                </td>
+		                <c:if test="${clinicalRecord.hbA1cMethod == null}">
+	                    	
+	                    </c:if>
+		            </tr>
+		            
+		            <c:if test="${clinicalRecord.hbA1cMethod == 'OTHER'}">
+			            <tr id="roo_clinicalRecord_hbA1cMethodOther">
+			                <td  class="record" for="_hbA1cMethodOther_id">HbA1c Method Other:</td>
+			                <td class="box" id="_hbA1cMethodOther_id">
+			                    <c:out value="${clinicalRecord.hbA1cMethodOther}"/>
+			                </td>
+			            </tr>
+			            <c:if test="${clinicalRecord.hbA1cMethodOther == null}">
+	                    	
+	                    </c:if>
+			            
+		            </c:if>
+	            </c:if>
+	            <tr id="roo_clinicalRecord_microalbuminuriaInLast12Months">
+	                <td  class="record" for="_microalbuminuriaInLast12Months_id"><spring:message code="record.lastMicroalbuminuria"/></td>
+	                <td class="box" id="_microalbuminuriaInLast12Months_id">
+	                    <c:out value="${clinicalRecord.microalbuminuriaInLast12Months}"/>
+	                </td>
+	            </tr>
+	            		            
+	            <c:if test="${clinicalRecord.microalbuminuriaInLast12Months == 'YES'}">
+		            <tr id="roo_clinicalRecord_microalbuminuriaValue">
+		                <td  class="record" for="_microalbuminuriaValue_id">Microalbuminuria Value:</td>
+		                <td class="box" id="_microalbuminuriaValue_id">
+		                    <c:out value="${clinicalRecord.microalbuminuriaValue}"/>
+		                </td>
+		                <c:if test="${clinicalRecord.microalbuminuriaValue == null}">
+	                    	
+	                    </c:if>
+		            </tr>
+		            
+		            <tr id="roo_clinicalRecord_microalbuminuriaUnitOfMeasure">
+		                <td  class="record" for="_microalbuminuriaUnitOfMeasure_id">Microalbuminuria Unit Of Measure:</td>
+		                <td class="box" id="_microalbuminuriaUnitOfMeasure_id">
+		                    <c:out value="${clinicalRecord.microalbuminuriaUnitOfMeasure}"/>
+		                </td>
+		                <c:if test="${clinicalRecord.microalbuminuriaUnitOfMeasure == ''}">
+	                    	
+	                    </c:if>
+		            </tr>
+		            
+	            </c:if>
+	            <tr id="roo_clinicalRecord_proteinuria_dipstick_other">
+	                <td  class="record" for="_proteinuria_dipstick_other_id">Proteinuria - dipstick or other:</td>
+	                <td class="box" id="_proteinuria_dipstick_other_id">
+	                    <c:out value="${clinicalRecord.proteinuria_dipstick_other}"/>
+	                </td>
+	                <c:if test="${clinicalRecord.proteinuria_dipstick_other == ''}">
+	                   	
+	                   </c:if>
+	            </tr>
+	            
+	            <tr id="roo_clinicalRecord_creatinineInLast12Months">
+	                <td  class="record" for="_creatinineInLast12Months_id"><spring:message code="record.lastCreatinine"/></td>
+	                <td class="box" id="_creatinineInLast12Months_id">
+	                    <c:out value="${clinicalRecord.creatinineInLast12Months}"/>
+	                </td>
+	            </tr>
+	            		    
+	            <c:if test="${clinicalRecord.creatinineInLast12Months == 'YES'}">        
+		            <tr id="roo_clinicalRecord_creatinineValue">
+		                <td  class="record" for="_creatinineValue_id">Creatinine Value:</td>
+		                <td class="box" id="_creatinineValue_id">
+		                    <c:out value="${clinicalRecord.creatinineValue}"/>
+		                </td>
+		                <c:if test="${clinicalRecord.creatinineValue == null}">
+	                    	
+	                    </c:if>
+		            </tr>
+		            
+		            <tr id="roo_clinicalRecord_creatinineUnits">
+		                <td  class="record" for="_creatinineUnits_id">Creatinine Units:</td>
+		                <td class="box" id="_creatinineUnits_id">
+		                    <c:out value="${clinicalRecord.creatinineUnits}"/>
+		                </td>
+		                <c:if test="${clinicalRecord.creatinineUnits == null}">
+	                    	
+	                    </c:if>
+		            </tr>
+		            
+	            </c:if>
+	            <tr id="roo_clinicalRecord_totalCholesterolInLast12Months">
+	                <td  class="record" for="_totalCholesterolInLast12Months_id"><spring:message code="record.lastCholesterol"/></td>
+	                <td class="box" id="_totalCholesterolInLast12Months_id">
+	                    <c:out value="${clinicalRecord.totalCholesterolInLast12Months}"/>
+	                </td>
+	            </tr>
+	            		         
+	            <c:if test="${clinicalRecord.totalCholesterolInLast12Months == 'YES'}">   
+		            <tr id="roo_clinicalRecord_totalCholesterolValue">
+		                <td  class="record" for="_totalCholesterolValue_id">Total Cholesterol Value:</td>
+		                <td class="box" id="_totalCholesterolValue_id">
+		                    <c:out value="${clinicalRecord.totalCholesterolValue}"/>
+		                </td>
+		                <c:if test="${clinicalRecord.totalCholesterolValue == null}">
+	                    	
+	                    </c:if>
+		            </tr>
+		            
+		            <tr id="roo_clinicalRecord_cholesterolUnits">
+		                <td  class="record" for="_cholesterolUnits_id">Cholesterol Units:</td>
+		                <td class="box" id="_cholesterolUnits_id">
+		                    <c:out value="${clinicalRecord.cholesterolUnits}"/>
+		                </td>
+		                <c:if test="${clinicalRecord.cholesterolUnits == null}">
+	                    	
+	                    </c:if>
+		            </tr>
+		            
+		            <tr id="roo_clinicalRecord_fasted">
+		                <td  class="record" for="_fasted_id">Fasted:</td>
+		                <td class="box" id="_fasted_id">
+		                    <c:out value="${clinicalRecord.fasted}"/>
+		                </td>
+		                <c:if test="${clinicalRecord.fasted == null}">
+	                    	
+	                    </c:if>
+		            </tr>
+		            		  
+	            </c:if>
+	            <tr id="roo_clinicalRecord_hdlCholesterolInLast12Months">
+	                <td  class="record" for="_hdlCholesterolInLast12Months_id"><spring:message code="record.lastHdlCholesterol"/></td>
+	                <td class="box" id="_hdlCholesterolInLast12Months_id">
+	                    <c:out value="${clinicalRecord.hdlCholesterolInLast12Months}"/>
+	                </td>
+	            </tr>
+	            		          
+	            <c:if test="${clinicalRecord.hdlCholesterolInLast12Months == 'YES'}">             
+		            <tr id="roo_clinicalRecord_hdlCholesterolValue">
+		                <td  class="record" for="_hdlCholesterolValue_id">HDL Cholesterol Value:</td>
+		                <td class="box" id="_hdlCholesterolValue_id">
+		                    <c:out value="${clinicalRecord.hdlCholesterolValue}"/>
+		                </td>
+		                <c:if test="${clinicalRecord.hdlCholesterolValue == null}">
+	                    	
+	                    </c:if>
+		            </tr>
+		            
+		            <tr id="roo_clinicalRecord_hdlUnits">
+		                <td  class="record" for="_hdlUnits_id">HDL Units:</td>
+		                <td class="box" id="_hdlUnits_id">
+		                    <c:out value="${clinicalRecord.hdlUnits}"/>
+		                </td>
+		                <c:if test="${clinicalRecord.hdlUnits == null}">
+	                    	
+	                    </c:if>
+		            </tr>
+		            
+	            </c:if>
+	            <tr id="roo_clinicalRecord_triglyceridesInLast12Months">
+	                <td  class="record" for="_triglyceridesInLast12Months_id"><spring:message code="record.lastTriglycerides"/></td>
+	                <td class="box" id="_lasttriglyceridesInLast12Months_id">
+	                    <c:out value="${clinicalRecord.triglyceridesInLast12Months}"/>
+	                </td>
+	            </tr>
+	            		
+	            <c:if test="${clinicalRecord.triglyceridesInLast12Months == 'YES'}">            
+		            <tr id="roo_clinicalRecord_triglyceridesValue">
+		                <td  class="record" for="_triglyceridesValue_id">Triglycerides Value:</td>
+		                <td class="box" id="_triglyceridesValue_id">
+		                    <c:out value="${clinicalRecord.triglyceridesValue}"/>
+		                </td>
+		                <c:if test="${clinicalRecord.triglyceridesValue == null}">
+	                    	
+	                    </c:if>
+		            </tr>
+		            
+		            <tr id="roo_clinicalRecord_triglyceridesUnits">
+		                <td  class="record" for="_triglyceridesUnits_id">Triglycerides Units:</td>
+		                <td class="box" id="_triglyceridesUnits_id">
+		                    <c:out value="${clinicalRecord.triglyceridesUnits}"/>
+		                </td>
+		                <c:if test="${clinicalRecord.triglyceridesUnits == null}">
+	                    	
+	                    </c:if>
+		            </tr>
+		            
+	            </c:if>           
+	            <tr id="roo_clinicalRecord_attendingSchool">
+	                <td  class="record" for="_attendingSchool_id">Attending School:</td>
+	                <td class="box" id="_attendingSchool_id">
+	                    <c:out value="${clinicalRecord.attendingSchool}"/>
+	                </td>
+	            </tr>
+	            
+	            <c:if test="${clinicalRecord.attendingSchool == 'NO'}">
+		            <tr id="roo_clinicalRecord_notAttendingSchoolWhy">
+		                <td  class="record" for="_notAttendingSchoolWhy_id">If not attending School - Why:</td>
+		                <td class="box" id="_notAttendingSchoolWhy_id">
+		                    <c:out value="${clinicalRecord.notAttendingSchoolWhy}"/>
+		                </td>
+		                <c:if test="${clinicalRecord.notAttendingSchoolWhy == null}">
+	                    	
+	                    </c:if>
+		            </tr>
+		            
+	            </c:if>
+	            <c:if test="${clinicalRecord.attendingSchool == 'YES'}">
+		            <tr id="roo_clinicalRecord_diabetesLimitingAttendance">
+		                <td  class="record" for="_diabetesLimitingAttendance_id">Diabetes Limiting Attendance:</td>
+		                <td class="box" id="_diabetesLimitingAttendance_id">
+		                    <c:out value="${clinicalRecord.diabetesLimitingAttendance}"/>
+		                </td>
+		                <c:if test="${clinicalRecord.diabetesLimitingAttendance == null}">
+	                    	
+	                    </c:if>
+		            </tr>
+		            
+		            <tr id="roo_clinicalRecord_appropriateGradeForAge">
+		                <td  class="record" for="_appropriateGradeForAge_id">Appropriate Grade For Age:</td>
+		                <td class="box" id="_appropriateGradeForAge_id">
+		                    <c:out value="${clinicalRecord.appropriateGradeForAge}"/>
+		                </td>
+		                <c:if test="${clinicalRecord.appropriateGradeForAge == null}">
+	                    	
+	                    </c:if>
+		            </tr>
+		            
+	            </c:if>
+	            <tr id="roo_clinicalRecord_diabetesCopingAbilities">
+	                <td  class="record" for="_diabetesCopingAbilities_id">Diabetes Coping Abilities:</td>
+	                <td class="box" id="_diabetesCopingAbilities_id">
+	                    <c:out value="${clinicalRecord.diabetesCopingAbilities}"/>
+	                </td>
+	            </tr>
+	            
+	            <tr id="roo_clinicalRecord_literate">
+	                <td  class="record" for="_literate_id">Literate:</td>
+	                <td class="box" id="_literate_id">
+	                    <c:out value="${clinicalRecord.literate}"/>
+	                </td>
+	            </tr>
+	            		            	            
+	            <tr id="roo_clinicalRecord_numberOfSevereHypoglycaemiaEpisodes">
+	                <td  class="record" for="_numberOfSevereHypoglycaemiaEpisodes_id"><spring:message code="record.glyceamicEpisodes"/></td>
+	                <td class="box" id="_numberOfSevereHypoglycaemiaEpisodes_id">
+	                    <c:out value="${clinicalRecord.numberOfSevereHypoglycaemiaEpisodes}"/>
+	                </td>		                
+	            </tr>
+	            <tr id="roo_clinicalRecord_numberKetoacidosisEpisodes">
+	                <td  class="record" for="_numberKetoacidosisEpisodes_id"><spring:message code="record.ketoacidosisEpisodes"/></td>
+	                <td class="box" id="_numberKetoacidosisEpisodes_id">
+	                    <c:out value="${clinicalRecord.numberKetoacidosisEpisodes}"/>
+	                </td>
+	            </tr>
+	            <tr id="roo_clinicalRecord_numberOfHospitalAdmissionsRelatedToDiabetes">
+	                <td  class="record" for="_numberOfHospitalAdmissionsRelatedToDiabetes_id"><spring:message code="record.hospitalAdmissions"/></td>
+	                <td class="box" id="_numberOfHospitalAdmissionsRelatedToDiabetes_id">
+	                    <c:out value="${clinicalRecord.numberOfHospitalAdmissionsRelatedToDiabetes}"/>
+	                </td>
+	            </tr>
+	            <tr id="roo_clinicalRecord_additionalComment">
+	                <td  class="record" for="_additionalComment_id">Additional Comment  about any aspect - optional:</td>
+	                <td class="box" id="_additionalComment_id">
+	                    <c:out value="${clinicalRecord.additionalComment}"/>
+	                </td>
+	            </tr>
+		</table>    		             		            
+	</c:if>
+    <c:if test="${empty clinicalRecord}">
+        <spring:message arguments="${entity_label}" code="entity.not.found.single"/>
+    </c:if>
+</div>
