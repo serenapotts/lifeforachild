@@ -19,8 +19,7 @@
 		<spring:url value="/resources/spring/Spring-Dojo.js" var="spring_dojo_url"/>		
 		<spring:url value="/static/images/favicon.ico" var="favicon" />
 		<link rel="stylesheet" type="text/css" media="screen" href="${roo_css_url}"><!-- //required for FF3 and Opera --></link>
-		<link rel="stylesheet" type="text/css" href="${tundra_url}"><!-- //required for FF3 and Opera --></link>
-		<link href="/lifeforachild/static/styles/print.css" media="print" type="text/css" rel="stylesheet"/>	
+		<link rel="stylesheet" type="text/css" href="${tundra_url}"><!-- //required for FF3 and Opera --></link>	
 		<link rel="SHORTCUT ICON" href="${favicon}" />
 		<script type="text/javascript"><![CDATA[
 			function readCookie(name) {
@@ -43,30 +42,9 @@
 		<spring:message code="application.name" var="app_name"/>
 		<title><spring:message code="welcome.h3" arguments="${app_name}" /></title>
 	</head>
-   	<body class="tundra spring">		
-   		<div id="wrapper">
-		    <tiles:insertAttribute name="menu" ignore="true" />   
-	    	<div id="main">
-	    		<tiles:insertAttribute name="body" />
-	    		<div id="footer">				
-				  	<spring:url var="home" value="/" />
-				    <span><a href="${home}search"><spring:message code="button.home"/></a></span>				    
-				    <c:if test="${pageContext.request.userPrincipal != null}">	
-				    	<c:out value=" | "/>
-				    	<span>			    
-						    <spring:url var="logout" value="/static/j_spring_security_logout" />
-						    <a href="${logout}"><spring:message code="security.logout" /></a>
-					    </span>					    
-					</c:if>			    
-				    
-				    <roo:language />
-				    <!-- <roo:theme /> -->
-				    				    
-				    <!--<spring:url var="logo" value="/static/images/springsource-logo.png" />
-				    <spring:message code="global.sponsored" var="sponsored"/>
-				    <span><a href="http://springsource.com" title="${sponsored}"><img src="${logo}" alt="${sponsored}" align="right"/></a></span>-->
-				</div>
-			</div>
+   	<body class="tundra spring">	
+   		<div id="wrapper">	
+			<tiles:insertAttribute name="body" />
 		</div>
 	</body>
 </html>

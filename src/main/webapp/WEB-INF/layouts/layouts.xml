@@ -9,6 +9,8 @@
 		<put-attribute name="menu" value="/WEB-INF/views/menu.jspx" />
 	</definition>
 	
+	<definition name="printDefault" template="/WEB-INF/layouts/printDefault.jspx"/>
+	
 	<definition name="public" template="/WEB-INF/layouts/default.jspx" />
 	
 </tiles-definitions>

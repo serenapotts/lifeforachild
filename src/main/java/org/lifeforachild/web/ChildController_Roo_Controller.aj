@@ -192,6 +192,23 @@ privileged aspect ChildController_Roo_Controller {
         return "child/update";        
     }    
     
+    @RequestMapping(value = "/child/{id}/print", method = RequestMethod.GET)    
+    public String ChildController.printForm(@PathVariable("id") Long id, ModelMap modelMap)
+	{
+		SecurityUtil.getInstance().checkPermission(Permissions.EDIT_CHILD);
+        if (id == null) throw new IllegalArgumentException("An Identifier is required");     
+        Child child = Child.findChild(id); 
+        modelMap.addAttribute("child", child); 
+        modelMap.addAttribute("child_createdOn_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));            
+        modelMap.addAttribute("child_dateOfBirth_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));            
+        modelMap.addAttribute("child_diabetesDiagnosed_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));            
+        modelMap.addAttribute("child_insulinSince_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));            
+        modelMap.addAttribute("child_updatedOn_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));            
+        modelMap.addAttribute("child_dateOfDeath_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));            
+        modelMap.addAttribute("child_dateOfRegistration_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));        
+		return "child/print";
+	}
+    
     @RequestMapping(value = "/child/{id}", method = RequestMethod.DELETE)    
     public String ChildController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size) {
     	SecurityUtil.getInstance().checkPermission(Permissions.EDIT_CHILD);

@@ -36,6 +36,11 @@ body {
 	display:box;
 }
 
+#print {
+	float:right;
+	position:relative;
+}
+	
 #menu {
     background: #eee;
   	position:relative;

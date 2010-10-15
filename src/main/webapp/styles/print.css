@@ -1,0 +1,12 @@
+#menu, #footer, input, script, a {
+	display:none;
+}
+
+div.box { 
+	display :inline;
+}
+
+label { 
+	margin-right: 5px;
+}
+	

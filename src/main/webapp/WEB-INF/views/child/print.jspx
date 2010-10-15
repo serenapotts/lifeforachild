@@ -1,0 +1,203 @@
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:roo="urn:jsptagdir:/WEB-INF/tags" xmlns:fn="http://java.sun.com/jsp/jstl/functions" xmlns:sec="http://www.springframework.org/security/tags" xmlns:fmt="http://java.sun.com/jsp/jstl/fmt" xmlns:form="http://www.springframework.org/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+    <jsp:output omit-xml-declaration="yes"/>
+    <script type="text/javascript">
+		window.print();
+	</script>
+	<c:if test="${not empty child}">  
+		<table style="background:none;">      	
+		    <tr id="roo_child_individualId">
+		        <td style="width: 300px" for="_individualId_id"><spring:message code="child.individualId"/></td>
+		        <td style="width: 500px" class="box" id="_individualId_id">
+		            <c:out value="${child.individualId}"/>
+		        </td>
+		    </tr>
+            
+		    <sec:authorize ifAllGranted="VIEW_CHILD_NAME">
+		     <tr id="roo_child_initials">
+		         <td for="_initials_id"><spring:message code="child.initials"/></td>
+		         <td class="box" id="_initials_id">
+		             <c:out value="${child.initials}"/>
+		         </td>
+		     </tr>
+		     <br/>
+		     <tr id="roo_child_name">
+		         <td for="_name_id"><spring:message code="child.firstName"/></td>
+		         <td class="box" id="_name_id">
+		             <c:out value="${child.name}"/>
+		         </td>
+		     </tr>
+		     <br/>
+		     <tr id="roo_child_lastName">
+		         <td for="_lastName_id"><spring:message code="child.lastName"/></td>
+		         <td class="box" id="_lastName_id">
+		             <c:out value="${child.lastName}"/>
+		         </td>
+		     </tr>
+		     <br/>	            
+		    </sec:authorize>
+		    <tr id="roo_child_country">
+		        <td for="_country_id"><spring:message code="child.country"/></td>
+		        <td class="box" id="_country_id">
+		            <c:out value="${child.country}"/>
+		        </td>
+		    </tr>
+
+		    <tr id="roo_child_centre">
+		        <td for="_centre_id"><spring:message code="child.centre"/></td>
+		        <td class="box" id="_centre_id">
+		            <c:out value="${child.centre}"/>
+		        </td>
+		    </tr>
+
+		    <tr id="roo_child_localMedicalNumber">
+		        <td for="_localMedicalNumber_id"><spring:message code="child.show.localMedicalNumber"/></td>
+		        <td class="box" id="_localMedicalNumber_id">
+		            <c:out value="${child.localMedicalNumber}"/>
+		        </td>
+		        <c:if test="${child.localMedicalNumber == '' || child.localMedicalNumber == null}">
+		           	<br/>
+		           </c:if>
+		    </tr>
+		            
+		    <tr id="roo_child_ethnicGroup">
+		        <td for="_ethnicGroup_id"><spring:message code="child.show.ethnicGroup"/></td>
+		        <td class="box" id="_ethnicGroup_id">
+		            <c:out value="${child.ethnicGroup}"/>
+		        </td>
+		        <c:if test="${child.ethnicGroup == ''}">
+		           	<br/>
+		           </c:if>
+		    </tr>
+
+		    <tr id="roo_child_sex">
+		        <td for="_sex_id"><spring:message code="child.sex"/></td>
+		        <td class="box" id="_sex_id">
+		            <c:out value="${child.sex.label}"/>
+		        </td>
+		    </tr>
+
+		    <tr id="roo_child_survivalStatus">
+		        <td for="_survivalStatus_id"><spring:message code="child.survivalStatus"/></td>
+		        <td class="box" id="_survivalStatus_id">
+		            <c:out value="${child.survivalStatus.label}"/>
+		        </td>
+		    </tr>
+
+		    <c:if test="${child.survivalStatus == 'DEAD'}">
+		     <tr id="roo_child_dateOfDeath">
+		         <td for="_dateOfDeath_id"><spring:message code="child.dateOfDeath"/></td>
+		         <td class="box" id="_dateOfDeath_id">
+		             <fmt:formatDate pattern="${child_dateOfDeath_date_format}" value="${child.dateOfDeath}"/>
+		         </td>
+		         <c:if test="${child.dateOfDeath == null}">
+		            	<br/>
+		            </c:if>
+		     </tr>
+		     <br/>
+		     <tr id="roo_child_causeOfDeath">
+		         <td for="_causeOfDeath_id"><spring:message code="child.causeOfDeath"/></td>
+		         <td class="box" id="_causeOfDeath_id">
+		             <c:out value="${child.causeOfDeath.label}"/>
+		         </td>
+		         <c:if test="${child.causeOfDeath == null}">
+		            	<br/>
+		            </c:if>
+		     </tr>
+		     <br/>
+		     <c:if test="${child.causeOfDeath == 'OTHER_DIABETES_RELATED_CONDITION'}">
+		      <tr id="roo_child_causeOfDeathOther">
+		          <td for="_causeOfDeathOther_id"><spring:message code="child.causeOfDeathOther"/></td>
+		          <td class="box" id="_causeOfDeathOther_id">
+		              <c:out value="${child.causeOfDeathOther}"/>
+		          </td>
+		          <c:if test="${child.causeOfDeathOther == ''}">
+		           	<br/>
+		           </c:if>
+		      </tr>
+		      <br/>
+		     </c:if>
+		    </c:if>
+		    <tr id="roo_child_dateOfRegistration">
+		        <td for="_dateOfRegistration_id"><spring:message code="child.dateOfReg"/></td>
+		        <td class="box" id="_dateOfRegistration_id">
+		            <fmt:formatDate pattern="${child_dateOfRegistration_date_format}" value="${child.dateOfRegistration}"/>
+		        </td>
+		    </tr>
+
+		    <tr id="roo_child_dateOfBirth">
+		        <td for="_dateOfBirth_id"><spring:message code="child.dateOfBirth"/></td>
+		        <td class="box" id="_dateOfBirth_id">
+		            <fmt:formatDate pattern="${child_dateOfBirth_date_format}" value="${child.dateOfBirth}"/>
+		        </td>
+		    </tr>
+
+		    <tr id="roo_child_diabetesDiagnosed">
+		        <td for="_diabetesDiagnosed_id"><spring:message code="child.diabetesDiagnosed"/></td>
+		        <td class="box" id="_diabetesDiagnosed_id">
+		            <fmt:formatDate pattern="${child_diabetesDiagnosed_date_format}" value="${child.diabetesDiagnosed}"/>
+		        </td>
+		    </tr>
+
+		    <tr id="roo_child_insulinSince">
+		        <td for="_insulinSince_id"><spring:message code="child.insulinStarted"/></td>
+		        <td class="box" id="_insulinSince_id">
+		            <fmt:formatDate pattern="${child_insulinSince_date_format}" value="${child.insulinSince}"/>
+		        </td>
+		        <c:if test="${child.insulinSince == null}">
+		           	<br/>
+		           </c:if>
+		    </tr>
+
+		    <tr id="roo_child_diabetesType">
+		        <td for="_diabetesType_id"><spring:message code="child.diabetesType"/></td>
+		        <td class="box" id="_diabetesType_id">
+		            <c:out value="${child.diabetesType.label}"/>
+		        </td>
+		    </tr>
+
+		    <c:if test="${child.diabetesType == 'OTHER'}">
+		     <tr id="roo_child_diabetesTypeOther">
+		         <td for="_diabetesTypeOther_id"><spring:message code="child.diabetesTypeOther"/></td>
+		         <td class="box" id="_diabetesTypeOther_id">
+		             <c:out value="${child.diabetesTypeOther}"/>
+		         </td>
+		         <c:if test="${child.diabetesTypeOther == ''}">
+		           	<br/>
+		           </c:if>
+		     </tr>
+		     <br/>
+		    </c:if>
+		    <tr id="roo_child_distanceLivesFromCentre">
+		        <td for="_distanceLivesFromCentre_id"><spring:message code="child.distanceFromCentre"/></td>
+		        <td class="box" id="_distanceLivesFromCentre_id">
+		            <c:out value="${child.distanceLivesFromCentre.label}"/>
+		        </td>
+		    </tr>
+
+		    <tr id="roo_child_ageAtDiagnosis">
+		        <td for="_ageAtDiagnosis_id"><spring:message code="child.ageAtDiagnosis"/></td>
+		        <td class="box" id="_ageAtDiagnosis_id">
+		            <c:out value="${child.ageAtDiagnosis}"/>
+		        </td>
+		    </tr>
+
+		    <tr id="roo_child_createdOn">
+		        <td for="_createdOn_id"><spring:message code="child.createdOn"/></td>
+		        <td class="box" id="_createdOn_id">
+		            <fmt:formatDate pattern="${child_createdOn_date_format}" value="${child.createdOn}"/>
+		        </td>
+		    </tr>
+
+		    <tr id="roo_child_updatedOn">
+		        <td for="_updatedOn_id"><spring:message code="child.updatedOn"/></td>
+		        <td class="box" id="_updatedOn_id">
+		            <fmt:formatDate pattern="${child_updatedOn_date_format}" value="${child.updatedOn}"/>
+		        </td>
+		    </tr>
+	
+		</table>
+	</c:if>
+	<c:if test="${empty child}">
+	    <spring:message arguments="${entity_label}" code="entity.not.found.single"/>
+	</c:if>
+</div>

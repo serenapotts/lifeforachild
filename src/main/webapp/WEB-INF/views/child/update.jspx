@@ -25,8 +25,17 @@
 		                <label for="_individualId_id">Individual Id:</label>
 		                <div class="box" id="_individualId_id_label">
                     		<c:out value="${child.individualId}"/>
+	                		<div id="print">
+			                	<spring:url value="/child/${child.id}/print" var="print_url"/>
+				                <a href="${print_url}" target="_blank">
+				                    <spring:url value="/static/images/printer.png" var="printer_img_url"/>
+				                    <spring:message code="global.menu.print" var="add_message"/>
+				                    <img alt="${add_message}" src="${printer_img_url}" title="${add_message}"/>
+				                </a>
+			                </div>                    		
                 		</div>
                 		<form:hidden id="_individualId_id" path="individualId"/>
+
                 	</div>
 		            <br/>
 		            <sec:authorize ifAllGranted="VIEW_CHILD_NAME">

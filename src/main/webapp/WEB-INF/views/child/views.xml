@@ -13,4 +13,7 @@
     <definition extends="default" name="child/update">
         <put-attribute name="body" value="/WEB-INF/views/child/update.jspx"/>
     </definition>
+    <definition extends="printDefault" name="child/print">
+        <put-attribute name="body" value="/WEB-INF/views/child/print.jspx"/>
+    </definition>    
 </tiles-definitions>
