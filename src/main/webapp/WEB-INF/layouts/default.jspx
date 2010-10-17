@@ -45,8 +45,13 @@
 	</head>
    	<body class="tundra spring">		
    		<div id="wrapper">
+   			<c:if test="${pageContext.request.userPrincipal != null}">
+	   			<div id="welcomeUser">
+	   				<c:out value="Welcome ${pageContext.request.userPrincipal.principal.firstName} ${pageContext.request.userPrincipal.principal.lastName}!"/>
+	   			</div>
+   			</c:if> 		
 		    <tiles:insertAttribute name="menu" ignore="true" />   
-	    	<div id="main">
+	    	<div id="main">	    	
 	    		<tiles:insertAttribute name="body" />
 	    		<div id="footer">				
 				  	<spring:url var="home" value="/" />
