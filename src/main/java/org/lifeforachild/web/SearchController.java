@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.lifeforachild.domain.Child;
 import org.lifeforachild.domain.ClinicalRecord;
 import org.lifeforachild.domain.Country;
-import org.lifeforachild.domain.DiabetesCentre;
 import org.lifeforachild.domain.ReportType;
 import org.lifeforachild.domain.Search;
 import org.lifeforachild.domain.TimePeriodUnit;
