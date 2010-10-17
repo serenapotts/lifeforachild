@@ -16,19 +16,19 @@
         <spring:message code="field.invalid.date" var="field_invalid_date"/>
         <spring:message code="field.date.tooltip" var="field_date_tooltip"/>        
         <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_title_div', widgetType : 'dijit.TitlePane', widgetAttrs : {title: '${title_msg}'}})); </script>
+        <div id="roo_child_individualId">
+            <label for="_individualId_id">Individual Id:</label>
+            <div class="box" id="_individualId_id_label">
+              		<c:out value="${child.individualId}"/>
+          		</div>
+          	</div>
+        <br/>        
 		<div id="mainTabContainer" style="width:530px;height:600px">
             <div id="childInfo">        
 		        <spring:url value="/child/${child.id}" var="form_url"/>
 		        <form:form action="${form_url}" method="PUT" modelAttribute="child">
 		            <form:errors cssClass="errors" delimiter="&lt;p/&gt;"/>		            
-		            <div id="roo_child_individualId">
-		                <label for="_individualId_id">Individual Id:</label>
-		                <div class="box" id="_individualId_id_label">
-                    		<c:out value="${child.individualId}"/>
-                		</div>
-                		<form:hidden id="_individualId_id" path="individualId"/>
-                	</div>
-		            <br/>
+                	<form:hidden id="_individualId_id" path="individualId"/>
 		            <sec:authorize ifAllGranted="VIEW_CHILD_NAME">
 			            <div id="roo_child_initials">
 			                <label for="_initials_id"><spring:message code="child.initials"/></label>
