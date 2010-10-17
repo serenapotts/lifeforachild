@@ -3,6 +3,12 @@
     <script type="text/javascript">
 		window.print();
 	</script>
+	<style>
+		body {
+			background-image: none;
+			}
+	</style>
+	<img src="../../static/images/logo.jpg" align="right" height="100px" width="100px"/>
 	<c:if test="${not empty child}">  
 		<table style="background:none;">      	
 		    <tr id="roo_child_individualId">
