@@ -3,9 +3,9 @@
 		dojo.require("dijit.TitlePane");
 		dojo.require('dojo.data.ItemFileReadStore');
 	</script>
-    <div style="width: 100%" id="_title">
+    <div id="_title_div">
     	<spring:message var="title" code="welcome.titlepane" />
-    	<script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_title', widgetType : 'dijit.TitlePane', widgetAttrs : {title: '${title}'}})); </script>
+    	<script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_title_div', widgetType : 'dijit.TitlePane', widgetAttrs : {title: '${title}'}})); </script>
 		<c:url value="/search" var="form_url"/>
 	    <form:form action="${form_url}" method="POST" modelAttribute="search">
 	        <div id="roo_search_reporttype">
