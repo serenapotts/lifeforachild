@@ -6,6 +6,14 @@
 		<put-attribute name="body" value="/WEB-INF/views/index.jspx"/>
 	</definition>
 	
+	<definition extends="default" name="about">
+		<put-attribute name="body" value="/WEB-INF/views/about.jspx"/>
+	</definition>
+	
+	<definition extends="default" name="help">
+		<put-attribute name="body" value="/WEB-INF/views/help.jspx"/>
+	</definition>
+		
 	<definition extends="default" name="accessDenied">
 		<put-attribute name="body" value="/WEB-INF/views/accessDenied.jspx"/>
 	</definition>	

@@ -62,9 +62,11 @@
 				    <roo:language />
 				    <!-- <roo:theme /> -->
 				    				    
-				    <!--<spring:url var="logo" value="/static/images/springsource-logo.png" />
-				    <spring:message code="global.sponsored" var="sponsored"/>
-				    <span><a href="http://springsource.com" title="${sponsored}"><img src="${logo}" alt="${sponsored}" align="right"/></a></span>-->
+				    <span class="right">
+				    	<a href="/lifeforachild/help" id="right"><spring:message code="help.label"/></a>
+				    	<c:out value=" | "/>
+				    	<a href="/lifeforachild/about" id="right"><spring:message code="about.label"/></a>
+			    	</span>
 				</div>
 			</div>
 		</div>

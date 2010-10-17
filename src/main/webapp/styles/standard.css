@@ -365,3 +365,8 @@ fieldset th {
 #_title_div {
 	width: 565px;
 }
+
+span.right
+{
+	float:right;
+}

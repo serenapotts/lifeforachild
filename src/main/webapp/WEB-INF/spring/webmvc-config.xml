@@ -24,6 +24,8 @@
 	<mvc:view-controller path="/uncaughtException"/>
 	<mvc:view-controller path="/resourceNotFound"/>
 	<mvc:view-controller path="/dataAccessFailure"/>
+	<mvc:view-controller path="/about"/>
+	<mvc:view-controller path="/help"/>
 
 	<!-- Resolves logical view names returned by Controllers to Tiles; a view
 		 name to resolve is treated as the name of a tiles definition -->
