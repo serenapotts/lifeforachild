@@ -1,12 +1,23 @@
-#menu, #footer, input, script, a {
+#menu, #footer, input, script, a, br {
 	display:none;
 }
 
+a#_individualId_id
+{
+	display:inline;
+}
 div.box { 
 	display :inline;
+	position:absolute;
+	left: 300px;
 }
 
 label { 
 	margin-right: 5px;
 }
-	
+
+body, #wrapper, #main {
+	float:none;
+	border: 0;
+	overflow: visible !important;	
+}

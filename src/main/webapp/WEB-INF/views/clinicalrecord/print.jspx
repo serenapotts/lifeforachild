@@ -4,9 +4,8 @@
 		window.print();
 	</script>
 	<style>
-		body {
-			background-image: none;
-			}
+		body { background-image: none; }
+		a:link, a:visited { color: black }
 	</style>
 	<img src="../../static/images/logo.jpg" align="right" height="100px" width="100px"/>
     <c:if test="${not empty clinicalRecord}">

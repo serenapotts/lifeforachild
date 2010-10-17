@@ -34,7 +34,7 @@
         <label for="_individualId_id">Individual Id:</label>
         <div class="box" id="_individualId_id">
         	<spring:url value="/child/${clinicalRecord.child.id}/form" var="update_child_url"/>
-            <a href="${update_child_url}">
+            <a href="${update_child_url}" id="_individualId_id">
             	<c:out value="${clinicalRecord.child.individualId}"/>
             </a>
         </div>
