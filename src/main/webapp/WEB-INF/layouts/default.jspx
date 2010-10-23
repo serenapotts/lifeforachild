@@ -53,7 +53,13 @@
 		    <tiles:insertAttribute name="menu" ignore="true" />   
 	    	<div id="main">	    	
 	    		<tiles:insertAttribute name="body" />
-	    		<div id="footer">				
+	    		<div id="footer">	
+	    			<!--  put before left spans as workaround to bug in IE7 -->
+	    			<span class="right">
+				    	<a href="/lifeforachild/help" id="right"><spring:message code="help.label"/></a>
+				    	<c:out value=" | "/>
+				    	<a href="/lifeforachild/about" id="right"><spring:message code="about.label"/></a>
+			    	</span>
 				  	<spring:url var="home" value="/" />
 				    <span><a href="${home}search"><spring:message code="button.home"/></a></span>				    
 				    <c:if test="${pageContext.request.userPrincipal != null}">	
@@ -65,13 +71,7 @@
 					</c:if>			    
 				    
 				    <roo:language />
-				    <!-- <roo:theme /> -->
-				    				    
-				    <span class="right">
-				    	<a href="/lifeforachild/help" id="right"><spring:message code="help.label"/></a>
-				    	<c:out value=" | "/>
-				    	<a href="/lifeforachild/about" id="right"><spring:message code="about.label"/></a>
-			    	</span>
+				    <!-- <roo:theme /> -->				    				    
 				</div>
 			</div>
 		</div>
