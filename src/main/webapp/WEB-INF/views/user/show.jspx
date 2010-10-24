@@ -7,49 +7,49 @@
         <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_title_div', widgetType : 'dijit.TitlePane', widgetAttrs : {title: '${title_msg}'}})); </script>
         <c:if test="${not empty user}">
             <div id="roo_user_firstName">
-                <label for="_firstName_id">First Name:</label>
+                <label for="_firstName_id"><spring:message code="user.firstName"/></label>
                 <div class="box" id="_firstName_id">
                     <c:out value="${user.firstName}"/>
                 </div>
             </div>
             <br/>
             <div id="roo_user_lastName">
-                <label for="_lastName_id">Last Name:</label>
+                <label for="_lastName_id"><spring:message code="user.lastName"/></label>
                 <div class="box" id="_lastName_id">
                     <c:out value="${user.lastName}"/>
                 </div>
             </div>
             <br/>
             <div id="roo_user_username">
-                <label for="_username_id">Username:</label>
+                <label for="_username_id"><spring:message code="user.username"/></label>
                 <div class="box" id="_username_id">
                     <c:out value="${user.username}"/>
                 </div>
             </div>
             <br/>
             <div id="roo_user_enabled">
-                <label for="_enabled_id">Enabled:</label>
+                <label for="_enabled_id"><spring:message code="user.enabled"/></label>
                 <div class="box" id="_enabled_id">
                     <c:out value="${user.enabled}"/>
                 </div>
             </div>
             <br/>
             <div id="roo_user_userGroup">
-                <label for="_userGroup_id">User Group:</label>
+                <label for="_userGroup_id"><spring:message code="user.usergroup"/></label>
                 <div class="box" id="_userGroup_id">
                     <c:out value="${user.userGroup}"/>
                 </div>
             </div>
             <br/>
             <div id="roo_user_country">
-                <label for="_country_id">Country:</label>
+                <label for="_country_id"><spring:message code="user.country"/></label>
                 <div class="box" id="_country_id">
                     <c:out value="${user.country}"/>
                 </div>
             </div>
             <br/>
             <div id="roo_user_centre">
-                <label for="_centre_id">Centre:</label>
+                <label for="_centre_id"><spring:message code="user.centre"/></label>
                 <div class="box" id="_centre_id">
                     <c:out value="${user.centre}"/>
                 </div>

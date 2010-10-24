@@ -22,20 +22,20 @@ public class ChildValidator implements Validator {
 		if (child.getSurvivalStatus() != null && child.getSurvivalStatus().equals(SurvivalStatusType.DEAD))
 		{
 			if (child.getDateOfDeath() == null)
-				errors.rejectValue("dateOfDeath", "dateOfDeath.required");
+				errors.rejectValue("dateOfDeath", "child.required.dateOfDeath");
 			if (child.getCauseOfDeath() == null)
-				errors.rejectValue("causeOfDeath", "causeOfDeath.required");
+				errors.rejectValue("causeOfDeath", "child.required.causeOfDeath");
 			else if (child.getCauseOfDeath() != null 
 					&& child.getCauseOfDeath().equals(CauseOfDeathType.OTHER_DIABETES_RELATED_CONDITION)
 					&& (child.getCauseOfDeathOther() == null || (child.getCauseOfDeathOther() != null &&
 							child.getCauseOfDeathOther().isEmpty())))
-				errors.rejectValue("causeOfDeathOther", "causeOfDeathOther.required");				
+				errors.rejectValue("causeOfDeathOther", "child.required.causeOfDeathOther");				
 		}
 		
 		if (child.getDiabetesType() != null && child.getDiabetesType().equals(DiabetesType.OTHER) &&
 				(child.getDiabetesTypeOther() == null || (child.getDiabetesTypeOther() != null &&
 						child.getDiabetesTypeOther().isEmpty())))
-			errors.rejectValue("diabetesTypeOther", "diabetesTypeOther.required");
+			errors.rejectValue("diabetesTypeOther", "child.required.diabetesTypeOther");
 
 	}
 

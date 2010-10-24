@@ -9,26 +9,26 @@
 		<c:url value="/search" var="form_url"/>
 	    <form:form action="${form_url}" method="POST" modelAttribute="search">
 	        <div id="roo_search_reporttype">
-	            <label for="_reporttype">Report Type:</label>
+	            <label for="_reporttype"><spring:message code="search.reportType"/></label>
 	            <form:select cssStyle="width:250px" id="_reporttype" items="${_reporttype}" path="reportType" itemLabel="label"/>
 	            <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_reporttype', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
 	            <br/>
 	        </div>
 	        <br/>
 	        <div id="roo_search_id">
-	            <label for="_id">ID:</label>
+	            <label for="_id"><spring:message code="search.id"/></label>
 	            <form:input cssStyle="width:250px" id="_id" maxlength="30" path="id" size="0"/>
 	            <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : "_id", widgetType : "dijit.form.ValidationTextBox", widgetAttrs : {promptMessage: "Enter ID", invalidMessage: "", required : false}})); </script>
 	        </div>
 	        <br/>
 	        <div id="roo_search_name">
-	            <label for="_name">Name:</label>
+	            <label for="_name"><spring:message code="search.name"/></label>
 	            <form:input cssStyle="width:250px" id="_name" maxlength="30" path="name" size="0"/>
 	            <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : "_name", widgetType : "dijit.form.ValidationTextBox", widgetAttrs : {promptMessage: "Enter Name", invalidMessage: "", required : false}})); </script>
 	        </div>
 	        <br/>	        
 	        <div id="roo_search_timePeriod">
-	            <label for="_timePeriod">Time Period:</label>
+	            <label for="_timePeriod"><spring:message code="search.timePeriod"/></label>
 	            <form:input cssStyle="width:50px" id="_timePeriod" maxlength="30" path="timePeriod"/>
 	            <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : "_timePeriod", widgetType : "dijit.form.ValidationTextBox", widgetAttrs : {promptMessage: "Enter Time Period", invalidMessage: "", required : false}})); </script>
 	            <form:select cssStyle="width:200px" id="_timeperiodunit" items="${_timeperiodunit}" path="timePeriodUnit" itemLabel="label"/>
@@ -36,7 +36,7 @@
 	        </div>
 	        <br/>
 	        <div id="roo_search_dateRange">
-	            <label for="_fromDate">Date Range:</label>
+	            <label for="_fromDate"><spring:message code="search.dateRange"/></label>
 	            <form:input cssStyle="width:100px" id="_fromDate" maxlength="30" path="fromDate" size="0"/>
 	            <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_fromDate', widgetType : 'dijit.form.DateTextBox', widgetAttrs : {constraints: {datePattern : 'd/MM/yyyy', required : false}, datePattern : 'd/MM/yyyy'}})); </script>
 	            <form:input cssStyle="width:100px" id="_toDate" maxlength="30" path="toDate" size="0"/>
@@ -45,7 +45,7 @@
 	        <br/>
 	        <div id="roo_search_country">
 	            <c:if test="${not empty countrys}">
-                    <label for="_country_id">Country:</label>
+                    <label for="_country_id"><spring:message code="search.country"/></label>
                     <form:select cssStyle="width:250px" id="_country_id" path="country">
                     	<form:option value=""></form:option> 
                         <form:options itemValue="id" items="${countrys}"/>
@@ -87,7 +87,7 @@
 	        </div>
 	        <br/>
 	        <div id="roo_search_centre">
-	            <label for="_centre_id">Centre:</label>
+	            <label for="_centre_id"><spring:message code="search.centre"/></label>
 	            <form:select cssStyle="width:250px" id="_centre_id" path="centre">    
 	            	<form:option value=""></form:option>                	
 	                <form:options itemValue="id" items="${diabetescentres}"/>

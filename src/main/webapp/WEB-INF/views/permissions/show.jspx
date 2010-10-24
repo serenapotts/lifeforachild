@@ -7,7 +7,7 @@
         <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_title_div', widgetType : 'dijit.TitlePane', widgetAttrs : {title: '${title_msg}'}})); </script>
         <c:if test="${not empty permissions}">
             <div id="roo_permissions_name">
-                <label for="_name_id">Name:</label>
+                <label for="_name_id"><spring:message code="permissions.name"/></label>
                 <div class="box" id="_name_id">
                     <c:out value="${permissions.name}"/>
                 </div>

@@ -31,7 +31,7 @@
               
             <form:errors cssClass="errors" delimiter="&lt;p/&gt;"/>
     <div id="roo_clinicalRecord_individualId">
-        <label for="_individualId_id">Individual Id:</label>
+        <label for="_individualId_id"><spring:message code="child.individualId"/></label>
         <div class="box" id="_individualId_id">
         	<spring:url value="/child/${clinicalRecord.child.id}/form" var="update_child_url"/>
             <a href="${update_child_url}" id="_individualId_id">
@@ -49,7 +49,7 @@
     <br/>    
 	<sec:authorize ifAllGranted="VIEW_CHILD_NAME">
 	    <div id="roo_clinicalRecord_child">                
-	         <label for="_child_id">Child:</label>
+	         <label for="_child_id"><spring:message code="record.childName"/></label>
 	         <div class="box" id="_child_id">
 	            <c:out value="${clinicalRecord.child}"/>
 	        </div>                
@@ -61,7 +61,7 @@
             <form:hidden id="_child_id" path="child"/>
             <div id="roo_clinicalRecord_personCompletingForm">
                 <c:if test="${not empty users}">
-                    <label for="_personCompletingForm_id">Person Completing Form:</label>
+                    <label for="_personCompletingForm_id"><spring:message code="record.personCompleting"/></label>
                     <form:select cssStyle="width:250px" id="_personCompletingForm_id" path="personCompletingForm">
                         <form:options itemValue="id" items="${users}"/>
                     </form:select>
@@ -70,7 +70,7 @@
             </div>
             <br/>
             <div id="roo_clinicalRecord_dateCompleted">
-                <label for="_dateCompleted_id">Date Completed:</label>
+                <label for="_dateCompleted_id"><spring:message code="record.dateCompleted"/></label>
                 <form:input cssStyle="width:250px" id="_dateCompleted_id" maxlength="30" path="dateCompleted" size="0"/>
                 <br/>
                 <form:errors cssClass="errors" id="_dateCompleted_error_id" path="dateCompleted"/>
@@ -81,7 +81,7 @@
             </div>
             <br/>
             <div id="roo_clinicalRecord_seniorPhysician">
-                <label for="_seniorPhysician_id">Senior Physician:</label>
+                <label for="_seniorPhysician_id"><spring:message code="record.seniorPhysician"/></label>
                 <form:input cssStyle="width:250px" id="_seniorPhysician_id" maxlength="30" path="seniorPhysician" size="0"/>
                 <br/>
                 <form:errors cssClass="errors" id="_seniorPhysician_error_id" path="seniorPhysician"/>
@@ -92,29 +92,31 @@
             </div>
             <br/>     
             <div id="roo_clinicalRecord_exactAge">
-                <label for="_exactAge_id">Exact Age on Measurement Date:</label>
+                <label for="_exactAge_id"><spring:message code="record.exactAge"/></label>
                 <form:input cssStyle="width:250px; border:0" id="_exactAge_id" maxlength="30" path="exactAge" size="0"/>
                	<br/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_exactAge_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {readOnly : true}})); </script>
             </div>
             <br/>      
             <div id="roo_clinicalRecord_insulinPerKg">
-	            <label for="_insulinPerKg_id">Insulin Units/ Kg:</label>
+	            <label for="_insulinPerKg_id"><spring:message code="record.insulinPerKg"/></label>
 	            <form:input cssStyle="width:250px; border:0" id="_insulinPerKg_id" maxlength="30" path="insulinPerKg" size="0"/>               	
              	<script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_insulinPerKg_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {readOnly : true}})); </script>
 	        </div>
 	        <br/>
         </div>	   
+        <spring:message code="record.tab.general" var="general_tab"/>
+		<spring:message code="record.tab.general.error" var="general_error_tab"/>
 		<script type="text/javascript">
 			Spring.addDecoration(new Spring.ElementDecoration({
 				elementId : "general",
 				widgetType : "dijit.layout.ContentPane",
-				widgetAttrs : { title: "General" }
+				widgetAttrs : { title: "${general_tab}" }
 				}));
 		</script>
         <div id="diabetesCare">   
             <div id="roo_clinicalRecord_bloodGlucoseSelfMonitoringPerWeek">
-                <label for="_bloodGlucoseSelfMonitoringPerWeek_id">Blood Glucose Self Monitoring Per Week:</label>
+                <label for="_bloodGlucoseSelfMonitoringPerWeek_id"><spring:message code="record.bloodGlucose"/></label>
                 <form:input cssStyle="width:250px" id="_bloodGlucoseSelfMonitoringPerWeek_id" maxlength="30" path="bloodGlucoseSelfMonitoringPerWeek" size="0"/>
                 <br/>
                 <form:errors cssClass="errors" id="_bloodGlucoseSelfMonitoringPerWeek_error_id" path="bloodGlucoseSelfMonitoringPerWeek"/>
@@ -125,7 +127,7 @@
             </div>
             <br/>
             <div id="roo_clinicalRecord_urineGlucoseSelfMonitoringPerWeek">
-                <label for="_urineGlucoseSelfMonitoringPerWeek_id">Urine Glucose Self Monitoring Per Week:</label>
+                <label for="_urineGlucoseSelfMonitoringPerWeek_id"><spring:message code="record.urineGlucose"/></label>
                 <form:input cssStyle="width:250px" id="_urineGlucoseSelfMonitoringPerWeek_id" maxlength="30" path="urineGlucoseSelfMonitoringPerWeek" size="0"/>
                 <br/>
                 <form:errors cssClass="errors" id="_urineGlucoseSelfMonitoringPerWeek_error_id" path="urineGlucoseSelfMonitoringPerWeek"/>
@@ -136,7 +138,7 @@
             </div>
             <br/>
             <div id="roo_clinicalRecord_insulinUnitsPerDay">
-                <label for="_insulinUnitsPerDay_id">Insulin Units Per Day:</label>
+                <label for="_insulinUnitsPerDay_id"><spring:message code="record.insulinPerDay"/></label>
                 <form:input cssStyle="width:250px" id="_insulinUnitsPerDay_id" maxlength="30" path="insulinUnitsPerDay" size="0"/>
                 <br/>
                 <form:errors cssClass="errors" id="_insulinUnitsPerDay_error_id" path="insulinUnitsPerDay"/>
@@ -173,7 +175,7 @@
                         widgetType: 'dijit.layout.ContentPane'})); 
             </script>        
             <div id="roo_clinicalRecord_numberOfInsulinInjectionsPerDay">
-                <label for="_numberOfInsulinInjectionsPerDay_id">Number Of Insulin Injections Per Day:</label>
+                <label for="_numberOfInsulinInjectionsPerDay_id"><spring:message code="record.numInjections"/></label>
                 <form:input cssStyle="width:250px" id="_numberOfInsulinInjectionsPerDay_id" maxlength="30" path="numberOfInsulinInjectionsPerDay" size="0"/>
                 <br/>
                 <form:errors cssClass="errors" id="_numberOfInsulinInjectionsPerDay_error_id" path="numberOfInsulinInjectionsPerDay"/>
@@ -184,7 +186,7 @@
             </div>
             <br/>            
             <div id="roo_clinicalRecord_longActingHuman">
-                <label for="_longActingHuman_id">Long Acting Human:</label>                
+                <label for="_longActingHuman_id"><spring:message code="record.longActingHuman"/></label>                
                 <form:select cssStyle="width:250px" id="_longActingHuman_id" path="longActingHuman">
                     <form:option value=""></form:option>
                 	<form:options items="${yesnotype_enum}" itemLabel="label"/>
@@ -195,7 +197,7 @@
             </div>
             <br/>
             <div id="roo_clinicalRecord_shortActingHuman">
-                <label for="_shortActingHuman_id">Short Acting Human:</label>                
+                <label for="_shortActingHuman_id"><spring:message code="record.shortActingHuman"/></label>                
                 <form:select cssStyle="width:250px" id="_shortActingHuman_id" path="shortActingHuman">
                     <form:option value=""></form:option>
                 	<form:options items="${yesnotype_enum}" itemLabel="label"/>
@@ -206,7 +208,7 @@
             </div>
             <br/>
             <div id="roo_clinicalRecord_analog">
-                <label for="_analog_id">Analog:</label>                
+                <label for="_analog_id"><spring:message code="record.analog"/></label>                
                 <form:select cssStyle="width:250px" id="_analog_id" path="analog">
                     <form:option value=""></form:option>
                 	<form:options items="${yesnotype_enum}" itemLabel="label"/>
@@ -217,7 +219,7 @@
             </div>
             <br/>
             <div id="roo_clinicalRecord_oralAgents">
-                <label for="_oralAgents_id">Oral Agents:</label>                
+                <label for="_oralAgents_id"><spring:message code="record.oralAgents"/></label>                
                 <form:select cssStyle="width:250px" id="_oralAgents_id" path="oralAgents">
                     <form:option value=""></form:option>
                 	<form:options items="${yesnotype_enum}" itemLabel="label"/>
@@ -236,7 +238,7 @@
             </div>
             <br/>
             <div id="roo_clinicalRecord_oralAgentsDescription">
-                <label for="_oralAgentsDescription_id">Oral Agents Description:</label>
+                <label for="_oralAgentsDescription_id"><spring:message code="record.oralAgents.decription"/></label>
                 <form:textarea cssStyle="width:250px" id="_oralAgentsDescription_id" path="oralAgentsDescription"/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_oralAgentsDescription_id', widgetType: 'dijit.form.SimpleTextarea', widgetAttrs: {}})); </script>
                 <br/>
@@ -249,7 +251,7 @@
                         widgetType: 'dijit.layout.ContentPane'})); 
             </script> 
             <div id="roo_clinicalRecord_routineClinicReviewsLastYear">
-                <label for="_routineClinicReviewsLastYear_id">Routine Clinic Reviews Last Year:</label>
+                <label for="_routineClinicReviewsLastYear_id"><spring:message code="record.clinicReviews"/></label>
                 <form:input cssStyle="width:250px" id="_routineClinicReviewsLastYear_id" maxlength="30" path="routineClinicReviewsLastYear" size="0"/>
                 <br/>
                 <form:errors cssClass="errors" id="_routineClinicReviewsLastYear_error_id" path="routineClinicReviewsLastYear"/>
@@ -260,7 +262,7 @@
             </div>
             <br/>
             <div id="roo_clinicalRecord_bpMedications">
-                <label for="_bpMedications_id">BP Medications:</label>                
+                <label for="_bpMedications_id"><spring:message code="record.bpMedications"/>:</label>                
                 <form:select cssStyle="width:250px" id="_bpMedications_id" path="bpMedications">
                     <form:option value=""></form:option>
                 	<form:options items="${yesnotype_enum}" itemLabel="label"/>
@@ -279,7 +281,7 @@
             </div>
             <br/>
             <div id="roo_clinicalRecord_acearb">
-                <label for="_acearb_id">ACE/ARB agents:</label>                
+                <label for="_acearb_id"><spring:message code="record.acearbAgents"/></label>                
                 <form:select cssStyle="width:250px" id="_acearb_id" path="acearb">
 					<form:option value=""></form:option>
                 	<form:options items="${yesnotype_enum}" itemLabel="label"/>
@@ -295,7 +297,7 @@
                         widgetType: 'dijit.layout.ContentPane'})); 
             </script>  
             <div id="roo_clinicalRecord_bpMedicationsOther">
-                <label for="_bpMedicationsOther_id">BP Medications Other:</label>
+                <label for="_bpMedicationsOther_id"><spring:message code="record.bpMedications.other"/></label>
                 <form:input cssStyle="width:250px" id="_bpMedicationsOther_id" maxlength="30" path="bpMedicationsOther" size="0"/>
                 <br/>
                 <form:errors cssClass="errors" id="_bpMedicationsOther_error_id" path="bpMedicationsOther"/>
@@ -311,7 +313,7 @@
                         widgetType: 'dijit.layout.ContentPane'})); 
             </script>             
             <div id="roo_clinicalRecord_otherTreatments">
-                <label for="_otherTreatments_id">Other Treatments:</label>
+                <label for="_otherTreatments_id"><spring:message code="record.otherTreatments"/></label>
                 <form:textarea cssStyle="width:250px" id="_otherTreatments_id" path="otherTreatments"/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_otherTreatments_id', widgetType: 'dijit.form.SimpleTextarea', widgetAttrs: {}})); </script>
                 <br/>
@@ -319,7 +321,7 @@
             </div>
             <br/>
             <div id="roo_clinicalRecord_laserRxInLast12Months">
-                <label for="_laserRxInLast12Months_id">Laser Rx In Last12 Months:</label>                
+                <label for="_laserRxInLast12Months_id"><spring:message code="record.laserRx"/></label>                
                 <form:select cssStyle="width:250px" id="_LaserRxInLast12Months_id" path="LaserRxInLast12Months">
                     <form:option value=""></form:option>
                 	<form:options items="${yesnotype_enum}" itemLabel="label"/>
@@ -330,11 +332,13 @@
             </div>
             <br/>
 		</div>
+		<spring:message code="record.tab.diabetesCare" var="diabetesCare_tab"/>
+		<spring:message code="record.tab.diabetesCare.error" var="diabetesCare_error_tab"/>
 		<script type="text/javascript">
 			Spring.addDecoration(new Spring.ElementDecoration({
 				elementId : "diabetesCare",
 				widgetType : "dijit.layout.ContentPane",
-				widgetAttrs : { title: "Diabetes Care" }
+				widgetAttrs : { title: "${diabetesCare_tab}" }
 				}));
 		</script>          
         <div id="clinicalMeasures">     
@@ -381,7 +385,7 @@
             </div>
             <br/>            
             <div id="roo_clinicalRecord_weightKG">
-                <label for="_weightKG_id">Weight (kg):</label>
+                <label for="_weightKG_id"><spring:message code="record.weight"/></label>
                 <form:input cssStyle="width:250px" id="_weightKG_id" maxlength="30" path="weightKG" size="0"/>
                 <br/>
                 <form:errors cssClass="errors" id="_weightKG_error_id" path="weightKG"/>
@@ -407,7 +411,7 @@
                         widgetType: 'dijit.layout.ContentPane'})); 
             </script> 
              <div id="roo_clinicalRecord_weightSD">
-                <label for="_weightSD_id">Weight SD:</label>
+                <label for="_weightSD_id"><spring:message code="record.weightSD"/></label>
 				<form:input cssStyle="width:250px; border:0" id="_weightSD_id" maxlength="30" path="weightSD" size="0"/>
                	<br/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_weightSD_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {readOnly : true}})); </script>
@@ -438,7 +442,7 @@
             </div>
             <br/>             
             <div id="roo_clinicalRecord_heightCM">
-                <label for="_heightCM_id">Height (cm):</label>
+                <label for="_heightCM_id"><spring:message code="record.height"/></label>
                 <form:input cssStyle="width:250px" id="_heightCM_id" maxlength="30" path="heightCM" size="0"/>
                 <br/>
                 <form:errors cssClass="errors" id="_heightCM_error_id" path="heightCM"/>
@@ -463,7 +467,7 @@
                         widgetType: 'dijit.layout.ContentPane'})); 
             </script> 
 			<div id="roo_clinicalRecord_heightSD">
-                <label for="_heightSD_id">Height SD:</label>
+                <label for="_heightSD_id"><spring:message code="record.heightSD"/></label>
                 <form:input cssStyle="width:250px; border:0" id="_heightSD_id" maxlength="30" path="heightSD" size="0"/>
                	<br/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_heightSD_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {readOnly : true}})); </script>
@@ -475,7 +479,7 @@
                         widgetType: 'dijit.layout.ContentPane'})); 
             </script> 
 			<div id="roo_clinicalRecord_bmi">
-                <label for="_bmi_id">Body Mass Index:</label>
+                <label for="_bmi_id"><spring:message code="record.bmi"/></label>
                 <form:input cssStyle="width:250px; border:0" id="_bmi_id" maxlength="30" path="bmi" size="0"/>
                	<br/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_bmi_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {readOnly : true}})); </script>		                                        
@@ -487,7 +491,7 @@
                         widgetType: 'dijit.layout.ContentPane'})); 
             </script> 
             <div id="roo_clinicalRecord_bmiSD">
-                <label for="_bmiSD_id">Body Mass Index SD:</label>
+                <label for="_bmiSD_id"><spring:message code="record.bmiSD"/></label>
                 <form:input cssStyle="width:250px; border:0" id="_bmiSD_id" maxlength="30" path="bmiSD" size="0"/>
                	<br/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_bmiSD_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {readOnly : true}})); </script>
@@ -518,7 +522,7 @@
             </div>
             <br/>                         
             <div id="roo_clinicalRecord_bloodPressureSystolicMMHg">
-                <label for="_bloodPressureSystolicMMHg_id">Blood Pressure Systolic (mmHg):</label>
+                <label for="_bloodPressureSystolicMMHg_id"><spring:message code="record.BPsystolic"/></label>
                 <form:input cssStyle="width:250px" id="_bloodPressureSystolicMMHg_id" maxlength="30" path="bloodPressureSystolicMMHg" size="0"/>
                 <br/>
                 <form:errors cssClass="errors" id="_bloodPressureSystolicMMHg_error_id" path="bloodPressureSystolicMMHg"/>
@@ -545,7 +549,7 @@
                         widgetType: 'dijit.layout.ContentPane'})); 
             </script> 
 			<div id="roo_clinicalRecord_bloodPressureSystolicSD">
-                <label for="_bloodPressureSystolicSD_id">Blood Pressure Systolic SD:</label>
+                <label for="_bloodPressureSystolicSD_id"><spring:message code="record.BPsystolicSD"/></label>
                 <form:input cssStyle="width:250px; border:0" id="_bloodPressureSystolicSD_id" maxlength="30" path="bloodPressureSystolicSD" size="0"/>
                	<br/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_bloodPressureSystolicSD_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {readOnly : true}})); </script>
@@ -556,7 +560,7 @@
                         widgetType: 'dijit.layout.ContentPane'})); 
             </script>           
             <div id="roo_clinicalRecord_bloodPressureDiastolicMMHg">
-                <label for="_bloodPressureDiastolicMMHg_id">Blood Pressure Diastolic (mmHg):</label>
+                <label for="_bloodPressureDiastolicMMHg_id"><spring:message code="record.BPdiastolic"/></label>
                 <form:input cssStyle="width:250px" id="_bloodPressureDiastolicMMHg_id" maxlength="30" path="bloodPressureDiastolicMMHg" size="0"/>
                 <br/>
                 <form:errors cssClass="errors" id="_bloodPressureDiastolicMMHg_error_id" path="bloodPressureDiastolicMMHg"/>
@@ -583,7 +587,7 @@
                         widgetType: 'dijit.layout.ContentPane'})); 
             </script> 
             <div id="roo_clinicalRecord_bloodPressureDiastolicSD">
-                <label for="_bloodPressureDiastolicSD_id">Blood Pressure Diastolic SD:</label>
+                <label for="_bloodPressureDiastolicSD_id"><spring:message code="record.BPdiastolicSD"/></label>
                 <form:input cssStyle="width:250px; border:0" id="_bloodPressureDiastolicSD_id" maxlength="30" path="bloodPressureDiastolicSD" size="0"/>
                	<br/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_bloodPressureDiastolicSD_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {readOnly : true}})); </script>
@@ -594,7 +598,7 @@
                         widgetType: 'dijit.layout.ContentPane'})); 
             </script> 
             <div id="roo_clinicalRecord_hasPersistentHypertension">
-                <label for="_hasPersistentHypertension_id">Has Persistent Hypertension:</label>               
+                <label for="_hasPersistentHypertension_id"><spring:message code="record.hypertension"/></label>               
                 <form:select cssStyle="width:250px" id="_hasPersistentHypertension_id" path="hasPersistentHypertension">
                     <form:option value=""></form:option>
                 	<form:options items="${yesnounkowntype_enum}" itemLabel="label"/>
@@ -605,7 +609,7 @@
             </div>
             <br/>
             <div id="roo_clinicalRecord_hasPubertyTannerB2_P2orGreater">
-                <label for="_hasPubertyTannerB2_P2orGreater_id">Has Puberty Tanner B2/P2 or Greater:</label>                
+                <label for="_hasPubertyTannerB2_P2orGreater_id"><spring:message code="record.pubertyTanner"/></label>                
                 <form:select cssStyle="width:250px" id="_hasPubertyTannerB2_P2orGreater_id" path="hasPubertyTannerB2_P2orGreater">
                     <form:option value=""></form:option>
                 	<form:options items="${yesnounkowntype_enum}" itemLabel="label"/>
@@ -617,7 +621,7 @@
             <br/>
             <c:if test="${clinicalRecord.child.sex == 'FEMALE'}">
 	            <div id="roo_clinicalRecord_menarche">
-	                <label for="_menarche_id">Menarche:</label>	                
+	                <label for="_menarche_id"><spring:message code="record.menarche"/></label>	                
 	                <form:select cssStyle="width:250px" id="_menarche_id" path="menarche">
 	                    <form:option value=""></form:option>
 	                	<form:options items="${yesnounkowntype_enum}" itemLabel="label"/>

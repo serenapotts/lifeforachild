@@ -10,12 +10,12 @@
             <table width="500px">
                 <thead>
                     <tr>
-                        <th>Id</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Username</th>
-                        <th>Enabled</th>
-                        <th>User Group</th>
+                        <th><spring:message code="user.list.id"/></th>
+                        <th><spring:message code="user.list.firstName"/></th>
+                        <th><spring:message code="user.list.lastName"/></th>
+                        <th><spring:message code="user.list.username"/></th>
+                        <th><spring:message code="user.list.enabled"/></th>
+                        <th><spring:message code="user.list.usergroup"/></th>
                         <th/>
                         <th/>
                         <sec:authorize ifAllGranted="CAN_DELETE">

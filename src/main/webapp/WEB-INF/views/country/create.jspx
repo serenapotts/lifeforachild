@@ -9,7 +9,7 @@
         <form:form action="${form_url}" method="POST" modelAttribute="country">
             <form:errors cssClass="errors" delimiter="&lt;p/&gt;"/>
             <div id="roo_country_name">
-                <label for="_name_id">Name:</label>
+                <label for="_name_id"><spring:message code="country.name"/></label>
                 <form:textarea cssStyle="width:250px" id="_name_id" path="name"/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_name_id', widgetType: 'dijit.form.SimpleTextarea', widgetAttrs: {}})); </script>
                 <br/>

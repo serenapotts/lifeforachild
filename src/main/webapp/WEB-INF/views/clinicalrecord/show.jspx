@@ -7,7 +7,7 @@
         <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_title_div', widgetType : 'dijit.TitlePane', widgetAttrs : {title: '${title_msg}'}})); </script>
         <c:if test="${not empty clinicalRecord}">
 		    <div id="roo_clinicalRecord_individualId">
-		        <label for="_individualId_id">Individual Id:</label>
+		        <label for="_individualId_id"><spring:message code="child.individualId"/></label>
 		        <div class="box" id="_individualId_id">		            
 		            <spring:url value="/child/${clinicalRecord.child.id}/form" var="update_child_url"/>
 		            <a href="${update_child_url}" id="_individualId_id">
@@ -33,7 +33,7 @@
 		    <br/>    
 			<sec:authorize ifAllGranted="VIEW_CHILD_NAME">
 			    <div id="roo_clinicalRecord_child">                
-			         <label for="_child_id">Child:</label>
+			         <label for="_child_id"><spring:message code="record.childName"/></label>
 			         <div class="box" id="_child_id">
 			            <c:out value="${clinicalRecord.child}"/>
 			        </div>                
@@ -42,68 +42,60 @@
 		    </sec:authorize>        
 	        <div id="mainTabContainer" style="width:500px;height:600px">
 	           	<div id="general"> 
-	           		<sec:authorize ifAllGranted="VIEW_CHILD_NAME">
-		            <div id="roo_clinicalRecord_child">
-		                <label  class="record" for="_child_id">Child:</label>
-		                <div class="box" id="_child_id">
-		                    <c:out value="${clinicalRecord.child}"/>
-		                </div>
-		            </div>
-		            <br/>
-		            </sec:authorize>
 		            <div id="roo_clinicalRecord_personCompletingForm">
-		                <label  class="record" for="_personCompletingForm_id">Person Completing Form:</label>
+		                <label  class="record" for="_personCompletingForm_id"><spring:message code="record.personCompleting"/></label>
 		                <div class="box" id="_personCompletingForm_id">
 		                    <c:out value="${clinicalRecord.personCompletingForm}"/>
 		                </div>
 		            </div>
 		            <br/>
 		            <div id="roo_clinicalRecord_dateCompleted">
-		                <label  class="record" for="_dateCompleted_id">Date Completed:</label>
+		                <label  class="record" for="_dateCompleted_id"><spring:message code="record.dateCompleted"/></label>
 		                <div class="box" id="_dateCompleted_id">
 		                    <fmt:formatDate pattern="${clinicalRecord_dateCompleted_date_format}" value="${clinicalRecord.dateCompleted}"/>
 		                </div>
 		            </div>
 		            <br/>
 		            <div id="roo_clinicalRecord_seniorPhysician">
-		                <label  class="record" for="_seniorPhysician_id">Senior Physician:</label>
+		                <label  class="record" for="_seniorPhysician_id"><spring:message code="record.seniorPhysician"/></label>
 		                <div class="box" id="_seniorPhysician_id">
 		                    <c:out value="${clinicalRecord.seniorPhysician}"/>
 		                </div>
 		            </div>
 		            <br/>
 		            <div id="roo_clinicalRecord_exactAge">
-		                <label  class="record" for="_exactAge_id">Exact Age on Measurement Date:</label>
+		                <label  class="record" for="_exactAge_id"><spring:message code="record.exactAge"/></label>
 		                <div class="box" id="_exactAge_id">
 		                    <c:out value="${clinicalRecord.exactAge}"/>
 		                </div>
 		            </div>
 		            <br/>
 		            <div id="roo_clinicalRecord_insulinPerKg">
-		                <label  class="record" for="_insulinPerKg_id">Insulin Units/ Kg:</label>
+		                <label  class="record" for="_insulinPerKg_id"><spring:message code="record.insulinPerKg"/></label>
 		                <div class="box" id="_insulinPerKg_id">
 		                    <c:out value="${clinicalRecord.insulinPerKg}"/>
 		                </div>
 		            </div>
 		            <br/>
 		      	</div>	   
+		      	<spring:message code="record.tab.general" var="general_tab"/>
 				<script type="text/javascript">
 					Spring.addDecoration(new Spring.ElementDecoration({
 						elementId : "general",
 						widgetType : "dijit.layout.ContentPane",
-						widgetAttrs : { title: "General" }
+						widgetAttrs : { title: "${general_tab}" }
 						}));
 				</script>
 	            <div id="diabetesCare">		      	         
 		            <div id="roo_clinicalRecord_bloodGlucoseSelfMonitoringPerWeek">
-		                <label  class="record" for="_bloodGlucoseSelfMonitoringPerWeek_id">Blood Glucose Self Monitoring Per Week:</label>
+		                <label  class="record" for="_bloodGlucoseSelfMonitoringPerWeek_id"><spring:message code="record.bloodGlucose"/></label>
 		                <div class="box" id="_bloodGlucoseSelfMonitoringPerWeek_id">
 		                    <c:out value="${clinicalRecord.bloodGlucoseSelfMonitoringPerWeek}"/>
 		                </div>
 		            </div>
 		            <br/>
 		            <div id="roo_clinicalRecord_urineGlucoseSelfMonitoringPerWeek">
-		                <label  class="record" for="_urineGlucoseSelfMonitoringPerWeek_id">Urine Glucose Self Monitoring Per Week:</label>
+		                <label  class="record" for="_urineGlucoseSelfMonitoringPerWeek_id"><spring:message code="record.urineGlucose"/></label>
 		                <div class="box" id="_urineGlucoseSelfMonitoringPerWeek_id">
 		                    <c:out value="${clinicalRecord.urineGlucoseSelfMonitoringPerWeek}"/>
 		                </div>
@@ -120,14 +112,14 @@
 		            </div>
 		            <br/>
 		            <div id="roo_clinicalRecord_insulinUnitsPerDay">
-		                <label  class="record" for="_insulinUnitsPerDay_id">Insulin Units Per Day:</label>
+		                <label  class="record" for="_insulinUnitsPerDay_id"><spring:message code="record.insulinPerDay"/></label>
 		                <div class="box" id="_insulinUnitsPerDay_id">
 		                    <c:out value="${clinicalRecord.insulinUnitsPerDay}"/>
 		                </div>		                
 		            </div>
 		            <br/>
 		            <div id="roo_clinicalRecord_numberOfInsulinInjectionsPerDay">
-		                <label  class="record" for="_numberOfInsulinInjectionsPerDay_id">Number Of Insulin Injections Per Day:</label>
+		                <label  class="record" for="_numberOfInsulinInjectionsPerDay_id"><spring:message code="record.numInjections"/></label>
 		                <div class="box" id="_numberOfInsulinInjectionsPerDay_id">
 		                    <c:out value="${clinicalRecord.numberOfInsulinInjectionsPerDay}"/>
 		                </div>
@@ -137,7 +129,7 @@
 		            </div>
 		            <br/>	            
 		            <div id="roo_clinicalRecord_longActingHuman">
-		                <label  class="record" for="_longActingHuman_id">Long Acting Human:</label>
+		                <label  class="record" for="_longActingHuman_id"><spring:message code="record.longActingHuman"/></label>
 		                <div class="box" id="_longActingHuman_id">
 		                    <c:out value="${clinicalRecord.longActingHuman}"/>
 		                </div>
@@ -147,7 +139,7 @@
 		            </div>
 		            <br/>
 		            <div id="roo_clinicalRecord_shortActingHuman">
-		                <label  class="record" for="_shortActingHuman_id">Short Acting Human:</label>
+		                <label  class="record" for="_shortActingHuman_id"><spring:message code="record.shortActingHuman"/></label>
 		                <div class="box" id="_shortActingHuman_id">
 		                    <c:out value="${clinicalRecord.shortActingHuman}"/>
 		                </div>
@@ -157,7 +149,7 @@
 		            </div>
 		            <br/>
 		            <div id="roo_clinicalRecord_analog">
-		                <label  class="record" for="_analog_id">Analog:</label>
+		                <label  class="record" for="_analog_id"><spring:message code="record.analog"/></label>
 		                <div class="box" id="_analog_id">
 		                    <c:out value="${clinicalRecord.analog}"/>
 		                </div>
@@ -167,7 +159,7 @@
 		            </div>
 		            <br/>
 		            <div id="roo_clinicalRecord_oralAgents">
-		                <label  class="record" for="_oralAgents_id">Oral Agents:</label>
+		                <label  class="record" for="_oralAgents_id"><spring:message code="record.oralAgents"/></label>
 		                <div class="box" id="_oralAgents_id">
 		                    <c:out value="${clinicalRecord.oralAgents}"/>
 		                </div>
@@ -178,7 +170,7 @@
 		            <br/>
 		            <c:if test="${clinicalRecord.oralAgents == 'YES'}">
 			            <div id="roo_clinicalRecord_oralAgentsDescription">
-			                <label  class="record" for="_oralAgentsDescription_id">Oral Agents Description:</label>
+			                <label  class="record" for="_oralAgentsDescription_id"><spring:message code="record.oralAgents.decription"/></label>
 			                <div class="box" id="_oralAgentsDescription_id">
 			                    <c:out value="${clinicalRecord.oralAgentsDescription}"/>
 			                </div>
@@ -189,14 +181,14 @@
 			            <br/>
 		            </c:if>
 		            <div id="roo_clinicalRecord_routineClinicReviewsLastYear">
-		                <label  class="record" for="_routineClinicReviewsLastYear_id">Routine Clinic Reviews Last Year:</label>
+		                <label  class="record" for="_routineClinicReviewsLastYear_id"><spring:message code="record.clinicReviews"/></label>
 		                <div class="box" id="_routineClinicReviewsLastYear_id">
 		                    <c:out value="${clinicalRecord.routineClinicReviewsLastYear}"/>
 		                </div>
 		            </div>
 		            <br/>
 		            <div id="roo_clinicalRecord_bpMedications">
-		                <label  class="record" for="_bpMedications_id">BP Medications:</label>
+		                <label  class="record" for="_bpMedications_id"><spring:message code="record.bpMedications"/></label>
 		                <div class="box" id="_bpMedications_id">
 		                    <c:out value="${clinicalRecord.bpMedications}"/>
 		                </div>
@@ -204,14 +196,14 @@
 		            <br/>
 		            <c:if test="${clinicalRecord.bpMedications == 'YES'}">
 			            <div id="roo_clinicalRecord_acearb">
-			                <label  class="record" for="_acearb_id">ACE/ARB agents:</label>
+			                <label  class="record" for="_acearb_id"><spring:message code="record.acearbAgents"/></label>
 			                <div class="box" id="_acearb_id">
 			                    <c:out value="${clinicalRecord.acearb}"/>
 			                </div>
 			            </div>
 			            <br/>
 			            <div id="roo_clinicalRecord_bpMedicationsOther">
-			                <label  class="record" for="_bpMedicationsOther_id">BP Medications Other:</label>
+			                <label  class="record" for="_bpMedicationsOther_id"><spring:message code="record.bpMedications.other"/></label>
 			                <div class="box" id="_bpMedicationsOther_id">
 			                    <c:out value="${clinicalRecord.bpMedicationsOther}"/>
 			                </div><c:if test="${clinicalRecord.bpMedicationsOther == ''}">
@@ -221,7 +213,7 @@
 			            <br/>
 		            </c:if>		            
 		            <div id="roo_clinicalRecord_otherTreatments">
-		                <label  class="record" for="_otherTreatments_id">Other Treatments:</label>
+		                <label  class="record" for="_otherTreatments_id"><spring:message code="record.otherTreatments"/></label>
 		                <div class="box" id="_otherTreatments_id">
 		                    <c:out value="${clinicalRecord.otherTreatments}"/>
 		                </div>
@@ -231,18 +223,19 @@
 		            </div>
 		            <br/>
 		            <div id="roo_clinicalRecord_laserRxInLast12Months">
-		                <label  class="record" for="_laserRxInLast12Months_id">Laser Rx In Last 12 Months:</label>
+		                <label  class="record" for="_laserRxInLast12Months_id"><spring:message code="record.laserRx"/></label>
 		                <div class="box" id="_laserRxInLast12Months_id">
 		                    <c:out value="${clinicalRecord.laserRxInLast12Months}"/>
 		                </div>
 		            </div>
 		            <br/>
 	            </div>
+	            <spring:message code="record.tab.diabetesCare" var="diabetesCare_tab"/>
 				<script type="text/javascript">
 					Spring.addDecoration(new Spring.ElementDecoration({
 						elementId : "diabetesCare",
 						widgetType : "dijit.layout.ContentPane",
-						widgetAttrs : { title: "Diabetes Care" }
+						widgetAttrs : { title: "${diabetesCare_tab}" }
 						}));
 				</script>	            
 	            <div id="clinicalMeasures">    
@@ -265,7 +258,7 @@
 		            <br/>
 		            <c:if test="${clinicalRecord.weightInLast12Months == 'YES'}">
 			            <div id="roo_clinicalRecord_weightKG">
-			                <label  class="record" for="_weightKG_id">Weight (kg):</label>
+			                <label  class="record" for="_weightKG_id"><spring:message code="record.weight"/></label>
 			                <div class="box" id="_weightKG_id">
 			                    <c:out value="${clinicalRecord.weightKG}"/>
 			                </div>
@@ -275,7 +268,7 @@
 			            </div>
 			            <br/>
 			            <div id="roo_clinicalRecord_weightSD">
-	                        <label  class="record" for="_weightSD_id">Weight SD:</label>
+	                        <label  class="record" for="_weightSD_id"><spring:message code="record.weightSD"/></label>
 	                        <div class="box" id="_weightSD_id">
 	                            <c:out value="${clinicalRecord.weightSD}"/>
 	                        </div>
@@ -291,7 +284,7 @@
 		            <br/>
 		            <c:if test="${clinicalRecord.heightInLast12Months == 'YES'}">
 			            <div id="roo_clinicalRecord_heightCM">
-			                <label  class="record" for="_heightCM_id">Height (cm):</label>
+			                <label  class="record" for="_heightCM_id"><spring:message code="record.height"/></label>
 			                <div class="box" id="_heightCM_id">
 			                    <c:out value="${clinicalRecord.heightCM}"/>
 			                </div>
@@ -301,7 +294,7 @@
 			            </div>
 			            <br/>
 			            <div id="roo_clinicalRecord_heightSD">
-	                        <label  class="record" for="_heightSD_id">Height SD:</label>
+	                        <label  class="record" for="_heightSD_id"><spring:message code="record.heightSD"/></label>
 	                        <div class="box" id="_heightSD_id">
 	                            <c:out value="${clinicalRecord.heightSD}"/>
 	                        </div>
@@ -313,7 +306,7 @@
                     </c:if>
 		            <c:if test="${clinicalRecord.heightInLast12Months == 'YES' &amp;&amp; clinicalRecord.weightInLast12Months == 'YES'}">
 	                    <div id="roo_clinicalRecord_bmi">
-	                        <label  class="record" for="_bmi_id">Body Mass Index:</label>
+	                        <label  class="record" for="_bmi_id"><spring:message code="record.bmi"/></label>
 	                        <div class="box" id="_bmi_id">
 	                            <c:out value="${clinicalRecord.bmi}"/>
 	                        </div>
@@ -323,7 +316,7 @@
 	                    </div>
 	                    <br/>
 	                    <div id="roo_clinicalRecord_bmiSD">
-	                        <label  class="record" for="_bmiSD_id">Body Mass Index SD:</label>
+	                        <label  class="record" for="_bmiSD_id"><spring:message code="record.bmiSD"/></label>
 	                        <div class="box" id="_bmiSD_id">
 	                            <c:out value="${clinicalRecord.bmiSD}"/>
 	                        </div>
@@ -342,7 +335,7 @@
 		            <br/>
 					<c:if test="${clinicalRecord.BPInLast12Months == 'YES'}">
 			            <div id="roo_clinicalRecord_bloodPressureSystolicMMHg">
-			                <label  class="record" for="_bloodPressureSystolicMMHg_id">Blood Pressure Systolic (mmHg):</label>
+			                <label  class="record" for="_bloodPressureSystolicMMHg_id"><spring:message code="record.BPsystolic"/></label>
 			                <div class="box" id="_bloodPressureSystolicMMHg_id">
 			                    <c:out value="${clinicalRecord.bloodPressureSystolicMMHg}"/>
 			                </div>
@@ -352,7 +345,7 @@
 			            </div>
 			            <br/>
 			            <div id="roo_clinicalRecord_bloodPressureSystolicSD">
-	                        <label  class="record" for="_bloodPressureSystolicSD_id">Blood Pressure Systolic SD:</label>
+	                        <label  class="record" for="_bloodPressureSystolicSD_id"><spring:message code="record.BPsystolicSD"/></label>
 	                        <div class="box" id="_bloodPressureSystolicSD_id">
 	                            <c:out value="${clinicalRecord.bloodPressureSystolicSD}"/>
 	                        </div>
@@ -362,7 +355,7 @@
 	                    </div>
 	                    <br/>
 			            <div id="roo_clinicalRecord_bloodPressureDiastolicMMHg">
-			                <label  class="record" for="_bloodPressureDiastolicMMHg_id">Blood Pressure Diastolic (mmHg):</label>
+			                <label  class="record" for="_bloodPressureDiastolicMMHg_id"><spring:message code="record.BPdiastolic"/></label>
 			                <div class="box" id="_bloodPressureDiastolicMMHg_id">
 			                    <c:out value="${clinicalRecord.bloodPressureDiastolicMMHg}"/>
 			                </div>
@@ -372,7 +365,7 @@
 			            </div>
 			            <br/>
 	                    <div id="roo_clinicalRecord_bloodPressureDiastolicSD">
-	                        <label  class="record" for="_bloodPressureDiastolicSD_id">Blood Pressure Diastolic SD:</label>
+	                        <label  class="record" for="_bloodPressureDiastolicSD_id"><spring:message code="record.BPdiastolicSD"/></label>
 	                        <div class="box" id="_bloodPressureDiastolicSD_id">
 	                            <c:out value="${clinicalRecord.bloodPressureDiastolicSD}"/>
 	                        </div>
@@ -383,14 +376,14 @@
 	                    <br/>     
                     </c:if>                  
 		            <div id="roo_clinicalRecord_hasPersistentHypertension">
-		                <label  class="record" for="_hasPersistentHypertension_id">Has Persistent Hypertension:</label>
+		                <label  class="record" for="_hasPersistentHypertension_id"><spring:message code="record.hypertension"/></label>
 		                <div class="box" id="_hasPersistentHypertension_id">
 		                    <c:out value="${clinicalRecord.hasPersistentHypertension}"/>
 		                </div>
 		            </div>
 		            <br/>
 		            <div id="roo_clinicalRecord_hasPubertyTannerB2_P2orGreater">
-		                <label  class="record" for="_hasPubertyTannerB2_P2orGreater_id">Has Puberty Tanner B2/P2 or greater:</label>
+		                <label  class="record" for="_hasPubertyTannerB2_P2orGreater_id"><spring:message code="record.pubertyTanner"/></label>
 		                <div class="box" id="_hasPubertyTannerB2_P2orGreater_id">
 		                    <c:out value="${clinicalRecord.hasPubertyTannerB2_P2orGreater}"/>
 		                </div>
@@ -398,7 +391,7 @@
 		            <br/>
 		            <c:if test="${clinicalRecord.child.sex == 'FEMALE'}">
 			            <div id="roo_clinicalRecord_menarche">
-			                <label  class="record" for="_menarche_id">Menarche:</label>
+			                <label  class="record" for="_menarche_id"><spring:message code="record.menarche"/></label>
 			                <div class="box" id="_menarche_id">
 			                    <c:out value="${clinicalRecord.menarche}"/>
 			                </div>

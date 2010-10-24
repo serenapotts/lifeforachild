@@ -9,7 +9,7 @@
         <form:form action="${form_url}" method="POST" modelAttribute="userGroup">
             <form:errors cssClass="errors" delimiter="&lt;p/&gt;"/>
             <div id="roo_userGroup_groupName">
-                <label for="_groupName_id">Group Name:</label>
+                <label for="_groupName_id"><spring:message code="usergroup.groupName"/></label>
                 <form:input cssStyle="width:250px" id="_groupName_id" maxlength="30" path="groupName" size="0"/>
                 <br/>
                 <form:errors cssClass="errors" id="_groupName_error_id" path="groupName"/>
@@ -21,7 +21,7 @@
             <br/>
             <div id="roo_userGroup_permissions">
                 <c:if test="${not empty permissionses}">
-                    <label for="_permissions_id">Permissions:</label>
+                    <label for="_permissions_id"><spring:message code="usergroup.permissions"/></label>
                     <form:select cssStyle="width:250px; height:250px" id="_permissions_id" path="permissions">
                         <form:options itemValue="id" items="${permissionses}"/>
                     </form:select>

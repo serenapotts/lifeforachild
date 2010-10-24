@@ -10,9 +10,9 @@
             <table width="500px">
                 <thead>
                     <tr>
-                        <th>Id</th>
-                        <th>Group Name</th>
-                        <th>Permissions</th>
+                        <th><spring:message code="usergroup.list.id"/></th>
+                        <th><spring:message code="usergroup.list.groupName"/></th>
+                        <th><spring:message code="usergroup.list.permissions"/></th>
                         <th/>
                         <th/>
                         <sec:authorize ifAllGranted="CAN_DELETE">

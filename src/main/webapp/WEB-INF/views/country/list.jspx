@@ -10,9 +10,9 @@
             <table width="500px">
                 <thead>
                     <tr>
-                        <th>Id</th>
-                        <th>Name</th>
-                        <th>Diabetes Centres</th>
+                        <th><spring:message code="country.list.id"/></th>
+                        <th><spring:message code="country.list.name"/></th>
+                        <th><spring:message code="country.list.centres"/></th>
                         <th/>
                         <th/>
                         <sec:authorize ifAllGranted="CAN_DELETE">

@@ -10,8 +10,8 @@
             <table width="500px">
                 <thead>
                     <tr>
-                        <th>Id</th>
-                        <th>Name</th>
+                        <th><spring:message code="permissions.list.id"/></th>
+                        <th><spring:message code="permissions.list.name"/></th>
                         <th/>
                         <th/>
                         <th/>

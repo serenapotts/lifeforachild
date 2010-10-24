@@ -18,7 +18,7 @@
         <form:form action="${form_url}" method="PUT" modelAttribute="user">
             <form:errors cssClass="errors" delimiter="&lt;p/&gt;"/>
             <div id="roo_user_firstName">
-                <label for="_firstName_id">First Name:</label>
+                <label for="_firstName_id"><spring:message code="user.firstName"/></label>
                 <form:input cssStyle="width:250px" id="_firstName_id" maxlength="30" path="firstName" size="0"/>
                 <br/>
                 <form:errors cssClass="errors" id="_firstName_error_id" path="firstName"/>
@@ -29,7 +29,7 @@
             </div>
             <br/>
             <div id="roo_user_lastName">
-                <label for="_lastName_id">Last Name:</label>
+                <label for="_lastName_id"><spring:message code="user.lastName"/></label>
                 <form:input cssStyle="width:250px" id="_lastName_id" maxlength="30" path="lastName" size="0"/>
                 <br/>
                 <form:errors cssClass="errors" id="_lastName_error_id" path="lastName"/>
@@ -40,7 +40,7 @@
             </div>
             <br/>
             <div id="roo_user_username">
-                <label for="_username_id">Username:</label>
+                <label for="_username_id"><spring:message code="user.username"/></label>
                 <form:input cssStyle="width:250px" id="_username_id" maxlength="30" path="username" size="0"/>
                 <br/>
                 <form:errors cssClass="errors" id="_username_error_id" path="username"/>
@@ -51,7 +51,7 @@
             </div>
             <br/>
             <div id="roo_user_password">
-                <label for="_password_id">Password:</label>
+                <label for="_password_id"><spring:message code="user.password"/></label>
                 <form:password showPassword="true" cssStyle="width:250px" id="_password_id" maxlength="30" path="password" size="0"/>
                 <br/>
                 <form:errors cssClass="errors" id="_password_error_id" path="password"/>
@@ -62,13 +62,13 @@
             </div>
             <br/>
             <div id="roo_user_enabled">
-                <label for="_enabled_id">Enabled:</label>
+                <label for="_enabled_id"><spring:message code="user.enabled"/></label>
                 <form:checkbox id="_enabled_id" path="enabled"/>
             </div>
             <br/>
             <div id="roo_user_userGroup">
                 <c:if test="${not empty usergroups}">
-                    <label for="_userGroup_id">User Group:</label>
+                    <label for="_userGroup_id"><spring:message code="user.usergroup"/></label>
                     <form:select cssStyle="width:250px" id="_userGroup_id" path="userGroup">
                     	<form:option value="0">None</form:option>
                         <form:options itemValue="id" items="${usergroups}"/>
@@ -79,7 +79,7 @@
             <br/>
             <div id="roo_user_country">
                 <c:if test="${not empty countrys}">
-                    <label for="_country_id">Country:</label>
+                    <label for="_country_id"><spring:message code="user.country"/></label>
                     <form:select cssStyle="width:250px" id="_country_id" path="country">
                         <form:options itemValue="id" items="${countrys}"/>
                     </form:select>
@@ -95,7 +95,7 @@
             </div>
             <br/>
             <div id="roo_user_centre">
-	            <label for="_centre_id">Centre:</label>
+	            <label for="_centre_id"><spring:message code="user.centre"/></label>
 	            <form:select cssStyle="width:250px" id="_centre_id" path="centre">
 	                <form:options itemValue="id" items="${diabetescentres}"/>
 	            </form:select>

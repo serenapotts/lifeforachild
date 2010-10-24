@@ -7,14 +7,14 @@
         <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_title_div', widgetType : 'dijit.TitlePane', widgetAttrs : {title: '${title_msg}'}})); </script>
         <c:if test="${not empty userGroup}">
             <div id="roo_userGroup_groupName">
-                <label for="_groupName_id">Group Name:</label>
+                <label for="_groupName_id"><spring:message code="usergroup.groupName"/></label>
                 <div class="box" id="_groupName_id">
                     <c:out value="${userGroup.groupName}"/>
                 </div>
             </div>
             <br/>
             <div id="roo_userGroup_permissions">
-                <label for="_permissions_id">Permissions:</label>
+                <label for="_permissions_id"><spring:message code="usergroup.permissions"/></label>
                 <div class="box" id="_permissions_id">
                     <c:out value="${userGroup.permissions}"/>
                 </div>
