@@ -3,7 +3,7 @@
 		dojo.require("dijit.TitlePane");
 		dojo.require('dojo.data.ItemFileReadStore');
 	</script>
-    <div id="_title_div">
+    <div id="_title_div" style="width: 800px">
     	<spring:message var="title" code="help.titlepane" />
     	<script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_title_div', widgetType : 'dijit.TitlePane', widgetAttrs : {title: '${title}'}})); </script>    	
     	<spring:message code="help.text" />

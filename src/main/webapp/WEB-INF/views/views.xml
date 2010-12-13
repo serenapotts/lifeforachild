@@ -6,11 +6,11 @@
 		<put-attribute name="body" value="/WEB-INF/views/index.jspx"/>
 	</definition>
 	
-	<definition extends="default" name="about">
+	<definition extends="public" name="about">
 		<put-attribute name="body" value="/WEB-INF/views/about.jspx"/>
 	</definition>
 	
-	<definition extends="default" name="help">
+	<definition extends="public" name="help">
 		<put-attribute name="body" value="/WEB-INF/views/help.jspx"/>
 	</definition>
 		
