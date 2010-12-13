@@ -366,10 +366,8 @@ fieldset th {
 	width: 565px;
 }
 
-span {
-	float:left;
-	}
 span.right
 {
 	float:right;
+	position:relative;
 }
