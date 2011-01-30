@@ -34,7 +34,7 @@ public class HeightSDController
                 Float heightCMValue = Float.parseFloat(heightCM);
                 Float heightSD = ClinicalRecord.calculateHeightSD(exactAgeMonths, child.getSex(), heightCMValue);
 
-                return DecimalUtil.format(heightSD);
+                return (heightSD != null ? DecimalUtil.format(heightSD) : "");
             }
         }
         catch (ParseException e)

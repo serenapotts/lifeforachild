@@ -34,7 +34,7 @@ public class WeightSDController
                 Float weightKGValue = Float.parseFloat(weightKG);
                 Float weightSD = ClinicalRecord.calculateWeightSD(exactAgeMonths, child.getSex(), weightKGValue);
 
-                return DecimalUtil.format(weightSD);
+                return (weightSD != null ? DecimalUtil.format(weightSD) : "");
             }
         }
         catch (ParseException e)

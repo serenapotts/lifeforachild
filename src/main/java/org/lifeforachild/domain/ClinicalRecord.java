@@ -333,7 +333,7 @@ public class ClinicalRecord {
     }
      
     public static Float calculateInsulinPerKg(Float weightKG, Integer insulinUnitsPerDay) {
-    	if (weightKG == null)
+    	if (weightKG == null || insulinUnitsPerDay == null)
     		return null;
         double value = insulinUnitsPerDay / weightKG;
         value = DecimalUtil.roundToTwoDecimals(value);
@@ -341,7 +341,7 @@ public class ClinicalRecord {
     }
 
     public static Float calculateAge(Date date, Date dob) {
-    	if (date == null)
+    	if (date == null || dob == null)
     		return null;
         float result = (float) ((date.getTime() - dob.getTime()) / (1000 * 60 * 60 * 24 * 365.25));
     	
@@ -367,7 +367,7 @@ public class ClinicalRecord {
     	}
     	
         //calculated age is under 2 years or over 20 years, Weight SD should be left blank
-		if (exactAgeMonths.floatValue() < 24 || exactAgeMonths.floatValue() > 240) {
+		if (exactAgeMonths < 24 || exactAgeMonths > 240) {
 			return null;
 		}
     	
@@ -402,13 +402,13 @@ public class ClinicalRecord {
             return null;
         }
         
-        //calculated age is under 2 years, heightSD is left blank
-        if(exactAgeMonths.floatValue() < 24){
+        //if calculated age is under 2 years, heightSD is left blank
+        if(exactAgeMonths < 24){
             return null;
         }
         
-        //calculated age is over 20 years, Height SD should calculate as per that for 240 months (20 years)
-        if(exactAgeMonths.floatValue() > 240) {
+        //if calculated age is over 20 years, Height SD should calculate as per that for 240 months (20 years)
+        if(exactAgeMonths > 240) {
             exactAgeMonths = new Float(240);
         }
         
@@ -455,7 +455,7 @@ public class ClinicalRecord {
         
         Float ageMonths = exactAgeMonths;
         //BMI LMS table has value for 240.5, so we take that into consideration
-        if(ageMonths.floatValue() < 24 || ageMonths.floatValue() > 240.5) {
+        if(ageMonths < 24 || ageMonths > 240.5) {
             return null;
         }
        
@@ -508,7 +508,7 @@ public class ClinicalRecord {
     }
     
     public static Float calcSystolicBloodPressureSD(Float exactAge, SexType childSex, Float heightSD, Float bloodPressureSystolicMMHg) {
-        if(heightSD == null || heightSD.floatValue() == 0)
+        if(heightSD == null || heightSD == 0 || bloodPressureSystolicMMHg == null || bloodPressureSystolicMMHg == 0)
         {
             return null;
         }
@@ -549,7 +549,7 @@ public class ClinicalRecord {
     }
     
     public static Float calcDiastolicBloodPressureSD(Float exactAge, SexType childSex, Float heightSD, Float bloodPressureDiastolicMMHg) {
-        if(heightSD == null || heightSD.floatValue() == 0)
+        if(heightSD == null || heightSD == 0 || bloodPressureDiastolicMMHg == null || bloodPressureDiastolicMMHg == 0)
         {
             return null;
         }

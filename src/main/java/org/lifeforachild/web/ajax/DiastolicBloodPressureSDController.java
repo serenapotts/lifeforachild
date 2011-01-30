@@ -37,7 +37,7 @@ public class DiastolicBloodPressureSDController
                 Float heightSD = ClinicalRecord.calculateHeightSD(exactAgeMonths, child.getSex(), heightCMValue);
                 Float bloodPressureDiastolicSD = ClinicalRecord.calcDiastolicBloodPressureSD(age, child.getSex(), heightSD, bloodPressureDiastolicMMHgValue);
 
-                return DecimalUtil.format(bloodPressureDiastolicSD);
+                return (bloodPressureDiastolicSD != null ? DecimalUtil.format(bloodPressureDiastolicSD) : "");
             }
         }
         catch (ParseException e)

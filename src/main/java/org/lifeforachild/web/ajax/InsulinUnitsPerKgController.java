@@ -19,7 +19,8 @@ public class InsulinUnitsPerKgController
             Integer insulinUnitsPerDayValue = Integer.parseInt(insulinUnitsPerDay);
             Float weightKGValue = Float.parseFloat(weightKG);
 
-            return DecimalUtil.format(ClinicalRecord.calculateInsulinPerKg(weightKGValue, insulinUnitsPerDayValue));
+            Float insulinePerKg = ClinicalRecord.calculateInsulinPerKg(weightKGValue, insulinUnitsPerDayValue);
+            return (insulinePerKg != null ? DecimalUtil.format(insulinePerKg) : "");
         }
         catch (NumberFormatException e)
         {
