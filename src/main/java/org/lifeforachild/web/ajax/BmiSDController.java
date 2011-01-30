@@ -37,7 +37,7 @@ public class BmiSDController
                 Float bmi = ClinicalRecord.calculateBMI(weightKGValue, heightCMValue);
                 Float bmiSD = ClinicalRecord.calculateBmiSD(exactAgeMonths, child.getSex(), bmi);
 
-                return DecimalUtil.format(bmiSD);
+                return (bmiSD != null ? DecimalUtil.format(bmiSD) : "");
             }
         }
         catch (ParseException e)

@@ -29,7 +29,8 @@ public class AgeController {
 			Date measDate = dateFormat.parse(measureDate);
 			
 			// Just after years so daylight saving won't make a huge difference
-			return DecimalUtil.format(ClinicalRecord.calculateAge(measDate, dobDate));
+			Float calculateAge = ClinicalRecord.calculateAge(measDate, dobDate);
+            return (calculateAge != null ? DecimalUtil.format(calculateAge) : "");
 		}
 		}catch(ParseException e) {
 			e.printStackTrace();

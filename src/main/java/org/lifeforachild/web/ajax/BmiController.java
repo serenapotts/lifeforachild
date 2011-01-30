@@ -19,7 +19,9 @@ public class BmiController
             Float weightKGValue = Float.parseFloat(weightKG);
             Float heightCMValue = Float.parseFloat(heightCM);
 
-            return DecimalUtil.format(ClinicalRecord.calculateBMI(weightKGValue, heightCMValue));
+            Float calculateBMI = ClinicalRecord.calculateBMI(weightKGValue, heightCMValue);
+            
+            return (calculateBMI != null ? DecimalUtil.format(calculateBMI) : "");
         }
         catch (NumberFormatException e)
         {

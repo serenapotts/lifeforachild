@@ -24,7 +24,8 @@ public class AgeAtDiagnosisController {
 			Date dob = dateFormat.parse(dateOfBirth);
 			
 			// Just after years so daylight saving won't make a huge difference
-			return DecimalUtil.format(Child.calculatedAgeAtDiabetesDiagnosis(dd, dob));
+			float calculatedAgeAtDiabetesDiagnosis = Child.calculatedAgeAtDiabetesDiagnosis(dd, dob);
+            return DecimalUtil.format(calculatedAgeAtDiabetesDiagnosis);
 		}catch(ParseException e) {
 			e.printStackTrace();
 		}
