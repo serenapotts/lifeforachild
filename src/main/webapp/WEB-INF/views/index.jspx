@@ -1,4 +1,4 @@
-<div xmlns:spring="http://www.springframework.org/tags" xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:fmt="http://java.sun.com/jsp/jstl/fmt" xmlns:fn="http://java.sun.com/jsp/jstl/functions" xmlns:form="http://www.springframework.org/tags/form">	
+<div xmlns:spring="http://www.springframework.org/tags" xmlns:sec="http://www.springframework.org/security/tags" xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:fmt="http://java.sun.com/jsp/jstl/fmt" xmlns:fn="http://java.sun.com/jsp/jstl/functions" xmlns:form="http://www.springframework.org/tags/form">	
 	<script type="text/javascript">
 		dojo.require("dijit.TitlePane");
 		dojo.require('dojo.data.ItemFileReadStore');
@@ -8,26 +8,35 @@
     	<script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_title_div', widgetType : 'dijit.TitlePane', widgetAttrs : {title: '${title}'}})); </script>
 		<c:url value="/search" var="form_url"/>
 	    <form:form action="${form_url}" method="POST" modelAttribute="search">
-	        <div id="roo_search_reporttype">
+	        <!-- <div id="roo_search_reporttype">
 	            <label for="_reporttype"><spring:message code="search.reportType"/></label>
 	            <form:select cssStyle="width:250px" id="_reporttype" items="${_reporttype}" path="reportType" itemLabel="label"/>
 	            <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_reporttype', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
 	            <br/>
 	        </div>
-	        <br/>
+	        <br/>-->
+	        <form:hidden id="_id_id" path="reportType"/>
 	        <div id="roo_search_id">
 	            <label for="_id"><spring:message code="search.id"/></label>
 	            <form:input cssStyle="width:250px" id="_id" maxlength="30" path="id" size="0"/>
 	            <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : "_id", widgetType : "dijit.form.ValidationTextBox", widgetAttrs : {promptMessage: "Enter ID", invalidMessage: "", required : false}})); </script>
 	        </div>
 	        <br/>
-	        <div id="roo_search_name">
-	            <label for="_name"><spring:message code="search.name"/></label>
-	            <form:input cssStyle="width:250px" id="_name" maxlength="30" path="name" size="0"/>
-	            <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : "_name", widgetType : "dijit.form.ValidationTextBox", widgetAttrs : {promptMessage: "Enter Name", invalidMessage: "", required : false}})); </script>
-	        </div>
-	        <br/>	        
-	        <div id="roo_search_timePeriod">
+	        <sec:authorize ifAllGranted="VIEW_CHILD_NAME">
+		        <div id="roo_search_name">
+		            <label for="_name"><spring:message code="search.name"/></label>
+		            <form:input cssStyle="width:250px" id="_name" maxlength="30" path="name" size="0"/>
+		            <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : "_name", widgetType : "dijit.form.ValidationTextBox", widgetAttrs : {promptMessage: "Enter First Name", invalidMessage: "", required : false}})); </script>
+		        </div>
+		        <br/>	
+		        <div id="roo_search_lastname">
+		            <label for="_lastname"><spring:message code="search.lastname"/></label>
+		            <form:input cssStyle="width:250px" id="_lastname" maxlength="30" path="lastName" size="0"/>
+		            <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : "_lastname", widgetType : "dijit.form.ValidationTextBox", widgetAttrs : {promptMessage: "Enter Last Name", invalidMessage: "", required : false}})); </script>
+		        </div>
+		        <br/>
+	        </sec:authorize>        
+	        <!-- <div id="roo_search_timePeriod">
 	            <label for="_timePeriod"><spring:message code="search.timePeriod"/></label>
 	            <form:input cssStyle="width:50px" id="_timePeriod" maxlength="30" path="timePeriod"/>
 	            <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : "_timePeriod", widgetType : "dijit.form.ValidationTextBox", widgetAttrs : {promptMessage: "Enter Time Period", invalidMessage: "", required : false}})); </script>
@@ -42,7 +51,11 @@
 	            <form:input cssStyle="width:100px" id="_toDate" maxlength="30" path="toDate" size="0"/>
 	            <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_toDate', widgetType : 'dijit.form.DateTextBox', widgetAttrs : {constraints: {datePattern : 'd/MM/yyyy', required : false}, datePattern : 'd/MM/yyyy'}})); </script>
 	        </div>
-	        <br/>
+	        <br/> -->
+	        <form:hidden id="_id_id" path="timePeriod"/>
+	        <form:hidden id="_id_id" path="timePeriodUnit"/>
+	        <form:hidden id="_id_id" path="fromDate"/>
+	        <form:hidden id="_id_id" path="toDate"/>
 	        <div id="roo_search_country">
 	            <c:if test="${not empty countrys}">
                     <label for="_country_id"><spring:message code="search.country"/></label>

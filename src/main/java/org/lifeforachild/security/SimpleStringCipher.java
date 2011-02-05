@@ -1,5 +1,8 @@
 package org.lifeforachild.security;
 
+import java.security.InvalidKeyException;
+
+import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
@@ -27,10 +30,20 @@ public class SimpleStringCipher {
 		}
 	}
 
-	public static synchronized String encrypt(String plainText) throws Exception {
-		cipher.init(Cipher.ENCRYPT_MODE, key);
-		byte[] cipherText = cipher.doFinal(plainText.getBytes());
-		return  new String(coder.encode(cipherText));
+	public static synchronized String encrypt(String plainText) {
+		try
+		{
+			cipher.init(Cipher.ENCRYPT_MODE, key);
+			byte[] cipherText = cipher.doFinal(plainText.getBytes());
+			return new String(coder.encode(cipherText));
+		}
+		catch (Exception e)
+		{
+			System.err.print("Unable to encrypt");
+			e.printStackTrace();
+		}
+		// return nothing as this couldn't be encrypted
+		return "";
 	}
 
 	public static synchronized String decrypt(String codedText) throws Exception {

@@ -59,18 +59,21 @@ public class SearchController {
     public String post(@ModelAttribute("search") Search search, ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) {
     	// generate the query from the search parameters entered
     	// determine the type of object we are searching on
-    	if (search.getReportType().equals(ReportType.CHILD))
-    	{
-    		modelMap.addAttribute("children", Child.findChildren(search));
-	    	return "child/list";
-    	}
-    	else if (search.getReportType().equals(ReportType.CLINICAL_RECORD))
-    	{
-	    	modelMap.addAttribute("clinicalrecords", ClinicalRecord.findAllClinicalRecords());
-	    	return "clinicalrecord/list";    		
-    	}
+    	modelMap.addAttribute("children", Child.findChildren(search));
+    	return "child/list";
+    	// TODO will we handle searching both children and visits
+//    	if (search.getReportType().equals(ReportType.CHILD))
+//    	{
+//    		modelMap.addAttribute("children", Child.findChildren(search));
+//	    	return "child/list";
+//    	}
+//    	else if (search.getReportType().equals(ReportType.CLINICAL_RECORD))
+//    	{
+//	    	modelMap.addAttribute("clinicalrecords", ClinicalRecord.findAllClinicalRecords());
+//	    	return "clinicalrecord/list";    		
+//    	}
     	// error
-    	return "dataAccessFailure";    	
+    	//return "dataAccessFailure";    	
     }
 
 }

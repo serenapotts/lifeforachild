@@ -9,6 +9,7 @@ public class Search {
 	private String centre;
 	private String country;
 	private String name;
+	private String lastName;
 	private String fromDate;
 	private String toDate;
 	private String timePeriod;
@@ -43,6 +44,12 @@ public class Search {
 	public void setName(String name) {
 		this.name = name;
 	}
+	public String getLastName() {
+		return lastName;
+	}
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}	
 	public String getFromDate() {
 		return fromDate;
 	}

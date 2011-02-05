@@ -8,7 +8,6 @@ import javax.persistence.EntityManager;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
-import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Restrictions;
 import org.lifeforachild.Util.StringUtil;
 import org.lifeforachild.domain.Child;
@@ -20,6 +19,7 @@ import org.lifeforachild.domain.Search;
 import org.lifeforachild.domain.ShowOptionType;
 import org.lifeforachild.domain.StatusType;
 import org.lifeforachild.domain.TimePeriodUnit;
+import org.lifeforachild.security.SimpleStringCipher;
 
 public class ChildQuery extends BaseQuery<Child> {
 
@@ -30,6 +30,7 @@ public class ChildQuery extends BaseQuery<Child> {
 	{		
 		String id = search.getId();
 		String name = search.getName();
+		String lastName = search.getLastName();
 		String timePeriod = search.getTimePeriod();
 		TimePeriodUnit timePeriodUnit = search.getTimePeriodUnit();
 		String from = search.getFromDate();
@@ -52,7 +53,7 @@ public class ChildQuery extends BaseQuery<Child> {
 		String country = search.getCountry();
 		Long centreId = StringUtil.isEmpty(centre) ? null : Long.valueOf(centre);
 		Long countryId = StringUtil.isEmpty(country) ? null : Long.valueOf(country); 
-		return getQuery(entityManager, id, name, timePeriod, timePeriodUnit, fromDate, toDate, centreId, countryId);
+		return getQuery(entityManager, id, name, lastName, timePeriod, timePeriodUnit, fromDate, toDate, centreId, countryId);
 	}
 	
 	public List<Child> getQuery(EntityManager entityManager, Report report)
@@ -61,20 +62,20 @@ public class ChildQuery extends BaseQuery<Child> {
 		Country country = report.getCountry();
 		Long centreId = centre == null ? null : Long.valueOf(centre.getId());
 		Long countryId = country == null ? null : Long.valueOf(country.getId());		
-		return getQuery(entityManager, report.getRecordNumber(), null, report.getTimePeriod(), report.getTimeperiodunit(), 
+		return getQuery(entityManager, report.getRecordNumber(), null, null, report.getTimePeriod(), report.getTimeperiodunit(), 
 				report.getFromDate(), report.getToDate(), centreId, countryId,
 				report.getStatustype(), report.getShowoptiontype(), 
 				report.getAge(), report.getOrderBy(), report.getThenOrderBy());
 	}
 	
-	private List<Child> getQuery(EntityManager entityManager, String id, String name, String timePeriod, 
+	private List<Child> getQuery(EntityManager entityManager, String id, String name, String lastName, String timePeriod, 
 			TimePeriodUnit timePeriodUnit, Date from, Date to, Long diabetesCentre, Long country)
 	{
-		return getQuery(entityManager, id, name, timePeriod, timePeriodUnit, from, to, diabetesCentre, country, null,
+		return getQuery(entityManager, id, name, lastName, timePeriod, timePeriodUnit, from, to, diabetesCentre, country, null,
 				null, null, null, null);
 	}
 	
-	private List<Child> getQuery(EntityManager entityManager, String id, String name, String timePeriod, 
+	private List<Child> getQuery(EntityManager entityManager, String id, String name, String lastName, String timePeriod, 
 			TimePeriodUnit timePeriodUnit, Date from, Date to, Long diabetesCentre, Long country,
 			StatusType statusType, ShowOptionType showOptionType, String age, String orderBy, String thenOrderBy)
 	{
@@ -82,6 +83,7 @@ public class ChildQuery extends BaseQuery<Child> {
 		Criteria criteria = findByAccessCriteria(entityManager);
 		searchByID(criteria, id);
 		searchByName(criteria, name);
+		searchByLastName(criteria, lastName);
 		searchByTimePeriod(criteria, timePeriod, timePeriodUnit);
 //		searchByDateRange(criteria, from, to);
 		searchByDiabetesCentre(criteria, diabetesCentre);
@@ -97,15 +99,20 @@ public class ChildQuery extends BaseQuery<Child> {
 	private void searchByID(Criteria criteria, String id)
 	{
 		if (!StringUtil.isEmpty(id))
-			criteria.add(Restrictions.eq("individualId", id) );
+			criteria.add(Restrictions.eq("localMedicalNumber", id) );
 	}
 	
 	private void searchByName(Criteria criteria, String name)
 	{
 		if (!StringUtil.isEmpty(name))
-			criteria.add(Restrictions.like(Child.NAME_COLUMN, name) );
+			criteria.add(Restrictions.like("name", SimpleStringCipher.encrypt(name)) );
 	}	
 	
+	private void searchByLastName(Criteria criteria, String lastName)
+	{
+		if (!StringUtil.isEmpty(lastName))
+			criteria.add(Restrictions.like("lastName", SimpleStringCipher.encrypt(lastName)) );
+	}	
 	
 	private void searchByTimePeriod(Criteria criteria, String timePeriod, TimePeriodUnit timePeriodUnit)
 	{
