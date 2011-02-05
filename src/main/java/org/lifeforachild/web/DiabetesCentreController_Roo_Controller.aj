@@ -2,12 +2,19 @@ package org.lifeforachild.web;
 
 import java.lang.Long;
 import java.lang.String;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.lifeforachild.Util.SecurityUtil;
 import org.lifeforachild.domain.Country;
 import org.lifeforachild.domain.DiabetesCentre;
 import org.lifeforachild.domain.Permissions;
+import org.lifeforachild.domain.UserGroup;
+import org.lifeforachild.web.Report.CountryReportGenerator;
+import org.lifeforachild.web.Report.DiabetesCentreReportGenerator;
+import org.lifeforachild.web.Report.ReportGenerator;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -93,5 +100,12 @@ privileged aspect DiabetesCentreController_Roo_Controller {
     	centre.persist();
         return "redirect:/diabetescentre?page=" + ((page == null) ? "1" : page.toString()) + "&size=" + ((size == null) ? "10" : size.toString());        
     }    
+    
+    @RequestMapping(value = "/diabetescentre/print", method = RequestMethod.GET)    
+    public void DiabetesCentreController.printForm(ModelMap modelMap, HttpServletRequest request, HttpServletResponse response)
+	{
+    	ReportGenerator repGen = new DiabetesCentreReportGenerator();
+    	repGen.generateExcelReport("List Centres", DiabetesCentre.findAllDiabetesCentres(), null, request, response);
+	}      
     
 }

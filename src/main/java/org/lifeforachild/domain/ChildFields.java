@@ -10,6 +10,8 @@ public enum ChildFields {
 	DIABETES_DIAGNOSED("Diabetes Diagnosed"),
 	INSULIN_SINCE("Insulin Since"),
 	AGE_AT_DIAGNOSIS("Calulated Age at Diagnosis"),
+	SEX("Sex"),
+	DIABETES_TYPE("Diabetes Type"),
 	AGE_FIRST_INSULIN("Calculated Age at First Insulin");
 	
 	ChildFields(String s) { label = s;  }

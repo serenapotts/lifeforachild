@@ -24,6 +24,7 @@ public class Permissions {
 	public static final String VIEW_REPORT = "VIEW_REPORT";
 	public static final String EDIT_REPORT = "EDIT_REPORT";
 	public static final String CREATE_REPORT = "CREATE_REPORT";	
+	public static final String VIEW_CHILD_NAME = "VIEW_CHILD_NAME";
 	
 	@NotNull
 	String name;

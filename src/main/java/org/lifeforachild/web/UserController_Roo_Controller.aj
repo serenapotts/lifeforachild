@@ -3,6 +3,8 @@ package org.lifeforachild.web;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.lifeforachild.Util.SecurityUtil;
@@ -10,13 +12,15 @@ import org.lifeforachild.domain.Country;
 import org.lifeforachild.domain.DiabetesCentre;
 import org.lifeforachild.domain.User;
 import org.lifeforachild.domain.UserGroup;
+import org.lifeforachild.web.Report.ReportGenerator;
+import org.lifeforachild.web.Report.UserReportGenerator;
+import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 
 privileged aspect UserController_Roo_Controller {
     
@@ -119,6 +123,13 @@ privileged aspect UserController_Roo_Controller {
         user.persist();
         return "redirect:/user?page=" + ((page == null) ? "1" : page.toString()) + "&size=" + ((size == null) ? "10" : size.toString());        
     }    
+    
+    @RequestMapping(value = "/user/print", method = RequestMethod.GET)    
+    public void UserController.printForm(ModelMap modelMap, HttpServletRequest request, HttpServletResponse response)
+	{
+    	ReportGenerator repGen = new UserReportGenerator();
+    	repGen.generateExcelReport("List Users'", User.findAllUsers(), null, request, response);
+	}     
     
     public static void encryptPassword(User user)
     {

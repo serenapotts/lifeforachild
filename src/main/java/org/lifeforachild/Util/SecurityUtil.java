@@ -95,6 +95,13 @@ public class SecurityUtil {
 	
 	public void checkPermission(String permission)
 	{
+		boolean found = hasPermission(permission);
+		if (!found)
+			throw new AccessDeniedException("Denied");
+	}
+	
+	public boolean hasPermission(String permission)
+	{
 		Collection<GrantedAuthority> ga = getCurrentUser().getAuthorities();
 		GrantedAuthorityImpl role = new GrantedAuthorityImpl(permission);
 		boolean found = false;
@@ -107,7 +114,6 @@ public class SecurityUtil {
 				break;
 			}
 		}
-		if (!found)
-			throw new AccessDeniedException("Denied");
+		return found;
 	}
 }

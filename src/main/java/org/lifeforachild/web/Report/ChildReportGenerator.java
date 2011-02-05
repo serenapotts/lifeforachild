@@ -3,10 +3,12 @@ package org.lifeforachild.web.Report;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.lifeforachild.Util.SecurityUtil;
 import org.lifeforachild.domain.CauseOfDeathType;
 import org.lifeforachild.domain.Child;
 import org.lifeforachild.domain.ChildFields;
 import org.lifeforachild.domain.DiabetesType;
+import org.lifeforachild.domain.Permissions;
 import org.lifeforachild.domain.Report;
 import org.lifeforachild.domain.SexType;
 import org.lifeforachild.domain.SurvivalStatusType;
@@ -34,13 +36,17 @@ public class ChildReportGenerator extends ReportGenerator {
 	{
 		// these columns are displayed on every report
 		// TODO change the field names to use the constants in the child class 
-        addColumn(drb, "id", "ID", Long.class, 85);
-        addColumn(drb, "name", "Name", String.class, 85);
-        //addColumn(drb, "sex", "Sex", SexType.class, 85);
-        drb.addField("sex", String.class.getName());        
-        addColumn(drb, "sex", "Sex", SexType.class, 85, null, SexType.getCustomExpression());
-        drb.addField("diabetesType", String.class.getName());
-        addColumn(drb, "diabetesType", "Diabetes Type", DiabetesType.class, 85, null, DiabetesType.getCustomExpression());
+        addColumn(drb, "individualId", "Individual Id", String.class, 85);
+        addColumn(drb, "localMedicalNumber", "Record Number", String.class, 85);
+        
+        boolean viewNameInfo = SecurityUtil.getInstance().hasPermission(Permissions.VIEW_CHILD_NAME);
+        if (viewNameInfo)
+        {
+        	addColumn(drb, "name", "First Name", String.class, 85);
+        	addColumn(drb, "lastName", "Last Name", String.class, 85);
+        }                
+        addColumn(drb, "country.name", "Country", String.class, 85);
+        addColumn(drb, "centre.name", "Centre", String.class, 85);
         
         // TODO always show country and centre
         
@@ -51,6 +57,12 @@ public class ChildReportGenerator extends ReportGenerator {
         	{
         		ChildFields field = (ChildFields)fields[i];
 	        	switch (field) {
+	        	case SEX:
+	        		drb.addField("sex", String.class.getName());        
+	                addColumn(drb, "sex", "Sex", SexType.class, 85, null, SexType.getCustomExpression());
+	        	case DIABETES_TYPE:
+	        		drb.addField("diabetesType", String.class.getName());
+	                addColumn(drb, "diabetesType", "Diabetes Type", DiabetesType.class, 85, null, DiabetesType.getCustomExpression());
 				case AGE_AT_DIAGNOSIS:
 					// TODO field not in database
 					break;
@@ -76,7 +88,8 @@ public class ChildReportGenerator extends ReportGenerator {
 					addColumn(drb, "ethnicGroup", ChildFields.ETHNIC_GROUP.getLabel(), String.class, 85);
 					break;
 				case INITIALS:
-					addColumn(drb, "initials", ChildFields.INITIALS.getLabel(), String.class, 85);
+					if (viewNameInfo)
+						addColumn(drb, "initials", ChildFields.INITIALS.getLabel(), String.class, 85);
 					break;
 				case INSULIN_SINCE:
 					addDateColumn(drb, "insulinSince", ChildFields.INSULIN_SINCE.getLabel());

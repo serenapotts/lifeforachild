@@ -1,7 +1,10 @@
 package org.lifeforachild.web;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.lifeforachild.Util.SecurityUtil;
@@ -16,6 +19,8 @@ import org.lifeforachild.domain.DistanceType;
 import org.lifeforachild.domain.Permissions;
 import org.lifeforachild.domain.SexType;
 import org.lifeforachild.domain.SurvivalStatusType;
+import org.lifeforachild.web.Report.ChildReportGenerator;
+import org.lifeforachild.web.Report.ReportGenerator;
 import org.lifeforachild.web.validation.ChildValidator;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindException;
@@ -25,7 +30,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import java.util.List;
+import org.lifeforachild.domain.ChildFields;
 
 privileged aspect ChildController_Roo_Controller {
     
@@ -208,6 +213,16 @@ privileged aspect ChildController_Roo_Controller {
         modelMap.addAttribute("child_dateOfRegistration_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));        
 		return "child/print";
 	}
+    
+    @RequestMapping(value = "/child/print", method = RequestMethod.GET)    
+    public void ChildController.printForm(ModelMap modelMap, HttpServletRequest request, HttpServletResponse response)
+	{
+    	ReportGenerator repGen = new ChildReportGenerator();
+    	repGen.generateExcelReport("List Children", Child.findAllChildren(), new ChildFields[] {}, request, response);
+		//SecurityUtil.getInstance().checkPermission(Permissions.EDIT_CHILD);
+        //modelMap.addAttribute("children", );         
+		//return "child/printList";
+	}    
     
     @RequestMapping(value = "/child/{id}", method = RequestMethod.DELETE)    
     public String ChildController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size) {

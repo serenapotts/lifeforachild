@@ -101,10 +101,20 @@ public abstract class ReportGenerator {
 	 */
 	public void generateExcelReport(Report report, HttpServletRequest request, HttpServletResponse response)  
 	{
+		List results = buildQuery(report);
+		generateExcelReport(report.getName(), results, getDisplayFields(report), request, response);	
+	}
+	
+	/**
+	 * Create a report in Excel file format.
+	 * @param query The sql query
+	 * @throws JRException 
+	 */
+	public void generateExcelReport(String name, List results, Object[] fields, HttpServletRequest request, HttpServletResponse response)  
+	{
 		try {
-			List results = buildQuery(report);
-			JasperPrint jp = generateReport(request, OutputType.EXCEL, results, getDisplayFields(report), 
-					report.getName(), false);
+			JasperPrint jp = generateReport(request, OutputType.EXCEL, results, fields, 
+					name, false);
 			// TODO how to allow user to control this location
 			ReportExporter.exportReport(jp, outputProcessed, response);
 		} catch (FileNotFoundException e) {
@@ -117,7 +127,7 @@ public abstract class ReportGenerator {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}		
-	}
+	}	
 
 	/**
 	 * Create a report in Excel file format.
