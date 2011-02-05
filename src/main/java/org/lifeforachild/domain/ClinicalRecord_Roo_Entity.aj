@@ -105,4 +105,10 @@ privileged aspect ClinicalRecord_Roo_Entity {
     	return (List<ClinicalRecord>)clinicalRecordQuery.findEntries(entityManager(), firstResult, maxResults);        
     }    
     
+    public static ClinicalRecord ClinicalRecord.findMaxClinicalRecordEntries(Long id) {
+    	ClinicalRecordQuery clinicalRecordQuery = new ClinicalRecordQuery();
+    	Long max = clinicalRecordQuery.findLatestClinicalRecordId(entityManager(), id);
+    	return findClinicalRecord(max);
+    }     
+    
 }

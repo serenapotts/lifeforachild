@@ -63,6 +63,13 @@
 		                </div>
 		            </div>
 		            <br/>
+		            <div id="roo_clinicalRecord_consentGiven">
+		                <label  class="record" for="_consentGiven_id"><spring:message code="record.consentGiven"/></label>
+		                <div class="box" id="_consentGiven_id">
+		                    <c:out value="${clinicalRecord.consentGiven}"/>
+		                </div>
+		            </div>
+		            <br/>
 		            <div id="roo_clinicalRecord_exactAge">
 		                <label  class="record" for="_exactAge_id"><spring:message code="record.exactAge"/></label>
 		                <div class="box" id="_exactAge_id">

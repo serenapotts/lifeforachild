@@ -17,6 +17,7 @@ import org.lifeforachild.domain.MicroalbuminuriaUnitsType;
 import org.lifeforachild.domain.NotAttendingSchoolReasonType;
 import org.lifeforachild.domain.Permissions;
 import org.lifeforachild.domain.ReasonNotEnteringType;
+import org.lifeforachild.domain.ResearchConsent;
 import org.lifeforachild.domain.SexType;
 import org.lifeforachild.domain.User;
 import org.lifeforachild.domain.WhoAdjustsInsulinType;
@@ -42,10 +43,11 @@ privileged aspect ClinicalRecordController_Roo_Controller {
     	SecurityUtil.getInstance().checkPermission(Permissions.CREATE_RECORD);
     	if (clinicalRecord == null) throw new IllegalArgumentException("A clinicalRecord is required");
     	validate(result, clinicalRecord);
-        if (result.hasErrors()) {                	        	
+        if (result.hasErrors()) {                	
             modelMap.addAttribute("clinicalRecord", clinicalRecord);                       
             modelMap.addAttribute("creatineunitstype_enum", CreatineUnitsType.class.getEnumConstants());            
-            modelMap.addAttribute("diabetescopingtype_enum", DiabetesCopingType.class.getEnumConstants());            
+            modelMap.addAttribute("diabetescopingtype_enum", DiabetesCopingType.class.getEnumConstants());   
+            modelMap.addAttribute("researchconsenttype_enum", ResearchConsent.class.getEnumConstants()); 
             modelMap.addAttribute("hba1cmethodtype_enum", HbA1cMethodType.class.getEnumConstants());            
             modelMap.addAttribute("mg_or_mmol_type_enum", MG_OR_MMOL_Type.class.getEnumConstants());            
             modelMap.addAttribute("microalbuminuriaunitstype_enum", MicroalbuminuriaUnitsType.class.getEnumConstants());            
@@ -87,16 +89,20 @@ privileged aspect ClinicalRecordController_Roo_Controller {
     public String ClinicalRecordController.createForm(@PathVariable("id") Long id, ModelMap modelMap) {  
     	SecurityUtil.getInstance().checkPermission(Permissions.CREATE_RECORD);
     	ClinicalRecord record = new ClinicalRecord();
+    	Child child = Child.findChild(id);
     	// set child for record from child information passed when creating record
-    	record.setChild(Child.findChild(id));
+    	record.setChild(child);
     	record.setIsDeleted(false); 
     	// set person completing to the current user
     	//record.setPersonCompletingForm(SecurityUtil.getInstance().getApplicationUserForCurrentUser());
     	// default date completed to today
     	record.setDateCompleted(new Date());
         modelMap.addAttribute("clinicalRecord", record);
+        ClinicalRecord maxRecord = ClinicalRecord.findMaxClinicalRecordEntries(child.getId());
+        modelMap.addAttribute("previousConsentGiven", maxRecord != null ? maxRecord.getConsentGiven() : "");
         modelMap.addAttribute("creatineunitstype_enum", CreatineUnitsType.class.getEnumConstants());        
-        modelMap.addAttribute("diabetescopingtype_enum", DiabetesCopingType.class.getEnumConstants());        
+        modelMap.addAttribute("diabetescopingtype_enum", DiabetesCopingType.class.getEnumConstants());
+        modelMap.addAttribute("researchconsenttype_enum", ResearchConsent.class.getEnumConstants()); 
         modelMap.addAttribute("hba1cmethodtype_enum", HbA1cMethodType.class.getEnumConstants());        
         modelMap.addAttribute("mg_or_mmol_type_enum", MG_OR_MMOL_Type.class.getEnumConstants());        
         modelMap.addAttribute("microalbuminuriaunitstype_enum", MicroalbuminuriaUnitsType.class.getEnumConstants());        
@@ -136,7 +142,8 @@ privileged aspect ClinicalRecordController_Roo_Controller {
         if (result.hasErrors()) {        
             modelMap.addAttribute("clinicalRecord", clinicalRecord);                       
             modelMap.addAttribute("creatineunitstype_enum", CreatineUnitsType.class.getEnumConstants());            
-            modelMap.addAttribute("diabetescopingtype_enum", DiabetesCopingType.class.getEnumConstants());            
+            modelMap.addAttribute("diabetescopingtype_enum", DiabetesCopingType.class.getEnumConstants());   
+            modelMap.addAttribute("researchconsenttype_enum", ResearchConsent.class.getEnumConstants()); 
             modelMap.addAttribute("hba1cmethodtype_enum", HbA1cMethodType.class.getEnumConstants());            
             modelMap.addAttribute("mg_or_mmol_type_enum", MG_OR_MMOL_Type.class.getEnumConstants());            
             modelMap.addAttribute("microalbuminuriaunitstype_enum", MicroalbuminuriaUnitsType.class.getEnumConstants());            
@@ -184,7 +191,8 @@ privileged aspect ClinicalRecordController_Roo_Controller {
         users.add(record.getPersonCompletingForm());
         modelMap.addAttribute("clinicalRecord", record);                
         modelMap.addAttribute("creatineunitstype_enum", CreatineUnitsType.class.getEnumConstants());        
-        modelMap.addAttribute("diabetescopingtype_enum", DiabetesCopingType.class.getEnumConstants());        
+        modelMap.addAttribute("diabetescopingtype_enum", DiabetesCopingType.class.getEnumConstants());   
+        modelMap.addAttribute("researchconsenttype_enum", ResearchConsent.class.getEnumConstants()); 
         modelMap.addAttribute("hba1cmethodtype_enum", HbA1cMethodType.class.getEnumConstants());        
         modelMap.addAttribute("mg_or_mmol_type_enum", MG_OR_MMOL_Type.class.getEnumConstants());        
         modelMap.addAttribute("microalbuminuriaunitstype_enum", MicroalbuminuriaUnitsType.class.getEnumConstants());        

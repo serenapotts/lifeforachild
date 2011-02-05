@@ -691,5 +691,13 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
     public void ClinicalRecord.setIsDeleted(boolean isDeleted) {    
         this.isDeleted = isDeleted;        
     }
+    
+    public ResearchConsent ClinicalRecord.getConsentGiven() {    
+        return this.consentGiven;        
+    }    
+    
+    public void ClinicalRecord.setConsentGiven(ResearchConsent consentGiven) {    
+        this.consentGiven = consentGiven;        
+    }    
       
 }

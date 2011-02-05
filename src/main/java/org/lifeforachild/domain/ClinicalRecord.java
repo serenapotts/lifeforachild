@@ -297,6 +297,10 @@ public class ClinicalRecord {
     @Size(max = 30)
     private String seniorPhysician;
 
+    @NotNull(message="Consent given is required")
+    @Enumerated
+    private ResearchConsent consentGiven;    
+    
     @Enumerated
     @NotNull(message = "Literate is required.")
     private YesNoType literate;
