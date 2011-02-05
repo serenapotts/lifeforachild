@@ -125,12 +125,11 @@ public class ChildQuery extends BaseQuery<Child> {
 //					Restrictions.le(propertyName, dateRange.getToDate())) );
 		}
 	}	
+	
 	private void searchByShowOptionType(Criteria criteria,
 			ShowOptionType showOptionType) {
 		
 	}
-
-
 
 	private void searchByAge(Criteria criteria, String age) {
 		

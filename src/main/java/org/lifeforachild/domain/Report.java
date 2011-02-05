@@ -1,19 +1,22 @@
 package org.lifeforachild.domain;
 
 import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+
 import org.hibernate.annotations.CollectionOfElements;
 import org.hibernate.annotations.IndexColumn;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.roo.addon.entity.RooEntity;
 import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.tostring.RooToString;
-import com.sun.istack.internal.NotNull;
 
 @Entity
 @RooEntity
@@ -22,10 +25,10 @@ import com.sun.istack.internal.NotNull;
 public class Report {
 
     @NotNull
+    @NotEmpty
     private String name;
 
-    @NotNull
-    @ManyToOne
+    @ManyToOne    
     private User viewableBy;
     
     @Enumerated
@@ -33,13 +36,13 @@ public class Report {
     private ReportType reporttype;
 
     @Enumerated
-    @NotNull
+    //@NotNull
     private StatusType statustype;
 
     private String timePeriod;
 
     @Enumerated
-    @NotNull
+    //@NotNull
     private TimePeriodUnit timeperiodunit;
 
     @Temporal(TemporalType.TIMESTAMP)
@@ -51,7 +54,7 @@ public class Report {
     private Date toDate;
 
     @Enumerated
-    @NotNull
+    //@NotNull
     private ShowOptionType showoptiontype;
     
     private String recordNumber;

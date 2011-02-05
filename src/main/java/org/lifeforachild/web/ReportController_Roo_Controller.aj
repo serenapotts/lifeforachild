@@ -35,8 +35,10 @@ privileged aspect ReportController_Roo_Controller {
             modelMap.addAttribute("report", report);            
             modelMap.addAttribute("childfields_enum", ChildFields.class.getEnumConstants());            
             modelMap.addAttribute("clinicalrecordfields_enum", ClinicalRecordFields.class.getEnumConstants());            
-            modelMap.addAttribute("countrys", Country.findAllCountrys(true));            
-            modelMap.addAttribute("diabetescentres", DiabetesCentre.findAllDiabetesCentres(true));            
+            modelMap.addAttribute("countrys", Country.findAllCountrys(true));
+            Country country = report.getCountry();
+            List<DiabetesCentre> centres = (country == null) ? null : DiabetesCentre.findAllDiabetesCentres(true, country.getId());
+            modelMap.addAttribute("diabetescentres", centres);            
             modelMap.addAttribute("reporttype_enum", ReportType.class.getEnumConstants());            
             modelMap.addAttribute("showoptiontype_enum", ShowOptionType.class.getEnumConstants());            
             modelMap.addAttribute("statustype_enum", StatusType.class.getEnumConstants());            
@@ -120,7 +122,7 @@ privileged aspect ReportController_Roo_Controller {
             return "report/update";            
         }        
         report.merge();        
-        return "redirect:/report/" + report.getId();        
+        return "redirect:/reportgenerator/" + report.getId();        
     }    
     
     @RequestMapping(value = "/report/{id}/form", method = RequestMethod.GET)    

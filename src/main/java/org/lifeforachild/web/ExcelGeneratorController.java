@@ -43,8 +43,8 @@ public class ExcelGeneratorController {
     	// check what type of report we are displaying
     	if (report.getReporttype().equals(ReportType.CHILD))
     		repGen = new ChildReportGenerator();
-    	else if (report.getReporttype().equals(ReportType.CLINICAL_RECORD))
-    		repGen = new ClinicalRecordReportGenerator();    		
+//    	else if (report.getReporttype().equals(ReportType.CLINICAL_RECORD))
+//    		repGen = new ClinicalRecordReportGenerator();    		
     	if (repGen != null)
     	{
     		repGen.generateExcelReport(report, request, response);    		

@@ -86,7 +86,7 @@
 				</script> 
             </div>
             <br/>
-            <div id="roo_report_statustype">
+            <!-- <div id="roo_report_statustype">
                 <label for="_statustype_id">Status Type:</label>
                 <form:errors cssClass="errors" id="_statustype_error_id" path="statustype"/>
                 <form:select cssStyle="width:250px" id="_statustype_id" items="${statustype_enum}" path="statustype" itemLabel="label"/>
@@ -142,7 +142,13 @@
                 <br/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_showoptiontype_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
             </div>
-            <br/>
+            <br/>-->
+            <form:hidden id="_statustype" path="statustype"/>
+            <form:hidden id="_timePeriod" path="timePeriod"/>
+            <form:hidden id="_timeperiodunit" path="timeperiodunit"/>
+            <form:hidden id="_fromDate" path="fromDate"/>
+            <form:hidden id="_toDate" path="toDate"/>
+            <form:hidden id="_showoptiontype" path="showoptiontype"/>
             <div id="roo_report_recordNumber">
                 <label for="_recordNumber_id">Record Number:</label>
                 <form:input cssStyle="width:250px" id="_recordNumber_id" maxlength="30" path="recordNumber" size="0"/>
@@ -154,7 +160,8 @@
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_recordNumber_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : false}})); </script>
             </div>
             <br/>
-            <div id="roo_report_age">
+            <form:hidden id="_age" path="age"/>
+            <!-- <div id="roo_report_age">
                 <label for="_age_id">Age:</label>
                 <form:input cssStyle="width:250px" id="_age_id" maxlength="30" path="age" size="0"/>
                 <br/>
@@ -164,7 +171,7 @@
                 <spring:message argumentSeparator="," arguments="Age," code="field.simple.validation" var="field_validation"/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_age_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : false}})); </script>
             </div>
-            <br/>
+            <br/>-->
             <div id="roo_report_country">
                 <c:if test="${not empty countrys}">
                     <label for="_country_id">Country:</label>
@@ -218,7 +225,9 @@
                         elementId : 'roo_report_clinicalrecordfields', 
                         widgetType: 'dijit.layout.ContentPane'})); 
             </script> 
-            <div id="roo_report_orderBy">
+            <form:hidden id="_orderBy" path="orderBy"/>
+            <form:hidden id="_thenOrderBy" path="thenOrderBy"/>  
+            <!-- <div id="roo_report_orderBy">
                 <label for="_orderBy_id">Order By:</label>
                 <form:input cssStyle="width:250px" id="_orderBy_id" maxlength="30" path="orderBy" size="0"/>
                 <br/>
@@ -239,7 +248,7 @@
                 <spring:message argumentSeparator="," arguments="Then Order By," code="field.simple.validation" var="field_validation"/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_thenOrderBy_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : false}})); </script>
             </div>
-            <br/>
+            <br/>-->
             <form:hidden id="_isDeleted_id" path="isDeleted"/>
             <div class="submit" id="roo_report_submit">
                 <spring:message code="button.update" var="update_button"/>

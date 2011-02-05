@@ -4,12 +4,12 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.Spring;
 
 import org.lifeforachild.domain.Report;
 import org.lifeforachild.domain.ReportProperties;
 import org.lifeforachild.domain.ReportType;
 import org.lifeforachild.web.Report.ChildReportGenerator;
-import org.lifeforachild.web.Report.ClinicalRecordReportGenerator;
 import org.lifeforachild.web.Report.ReportGenerator;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -42,8 +42,8 @@ public class ReportGeneratorController {
     	// check what type of report we are displaying
     	if (report.getReporttype().equals(ReportType.CHILD))
     		repGen = new ChildReportGenerator();
-    	else if (report.getReporttype().equals(ReportType.CLINICAL_RECORD))
-    		repGen = new ClinicalRecordReportGenerator();    		
+//    	else if (report.getReporttype().equals(ReportType.CLINICAL_RECORD))
+//    		repGen = new ClinicalRecordReportGenerator();    		
     	if (repGen != null)
     	{
     		List results = repGen.buildQuery(report);
