@@ -108,7 +108,10 @@ privileged aspect ClinicalRecord_Roo_Entity {
     public static ClinicalRecord ClinicalRecord.findMaxClinicalRecordEntries(Long id) {
     	ClinicalRecordQuery clinicalRecordQuery = new ClinicalRecordQuery();
     	Long max = clinicalRecordQuery.findLatestClinicalRecordId(entityManager(), id);
-    	return findClinicalRecord(max);
+    	// first time the visit is created there will be no max so check for this
+    	if (max != null)
+    		return findClinicalRecord(max);
+    	return null;
     }     
     
 }
