@@ -50,6 +50,7 @@ privileged aspect UserController_Roo_Controller {
     	String username = SecurityUtil.getInstance().getCurrentUsername();
     	user.setCreatedBy(username);
     	user.setUpdatedBy(username);
+    	user.setEnabled(true);
         modelMap.addAttribute("user", user);        
         modelMap.addAttribute("countrys", Country.findAllCountrys(true));        
         modelMap.addAttribute("diabetescentres", null);        
