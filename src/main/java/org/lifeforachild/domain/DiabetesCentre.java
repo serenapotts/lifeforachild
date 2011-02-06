@@ -4,8 +4,10 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.roo.addon.entity.RooEntity;
 import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.tostring.RooToString;
@@ -20,7 +22,10 @@ import org.springframework.roo.addon.tostring.RooToString;
 @RooJavaBean
 @RooToString
 public class DiabetesCentre {
+	
     @Size(max = 30)
+    @NotNull
+    @NotEmpty
     private String name;
     
     @Size(max = 200)
@@ -28,6 +33,7 @@ public class DiabetesCentre {
     
     @ManyToOne(targetEntity = Country.class)
     @JoinColumn
+    @NotNull
     private Country country;
     
     private Boolean isDeleted;    
