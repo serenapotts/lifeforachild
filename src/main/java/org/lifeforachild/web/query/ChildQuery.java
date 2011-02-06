@@ -12,7 +12,6 @@ import org.hibernate.criterion.Restrictions;
 import org.lifeforachild.Util.StringUtil;
 import org.lifeforachild.domain.Child;
 import org.lifeforachild.domain.Country;
-import org.lifeforachild.domain.DateRange;
 import org.lifeforachild.domain.DiabetesCentre;
 import org.lifeforachild.domain.Report;
 import org.lifeforachild.domain.Search;
@@ -118,7 +117,7 @@ public class ChildQuery extends BaseQuery<Child> {
 	{
 		if (!StringUtil.isEmpty(timePeriod) && timePeriodUnit != TimePeriodUnit.NONE)
 		{
-			DateRange dateRange = TimePeriodUnit.getDateRange(timePeriod, timePeriodUnit);
+			//DateRange dateRange = TimePeriodUnit.getDateRange(timePeriod, timePeriodUnit);
 			// TODO what dates to compare against. child or record??
 //			criteria.add(Restrictions.and(
 //					Restrictions.ge(propertyName, dateRange.getFromDate()), 

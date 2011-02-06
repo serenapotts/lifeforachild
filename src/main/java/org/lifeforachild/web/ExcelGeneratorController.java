@@ -6,7 +6,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.lifeforachild.domain.Report;
 import org.lifeforachild.domain.ReportType;
 import org.lifeforachild.web.Report.ChildReportGenerator;
-import org.lifeforachild.web.Report.ClinicalRecordReportGenerator;
 import org.lifeforachild.web.Report.ReportGenerator;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

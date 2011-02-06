@@ -67,7 +67,7 @@ privileged aspect ChildController_Roo_Controller {
         Long countryId = child.getCountry().getId();
         Long centreId = child.getCentre().getId();
         // TODO is there a better way to do this as could cause a race condition and two have the same id but unlikely
-        long centreChildCount = child.numberChildrenInCentre(countryId, centreId);
+        long centreChildCount = Child.numberChildrenInCentre(countryId, centreId);
         String id = StringUtil.padWithZeros(centreChildCount, 4);
         String paddedCountryId = StringUtil.padWithZeros(countryId, 3);
         String paddedCentreId = StringUtil.padWithZeros(centreId, 3);

@@ -13,7 +13,6 @@ import javax.persistence.Version;
 
 import org.hibernate.Criteria;
 import org.lifeforachild.domain.ClinicalRecord;
-import org.lifeforachild.web.query.ChildQuery;
 import org.lifeforachild.web.query.ClinicalRecordQuery;
 import org.springframework.transaction.annotation.Transactional;
 

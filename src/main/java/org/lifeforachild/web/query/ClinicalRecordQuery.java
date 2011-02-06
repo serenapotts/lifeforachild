@@ -6,7 +6,6 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
-import org.lifeforachild.domain.Child;
 import org.lifeforachild.domain.ClinicalRecord;
 import org.springframework.security.access.AccessDeniedException;
 

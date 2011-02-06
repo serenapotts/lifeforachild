@@ -1,12 +1,10 @@
 package org.lifeforachild.web;
 
-import java.text.SimpleDateFormat;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.lifeforachild.domain.Child;
-import org.lifeforachild.domain.ClinicalRecord;
 import org.lifeforachild.domain.Country;
 import org.lifeforachild.domain.ReportType;
 import org.lifeforachild.domain.Search;
@@ -24,12 +22,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/search/**")
 @Controller
 public class SearchController {
-
-	private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("d/MM/yyyy");
-	private static final SimpleDateFormat QUERY_DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
-	private static final char EQUALS_OPERATOR = '=';
-	private static final char LESS_THAN_OPERATOR = '<';
-	private static final char GREATER_THAN_OPERATOR = '>';
 	
 	/**
 	 * Called on a HTTP Get to display the search page. 

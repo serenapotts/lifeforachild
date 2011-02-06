@@ -64,14 +64,14 @@ privileged aspect ClinicalRecordController_Roo_Controller {
             return "clinicalrecord/create";            
         }        
         // still set age in case click update without clicking out of dom field
-        clinicalRecord.setExactAge(clinicalRecord.calculateAge(clinicalRecord.getDateOfMeasurement(), clinicalRecord.getChild().getDateOfBirth()));
+        clinicalRecord.setExactAge(ClinicalRecord.calculateAge(clinicalRecord.getDateOfMeasurement(), clinicalRecord.getChild().getDateOfBirth()));
         clinicalRecord.setExactAgeMonths(ClinicalRecord.calculateExactAgeMonths(clinicalRecord.getExactAge()));
         
         Float exactAge = clinicalRecord.getExactAge();
         Float exactAgeMonths = clinicalRecord.getExactAgeMonths();
         SexType childSex = clinicalRecord.getChild().getSex();
         
-        clinicalRecord.setInsulinPerKg(clinicalRecord.calculateInsulinPerKg(clinicalRecord.getWeightKG(), clinicalRecord.getInsulinUnitsPerDay()));
+        clinicalRecord.setInsulinPerKg(ClinicalRecord.calculateInsulinPerKg(clinicalRecord.getWeightKG(), clinicalRecord.getInsulinUnitsPerDay()));
         clinicalRecord.setWeightSD(ClinicalRecord.calculateWeightSD(exactAgeMonths, childSex, clinicalRecord.getWeightKG()));
         clinicalRecord.setHeightSD(ClinicalRecord.calculateHeightSD(exactAgeMonths, childSex, clinicalRecord.getHeightCM()));
         
@@ -79,7 +79,7 @@ privileged aspect ClinicalRecordController_Roo_Controller {
         clinicalRecord.setBmiSD(ClinicalRecord.calculateBmiSD(exactAgeMonths, childSex, clinicalRecord.getBmi()));
         
         clinicalRecord.setBloodPressureSystolicSD(ClinicalRecord.calcSystolicBloodPressureSD(exactAge, childSex, clinicalRecord.getHeightSD(), clinicalRecord.getBloodPressureSystolicSD()));
-        clinicalRecord.setBloodPressureDiastolicSD(clinicalRecord.calcDiastolicBloodPressureSD(exactAge, childSex, clinicalRecord.getHeightSD(), clinicalRecord.getBloodPressureDiastolicSD()));
+        clinicalRecord.setBloodPressureDiastolicSD(ClinicalRecord.calcDiastolicBloodPressureSD(exactAge, childSex, clinicalRecord.getHeightSD(), clinicalRecord.getBloodPressureDiastolicSD()));
         
         clinicalRecord.persist();        
         return "redirect:/clinicalrecord/" + clinicalRecord.getId();        
@@ -160,9 +160,9 @@ privileged aspect ClinicalRecordController_Roo_Controller {
             return "clinicalrecord/update";            
         }
         
-        clinicalRecord.setInsulinPerKg(clinicalRecord.calculateInsulinPerKg(clinicalRecord.getWeightKG(), clinicalRecord.getInsulinUnitsPerDay()));
+        clinicalRecord.setInsulinPerKg(ClinicalRecord.calculateInsulinPerKg(clinicalRecord.getWeightKG(), clinicalRecord.getInsulinUnitsPerDay()));
         
-        clinicalRecord.setExactAge(clinicalRecord.calculateAge(clinicalRecord.getDateOfMeasurement(), clinicalRecord.getChild().getDateOfBirth()));
+        clinicalRecord.setExactAge(ClinicalRecord.calculateAge(clinicalRecord.getDateOfMeasurement(), clinicalRecord.getChild().getDateOfBirth()));
         clinicalRecord.setExactAgeMonths(ClinicalRecord.calculateExactAgeMonths(clinicalRecord.getExactAge()));
 
         Float exactAge = clinicalRecord.getExactAge();

@@ -13,7 +13,6 @@ import org.lifeforachild.domain.MicroalbuminuriaUnitsType;
 import org.lifeforachild.domain.NotAttendingSchoolReasonType;
 import org.lifeforachild.domain.User;
 import org.lifeforachild.domain.YesNoLaterType;
-import org.lifeforachild.domain.YesNoNAType;
 import org.lifeforachild.domain.YesNoType;
 import org.lifeforachild.domain.YesNoUnkownType;
 

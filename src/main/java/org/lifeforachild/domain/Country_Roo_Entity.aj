@@ -11,9 +11,6 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Version;
 
 import org.hibernate.Criteria;
-import org.lifeforachild.Util.SecurityUtil;
-import org.lifeforachild.enums.UserGroups;
-import org.lifeforachild.web.query.ChildQuery;
 import org.lifeforachild.web.query.CountryQuery;
 import org.springframework.transaction.annotation.Transactional;
 

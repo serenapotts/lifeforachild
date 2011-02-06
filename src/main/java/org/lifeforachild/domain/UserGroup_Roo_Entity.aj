@@ -11,7 +11,6 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Version;
 import org.hibernate.Criteria;
 import org.lifeforachild.web.query.UserGroupQuery;
-import org.lifeforachild.web.query.UserQuery;
 import org.springframework.transaction.annotation.Transactional;
 
 privileged aspect UserGroup_Roo_Entity {

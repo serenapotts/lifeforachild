@@ -1,7 +1,6 @@
 package org.lifeforachild.domain;
 
 import java.lang.String;
-import java.util.Date;
 
 privileged aspect Permissions_Roo_JavaBean {
     

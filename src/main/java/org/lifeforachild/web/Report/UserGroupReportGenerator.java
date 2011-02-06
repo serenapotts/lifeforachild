@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.lifeforachild.domain.DiabetesCentre;
 import org.lifeforachild.domain.Permissions;
 import org.lifeforachild.domain.Report;
 import org.lifeforachild.domain.UserGroup;

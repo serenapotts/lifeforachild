@@ -219,7 +219,6 @@ public abstract class ReportGenerator {
     		String title, boolean addTitleAndImage) 
     {       
         DynamicReportBuilder drb = new DynamicReportBuilder();
-        Integer margin = new Integer(20);
         drb.setPrintBackgroundOnOddRows(true);                          
         drb.setUseFullPageWidth(true);
         

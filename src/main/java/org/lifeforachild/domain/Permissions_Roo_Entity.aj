@@ -14,7 +14,6 @@ import javax.persistence.Version;
 import org.hibernate.Criteria;
 import org.lifeforachild.domain.Permissions;
 import org.lifeforachild.web.query.PermissionsQuery;
-import org.lifeforachild.web.query.UserGroupQuery;
 import org.springframework.transaction.annotation.Transactional;
 
 privileged aspect Permissions_Roo_Entity {

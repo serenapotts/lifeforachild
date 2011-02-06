@@ -1,6 +1,5 @@
 package org.lifeforachild.domain;
 
-import java.util.Date;
 
 public class Search {
 
