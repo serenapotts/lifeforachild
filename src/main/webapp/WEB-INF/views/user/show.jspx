@@ -46,6 +46,9 @@
                 <div class="box" id="_country_id">
                     <c:out value="${user.country}"/>
                 </div>
+                <c:if test="${user.country == '' || user.country == null}">
+                	<br/>
+                </c:if>                
             </div>
             <br/>
             <div id="roo_user_centre">

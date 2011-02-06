@@ -18,6 +18,9 @@
                 <div class="box" id="_address_id">
                     <c:out value="${diabetesCentre.address}"/>
                 </div>
+                <c:if test="${diabetesCentre.address == '' || diabetesCentre.address == null}">
+                	<br/>
+                </c:if>
             </div>
             <br/>
             <div id="roo_diabetesCentre_country">
