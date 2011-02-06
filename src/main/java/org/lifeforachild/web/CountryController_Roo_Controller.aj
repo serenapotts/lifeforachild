@@ -100,6 +100,7 @@ privileged aspect CountryController_Roo_Controller {
     @RequestMapping(value = "/country/print", method = RequestMethod.GET)    
     public void CountryController.printForm(ModelMap modelMap, HttpServletRequest request, HttpServletResponse response)
 	{
+    	SecurityUtil.getInstance().checkPermission(Permissions.CREATE_COUNTRY);
     	ReportGenerator repGen = new CountryReportGenerator();
     	repGen.generateExcelReport("List Countries", Country.findAllCountrys(), null, request, response);
 	}      

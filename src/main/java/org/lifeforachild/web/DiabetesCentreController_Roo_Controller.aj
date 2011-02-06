@@ -104,6 +104,7 @@ privileged aspect DiabetesCentreController_Roo_Controller {
     @RequestMapping(value = "/diabetescentre/print", method = RequestMethod.GET)    
     public void DiabetesCentreController.printForm(ModelMap modelMap, HttpServletRequest request, HttpServletResponse response)
 	{
+    	SecurityUtil.getInstance().checkPermission(Permissions.CREATE_CENTRE);
     	ReportGenerator repGen = new DiabetesCentreReportGenerator();
     	repGen.generateExcelReport("List Centres", DiabetesCentre.findAllDiabetesCentres(), null, request, response);
 	}      
