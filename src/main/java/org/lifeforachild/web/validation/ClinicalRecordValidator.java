@@ -2,11 +2,11 @@ package org.lifeforachild.web.validation;
 
 import org.lifeforachild.domain.Child;
 import org.lifeforachild.domain.ClinicalRecord;
-import org.lifeforachild.domain.HbA1cMethodType;
-import org.lifeforachild.domain.SexType;
-import org.lifeforachild.domain.YesNoLaterType;
-import org.lifeforachild.domain.YesNoType;
-import org.lifeforachild.domain.YesNoUnkownType;
+import org.lifeforachild.enums.HbA1cMethodType;
+import org.lifeforachild.enums.SexType;
+import org.lifeforachild.enums.YesNoLaterType;
+import org.lifeforachild.enums.YesNoType;
+import org.lifeforachild.enums.YesNoUnkownType;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 

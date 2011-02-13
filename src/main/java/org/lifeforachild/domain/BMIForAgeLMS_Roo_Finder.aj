@@ -3,7 +3,8 @@ package org.lifeforachild.domain;
 import java.lang.Float;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
-import org.lifeforachild.domain.SexType;
+
+import org.lifeforachild.enums.SexType;
 
 privileged aspect BMIForAgeLMS_Roo_Finder {
     

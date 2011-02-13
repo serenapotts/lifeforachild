@@ -7,10 +7,10 @@ import org.lifeforachild.domain.ClinicalRecordFields;
 import org.lifeforachild.domain.Country;
 import org.lifeforachild.domain.DiabetesCentre;
 import org.lifeforachild.domain.ReportType;
-import org.lifeforachild.domain.ShowOptionType;
 import org.lifeforachild.domain.StatusType;
 import org.lifeforachild.domain.TimePeriodUnit;
 import org.lifeforachild.domain.User;
+import org.lifeforachild.enums.ShowOptionType;
 
 privileged aspect Report_Roo_JavaBean {
     

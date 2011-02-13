@@ -15,9 +15,9 @@ import org.lifeforachild.domain.Country;
 import org.lifeforachild.domain.DiabetesCentre;
 import org.lifeforachild.domain.Report;
 import org.lifeforachild.domain.Search;
-import org.lifeforachild.domain.ShowOptionType;
 import org.lifeforachild.domain.StatusType;
 import org.lifeforachild.domain.TimePeriodUnit;
+import org.lifeforachild.enums.ShowOptionType;
 import org.lifeforachild.security.SimpleStringCipher;
 
 public class ChildQuery extends BaseQuery<Child> {

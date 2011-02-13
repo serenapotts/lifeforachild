@@ -19,6 +19,18 @@ import javax.validation.constraints.Size;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.lifeforachild.Util.DecimalUtil;
+import org.lifeforachild.enums.CreatineUnitsType;
+import org.lifeforachild.enums.DiabetesCopingType;
+import org.lifeforachild.enums.HbA1cMethodType;
+import org.lifeforachild.enums.MG_OR_MMOL_Type;
+import org.lifeforachild.enums.MicroalbuminuriaUnitsType;
+import org.lifeforachild.enums.NotAttendingSchoolReasonType;
+import org.lifeforachild.enums.ResearchConsentType;
+import org.lifeforachild.enums.SexType;
+import org.lifeforachild.enums.WhoAdjustsInsulinType;
+import org.lifeforachild.enums.YesNoLaterType;
+import org.lifeforachild.enums.YesNoType;
+import org.lifeforachild.enums.YesNoUnkownType;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.roo.addon.entity.RooEntity;
 import org.springframework.roo.addon.javabean.RooJavaBean;
@@ -299,7 +311,7 @@ public class ClinicalRecord {
 
     @NotNull(message="Consent given is required")
     @Enumerated
-    private ResearchConsent consentGiven;    
+    private ResearchConsentType consentGiven;    
     
     @Enumerated
     @NotNull(message = "Literate is required.")

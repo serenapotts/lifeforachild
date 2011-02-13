@@ -2,14 +2,15 @@ package org.lifeforachild.domain;
 
 
 public enum ClinicalRecordFields {
-    DIABETES_CARE("Diabetes Care"), 
-    TYPES_INSULIN("Types of Insulin"), 
-    CLINICAL_MEASURES("Clinical Measures"), 
-    PEBERTAL_STATUS("Pubertal Status"), 
-    EYES("Eyes"), FEET("Feet"), 
-    LAB_TESTING("Lab Testing"), 
-    SCHOOL_STATUS("School Status"), 
-    EMERGENCIES("Emergencies");
+    DIABETES_CARE("ClinicalRecordFields.DiabetesCare"), 
+    TYPES_INSULIN("ClinicalRecordFields.TypesofInsulin"), 
+    CLINICAL_MEASURES("ClinicalRecordFields.ClinicalMeasures"), 
+    PEBERTAL_STATUS("ClinicalRecordFields.PubertalStatus"), 
+    EYES("ClinicalRecordFields.Eyes"), 
+    FEET("ClinicalRecordFields.Feet"), 
+    LAB_TESTING("ClinicalRecordFields.LabTesting"), 
+    SCHOOL_STATUS("ClinicalRecordFields.SchoolStatus"), 
+    EMERGENCIES("ClinicalRecordFields.Emergencies");
 
     ClinicalRecordFields(String s) {
         label = s;

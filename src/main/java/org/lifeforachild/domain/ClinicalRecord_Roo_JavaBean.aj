@@ -5,16 +5,18 @@ import java.lang.Integer;
 import java.lang.String;
 import java.util.Date;
 import org.lifeforachild.domain.Child;
-import org.lifeforachild.domain.CreatineUnitsType;
-import org.lifeforachild.domain.DiabetesCopingType;
-import org.lifeforachild.domain.HbA1cMethodType;
-import org.lifeforachild.domain.MG_OR_MMOL_Type;
-import org.lifeforachild.domain.MicroalbuminuriaUnitsType;
-import org.lifeforachild.domain.NotAttendingSchoolReasonType;
 import org.lifeforachild.domain.User;
-import org.lifeforachild.domain.YesNoLaterType;
-import org.lifeforachild.domain.YesNoType;
-import org.lifeforachild.domain.YesNoUnkownType;
+import org.lifeforachild.enums.CreatineUnitsType;
+import org.lifeforachild.enums.DiabetesCopingType;
+import org.lifeforachild.enums.HbA1cMethodType;
+import org.lifeforachild.enums.MG_OR_MMOL_Type;
+import org.lifeforachild.enums.MicroalbuminuriaUnitsType;
+import org.lifeforachild.enums.NotAttendingSchoolReasonType;
+import org.lifeforachild.enums.ResearchConsentType;
+import org.lifeforachild.enums.WhoAdjustsInsulinType;
+import org.lifeforachild.enums.YesNoLaterType;
+import org.lifeforachild.enums.YesNoType;
+import org.lifeforachild.enums.YesNoUnkownType;
 
 privileged aspect ClinicalRecord_Roo_JavaBean {
     
@@ -691,11 +693,11 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.isDeleted = isDeleted;        
     }
     
-    public ResearchConsent ClinicalRecord.getConsentGiven() {    
+    public ResearchConsentType ClinicalRecord.getConsentGiven() {    
         return this.consentGiven;        
     }    
     
-    public void ClinicalRecord.setConsentGiven(ResearchConsent consentGiven) {    
+    public void ClinicalRecord.setConsentGiven(ResearchConsentType consentGiven) {    
         this.consentGiven = consentGiven;        
     }    
       

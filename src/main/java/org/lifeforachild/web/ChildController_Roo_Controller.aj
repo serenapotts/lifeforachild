@@ -9,16 +9,11 @@ import javax.validation.Valid;
 
 import org.lifeforachild.Util.SecurityUtil;
 import org.lifeforachild.Util.StringUtil;
-import org.lifeforachild.domain.CauseOfDeathType;
 import org.lifeforachild.domain.Child;
 import org.lifeforachild.domain.ClinicalRecord;
 import org.lifeforachild.domain.Country;
 import org.lifeforachild.domain.DiabetesCentre;
-import org.lifeforachild.domain.DiabetesType;
-import org.lifeforachild.domain.DistanceType;
 import org.lifeforachild.domain.Permissions;
-import org.lifeforachild.domain.SexType;
-import org.lifeforachild.domain.SurvivalStatusType;
 import org.lifeforachild.web.Report.ChildReportGenerator;
 import org.lifeforachild.web.Report.ReportGenerator;
 import org.lifeforachild.web.validation.ChildValidator;
@@ -31,6 +26,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.lifeforachild.domain.ChildFields;
+import org.lifeforachild.enums.CauseOfDeathType;
+import org.lifeforachild.enums.DiabetesType;
+import org.lifeforachild.enums.DistanceType;
+import org.lifeforachild.enums.SexType;
+import org.lifeforachild.enums.SurvivalStatusType;
 
 privileged aspect ChildController_Roo_Controller {
     

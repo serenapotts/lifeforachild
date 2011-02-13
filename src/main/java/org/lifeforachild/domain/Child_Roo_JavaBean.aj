@@ -3,6 +3,11 @@ package org.lifeforachild.domain;
 import java.util.Date;
 import java.util.Set;
 
+import org.lifeforachild.enums.CauseOfDeathType;
+import org.lifeforachild.enums.DiabetesType;
+import org.lifeforachild.enums.DistanceType;
+import org.lifeforachild.enums.SexType;
+import org.lifeforachild.enums.SurvivalStatusType;
 import org.lifeforachild.security.SimpleStringCipher;
 
 privileged aspect Child_Roo_JavaBean {

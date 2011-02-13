@@ -4,7 +4,8 @@ import javax.persistence.Entity;
 import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.tostring.RooToString;
 import org.springframework.roo.addon.entity.RooEntity;
-import org.lifeforachild.domain.SexType;
+import org.lifeforachild.enums.SexType;
+
 import javax.persistence.Enumerated;
 
 @Entity

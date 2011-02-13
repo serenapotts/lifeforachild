@@ -16,6 +16,11 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Length;
+import org.lifeforachild.enums.CauseOfDeathType;
+import org.lifeforachild.enums.DiabetesType;
+import org.lifeforachild.enums.DistanceType;
+import org.lifeforachild.enums.SexType;
+import org.lifeforachild.enums.SurvivalStatusType;
 import org.lifeforachild.web.query.ChildQuery;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.roo.addon.entity.RooEntity;

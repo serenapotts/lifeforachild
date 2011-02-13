@@ -2,7 +2,12 @@ package org.lifeforachild.enums;
 
 import org.lifeforachild.domain.UserGroup;
 
-
+/**
+ * User groups defined - this SHOULD NOT be I18N'd.
+ * 
+ * @author Serena Potts
+ *
+ */
 public enum UserGroups {
 	PROGRAM_MANAGER("Program Manager"),
 	PMS_ASSISTANTS("PMs Assistants"),

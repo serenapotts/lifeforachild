@@ -1,9 +1,9 @@
 package org.lifeforachild.domain;
 
 public enum StatusType {
-	NONE(""),
-	UPDATED("Updated"),
-	NOT_UPDATED("Not Updated");
+	NONE("StatusType.None"),
+	UPDATED("StatusType.Updated"),
+	NOT_UPDATED("StatusType.NotUpdated");
 	
 	StatusType(String s) { label = s; }
     

@@ -1,9 +1,9 @@
 package org.lifeforachild.web.validation;
 
-import org.lifeforachild.domain.CauseOfDeathType;
 import org.lifeforachild.domain.Child;
-import org.lifeforachild.domain.DiabetesType;
-import org.lifeforachild.domain.SurvivalStatusType;
+import org.lifeforachild.enums.CauseOfDeathType;
+import org.lifeforachild.enums.DiabetesType;
+import org.lifeforachild.enums.SurvivalStatusType;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 

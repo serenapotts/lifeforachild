@@ -1,7 +1,8 @@
 package org.lifeforachild.domain;
 
 import java.lang.Float;
-import org.lifeforachild.domain.SexType;
+
+import org.lifeforachild.enums.SexType;
 
 privileged aspect LMS_Roo_JavaBean {
     

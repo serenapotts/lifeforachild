@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.lifeforachild.Util.SecurityUtil;
-import org.lifeforachild.domain.CauseOfDeathType;
 import org.lifeforachild.domain.Child;
 import org.lifeforachild.domain.ChildFields;
-import org.lifeforachild.domain.DiabetesType;
 import org.lifeforachild.domain.Permissions;
 import org.lifeforachild.domain.Report;
-import org.lifeforachild.domain.SexType;
-import org.lifeforachild.domain.SurvivalStatusType;
+import org.lifeforachild.enums.CauseOfDeathType;
+import org.lifeforachild.enums.DiabetesType;
+import org.lifeforachild.enums.SexType;
+import org.lifeforachild.enums.SurvivalStatusType;
 import org.lifeforachild.web.query.ChildQuery;
 
 import ar.com.fdvs.dj.domain.builders.ColumnBuilderException;
