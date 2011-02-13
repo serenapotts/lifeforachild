@@ -47,7 +47,8 @@
    		<div id="wrapper">
    			<c:if test="${pageContext.request.userPrincipal != null}">
 	   			<div id="welcomeUser">
-	   				<c:out value="Welcome ${pageContext.request.userPrincipal.principal.firstName} ${pageContext.request.userPrincipal.principal.lastName}!"/>
+	   				<spring:message code="welcome.text"/>
+	   				<c:out value=" ${pageContext.request.userPrincipal.principal.firstName} ${pageContext.request.userPrincipal.principal.lastName}!"/>
 	   			</div>
    			</c:if> 		
 		    <tiles:insertAttribute name="menu" ignore="true" />   
