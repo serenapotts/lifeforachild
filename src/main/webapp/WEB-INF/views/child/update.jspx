@@ -17,7 +17,7 @@
         <spring:message code="field.date.tooltip" var="field_date_tooltip"/>        
         <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_title_div', widgetType : 'dijit.TitlePane', widgetAttrs : {title: '${title_msg}'}})); </script>
         <div id="roo_child_individualId">
-            <label for="_individualId_id">Individual Id:</label>
+            <label for="_individualId_id"><spring:message code="child.individualId"/></label>
             <div class="box" id="_individualId_id_label">
               		<c:out value="${child.individualId}"/>
           		</div>
