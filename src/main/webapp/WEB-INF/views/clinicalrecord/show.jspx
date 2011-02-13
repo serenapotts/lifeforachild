@@ -751,7 +751,7 @@
 				</script>			        
 		        <div id="schooling">            
 		            <div id="roo_clinicalRecord_attendingSchool">
-		                <label  class="record" for="_attendingSchool_id">Attending School:</label>
+		                <label  class="record" for="_attendingSchool_id"><spring:message code="record.attendingSchool"/></label>
 		                <div class="box" id="_attendingSchool_id">
 		                    <c:out value="${clinicalRecord.attendingSchool}"/>
 		                </div>
@@ -759,7 +759,7 @@
 		            <br/>
 		            <c:if test="${clinicalRecord.attendingSchool == 'NO'}">
 			            <div id="roo_clinicalRecord_notAttendingSchoolWhy">
-			                <label  class="record" for="_notAttendingSchoolWhy_id">If not attending School - Why:</label>
+			                <label  class="record" for="_notAttendingSchoolWhy_id"><spring:message code="record.whyNotAttendingSchool"/></label>
 			                <div class="box" id="_notAttendingSchoolWhy_id">
 			                    <c:out value="${clinicalRecord.notAttendingSchoolWhy}"/>
 			                </div>
@@ -771,7 +771,7 @@
 		            </c:if>
 		            <c:if test="${clinicalRecord.attendingSchool == 'YES'}">
 			            <div id="roo_clinicalRecord_diabetesLimitingAttendance">
-			                <label  class="record" for="_diabetesLimitingAttendance_id">Diabetes Limiting Attendance:</label>
+			                <label  class="record" for="_diabetesLimitingAttendance_id"><spring:message code="record.limitingAttendance"/></label>
 			                <div class="box" id="_diabetesLimitingAttendance_id">
 			                    <c:out value="${clinicalRecord.diabetesLimitingAttendance}"/>
 			                </div>
@@ -781,7 +781,7 @@
 			            </div>
 			            <br/>
 			            <div id="roo_clinicalRecord_appropriateGradeForAge">
-			                <label  class="record" for="_appropriateGradeForAge_id">Appropriate Grade For Age:</label>
+			                <label  class="record" for="_appropriateGradeForAge_id"><spring:message code="record.appropriateGrade"/></label>
 			                <div class="box" id="_appropriateGradeForAge_id">
 			                    <c:out value="${clinicalRecord.appropriateGradeForAge}"/>
 			                </div>
@@ -792,14 +792,14 @@
 			            <br/>
 		            </c:if>
 		            <div id="roo_clinicalRecord_diabetesCopingAbilities">
-		                <label  class="record" for="_diabetesCopingAbilities_id">Diabetes Coping Abilities:</label>
+		                <label  class="record" for="_diabetesCopingAbilities_id"><spring:message code="record.copingAbilities"/></label>
 		                <div class="box" id="_diabetesCopingAbilities_id">
 		                    <c:out value="${clinicalRecord.diabetesCopingAbilities}"/>
 		                </div>
 		            </div>
 		            <br/>
 		            <div id="roo_clinicalRecord_literate">
-		                <label  class="record" for="_literate_id">Literate:</label>
+		                <label  class="record" for="_literate_id"><spring:message code="record.literate"/></label>
 		                <div class="box" id="_literate_id">
 		                    <c:out value="${clinicalRecord.literate}"/>
 		                </div>
@@ -873,7 +873,7 @@
 		            <br/>
 		             -->
 		            <div id="roo_clinicalRecord_additionalComment">
-		                <label  class="record" for="_additionalComment_id">Additional Comment  about any aspect - optional:</label>
+		                <label  class="record" for="_additionalComment_id"><spring:message code="record.additionalComment"/></label>
 		                <div class="box" id="_additionalComment_id">
 		                    <c:out value="${clinicalRecord.additionalComment}"/>
 		                </div>

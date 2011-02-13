@@ -1345,7 +1345,7 @@
 		</script>			        
         <div id="schooling">             
             <div id="roo_clinicalRecord_attendingSchool">
-                <label for="_attendingSchool_id">Attending School:</label>
+                <label for="_attendingSchool_id"><spring:message code="record.attendingSchool"/></label>
                 <form:select cssStyle="width:250px" id="_attendingSchool_id" path="attendingSchool">
 					<form:option value=""></form:option>
                 	<form:options items="${yesnotype_enum}" itemLabel="label"/>
@@ -1365,7 +1365,7 @@
             </div>
             <br/>
             <div id="roo_clinicalRecord_notAttendingSchoolWhy">
-                <label for="_notAttendingSchoolWhy_id">If not attending School - Why:</label>
+                <label for="_notAttendingSchoolWhy_id"><spring:message code="record.whyNotAttendingSchool"/></label>
                 <form:select cssStyle="width:250px" id="_notAttendingSchoolWhy_id" path="notAttendingSchoolWhy">
 					<form:option value=""></form:option>
                 	<form:options items="${notattendingschoolreasontype_enum}" itemLabel="label"/>
@@ -1382,7 +1382,7 @@
                         widgetType: 'dijit.layout.ContentPane'})); 
             </script> 
             <div id="roo_clinicalRecord_diabetesLimitingAttendance">
-                <label for="_diabetesLimitingAttendance_id">Diabetes Limiting Attendance:</label>
+                <label for="_diabetesLimitingAttendance_id"><spring:message code="record.limitingAttendance"/></label>
                 <form:select cssStyle="width:250px" id="_diabetesLimitingAttendance_id" path="diabetesLimitingAttendance">
 					<form:option value=""></form:option>
                 	<form:options items="${yesnotype_enum}" itemLabel="label"/>
@@ -1398,7 +1398,7 @@
                         widgetType: 'dijit.layout.ContentPane'})); 
             </script> 
             <div id="roo_clinicalRecord_appropriateGradeForAge">
-                <label for="_appropriateGradeForAge_id">Appropriate Grade For Age:</label>
+                <label for="_appropriateGradeForAge_id"><spring:message code="record.appropriateGrade"/></label>
                 <form:select cssStyle="width:250px" id="_appropriateGradeForAge_id" path="appropriateGradeForAge">
 					<form:option value=""></form:option>
                 	<form:options items="${yesnotype_enum}" itemLabel="label"/>
@@ -1414,7 +1414,7 @@
                         widgetType: 'dijit.layout.ContentPane'})); 
             </script> 
             <div id="roo_clinicalRecord_diabetesCopingAbilities">
-                <label for="_diabetesCopingAbilities_id">Diabetes Coping Abilities:</label>
+                <label for="_diabetesCopingAbilities_id"><spring:message code="record.copingAbilities"/></label>
                 <form:select cssStyle="width:250px" id="_diabetesCopingAbilities_id" path="diabetesCopingAbilities">
 					<form:option value=""></form:option>
                 	<form:options items="${diabetescopingtype_enum}" itemLabel="label"/>
@@ -1426,7 +1426,7 @@
             </div>
             <br/>
                 <div id="roo_clinicalRecord_literate">
-                <label for="_literate_id">Literate:</label>
+                <label for="_literate_id"><spring:message code="record.literate"/></label>
                 <form:select cssStyle="width:250px" id="_literate_id" path="literate">
 					<form:option value=""></form:option>
                 	<form:options items="${yesnotype_enum}" itemLabel="label"/>
@@ -1533,7 +1533,7 @@
             <br/>
             -->
             <div id="roo_clinicalRecord_additionalComment">
-                <label for="_additionalComment_id">Additional Comment about any aspect - optional:</label>
+                <label for="_additionalComment_id"><spring:message code="record.additionalComment"/></label>
                 <form:textarea cssStyle="width:250px" id="_additionalComment_id" path="additionalComment"/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_additionalComment_id', widgetType: 'dijit.form.SimpleTextarea', widgetAttrs: {}})); </script>
                 <br/>
