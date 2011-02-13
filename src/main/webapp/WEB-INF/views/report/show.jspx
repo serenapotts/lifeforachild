@@ -7,17 +7,17 @@
         <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_title_div', widgetType : 'dijit.TitlePane', widgetAttrs : {title: '${title_msg}'}})); </script>
         <c:if test="${not empty report}">
             <div id="roo_report_name">
-                <label for="_name_id">Name:</label>
+                <label for="_name_id"><spring:message code="report.name"/></label>
                 <div class="box" id="_name_id">${report.name}</div>
             </div>
             <br/>
             <div id="roo_report_viewableBy">
-                <label for="_viewableBy_id">Viewable By:</label>
+                <label for="_viewableBy_id"><spring:message code="report.viewable"/></label>
                 <div class="box" id="_viewableBy_id">${report.viewableBy}</div>
             </div>
             <br/>
             <div id="roo_report_reporttype">
-                <label for="_reporttype_id">Reporttype:</label>
+                <label for="_reporttype_id"><spring:message code="report.reportType"/></label>
                 <div class="box" id="_reporttype_id">${report.reporttype}</div>
             </div>
             <br/>

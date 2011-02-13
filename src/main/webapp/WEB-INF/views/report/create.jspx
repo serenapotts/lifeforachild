@@ -18,7 +18,7 @@
         <form:form action="${form_url}" method="POST" modelAttribute="report">
             <form:errors cssClass="errors" delimiter="&lt;p/&gt;"/>
             <div id="roo_report_name">
-                <label for="_name_id">Name:</label>
+                <label for="_name_id"><spring:message code="report.name"/></label>
                 <form:input cssStyle="width:250px" id="_name_id" maxlength="30" path="name" size="0"/>
                 <br/>
                 <form:errors cssClass="errors" id="_name_error_id" path="name"/>
@@ -30,7 +30,7 @@
             <br/>
             <div id="roo_report_viewableBy">
                 <c:if test="${not empty users}">
-                    <label for="_viewableBy_id">Viewable By:</label>
+                    <label for="_viewableBy_id"><spring:message code="report.viewable"/></label>
                     <form:select cssStyle="width:250px" id="_viewableBy_id" path="viewableBy">
                     	<form:option value="0">All</form:option>
                         <form:options itemValue="id" items="${users}"/>
@@ -40,7 +40,7 @@
             </div>
             <br/>
             <div id="roo_report_reporttype">
-                <label for="_reporttype_id">Report Type:</label>                
+                <label for="_reporttype_id"><spring:message code="report.reportType"/></label>                
                 <form:select cssStyle="width:250px" id="_reporttype_id"  path="reporttype" >
                 	<form:option value=""></form:option>
                 	<form:options items="${reporttype_enum}" itemLabel="label"/>
@@ -141,7 +141,7 @@
             <form:hidden id="_toDate" path="toDate"/>
             <form:hidden id="_showoptiontype" path="showoptiontype"/>
             <div id="roo_report_recordNumber">
-                <label for="_recordNumber_id">Local Medical Record Number:</label>
+                <label for="_recordNumber_id"><spring:message code="report.recordNumber"/></label>
                 <form:input cssStyle="width:250px" id="_recordNumber_id" maxlength="30" path="recordNumber" size="0"/>
                 <br/>
                 <form:errors cssClass="errors" id="_recordNumber_error_id" path="recordNumber"/>
@@ -165,7 +165,7 @@
             <br/>-->
             <div id="roo_report_country">
                 <c:if test="${not empty countrys}">
-                    <label for="_country_id">Country:</label>
+                    <label for="_country_id"><spring:message code="report.country"/></label>
                     <form:select cssStyle="width:250px" id="_country_id" path="country" >
                         <form:options itemValue="id" items="${countrys}"/>
                     </form:select>
@@ -181,7 +181,7 @@
             </div>
             <br/>
             <div id="roo_report_centre">
-	            <label for="_centre_id">Centre:</label>
+	            <label for="_centre_id"><spring:message code="report.centre"/></label>
 	            <form:select cssStyle="width:250px" id="_centre_id" path="centre">
 	                <form:options itemValue="id" items="${diabetescentres}"/>
 	            </form:select>
@@ -189,7 +189,7 @@
             </div>
             <br/>            
             <div id="roo_report_childfields" style="display:none">
-                <label for="_childfields">Child Fields:</label>
+                <label for="_childfields"><spring:message code="report.childFields"/></label>
                 <form:select cssStyle="width:250px" id="_childfields" items="${childfields_enum}" path="childfields" size="4" multiple="true" itemLabel="label"/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_childfields', widgetType: 'dijit.form.MultiSelect', widgetAttrs : {hasDownArrow : true}})); </script>
                 <br/>
@@ -202,7 +202,7 @@
                         widgetType: 'dijit.layout.ContentPane'})); 
             </script>
             <div id="roo_report_clinicalrecordfields" style="display:none">
-                <label for="_clinicalrecordfields">Clinical Record Fields:</label>
+                <label for="_clinicalrecordfields"><spring:message code="report.clinicalRecordField"/></label>
                 <form:select cssStyle="width:250px" id="_clinicalrecordfields" items="${clinicalrecordfields_enum}" path="clinicalrecordfields" size="4" multiple="true" itemLabel="label"/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_clinicalrecordfields', widgetType: 'dijit.form.MultiSelect', widgetAttrs : {hasDownArrow : true}})); </script>
                 <br/>

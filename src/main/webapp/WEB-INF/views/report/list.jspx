@@ -10,9 +10,9 @@
             <table width="500px">
                 <thead>
                     <tr>
-                        <th>Id</th>
-                        <th>Name</th>
-                        <th>Viewable By</th>
+                        <th><spring:message code="report.list.id"/></th>
+                        <th><spring:message code="report.list.name"/></th>
+                        <th><spring:message code="report.list.viewableBy"/></th>
                         <th/>
                         <th/>
                         <th/>
