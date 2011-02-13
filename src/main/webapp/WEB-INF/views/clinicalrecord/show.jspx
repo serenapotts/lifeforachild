@@ -424,7 +424,7 @@
 				</script>	
 				<div id="eyesFeet">             
 		            <div id="roo_clinicalRecord_eyesExaminedInLastYear">
-		                <label  class="record" for="_eyesExaminedInLastYear_id">Eyes Examined In Last Year:</label>
+		                <label  class="record" for="_eyesExaminedInLastYear_id"><spring:message code="record.eyesExaminedInLastYear"/></label>
 		                <div class="box" id="_eyesExaminedInLastYear_id">
 		                    <c:out value="${clinicalRecord.eyesExaminedInLastYear}"/>
 		                </div>
@@ -432,7 +432,7 @@
 		            <br/>
 		            <c:if test="${clinicalRecord.eyesExaminedInLastYear == 'YES'}">
 			            <div id="roo_clinicalRecord_cateract">
-			                <label  class="record" for="_cateract_id">Cataract:</label>
+			                <label  class="record" for="_cateract_id"><spring:message code="record.cataract"/></label>
 			                <div class="box" id="_cateract_id">
 			                    <c:out value="${clinicalRecord.cateract}"/>
 			                </div>
@@ -442,7 +442,7 @@
 			            </div>
 			            <br/>
 			            <div id="roo_clinicalRecord_visualAcuityRight">
-			                <label  class="record" for="_visualAcuityRight_id">Visual Acuity Right:</label>
+			                <label  class="record" for="_visualAcuityRight_id"><spring:message code="record.VisualRight"/></label>
 			                <div class="box" id="_visualAcuityRight_id">
 			                    <c:out value="${clinicalRecord.visualAcuityRight}"/>
 			                </div>
@@ -452,7 +452,7 @@
 			            </div>
 			            <br/>
 			            <div id="roo_clinicalRecord_visualAcuityLeft">
-			                <label  class="record" for="_visualAcuityLeft_id">Visual Acuity Left:</label>
+			                <label  class="record" for="_visualAcuityLeft_id"><spring:message code="record.VisualLeft"/></label>
 			                <div class="box" id="_visualAcuityLeft_id">
 			                    <c:out value="${clinicalRecord.visualAcuityLeft}"/>
 			                </div>
@@ -470,7 +470,7 @@
 			            <br/>			            
 		            </c:if>
 		            <div id="roo_clinicalRecord_feetExaminedInLastYear">
-		                <label  class="record" for="_feetExaminedInLastYear_id">Feet Examined In Last Year:</label>
+		                <label  class="record" for="_feetExaminedInLastYear_id"><spring:message code="record.feetExaminedInLastYear"/></label>
 		                <div class="box" id="_feetExaminedInLastYear_id">
 		                    <c:out value="${clinicalRecord.feetExaminedInLastYear}"/>
 		                </div>		                
@@ -478,7 +478,7 @@
 		            <br/>
 		            <c:if test="${clinicalRecord.feetExaminedInLastYear == 'YES'}">
 			            <div id="roo_clinicalRecord_monofilamentTested">
-			                <label  class="record" for="_monofilamentTested_id">Monofilament Tested:</label>
+			                <label  class="record" for="_monofilamentTested_id"><spring:message code="record.monoTested"/></label>
 			                <div class="box" id="_monofilamentTested_id">
 			                    <c:out value="${clinicalRecord.monofilamentTested}"/>
 			                </div>
@@ -489,7 +489,7 @@
 			            <br/>
 			            <c:if test="${clinicalRecord.monofilamentTested == 'YES'}">
 				            <div id="roo_clinicalRecord_monofilamentAbnormal">
-				                <label  class="record" for="_monofilamentAbnormal_id">Monofilament Abnormal:</label>
+				                <label  class="record" for="_monofilamentAbnormal_id"><spring:message code="record.monoAbnormal"/></label>
 				                <div class="box" id="_monofilamentAbnormal_id">
 				                    <c:out value="${clinicalRecord.monofilamentAbnormal}"/>
 				                </div>
@@ -500,7 +500,7 @@
 				            <br/>
 			            </c:if>
 			            <div id="roo_clinicalRecord_tuningForkTested">
-			                <label  class="record" for="_tuningForkTested_id">Tuning Fork Tested:</label>
+			                <label  class="record" for="_tuningForkTested_id"><spring:message code="record.tuningForkTested"/></label>
 			                <div class="box" id="_tuningForkTested_id">
 			                    <c:out value="${clinicalRecord.tuningForkTested}"/>
 			                </div>
@@ -511,7 +511,7 @@
 			            <br/>
 			            <c:if test="${clinicalRecord.tuningForkTested == 'YES'}">
 				            <div id="roo_clinicalRecord_tuningForkAbnormal">
-				                <label  class="record" for="_tuningForkAbnormal_id">Tuning Fork Abnormal:</label>
+				                <label  class="record" for="_tuningForkAbnormal_id"><spring:message code="record.tuningForkAbnormal"/></label>
 				                <div class="box" id="_tuningForkAbnormal_id">
 				                    <c:out value="${clinicalRecord.tuningForkAbnormal}"/>
 				                </div>

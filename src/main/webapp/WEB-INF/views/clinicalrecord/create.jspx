@@ -735,7 +735,7 @@
 		</script>	
 		<div id="eyesFeet">            
             <div id="roo_clinicalRecord_eyesExaminedInLastYear">
-                <label for="_eyesExaminedInLastYear_id">Eyes Examined In Last Year:</label>
+                <label for="_eyesExaminedInLastYear_id"><spring:message code="record.eyesExaminedInLastYear"/></label>
                 <form:select cssStyle="width:250px" id="_eyesExaminedInLastYear_id" path="eyesExaminedInLastYear">
 					<form:option value=""></form:option>
                 	<form:options items="${yesnotype_enum}" itemLabel="label"/>
@@ -755,7 +755,7 @@
             </div>
             <br/>
             <div id="roo_clinicalRecord_cateract">
-                <label for="_cateract_id">Cataract:</label>
+                <label for="_cateract_id"><spring:message code="record.cataract"/></label>
                 <form:select cssStyle="width:250px" id="_cateract_id" path="cateract">
 					<form:option value=""></form:option>
                 	<form:options items="${yesnounkowntype_enum}" itemLabel="label"/>
@@ -771,7 +771,7 @@
                         widgetType: 'dijit.layout.ContentPane'})); 
             </script>             
             <div id="roo_clinicalRecord_visualAcuityRight">
-                <label for="_visualAcuityRight_id">Visual Acuity Right:</label>
+                <label for="_visualAcuityRight_id"><spring:message code="record.VisualRight"/></label>
                 <form:input cssStyle="width:250px" id="_visualAcuityRight_id" maxlength="20" path="visualAcuityRight" size="0"/>
                 <br/>
                 <form:errors cssClass="errors" id="_visualAcuityRight_error_id" path="visualAcuityRight"/>
@@ -787,7 +787,7 @@
                         widgetType: 'dijit.layout.ContentPane'})); 
             </script>             
             <div id="roo_clinicalRecord_visualAcuityLeft">
-                <label for="_visualAcuityLeft_id">Visual Acuity Left:</label>
+                <label for="_visualAcuityLeft_id"><spring:message code="record.VisualLeft"/></label>
                 <form:input cssStyle="width:250px" id="_visualAcuityLeft_id" maxlength="20" path="visualAcuityLeft" size="0"/>
                 <br/>
                 <form:errors cssClass="errors" id="_visualAcuityLeft_error_id" path="visualAcuityLeft"/>
@@ -816,7 +816,7 @@
                         widgetType: 'dijit.layout.ContentPane'})); 
             </script>
             <div id="roo_clinicalRecord_feetExaminedInLastYear">
-                <label for="_feetExaminedInLastYear_id">Feet Examined In Last Year:</label>
+                <label for="_feetExaminedInLastYear_id"><spring:message code="record.feetExaminedInLastYear"/></label>
                 <form:select cssStyle="width:250px" id="_feetExaminedInLastYear_id" path="feetExaminedInLastYear">
 					<form:option value=""></form:option>
                 	<form:options items="${yesnotype_enum}" itemLabel="label"/>
@@ -836,7 +836,7 @@
             </div>
             <br/>
             <div id="roo_clinicalRecord_monofilamentTested">
-                <label for="_monofilamentTested_id">Monofilament Tested:</label>
+                <label for="_monofilamentTested_id"><spring:message code="record.monoTested"/></label>
                 <form:select cssStyle="width:250px" id="_monofilamentTested_id" path="monofilamentTested">
 					<form:option value=""></form:option>
                 	<form:options items="${yesnotype_enum}" itemLabel="label"/>
@@ -860,7 +860,7 @@
                         widgetType: 'dijit.layout.ContentPane'})); 
             </script>              
             <div id="roo_clinicalRecord_monofilamentAbnormal">
-                <label for="_monofilamentAbnormal_id">Monofilament Abnormal:</label>
+                <label for="_monofilamentAbnormal_id"><spring:message code="record.monoAbnormal"/></label>
                 <form:select cssStyle="width:250px" id="_monofilamentAbnormal_id" path="monofilamentAbnormal">
 					<form:option value=""></form:option>
                 	<form:options items="${yesnotype_enum}" itemLabel="label"/>
@@ -876,7 +876,7 @@
                         widgetType: 'dijit.layout.ContentPane'})); 
             </script>              
             <div id="roo_clinicalRecord_tuningForkTested">
-                <label for="_tuningForkTested_id">Tuning Fork Tested:</label>
+                <label for="_tuningForkTested_id"><spring:message code="record.tuningForkTested"/></label>
                 <form:select cssStyle="width:250px" id="_tuningForkTested_id" path="tuningForkTested">
 					<form:option value=""></form:option>
                 	<form:options items="${yesnotype_enum}" itemLabel="label"/>
@@ -900,7 +900,7 @@
                         widgetType: 'dijit.layout.ContentPane'})); 
             </script>            
             <div id="roo_clinicalRecord_tuningForkAbnormal">
-                <label for="_tuningForkAbnormal_id">Tuning Fork Abnormal:</label>
+                <label for="_tuningForkAbnormal_id"><spring:message code="record.tuningForkAbnormal"/></label>
                 <form:select cssStyle="width:250px" id="_tuningForkAbnormal_id" path="tuningForkAbnormal">
 					<form:option value=""></form:option>
                 	<form:options items="${yesnotype_enum}" itemLabel="label"/>
