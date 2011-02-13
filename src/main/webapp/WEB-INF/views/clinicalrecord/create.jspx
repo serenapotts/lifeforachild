@@ -988,7 +988,7 @@
                         widgetType: 'dijit.layout.ContentPane'})); 
             </script>             
             <div id="roo_clinicalRecord_hbA1cMethod">
-                <label for="_hbA1cMethod_id">HbA1c Method:</label>
+                <label for="_hbA1cMethod_id"><spring:message code="record.hbA1cMethod"/></label>
                 <form:select cssStyle="width:250px" id="_hbA1cMethod_id" path="hbA1cMethod">
 					<form:option value=""></form:option>
                 	<form:options items="${hba1cmethodtype_enum}" itemLabel="label"/>
@@ -1013,7 +1013,7 @@
                         widgetType: 'dijit.layout.ContentPane'})); 
             </script> 
             <div id="roo_clinicalRecord_hbA1cMethodOther">
-                <label for="_hbA1cMethodOther_id">HbA1c Method Other:</label>
+                <label for="_hbA1cMethodOther_id"><spring:message code="record.hbA1cMethodOther"/></label>
                 <form:input cssStyle="width:250px" id="_hbA1cMethodOther_id" maxlength="30" path="hbA1cMethodOther" size="0"/>
                 <br/>
                 <form:errors cssClass="errors" id="_hbA1cMethodOther_error_id" path="hbA1cMethodOther"/>
@@ -1049,7 +1049,7 @@
             </div>
             <br/>
             <div id="roo_clinicalRecord_microalbuminuriaValue">
-                <label for="_microalbuminuriaValue_id">Microalbuminuria Value:</label>
+                <label for="_microalbuminuriaValue_id"><spring:message code="record.microalbuminuriaValue"/></label>
                 <form:input cssStyle="width:250px" id="_microalbuminuriaValue_id" maxlength="30" path="microalbuminuriaValue" size="0"/>
                 <br/>
                 <form:errors cssClass="errors" id="_microalbuminuriaValue_error_id" path="microalbuminuriaValue"/>
@@ -1066,7 +1066,7 @@
                         widgetType: 'dijit.layout.ContentPane'})); 
             </script>             
             <div id="roo_clinicalRecord_microalbuminuriaUnitOfMeasure">
-                <label for="_microalbuminuriaUnitOfMeasure_id">Microalbuminuria Unit Of Measure:</label>
+                <label for="_microalbuminuriaUnitOfMeasure_id"><spring:message code="record.microalbuminuriaUnits"/></label>
                 <form:select cssStyle="width:250px" id="_microalbuminuriaUnitOfMeasure_id" path="microalbuminuriaUnitOfMeasure">
                     <form:option value=""></form:option>
                 	<form:options items="${microalbuminuriaunitstype_enum}" itemLabel="label"/>
@@ -1083,7 +1083,7 @@
                         widgetType: 'dijit.layout.ContentPane'})); 
             </script>
             <div id="roo_clinicalRecord_proteinuria_dipstick_other">
-                <label for="_proteinuria_dipstick_other_id">Proteinuria - dipstick or other:</label>
+                <label for="_proteinuria_dipstick_other_id"><spring:message code="record.proteinuria"/></label>
                 <form:input cssStyle="width:250px" id="_Proteinuria_dipstick_other_id" maxlength="30" path="proteinuria_dipstick_other" size="0"/>
                 <br/>
                 <form:errors cssClass="errors" id="_Proteinuria_dipstick_other_error_id" path="proteinuria_dipstick_other"/>
@@ -1114,7 +1114,7 @@
             </div>
             <br/>            
             <div id="roo_clinicalRecord_creatinineValue">
-                <label for="_creatinineValue_id">Creatinine Value:</label>
+                <label for="_creatinineValue_id"><spring:message code="record.creatinineValue"/></label>
                 <form:input cssStyle="width:250px" id="_creatinineValue_id" maxlength="30" path="creatinineValue" size="0"/>
                 <br/>
                 <form:errors cssClass="errors" id="_creatinineValue_error_id" path="creatinineValue"/>
@@ -1130,7 +1130,7 @@
                         widgetType: 'dijit.layout.ContentPane'})); 
             </script>
             <div id="roo_clinicalRecord_creatinineUnits">
-                <label for="_creatinineUnits_id">Creatinine Units:</label>
+                <label for="_creatinineUnits_id"><spring:message code="record.creatinineUnits"/></label>
                 <form:select cssStyle="width:250px" id="_creatinineUnits_id" path="creatinineUnits">
 					<form:option value=""></form:option>
                 	<form:options items="${creatineunitstype_enum}" itemLabel="label"/>
@@ -1167,7 +1167,7 @@
             </div>
             <br/>             
             <div id="roo_clinicalRecord_totalCholesterolValue">
-                <label for="_totalCholesterolValue_id">Cholesterol Value:</label>
+                <label for="_totalCholesterolValue_id"><spring:message code="record.cholesterolValue"/></label>
                 <form:input cssStyle="width:250px" id="_totalCholesterolValue_id" maxlength="30" path="totalCholesterolValue" size="0"/>
                 <br/>
                 <form:errors cssClass="errors" id="_totalCholesterolValue_error_id" path="totalCholesterolValue"/>
@@ -1183,7 +1183,7 @@
                         widgetType: 'dijit.layout.ContentPane'})); 
             </script>
             <div id="roo_clinicalRecord_cholesterolUnits">
-                <label for="_cholesterolUnits_id">Cholesterol Units:</label>
+                <label for="_cholesterolUnits_id"><spring:message code="record.cholesterolUnits"/></label>
                 <form:select cssStyle="width:250px" id="_cholesterolUnits_id" path="cholesterolUnits">
 					<form:option value=""></form:option>
                 	<form:options items="${mg_or_mmol_type_enum}" itemLabel="label"/>
@@ -1200,7 +1200,7 @@
                         widgetType: 'dijit.layout.ContentPane'})); 
             </script>
             <div id="roo_clinicalRecord_fasted">
-                <label for="_fasted_id">Fasted:</label>
+                <label for="_fasted_id"><spring:message code="record.fasted"/></label>
                 <form:select cssStyle="width:250px" id="_fasted_id" path="fasted">
 					<form:option value=""></form:option>
                 	<form:options items="${yesnounkowntype_enum}" itemLabel="label"/>
@@ -1237,7 +1237,7 @@
             </div>
             <br/>             
             <div id="roo_clinicalRecord_hdlCholesterolValue">
-                <label for="_hdlCholesterolValue_id">HDL Cholesterol Value:</label>
+                <label for="_hdlCholesterolValue_id"><spring:message code="record.hdlCholesterolValue"/></label>
                 <form:input cssStyle="width:250px" id="_hdlCholesterolValue_id" maxlength="30" path="hdlCholesterolValue" size="0"/>
                 <br/>
                 <form:errors cssClass="errors" id="_hdlCholesterolValue_error_id" path="hdlCholesterolValue"/>
@@ -1253,7 +1253,7 @@
                         widgetType: 'dijit.layout.ContentPane'})); 
             </script>
             <div id="roo_clinicalRecord_hdlUnits">
-                <label for="_hdlUnits_id">HDL Cholesterol Units:</label>
+                <label for="_hdlUnits_id"><spring:message code="record.hdlCholesterolUnits"/></label>
                 <form:select cssStyle="width:250px" id="_hdlUnits_id" path="hdlUnits">
 					<form:option value=""></form:option>
                 	<form:options items="${mg_or_mmol_type_enum}" itemLabel="label"/>
@@ -1290,7 +1290,7 @@
             </div>
             <br/>             
             <div id="roo_clinicalRecord_triglyceridesValue">
-                <label for="_triglyceridesValue_id">Triglycerides Value:</label>
+                <label for="_triglyceridesValue_id"><spring:message code="record.triglyceridesValue"/></label>
                 <form:input cssStyle="width:250px" id="_triglyceridesValue_id" maxlength="30" path="triglyceridesValue" size="0"/>
                 <br/>
                 <form:errors cssClass="errors" id="_triglyceridesValue_error_id" path="triglyceridesValue"/>
@@ -1306,7 +1306,7 @@
                         widgetType: 'dijit.layout.ContentPane'})); 
             </script>
             <div id="roo_clinicalRecord_triglyceridesUnits">
-                <label for="_triglyceridesUnits_id">Triglycerides Units:</label>
+                <label for="_triglyceridesUnits_id"><spring:message code="record.triglyceridesUnits"/></label>
                 <form:select cssStyle="width:250px" id="_triglyceridesUnits_id" path="triglyceridesUnits">
 					<form:option value=""></form:option>
                 	<form:options items="${mg_or_mmol_type_enum}" itemLabel="label"/>

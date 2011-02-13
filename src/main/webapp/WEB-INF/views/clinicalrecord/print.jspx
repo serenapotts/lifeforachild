@@ -440,7 +440,7 @@
 	            </tr>
 	            
 	            <tr id="roo_clinicalRecord_hbA1cMethod">
-	                <td  class="record" for="_hbA1cMethod_id">HbA1c Method:</td>
+	                <td  class="record" for="_hbA1cMethod_id"><spring:message code="record.hbA1cMethod"/></td>
 	                <td class="box" id="_hbA1cMethod_id">
 	                    <c:out value="${clinicalRecord.hbA1cMethod}"/>
 	                </td>
@@ -448,7 +448,7 @@
 	            
 	            <c:if test="${clinicalRecord.hbA1cMethod == 'OTHER'}">
 		            <tr id="roo_clinicalRecord_hbA1cMethodOther">
-		                <td  class="record" for="_hbA1cMethodOther_id">HbA1c Method Other:</td>
+		                <td  class="record" for="_hbA1cMethodOther_id"><spring:message code="record.hbA1cMethodOther"/></td>
 		                <td class="box" id="_hbA1cMethodOther_id">
 		                    <c:out value="${clinicalRecord.hbA1cMethodOther}"/>
 		                </td>
@@ -464,14 +464,14 @@
             		            
             <c:if test="${clinicalRecord.microalbuminuriaInLast12Months == 'YES'}">
 	            <tr id="roo_clinicalRecord_microalbuminuriaValue">
-	                <td  class="record" for="_microalbuminuriaValue_id">Microalbuminuria Value:</td>
+	                <td  class="record" for="_microalbuminuriaValue_id"><spring:message code="record.microalbuminuriaValue"/></td>
 	                <td class="box" id="_microalbuminuriaValue_id">
 	                    <c:out value="${clinicalRecord.microalbuminuriaValue}"/>
 	                </td>
 	            </tr>
 	            
 	            <tr id="roo_clinicalRecord_microalbuminuriaUnitOfMeasure">
-	                <td  class="record" for="_microalbuminuriaUnitOfMeasure_id">Microalbuminuria Unit Of Measure:</td>
+	                <td  class="record" for="_microalbuminuriaUnitOfMeasure_id"><spring:message code="record.microalbuminuriaUnits"/></td>
 	                <td class="box" id="_microalbuminuriaUnitOfMeasure_id">
 	                    <c:out value="${clinicalRecord.microalbuminuriaUnitOfMeasure}"/>
 	                </td>
@@ -479,7 +479,7 @@
 	            
             </c:if>
             <tr id="roo_clinicalRecord_proteinuria_dipstick_other">
-                <td  class="record" for="_proteinuria_dipstick_other_id">Proteinuria - dipstick or other:</td>
+                <td  class="record" for="_proteinuria_dipstick_other_id"><spring:message code="record.proteinuria"/></td>
                 <td class="box" id="_proteinuria_dipstick_other_id">
                     <c:out value="${clinicalRecord.proteinuria_dipstick_other}"/>
                 </td>
@@ -494,14 +494,14 @@
             		    
             <c:if test="${clinicalRecord.creatinineInLast12Months == 'YES'}">        
 	            <tr id="roo_clinicalRecord_creatinineValue">
-	                <td  class="record" for="_creatinineValue_id">Creatinine Value:</td>
+	                <td  class="record" for="_creatinineValue_id"><spring:message code="record.creatinineValue"/></td>
 	                <td class="box" id="_creatinineValue_id">
 	                    <c:out value="${clinicalRecord.creatinineValue}"/>
 	                </td>
 	            </tr>
 	            
 	            <tr id="roo_clinicalRecord_creatinineUnits">
-	                <td  class="record" for="_creatinineUnits_id">Creatinine Units:</td>
+	                <td  class="record" for="_creatinineUnits_id"><spring:message code="record.creatinineUnits"/></td>
 	                <td class="box" id="_creatinineUnits_id">
 	                    <c:out value="${clinicalRecord.creatinineUnits}"/>
 	                </td>
@@ -517,21 +517,21 @@
             		         
             <c:if test="${clinicalRecord.totalCholesterolInLast12Months == 'YES'}">   
 	            <tr id="roo_clinicalRecord_totalCholesterolValue">
-	                <td  class="record" for="_totalCholesterolValue_id">Total Cholesterol Value:</td>
+	                <td  class="record" for="_totalCholesterolValue_id"><spring:message code="record.cholesterolValue"/></td>
 	                <td class="box" id="_totalCholesterolValue_id">
 	                    <c:out value="${clinicalRecord.totalCholesterolValue}"/>
 	                </td>
 	            </tr>
 	            
 	            <tr id="roo_clinicalRecord_cholesterolUnits">
-	                <td  class="record" for="_cholesterolUnits_id">Cholesterol Units:</td>
+	                <td  class="record" for="_cholesterolUnits_id"><spring:message code="record.cholesterolUnits"/></td>
 	                <td class="box" id="_cholesterolUnits_id">
 	                    <c:out value="${clinicalRecord.cholesterolUnits}"/>
 	                </td>
 	            </tr>
 	            
 	            <tr id="roo_clinicalRecord_fasted">
-	                <td  class="record" for="_fasted_id">Fasted:</td>
+	                <td  class="record" for="_fasted_id"><spring:message code="record.fasted"/></td>
 	                <td class="box" id="_fasted_id">
 	                    <c:out value="${clinicalRecord.fasted}"/>
 	                </td>
@@ -547,14 +547,14 @@
             		          
             <c:if test="${clinicalRecord.hdlCholesterolInLast12Months == 'YES'}">             
 	            <tr id="roo_clinicalRecord_hdlCholesterolValue">
-	                <td  class="record" for="_hdlCholesterolValue_id">HDL Cholesterol Value:</td>
+	                <td  class="record" for="_hdlCholesterolValue_id"><spring:message code="record.hdlCholesterolValue"/></td>
 	                <td class="box" id="_hdlCholesterolValue_id">
 	                    <c:out value="${clinicalRecord.hdlCholesterolValue}"/>
 	                </td>
 	            </tr>
 	            
 	            <tr id="roo_clinicalRecord_hdlUnits">
-	                <td  class="record" for="_hdlUnits_id">HDL Units:</td>
+	                <td  class="record" for="_hdlUnits_id"><spring:message code="record.hdlCholesterolUnits"/></td>
 	                <td class="box" id="_hdlUnits_id">
 	                    <c:out value="${clinicalRecord.hdlUnits}"/>
 	                </td>
@@ -570,14 +570,14 @@
             		
             <c:if test="${clinicalRecord.triglyceridesInLast12Months == 'YES'}">            
 	            <tr id="roo_clinicalRecord_triglyceridesValue">
-	                <td  class="record" for="_triglyceridesValue_id">Triglycerides Value:</td>
+	                <td  class="record" for="_triglyceridesValue_id"><spring:message code="record.triglyceridesValue"/></td>
 	                <td class="box" id="_triglyceridesValue_id">
 	                    <c:out value="${clinicalRecord.triglyceridesValue}"/>
 	                </td>
 	            </tr>
 	            
 	            <tr id="roo_clinicalRecord_triglyceridesUnits">
-	                <td  class="record" for="_triglyceridesUnits_id">Triglycerides Units:</td>
+	                <td  class="record" for="_triglyceridesUnits_id"><spring:message code="record.triglyceridesUnits"/></td>
 	                <td class="box" id="_triglyceridesUnits_id">
 	                    <c:out value="${clinicalRecord.triglyceridesUnits}"/>
 	                </td>
