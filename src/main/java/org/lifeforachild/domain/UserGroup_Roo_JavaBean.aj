@@ -14,6 +14,14 @@ privileged aspect UserGroup_Roo_JavaBean {
         this.groupName = groupName;        
     }    
     
+    public String UserGroup.getGroupCode() {    
+        return this.groupCode;        
+    }    
+    
+    public void UserGroup.setGroupCode(String groupCode) {    
+        this.groupCode = groupCode;        
+    }   
+    
     public Set<Permissions> UserGroup.getPermissions() {    
         return this.permissions;        
     }    

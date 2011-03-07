@@ -8,6 +8,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import com.Ostermiller.util.ExcelCSVParser;
+
 public class CSVtoProperties {
 
 	public static void main(String[] args)
@@ -19,14 +21,14 @@ public class CSVtoProperties {
 			SortedProperties properties_fr = new SortedProperties();
 			SortedProperties properties_ru = new SortedProperties();
 			
-			File f = new File("C:/charity/i18n.csv");
+			File f = new File("C:/charity/i18n_reviewed.txt");
 			FileInputStream fis = new FileInputStream(f);
 			DataInputStream in = new DataInputStream(fis);
-	        BufferedReader br = new BufferedReader(new InputStreamReader(in));
+	        BufferedReader br = new BufferedReader(new InputStreamReader(fis));
 		    String strLine;
 		    //Read File Line By Line
 		    while ((strLine = br.readLine()) != null)   {
-		      String[] values = strLine.split(",");
+		      String[] values = strLine.split("\t");
 		      String propName = values[0];
 		      if (!propName.equals("Key"))
 		      {

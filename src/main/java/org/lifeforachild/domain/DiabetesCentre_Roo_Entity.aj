@@ -114,8 +114,8 @@ privileged aspect DiabetesCentre_Roo_Entity {
         	if (userGroup == null)
         		// TODO this will cause null pointer
         		return null;
-        	else if (userGroup.getGroupName().equals(UserGroups.PROGRAM_MANAGER.getName()) ||
-        			userGroup.getGroupName().equals(UserGroups.PMS_ASSISTANTS.getName()))
+        	else if (userGroup.getGroupCode().equals(UserGroups.PROGRAM_MANAGER.name()) ||
+        			userGroup.getGroupCode().equals(UserGroups.PMS_ASSISTANTS.name()))
         		// they can see all countries so allow blank
         		centres.add(0, blankCentre);    	
     	}

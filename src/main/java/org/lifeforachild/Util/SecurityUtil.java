@@ -71,7 +71,7 @@ public class SecurityUtil {
 		if (user == null)
 			return null;
 		UserGroup ug = new UserGroup();
-		ug.setGroupName(user.getUserGroup());
+		ug.setGroupCode(user.getUserGroup());
 		return ug;
 	}
 	

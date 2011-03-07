@@ -22,7 +22,7 @@ public class CustomUserDetailsService implements UserDetailsService{
 
 	private static String USER_BY_USERNAME_QUERY = "select * from User where username = ?";
 	private static String GROUP_AUTHORITIES_BY_USERNAME_QUERY = "SELECT u.username, g.group_name, p.name from user u inner join user_group g on (g.id = u.user_group) inner join user_group_permissions gp on (gp.user_group = u.user_group) inner join permissions p on (p.id = gp.permissions) where u.username=?";
-	private static String USER_GROUP_BY_USERNAME_QUERY = "SELECT g.group_name from user u inner join user_group g on (g.id = u.user_group) where u.username=?";
+	private static String USER_GROUP_BY_USERNAME_QUERY = "SELECT g.group_code from user u inner join user_group g on (g.id = u.user_group) where u.username=?";
 	
 	@Override
 	public UserDetails loadUserByUsername(String username)

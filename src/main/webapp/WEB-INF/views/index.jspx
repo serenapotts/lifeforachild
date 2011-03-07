@@ -110,7 +110,8 @@
 	        <br/>
 	        <div class="submit" id="roo_search_submit">
 	            <script type="text/javascript">Spring.addDecoration(new Spring.ValidateAllDecoration({elementId:'proceed', event:'onclick'}));</script>
-	            <input id="proceed" type="submit" value="Search"/>
+	            <spring:message code="label.search" var="search_label"/>
+	            <input id="proceed" type="submit" value="${search_label}"/>
 	        </div>       
 		</form:form>
 	</div>

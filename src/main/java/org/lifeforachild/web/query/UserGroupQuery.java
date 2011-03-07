@@ -18,10 +18,10 @@ public class UserGroupQuery extends BaseQuery<UserGroup> {
     public Criteria findByAccessCriteria(EntityManager entityManager) {
     	UserGroup userGroup = SecurityUtil.getInstance().getCurrentUserGroup();
     	Criteria criteria = ((Session)entityManager.getDelegate()).createCriteria(UserGroup.class);
-    	criteria.addOrder(Order.asc("groupName"));
+    	criteria.addOrder(Order.asc("groupCode"));
     	if (userGroup == null)
     		return null;
-    	else if (userGroup.getGroupName().equals(UserGroups.PROGRAM_MANAGER.getName()))
+    	else if (userGroup.getGroupCode().equals(UserGroups.PROGRAM_MANAGER.name()))
     		// they can see all users
     		return criteria;
     	else
@@ -32,7 +32,7 @@ public class UserGroupQuery extends BaseQuery<UserGroup> {
 	    		Disjunction disjunction = Restrictions.disjunction();
 	    		for (int i = 0; i < accessGroups.length; i++)
 	    		{
-	    			disjunction.add(Restrictions.eq("groupName", accessGroups[i]));
+	    			disjunction.add(Restrictions.eq("groupCode", accessGroups[i]));
 	    		}
 	    		criteria.add(disjunction);
 	    		return criteria;

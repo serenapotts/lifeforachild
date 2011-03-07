@@ -4,7 +4,7 @@
     <div id="_title_div">
         <spring:message code="label.usergroup" var="entity_label"/>
         <spring:message arguments="${entity_label}" code="entity.create" var="title_msg"/>
-        <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_title_div', widgetType : 'dijit.TitlePane', widgetAttrs : {title: '${title_msg}'}})); </script>
+        <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_title_div', widgetType : 'dijit.TitlePane', widgetAttrs : {title: "${title_msg}"}})); </script>
         <spring:url value="/usergroup" var="form_url"/>
         <form:form action="${form_url}" method="POST" modelAttribute="userGroup">
             <form:errors cssClass="errors" delimiter="&lt;p/&gt;"/>

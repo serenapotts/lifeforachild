@@ -20,6 +20,9 @@ public class UserGroup {
 
     @NotNull
     String groupName;
+    
+    @NotNull
+    String groupCode;
 
     @ManyToMany(cascade = CascadeType.ALL)
     private Set<Permissions> permissions = new HashSet<Permissions>();

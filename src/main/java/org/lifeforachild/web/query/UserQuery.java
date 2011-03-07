@@ -38,7 +38,7 @@ public class UserQuery extends BaseQuery<User> {
     	if (userGroup == null)
     		// TODO this will cause null pointer
     		return null;
-    	else if (userGroup.getGroupName().equals(UserGroups.PROGRAM_MANAGER.getName()))
+    	else if (userGroup.getGroupCode().equals(UserGroups.PROGRAM_MANAGER.name()))
     		// they can see all users
     		return criteria;
     	else
@@ -49,7 +49,7 @@ public class UserQuery extends BaseQuery<User> {
 	    		Disjunction disjunction = Restrictions.disjunction();
 	    		for (int i = 0; i < accessGroups.length; i++)
 	    		{
-	    			disjunction.add(Restrictions.eq("groupName", accessGroups[i]));
+	    			disjunction.add(Restrictions.eq("groupCode", accessGroups[i]));
 	    		}
 	    		criteria.createCriteria("userGroup").add(disjunction);
 	    		return criteria;

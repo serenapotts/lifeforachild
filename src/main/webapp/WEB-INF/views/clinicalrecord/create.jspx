@@ -1494,6 +1494,7 @@
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_numberKetoacidosisEpisodes_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', regExp: '-?[0-9]*', required : false}})); </script>
             </div>
             <br/>
+            <br/>
              <!--
             <div id="roo_clinicalRecord_reasonKetoacidosisEpisodesNotEntered">
                 <label for="_reasonKetoacidosisEpisodesNotEntered_id">Reason Ketoacidosis Episodes Not Entered:</label>

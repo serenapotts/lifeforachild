@@ -322,11 +322,12 @@
 		            <form:hidden id="_version_id" path="version"/>
 		        </form:form>
 		    </div>		   
+		    <spring:message code="child.tab.info" var="info_tab"/>
 			<script type="text/javascript">
 				Spring.addDecoration(new Spring.ElementDecoration({
 					elementId : "childInfo",
 					widgetType : "dijit.layout.ContentPane",
-					widgetAttrs : { title: "Information" }
+					widgetAttrs : { title: "${info_tab}" }
 					}));
 			</script>
             <div id="visits">
@@ -334,7 +335,8 @@
                     <a href="${create_url}">
                         <spring:url value="/static/images/add.png" var="create_img_url"/>			                                			                                
                         <img alt="${add_message}" src="${create_img_url}" title="${add_message}"/>
-                        <c:out value="Create Visit"/>
+                        <spring:message code="record.create" var="create_label"/>
+                         <c:out value="${create_label}"/>
                     </a>
 		        <c:if test="${not empty child.clinicalRecords}">			            
 	               <table width="500px">		            
@@ -383,8 +385,8 @@
 		                        <span class="new">
 		                            <spring:url value="/clinicalrecord/form/${child.id}" var="create_url"/>
 		                            <a href="${create_url}">
-		                                <spring:url value="/static/images/add.png" var="create_img_url"/>
-		                                <spring:message arguments="${entity_label}" code="global.menu.new" var="add_message"/>
+		                                <spring:url value="/static/images/add.png" var="create_img_url"/>		                                
+		                                <spring:message code="record.create" var="add_message"/>
 		                                <img alt="${add_message}" src="${create_img_url}" title="${add_message}"/>
 		                            </a>
 		                        </span>
@@ -396,11 +398,12 @@
 		            </table>
 		        </c:if>         	       
             </div>
+            <spring:message code="child.tab.visits" var="visits_tab"/>
 			<script type="text/javascript">
 				Spring.addDecoration(new Spring.ElementDecoration({
 					elementId : "visits",
 					widgetType : "dijit.layout.ContentPane",
-					widgetAttrs : { title: "Visits" }
+					widgetAttrs : { title: "${visits_tab}" }
 					}));
 			</script>	
 		</div>
