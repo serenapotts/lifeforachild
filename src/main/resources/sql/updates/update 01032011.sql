@@ -1,3 +1,5 @@
+alter table user_group add group_code varchar(255);
+
 update user_group set group_code ='CENTRE_ADMIN' where group_name='Centre Manager';
 update user_group set group_code ='PMS_ASSISTANTS' where group_name='Assistant to Program Manager';
 update user_group set group_code ='DATA_ENTRY_OPERATORS' where group_name='Data Entry Operators';
