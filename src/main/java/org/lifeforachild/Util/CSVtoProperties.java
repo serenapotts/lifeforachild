@@ -8,8 +8,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-import com.Ostermiller.util.ExcelCSVParser;
-
 public class CSVtoProperties {
 
 	public static void main(String[] args)
