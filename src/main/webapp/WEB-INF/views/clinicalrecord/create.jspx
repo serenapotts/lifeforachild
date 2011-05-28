@@ -363,7 +363,7 @@
                 <label for="_laserRxInLast12Months_id"><spring:message code="record.laserRx"/></label>
                 <form:select cssStyle="width:250px" id="_LaserRxInLast12Months_id" path="LaserRxInLast12Months">
 					<form:option value=""></form:option>
-                	<form:options items="${yesnotype_enum}" itemLabel="label"/>
+                	<form:options items="${yesnounkowntype_enum}" itemLabel="label"/>
                 </form:select>                
                 <br/>
                 <form:errors cssClass="errors" id="_LaserRxInLast12Months_error_id" path="LaserRxInLast12Months"/>
@@ -738,7 +738,7 @@
                 <label for="_eyesExaminedInLastYear_id"><spring:message code="record.eyesExaminedInLastYear"/></label>
                 <form:select cssStyle="width:250px" id="_eyesExaminedInLastYear_id" path="eyesExaminedInLastYear">
 					<form:option value=""></form:option>
-                	<form:options items="${yesnotype_enum}" itemLabel="label"/>
+                	<form:options items="${yesnounkowntype_enum}" itemLabel="label"/>
                 </form:select>                
                 <br/>
                 <form:errors cssClass="errors" id="_eyesExaminedInLastYear_error_id" path="eyesExaminedInLastYear"/>
@@ -819,7 +819,7 @@
                 <label for="_feetExaminedInLastYear_id"><spring:message code="record.feetExaminedInLastYear"/></label>
                 <form:select cssStyle="width:250px" id="_feetExaminedInLastYear_id" path="feetExaminedInLastYear">
 					<form:option value=""></form:option>
-                	<form:options items="${yesnotype_enum}" itemLabel="label"/>
+                	<form:options items="${yesnounkowntype_enum}" itemLabel="label"/>
                 </form:select>                
                 <br/>
                 <form:errors cssClass="errors" id="_feetExaminedInLastYear_error_id" path="feetExaminedInLastYear"/>

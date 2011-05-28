@@ -148,11 +148,11 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.otherTreatments = otherTreatments;        
     }    
     
-    public YesNoType ClinicalRecord.getLaserRxInLast12Months() {    
+    public YesNoUnkownType ClinicalRecord.getLaserRxInLast12Months() {    
         return this.LaserRxInLast12Months;        
     }    
     
-    public void ClinicalRecord.setLaserRxInLast12Months(YesNoType LaserRxInLast12Months) {    
+    public void ClinicalRecord.setLaserRxInLast12Months(YesNoUnkownType LaserRxInLast12Months) {    
         this.LaserRxInLast12Months = LaserRxInLast12Months;        
     }    
     
@@ -252,11 +252,11 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.ifMenarcheAge = ifMenarcheAge;        
     }    
     
-    public YesNoType ClinicalRecord.getEyesExaminedInLastYear() {    
+    public YesNoUnkownType ClinicalRecord.getEyesExaminedInLastYear() {    
         return this.eyesExaminedInLastYear;        
     }    
     
-    public void ClinicalRecord.setEyesExaminedInLastYear(YesNoType eyesExaminedInLastYear) {    
+    public void ClinicalRecord.setEyesExaminedInLastYear(YesNoUnkownType eyesExaminedInLastYear) {    
         this.eyesExaminedInLastYear = eyesExaminedInLastYear;        
     }    
     
@@ -292,11 +292,11 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
         this.eyesComment = eyesComment;        
     }       
     
-    public YesNoType ClinicalRecord.getFeetExaminedInLastYear() {    
+    public YesNoUnkownType ClinicalRecord.getFeetExaminedInLastYear() {    
         return this.feetExaminedInLastYear;        
     }    
     
-    public void ClinicalRecord.setFeetExaminedInLastYear(YesNoType feetExaminedInLastYear) {    
+    public void ClinicalRecord.setFeetExaminedInLastYear(YesNoUnkownType feetExaminedInLastYear) {    
         this.feetExaminedInLastYear = feetExaminedInLastYear;        
     }    
     

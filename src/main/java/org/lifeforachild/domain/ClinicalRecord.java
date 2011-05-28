@@ -111,7 +111,7 @@ public class ClinicalRecord {
 
     @Enumerated
     @NotNull(message = "Laser Rx in last 12 months is required.")
-    private YesNoType LaserRxInLast12Months;
+    private YesNoUnkownType LaserRxInLast12Months;
 
     @Enumerated
     @NotNull(message = "Weight in last 12 months is required.")
@@ -160,7 +160,7 @@ public class ClinicalRecord {
 
     @Enumerated
     @NotNull(message = "Eyes examined is required.")
-    private YesNoType eyesExaminedInLastYear;
+    private YesNoUnkownType eyesExaminedInLastYear;
 
     @Enumerated
     private YesNoUnkownType cateract;
@@ -176,7 +176,7 @@ public class ClinicalRecord {
     
     @Enumerated
     @NotNull(message = "Feet examined is required.")
-    private YesNoType feetExaminedInLastYear;
+    private YesNoUnkownType feetExaminedInLastYear;
 
     @Enumerated
     private YesNoType monofilamentTested;
