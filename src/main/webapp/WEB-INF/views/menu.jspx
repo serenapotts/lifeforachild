@@ -137,14 +137,7 @@
 	            <h2>
 	                <spring:message code="menu.category.web_mvc_jsp_usergroup_category.label"/>
 	            </h2>
-	            <ul>
-	                <li id="web_mvc_jsp_create_usergroup_menu_item">
-	                    <spring:url value="/usergroup/form" var="web_mvc_jsp_create_usergroup_menu_item_url"/>
-	                    <a href="${web_mvc_jsp_create_usergroup_menu_item_url}">
-	                        <spring:message code="label.usergroup" var="label_usergroup"/>
-	                        <spring:message arguments="${label_usergroup}" code="global.menu.new"/>
-	                    </a>
-	                </li>
+	            <ul>	                
 	            <li id="web_mvc_jsp_list_usergroup_menu_item">
 	                    <spring:url value="/usergroup?size=${empty param.size ? 20 : param.size}" var="web_mvc_jsp_list_usergroup_menu_item_url"/>
 	                    <a href="${web_mvc_jsp_list_usergroup_menu_item_url}">

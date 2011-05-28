@@ -36,6 +36,7 @@
             <form:hidden id="_id_id" path="id"/>
             <form:hidden id="_version_id" path="version"/>
             <form:hidden id="_isDeleted_id" path="isDeleted"/>
+            <form:hidden id="_groupCode_id" path="groupCode"/>
         </form:form>
     </div>
 </div>

@@ -3,11 +3,21 @@ package org.lifeforachild.domain;
 import java.lang.String;
 import java.util.Set;
 import org.lifeforachild.domain.Permissions;
+import org.lifeforachild.web.AppContext;
+import org.springframework.context.NoSuchMessageException;
+import org.springframework.context.i18n.LocaleContextHolder;
 
 privileged aspect UserGroup_Roo_JavaBean {
     
-    public String UserGroup.getGroupName() {    
-        return this.groupName;        
+    public String UserGroup.getGroupName() {      	
+    	try
+    	{
+    		return AppContext.getApplicationContext().getMessage(this.groupName, null, LocaleContextHolder.getLocale());
+    	}
+    	catch (NoSuchMessageException e)
+    	{
+    		return this.groupName;
+    	}    	      
     }    
     
     public void UserGroup.setGroupName(String groupName) {    
