@@ -15,7 +15,7 @@
 	                <img alt="${add_message}" src="${excel_image_url}" title="${add_message}" height="16" width="16"/>
 	            </a>
             </div>        
-            <table width="500px">
+            <table width="570px">
                 <thead>
                     <tr>
                         <th><spring:message code="user.list.id"/></th>
