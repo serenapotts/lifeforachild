@@ -14,9 +14,12 @@ import org.lifeforachild.domain.User;
 import org.lifeforachild.domain.UserGroup;
 import org.lifeforachild.web.Report.ReportGenerator;
 import org.lifeforachild.web.Report.UserReportGenerator;
+import org.lifeforachild.web.validation.UserValidator;
 import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,7 +29,8 @@ privileged aspect UserController_Roo_Controller {
     
     @RequestMapping(value = "/user", method = RequestMethod.POST)    
     public String UserController.create(@Valid User user, BindingResult result, ModelMap modelMap) {    
-        if (user == null) throw new IllegalArgumentException("A user is required");   
+        if (user == null) throw new IllegalArgumentException("A user is required");  
+        validate(result, user);        
         encryptPassword(user);
         if (result.hasErrors()) {        
             modelMap.addAttribute("user", user);            
@@ -80,7 +84,8 @@ privileged aspect UserController_Roo_Controller {
     
     @RequestMapping(method = RequestMethod.PUT)    
     public String UserController.update(@Valid User user, BindingResult result, ModelMap modelMap) {    
-        if (user == null) throw new IllegalArgumentException("A user is required");        
+        if (user == null) throw new IllegalArgumentException("A user is required");  
+        validate(result, user);
         if (result.hasErrors()) {        
             modelMap.addAttribute("user", user);            
             modelMap.addAttribute("countrys", Country.findAllCountrys(true));            
@@ -137,5 +142,11 @@ privileged aspect UserController_Roo_Controller {
     	ShaPasswordEncoder passwordEncoder = new ShaPasswordEncoder();
         user.setPassword(passwordEncoder.encodePassword(user.getPassword(), null));
     }
+    
+	public void UserController.validate(BindingResult result, User user) {
+		Errors errors = new BindException(result);
+		UserValidator validator = new UserValidator();
+		validator.validate(user, errors);
+	}      
     
 }

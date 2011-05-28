@@ -34,10 +34,7 @@ public class User {
 	@NotNull
     String username;
     
-	@NotNull
-	// has to contain 1 uppercase, 1 lowercase, 1 number of special char and be 8 characters in length
-	@Pattern(regexp="(?=^.{8,}$)((?=.*\\d)|(?=.*\\W+))(?![.\\n])(?=.*[A-Z])(?=.*[a-z]).*$", 
-			message ="Password is not strong enough. Must contain an uppercase, lowercase and number or special character and be 8 characters in length.")	
+	@NotNull	
     String password;
     
 	@NotNull
