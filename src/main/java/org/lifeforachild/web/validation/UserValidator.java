@@ -7,6 +7,9 @@ import org.lifeforachild.domain.User;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
+/*
+ * Validations for a {@link User}
+ */
 public class UserValidator implements Validator {
 
 	@Override

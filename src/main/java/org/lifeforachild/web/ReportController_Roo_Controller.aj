@@ -44,8 +44,8 @@ privileged aspect ReportController_Roo_Controller {
             modelMap.addAttribute("statustype_enum", StatusType.class.getEnumConstants());            
             modelMap.addAttribute("timeperiodunit_enum", TimePeriodUnit.class.getEnumConstants());            
             modelMap.addAttribute("users", User.findAllUsers());            
-            modelMap.addAttribute("report_fromDate_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));            
-            modelMap.addAttribute("report_toDate_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));            
+            modelMap.addAttribute("report_fromDate_date_format", AppContext.getDatePattern());            
+            modelMap.addAttribute("report_toDate_date_format", AppContext.getDatePattern());            
             return "report/create";            
         }        
         report.persist();        
@@ -69,8 +69,8 @@ privileged aspect ReportController_Roo_Controller {
         modelMap.addAttribute("statustype_enum", StatusType.class.getEnumConstants());        
         modelMap.addAttribute("timeperiodunit_enum", TimePeriodUnit.class.getEnumConstants());        
         modelMap.addAttribute("users", User.findAllUsers());        
-        modelMap.addAttribute("report_fromDate_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));        
-        modelMap.addAttribute("report_toDate_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));        
+        modelMap.addAttribute("report_fromDate_date_format", AppContext.getDatePattern());        
+        modelMap.addAttribute("report_toDate_date_format", AppContext.getDatePattern());        
         return "report/create";        
     }    
     
@@ -78,8 +78,8 @@ privileged aspect ReportController_Roo_Controller {
     public String ReportController.show(@PathVariable("id") Long id, ModelMap modelMap) {  
     	SecurityUtil.getInstance().checkPermission(Permissions.VIEW_REPORT);
         if (id == null) throw new IllegalArgumentException("An Identifier is required");        
-        modelMap.addAttribute("report_fromDate_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));        
-        modelMap.addAttribute("report_toDate_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));        
+        modelMap.addAttribute("report_fromDate_date_format", AppContext.getDatePattern());        
+        modelMap.addAttribute("report_toDate_date_format", AppContext.getDatePattern());        
         modelMap.addAttribute("report", Report.findReport(id));        
         return "report/show";        
     }    
@@ -95,8 +95,8 @@ privileged aspect ReportController_Roo_Controller {
         } else {        
             modelMap.addAttribute("reports", Report.findAllReports());            
         }        
-        modelMap.addAttribute("report_fromDate_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));        
-        modelMap.addAttribute("report_toDate_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));        
+        modelMap.addAttribute("report_fromDate_date_format", AppContext.getDatePattern());        
+        modelMap.addAttribute("report_toDate_date_format", AppContext.getDatePattern());        
         return "report/list";        
     }    
     
@@ -117,8 +117,8 @@ privileged aspect ReportController_Roo_Controller {
             modelMap.addAttribute("statustype_enum", StatusType.class.getEnumConstants());            
             modelMap.addAttribute("timeperiodunit_enum", TimePeriodUnit.class.getEnumConstants());            
             modelMap.addAttribute("users", User.findAllUsers());            
-            modelMap.addAttribute("report_fromDate_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));            
-            modelMap.addAttribute("report_toDate_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));            
+            modelMap.addAttribute("report_fromDate_date_format", AppContext.getDatePattern());            
+            modelMap.addAttribute("report_toDate_date_format", AppContext.getDatePattern());            
             return "report/update";            
         }        
         report.merge();        
@@ -142,8 +142,8 @@ privileged aspect ReportController_Roo_Controller {
         modelMap.addAttribute("statustype_enum", StatusType.class.getEnumConstants());        
         modelMap.addAttribute("timeperiodunit_enum", TimePeriodUnit.class.getEnumConstants());        
         modelMap.addAttribute("users", User.findAllUsers());        
-        modelMap.addAttribute("report_fromDate_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));        
-        modelMap.addAttribute("report_toDate_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));        
+        modelMap.addAttribute("report_fromDate_date_format", AppContext.getDatePattern());        
+        modelMap.addAttribute("report_toDate_date_format", AppContext.getDatePattern());        
         return "report/update";        
     }    
     

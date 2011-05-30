@@ -59,8 +59,8 @@ privileged aspect ClinicalRecordController_Roo_Controller {
             modelMap.addAttribute("yesnonatype_enum", YesNoNAType.class.getEnumConstants());     
             modelMap.addAttribute("yesnotype_enum", YesNoType.class.getEnumConstants()); 
             modelMap.addAttribute("yesnounkowntype_enum", YesNoUnkownType.class.getEnumConstants());            
-            modelMap.addAttribute("clinicalRecord_dateOfMeasurement_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));                        
-            modelMap.addAttribute("clinicalRecord_dateCompleted_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));            
+            modelMap.addAttribute("clinicalRecord_dateOfMeasurement_date_format", AppContext.getDatePattern());                        
+            modelMap.addAttribute("clinicalRecord_dateCompleted_date_format", AppContext.getDatePattern());            
             return "clinicalrecord/create";            
         }        
         // still set age in case click update without clicking out of dom field
@@ -114,16 +114,16 @@ privileged aspect ClinicalRecordController_Roo_Controller {
         modelMap.addAttribute("yesnonatype_enum", YesNoNAType.class.getEnumConstants());       
         modelMap.addAttribute("yesnotype_enum", YesNoType.class.getEnumConstants()); 
         modelMap.addAttribute("yesnounkowntype_enum", YesNoUnkownType.class.getEnumConstants());        
-        modelMap.addAttribute("clinicalRecord_dateOfMeasurement_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));                
-        modelMap.addAttribute("clinicalRecord_dateCompleted_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));        
+        modelMap.addAttribute("clinicalRecord_dateOfMeasurement_date_format", AppContext.getDatePattern());                
+        modelMap.addAttribute("clinicalRecord_dateCompleted_date_format", AppContext.getDatePattern());        
         return "clinicalrecord/create";        
     }    
     
     @RequestMapping(value = "/clinicalrecord/{id}", method = RequestMethod.GET)    
     public String ClinicalRecordController.show(@PathVariable("id") Long id, ModelMap modelMap) {    
         if (id == null) throw new IllegalArgumentException("An Identifier is required");        
-        modelMap.addAttribute("clinicalRecord_dateOfMeasurement_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));                
-        modelMap.addAttribute("clinicalRecord_dateCompleted_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));        
+        modelMap.addAttribute("clinicalRecord_dateOfMeasurement_date_format", AppContext.getDatePattern());                
+        modelMap.addAttribute("clinicalRecord_dateCompleted_date_format", AppContext.getDatePattern());        
         modelMap.addAttribute("clinicalRecord", ClinicalRecord.findClinicalRecord(id));        
         return "clinicalrecord/show";        
     }    
@@ -155,8 +155,8 @@ privileged aspect ClinicalRecordController_Roo_Controller {
             modelMap.addAttribute("yesnonatype_enum", YesNoNAType.class.getEnumConstants()); 
             modelMap.addAttribute("yesnotype_enum", YesNoType.class.getEnumConstants()); 
             modelMap.addAttribute("yesnounkowntype_enum", YesNoUnkownType.class.getEnumConstants());            
-            modelMap.addAttribute("clinicalRecord_dateOfMeasurement_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));                        
-            modelMap.addAttribute("clinicalRecord_dateCompleted_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));            
+            modelMap.addAttribute("clinicalRecord_dateOfMeasurement_date_format", AppContext.getDatePattern());                        
+            modelMap.addAttribute("clinicalRecord_dateCompleted_date_format", AppContext.getDatePattern());            
             return "clinicalrecord/update";            
         }
         
@@ -204,8 +204,8 @@ privileged aspect ClinicalRecordController_Roo_Controller {
         modelMap.addAttribute("yesnonatype_enum", YesNoNAType.class.getEnumConstants());  
         modelMap.addAttribute("yesnotype_enum", YesNoType.class.getEnumConstants()); 
         modelMap.addAttribute("yesnounkowntype_enum", YesNoUnkownType.class.getEnumConstants());        
-        modelMap.addAttribute("clinicalRecord_dateOfMeasurement_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));                
-        modelMap.addAttribute("clinicalRecord_dateCompleted_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));        
+        modelMap.addAttribute("clinicalRecord_dateOfMeasurement_date_format", AppContext.getDatePattern());                
+        modelMap.addAttribute("clinicalRecord_dateCompleted_date_format", AppContext.getDatePattern());        
         return "clinicalrecord/update";        
     }    
     
@@ -215,8 +215,8 @@ privileged aspect ClinicalRecordController_Roo_Controller {
         if (id == null) throw new IllegalArgumentException("An Identifier is required");  
         ClinicalRecord record = ClinicalRecord.findClinicalRecord(id);
         modelMap.addAttribute("clinicalRecord", record);                
-        modelMap.addAttribute("clinicalRecord_dateOfMeasurement_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));                
-        modelMap.addAttribute("clinicalRecord_dateCompleted_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));        
+        modelMap.addAttribute("clinicalRecord_dateOfMeasurement_date_format", AppContext.getDatePattern());                
+        modelMap.addAttribute("clinicalRecord_dateCompleted_date_format", AppContext.getDatePattern());        
         return "clinicalrecord/print";  
     }
     

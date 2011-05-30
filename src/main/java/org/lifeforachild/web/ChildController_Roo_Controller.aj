@@ -51,13 +51,13 @@ privileged aspect ChildController_Roo_Controller {
             modelMap.addAttribute("distancetype_enum", DistanceType.class.getEnumConstants());            
             modelMap.addAttribute("sextype_enum", SexType.class.getEnumConstants());            
             modelMap.addAttribute("survivalstatustype_enum", SurvivalStatusType.class.getEnumConstants());            
-            modelMap.addAttribute("child_createdOn_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));            
-            modelMap.addAttribute("child_dateOfBirth_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));            
-            modelMap.addAttribute("child_diabetesDiagnosed_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));            
-            modelMap.addAttribute("child_insulinSince_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));            
-            modelMap.addAttribute("child_updatedOn_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));            
-            modelMap.addAttribute("child_dateOfDeath_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));            
-            modelMap.addAttribute("child_dateOfRegistration_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));            
+            modelMap.addAttribute("child_createdOn_date_format", AppContext.getDatePattern());            
+            modelMap.addAttribute("child_dateOfBirth_date_format", getDatePattern());            
+            modelMap.addAttribute("child_diabetesDiagnosed_date_format", getDatePattern());            
+            modelMap.addAttribute("child_insulinSince_date_format", getDatePattern());            
+            modelMap.addAttribute("child_updatedOn_date_format", getDatePattern());            
+            modelMap.addAttribute("child_dateOfDeath_date_format", getDatePattern());            
+            modelMap.addAttribute("child_dateOfRegistration_date_format", getDatePattern());            
             return "child/create";            
         }        
         child.setAgeAtDiagnosis(child.calculatedAgeAtDiabetesDiagnosis());
@@ -92,27 +92,27 @@ privileged aspect ChildController_Roo_Controller {
         modelMap.addAttribute("distancetype_enum", DistanceType.class.getEnumConstants());        
         modelMap.addAttribute("sextype_enum", SexType.class.getEnumConstants());        
         modelMap.addAttribute("survivalstatustype_enum", SurvivalStatusType.class.getEnumConstants());        
-        modelMap.addAttribute("child_createdOn_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));        
-        modelMap.addAttribute("child_dateOfBirth_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));        
-        modelMap.addAttribute("child_diabetesDiagnosed_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));        
-        modelMap.addAttribute("child_insulinSince_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));        
-        modelMap.addAttribute("child_updatedOn_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));        
-        modelMap.addAttribute("child_dateOfDeath_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));        
-        modelMap.addAttribute("child_dateOfRegistration_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));        
+        modelMap.addAttribute("child_createdOn_date_format", getDatePattern());        
+        modelMap.addAttribute("child_dateOfBirth_date_format", getDatePattern());        
+        modelMap.addAttribute("child_diabetesDiagnosed_date_format", getDatePattern());        
+        modelMap.addAttribute("child_insulinSince_date_format", getDatePattern());        
+        modelMap.addAttribute("child_updatedOn_date_format", getDatePattern());        
+        modelMap.addAttribute("child_dateOfDeath_date_format", getDatePattern());        
+        modelMap.addAttribute("child_dateOfRegistration_date_format", getDatePattern());        
         return "child/create";        
     }    
     
     @RequestMapping(value = "/child/{id}", method = RequestMethod.GET)    
     public String ChildController.show(@PathVariable("id") Long id, ModelMap modelMap) {    
         if (id == null) throw new IllegalArgumentException("An Identifier is required");        
-        modelMap.addAttribute("child_createdOn_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));        
-        modelMap.addAttribute("child_dateOfBirth_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));        
-        modelMap.addAttribute("child_diabetesDiagnosed_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));        
-        modelMap.addAttribute("child_insulinSince_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));        
-        modelMap.addAttribute("child_updatedOn_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));        
-        modelMap.addAttribute("child_dateOfDeath_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));        
-        modelMap.addAttribute("child_dateOfRegistration_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));
-        modelMap.addAttribute("clinicalRecord_dateCompleted_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));
+        modelMap.addAttribute("child_createdOn_date_format", getDatePattern());        
+        modelMap.addAttribute("child_dateOfBirth_date_format", getDatePattern());        
+        modelMap.addAttribute("child_diabetesDiagnosed_date_format", getDatePattern());        
+        modelMap.addAttribute("child_insulinSince_date_format", getDatePattern());        
+        modelMap.addAttribute("child_updatedOn_date_format", getDatePattern());        
+        modelMap.addAttribute("child_dateOfDeath_date_format", getDatePattern());        
+        modelMap.addAttribute("child_dateOfRegistration_date_format", getDatePattern());
+        modelMap.addAttribute("clinicalRecord_dateCompleted_date_format", getDatePattern());
         modelMap.addAttribute("child", Child.findChild(id));        
         return "child/show";        
     }    
@@ -127,13 +127,13 @@ privileged aspect ChildController_Roo_Controller {
         } else {        
             modelMap.addAttribute("children", Child.findAllChildren());            
         }        
-        modelMap.addAttribute("child_createdOn_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));        
-        modelMap.addAttribute("child_dateOfBirth_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));        
-        modelMap.addAttribute("child_diabetesDiagnosed_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));        
-        modelMap.addAttribute("child_insulinSince_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));        
-        modelMap.addAttribute("child_updatedOn_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));        
-        modelMap.addAttribute("child_dateOfDeath_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));        
-        modelMap.addAttribute("child_dateOfRegistration_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));        
+        modelMap.addAttribute("child_createdOn_date_format", getDatePattern());        
+        modelMap.addAttribute("child_dateOfBirth_date_format", getDatePattern());        
+        modelMap.addAttribute("child_diabetesDiagnosed_date_format", getDatePattern());        
+        modelMap.addAttribute("child_insulinSince_date_format", getDatePattern());        
+        modelMap.addAttribute("child_updatedOn_date_format", getDatePattern());        
+        modelMap.addAttribute("child_dateOfDeath_date_format", getDatePattern());        
+        modelMap.addAttribute("child_dateOfRegistration_date_format", getDatePattern());        
         return "child/list";        
     }    
     
@@ -154,14 +154,14 @@ privileged aspect ChildController_Roo_Controller {
             modelMap.addAttribute("distancetype_enum", DistanceType.class.getEnumConstants());            
             modelMap.addAttribute("sextype_enum", SexType.class.getEnumConstants());            
             modelMap.addAttribute("survivalstatustype_enum", SurvivalStatusType.class.getEnumConstants());            
-            modelMap.addAttribute("child_createdOn_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));            
-            modelMap.addAttribute("child_dateOfBirth_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));            
-            modelMap.addAttribute("child_diabetesDiagnosed_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));            
-            modelMap.addAttribute("child_insulinSince_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));            
-            modelMap.addAttribute("child_updatedOn_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));            
-            modelMap.addAttribute("child_dateOfDeath_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));            
-            modelMap.addAttribute("child_dateOfRegistration_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));
-            modelMap.addAttribute("clinicalRecord_dateCompleted_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));
+            modelMap.addAttribute("child_createdOn_date_format", getDatePattern());            
+            modelMap.addAttribute("child_dateOfBirth_date_format", getDatePattern());            
+            modelMap.addAttribute("child_diabetesDiagnosed_date_format", getDatePattern());            
+            modelMap.addAttribute("child_insulinSince_date_format", getDatePattern());            
+            modelMap.addAttribute("child_updatedOn_date_format", getDatePattern());            
+            modelMap.addAttribute("child_dateOfDeath_date_format", getDatePattern());            
+            modelMap.addAttribute("child_dateOfRegistration_date_format", getDatePattern());
+            modelMap.addAttribute("clinicalRecord_dateCompleted_date_format", getDatePattern());
             return "child/update";            
         }        
         child.setAgeAtDiagnosis(child.calculatedAgeAtDiabetesDiagnosis());
@@ -186,14 +186,14 @@ privileged aspect ChildController_Roo_Controller {
         modelMap.addAttribute("distancetype_enum", DistanceType.class.getEnumConstants());        
         modelMap.addAttribute("sextype_enum", SexType.class.getEnumConstants());        
         modelMap.addAttribute("survivalstatustype_enum", SurvivalStatusType.class.getEnumConstants());        
-        modelMap.addAttribute("child_createdOn_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));        
-        modelMap.addAttribute("child_dateOfBirth_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));        
-        modelMap.addAttribute("child_diabetesDiagnosed_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));        
-        modelMap.addAttribute("child_insulinSince_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));        
-        modelMap.addAttribute("child_updatedOn_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));        
-        modelMap.addAttribute("child_dateOfDeath_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));        
-        modelMap.addAttribute("child_dateOfRegistration_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));
-        modelMap.addAttribute("clinicalRecord_dateCompleted_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));
+        modelMap.addAttribute("child_createdOn_date_format", getDatePattern());        
+        modelMap.addAttribute("child_dateOfBirth_date_format", getDatePattern());        
+        modelMap.addAttribute("child_diabetesDiagnosed_date_format", getDatePattern());        
+        modelMap.addAttribute("child_insulinSince_date_format", getDatePattern());        
+        modelMap.addAttribute("child_updatedOn_date_format", getDatePattern());        
+        modelMap.addAttribute("child_dateOfDeath_date_format", getDatePattern());        
+        modelMap.addAttribute("child_dateOfRegistration_date_format", getDatePattern());
+        modelMap.addAttribute("clinicalRecord_dateCompleted_date_format", getDatePattern());
         return "child/update";        
     }    
     
@@ -204,13 +204,13 @@ privileged aspect ChildController_Roo_Controller {
         if (id == null) throw new IllegalArgumentException("An Identifier is required");     
         Child child = Child.findChild(id); 
         modelMap.addAttribute("child", child); 
-        modelMap.addAttribute("child_createdOn_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));            
-        modelMap.addAttribute("child_dateOfBirth_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));            
-        modelMap.addAttribute("child_diabetesDiagnosed_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));            
-        modelMap.addAttribute("child_insulinSince_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));            
-        modelMap.addAttribute("child_updatedOn_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));            
-        modelMap.addAttribute("child_dateOfDeath_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));            
-        modelMap.addAttribute("child_dateOfRegistration_date_format", org.joda.time.format.DateTimeFormat.patternForStyle("S-", org.springframework.context.i18n.LocaleContextHolder.getLocale()));        
+        modelMap.addAttribute("child_createdOn_date_format", getDatePattern());            
+        modelMap.addAttribute("child_dateOfBirth_date_format", getDatePattern());            
+        modelMap.addAttribute("child_diabetesDiagnosed_date_format", getDatePattern());            
+        modelMap.addAttribute("child_insulinSince_date_format", getDatePattern());            
+        modelMap.addAttribute("child_updatedOn_date_format", getDatePattern());            
+        modelMap.addAttribute("child_dateOfDeath_date_format", getDatePattern());            
+        modelMap.addAttribute("child_dateOfRegistration_date_format", getDatePattern());        
 		return "child/print";
 	}
     
