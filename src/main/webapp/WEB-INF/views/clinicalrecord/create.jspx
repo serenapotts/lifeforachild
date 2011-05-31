@@ -101,7 +101,7 @@
             <div id="roo_clinicalRecord_previousConsentGiven">
 	            <label for="_previousConsentGivenForm_id"><spring:message code="record.previousConsentGiven"/></label>
 	            <c:out value="${previousConsentGiven}"/>	            
-               	<br/>
+               	<br/>               	
             </div>
             <br/>
             <div id="roo_clinicalRecord_consentGiven">
@@ -110,6 +110,8 @@
 					<form:option value=""></form:option>
                 	<form:options items="${researchconsenttype_enum}" itemLabel="label"/>
                 </form:select> 
+                <br/>
+                <form:errors cssClass="errors" id="_consentGiven_error_id" path="consentGiven"/>
 	            <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_consentGiven_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
             </div>
             <br/>

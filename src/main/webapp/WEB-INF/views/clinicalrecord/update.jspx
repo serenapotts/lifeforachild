@@ -97,6 +97,9 @@
 					<form:option value=""></form:option>
                 	<form:options items="${researchconsenttype_enum}" itemLabel="label"/>
                 </form:select> 
+                <br/>
+                <form:errors cssClass="errors" id="_consentGiven_error_id" path="consentGiven"/>
+                <spring:message code="field.required" var="field_required"/>
 	            <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_consentGiven_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
             </div>
             <br/>            

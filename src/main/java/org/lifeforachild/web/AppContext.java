@@ -1,9 +1,9 @@
 package org.lifeforachild.web;
 
+import java.util.Locale;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.i18n.LocaleContextHolder;
-import org.joda.time.format.DateTimeFormatter;
-import org.joda.time.format.DateTimeFormat;
 
 public class AppContext { 
 
@@ -50,9 +50,10 @@ public class AppContext {
     	return getApplicationContext().getMessage(code, null, LocaleContextHolder.getLocale());
     }
     
-    public static DateTimeFormatter getDatePattern()
+    public static String getDatePattern()
     {
-    	return DateTimeFormat.forPattern(getMessage("dd/mm/yyyy"));
+    	// use dd/MM/yyyy format
+    	return org.joda.time.format.DateTimeFormat.patternForStyle("S-", Locale.UK);
     }
 
 }
