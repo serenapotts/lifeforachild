@@ -26,7 +26,8 @@ public class ChildValidator implements Validator {
 			if (child.getCauseOfDeath() == null)
 				errors.rejectValue("causeOfDeath", "child.required.causeOfDeath");
 			else if (child.getCauseOfDeath() != null 
-					&& child.getCauseOfDeath().equals(CauseOfDeathType.OTHER_DIABETES_RELATED_CONDITION)
+					&& (child.getCauseOfDeath().equals(CauseOfDeathType.OTHER_DIABETES_RELATED_CONDITION) || 
+					    child.getCauseOfDeath().equals(CauseOfDeathType.COMBINATION_OF_CAUSES))
 					&& (child.getCauseOfDeathOther() == null || (child.getCauseOfDeathOther() != null &&
 							child.getCauseOfDeathOther().isEmpty())))
 				errors.rejectValue("causeOfDeathOther", "child.required.causeOfDeathOther");				

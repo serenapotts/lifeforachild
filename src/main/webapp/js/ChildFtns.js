@@ -13,7 +13,8 @@ dojo.addOnLoad(
 			dojo.style(dijit.byId("roo_child_causeOfDeath").domNode, "display", "none");
 			dojo.style(dijit.byId("roo_child_causeOfDeathOther").domNode, "display", "none");				  
 	  	}
-		else if (dijit.byId("_causeOfDeath_id").value != 'OTHER_DIABETES_RELATED_CONDITION')
+		else if (dijit.byId("_causeOfDeath_id").value != 'OTHER_DIABETES_RELATED_CONDITION' &&
+				dijit.byId("_causeOfDeath_id").value != 'COMBINATION_OF_CAUSES')
 		{
 			// hide death other as other not selected
 			dojo.style(dijit.byId("roo_child_causeOfDeathOther").domNode, "display", "none");
@@ -31,7 +32,8 @@ function survivalStatusOnChange(newValue) {
 	{
 		dojo.style(dijit.byId("roo_child_dateOfDeath").domNode, "display", "block");
 		dojo.style(dijit.byId("roo_child_causeOfDeath").domNode, "display", "block");
-		if (dijit.byId("_causeOfDeath_id").value == 'OTHER_DIABETES_RELATED_CONDITION')
+		if (dijit.byId("_causeOfDeath_id").value == 'OTHER_DIABETES_RELATED_CONDITION' ||
+			dijit.byId("_causeOfDeath_id").value == 'COMBINATION_OF_CAUSES')
 			dojo.style(dijit.byId("roo_child_causeOfDeathOther").domNode, "display", "block");
 	}
 	else
@@ -43,7 +45,7 @@ function survivalStatusOnChange(newValue) {
 }
 
 function  causeOfDeathOnChange(newValue) {
-	if (newValue == 'OTHER_DIABETES_RELATED_CONDITION')
+	if (newValue == 'OTHER_DIABETES_RELATED_CONDITION' || newValue == 'COMBINATION_OF_CAUSES')
 	{
 		dojo.style(dijit.byId("roo_child_causeOfDeathOther").domNode, "display", "block");
 	}
