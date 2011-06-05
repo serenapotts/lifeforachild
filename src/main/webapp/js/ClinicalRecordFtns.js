@@ -265,8 +265,14 @@ function feetExaminedInLastYearOnChange(newValue) {
 	{
 		dojo.style(dijit.byId("roo_clinicalRecord_monofilamentTested").domNode, "display", "block");
 		dojo.style(dijit.byId("roo_clinicalRecord_tuningForkTested").domNode, "display", "block");
-		dojo.style(dijit.byId("roo_clinicalRecord_monofilamentAbnormal").domNode, "display", "block");
-		dojo.style(dijit.byId("roo_clinicalRecord_tuningForkAbnormal").domNode, "display", "block");
+		if (dijit.byId("_monofilamentTested_id") != null && dijit.byId("_monofilamentTested_id").value == 'YES')
+	  	{
+			dojo.style(dijit.byId("roo_clinicalRecord_monofilamentAbnormal").domNode, "display", "block");
+	  	}
+		if (dijit.byId("_tuningForkTested_id") != null && dijit.byId("_tuningForkTested_id").value == 'YES')
+		{
+			dojo.style(dijit.byId("roo_clinicalRecord_tuningForkAbnormal").domNode, "display", "block");
+		}
 		dojo.style(dijit.byId("roo_clinicalRecord_feetComment").domNode, "display", "block");
 	}
 	else
