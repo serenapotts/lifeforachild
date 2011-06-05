@@ -116,7 +116,7 @@
 		                    </c:if>
 			            </div>
 			            <br/>
-			            <c:if test="${child.causeOfDeath == 'OTHER_DIABETES_RELATED_CONDITION'}">
+			            <c:if test="${child.causeOfDeath == 'OTHER_DIABETES_RELATED_CONDITION' || child.causeOfDeath == 'COMBINATION_OF_CAUSES'}">
 				            <div id="roo_child_causeOfDeathOther">
 				                <label for="_causeOfDeathOther_id"><spring:message code="child.causeOfDeathOther"/></label>
 				                <div class="box" id="_causeOfDeathOther_id">
