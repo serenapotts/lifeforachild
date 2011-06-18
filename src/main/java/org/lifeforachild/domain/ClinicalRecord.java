@@ -352,7 +352,7 @@ public class ClinicalRecord {
     	if (weightKG == null || insulinUnitsPerDay == null)
     		return null;
         double value = insulinUnitsPerDay / weightKG;
-        value = DecimalUtil.roundToTwoDecimals(value);
+        value = DecimalUtil.roundToOneDecimal(value);
     	return (float) value;
     }
 

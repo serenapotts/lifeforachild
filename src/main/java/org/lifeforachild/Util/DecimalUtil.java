@@ -6,10 +6,14 @@ public class DecimalUtil
 {
     public static double roundToTwoDecimals(double number)
     {
-        double result = number * 100;
-        result = Math.round(result);
-        result = result / 100;
-        return result;
+    	DecimalFormat twoDForm = new DecimalFormat("#.##");
+    	return Double.valueOf(twoDForm.format(number));       
+    }
+    
+    public static double roundToOneDecimal(double number)
+    {
+    	DecimalFormat oneDForm = new DecimalFormat("#.#");
+    	return Double.valueOf(oneDForm.format(number));       
     }
     
     public static String format(float value)
