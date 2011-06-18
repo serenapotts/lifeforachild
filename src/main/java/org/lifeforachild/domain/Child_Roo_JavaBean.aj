@@ -30,7 +30,7 @@ privileged aspect Child_Roo_JavaBean {
     }    
     
     public void Child.setInitials(String initials) {    
-    		this.initials =  SimpleStringCipher.encrypt(initials);   
+    		this.initials = initials;   
     }    
     
     public String Child.getName() {  
@@ -43,7 +43,7 @@ privileged aspect Child_Roo_JavaBean {
     }    
     
     public void Child.setName(String name) {    
-   		this.name =  SimpleStringCipher.encrypt(name);   
+   		this.name =  name;   
 
     }    
     
@@ -52,12 +52,12 @@ privileged aspect Child_Roo_JavaBean {
     	{    	
     		return SimpleStringCipher.decrypt(this.lastName);
     	} catch (Exception e) {
-    		return this.name;
+    		return this.lastName;
     	}    	
     }    
     
     public void Child.setLastName(String lastName) {  	
-    	this.lastName = SimpleStringCipher.encrypt(lastName);     
+    	this.lastName = lastName;     
     }    
     
     public Country Child.getCountry() {    

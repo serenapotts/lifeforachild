@@ -14,6 +14,7 @@ import org.lifeforachild.domain.ClinicalRecord;
 import org.lifeforachild.domain.Country;
 import org.lifeforachild.domain.DiabetesCentre;
 import org.lifeforachild.domain.Permissions;
+import org.lifeforachild.security.SimpleStringCipher;
 import org.lifeforachild.web.Report.ChildReportGenerator;
 import org.lifeforachild.web.Report.ReportGenerator;
 import org.lifeforachild.web.validation.ChildValidator;
@@ -61,6 +62,10 @@ privileged aspect ChildController_Roo_Controller {
             modelMap.addAttribute("child_dateOfRegistration_date_format", AppContext.getDatePattern());            
             return "child/create";            
         }        
+        // encrypt after so validations work
+        child.setName(SimpleStringCipher.encrypt(child.getName()));
+        child.setLastName(SimpleStringCipher.encrypt(child.getLastName()));
+        child.setInitials(SimpleStringCipher.encrypt(child.getInitials()));
         child.setAgeAtDiagnosis(child.calculatedAgeAtDiabetesDiagnosis());
         child.persist();  
         
@@ -165,6 +170,10 @@ privileged aspect ChildController_Roo_Controller {
             modelMap.addAttribute("clinicalRecord_dateCompleted_date_format", AppContext.getDatePattern());
             return "child/update";            
         }        
+        // encrypt after so validations work
+        child.setName(SimpleStringCipher.encrypt(child.getName()));
+        child.setLastName(SimpleStringCipher.encrypt(child.getLastName()));
+        child.setInitials(SimpleStringCipher.encrypt(child.getInitials()));        
         child.setAgeAtDiagnosis(child.calculatedAgeAtDiabetesDiagnosis());
         child.merge();        
         return "redirect:/child/" + child.getId();        

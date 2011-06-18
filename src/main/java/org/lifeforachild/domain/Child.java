@@ -54,7 +54,7 @@ public class Child {
 	private String individualId;
 	
 	@NotNull
-    @Length(min = 1, max = 30)
+    @Length(max = 30)
     private String initials;
     
     @NotNull
