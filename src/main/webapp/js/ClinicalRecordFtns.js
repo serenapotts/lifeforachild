@@ -11,6 +11,7 @@ var eyesHasError = false;
 var feetHasError = false;
 var labTestingHasError = false;
 var schoolingHasError = false;
+var emergenciesHasError = false;
 
 dojo.addOnLoad(
 	function(){
