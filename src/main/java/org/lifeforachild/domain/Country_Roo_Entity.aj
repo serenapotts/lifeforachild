@@ -113,6 +113,12 @@ privileged aspect Country_Roo_Entity {
     public static List<Country> Country.findCountryEntries(int firstResult, int maxResults) {  
     	CountryQuery countryQuery = new CountryQuery();
         return countryQuery.findEntries(entityManager(), firstResult, maxResults);        
-    }    
+    }   
+    
+    public static Country Country.findCountryByName(String name) { 
+    	if (name == null) return null;
+    	CountryQuery countryQuery = new CountryQuery();
+    	return (Country)countryQuery.findCountryByName(entityManager(), name);       
+    }      
     
 }

@@ -31,6 +31,11 @@ public class UserValidator implements Validator {
 			if (!m.matches())
 				errors.rejectValue("password", "user.password.stronger");	
 		}
+		
+		if (User.findUserbyUsername(user.getUsername()) != null)			
+		{
+			errors.rejectValue("username", "user.username.notUnique");
+		}		
 	}
 
 }

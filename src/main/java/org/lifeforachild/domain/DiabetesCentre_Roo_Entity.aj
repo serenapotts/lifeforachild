@@ -13,6 +13,7 @@ import javax.persistence.Version;
 import org.hibernate.Criteria;
 import org.lifeforachild.Util.SecurityUtil;
 import org.lifeforachild.enums.UserGroups;
+import org.lifeforachild.web.query.CountryQuery;
 import org.lifeforachild.web.query.DiabetesCentreQuery;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -137,4 +138,9 @@ privileged aspect DiabetesCentre_Roo_Entity {
         return diabetesCentreQuery.findEntries(entityManager(), firstResult, maxResults);        
     }    
     
+    public static DiabetesCentre DiabetesCentre.findDiabetesCentreByName(String name) { 
+    	if (name == null) return null;
+    	DiabetesCentreQuery diabetesCentreQuery = new DiabetesCentreQuery();
+    	return (DiabetesCentre)diabetesCentreQuery.findDiabetesCentreByName(entityManager(), name);       
+    }       
 }

@@ -12,8 +12,11 @@ import org.lifeforachild.domain.Country;
 import org.lifeforachild.domain.Permissions;
 import org.lifeforachild.web.Report.CountryReportGenerator;
 import org.lifeforachild.web.Report.ReportGenerator;
+import org.lifeforachild.web.validation.CountryValidator;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,7 +27,8 @@ privileged aspect CountryController_Roo_Controller {
     @RequestMapping(value = "/country", method = RequestMethod.POST)    
     public String CountryController.create(@Valid Country country, BindingResult result, ModelMap modelMap) {
     	SecurityUtil.getInstance().checkPermission(Permissions.CREATE_COUNTRY);
-        if (country == null) throw new IllegalArgumentException("A country is required");        
+        if (country == null) throw new IllegalArgumentException("A country is required");
+        validate(result, country);
         if (result.hasErrors()) {        
             modelMap.addAttribute("country", country);                       
             return "country/create";            
@@ -67,7 +71,8 @@ privileged aspect CountryController_Roo_Controller {
     @RequestMapping(method = RequestMethod.PUT)    
     public String CountryController.update(@Valid Country country, BindingResult result, ModelMap modelMap) { 
     	SecurityUtil.getInstance().checkPermission(Permissions.EDIT_COUNTRY);
-        if (country == null) throw new IllegalArgumentException("A country is required");        
+        if (country == null) throw new IllegalArgumentException("A country is required");       
+        validate(result, country);
         if (result.hasErrors()) {        
             modelMap.addAttribute("country", country);                       
             return "country/update";            
@@ -102,4 +107,9 @@ privileged aspect CountryController_Roo_Controller {
     	repGen.generateExcelReport("List Countries", Country.findAllCountrys(), null, request, response);
 	}      
     
+	public void CountryController.validate(BindingResult result, Country country) {
+		Errors errors = new BindException(result);
+		CountryValidator validator = new CountryValidator();
+		validator.validate(country, errors);
+	}       
 }

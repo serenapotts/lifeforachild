@@ -13,8 +13,11 @@ import org.lifeforachild.domain.DiabetesCentre;
 import org.lifeforachild.domain.Permissions;
 import org.lifeforachild.web.Report.DiabetesCentreReportGenerator;
 import org.lifeforachild.web.Report.ReportGenerator;
+import org.lifeforachild.web.validation.DiabetesCentreValidator;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -25,7 +28,8 @@ privileged aspect DiabetesCentreController_Roo_Controller {
     @RequestMapping(value = "/diabetescentre", method = RequestMethod.POST)    
     public String DiabetesCentreController.create(@Valid DiabetesCentre diabetesCentre, BindingResult result, ModelMap modelMap) {    
     	SecurityUtil.getInstance().checkPermission(Permissions.CREATE_CENTRE);
-    	if (diabetesCentre == null) throw new IllegalArgumentException("A diabetesCentre is required");        
+    	if (diabetesCentre == null) throw new IllegalArgumentException("A diabetesCentre is required");      
+    	validate(result, diabetesCentre);
         if (result.hasErrors()) {        
             modelMap.addAttribute("diabetesCentre", diabetesCentre);            
             modelMap.addAttribute("countrys", Country.findAllCountrys());            
@@ -70,7 +74,8 @@ privileged aspect DiabetesCentreController_Roo_Controller {
     @RequestMapping(method = RequestMethod.PUT)    
     public String DiabetesCentreController.update(@Valid DiabetesCentre diabetesCentre, BindingResult result, ModelMap modelMap) {    
     	SecurityUtil.getInstance().checkPermission(Permissions.EDIT_CENTRE);
-    	if (diabetesCentre == null) throw new IllegalArgumentException("A diabetesCentre is required");        
+    	if (diabetesCentre == null) throw new IllegalArgumentException("A diabetesCentre is required");   
+    	validate(result, diabetesCentre);
         if (result.hasErrors()) {        
             modelMap.addAttribute("diabetesCentre", diabetesCentre);            
             modelMap.addAttribute("countrys", Country.findAllCountrys());            
@@ -107,4 +112,9 @@ privileged aspect DiabetesCentreController_Roo_Controller {
     	repGen.generateExcelReport("List Centres", DiabetesCentre.findAllDiabetesCentres(), null, request, response);
 	}      
     
+	public void DiabetesCentreController.validate(BindingResult result, DiabetesCentre diabetesCentre) {
+		Errors errors = new BindException(result);
+		DiabetesCentreValidator validator = new DiabetesCentreValidator();
+		validator.validate(diabetesCentre, errors);
+	}      
 }

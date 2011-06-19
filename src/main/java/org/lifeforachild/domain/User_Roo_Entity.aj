@@ -110,5 +110,9 @@ privileged aspect User_Roo_Entity {
         return userQuery.findEntries(entityManager(), firstResult, maxResults);        
     }    
     
-
+    public static User User.findUserbyUsername(String username) {   
+    	if (username == null) return null;
+    	UserQuery userQuery = new UserQuery();
+    	return (User)userQuery.findUserByUsername(entityManager(), username);
+    }  
 }

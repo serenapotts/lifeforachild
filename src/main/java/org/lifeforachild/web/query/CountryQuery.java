@@ -34,4 +34,11 @@ public class CountryQuery extends BaseQuery<Country> {
 		}    
     }
 		
+    protected Country findCountryByName(EntityManager entityManager, String name)
+    {
+		Criteria criteria = ((Session)entityManager.getDelegate()).createCriteria(Country.class);
+		// have just country access to restrict to all centres in that country
+		criteria.add(Restrictions.eq("name", name));  
+		return (Country)criteria.uniqueResult();
+    }    
 }

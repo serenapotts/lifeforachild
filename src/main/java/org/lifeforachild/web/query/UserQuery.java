@@ -8,6 +8,7 @@ import org.hibernate.criterion.Disjunction;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.lifeforachild.Util.SecurityUtil;
+import org.lifeforachild.domain.Country;
 import org.lifeforachild.domain.User;
 import org.lifeforachild.domain.UserGroup;
 import org.lifeforachild.enums.UserGroups;
@@ -59,4 +60,11 @@ public class UserQuery extends BaseQuery<User> {
     	return criteria;
     }    
 
+    protected User findUserByUsername(EntityManager entityManager, String username)
+    {
+		Criteria criteria = ((Session)entityManager.getDelegate()).createCriteria(User.class);
+		// have just country access to restrict to all centres in that country
+		criteria.add(Restrictions.eq("username", username));  
+		return (User)criteria.uniqueResult();
+    }       
 }

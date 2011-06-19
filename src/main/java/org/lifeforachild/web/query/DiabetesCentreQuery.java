@@ -9,6 +9,7 @@ import org.hibernate.Session;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.lifeforachild.Util.SecurityUtil;
+import org.lifeforachild.domain.Country;
 import org.lifeforachild.domain.DiabetesCentre;
 
 public class DiabetesCentreQuery extends BaseQuery<DiabetesCentre> {
@@ -57,4 +58,11 @@ public class DiabetesCentreQuery extends BaseQuery<DiabetesCentre> {
 		return criteria.list();		
 	}
 
+    protected DiabetesCentre findDiabetesCentreByName(EntityManager entityManager, String name)
+    {
+		Criteria criteria = ((Session)entityManager.getDelegate()).createCriteria(DiabetesCentre.class);
+		// have just country access to restrict to all centres in that country
+		criteria.add(Restrictions.eq("name", name));  
+		return (DiabetesCentre)criteria.uniqueResult();
+    }   	
 }
