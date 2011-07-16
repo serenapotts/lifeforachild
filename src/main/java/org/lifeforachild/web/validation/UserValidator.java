@@ -32,7 +32,9 @@ public class UserValidator implements Validator {
 				errors.rejectValue("password", "user.password.stronger");	
 		}
 		
-		if (User.findUserbyUsername(user.getUsername()) != null)			
+		String oldUsername = user.getOldUsername();
+		if ((oldUsername == null || (oldUsername != null && !oldUsername.equals(user.getUsername()))) 
+				&& User.findUserbyUsername(user.getUsername()) != null)			
 		{
 			errors.rejectValue("username", "user.username.notUnique");
 		}		

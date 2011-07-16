@@ -120,4 +120,12 @@ privileged aspect User_Roo_JavaBean {
     public void User.setUpdatedBy(String updatedBy) {    
         this.updatedBy = updatedBy;        
     }        
+    
+    public String User.getOldUsername() {    
+        return this.oldUsername;        
+    }    
+    
+    public void User.setOldUsername(String oldUsername) {    
+        this.oldUsername = oldUsername;        
+    }    
 }

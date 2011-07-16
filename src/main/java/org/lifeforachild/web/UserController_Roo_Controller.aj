@@ -99,7 +99,7 @@ privileged aspect UserController_Roo_Controller {
         {
         	// user has changed password so encode and save
         	encryptPassword(user);
-        }
+        }     
         user.merge();        
         return "redirect:/user/" + user.getId();        
     }    
@@ -108,10 +108,15 @@ privileged aspect UserController_Roo_Controller {
     public String UserController.updateForm(@PathVariable("id") Long id, ModelMap modelMap) {    
         if (id == null) throw new IllegalArgumentException("An Identifier is required");    
         User user = User.findUser(id, true);
+        if (user.getCreatedOn() == null)	// for backcompatability
+        	user.setCreatedOn(new Date());
         user.setUpdatedOn(new Date());
         String username = SecurityUtil.getInstance().getCurrentUsername();
+        if (user.getCreatedBy() == null) 	// for backcompatability
+        	user.setCreatedBy(username);
         user.setUpdatedBy(username);
         user.setOldPassword(user.getPassword());
+        user.setOldUsername(user.getUsername());
         modelMap.addAttribute("user", user);        
         modelMap.addAttribute("countrys", Country.findAllCountrys(true));        
         Country country = user.getCountry();
