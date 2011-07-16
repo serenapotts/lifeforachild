@@ -105,6 +105,10 @@ privileged aspect DiabetesCentre_Roo_Entity {
     
     public static List<DiabetesCentre> DiabetesCentre.findAllDiabetesCentres(boolean addBlank, Long countryId) {    
     	List<DiabetesCentre> centres = findAllDiabetesCentres(countryId);
+    	return findEmptyDiabetesCentres(addBlank, centres);
+    }  
+    
+    public static List<DiabetesCentre> DiabetesCentre.findEmptyDiabetesCentres(boolean addBlank, List<DiabetesCentre> centres) {    
     	if (addBlank)
     	{
     		DiabetesCentre blankCentre = new DiabetesCentre();
@@ -121,7 +125,7 @@ privileged aspect DiabetesCentre_Roo_Entity {
         		centres.add(0, blankCentre);    	
     	}
     	return centres;     
-    }  
+    }      
     
     public static DiabetesCentre DiabetesCentre.findDiabetesCentre(String id) {
     	return findDiabetesCentre(Long.parseLong(id));
