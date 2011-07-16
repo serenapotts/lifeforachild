@@ -2,6 +2,7 @@ package org.lifeforachild.web;
 
 import java.lang.Long;
 import java.lang.String;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -43,8 +44,11 @@ privileged aspect ReportController_Roo_Controller {
             modelMap.addAttribute("reporttype_enum", ReportType.class.getEnumConstants());            
             modelMap.addAttribute("showoptiontype_enum", ShowOptionType.class.getEnumConstants());            
             modelMap.addAttribute("statustype_enum", StatusType.class.getEnumConstants());            
-            modelMap.addAttribute("timeperiodunit_enum", TimePeriodUnit.class.getEnumConstants());            
-            modelMap.addAttribute("users", User.findAllUsers());            
+            modelMap.addAttribute("timeperiodunit_enum", TimePeriodUnit.class.getEnumConstants()); 
+            String username = SecurityUtil.getInstance().getCurrentUsername();
+            ArrayList<User> users = new ArrayList<User>();
+            users.add(User.findUserbyUsername(username));
+            modelMap.addAttribute("users", users);           
             modelMap.addAttribute("report_fromDate_date_format", AppContext.getDatePattern());            
             modelMap.addAttribute("report_toDate_date_format", AppContext.getDatePattern());            
             return "report/create";            
@@ -68,8 +72,11 @@ privileged aspect ReportController_Roo_Controller {
         modelMap.addAttribute("reporttype_enum", ReportType.class.getEnumConstants());        
         modelMap.addAttribute("showoptiontype_enum", ShowOptionType.class.getEnumConstants());        
         modelMap.addAttribute("statustype_enum", StatusType.class.getEnumConstants());        
-        modelMap.addAttribute("timeperiodunit_enum", TimePeriodUnit.class.getEnumConstants());        
-        modelMap.addAttribute("users", User.findAllUsers());        
+        modelMap.addAttribute("timeperiodunit_enum", TimePeriodUnit.class.getEnumConstants());     
+        String username = SecurityUtil.getInstance().getCurrentUsername();
+        ArrayList<User> users = new ArrayList<User>();
+        users.add(User.findUserbyUsername(username));
+        modelMap.addAttribute("users", users);        
         modelMap.addAttribute("report_fromDate_date_format", AppContext.getDatePattern());        
         modelMap.addAttribute("report_toDate_date_format", AppContext.getDatePattern());        
         return "report/create";        
@@ -116,8 +123,11 @@ privileged aspect ReportController_Roo_Controller {
             modelMap.addAttribute("reporttype_enum", ReportType.class.getEnumConstants());            
             modelMap.addAttribute("showoptiontype_enum", ShowOptionType.class.getEnumConstants());            
             modelMap.addAttribute("statustype_enum", StatusType.class.getEnumConstants());            
-            modelMap.addAttribute("timeperiodunit_enum", TimePeriodUnit.class.getEnumConstants());            
-            modelMap.addAttribute("users", User.findAllUsers());            
+            modelMap.addAttribute("timeperiodunit_enum", TimePeriodUnit.class.getEnumConstants());   
+            String username = SecurityUtil.getInstance().getCurrentUsername();
+            ArrayList<User> users = new ArrayList<User>();
+            users.add(User.findUserbyUsername(username));
+            modelMap.addAttribute("users", users);            
             modelMap.addAttribute("report_fromDate_date_format", AppContext.getDatePattern());            
             modelMap.addAttribute("report_toDate_date_format", AppContext.getDatePattern());            
             return "report/update";            
@@ -141,8 +151,12 @@ privileged aspect ReportController_Roo_Controller {
         modelMap.addAttribute("reporttype_enum", ReportType.class.getEnumConstants());        
         modelMap.addAttribute("showoptiontype_enum", ShowOptionType.class.getEnumConstants());        
         modelMap.addAttribute("statustype_enum", StatusType.class.getEnumConstants());        
-        modelMap.addAttribute("timeperiodunit_enum", TimePeriodUnit.class.getEnumConstants());        
-        modelMap.addAttribute("users", User.findAllUsers());        
+        modelMap.addAttribute("timeperiodunit_enum", TimePeriodUnit.class.getEnumConstants());  
+        
+        String username = SecurityUtil.getInstance().getCurrentUsername();
+        ArrayList<User> users = new ArrayList<User>();
+        users.add(User.findUserbyUsername(username));
+        modelMap.addAttribute("users", users);        
         modelMap.addAttribute("report_fromDate_date_format", AppContext.getDatePattern());        
         modelMap.addAttribute("report_toDate_date_format", AppContext.getDatePattern());        
         return "report/update";        
