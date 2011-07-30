@@ -48,6 +48,8 @@ import org.springframework.roo.addon.tostring.RooToString;
 @RooToString
 public class ClinicalRecord {
     
+    private static final double AVERAGE_YEAR_MILLISECS = 1000 * 60 * 60 * 24 * 365.25;
+
     @Transient
     private static final Log LOGGER = LogFactory.getLog(ClinicalRecord.class);
     
@@ -359,7 +361,7 @@ public class ClinicalRecord {
     public static Float calculateAge(Date date, Date dob) {
     	if (date == null || dob == null)
     		return null;
-        float result = (float) ((date.getTime() - dob.getTime()) / (1000 * 60 * 60 * 24 * 365.25));
+        float result = (float) ((date.getTime() - dob.getTime()) / AVERAGE_YEAR_MILLISECS);
     	
     	result = (float) DecimalUtil.roundToTwoDecimals(result);
     	return result;
@@ -390,7 +392,7 @@ public class ClinicalRecord {
     	WeightForAgeLMS weightForAgeLMS = null;
     	try
     	{
-    	    LOGGER.info("Look up WeightForAgeLMS for child sex: " + childSex + ", age: " + exactAgeMonths);
+    	    LOGGER.debug("Look up WeightForAgeLMS for child sex: " + childSex + ", age: " + exactAgeMonths);
     	    weightForAgeLMS = (WeightForAgeLMS) WeightForAgeLMS.findWeightForAgeLMSsBySexAndAgeMonthsOldEquals(childSex, exactAgeMonths).getSingleResult();
     	    logLMS(weightForAgeLMS);
     	}
@@ -431,7 +433,7 @@ public class ClinicalRecord {
         HeightForAgeLMS heightForAgeLMS = null;
         try
         {
-            LOGGER.info("Look up HeightForAgeLMS for child sex: " + childSex + ", age: " + exactAgeMonths);
+            LOGGER.debug("Look up HeightForAgeLMS for child sex: " + childSex + ", age: " + exactAgeMonths);
             heightForAgeLMS = (HeightForAgeLMS) HeightForAgeLMS.findHeightForAgeLMSsBySexAndAgeMonthsOldEquals(childSex, exactAgeMonths).getSingleResult();
             logLMS(heightForAgeLMS);
         }
@@ -456,11 +458,11 @@ public class ClinicalRecord {
     {
         if(lms != null)
         {
-            LOGGER.info("L: " + lms.getL() + ", M: " + lms.getM() + ", S: " + lms.getS());
+            LOGGER.debug("L: " + lms.getL() + ", M: " + lms.getM() + ", S: " + lms.getS());
         }
         else
         {
-            LOGGER.info("LMS is null.");
+            LOGGER.debug("LMS is null.");
         }
     }
     
@@ -478,7 +480,7 @@ public class ClinicalRecord {
         BMIForAgeLMS bmiForAgeLMS = null;
         try
         {
-            LOGGER.info("Look up BMIForAgeLMS for child sex: " + childSex + ", age: " + exactAgeMonths);
+            LOGGER.debug("Look up BMIForAgeLMS for child sex: " + childSex + ", age: " + exactAgeMonths);
             bmiForAgeLMS = (BMIForAgeLMS) BMIForAgeLMS.findBMIForAgeLMSsBySexAndAgeMonthsOldEquals(childSex, ageMonths).getSingleResult();
             logLMS(bmiForAgeLMS);
         }
@@ -523,22 +525,26 @@ public class ClinicalRecord {
         }
     }
     
-    public static Float calcSystolicBloodPressureSD(Float exactAge, SexType childSex, Float heightSD, Float bloodPressureSystolicMMHg) {
+    public static Float calcSystolicBloodPressureSD(Float exactAge, SexType childSex, Float heightSD, Integer bloodPressureSystolicMMHg) {
         if(heightSD == null || heightSD == 0 || bloodPressureSystolicMMHg == null || bloodPressureSystolicMMHg == 0)
         {
             return null;
         }
+        
+        LOGGER.info("calcSystolicBloodPressureSD parameters: exactAge = " + exactAge + ", childSex: " + childSex + ", heightSD: " + heightSD + ", bloodPressureSystolicMMHg: " + bloodPressureSystolicMMHg);
         
         double expectedSystolicBP = calcExpectedSystolicBP(exactAge, childSex, heightSD);
         
         if(childSex == SexType.MALE) {
             double value = (bloodPressureSystolicMMHg - expectedSystolicBP) / 10.7128;
             value = DecimalUtil.roundToTwoDecimals(value);
+            LOGGER.info("Calculated systolicBloodPressureSD: " + value);
             return new Float(value);
         }
         else if(childSex == SexType.FEMALE) {
             double value = (bloodPressureSystolicMMHg - expectedSystolicBP) / 10.4855;
             value = DecimalUtil.roundToTwoDecimals(value);
+            LOGGER.info("Calculated systolicBloodPressureSD: " + value);
             return new Float(value);
         }
         else {
@@ -564,22 +570,26 @@ public class ClinicalRecord {
         }
     }
     
-    public static Float calcDiastolicBloodPressureSD(Float exactAge, SexType childSex, Float heightSD, Float bloodPressureDiastolicMMHg) {
+    public static Float calcDiastolicBloodPressureSD(Float exactAge, SexType childSex, Float heightSD, Integer bloodPressureDiastolicMMHg) {
         if(heightSD == null || heightSD == 0 || bloodPressureDiastolicMMHg == null || bloodPressureDiastolicMMHg == 0)
         {
             return null;
         }
+        
+        LOGGER.info("calcDiastolicBloodPressureSD parameters: exactAge = " + exactAge + ", childSex: " + childSex + ", heightSD: " + heightSD + ", bloodPressureDiastolicMMHg: " + bloodPressureDiastolicMMHg);
         
         double expectedDiastolicBP = calcExpectedDiastolicBP(exactAge, childSex, heightSD);
         
         if(childSex == SexType.MALE) {
             double value = (bloodPressureDiastolicMMHg - expectedDiastolicBP) / 11.6032;
             value = DecimalUtil.roundToTwoDecimals(value);
+            LOGGER.info("Calculated diastolicBloodPressureSD: " + value);
             return new Float(value);
         }
         else if(childSex == SexType.FEMALE) {
             double value = (bloodPressureDiastolicMMHg - expectedDiastolicBP) / 10.9573;
             value = DecimalUtil.roundToTwoDecimals(value);
+            LOGGER.info("Calculated diastolicBloodPressureSD: " + value);
             return new Float(value);
         }
         else {

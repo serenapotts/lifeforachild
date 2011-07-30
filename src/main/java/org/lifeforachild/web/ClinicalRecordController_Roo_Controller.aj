@@ -79,8 +79,8 @@ privileged aspect ClinicalRecordController_Roo_Controller {
         clinicalRecord.setBmi(ClinicalRecord.calculateBMI(clinicalRecord.getWeightKG(), clinicalRecord.getHeightCM()));
         clinicalRecord.setBmiSD(ClinicalRecord.calculateBmiSD(exactAgeMonths, childSex, clinicalRecord.getBmi()));
         
-        clinicalRecord.setBloodPressureSystolicSD(ClinicalRecord.calcSystolicBloodPressureSD(exactAge, childSex, clinicalRecord.getHeightSD(), clinicalRecord.getBloodPressureSystolicSD()));
-        clinicalRecord.setBloodPressureDiastolicSD(ClinicalRecord.calcDiastolicBloodPressureSD(exactAge, childSex, clinicalRecord.getHeightSD(), clinicalRecord.getBloodPressureDiastolicSD()));
+        clinicalRecord.setBloodPressureSystolicSD(ClinicalRecord.calcSystolicBloodPressureSD(exactAge, childSex, clinicalRecord.getHeightSD(), clinicalRecord.getBloodPressureSystolicMMHg()));
+        clinicalRecord.setBloodPressureDiastolicSD(ClinicalRecord.calcDiastolicBloodPressureSD(exactAge, childSex, clinicalRecord.getHeightSD(), clinicalRecord.getBloodPressureDiastolicMMHg()));
         
         clinicalRecord.persist();        
         return "redirect:/clinicalrecord/" + clinicalRecord.getId();        
@@ -176,8 +176,8 @@ privileged aspect ClinicalRecordController_Roo_Controller {
         clinicalRecord.setBmi(ClinicalRecord.calculateBMI(clinicalRecord.getWeightKG(), clinicalRecord.getHeightCM()));
         clinicalRecord.setBmiSD(ClinicalRecord.calculateBmiSD(exactAgeMonths, childSex, clinicalRecord.getBmi()));
         
-        clinicalRecord.setBloodPressureSystolicSD(ClinicalRecord.calcSystolicBloodPressureSD(exactAge, childSex, clinicalRecord.getHeightSD(), clinicalRecord.getBloodPressureSystolicSD()));
-        clinicalRecord.setBloodPressureDiastolicSD(ClinicalRecord.calcDiastolicBloodPressureSD(exactAge, childSex, clinicalRecord.getHeightSD(), clinicalRecord.getBloodPressureDiastolicSD()));
+        clinicalRecord.setBloodPressureSystolicSD(ClinicalRecord.calcSystolicBloodPressureSD(exactAge, childSex, clinicalRecord.getHeightSD(), clinicalRecord.getBloodPressureSystolicMMHg()));
+        clinicalRecord.setBloodPressureDiastolicSD(ClinicalRecord.calcDiastolicBloodPressureSD(exactAge, childSex, clinicalRecord.getHeightSD(), clinicalRecord.getBloodPressureDiastolicMMHg()));
         
         clinicalRecord.merge();        
         return "redirect:/clinicalrecord/" + clinicalRecord.getId();

@@ -32,7 +32,7 @@ public class DiastolicBloodPressureSDController
                 Float exactAgeMonths = ClinicalRecord.calculateExactAgeMonths(age);
                 
                 Float heightCMValue = Float.parseFloat(heightCM);
-                Float bloodPressureDiastolicMMHgValue = Float.parseFloat(bloodPressureDiastolicMMHg);
+                Integer bloodPressureDiastolicMMHgValue = new Float(bloodPressureDiastolicMMHg).intValue();
                 
                 Float heightSD = ClinicalRecord.calculateHeightSD(exactAgeMonths, child.getSex(), heightCMValue);
                 Float bloodPressureDiastolicSD = ClinicalRecord.calcDiastolicBloodPressureSD(age, child.getSex(), heightSD, bloodPressureDiastolicMMHgValue);
