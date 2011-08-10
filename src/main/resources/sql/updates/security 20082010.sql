@@ -1,4 +1,3 @@
-alter table permissions add description varchar(255);
 update permissions set description = name;
 
 update permissions set description ='User Administration', name='USER_ADMIN' where description='User Administation';

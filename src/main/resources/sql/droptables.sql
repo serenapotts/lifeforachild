@@ -1,0 +1,16 @@
+drop table child_versions;
+drop table clinical_record_versions;
+drop table user_versions;
+drop table lms;
+drop table report_properties;
+drop table report_childfields;
+drop table report_clinicalrecordfields;
+drop table user_group_permissions;
+drop table clinical_record;
+drop table child;
+drop table report;
+drop table user;
+drop table diabetes_centre;
+drop table country;
+drop table permissions;
+drop table user_group;
