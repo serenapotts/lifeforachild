@@ -196,84 +196,84 @@ where ug.group_name='Researchers' and
 name='View Medical Record');
 
 
-insert into user (version, username, password, enabled, user_group)
-(select 1, 'gogle', 'gogle', true, ug.id from user_group ug
+insert into user (version, username, password, enabled, user_group, is_deleted)
+(select 1, 'gogle', 'gogle', true, ug.id, false from user_group ug
 where ug.group_name='Program Manager');
-insert into user (version, username, password, enabled, user_group)
-(select 1, 'robyn', 'robyn', true, ug.id from user_group ug
+insert into user (version, username, password, enabled, user_group, is_deleted)
+(select 1, 'robyn', 'robyn', true, ug.id, false from user_group ug
 where ug.group_name='PMs Assistants');
-insert into user (version, username, password, enabled, user_group)
-(select 1, 'deo', 'deo', true, ug.id from user_group ug
+insert into user (version, username, password, enabled, user_group, is_deleted)
+(select 1, 'deo', 'deo', true, ug.id, false from user_group ug
 where ug.group_name='Data Entry Operators');
-insert into user (version, username, password, enabled, user_group)
-(select 1, 'res', 'res', true, ug.id from user_group ug
+insert into user (version, username, password, enabled, user_group, is_deleted)
+(select 1, 'res', 'res', true, ug.id, false from user_group ug
 where ug.group_name='Researchers');
 
-insert into user (version, username, password, enabled, user_group, country, centre)
-(select 1, 'bmanager', 'bmanager', true, ug.id, c.id, dc.id
+insert into user (version, username, password, enabled, user_group, country, centre, is_deleted)
+(select 1, 'bmanager', 'bmanager', true, ug.id, c.id, dc.id, false
 from user_group ug, country c, diabetes_centre dc
 where ug.group_name='Country Manager' and c.name='Bolivia' and dc.name='Bolivia Medical');
-insert into user (version, username, password, enabled, user_group, country, centre)
-(select 1, 'imanager', 'imanager', true, ug.id, c.id, dc.id
+insert into user (version, username, password, enabled, user_group, country, centre, is_deleted)
+(select 1, 'imanager', 'imanager', true, ug.id, c.id, dc.id, false
 from user_group ug, country c, diabetes_centre dc
 where ug.group_name='Country Manager' and c.name='India' and dc.name='India Medical');
-insert into user (version, username, password, enabled, user_group, country, centre)
-(select 1, 'nmanager', 'nmanager', true, ug.id, c.id, dc.id
+insert into user (version, username, password, enabled, user_group, country, centre, is_deleted)
+(select 1, 'nmanager', 'nmanager', true, ug.id, c.id, dc.id, false
 from user_group ug, country c, diabetes_centre dc
 where ug.group_name='Country Manager' and c.name='Nepal' and dc.name='Nepal Medical');
 
-insert into user (version, username, password, enabled, user_group, country, centre)
-(select 1, 'badmin', 'badmin', true, ug.id, c.id, dc.id
+insert into user (version, username, password, enabled, user_group, country, centre, is_deleted)
+(select 1, 'badmin', 'badmin', true, ug.id, c.id, dc.id, false
 from user_group ug, country c, diabetes_centre dc
 where ug.group_name='Centre Admin' and c.name='Bolivia' and dc.name='Bolivia Medical');
-insert into user (version, username, password, enabled, user_group, country, centre)
-(select 1, 'iadmin', 'iadmin', true, ug.id, c.id, dc.id
+insert into user (version, username, password, enabled, user_group, country, centre, is_deleted)
+(select 1, 'iadmin', 'iadmin', true, ug.id, c.id, dc.id, false
 from user_group ug, country c, diabetes_centre dc
 where ug.group_name='Centre Admin' and c.name='India' and dc.name='India Medical');
-insert into user (version, username, password, enabled, user_group, country, centre)
-(select 1, 'nadmin', 'nadmin', true, ug.id, c.id, dc.id
+insert into user (version, username, password, enabled, user_group, country, centre, is_deleted)
+(select 1, 'nadmin', 'nadmin', true, ug.id, c.id, dc.id, false
 from user_group ug, country c, diabetes_centre dc
 where ug.group_name='Centre Admin' and c.name='Nepal' and dc.name='Nepal Medical');
-insert into user (version, username, password, enabled, user_group, country, centre)
-(select 1, 'badmin2', 'badmin2', true, ug.id, c.id, dc.id
+insert into user (version, username, password, enabled, user_group, country, centre, is_deleted)
+(select 1, 'badmin2', 'badmin2', true, ug.id, c.id, dc.id, false
 from user_group ug, country c, diabetes_centre dc
 where ug.group_name='Centre Admin' and c.name='Bolivia' and dc.name='Bolivia Surgery');
-insert into user (version, username, password, enabled, user_group, country, centre)
-(select 1, 'iadmin2', 'iadmin2', true, ug.id, c.id, dc.id
+insert into user (version, username, password, enabled, user_group, country, centre, is_deleted)
+(select 1, 'iadmin2', 'iadmin2', true, ug.id, c.id, dc.id, false
 from user_group ug, country c, diabetes_centre dc
 where ug.group_name='Centre Admin' and c.name='India' and dc.name='India Surgery');
-insert into user (version, username, password, enabled, user_group, country, centre)
-(select 1, 'nadmin2', 'nadmin2', true, ug.id, c.id, dc.id
+insert into user (version, username, password, enabled, user_group, country, centre, is_deleted)
+(select 1, 'nadmin2', 'nadmin2', true, ug.id, c.id, dc.id, false
 from user_group ug, country c, diabetes_centre dc
 where ug.group_name='Centre Admin' and c.name='Nepal' and dc.name='Nepal Surgery');
 
-insert into user (version, username, password, enabled, user_group, country, centre)
-(select 1, 'bstaff', 'bstaff', true, ug.id, c.id, dc.id
+insert into user (version, username, password, enabled, user_group, country, centre, is_deleted)
+(select 1, 'bstaff', 'bstaff', true, ug.id, c.id, dc.id, false
 from user_group ug, country c, diabetes_centre dc
 where ug.group_name='Centre Staff' and c.name='Bolivia' and dc.name='Bolivia Medical');
-insert into user (version, username, password, enabled, user_group, country, centre)
-(select 1, 'istaff', 'istaff', true, ug.id, c.id, dc.id
+insert into user (version, username, password, enabled, user_group, country, centre, is_deleted)
+(select 1, 'istaff', 'istaff', true, ug.id, c.id, dc.id, false
 from user_group ug, country c, diabetes_centre dc
 where ug.group_name='Centre Staff' and c.name='India' and dc.name='India Medical');
-insert into user (version, username, password, enabled, user_group, country, centre)
-(select 1, 'nstaff', 'nstaff', true, ug.id, c.id, dc.id
+insert into user (version, username, password, enabled, user_group, country, centre, is_deleted)
+(select 1, 'nstaff', 'nstaff', true, ug.id, c.id, dc.id, false
 from user_group ug, country c, diabetes_centre dc
 where ug.group_name='Centre Staff' and c.name='Nepal' and dc.name='Nepal Medical');
-insert into user (version, username, password, enabled, user_group, country, centre)
-(select 1, 'bstaff2', 'bstaff2', true, ug.id, c.id, dc.id
+insert into user (version, username, password, enabled, user_group, country, centre, is_deleted)
+(select 1, 'bstaff2', 'bstaff2', true, ug.id, c.id, dc.id, false
 from user_group ug, country c, diabetes_centre dc
 where ug.group_name='Centre Staff' and c.name='Bolivia' and dc.name='Bolivia Surgery');
-insert into user (version, username, password, enabled, user_group, country, centre)
-(select 1, 'istaff2', 'istaff2', true, ug.id, c.id, dc.id
+insert into user (version, username, password, enabled, user_group, country, centre, is_deleted)
+(select 1, 'istaff2', 'istaff2', true, ug.id, c.id, dc.id, false
 from user_group ug, country c, diabetes_centre dc
 where ug.group_name='Centre Staff' and c.name='India' and dc.name='India Surgery');
-insert into user (version, username, password, enabled, user_group, country, centre)
-(select 1, 'nstaff2', 'nstaff2', true, ug.id, c.id, dc.id
+insert into user (version, username, password, enabled, user_group, country, centre, is_deleted)
+(select 1, 'nstaff2', 'nstaff2', true, ug.id, c.id, dc.id, false
 from user_group ug, country c, diabetes_centre dc
 where ug.group_name='Centre Staff' and c.name='Nepal' and dc.name='Nepal Surgery');
 
-insert into user (version, username, password, enabled, user_group)
-(select 1, 'spotts', 'spotts', true, ug.id from user_group ug
+insert into user (version, username, password, enabled, user_group, is_deleted)
+(select 1, 'spotts', 'spotts', true, ug.id, false from user_group ug
 where ug.group_name='Program Manager');
 
 update user set first_name ='Graham', last_name='Ogle' where username='gogle';

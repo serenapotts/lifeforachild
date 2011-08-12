@@ -2,8 +2,8 @@ use life_for_a_child
 source users.sql
 source bmiage.sql
 source statage.sql
-source wtage.sql
 source wtageinf.sql
+source wtage.sql
 source updates/clinicalrecord 02082010.sql
 source updates/security 20082010.sql
 source updates/security 21082010.sql
