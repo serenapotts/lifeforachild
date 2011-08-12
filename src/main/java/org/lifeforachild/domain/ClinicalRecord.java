@@ -392,7 +392,7 @@ public class ClinicalRecord {
     	WeightForAgeLMS weightForAgeLMS = null;
     	try
     	{
-    	    LOGGER.debug("Look up WeightForAgeLMS for child sex: " + childSex + ", age: " + exactAgeMonths);
+    	    LOGGER.info("Look up WeightForAgeLMS for child sex: " + childSex + ", age: " + exactAgeMonths);
     	    weightForAgeLMS = (WeightForAgeLMS) WeightForAgeLMS.findWeightForAgeLMSsBySexAndAgeMonthsOldEquals(childSex, exactAgeMonths).getSingleResult();
     	    logLMS(weightForAgeLMS);
     	}
@@ -433,7 +433,7 @@ public class ClinicalRecord {
         HeightForAgeLMS heightForAgeLMS = null;
         try
         {
-            LOGGER.debug("Look up HeightForAgeLMS for child sex: " + childSex + ", age: " + exactAgeMonths);
+            LOGGER.info("Look up HeightForAgeLMS for child sex: " + childSex + ", age: " + exactAgeMonths);
             heightForAgeLMS = (HeightForAgeLMS) HeightForAgeLMS.findHeightForAgeLMSsBySexAndAgeMonthsOldEquals(childSex, exactAgeMonths).getSingleResult();
             logLMS(heightForAgeLMS);
         }
@@ -458,11 +458,11 @@ public class ClinicalRecord {
     {
         if(lms != null)
         {
-            LOGGER.debug("L: " + lms.getL() + ", M: " + lms.getM() + ", S: " + lms.getS());
+            LOGGER.info("L: " + lms.getL() + ", M: " + lms.getM() + ", S: " + lms.getS());
         }
         else
         {
-            LOGGER.debug("LMS is null.");
+            LOGGER.info("LMS is null.");
         }
     }
     
@@ -480,7 +480,7 @@ public class ClinicalRecord {
         BMIForAgeLMS bmiForAgeLMS = null;
         try
         {
-            LOGGER.debug("Look up BMIForAgeLMS for child sex: " + childSex + ", age: " + exactAgeMonths);
+            LOGGER.info("Look up BMIForAgeLMS for child sex: " + childSex + ", age: " + exactAgeMonths);
             bmiForAgeLMS = (BMIForAgeLMS) BMIForAgeLMS.findBMIForAgeLMSsBySexAndAgeMonthsOldEquals(childSex, ageMonths).getSingleResult();
             logLMS(bmiForAgeLMS);
         }
