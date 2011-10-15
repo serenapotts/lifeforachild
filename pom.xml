@@ -452,6 +452,37 @@
 				<artifactId>maven-jetty-plugin</artifactId>
 				<version>6.1.10</version>
 			</plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>1.6</version>
+                <executions>
+                    <execution>
+                        <id>create.buildrevision.properties</id>
+                        <phase>generate-sources</phase>
+                        <configuration>
+                            <tasks>
+                                <mkdir dir="${project.build.outputDirectory}" />
+                                <exec executable="svn" failonerror="false" failifexecutionfails="false"
+                                    output="${project.build.outputDirectory}/buildrevision.properties">
+                                    <arg value="info" />
+                                </exec>
+                                <echo
+                                    file="${project.build.outputDirectory}/buildrevision.properties"
+                                    append="true">
+project.name=${project.name}
+project.version=${project.version}
+build.os=${os.name}-${os.arch}-${os.version}
+java.version=${java.version}
+                                </echo>
+                            </tasks>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
 		</plugins>
 	</build>
 	
