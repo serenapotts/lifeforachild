@@ -4,6 +4,8 @@ import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 import org.apache.commons.codec.binary.Base64;
+import org.lifeforachild.web.AppContext;
+import org.springframework.context.i18n.LocaleContextHolder;
 
 /**
  * A simple text cipher to encrypt/decrypt a string.
@@ -12,7 +14,7 @@ import org.apache.commons.codec.binary.Base64;
  */
 public class SimpleStringCipher {
 	private static byte[] linebreak = {}; // Remove Base64 encoder default linebreak
-	private static String secret = "h3b9rap2yb8sn3lg"; // secret key length must be 16
+	private static String secret = AppContext.getApplicationContext().getMessage("cipher.key", null, LocaleContextHolder.getLocale());
 	private static SecretKey key;
 	private static Cipher cipher;
 	private static Base64 coder;
