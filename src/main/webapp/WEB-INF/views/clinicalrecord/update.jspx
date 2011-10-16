@@ -49,8 +49,8 @@
     <br/>    
 	<sec:authorize ifAllGranted="VIEW_CHILD_NAME">
 	    <div id="roo_clinicalRecord_child">                
-	         <label for="_child_id"><spring:message code="record.childName"/></label>
-	         <div class="box" id="_child_id">
+	         <label for="_child_name"><spring:message code="record.childName"/></label>
+	         <div class="box" id="_child_name">
 	            <c:out value="${clinicalRecord.child}"/>
 	        </div>                
 	    </div>
