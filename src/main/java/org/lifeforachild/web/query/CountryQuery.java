@@ -9,8 +9,20 @@ import org.hibernate.criterion.Restrictions;
 import org.lifeforachild.Util.SecurityUtil;
 import org.lifeforachild.domain.Country;
 
+/**
+ * Implements {@link BaseQuery} for the {@link Country} domain class, determining 
+ * whether the user has access to a country based on their access.
+ * 
+ * @author Serena Keating
+ *
+ */
 public class CountryQuery extends BaseQuery<Country> {
 
+	/**
+	 * Return hibernate criteria to determine which countries a user has access to
+	 * based on the country set in their user record. If no country is set, the user
+	 * has access to all countries, otherwise restrict to the particular country the user is in.
+	 */
 	public Criteria findByAccessCriteria(EntityManager entityManager)
 	{
 		Criteria criteria = ((Session)entityManager.getDelegate()).createCriteria(Country.class);
@@ -23,6 +35,11 @@ public class CountryQuery extends BaseQuery<Country> {
 		return criteria;
 	}
 	
+	/**
+	 * Add country restriction to the given hibernate criteria, if the user only has access
+	 * to a particular country. If no country set do nothing as they will have access to all
+	 * countries.
+	 */
     protected static void findCountryByAccessCriteria(Criteria criteria)
     {
 		Integer country = SecurityUtil.getInstance().getCountry();
@@ -34,10 +51,12 @@ public class CountryQuery extends BaseQuery<Country> {
 		}    
     }
 		
+    /**
+     * Return the country with the given name.
+     */
     protected Country findCountryByName(EntityManager entityManager, String name)
     {
 		Criteria criteria = ((Session)entityManager.getDelegate()).createCriteria(Country.class);
-		// have just country access to restrict to all centres in that country
 		criteria.add(Restrictions.eq("name", name));  
 		return (Country)criteria.uniqueResult();
     }    

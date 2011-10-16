@@ -7,17 +7,29 @@ import org.hibernate.Session;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.lifeforachild.domain.ClinicalRecord;
+import org.lifeforachild.domain.DiabetesCentre;
 import org.springframework.security.access.AccessDeniedException;
 
+/**
+ * Implements {@link BaseQuery} for the {@link ClinicalRecord} domain class, determining 
+ * whether the user has access to a centre based on their access.
+ * 
+ * @author Serena Keating
+ *
+ */
 public class ClinicalRecordQuery extends BaseQuery<ClinicalRecord> {
 
-	@Override
+	/**
+	 * Return hibernate criteria to get clinical records.
+	 */
 	public Criteria findByAccessCriteria(EntityManager entityManager) {
 		return ((Session)entityManager.getDelegate()).createCriteria(ClinicalRecord.class);
 	}
 
-	// override this method so we can check the user has access to the child that this clinical
-	// record is for in case url is accessed directly.
+	/** 
+	 * Override this method so we can check the user has access to the child that this clinical
+	 * record is for in case url is accessed directly.
+	 */
 	public Object findByAccess(EntityManager entityManager, Long id)
 	{
     	ClinicalRecord cr = (ClinicalRecord)super.findByAccess(entityManager, id);
@@ -29,6 +41,9 @@ public class ClinicalRecordQuery extends BaseQuery<ClinicalRecord> {
     	return cr;
 	}
 	
+	/**
+	 * Return the id of the latest version of the clincal record for a given child.
+	 */
 	public Long findLatestClinicalRecordId(EntityManager entityManager, Long childId)
 	{
 		Criteria criteria = ((Session)entityManager.getDelegate()).createCriteria(ClinicalRecord.class);

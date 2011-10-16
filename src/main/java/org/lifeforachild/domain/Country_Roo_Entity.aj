@@ -14,6 +14,13 @@ import org.hibernate.Criteria;
 import org.lifeforachild.web.query.CountryQuery;
 import org.springframework.transaction.annotation.Transactional;
 
+/**
+ * Entity class for managing persistence of the {@link Country} class to the database though the 
+ * JPA EntityManager.
+ * 
+ * @author Serena Keating
+ *
+ */
 privileged aspect Country_Roo_Entity {
     
     @PersistenceContext    
@@ -81,17 +88,26 @@ privileged aspect Country_Roo_Entity {
         return em;        
     }    
     
+    /**
+     * Return the number of countries the user has access to.
+     */
     public static long Country.countCountrys() {   
     	CountryQuery countryQuery = new CountryQuery();
     	Criteria criteria = countryQuery.findByAccessCriteria(entityManager());
         return countryQuery.count(criteria);        
     }    
     
+    /**
+     * Return a list of all countries the user has access to.
+     */
     public static List<Country> Country.findAllCountrys() {   
     	CountryQuery countryQuery = new CountryQuery();
         return countryQuery.findByAccess(entityManager());        
     }    
 
+    /**
+     * Return a list of all the countries the user has access to, adding a blank to the list if specified to.
+     */
     public static List<Country> Country.findAllCountrys(boolean addBlank) {   
     	List<Country> countries = findAllCountrys();
     	if (addBlank)
@@ -104,17 +120,26 @@ privileged aspect Country_Roo_Entity {
     	return countries;
     }    
 
+    /**
+     * Return the country with the given id, or null if it does not exist.
+     */
     public static Country Country.findCountry(Long id) { 
     	if (id == null) return null;
     	CountryQuery countryQuery = new CountryQuery();
     	return (Country)countryQuery.findByAccess(entityManager(), id);       
     }    
     
+    /**
+     * Get the list of countries giving a start result up to a maximum number of results.
+     */
     public static List<Country> Country.findCountryEntries(int firstResult, int maxResults) {  
     	CountryQuery countryQuery = new CountryQuery();
         return countryQuery.findEntries(entityManager(), firstResult, maxResults);        
     }   
     
+    /**
+     * Return the country with the given name, or null if it does not exist.
+     */
     public static Country Country.findCountryByName(String name) { 
     	if (name == null) return null;
     	CountryQuery countryQuery = new CountryQuery();

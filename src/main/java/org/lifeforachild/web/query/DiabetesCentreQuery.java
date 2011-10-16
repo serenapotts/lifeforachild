@@ -12,18 +12,33 @@ import org.lifeforachild.Util.SecurityUtil;
 import org.lifeforachild.domain.Country;
 import org.lifeforachild.domain.DiabetesCentre;
 
+/**
+ * Implements {@link BaseQuery} for the {@link DiabetesCentre} domain class, determining 
+ * whether the user has access to a centre based on their access.
+ * 
+ * @author Serena Keating
+ *
+ */
 public class DiabetesCentreQuery extends BaseQuery<DiabetesCentre> {
 	
+	/**
+	 * Return hibernate crtieria for centres a user has access to when no country is specified.
+	 */
 	public Criteria findByAccessCriteria(EntityManager entityManager)
 	{
 		return findByAccessCriteria(entityManager, null);
 	}
 	
+	/**
+	 * Return hibernate criteria to determine which centres a user has access to
+	 * based on the centre set in their user record. If no centre is set, the user
+	 * has access to all centres in the given country, otherwise restrict to the 
+	 * particular centre the user is in.
+	 */
 	public Criteria findByAccessCriteria(EntityManager entityManager, Long countryId)
 	{
 		Criteria criteria = ((Session)entityManager.getDelegate()).createCriteria(DiabetesCentre.class);
 		Integer centre = SecurityUtil.getInstance().getCentre();
-		//Integer country = SecurityUtil.getInstance().getCountry();
 		if (countryId != null && countryId != 0)
 		{
 			// have just country access to restrict to all centres in that country
@@ -40,6 +55,11 @@ public class DiabetesCentreQuery extends BaseQuery<DiabetesCentre> {
 		return criteria;
 	}	
 	
+	/**
+	 * Add centre restriction to the given hibernate criteria, if the user only has access
+	 * to a particular centre. If no centre set do nothing as they will have access to all
+	 * centres.
+	 */
     public static void findCentreByAccessCriteria(Criteria criteria)
     {
 		Integer centre = SecurityUtil.getInstance().getCentre();
@@ -51,6 +71,9 @@ public class DiabetesCentreQuery extends BaseQuery<DiabetesCentre> {
 		}    
     }	
     
+    /**
+     * Returns a list of diabetes centres the user has access to in a particular country, excluding deleted ones.
+     */
 	public List<DiabetesCentre> findByCountryAccess(EntityManager entityManager, Long countryId)
 	{
 		Criteria criteria = findByAccessCriteria(entityManager, countryId);
@@ -58,10 +81,12 @@ public class DiabetesCentreQuery extends BaseQuery<DiabetesCentre> {
 		return criteria.list();		
 	}
 
+	/**
+	 * Return the diabetes centre with the given name.
+	 */
     protected DiabetesCentre findDiabetesCentreByName(EntityManager entityManager, String name)
     {
 		Criteria criteria = ((Session)entityManager.getDelegate()).createCriteria(DiabetesCentre.class);
-		// have just country access to restrict to all centres in that country
 		criteria.add(Restrictions.eq("name", name));  
 		return (DiabetesCentre)criteria.uniqueResult();
     }   	
