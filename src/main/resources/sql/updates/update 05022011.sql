@@ -1,1 +1,0 @@
-alter table clinical_record_versions add column consent_given int(11) DEFAULT NULL;
