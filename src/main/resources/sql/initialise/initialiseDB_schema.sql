@@ -481,7 +481,6 @@ CREATE TABLE `user_versions` (
   `centre` bigint(20) DEFAULT NULL,
   `country` bigint(20) DEFAULT NULL,
   `user_group` bigint(20) DEFAULT NULL,
-  PRIMARY KEY (`id`),
   KEY `FK36EBCB19267F45` (`user_group`),
   KEY `FK36EBCB3F879A93` (`centre`),
   KEY `FK36EBCB16F6E572` (`country`)
