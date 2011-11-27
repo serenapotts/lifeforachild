@@ -14,6 +14,12 @@ public class AllUserDetails extends User {
 	int country;
 	int centre;	
 	
+	public AllUserDetails(String username, String password, String userGroup)
+	{
+		super(username, password, true, true, true, true, new GrantedAuthority[] {});
+		this.userGroup = userGroup;
+	}
+	
 	public AllUserDetails(String username, String password, boolean enabled,
 			boolean accountNonExpired, boolean credentialsNonExpired,
 			boolean accountNonLocked, Collection<GrantedAuthority> authorities,

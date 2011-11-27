@@ -24,7 +24,7 @@ public class UserGroup {
     @NotNull
     String groupCode;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade =  {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     private Set<Permissions> permissions = new HashSet<Permissions>();
     
     private Boolean isDeleted;    

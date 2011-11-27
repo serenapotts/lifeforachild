@@ -8,6 +8,7 @@ import org.lifeforachild.domain.AllUserDetails;
 import org.lifeforachild.domain.User;
 import org.lifeforachild.domain.UserGroup;
 import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.GrantedAuthorityImpl;
@@ -38,6 +39,20 @@ public class SecurityUtil {
 				return (AllUserDetails)principal;
 		}
 		return null;
+	}
+	
+	public void setCurrentUser(String username, String password, String userGroup)
+	{
+		AllUserDetails user = new AllUserDetails(username, password, userGroup);
+		setCurrentUser(user);
+	}
+	
+	public void setCurrentUser(AllUserDetails user)
+	{				
+		UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(
+	                user, user.getPassword(), user.getAuthorities());
+	    auth.setDetails(user); 
+		SecurityContextHolder.getContext().setAuthentication(auth);
 	}
 	
 	public String getCurrentUsername()
