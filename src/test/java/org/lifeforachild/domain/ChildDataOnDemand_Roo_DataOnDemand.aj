@@ -26,6 +26,7 @@ import org.lifeforachild.enums.DiabetesType;
 import org.lifeforachild.enums.DistanceType;
 import org.lifeforachild.enums.SexType;
 import org.lifeforachild.enums.SurvivalStatusType;
+import org.lifeforachild.util.TestUtil;
 import org.springframework.stereotype.Component;
 
 privileged aspect ChildDataOnDemand_Roo_DataOnDemand {
