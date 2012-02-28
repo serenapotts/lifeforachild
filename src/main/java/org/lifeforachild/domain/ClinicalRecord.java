@@ -144,7 +144,7 @@ public class ClinicalRecord {
     private Integer bloodPressureDiastolicMMHg;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @DateTimeFormat(style = "S-")
+    @DateTimeFormat(pattern="dd/MM/yy", style = "S-")
     private Date dateOfMeasurement;
 
     @Enumerated
@@ -304,7 +304,7 @@ public class ClinicalRecord {
 
     @NotNull(message = "Date completed is required.")
     @Temporal(TemporalType.TIMESTAMP)
-    @DateTimeFormat(style = "S-")
+    @DateTimeFormat(pattern="dd/MM/yy", style = "S-")
     private Date dateCompleted;
 
     @NotNull(message = "Senior physician is required.")

@@ -47,11 +47,11 @@ public class Report {
     private TimePeriodUnit timeperiodunit;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @DateTimeFormat(style = "S-")
+    @DateTimeFormat(pattern="dd/MM/yy", style = "S-")
     private Date fromDate;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @DateTimeFormat(style = "S-")
+    @DateTimeFormat(pattern="dd/MM/yy", style = "S-")
     private Date toDate;
 
     @Enumerated

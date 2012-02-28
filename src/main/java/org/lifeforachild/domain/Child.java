@@ -87,7 +87,7 @@ public class Child {
     private SurvivalStatusType survivalStatus;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @DateTimeFormat(style = "S-")
+    @DateTimeFormat(pattern="dd/MM/yy", style = "S-")
     private Date dateOfDeath;
 
     @Enumerated
@@ -98,21 +98,21 @@ public class Child {
 
     @NotNull
     @Temporal(TemporalType.TIMESTAMP)
-    @DateTimeFormat(style = "S-")
+    @DateTimeFormat(pattern="dd/MM/yy", style = "S-")
     private Date dateOfRegistration;
 
     @NotNull
     @Temporal(TemporalType.TIMESTAMP)
-    @DateTimeFormat(style = "S-")
+    @DateTimeFormat(pattern="dd/MM/yy", style = "S-")
     private Date dateOfBirth;
 
     @NotNull
     @Temporal(TemporalType.TIMESTAMP)
-    @DateTimeFormat(style = "S-")
+    @DateTimeFormat(pattern="dd/MM/yy", style = "S-")
     private Date diabetesDiagnosed;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @DateTimeFormat(style = "S-")
+    @DateTimeFormat(pattern="dd/MM/yy", style = "S-")
     private Date insulinSince;
 
     @Enumerated
@@ -125,12 +125,12 @@ public class Child {
 
     @NotNull
     @Temporal(TemporalType.TIMESTAMP)
-    @DateTimeFormat(style = "S-")
+    @DateTimeFormat(pattern="dd/MM/yy", style = "S-")
     private Date createdOn;
 
     @NotNull
     @Temporal(TemporalType.TIMESTAMP)
-    @DateTimeFormat(style = "S-")
+    @DateTimeFormat(pattern="dd/MM/yy", style = "S-")
     private Date updatedOn;
 
     private Boolean isDeleted;

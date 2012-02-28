@@ -57,11 +57,11 @@ public class User {
     boolean isDeleted;	
     
     @Temporal(TemporalType.TIMESTAMP)
-    @DateTimeFormat(style = "S-")
+    @DateTimeFormat(pattern="dd/MM/yy", style = "S-")
     private Date createdOn;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @DateTimeFormat(style = "S-")
+    @DateTimeFormat(pattern="dd/MM/yy", style = "S-")
     private Date updatedOn;
     
     private String createdBy;
