@@ -100,7 +100,7 @@ privileged aspect UserGroupIntegrationTest_Roo_IntegrationTest {
         org.junit.Assert.assertNotNull("Expected 'UserGroup' identifier to no longer be null", obj.getId());
     }
     
-    @Test
+    //@Test
     public void UserGroupIntegrationTest.testRemove() {
         org.lifeforachild.domain.UserGroup obj = dod.getRandomUserGroup();
         org.junit.Assert.assertNotNull("Data on demand for 'UserGroup' failed to initialize correctly", obj);
