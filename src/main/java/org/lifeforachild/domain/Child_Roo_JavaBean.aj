@@ -3,11 +3,17 @@ package org.lifeforachild.domain;
 import java.util.Date;
 import java.util.Set;
 
+import org.lifeforachild.enums.BloodGlucoseUnitsType;
 import org.lifeforachild.enums.CauseOfDeathType;
 import org.lifeforachild.enums.DiabetesType;
 import org.lifeforachild.enums.DistanceType;
+import org.lifeforachild.enums.HbA1cMethodType;
+import org.lifeforachild.enums.KnownUnkownType;
+import org.lifeforachild.enums.NoMildSevereUnknownType;
 import org.lifeforachild.enums.SexType;
 import org.lifeforachild.enums.SurvivalStatusType;
+import org.lifeforachild.enums.YesNoUnkownType;
+import org.lifeforachild.enums.YesUnknownType;
 import org.lifeforachild.security.SimpleStringCipher;
 
 privileged aspect Child_Roo_JavaBean {
@@ -227,5 +233,158 @@ privileged aspect Child_Roo_JavaBean {
     public void Child.setClinicalRecords(Set<ClinicalRecord> clinicalRecords) {    
         this.clinicalRecords = clinicalRecords;        
     }    
-    
+
+    public KnownUnkownType Child.getBloodGlucoseAtDiagnosis() {
+ 		return this.bloodGlucoseAtDiagnosis;
+ 	}
+
+ 	public void Child.setBloodGlucoseAtDiagnosis(KnownUnkownType bloodGlucoseAtDiagnosis) {
+ 		this.bloodGlucoseAtDiagnosis = bloodGlucoseAtDiagnosis;
+ 	}
+
+ 	public Float Child.getBloodGlucoseValue() {
+ 		return bloodGlucoseValue;
+ 	}
+
+ 	public void Child.setBloodGlucoseValue(Float bloodGlucoseValue) {
+ 		this.bloodGlucoseValue = bloodGlucoseValue;
+ 	}
+
+ 	public BloodGlucoseUnitsType Child.getBloodGlucoseUnits() {
+ 		return bloodGlucoseUnits;
+ 	}
+
+ 	public void Child.setBloodGlucoseUnits(BloodGlucoseUnitsType bloodGlucoseUnits) {
+ 		this.bloodGlucoseUnits = bloodGlucoseUnits;
+ 	}
+
+ 	public YesNoUnkownType Child.getHbA1cAtDiagnosis() {
+ 		return hbA1cAtDiagnosis;
+ 	}
+
+ 	public void Child.setHbA1cAtDiagnosis(YesNoUnkownType hbA1cAtDiagnosis) {
+ 		this.hbA1cAtDiagnosis = hbA1cAtDiagnosis;
+ 	}
+
+ 	public HbA1cMethodType Child.getHbA1cMethod() {
+ 		return hbA1cMethod;
+ 	}
+
+ 	public void Child.setHbA1cMethod(HbA1cMethodType hbA1cMethod) {
+ 		this.hbA1cMethod = hbA1cMethod;
+ 	}
+
+ 	public NoMildSevereUnknownType Child.getKetoacidosisAtDiagnosis() {
+ 		return ketoacidosisAtDiagnosis;
+ 	}
+
+ 	public void Child.setKetoacidosisAtDiagnosis(
+ 			NoMildSevereUnknownType ketoacidosisAtDiagnosis) {
+ 		this.ketoacidosisAtDiagnosis = ketoacidosisAtDiagnosis;
+ 	}
+
+ 	public YesNoUnkownType Child.getPolyuriaAtDiagnosis() {
+ 		return polyuriaAtDiagnosis;
+ 	}
+
+ 	public void Child.setPolyuriaAtDiagnosis(YesNoUnkownType polyuriaAtDiagnosis) {
+ 		this.polyuriaAtDiagnosis = polyuriaAtDiagnosis;
+ 	}
+
+ 	public YesNoUnkownType Child.getThirstAtDiagnosis() {
+ 		return thirstAtDiagnosis;
+ 	}
+
+ 	public void Child.setThirstAtDiagnosis(YesNoUnkownType thirstAtDiagnosis) {
+ 		this.thirstAtDiagnosis = thirstAtDiagnosis;
+ 	}
+
+ 	public YesNoUnkownType Child.getWeightLossAtDiagnosis() {
+ 		return weightLossAtDiagnosis;
+ 	}
+
+ 	public void Child.setWeightLossAtDiagnosis(YesNoUnkownType weightLossAtDiagnosis) {
+ 		this.weightLossAtDiagnosis = weightLossAtDiagnosis;
+ 	}
+
+ 	public YesUnknownType Child.getWeightAtDiagnosis() {
+ 		return weightAtDiagnosis;
+ 	}
+
+ 	public void Child.setWeightAtDiagnosis(YesUnknownType weightAtDiagnosis) {
+ 		this.weightAtDiagnosis = weightAtDiagnosis;
+ 	}
+
+ 	public Float Child.getWeightAtDiagnosisValue() {
+ 		return weightAtDiagnosisValue;
+ 	}
+
+ 	public void Child.setWeightAtDiagnosisValue(Float weightAtDiagnosisValue) {
+ 		this.weightAtDiagnosisValue = weightAtDiagnosisValue;
+ 	}
+
+ 	public YesUnknownType Child.getHeightAtDiagnosis() {
+ 		return heightAtDiagnosis;
+ 	}
+
+ 	public void Child.setHeightAtDiagnosis(YesUnknownType heightAtDiagnosis) {
+ 		this.heightAtDiagnosis = heightAtDiagnosis;
+ 	}
+
+ 	public Float Child.getHeightAtDiagnosisValue() {
+ 		return heightAtDiagnosisValue;
+ 	}
+
+ 	public void Child.setHeightAtDiagnosisValue(Float heightAtDiagnosisValue) {
+ 		this.heightAtDiagnosisValue = heightAtDiagnosisValue;
+ 	}
+
+ 	public YesNoUnkownType Child.getTypeOneInFamily() {
+ 		return typeOneInFamily;
+ 	}
+
+ 	public void Child.setTypeOneInFamily(YesNoUnkownType typeOneInFamily) {
+ 		this.typeOneInFamily = typeOneInFamily;
+ 	}
+
+ 	public String Child.getTypeOneRelativesDetails() {
+ 		return typeOneRelativesDetails;
+ 	}
+
+ 	public void Child.setTypeOneRelativesDetails(String typeOneRelativesDetails) {
+ 		this.typeOneRelativesDetails = typeOneRelativesDetails;
+ 	}
+
+ 	public YesNoUnkownType Child.getTypeTwoInFamily() {
+ 		return typeTwoInFamily;
+ 	}
+
+ 	public void Child.setTypeTwoInFamily(YesNoUnkownType typeTwoInFamily) {
+ 		this.typeTwoInFamily = typeTwoInFamily;
+ 	}
+
+ 	public String Child.getTypeTwoRelativesDetails() {
+ 		return typeTwoRelativesDetails;
+ 	}
+
+ 	public void Child.setTypeTwoRelativesDetails(String typeTwoRelativesDetails) {
+ 		this.typeTwoRelativesDetails = typeTwoRelativesDetails;
+ 	}
+
+ 	public YesNoUnkownType Child.getMalnutrition() {
+ 		return malnutrition;
+ 	}
+
+ 	public void Child.setMalnutrition(YesNoUnkownType malnutrition) {
+ 		this.malnutrition = malnutrition;
+ 	}
+
+ 	public String Child.getOtherSyndromeAdditionalComment() {
+ 		return otherSyndromeAdditionalComment;
+ 	}
+
+ 	public void Child.setOtherSyndromeAdditionalComment(
+ 			String otherSyndromeAdditionalComment) {
+ 		this.otherSyndromeAdditionalComment = otherSyndromeAdditionalComment;
+ 	}
 }
