@@ -35,6 +35,7 @@ import org.lifeforachild.enums.KnownUnkownType;
 import org.lifeforachild.enums.NoMildSevereUnknownType;
 import org.lifeforachild.enums.SexType;
 import org.lifeforachild.enums.SurvivalStatusType;
+import org.lifeforachild.enums.YesNoUnkownType;
 import org.lifeforachild.enums.YesUnknownType;
 import org.lifeforachild.web.AppContext;
 
@@ -68,6 +69,7 @@ privileged aspect ChildController_Roo_Controller {
             modelMap.addAttribute("BloodGlucoseUnitsType_enum", BloodGlucoseUnitsType.class.getEnumConstants());
             modelMap.addAttribute("NoMildSevereUnknownType_enum", NoMildSevereUnknownType.class.getEnumConstants());
             modelMap.addAttribute("YesUnknownType_enum", YesUnknownType.class.getEnumConstants());
+            modelMap.addAttribute("yesnounkowntype_enum", YesNoUnkownType.class.getEnumConstants());
             return "child/create";            
         }        
         // encrypt after so validations work
@@ -105,7 +107,8 @@ privileged aspect ChildController_Roo_Controller {
         modelMap.addAttribute("diabetestype_enum", DiabetesType.class.getEnumConstants());        
         modelMap.addAttribute("distancetype_enum", DistanceType.class.getEnumConstants());        
         modelMap.addAttribute("sextype_enum", SexType.class.getEnumConstants());        
-        modelMap.addAttribute("survivalstatustype_enum", SurvivalStatusType.class.getEnumConstants());        
+        modelMap.addAttribute("survivalstatustype_enum", SurvivalStatusType.class.getEnumConstants());    
+        modelMap.addAttribute("yesnounkowntype_enum", YesNoUnkownType.class.getEnumConstants());
         modelMap.addAttribute("child_createdOn_date_format", AppContext.getDatePattern());        
         modelMap.addAttribute("child_dateOfBirth_date_format", AppContext.getDatePattern());        
         modelMap.addAttribute("child_diabetesDiagnosed_date_format", AppContext.getDatePattern());        
@@ -180,6 +183,7 @@ privileged aspect ChildController_Roo_Controller {
             modelMap.addAttribute("BloodGlucoseUnitsType_enum", BloodGlucoseUnitsType.class.getEnumConstants());
             modelMap.addAttribute("NoMildSevereUnknownType_enum", NoMildSevereUnknownType.class.getEnumConstants());
             modelMap.addAttribute("YesUnknownType_enum", YesUnknownType.class.getEnumConstants());
+            modelMap.addAttribute("yesnounkowntype_enum", YesNoUnkownType.class.getEnumConstants());
             return "child/update";            
         }        
         // encrypt after so validations work
@@ -220,6 +224,7 @@ privileged aspect ChildController_Roo_Controller {
         modelMap.addAttribute("BloodGlucoseUnitsType_enum", BloodGlucoseUnitsType.class.getEnumConstants());
         modelMap.addAttribute("NoMildSevereUnknownType_enum", NoMildSevereUnknownType.class.getEnumConstants());
         modelMap.addAttribute("YesUnknownType_enum", YesUnknownType.class.getEnumConstants());
+        modelMap.addAttribute("yesnounkowntype_enum", YesNoUnkownType.class.getEnumConstants());
         return "child/update";        
     }    
     
