@@ -19,8 +19,7 @@
 	        <div id="roo_search_id">
 	            <label for="_id"><spring:message code="search.id"/></label>
 	            <form:input cssStyle="width:250px" id="_id" maxlength="30" path="id" size="0"/>
-	            <spring:message code="medicalRecordNum.tooltip" var="field_validation"/>
-	            <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : "_id", widgetType : "dijit.form.ValidationTextBox", widgetAttrs : {promptMessage: "${field_validation}", invalidMessage: "", required : false}})); </script>
+	            <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : "_id", widgetType : "dijit.form.ValidationTextBox", widgetAttrs : {promptMessage: "Enter ID", invalidMessage: "", required : false}})); </script>
 	        </div>
 	        <br/>
 	        <sec:authorize ifAllGranted="VIEW_CHILD_NAME">

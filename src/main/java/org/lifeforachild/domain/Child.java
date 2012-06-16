@@ -12,23 +12,15 @@ import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.DecimalMax;
-import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Length;
-import org.lifeforachild.enums.BloodGlucoseUnitsType;
 import org.lifeforachild.enums.CauseOfDeathType;
 import org.lifeforachild.enums.DiabetesType;
 import org.lifeforachild.enums.DistanceType;
-import org.lifeforachild.enums.HbA1cMethodType;
-import org.lifeforachild.enums.KnownUnkownType;
-import org.lifeforachild.enums.NoMildSevereUnknownType;
 import org.lifeforachild.enums.SexType;
 import org.lifeforachild.enums.SurvivalStatusType;
-import org.lifeforachild.enums.YesNoUnkownType;
-import org.lifeforachild.enums.YesUnknownType;
 import org.lifeforachild.web.query.ChildQuery;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.roo.addon.entity.RooEntity;
@@ -146,74 +138,8 @@ public class Child {
     @Enumerated
     @NotNull
     private DistanceType distanceLivesFromCentre;
-
+    
     private Float ageAtDiagnosis;
-    
-    @Enumerated
-    @NotNull
-    private KnownUnkownType bloodGlucoseAtDiagnosis;
-
-    private Float bloodGlucoseValue;
-
-    private BloodGlucoseUnitsType bloodGlucoseUnits;
-
-    @Enumerated
-    @NotNull
-    private YesNoUnkownType hbA1cAtDiagnosis;
-
-    @DecimalMin(value = "2.0")
-    @DecimalMax(value = "20.0")
-    private Float hbA1cPercentage;
-    
-    @Enumerated
-    private HbA1cMethodType hbA1cMethod;
-
-    @Enumerated
-    @NotNull
-    private NoMildSevereUnknownType ketoacidosisAtDiagnosis;
-
-    @Enumerated
-    @NotNull
-    private YesNoUnkownType polyuriaAtDiagnosis;
-    
-    @Enumerated
-    @NotNull
-    private YesNoUnkownType thirstAtDiagnosis;
-    
-    @Enumerated
-    @NotNull
-    private YesNoUnkownType weightLossAtDiagnosis;
-    
-    @Enumerated
-    @NotNull
-    private YesUnknownType weightAtDiagnosis;
-    
-    private Float weightAtDiagnosisValue;
-    
-    @Enumerated
-    @NotNull
-    private YesUnknownType heightAtDiagnosis;
-   
-    private Float heightAtDiagnosisValue;
-
-	@Enumerated
-    @NotNull
-    private YesNoUnkownType typeOneInFamily;
-    
-    private String typeOneRelativesDetails;
-    
-    @Enumerated
-    @NotNull
-    private YesNoUnkownType typeTwoInFamily;
-    
-    private String typeTwoRelativesDetails;
-    
-    @Enumerated
-    @NotNull
-    private YesNoUnkownType malnutrition;
-    
-    private String otherSyndromeAdditionalComment;
-    
 
     public static float calculatedAgeAtDiabetesDiagnosis(Date diabetesDiagnosed, Date dateOfBirth) {
     	return ClinicalRecord.calculateAge(diabetesDiagnosed, dateOfBirth);

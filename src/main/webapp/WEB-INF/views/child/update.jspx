@@ -37,7 +37,7 @@
 			                <form:errors cssClass="errors" id="_initials_error_id" path="initials"/>
 			                <spring:message arguments="Initials" code="field.invalid" var="field_invalid"/>
 			                <spring:message code="field.required" var="field_required"/>
-			                <spring:message code="initials.tooltip" var="field_validation"/>
+			                <spring:message argumentSeparator="," arguments="Initials," code="field.simple.validation" var="field_validation"/>
 			                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_initials_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : false}})); </script>
 			            </div>
 			            <br/>
@@ -76,14 +76,12 @@
 		                        <form:options itemValue="id" items="${countrys}"/>
 		                    </form:select>
 		                    <br/>
-		                    <spring:message code="country.tooltip" var="field_validation"/>
 	                    	<form:errors cssClass="errors" id="_country_error_id" path="country"/>
 		                    <script type="text/javascript">Spring.addDecoration(
 	                            new Spring.ElementDecoration({
 	                                elementId : '_country_id', 
 	                                widgetType: 'dijit.form.FilteringSelect', 
 	                                widgetAttrs : {hasDownArrow : true,
-                                	promptMessage: "${field_validation}",
 	                            	onChange : countryOnChangeFromUpdate
                                 }})); </script>
 		                </c:if>
@@ -96,8 +94,7 @@
 	                    </form:select>
 	                    <br/>
 	                    <form:errors cssClass="errors" id="_centre_error_id" path="centre"/>
-	                    <spring:message code="centre.tooltip" var="field_validation"/>
-	                    <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_centre_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {promptMessage: '${field_validation}', hasDownArrow : true}})); </script>
+	                    <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_centre_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
 		            </div>
 		            <br/>
 		            <div id="roo_child_localMedicalNumber">
@@ -107,7 +104,7 @@
 		                <form:errors cssClass="errors" id="_localMedicalNumber_error_id" path="localMedicalNumber"/>
 		                <spring:message arguments="Ethnic Group" code="field.invalid" var="field_invalid"/>
 		                <spring:message code="field.required" var="field_required"/>
-		                <spring:message code="medicalRecordNum.tooltip" var="field_validation"/>
+		                <spring:message argumentSeparator="," arguments="Ethnic Group," code="field.simple.validation" var="field_validation"/>
 		                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_localMedicalNumber_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : false}})); </script>
 		            </div>
 		            <br/> 		            
@@ -118,9 +115,9 @@
 		                <form:errors cssClass="errors" id="_ethnicGroup_error_id" path="ethnicGroup"/>
 		                <spring:message arguments="Ethnic Group" code="field.invalid" var="field_invalid"/>
 		                <spring:message code="field.required" var="field_required"/>
-		                <spring:message code="ethnicGroup.tooltip" var="field_validation"/>
-		                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_ethnicGroup_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {invalidMessage: '${field_invalid}', required : false}})); </script>
-		            </div>		            
+		                <spring:message argumentSeparator="," arguments="Ethnic Group," code="field.simple.validation" var="field_validation"/>
+		                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_ethnicGroup_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : false}})); </script>
+		            </div>
 		            <br/>
 		            <div id="roo_child_sex">
 		                <label for="_sex_id"><spring:message code="child.sex"/></label>
@@ -274,13 +271,11 @@
 		                <form:errors cssClass="errors" id="_diabetesType_error_id" path="diabetesType"/>
 		                <form:select cssStyle="width:250px" id="_diabetesType_id" items="${diabetestype_enum}" path="diabetesType" itemLabel="label"/>
 		                <br/>
-		                <spring:message code="diabetesType.tooltip" var="field_validation"/>   
 		                <script type="text/javascript">Spring.addDecoration(
 			                new Spring.ElementDecoration({
 				                elementId : '_diabetesType_id', 
 				                widgetType: 'dijit.form.FilteringSelect', 
 				                widgetAttrs : {hasDownArrow : true,
-				                	promptMessage: '${field_validation}',
 		                            onChange : diabetesTypeOnChange
 				                }
 			                })); 

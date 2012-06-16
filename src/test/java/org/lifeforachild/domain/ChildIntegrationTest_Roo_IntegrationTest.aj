@@ -100,7 +100,7 @@ privileged aspect ChildIntegrationTest_Roo_IntegrationTest {
         org.junit.Assert.assertNotNull("Expected 'Child' identifier to no longer be null", obj.getId());
     }
     
-    //@Test
+    @Test
     public void ChildIntegrationTest.testRemove() {
         org.lifeforachild.domain.Child obj = dod.getRandomChild();
         org.junit.Assert.assertNotNull("Data on demand for 'Child' failed to initialize correctly", obj);
