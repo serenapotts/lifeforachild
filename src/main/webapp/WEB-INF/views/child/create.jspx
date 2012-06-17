@@ -382,9 +382,75 @@
                 </form:select>                
                 <br/>
                 <form:errors cssClass="errors" id="_hbA1cAtDiagnosis_error_id" path="hbA1cAtDiagnosis"/>                
-                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_hbA1cAtDiagnosis_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
+                <script type="text/javascript">Spring.addDecoration(
+                		new Spring.ElementDecoration({
+                			elementId : '_hbA1cAtDiagnosis_id', 
+                			widgetType: 'dijit.form.FilteringSelect', 
+                			widgetAttrs : {
+                				hasDownArrow : true,
+                				onChange : hbA1cAtDiagnosisOnChange
+                			}
+                		})); </script>
             </div>
             <br/>
+            <div id="roo_child_hbA1cPercentage">
+                <label for="_hbA1cPercentage_id"><spring:message code="record.hbA1cPercentage"/></label>
+                <form:input cssStyle="width:250px" id="_hbA1cPercentage_id" maxlength="30" path="hbA1cPercentage" size="0"/>
+                <br/>
+                <form:errors cssClass="errors" id="_hbA1cPercentage_error_id" path="hbA1cPercentage"/>
+                <spring:message arguments="Hb A1c Percentage" code="field.invalid" var="field_invalid"/>
+                <spring:message code="field.required" var="field_required"/>
+                <spring:message argumentSeparator="," arguments="Hb A1c Percentage," code="field.simple.validation" var="field_validation"/>
+        		<spring:message code="record.hbA1cPercentage.tooltip" var="field_hbA1cPercentage_tooltip"/>                  
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_hbA1cPercentage_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_hbA1cPercentage_tooltip}', invalidMessage: '${field_invalid}', required : false}})); </script>
+            	<br/>                
+            </div>
+            <script type="text/javascript">Spring.addDecoration(
+                    new Spring.ElementDecoration({
+                        elementId : 'roo_child_hbA1cPercentage', 
+                        widgetType: 'dijit.layout.ContentPane'})); 
+            </script>             
+            <div id="roo_child_hbA1cMethod">
+                <label for="_hbA1cMethod_id"><spring:message code="record.hbA1cMethod"/></label>
+                <form:select cssStyle="width:250px" id="_hbA1cMethod_id" path="hbA1cMethod">
+					<form:option value=""></form:option>
+                	<form:options items="${hba1cmethodtype_enum}" itemLabel="label"/>
+                </form:select>                 
+                <br/>
+                <form:errors cssClass="errors" id="_hbA1cMethod_error_id" path="hbA1cMethod"/>
+                <spring:bind path="child.hbA1cMethod"><c:if test="${status.error}"><script type="text/javascript">labTestingHasError = true;</script></c:if></spring:bind>
+                <script type="text/javascript">Spring.addDecoration(
+                        new Spring.ElementDecoration({
+                            elementId : '_hbA1cMethod_id', 
+                            widgetType: 'dijit.form.FilteringSelect', 
+                            widgetAttrs : {hasDownArrow : true,
+                            onChange : hbA1cMethodOnChange
+                		}
+                	})); 
+                </script>
+            	<br/>                
+            </div>
+            <script type="text/javascript">Spring.addDecoration(
+                    new Spring.ElementDecoration({
+                        elementId : 'roo_child_hbA1cMethod', 
+                        widgetType: 'dijit.layout.ContentPane'})); 
+            </script> 
+            <div id="roo_child_hbA1cMethodOther">
+                <label for="_hbA1cMethodOther_id"><spring:message code="record.hbA1cMethodOther"/></label>
+                <form:input cssStyle="width:250px" id="_hbA1cMethodOther_id" maxlength="30" path="hbA1cMethodOther" size="0"/>
+                <br/>
+                <form:errors cssClass="errors" id="_hbA1cMethodOther_error_id" path="hbA1cMethodOther"/>
+                <spring:message arguments="Hb A1c Method Other" code="field.invalid" var="field_invalid"/>
+                <spring:message code="field.required" var="field_required"/>
+                <spring:message argumentSeparator="," arguments="Hb A1c Method Other," code="field.simple.validation" var="field_validation"/>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_hbA1cMethodOther_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : false}})); </script>
+            	<br/>                
+            </div>
+            <script type="text/javascript">Spring.addDecoration(
+                    new Spring.ElementDecoration({
+                        elementId : 'roo_child_hbA1cMethodOther', 
+                        widgetType: 'dijit.layout.ContentPane'})); 
+            </script>
             <div id="roo_child_ketoacidosisAtDiagnosis">
                 <label for="_ketoacidosisAtDiagnosis_id"><spring:message code="child.ketoacidosisAtDiagnosis"/></label>
                 <form:select cssStyle="width:250px" id="_ketoacidosisAtDiagnosis_id" path="ketoacidosisAtDiagnosis">

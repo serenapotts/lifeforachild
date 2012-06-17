@@ -168,6 +168,9 @@ public class Child {
     @Enumerated
     private HbA1cMethodType hbA1cMethod;
 
+    @Size(max = 30)
+    private String hbA1cMethodOther;
+    
     @Enumerated
     @NotNull
     private NoMildSevereUnknownType ketoacidosisAtDiagnosis;

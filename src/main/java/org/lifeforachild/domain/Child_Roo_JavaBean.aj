@@ -265,6 +265,14 @@ privileged aspect Child_Roo_JavaBean {
  	public void Child.setHbA1cAtDiagnosis(YesNoUnkownType hbA1cAtDiagnosis) {
  		this.hbA1cAtDiagnosis = hbA1cAtDiagnosis;
  	}
+ 	
+ 	public Float Child.getHbA1cPercentage() {
+ 		return hbA1cPercentage;
+ 	}
+
+ 	public void Child.setHbA1cPercentage(Float hbA1cPercentage) {
+ 		this.hbA1cPercentage = hbA1cPercentage;
+ 	} 	
 
  	public HbA1cMethodType Child.getHbA1cMethod() {
  		return hbA1cMethod;
@@ -273,6 +281,14 @@ privileged aspect Child_Roo_JavaBean {
  	public void Child.setHbA1cMethod(HbA1cMethodType hbA1cMethod) {
  		this.hbA1cMethod = hbA1cMethod;
  	}
+ 	
+ 	public String Child.getHbA1cMethodOther() {
+ 		return hbA1cMethodOther;
+ 	}
+
+ 	public void Child.setHbA1cMethodOther(String hbA1cMethodOther) {
+ 		this.hbA1cMethodOther = hbA1cMethodOther;
+ 	} 	
 
  	public NoMildSevereUnknownType Child.getKetoacidosisAtDiagnosis() {
  		return ketoacidosisAtDiagnosis;

@@ -18,6 +18,7 @@ ALTER TABLE child ADD type_two_in_family int(11) not null;
 ALTER TABLE child ADD type_two_relatives_details varchar(255) default null;
 ALTER TABLE child ADD malnutrition int(11) not null;
 ALTER TABLE child ADD other_syndrome_additional_comment varchar(255) default null;
+ALTER TABLE child ADD hba1c_method_other varchar(255) default null;
 
 update child set blood_glucose_at_diagnosis = 1;
 update child set hba1c_at_diagnosis = 2;

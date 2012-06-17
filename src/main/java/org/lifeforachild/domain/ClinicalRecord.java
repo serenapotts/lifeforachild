@@ -119,8 +119,8 @@ public class ClinicalRecord {
     @NotNull(message = "Weight in last 12 months is required.")
     private YesNoType weightInLast12Months;
     
-    @DecimalMin(value ="3.0")
-    @DecimalMax(value = "120.0")
+    @DecimalMin(value ="1.0")
+    @DecimalMax(value = "150.0")
     private Float weightKG;
 
     @Enumerated

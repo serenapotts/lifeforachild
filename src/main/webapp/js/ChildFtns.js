@@ -51,6 +51,17 @@ dojo.addOnLoad(
 		{		
 			dojo.style(dijit.byId("roo_child_heightAtDiagnosisValue").domNode, "display", "none");
 		}
+		
+		if (dijit.byId("_hbA1cAtDiagnosis_id").value != 'YES')
+		{
+			dojo.style(dijit.byId("roo_child_hbA1cPercentage").domNode, "display", "none");
+			dojo.style(dijit.byId("roo_child_hbA1cMethod").domNode, "display", "none");
+		}  	
+		
+		if (dijit.byId("_hbA1cMethod_id") != null && dijit.byId("_hbA1cMethod_id").value != 'OTHER')
+	  	{
+			dojo.style(dijit.byId("roo_child_hbA1cMethodOther").domNode, "display", "none");
+	  	}  
 	}
 );  
 
@@ -103,6 +114,33 @@ function bloodGlucoseAtDiagnosisOnChange(newValue) {
 	{
 		dojo.style(dijit.byId("roo_child_bloodGlucoseValue").domNode, "display", "none");
 		dojo.style(dijit.byId("roo_child_bloodGlucoseUnits").domNode, "display", "none");
+	}
+}
+
+function hbA1cAtDiagnosisOnChange(newValue) {
+	if (newValue == 'YES')
+	{
+		dojo.style(dijit.byId("roo_child_hbA1cPercentage").domNode, "display", "block");
+		dojo.style(dijit.byId("roo_child_hbA1cMethod").domNode, "display", "block");
+		if (dijit.byId("_hbA1cMethod_id").value == 'OTHER')
+			dojo.style(dijit.byId("roo_child_hbA1cMethodOther").domNode, "display", "block");
+	}
+	else
+	{
+		dojo.style(dijit.byId("roo_child_hbA1cPercentage").domNode, "display", "none");
+		dojo.style(dijit.byId("roo_child_hbA1cMethod").domNode, "display", "none");
+		dojo.style(dijit.byId("roo_child_hbA1cMethodOther").domNode, "display", "none");
+	}
+}
+
+function hbA1cMethodOnChange(newValue) {
+	if (newValue == 'OTHER')
+	{
+		dojo.style(dijit.byId("roo_child_hbA1cMethodOther").domNode, "display", "block");
+	}
+	else
+	{
+		dojo.style(dijit.byId("roo_child_hbA1cMethodOther").domNode, "display", "none");
 	}
 }
 
