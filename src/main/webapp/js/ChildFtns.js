@@ -3,6 +3,7 @@ dojo.require('dijit.form.FilteringSelect');
 dojo.require('dijit.form.DateTextBox');
 dojo.require('dijit.form.SimpleTextarea');
 dojo.require('dojo.data.ItemFileReadStore');
+dojo.require('dijit.form.ValidationTextBox');
 
 dojo.addOnLoad(
 	function(){
@@ -23,6 +24,12 @@ dojo.addOnLoad(
 		if (dijit.byId("_diabetesType_id").value != 'OTHER')
 	  	{
 			dojo.style(dijit.byId("roo_child_diabetesTypeOther").domNode, "display", "none");
+	  	}
+		
+		if (dijit.byId("_bloodGlucoseAtDiagnosis_id").value != 'KNOWN')
+	  	{
+			dojo.style(dijit.byId("roo_child_bloodGlucoseValue").domNode, "display", "none");
+			dojo.style(dijit.byId("roo_child_bloodGlucoseUnits").domNode, "display", "none");
 	  	}
 	}
 );  
@@ -63,6 +70,19 @@ function diabetesTypeOnChange(newValue) {
 	else
 	{
 		dojo.style(dijit.byId("roo_child_diabetesTypeOther").domNode, "display", "none");
+	}
+}
+
+function bloodGlucoseAtDiagnosisOnChange(newValue) {
+	if (newValue == 'KNOWN')
+	{
+		dojo.style(dijit.byId("roo_child_bloodGlucoseValue").domNode, "display", "block");
+		dojo.style(dijit.byId("roo_child_bloodGlucoseUnits").domNode, "display", "block");
+	}
+	else
+	{
+		dojo.style(dijit.byId("roo_child_bloodGlucoseValue").domNode, "display", "none");
+		dojo.style(dijit.byId("roo_child_bloodGlucoseUnits").domNode, "display", "none");
 	}
 }
 

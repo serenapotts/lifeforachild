@@ -282,9 +282,10 @@
                         new Spring.ElementDecoration({
                             elementId : '_diabetesType_id', 
                             widgetType: 'dijit.form.FilteringSelect', 
-                            widgetAttrs : {hasDownArrow : true,
-                           	promptMessage: '${field_validation}',
-                            onChange : diabetesTypeOnChange
+                            widgetAttrs : {
+                            	hasDownArrow : true,
+                           		promptMessage: '${field_validation}',
+                            	onChange : diabetesTypeOnChange
                 		}
                 	})); 
                 </script>
@@ -303,9 +304,6 @@
                         elementId : 'roo_child_diabetesTypeOther', 
                         widgetType: 'dijit.layout.ContentPane'})); 
             </script>            
-            <form:hidden id="_createdOn_id" path="createdOn"/>
-            <form:hidden id="_updatedOn_id" path="updatedOn"/>
-            <form:hidden id="_isDeleted_id" path="isDeleted"/>
             <div id="roo_child_distanceLivesFromCentre">
                 <label for="_distanceLivesFromCentre_id"><spring:message code="child.distanceFromCentre"/></label>
                 <form:select cssStyle="width:250px" id="_distanceLivesFromCentre_id" path="distanceLivesFromCentre">
@@ -332,9 +330,50 @@
                 </form:select>                
                 <br/>
                 <form:errors cssClass="errors" id="_bloodGlucoseAtDiagnosis_error_id" path="bloodGlucoseAtDiagnosis"/>                
-                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_bloodGlucoseAtDiagnosis_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
+                <script type="text/javascript">Spring.addDecoration(
+                		new Spring.ElementDecoration({
+                			elementId : '_bloodGlucoseAtDiagnosis_id', 
+                			widgetType: 'dijit.form.FilteringSelect', 
+                			widgetAttrs : {
+                				hasDownArrow : true,
+                				onChange : bloodGlucoseAtDiagnosisOnChange
+                			}
+                		})); </script>
             </div>
             <br/>
+            <div id="roo_child_bloodGlucoseValue">
+                <label for="_bloodGlucoseValue_id"><spring:message code="child.bloodGlucoseValue"/></label>
+                <form:input cssStyle="width:250px" id="_bloodGlucoseValue_id" maxlength="30" path="bloodGlucoseValue" size="0"/>
+                <br/>
+                <br/>
+                <form:errors cssClass="errors" id="_bloodGlucoseValue_error_id" path="bloodGlucoseValue"/>
+                <spring:message arguments="Last Name" code="field.invalid" var="field_invalid"/>
+                <spring:message code="field.required" var="field_required"/>
+                <spring:message argumentSeparator="," arguments="Blood Glucose Value,(${field_required})" code="field.simple.validation" var="field_validation"/>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_bloodGlucoseValue_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : true}})); </script>
+            </div>
+            <script type="text/javascript">Spring.addDecoration(
+                    new Spring.ElementDecoration({
+                        elementId : 'roo_child_bloodGlucoseValue', 
+                        widgetType: 'dijit.layout.ContentPane'})); 
+            </script>     
+            <div id="roo_child_bloodGlucoseUnits">
+                <label for="_bloodGlucoseUnits_id"><spring:message code="child.bloodGlucoseUnits"/></label>
+                <form:select cssStyle="width:250px" id="_bloodGlucoseUnits_id" path="bloodGlucoseUnits">
+					<form:option value=""></form:option>
+                	<form:options items="${BloodGlucoseUnitsType_enum}" itemLabel="label"/>
+                </form:select>                               
+                <br/>
+                <form:errors cssClass="errors" id="_bloodGlucoseUnits_error_id" path="bloodGlucoseUnits"/>
+                <spring:bind path="child.bloodGlucoseUnits"><c:if test="${status.error}"><script type="text/javascript">labTestingHasError = true;</script></c:if></spring:bind>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_bloodGlucoseUnits_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
+            	<br/>                
+            </div>
+            <script type="text/javascript">Spring.addDecoration(
+                    new Spring.ElementDecoration({
+                        elementId : 'roo_child_bloodGlucoseUnits', 
+                        widgetType: 'dijit.layout.ContentPane'})); 
+            </script> 
             <div id="roo_child_hbA1cAtDiagnosis">
                 <label for="_hbA1cAtDiagnosis_id"><spring:message code="child.hbA1cAtDiagnosis"/></label>
                 <form:select cssStyle="width:250px" id="_hbA1cAtDiagnosis_id" path="hbA1cAtDiagnosis">
@@ -445,6 +484,9 @@
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_malnutrition_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
             </div>
             <br/>
+            <form:hidden id="_createdOn_id" path="createdOn"/>
+            <form:hidden id="_updatedOn_id" path="updatedOn"/>
+            <form:hidden id="_isDeleted_id" path="isDeleted"/>            
             <div class="submit" id="roo_child_submit">
                 <spring:message code="button.save" var="save_button"/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ValidateAllDecoration({elementId:'proceed', event:'onclick'}));</script>
