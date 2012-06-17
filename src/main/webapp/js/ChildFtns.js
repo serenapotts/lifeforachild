@@ -31,6 +31,16 @@ dojo.addOnLoad(
 			dojo.style(dijit.byId("roo_child_bloodGlucoseValue").domNode, "display", "none");
 			dojo.style(dijit.byId("roo_child_bloodGlucoseUnits").domNode, "display", "none");
 	  	}
+		
+		if (dijit.byId("_typeOneInFamily_id").value != 'YES')
+	  	{
+			dojo.style(dijit.byId("roo_child_typeOneRelativesDetails").domNode, "display", "none");
+	  	}
+		
+		if (dijit.byId("_typeTwoInFamily_id").value != 'YES')
+	  	{
+			dojo.style(dijit.byId("roo_child_typeTwoRelativesDetails").domNode, "display", "none");
+	  	}
 	}
 );  
 
@@ -83,6 +93,28 @@ function bloodGlucoseAtDiagnosisOnChange(newValue) {
 	{
 		dojo.style(dijit.byId("roo_child_bloodGlucoseValue").domNode, "display", "none");
 		dojo.style(dijit.byId("roo_child_bloodGlucoseUnits").domNode, "display", "none");
+	}
+}
+
+function typeOneInFamilyOnChange(newValue) {
+	if (newValue == 'YES')
+	{
+		dojo.style(dijit.byId("roo_child_typeOneRelativesDetails").domNode, "display", "block");
+	}
+	else
+	{
+		dojo.style(dijit.byId("roo_child_typeOneRelativesDetails").domNode, "display", "none");
+	}
+}
+
+function typeTwoInFamilyOnChange(newValue) {
+	if (newValue == 'YES')
+	{
+		dojo.style(dijit.byId("roo_child_typeTwoRelativesDetails").domNode, "display", "block");
+	}
+	else
+	{
+		dojo.style(dijit.byId("roo_child_typeTwoRelativesDetails").domNode, "display", "none");
 	}
 }
 

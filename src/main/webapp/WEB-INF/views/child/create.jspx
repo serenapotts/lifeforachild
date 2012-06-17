@@ -459,9 +459,33 @@
                 </form:select>                
                 <br/>
                 <form:errors cssClass="errors" id="_typeOneInFamily_error_id" path="typeOneInFamily"/>                
-                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_typeOneInFamily_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
+                <script type="text/javascript">Spring.addDecoration(
+                		new Spring.ElementDecoration({
+                			elementId : '_typeOneInFamily_id', 
+                			widgetType: 'dijit.form.FilteringSelect', 
+                			widgetAttrs : {
+                				hasDownArrow : true,
+                				onChange : typeOneInFamilyOnChange
+                			}
+                		})); </script>
             </div>
             <br/>
+             <div id="roo_child_typeOneRelativesDetails">
+                <label for="_typeOneRelativesDetails_id"><spring:message code="child.typeOneRelativesDetails"/></label>
+                <form:input cssStyle="width:250px" id="_typeOneRelativesDetails_id" maxlength="30" path="typeOneRelativesDetails" size="0"/>
+                <br/>
+                <br/>
+                <form:errors cssClass="errors" id="_typeOneRelativesDetails_error_id" path="typeOneRelativesDetails"/>
+                <spring:message arguments="Last Name" code="field.invalid" var="field_invalid"/>
+                <spring:message code="field.required" var="field_required"/>
+                <spring:message argumentSeparator="," arguments="Family details,(${field_required})" code="field.simple.validation" var="field_validation"/>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_typeOneRelativesDetails_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : true}})); </script>
+            </div>
+            <script type="text/javascript">Spring.addDecoration(
+                    new Spring.ElementDecoration({
+                        elementId : 'roo_child_typeOneRelativesDetails', 
+                        widgetType: 'dijit.layout.ContentPane'})); 
+            </script>  
             <div id="roo_child_typeTwoInFamily">
                 <label for="_typeTwoInFamily_id"><spring:message code="child.typeTwoInFamily"/></label>
                 <form:select cssStyle="width:250px" id="_typeTwoInFamily_id" path="typeTwoInFamily">
@@ -470,9 +494,33 @@
                 </form:select>                
                 <br/>
                 <form:errors cssClass="errors" id="_typeTwoInFamily_error_id" path="typeTwoInFamily"/>                
-                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_typeTwoInFamily_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
+                <script type="text/javascript">Spring.addDecoration(
+                		new Spring.ElementDecoration({
+                			elementId : '_typeTwoInFamily_id', 
+                			widgetType: 'dijit.form.FilteringSelect', 
+                			widgetAttrs : {
+                				hasDownArrow : true,
+                				onChange : typeTwoInFamilyOnChange
+               				}
+                		})); </script>
             </div>
             <br/>
+             <div id="roo_child_typeTwoRelativesDetails">
+                <label for="_typeTwoRelativesDetails_id"><spring:message code="child.typeTwoRelativesDetails"/></label>
+                <form:input cssStyle="width:250px" id="_typeTwoRelativesDetails_id" maxlength="30" path="typeTwoRelativesDetails" size="0"/>
+                <br/>
+                <br/>
+                <form:errors cssClass="errors" id="_typeTwoRelativesDetails_error_id" path="typeTwoRelativesDetails"/>
+                <spring:message arguments="Last Name" code="field.invalid" var="field_invalid"/>
+                <spring:message code="field.required" var="field_required"/>
+                <spring:message argumentSeparator="," arguments="Family details,(${field_required})" code="field.simple.validation" var="field_validation"/>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_typeTwoRelativesDetails_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : true}})); </script>
+            </div>
+            <script type="text/javascript">Spring.addDecoration(
+                    new Spring.ElementDecoration({
+                        elementId : 'roo_child_typeTwoRelativesDetails', 
+                        widgetType: 'dijit.layout.ContentPane'})); 
+            </script>  
             <div id="roo_child_malnutrition">
                 <label for="_malnutrition_id"><spring:message code="child.malnutrition"/></label>
                 <form:select cssStyle="width:250px" id="_malnutrition_id" path="malnutrition">
@@ -484,6 +532,14 @@
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_malnutrition_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
             </div>
             <br/>
+            <div id="roo_child_otherSyndromeAdditionalComment">
+                <label for="_otherSyndromeAdditionalComment_id"><spring:message code="child.otherSyndromeAdditionalComment"/></label>
+                <form:textarea cssStyle="width:250px" id="_otherSyndromeAdditionalComment_id" path="otherSyndromeAdditionalComment"/>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_otherSyndromeAdditionalComment_id', widgetType: 'dijit.form.SimpleTextarea', widgetAttrs: {}})); </script>
+                <br/>
+                <form:errors cssClass="errors" id="_otherSyndromeAdditionalComment_error_id" path="otherSyndromeAdditionalComment"/>
+                <br/>
+            </div>
             <form:hidden id="_createdOn_id" path="createdOn"/>
             <form:hidden id="_updatedOn_id" path="updatedOn"/>
             <form:hidden id="_isDeleted_id" path="isDeleted"/>            
