@@ -318,6 +318,354 @@
 		                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_ageAtDiagnosis_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {readOnly : true}})); </script>
 		            </div>
 		            <br/> 
+		            <div id="roo_child_bloodGlucoseAtDiagnosis">
+		                <label for="_bloodGlucoseAtDiagnosis_id"><spring:message code="child.bloodGlucoseAtDiagnosis"/></label>
+		                <form:select cssStyle="width:250px" id="_bloodGlucoseAtDiagnosis_id" path="bloodGlucoseAtDiagnosis">
+							<form:option value=""></form:option>
+		                	<form:options items="${KnownUnkownType_enum}" itemLabel="label"/>
+		                </form:select>                
+		                <br/>
+		                <form:errors cssClass="errors" id="_bloodGlucoseAtDiagnosis_error_id" path="bloodGlucoseAtDiagnosis"/>                
+		                <script type="text/javascript">Spring.addDecoration(
+		                		new Spring.ElementDecoration({
+		                			elementId : '_bloodGlucoseAtDiagnosis_id', 
+		                			widgetType: 'dijit.form.FilteringSelect', 
+		                			widgetAttrs : {
+		                				hasDownArrow : true,
+		                				onChange : bloodGlucoseAtDiagnosisOnChange
+		                			}
+		                		})); </script>
+		            </div>
+		            <br/>
+		            <div id="roo_child_bloodGlucoseValue">
+		                <label for="_bloodGlucoseValue_id"><spring:message code="child.bloodGlucoseValue"/></label>
+		                <form:input cssStyle="width:250px" id="_bloodGlucoseValue_id" maxlength="30" path="bloodGlucoseValue" size="0"/>
+		                <br/>
+		                <br/>
+		                <form:errors cssClass="errors" id="_bloodGlucoseValue_error_id" path="bloodGlucoseValue"/>
+		                <spring:message arguments="Last Name" code="field.invalid" var="field_invalid"/>
+		                <spring:message code="field.required" var="field_required"/>
+		                <spring:message argumentSeparator="," arguments="Blood Glucose Value,(${field_required})" code="field.simple.validation" var="field_validation"/>
+		                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_bloodGlucoseValue_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}'}})); </script>
+		            </div>
+		            <script type="text/javascript">Spring.addDecoration(
+		                    new Spring.ElementDecoration({
+		                        elementId : 'roo_child_bloodGlucoseValue', 
+		                        widgetType: 'dijit.layout.ContentPane'})); 
+		            </script>     
+		            <div id="roo_child_bloodGlucoseUnits">
+		                <label for="_bloodGlucoseUnits_id"><spring:message code="child.bloodGlucoseUnits"/></label>
+		                <form:select cssStyle="width:250px" id="_bloodGlucoseUnits_id" path="bloodGlucoseUnits">
+							<form:option value=""></form:option>
+		                	<form:options items="${BloodGlucoseUnitsType_enum}" itemLabel="label"/>
+		                </form:select>                               
+		                <br/>
+		                <form:errors cssClass="errors" id="_bloodGlucoseUnits_error_id" path="bloodGlucoseUnits"/>
+		                <spring:bind path="child.bloodGlucoseUnits"><c:if test="${status.error}"><script type="text/javascript">labTestingHasError = true;</script></c:if></spring:bind>
+		                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_bloodGlucoseUnits_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
+		            	<br/>                
+		            </div>
+		            <script type="text/javascript">Spring.addDecoration(
+		                    new Spring.ElementDecoration({
+		                        elementId : 'roo_child_bloodGlucoseUnits', 
+		                        widgetType: 'dijit.layout.ContentPane'})); 
+		            </script> 
+		            <div id="roo_child_hbA1cAtDiagnosis">
+		                <label for="_hbA1cAtDiagnosis_id"><spring:message code="child.hbA1cAtDiagnosis"/></label>
+		                <form:select cssStyle="width:250px" id="_hbA1cAtDiagnosis_id" path="hbA1cAtDiagnosis">
+							<form:option value=""></form:option>
+		                	<form:options items="${yesnounkowntype_enum}" itemLabel="label"/>
+		                </form:select>                
+		                <br/>
+		                <form:errors cssClass="errors" id="_hbA1cAtDiagnosis_error_id" path="hbA1cAtDiagnosis"/>                
+		                <script type="text/javascript">Spring.addDecoration(
+		                		new Spring.ElementDecoration({
+		                			elementId : '_hbA1cAtDiagnosis_id', 
+		                			widgetType: 'dijit.form.FilteringSelect', 
+		                			widgetAttrs : {
+		                				hasDownArrow : true,
+		                				onChange : hbA1cAtDiagnosisOnChange
+		                			}
+		                		})); </script>
+		            </div>
+		            <br/>
+		            <div id="roo_child_hbA1cPercentage">
+		                <label for="_hbA1cPercentage_id"><spring:message code="child.hbA1cPercentage"/></label>
+		                <form:input cssStyle="width:250px" id="_hbA1cPercentage_id" maxlength="30" path="hbA1cPercentage" size="0"/>
+		                <br/>
+		                <form:errors cssClass="errors" id="_hbA1cPercentage_error_id" path="hbA1cPercentage"/>
+		                <spring:message arguments="Hb A1c Percentage" code="field.invalid" var="field_invalid"/>
+		                <spring:message code="field.required" var="field_required"/>
+		                <spring:message argumentSeparator="," arguments="Hb A1c Percentage," code="field.simple.validation" var="field_validation"/>
+		        		<spring:message code="child.hbA1cPercentage.tooltip" var="field_hbA1cPercentage_tooltip"/>                  
+		                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_hbA1cPercentage_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_hbA1cPercentage_tooltip}', invalidMessage: '${field_invalid}', required : false}})); </script>
+		            	<br/>                
+		            </div>
+		            <script type="text/javascript">Spring.addDecoration(
+		                    new Spring.ElementDecoration({
+		                        elementId : 'roo_child_hbA1cPercentage', 
+		                        widgetType: 'dijit.layout.ContentPane'})); 
+		            </script>             
+		            <div id="roo_child_hbA1cMethod">
+		                <label for="_hbA1cMethod_id"><spring:message code="child.hbA1cMethod"/></label>
+		                <form:select cssStyle="width:250px" id="_hbA1cMethod_id" path="hbA1cMethod">
+							<form:option value=""></form:option>
+		                	<form:options items="${hba1cmethodtype_enum}" itemLabel="label"/>
+		                </form:select>                 
+		                <br/>
+		                <form:errors cssClass="errors" id="_hbA1cMethod_error_id" path="hbA1cMethod"/>
+		                <spring:bind path="child.hbA1cMethod"><c:if test="${status.error}"><script type="text/javascript">labTestingHasError = true;</script></c:if></spring:bind>
+		                <script type="text/javascript">Spring.addDecoration(
+		                        new Spring.ElementDecoration({
+		                            elementId : '_hbA1cMethod_id', 
+		                            widgetType: 'dijit.form.FilteringSelect', 
+		                            widgetAttrs : {hasDownArrow : true,
+		                            onChange : hbA1cMethodOnChange
+		                		}
+		                	})); 
+		                </script>
+		            	<br/>                
+		            </div>
+		            <script type="text/javascript">Spring.addDecoration(
+		                    new Spring.ElementDecoration({
+		                        elementId : 'roo_child_hbA1cMethod', 
+		                        widgetType: 'dijit.layout.ContentPane'})); 
+		            </script> 
+		            <div id="roo_child_hbA1cMethodOther">
+		                <label for="_hbA1cMethodOther_id"><spring:message code="child.hbA1cMethodOther"/></label>
+		                <form:input cssStyle="width:250px" id="_hbA1cMethodOther_id" maxlength="30" path="hbA1cMethodOther" size="0"/>
+		                <br/>
+		                <form:errors cssClass="errors" id="_hbA1cMethodOther_error_id" path="hbA1cMethodOther"/>
+		                <spring:message arguments="Hb A1c Method Other" code="field.invalid" var="field_invalid"/>
+		                <spring:message code="field.required" var="field_required"/>
+		                <spring:message argumentSeparator="," arguments="Hb A1c Method Other," code="field.simple.validation" var="field_validation"/>
+		                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_hbA1cMethodOther_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : false}})); </script>
+		            	<br/>                
+		            </div>
+		            <script type="text/javascript">Spring.addDecoration(
+		                    new Spring.ElementDecoration({
+		                        elementId : 'roo_child_hbA1cMethodOther', 
+		                        widgetType: 'dijit.layout.ContentPane'})); 
+		            </script>
+		            <div id="roo_child_ketoacidosisAtDiagnosis">
+		                <label for="_ketoacidosisAtDiagnosis_id"><spring:message code="child.ketoacidosisAtDiagnosis"/></label>
+		                <form:select cssStyle="width:250px" id="_ketoacidosisAtDiagnosis_id" path="ketoacidosisAtDiagnosis">
+							<form:option value=""></form:option>
+		                	<form:options items="${NoMildSevereUnknownType_enum}" itemLabel="label"/>
+		                </form:select>                
+		                <br/>
+		                <form:errors cssClass="errors" id="_ketoacidosisAtDiagnosis_error_id" path="ketoacidosisAtDiagnosis"/>                
+		                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_ketoacidosisAtDiagnosis_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
+		            </div>
+		            <br/>
+		            <div id="roo_child_polyuriaAtDiagnosis">
+		                <label for="_polyuriaAtDiagnosis_id"><spring:message code="child.polyuriaAtDiagnosis"/></label>
+		                <form:select cssStyle="width:250px" id="_polyuriaAtDiagnosis_id" path="polyuriaAtDiagnosis">
+							<form:option value=""></form:option>
+		                	<form:options items="${yesnounkowntype_enum}" itemLabel="label"/>
+		                </form:select>                
+		                <br/>
+		                <form:errors cssClass="errors" id="_polyuriaAtDiagnosis_error_id" path="polyuriaAtDiagnosis"/>                
+		                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_polyuriaAtDiagnosis_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
+		            </div>
+		            <br/>
+		            <div id="roo_child_thirstAtDiagnosis">
+		                <label for="_thirstAtDiagnosis_id"><spring:message code="child.thirstAtDiagnosis"/></label>
+		                <form:select cssStyle="width:250px" id="_thirstAtDiagnosis_id" path="thirstAtDiagnosis">
+							<form:option value=""></form:option>
+		                	<form:options items="${yesnounkowntype_enum}" itemLabel="label"/>
+		                </form:select>                
+		                <br/>
+		                <form:errors cssClass="errors" id="_thirstAtDiagnosis_error_id" path="thirstAtDiagnosis"/>                
+		                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_thirstAtDiagnosis_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
+		            </div>
+		            <br/>
+		            <div id="roo_child_weightLossAtDiagnosis">
+		                <label for="_weightLossAtDiagnosis_id"><spring:message code="child.weightLossAtDiagnosis"/></label>
+		                <form:select cssStyle="width:250px" id="_weightLossAtDiagnosis_id" path="weightLossAtDiagnosis">
+							<form:option value=""></form:option>
+		                	<form:options items="${yesnounkowntype_enum}" itemLabel="label"/>
+		                </form:select>                
+		                <br/>
+		                <form:errors cssClass="errors" id="_weightLossAtDiagnosis_error_id" path="weightLossAtDiagnosis"/>                
+		                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_weightLossAtDiagnosis_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
+		            </div>
+		            <br/>
+		            <div id="roo_child_weightAtDiagnosis">
+		                <label for="_weightAtDiagnosis_id"><spring:message code="child.weightAtDiagnosis"/></label>
+		                <form:select cssStyle="width:250px" id="_weightAtDiagnosis_id" path="weightAtDiagnosis">
+							<form:option value=""></form:option>
+		                	<form:options items="${YesUnknownType_enum}" itemLabel="label"/>
+		                </form:select>                
+		                <br/>
+		                <form:errors cssClass="errors" id="_weightAtDiagnosis_error_id" path="weightAtDiagnosis"/>                
+		                <script type="text/javascript">Spring.addDecoration(
+		                		new Spring.ElementDecoration({
+		                			elementId : '_weightAtDiagnosis_id', 
+		                			widgetType: 'dijit.form.FilteringSelect', 
+		                			widgetAttrs : {
+		                				hasDownArrow : true,
+		                				onChange : weightAtDiagnosisOnChange
+		                			}
+		                		})); </script>
+		            </div>
+		            <br/>
+		            <div id="roo_child_weightAtDiagnosisValue">
+		                <label for="_weightAtDiagnosisValue_id"><spring:message code="child.weightAtDiagnosisValue"/></label>
+		                <form:input cssStyle="width:250px" id="_weightAtDiagnosisValue_id" maxlength="30" path="weightAtDiagnosisValue" size="0"/>
+		                <br/>
+		                <form:errors cssClass="errors" id="_weightAtDiagnosisValue_error_id" path="weightAtDiagnosisValue"/>
+		                <spring:message arguments="Weight K G" code="field.invalid" var="field_invalid"/>
+		                <spring:message code="field.required" var="field_required"/>
+		                <spring:message argumentSeparator="," arguments="Weight,(${field_required})" code="field.simple.validation" var="field_validation"/>
+		                <script type="text/javascript">Spring.addDecoration(
+		                        new Spring.ElementDecoration({
+		                            elementId : '_weightAtDiagnosisValue_id', 
+		                            widgetType : 'dijit.form.ValidationTextBox', 
+		                            widgetAttrs : {
+		                            	promptMessage: '${field_validation}', 
+		                            	invalidMessage: '${field_invalid}'
+		                        }})); 
+		                </script>
+		                <spring:bind path="child.weightAtDiagnosisValue"><c:if test="${status.error}"><script type="text/javascript">clinicalMeasuresHasError = true;</script></c:if></spring:bind>                
+		                <br/>
+		            </div>
+		            <script type="text/javascript">Spring.addDecoration(
+		                    new Spring.ElementDecoration({
+		                        elementId : 'roo_child_weightAtDiagnosisValue', 
+		                        widgetType: 'dijit.layout.ContentPane'})); 
+		            </script>
+		            <div id="roo_child_heightAtDiagnosis">
+		                <label for="_heightAtDiagnosis_id"><spring:message code="child.heightAtDiagnosis"/></label>
+		                <form:select cssStyle="width:250px" id="_heightAtDiagnosis_id" path="heightAtDiagnosis">
+							<form:option value=""></form:option>
+		                	<form:options items="${YesUnknownType_enum}" itemLabel="label"/>
+		                </form:select>                
+		                <br/>
+		                <form:errors cssClass="errors" id="_heightAtDiagnosis_error_id" path="heightAtDiagnosis"/>                
+		                <script type="text/javascript">Spring.addDecoration(
+		                		new Spring.ElementDecoration({
+		                			elementId : '_heightAtDiagnosis_id',
+		                			widgetType: 'dijit.form.FilteringSelect', 
+		                			widgetAttrs : {
+		                				hasDownArrow : true,
+		                				onChange : heightAtDiagnosisOnChange
+		                			}
+		                		})); </script>
+		            </div>
+		            <br/>
+		            <div id="roo_child_heightAtDiagnosisValue">
+		                <label for="_heightAtDiagnosisValue_id"><spring:message code="child.heightAtDiagnosisValue"/></label>
+		                <form:input cssStyle="width:250px" id="_heightAtDiagnosisValue_id" maxlength="30" path="heightAtDiagnosisValue" size="0"/>
+		                <br/>
+		                <form:errors cssClass="errors" id="_heightAtDiagnosisValue_error_id" path="heightAtDiagnosisValue"/>
+		                <spring:message code="field.required" var="field_required"/>
+		                <spring:message argumentSeparator="," arguments="Height," code="field.simple.validation" var="field_validation"/>
+		                <script type="text/javascript">Spring.addDecoration(
+		                        new Spring.ElementDecoration({
+		                            elementId : '_heightAtDiagnosisValue_id', 
+		                            widgetType : 'dijit.form.ValidationTextBox', 
+		                            widgetAttrs : {
+		                            	promptMessage: '${field_validation}', 
+		                            	invalidMessage: '${field_invalid}'
+		                        }})); 
+		                </script>
+		                <br/>
+		            </div>
+		            <script type="text/javascript">Spring.addDecoration(
+		                    new Spring.ElementDecoration({
+		                        elementId : 'roo_child_heightAtDiagnosisValue', 
+		                        widgetType: 'dijit.layout.ContentPane'})); 
+		            </script>
+		            <div id="roo_child_typeOneInFamily">
+		                <label for="_typeOneInFamily_id"><spring:message code="child.typeOneInFamily"/></label>
+		                <form:select cssStyle="width:250px" id="_typeOneInFamily_id" path="typeOneInFamily">
+							<form:option value=""></form:option>
+		                	<form:options items="${yesnounkowntype_enum}" itemLabel="label"/>
+		                </form:select>                
+		                <br/>
+		                <form:errors cssClass="errors" id="_typeOneInFamily_error_id" path="typeOneInFamily"/>                
+		                <script type="text/javascript">Spring.addDecoration(
+		                		new Spring.ElementDecoration({
+		                			elementId : '_typeOneInFamily_id', 
+		                			widgetType: 'dijit.form.FilteringSelect', 
+		                			widgetAttrs : {
+		                				hasDownArrow : true,
+		                				onChange : typeOneInFamilyOnChange
+		                			}
+		                		})); </script>
+		            </div>
+		            <br/>
+		             <div id="roo_child_typeOneRelativesDetails">
+		                <label for="_typeOneRelativesDetails_id"><spring:message code="child.typeOneRelativesDetails"/></label>
+		                <form:input cssStyle="width:250px" id="_typeOneRelativesDetails_id" maxlength="30" path="typeOneRelativesDetails" size="0"/>
+		                <br/>
+		                <br/>
+		                <form:errors cssClass="errors" id="_typeOneRelativesDetails_error_id" path="typeOneRelativesDetails"/>
+		                <spring:message arguments="Last Name" code="field.invalid" var="field_invalid"/>
+		                <spring:message code="field.required" var="field_required"/>
+		                <spring:message argumentSeparator="," arguments="Family details,(${field_required})" code="field.simple.validation" var="field_validation"/>
+		                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_typeOneRelativesDetails_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}'}})); </script>
+		            </div>
+		            <script type="text/javascript">Spring.addDecoration(
+		                    new Spring.ElementDecoration({
+		                        elementId : 'roo_child_typeOneRelativesDetails', 
+		                        widgetType: 'dijit.layout.ContentPane'})); 
+		            </script>  
+		            <div id="roo_child_typeTwoInFamily">
+		                <label for="_typeTwoInFamily_id"><spring:message code="child.typeTwoInFamily"/></label>
+		                <form:select cssStyle="width:250px" id="_typeTwoInFamily_id" path="typeTwoInFamily">
+							<form:option value=""></form:option>
+		                	<form:options items="${yesnounkowntype_enum}" itemLabel="label"/>
+		                </form:select>                
+		                <br/>
+		                <form:errors cssClass="errors" id="_typeTwoInFamily_error_id" path="typeTwoInFamily"/>                
+		                <script type="text/javascript">Spring.addDecoration(
+		                		new Spring.ElementDecoration({
+		                			elementId : '_typeTwoInFamily_id', 
+		                			widgetType: 'dijit.form.FilteringSelect', 
+		                			widgetAttrs : {
+		                				hasDownArrow : true,
+		                				onChange : typeTwoInFamilyOnChange
+		               				}
+		                		})); </script>
+		            </div>
+		            <br/>
+		             <div id="roo_child_typeTwoRelativesDetails">
+		                <label for="_typeTwoRelativesDetails_id"><spring:message code="child.typeTwoRelativesDetails"/></label>
+		                <form:input cssStyle="width:250px" id="_typeTwoRelativesDetails_id" maxlength="30" path="typeTwoRelativesDetails" size="0"/>
+		                <br/>
+		                <br/>
+		                <form:errors cssClass="errors" id="_typeTwoRelativesDetails_error_id" path="typeTwoRelativesDetails"/>
+		                <spring:message arguments="Last Name" code="field.invalid" var="field_invalid"/>
+		                <spring:message code="field.required" var="field_required"/>
+		                <spring:message argumentSeparator="," arguments="Family details,(${field_required})" code="field.simple.validation" var="field_validation"/>
+		                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_typeTwoRelativesDetails_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}'}})); </script>
+		            </div>
+		            <script type="text/javascript">Spring.addDecoration(
+		                    new Spring.ElementDecoration({
+		                        elementId : 'roo_child_typeTwoRelativesDetails', 
+		                        widgetType: 'dijit.layout.ContentPane'})); 
+		            </script>  
+		            <div id="roo_child_malnutrition">
+		                <label for="_malnutrition_id"><spring:message code="child.malnutrition"/></label>
+		                <form:select cssStyle="width:250px" id="_malnutrition_id" path="malnutrition">
+							<form:option value=""></form:option>
+		                	<form:options items="${yesnounkowntype_enum}" itemLabel="label"/>
+		                </form:select>                
+		                <br/>
+		                <form:errors cssClass="errors" id="_malnutrition_error_id" path="malnutrition"/>                
+		                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_malnutrition_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
+		            </div>
+		            <br/>
+		            <div id="roo_child_otherSyndromeAdditionalComment">
+		                <label for="_otherSyndromeAdditionalComment_id"><spring:message code="child.otherSyndromeAdditionalComment"/></label>
+		                <form:textarea cssStyle="width:250px" id="_otherSyndromeAdditionalComment_id" path="otherSyndromeAdditionalComment"/>
+		                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_otherSyndromeAdditionalComment_id', widgetType: 'dijit.form.SimpleTextarea', widgetAttrs: {}})); </script>
+		                <br/>
+		                <form:errors cssClass="errors" id="_otherSyndromeAdditionalComment_error_id" path="otherSyndromeAdditionalComment"/>
+		                <br/>
+		            </div>
 		            <div class="submit" id="roo_child_submit">
 		                <spring:message code="button.update" var="update_button"/>
 		                <script type="text/javascript">Spring.addDecoration(new Spring.ValidateAllDecoration({elementId:'proceed', event:'onclick'}));</script>
