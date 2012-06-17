@@ -315,7 +315,7 @@
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_distanceLivesFromCentre_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
             </div>
             <br/>
-            <div id="roo_clinicalRecord_ageAtDiagnosis">
+            <div id="roo_child_ageAtDiagnosis">
                 <label for="_exactAge_id"><spring:message code="child.ageAtDiagnosis"/></label>
                 <form:input cssStyle="width:250px; border:0" id="_ageAtDiagnosis_id" maxlength="30" path="ageAtDiagnosis" size="0"/>
                	<br/>
@@ -437,9 +437,42 @@
                 </form:select>                
                 <br/>
                 <form:errors cssClass="errors" id="_weightAtDiagnosis_error_id" path="weightAtDiagnosis"/>                
-                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_weightAtDiagnosis_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
+                <script type="text/javascript">Spring.addDecoration(
+                		new Spring.ElementDecoration({
+                			elementId : '_weightAtDiagnosis_id', 
+                			widgetType: 'dijit.form.FilteringSelect', 
+                			widgetAttrs : {
+                				hasDownArrow : true,
+                				onChange : weightAtDiagnosisOnChange
+                			}
+                		})); </script>
             </div>
             <br/>
+            <div id="roo_child_weightAtDiagnosisValue">
+                <label for="_weightAtDiagnosisValue_id"><spring:message code="record.weight"/></label>
+                <form:input cssStyle="width:250px" id="_weightAtDiagnosisValue_id" maxlength="30" path="weightAtDiagnosisValue" size="0"/>
+                <br/>
+                <form:errors cssClass="errors" id="_weightAtDiagnosisValue_error_id" path="weightAtDiagnosisValue"/>
+                <spring:message arguments="Weight K G" code="field.invalid" var="field_invalid"/>
+                <spring:message code="field.required" var="field_required"/>
+                <spring:message argumentSeparator="," arguments="Weight,(${field_required})" code="field.simple.validation" var="field_validation"/>
+                <script type="text/javascript">Spring.addDecoration(
+                        new Spring.ElementDecoration({
+                            elementId : '_weightAtDiagnosisValue_id', 
+                            widgetType : 'dijit.form.ValidationTextBox', 
+                            widgetAttrs : {
+                            	promptMessage: '${field_validation}', 
+                            	invalidMessage: '${field_invalid}'
+                        }})); 
+                </script>
+                <spring:bind path="child.weightAtDiagnosisValue"><c:if test="${status.error}"><script type="text/javascript">clinicalMeasuresHasError = true;</script></c:if></spring:bind>                
+                <br/>
+            </div>
+            <script type="text/javascript">Spring.addDecoration(
+                    new Spring.ElementDecoration({
+                        elementId : 'roo_child_weightAtDiagnosisValue', 
+                        widgetType: 'dijit.layout.ContentPane'})); 
+            </script>
             <div id="roo_child_heightAtDiagnosis">
                 <label for="_heightAtDiagnosis_id"><spring:message code="child.heightAtDiagnosis"/></label>
                 <form:select cssStyle="width:250px" id="_heightAtDiagnosis_id" path="heightAtDiagnosis">
@@ -448,9 +481,40 @@
                 </form:select>                
                 <br/>
                 <form:errors cssClass="errors" id="_heightAtDiagnosis_error_id" path="heightAtDiagnosis"/>                
-                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_heightAtDiagnosis_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
+                <script type="text/javascript">Spring.addDecoration(
+                		new Spring.ElementDecoration({
+                			elementId : '_heightAtDiagnosis_id',
+                			widgetType: 'dijit.form.FilteringSelect', 
+                			widgetAttrs : {
+                				hasDownArrow : true,
+                				onChange : heightAtDiagnosisOnChange
+                			}
+                		})); </script>
             </div>
             <br/>
+            <div id="roo_child_heightAtDiagnosisValue">
+                <label for="_heightAtDiagnosisValue_id"><spring:message code="record.height"/></label>
+                <form:input cssStyle="width:250px" id="_heightAtDiagnosisValue_id" maxlength="30" path="heightAtDiagnosisValue" size="0"/>
+                <br/>
+                <form:errors cssClass="errors" id="_heightAtDiagnosisValue_error_id" path="heightAtDiagnosisValue"/>
+                <spring:message code="field.required" var="field_required"/>
+                <spring:message argumentSeparator="," arguments="Height," code="field.simple.validation" var="field_validation"/>
+                <script type="text/javascript">Spring.addDecoration(
+                        new Spring.ElementDecoration({
+                            elementId : '_heightAtDiagnosisValue_id', 
+                            widgetType : 'dijit.form.ValidationTextBox', 
+                            widgetAttrs : {
+                            	promptMessage: '${field_validation}', 
+                            	invalidMessage: '${field_invalid}'
+                        }})); 
+                </script>
+                <br/>
+            </div>
+            <script type="text/javascript">Spring.addDecoration(
+                    new Spring.ElementDecoration({
+                        elementId : 'roo_child_heightAtDiagnosisValue', 
+                        widgetType: 'dijit.layout.ContentPane'})); 
+            </script>
             <div id="roo_child_typeOneInFamily">
                 <label for="_typeOneInFamily_id"><spring:message code="child.typeOneInFamily"/></label>
                 <form:select cssStyle="width:250px" id="_typeOneInFamily_id" path="typeOneInFamily">

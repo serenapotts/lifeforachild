@@ -188,12 +188,16 @@ public class Child {
     @NotNull
     private YesUnknownType weightAtDiagnosis;
     
+    @DecimalMin(value ="1.0")
+    @DecimalMax(value = "150.0")
     private Float weightAtDiagnosisValue;
     
     @Enumerated
     @NotNull
     private YesUnknownType heightAtDiagnosis;
    
+    @DecimalMin("45.0")
+    @DecimalMax("230.0")
     private Float heightAtDiagnosisValue;
 
 	@Enumerated

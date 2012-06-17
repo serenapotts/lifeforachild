@@ -127,8 +127,8 @@ public class ClinicalRecord {
     @NotNull(message = "Height in last 12 months is required.")
     private YesNoType heightInLast12Months;
     
-    @DecimalMin("50.0")
-    @DecimalMax("220.0")
+    @DecimalMin("45.0")
+    @DecimalMax("230.0")
     private Float heightCM;
 
     @Enumerated

@@ -41,6 +41,16 @@ dojo.addOnLoad(
 	  	{
 			dojo.style(dijit.byId("roo_child_typeTwoRelativesDetails").domNode, "display", "none");
 	  	}
+		
+		if (dijit.byId("_weightAtDiagnosis_id").value != 'YES')
+		{		
+			dojo.style(dijit.byId("roo_child_weightAtDiagnosisValue").domNode, "display", "none");
+		}
+		
+		if (dijit.byId("_heightAtDiagnosis_id").value != 'YES')
+		{		
+			dojo.style(dijit.byId("roo_child_heightAtDiagnosisValue").domNode, "display", "none");
+		}
 	}
 );  
 
@@ -93,6 +103,28 @@ function bloodGlucoseAtDiagnosisOnChange(newValue) {
 	{
 		dojo.style(dijit.byId("roo_child_bloodGlucoseValue").domNode, "display", "none");
 		dojo.style(dijit.byId("roo_child_bloodGlucoseUnits").domNode, "display", "none");
+	}
+}
+
+function weightAtDiagnosisOnChange(newValue) {
+	if (newValue == 'YES')
+	{
+		dojo.style(dijit.byId("roo_child_weightAtDiagnosisValue").domNode, "display", "block");
+	}
+	else
+	{
+		dojo.style(dijit.byId("roo_child_weightAtDiagnosisValue").domNode, "display", "none");
+	}
+}
+
+function heightAtDiagnosisOnChange(newValue) {
+	if (newValue == 'YES')
+	{
+		dojo.style(dijit.byId("roo_child_heightAtDiagnosisValue").domNode, "display", "block");
+	}
+	else
+	{
+		dojo.style(dijit.byId("roo_child_heightAtDiagnosisValue").domNode, "display", "none");
 	}
 }
 
