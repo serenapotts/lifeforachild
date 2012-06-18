@@ -21,11 +21,17 @@ import org.lifeforachild.Util.SecurityUtil;
 import org.lifeforachild.domain.Child;
 import org.lifeforachild.domain.Country;
 import org.lifeforachild.domain.DiabetesCentre;
+import org.lifeforachild.enums.BloodGlucoseUnitsType;
 import org.lifeforachild.enums.CauseOfDeathType;
 import org.lifeforachild.enums.DiabetesType;
 import org.lifeforachild.enums.DistanceType;
+import org.lifeforachild.enums.HbA1cMethodType;
+import org.lifeforachild.enums.KnownUnkownType;
+import org.lifeforachild.enums.NoMildSevereUnknownType;
 import org.lifeforachild.enums.SexType;
 import org.lifeforachild.enums.SurvivalStatusType;
+import org.lifeforachild.enums.YesNoUnkownType;
+import org.lifeforachild.enums.YesUnknownType;
 import org.lifeforachild.util.TestUtil;
 import org.springframework.stereotype.Component;
 
@@ -62,6 +68,27 @@ privileged aspect ChildDataOnDemand_Roo_DataOnDemand {
         setName(obj, index);
         setSex(obj, index);
         setSurvivalStatus(obj, index);
+        setBloodGlucoseAtDiagnosis(obj, index);
+        setBloodGlucoseValue(obj, index);
+        setBloodGlucoseUnits(obj, index);
+        setHbA1cAtDiagnosis(obj, index);
+        setHbA1cPercentage(obj, index);
+        setHbA1cMethod(obj, index);
+        setHbA1cMethodOther(obj, index);
+        setKetoacidosisAtDiagnosis(obj, index);
+        setPolyuriaAtDiagnosis(obj, index);
+        setThirstAtDiagnosis(obj, index);
+        setWeightLossAtDiagnosis(obj, index);
+        setWeightAtDiagnosis(obj, index);
+        setWeightAtDiagnosisValue(obj, index);
+        setHeightAtDiagnosis(obj, index);
+        setHeightAtDiagnosisValue(obj, index);
+        setTypeOneInFamily(obj, index);
+        setTypeOneRelativesDetails(obj, index);
+        setTypeTwoInFamily(obj, index);
+        setTypeTwoRelativesDetails(obj, index);
+        setMalnutrition(obj, index);
+        setOtherSyndromeAdditionalComment(obj, index);
         setUpdatedOn(obj, index);
         return obj;
     }
@@ -182,6 +209,123 @@ privileged aspect ChildDataOnDemand_Roo_DataOnDemand {
     public void ChildDataOnDemand.setSurvivalStatus(Child obj, int index) {
         SurvivalStatusType survivalStatus = SurvivalStatusType.class.getEnumConstants()[0];
         obj.setSurvivalStatus(survivalStatus);
+    }
+    
+    public void ChildDataOnDemand.setBloodGlucoseAtDiagnosis(Child obj, int index) {
+    	KnownUnkownType type = KnownUnkownType.class.getEnumConstants()[0];
+        obj.setBloodGlucoseAtDiagnosis(type);
+    }
+    
+    public void ChildDataOnDemand.setBloodGlucoseValue(Child obj, int index) {
+    	Float value = new Integer(index).floatValue();
+        obj.setBloodGlucoseValue(value);
+    }
+    
+    public void ChildDataOnDemand.setBloodGlucoseUnits(Child obj, int index) {
+    	BloodGlucoseUnitsType type = BloodGlucoseUnitsType.class.getEnumConstants()[0];
+        obj.setBloodGlucoseUnits(type);
+    }
+    
+    public void ChildDataOnDemand.setHbA1cAtDiagnosis(Child obj, int index) {
+    	YesNoUnkownType type = YesNoUnkownType.class.getEnumConstants()[0];
+        obj.setHbA1cAtDiagnosis(type);
+    }
+    
+    public void ChildDataOnDemand.setHbA1cPercentage(Child obj, int index) {
+    	Float hbA1cPercentage = new Integer(index).floatValue();
+        if (hbA1cPercentage < 2.0F || hbA1cPercentage > 20.0F) {
+            hbA1cPercentage = 20.0F;
+        }
+        obj.setHbA1cPercentage(hbA1cPercentage);
+    }
+    
+    public void ChildDataOnDemand.setHbA1cMethod(Child obj, int index) {
+    	HbA1cMethodType hbA1cMethod = HbA1cMethodType.class.getEnumConstants()[0];
+        obj.setHbA1cMethod(hbA1cMethod);
+    }
+    
+    public void ChildDataOnDemand.setHbA1cMethodOther(Child obj, int index) {
+    	String hbA1cMethodOther = "hbA1cMethodOther_" + index;
+        if (hbA1cMethodOther.length() > 30) {
+            hbA1cMethodOther = hbA1cMethodOther.substring(0, 30);
+        }
+        obj.setHbA1cMethodOther(hbA1cMethodOther);
+    }
+    
+    public void ChildDataOnDemand.setKetoacidosisAtDiagnosis(Child obj, int index) {
+    	NoMildSevereUnknownType type = NoMildSevereUnknownType.class.getEnumConstants()[0];
+        obj.setKetoacidosisAtDiagnosis(type);
+    }
+    
+    public void ChildDataOnDemand.setPolyuriaAtDiagnosis(Child obj, int index) {
+    	YesNoUnkownType type = YesNoUnkownType.class.getEnumConstants()[0];
+        obj.setPolyuriaAtDiagnosis(type);
+    }
+    
+    public void ChildDataOnDemand.setThirstAtDiagnosis(Child obj, int index) {
+    	YesNoUnkownType type = YesNoUnkownType.class.getEnumConstants()[0];
+        obj.setThirstAtDiagnosis(type);
+    }
+    
+    public void ChildDataOnDemand.setWeightLossAtDiagnosis(Child obj, int index) {
+    	YesNoUnkownType type = YesNoUnkownType.class.getEnumConstants()[0];
+        obj.setWeightLossAtDiagnosis(type);
+    }
+    
+    public void ChildDataOnDemand.setWeightAtDiagnosis(Child obj, int index) {
+    	YesUnknownType type = YesUnknownType.class.getEnumConstants()[0];
+        obj.setWeightAtDiagnosis(type);
+    }
+    
+    public void ChildDataOnDemand.setWeightAtDiagnosisValue(Child obj, int index) {
+    	Float weightKG = new Integer(index).floatValue();
+        if (weightKG < 3.0F || weightKG > 120.0F) {
+            weightKG = 120.0F;
+        }
+        obj.setWeightAtDiagnosisValue(weightKG);
+    }
+    
+    public void ChildDataOnDemand.setHeightAtDiagnosis(Child obj, int index) {
+    	YesUnknownType type = YesUnknownType.class.getEnumConstants()[0];
+        obj.setHeightAtDiagnosis(type);
+    }
+    
+    public void ChildDataOnDemand.setHeightAtDiagnosisValue(Child obj, int index) {
+    	Float heightCM = new Integer(index).floatValue();
+        if (heightCM < 50.0F || heightCM > 220.0F) {
+            heightCM = 220.0F;
+        }
+        obj.setHeightAtDiagnosisValue(heightCM);
+    }
+    
+    public void ChildDataOnDemand.setTypeOneInFamily(Child obj, int index) {
+    	YesNoUnkownType type = YesNoUnkownType.class.getEnumConstants()[0];
+        obj.setTypeOneInFamily(type);
+    }
+    
+    public void ChildDataOnDemand.setTypeOneRelativesDetails(Child obj, int index) {
+    	String details = "typeOneRelativesDetails_" + index;
+        obj.setTypeOneRelativesDetails(details);
+    }
+    
+    public void ChildDataOnDemand.setTypeTwoInFamily(Child obj, int index) {
+    	YesNoUnkownType type = YesNoUnkownType.class.getEnumConstants()[0];
+        obj.setTypeTwoInFamily(type);
+    }
+    
+    public void ChildDataOnDemand.setTypeTwoRelativesDetails(Child obj, int index) {
+    	String details = "typeTwoRelativesDetails_" + index;
+        obj.setTypeTwoRelativesDetails(details);
+    }
+    
+    public void ChildDataOnDemand.setMalnutrition(Child obj, int index) {
+    	YesNoUnkownType type = YesNoUnkownType.class.getEnumConstants()[0];
+        obj.setMalnutrition(type);
+    }
+    
+    public void ChildDataOnDemand.setOtherSyndromeAdditionalComment(Child obj, int index) {
+    	String details = "otherSyndromeAdditionalComment_" + index;
+        obj.setOtherSyndromeAdditionalComment(details);
     }
     
     public void ChildDataOnDemand.setUpdatedOn(Child obj, int index) {
