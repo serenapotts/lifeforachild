@@ -389,6 +389,10 @@
 		                		})); </script>
 		            </div>
 		            <br/>
+		            <c:if test="${locale == 'ru'}">
+		            	<br/>
+		            	<br/>
+		            </c:if>
 		            <div id="roo_child_hbA1cPercentage">
 		                <label for="_hbA1cPercentage_id"><spring:message code="child.hbA1cPercentage"/></label>
 		                <form:input cssStyle="width:250px" id="_hbA1cPercentage_id" maxlength="30" path="hbA1cPercentage" size="0"/>

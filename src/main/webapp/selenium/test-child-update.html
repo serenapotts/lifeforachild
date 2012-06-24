@@ -4,12 +4,12 @@
 <head profile="http://selenium-ide.openqa.org/profiles/test-case">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="selenium.base" href="http://localhost:8080/" />
-<title>test-login</title>
+<title>test-child-update</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">test-login</td></tr>
+<tr><td rowspan="1" colspan="3">test-child-update</td></tr>
 </thead><tbody>
 <tr>
 	<td>open</td>
@@ -18,24 +18,45 @@
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>link=Logout</td>
+	<td>link=Search</td>
 	<td></td>
 </tr>
 <tr>
-	<td>verifyLocation</td>
-	<td>http://localhost:8080/lifeforachild/logout</td>
+	<td>click</td>
+	<td>id=_id</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=_id</td>
+	<td>001166</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=proceed</td>
 	<td></td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>link=Login</td>
+	<td>//input[@value='Update Child']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='widget__diabetesType_id']/div/div</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=proceed</td>
 	<td></td>
 </tr>
 <tr>
 	<td>verifyLocation</td>
-	<td>http://localhost:8080/lifeforachild/login</td>
+	<td>http://localhost:8080/lifeforachild/child/*</td>
 	<td></td>
 </tr>
+
 </tbody></table>
 </body>
 </html>

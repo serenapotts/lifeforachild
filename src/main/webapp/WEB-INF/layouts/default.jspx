@@ -7,7 +7,6 @@
 	xmlns:roo="urn:jsptagdir:/WEB-INF/tags" >  
 	
 	<jsp:directive.page contentType="text/html;charset=UTF-8" />  
-	<jsp:directive.page contentType="text/html;charset=UTF-8" import="org.springframework.context.i18n.LocaleContextHolder"/>
 	
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />

@@ -393,7 +393,7 @@
                 		})); </script>
             </div>
             <br/>
-            <c:if test="${locale == 'ru'} ">
+            <c:if test="${locale == 'ru'}">
             	<br/>
             </c:if>
             <div id="roo_child_hbA1cPercentage">

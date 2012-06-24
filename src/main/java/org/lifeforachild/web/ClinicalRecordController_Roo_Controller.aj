@@ -26,6 +26,7 @@ import org.lifeforachild.enums.YesNoNAType;
 import org.lifeforachild.enums.YesNoType;
 import org.lifeforachild.enums.YesNoUnkownType;
 import org.lifeforachild.web.validation.ClinicalRecordValidator;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindException;
@@ -61,7 +62,8 @@ privileged aspect ClinicalRecordController_Roo_Controller {
             modelMap.addAttribute("yesnotype_enum", YesNoType.class.getEnumConstants()); 
             modelMap.addAttribute("yesnounkowntype_enum", YesNoUnkownType.class.getEnumConstants());            
             modelMap.addAttribute("clinicalRecord_dateOfMeasurement_date_format", AppContext.getDatePattern());                        
-            modelMap.addAttribute("clinicalRecord_dateCompleted_date_format", AppContext.getDatePattern());            
+            modelMap.addAttribute("clinicalRecord_dateCompleted_date_format", AppContext.getDatePattern());
+            modelMap.addAttribute("locale", LocaleContextHolder.getLocale().toString());
             return "clinicalrecord/create";            
         }        
         // still set age in case click update without clicking out of dom field
@@ -116,7 +118,8 @@ privileged aspect ClinicalRecordController_Roo_Controller {
         modelMap.addAttribute("yesnotype_enum", YesNoType.class.getEnumConstants()); 
         modelMap.addAttribute("yesnounkowntype_enum", YesNoUnkownType.class.getEnumConstants());        
         modelMap.addAttribute("clinicalRecord_dateOfMeasurement_date_format", AppContext.getDatePattern());                
-        modelMap.addAttribute("clinicalRecord_dateCompleted_date_format", AppContext.getDatePattern());        
+        modelMap.addAttribute("clinicalRecord_dateCompleted_date_format", AppContext.getDatePattern()); 
+        modelMap.addAttribute("locale", LocaleContextHolder.getLocale().toString());
         return "clinicalrecord/create";        
     }    
     
@@ -157,7 +160,8 @@ privileged aspect ClinicalRecordController_Roo_Controller {
             modelMap.addAttribute("yesnotype_enum", YesNoType.class.getEnumConstants()); 
             modelMap.addAttribute("yesnounkowntype_enum", YesNoUnkownType.class.getEnumConstants());            
             modelMap.addAttribute("clinicalRecord_dateOfMeasurement_date_format", AppContext.getDatePattern());                        
-            modelMap.addAttribute("clinicalRecord_dateCompleted_date_format", AppContext.getDatePattern());            
+            modelMap.addAttribute("clinicalRecord_dateCompleted_date_format", AppContext.getDatePattern()); 
+            modelMap.addAttribute("locale", LocaleContextHolder.getLocale().toString());
             return "clinicalrecord/update";            
         }
         
@@ -206,7 +210,8 @@ privileged aspect ClinicalRecordController_Roo_Controller {
         modelMap.addAttribute("yesnotype_enum", YesNoType.class.getEnumConstants()); 
         modelMap.addAttribute("yesnounkowntype_enum", YesNoUnkownType.class.getEnumConstants());        
         modelMap.addAttribute("clinicalRecord_dateOfMeasurement_date_format", AppContext.getDatePattern());                
-        modelMap.addAttribute("clinicalRecord_dateCompleted_date_format", AppContext.getDatePattern());        
+        modelMap.addAttribute("clinicalRecord_dateCompleted_date_format", AppContext.getDatePattern());     
+        modelMap.addAttribute("locale", LocaleContextHolder.getLocale().toString());
         return "clinicalrecord/update";        
     }    
     

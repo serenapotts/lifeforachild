@@ -71,7 +71,8 @@
                     <form:select cssStyle="width:250px" id="_personCompletingForm_id" path="personCompletingForm">
                         <form:options itemValue="id" items="${users}"/>
                     </form:select>
-                    <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_personCompletingForm_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
+                    <spring:message code="person.completing.tooltip" var="field_validation"/>
+                    <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_personCompletingForm_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {promptMessage: '${field_validation}', hasDownArrow : true}})); </script>
                 </c:if>
             </div>
             <br/>
@@ -94,7 +95,7 @@
                 <form:errors cssClass="errors" id="_seniorPhysician_error_id" path="seniorPhysician"/>
                 <spring:message arguments="Senior Physician" code="field.invalid" var="field_invalid"/>
                 <spring:message code="field.required" var="field_required"/>
-                <spring:message argumentSeparator="," arguments="Senior Physician,(${field_required})" code="field.simple.validation" var="field_validation"/>
+                <spring:message code="physician.tooltip" var="field_validation"/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_seniorPhysician_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}'}})); </script>
                 <spring:bind path="clinicalRecord.seniorPhysician"><c:if test="${status.error}"><script type="text/javascript">generalHasError = true;</script></c:if></spring:bind>
             </div>
@@ -1398,7 +1399,7 @@
                 <form:errors cssClass="errors" id="_diabetesLimitingAttendance_error_id" path="diabetesLimitingAttendance"/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_diabetesLimitingAttendance_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>                
             	<br/>                
-            </div>
+            </div>            
             <script type="text/javascript">Spring.addDecoration(
                     new Spring.ElementDecoration({
                         elementId : 'roo_clinicalRecord_diabetesLimitingAttendance', 
@@ -1432,7 +1433,10 @@
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_diabetesCopingAbilities_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
             </div>
             <br/>
-                <div id="roo_clinicalRecord_literate">
+            <c:if test="${locale == 'es'}">
+            	<br/>
+            </c:if>
+            <div id="roo_clinicalRecord_literate">
                 <label for="_literate_id"><spring:message code="record.literate"/></label>
                 <form:select cssStyle="width:250px" id="_literate_id" path="literate">
 					<form:option value=""></form:option>
