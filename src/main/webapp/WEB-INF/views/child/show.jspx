@@ -70,7 +70,10 @@
 	                    	<br/>
 	                    </c:if>
 		            </div>
-		            <br/>		            
+		            <br/>	
+		            <c:if test="${locale == 'ru'}">
+		            	<br/>
+		            </c:if>	            
 		            <div id="roo_child_ethnicGroup">
 		                <label for="_ethnicGroup_id"><spring:message code="child.show.ethnicGroup"/></label>
 		                <div class="box" id="_ethnicGroup_id">
@@ -150,6 +153,9 @@
 		                </div>
 		            </div>
 		            <br/>
+		            <c:if test="${locale == 'ru'}">
+		            	<br/>
+		            </c:if>
 		            <div id="roo_child_insulinSince">
 		                <label for="_insulinSince_id"><spring:message code="child.insulinStarted"/></label>
 		                <div class="box" id="_insulinSince_id">
@@ -160,6 +166,9 @@
 	                    </c:if>
 		            </div>
 		            <br/>
+		            <c:if test="${locale == 'ru' || locale == 'fr'}">
+		            	<br/>
+		            </c:if>
 		            <div id="roo_child_diabetesType">
 		                <label for="_diabetesType_id"><spring:message code="child.diabetesType"/></label>
 		                <div class="box" id="_diabetesType_id">
@@ -178,6 +187,9 @@
 	                    </c:if>
 			            </div>
 			            <br/>
+			            <c:if test="${locale == 'ru'}">
+			            	<br/>
+			            </c:if>
 		            </c:if>
 		            <div id="roo_child_distanceLivesFromCentre">
 		                <label for="_distanceLivesFromCentre_id"><spring:message code="child.distanceFromCentre"/></label>
@@ -186,6 +198,9 @@
 		                </div>
 		            </div>
 		            <br/>
+		            <c:if test="${locale == 'ru'}">
+		            	<br/>
+		            </c:if>
 		            <div id="roo_child_ageAtDiagnosis">
 		                <label for="_ageAtDiagnosis_id"><spring:message code="child.ageAtDiagnosis"/></label>
 		                <div class="box" id="_ageAtDiagnosis_id">
@@ -193,6 +208,9 @@
 		                </div>
 		            </div>
 		            <br/>
+		            <c:if test="${locale == 'ru'}">
+		            	<br/>
+		            </c:if>		            
 		            <div id="roo_child_bloodGlucoseAtDiagnosis">
 		                <label for="_bloodGlucoseAtDiagnosis_id"><spring:message code="child.bloodGlucoseAtDiagnosis"/></label>
 		                <div class="box" id="_bloodGlucoseAtDiagnosis_id">
@@ -200,6 +218,9 @@
 		                </div>
 		            </div>
 		            <br/>
+		            <c:if test="${locale == 'es' || locale == 'ru'}">
+		            	<br/>
+		            </c:if>
 		            <c:if test="${child.bloodGlucoseAtDiagnosis == 'KNOWN'}">
 			            <div id="roo_child_bloodGlucoseValue">
 			                <label for="_bloodGlucoseValue_id"><spring:message code="child.bloodGlucoseValue"/></label>
@@ -207,7 +228,7 @@
 			                    <c:out value="${child.bloodGlucoseValue}"/>
 			                </div>
 			            </div>
-			            <br/>		            
+			            <br/>		        
 			            <div id="roo_child_bloodGlucoseUnits">
 			                <label for="_bloodGlucoseUnits_id"><spring:message code="child.bloodGlucoseUnits"/></label>
 			                <div class="box" id="_bloodGlucoseUnits_id">
@@ -215,6 +236,9 @@
 			                </div>
 			            </div>
 			            <br/>
+       		            <c:if test="${locale == 'es' || locale == 'ru'}">
+			            	<br/>
+			            </c:if>
 		            </c:if>
 		            <div id="roo_child_hbA1cAtDiagnosis">
 		                <label for="_hbA1cAtDiagnosis_id"><spring:message code="child.hbA1cAtDiagnosis"/></label>
@@ -223,6 +247,13 @@
 		                </div>
 		            </div>
 		            <br/>
+		            <c:if test="${locale == 'es'}">
+		            	<br/>
+		            </c:if>
+		            <c:if test="${locale == 'ru'}">
+		            	<br/>
+		            	<br/>
+		            </c:if>
 		            <c:if test="${child.hbA1cAtDiagnosis == 'YES'}">
 			            <div id="roo_child_hbA1cPercentage">
 			                <label for="_hbA1cPercentage_id"><spring:message code="child.hbA1cPercentage"/></label>
@@ -238,6 +269,9 @@
 			                </div>
 			            </div>
 			            <br/>
+			            <c:if test="${locale == 'ru'}">				            	
+			            	<br/>
+			            </c:if>			            
 			            <c:if test="${child.hbA1cMethod == 'OTHER'}">
 				            <div id="roo_child_hbA1cMethodOther">
 				                <label for="_hbA1cMethodOther_id"><spring:message code="child.hbA1cMethodOther"/></label>
@@ -255,6 +289,9 @@
 		                </div>
 		            </div>
 		            <br/>
+		            <c:if test="${locale == 'es' || locale == 'fr' || locale == 'ru'}">
+		            	<br/>
+		            </c:if>
 		            <div id="roo_child_polyuriaAtDiagnosis">
 		                <label for="_polyuriaAtDiagnosis_id"><spring:message code="child.polyuriaAtDiagnosis"/></label>
 		                <div class="box" id="_polyuriaAtDiagnosis_id">
@@ -262,6 +299,9 @@
 		                </div>
 		            </div>
 		            <br/>
+		            <c:if test="${locale == 'es' || locale == 'ru'}">
+		            	<br/>
+		            </c:if>
 		            <div id="roo_child_thirstAtDiagnosis">
 		                <label for="_thirstAtDiagnosis_id"><spring:message code="child.thirstAtDiagnosis"/></label>
 		                <div class="box" id="_thirstAtDiagnosis_id">
@@ -269,6 +309,9 @@
 		                </div>
 		            </div>
 		            <br/>
+	            	<c:if test="${locale == 'ru'}">
+		            	<br/>
+		            </c:if>
 		            <div id="roo_child_weightLossAtDiagnosis">
 		                <label for="_weightLossAtDiagnosis_id"><spring:message code="child.weightLossAtDiagnosis"/></label>
 		                <div class="box" id="_weightLossAtDiagnosis_id">
@@ -276,6 +319,9 @@
 		                </div>
 		            </div>
 		            <br/>
+		            <c:if test="${locale == 'es' || locale == 'fr' || locale == 'ru'}">
+		            	<br/>
+		            </c:if>
 		            <div id="roo_child_weightAtDiagnosis">
 		                <label for="_weightAtDiagnosis_id"><spring:message code="child.weightAtDiagnosis"/></label>
 		                <div class="box" id="_weightAtDiagnosis_id">
@@ -283,6 +329,9 @@
 		                </div>
 		            </div>
 		            <br/>
+		            <c:if test="${locale == 'es'}">
+		            	<br/>
+		            </c:if>
 		            <c:if test="${child.weightAtDiagnosis == 'YES'}">
 			            <div id="roo_child_weightAtDiagnosisValue">
 			                <label for="_weightAtDiagnosisValue_id"><spring:message code="child.weightAtDiagnosisValue"/></label>
@@ -299,6 +348,9 @@
 		                </div>
 		            </div>
 		            <br/>
+		            <c:if test="${locale == 'es'}">
+		            	<br/>
+		            </c:if>
 		            <c:if test="${child.heightAtDiagnosis == 'YES'}">
 			            <div id="roo_child_heightAtDiagnosisValue">
 			                <label for="_heightAtDiagnosisValue_id"><spring:message code="child.heightAtDiagnosisValue"/></label>
@@ -354,7 +406,9 @@
 		                </div>
 		            </div>
 		            <br/>
-		            <br/>
+		            <c:if test="${locale != 'fr'}">
+		            	<br/>
+		            </c:if>
 		            <div id="roo_child_createdOn">
 		                <label for="_createdOn_id"><spring:message code="child.createdOn"/></label>
 		                <div class="box" id="_createdOn_id">

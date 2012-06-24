@@ -18,6 +18,7 @@ import org.lifeforachild.security.SimpleStringCipher;
 import org.lifeforachild.web.Report.ChildReportGenerator;
 import org.lifeforachild.web.Report.ReportGenerator;
 import org.lifeforachild.web.validation.ChildValidator;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
@@ -70,6 +71,7 @@ privileged aspect ChildController_Roo_Controller {
             modelMap.addAttribute("NoMildSevereUnknownType_enum", NoMildSevereUnknownType.class.getEnumConstants());
             modelMap.addAttribute("YesUnknownType_enum", YesUnknownType.class.getEnumConstants());
             modelMap.addAttribute("yesnounkowntype_enum", YesNoUnkownType.class.getEnumConstants());
+            modelMap.addAttribute("locale", LocaleContextHolder.getLocale().toString());            
             return "child/create";            
         }        
         // encrypt after so validations work
@@ -115,7 +117,8 @@ privileged aspect ChildController_Roo_Controller {
         modelMap.addAttribute("child_insulinSince_date_format", AppContext.getDatePattern());        
         modelMap.addAttribute("child_updatedOn_date_format", AppContext.getDatePattern());        
         modelMap.addAttribute("child_dateOfDeath_date_format", AppContext.getDatePattern());        
-        modelMap.addAttribute("child_dateOfRegistration_date_format", AppContext.getDatePattern());        
+        modelMap.addAttribute("child_dateOfRegistration_date_format", AppContext.getDatePattern()); 
+        modelMap.addAttribute("locale", LocaleContextHolder.getLocale().toString()); 
         return "child/create";        
     }    
     
@@ -130,6 +133,7 @@ privileged aspect ChildController_Roo_Controller {
         modelMap.addAttribute("child_dateOfDeath_date_format", AppContext.getDatePattern());        
         modelMap.addAttribute("child_dateOfRegistration_date_format", AppContext.getDatePattern());
         modelMap.addAttribute("clinicalRecord_dateCompleted_date_format", AppContext.getDatePattern());
+        modelMap.addAttribute("locale", LocaleContextHolder.getLocale().toString());
         modelMap.addAttribute("child", Child.findChild(id));        
         return "child/show";        
     }    
@@ -184,6 +188,7 @@ privileged aspect ChildController_Roo_Controller {
             modelMap.addAttribute("NoMildSevereUnknownType_enum", NoMildSevereUnknownType.class.getEnumConstants());
             modelMap.addAttribute("YesUnknownType_enum", YesUnknownType.class.getEnumConstants());
             modelMap.addAttribute("yesnounkowntype_enum", YesNoUnkownType.class.getEnumConstants());
+            modelMap.addAttribute("locale", LocaleContextHolder.getLocale().toString());
             return "child/update";            
         }        
         // encrypt after so validations work
@@ -225,6 +230,7 @@ privileged aspect ChildController_Roo_Controller {
         modelMap.addAttribute("NoMildSevereUnknownType_enum", NoMildSevereUnknownType.class.getEnumConstants());
         modelMap.addAttribute("YesUnknownType_enum", YesUnknownType.class.getEnumConstants());
         modelMap.addAttribute("yesnounkowntype_enum", YesNoUnkownType.class.getEnumConstants());
+        modelMap.addAttribute("locale", LocaleContextHolder.getLocale().toString());
         return "child/update";        
     }    
     
