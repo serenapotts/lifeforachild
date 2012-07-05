@@ -20,7 +20,7 @@
 		<spring:url value="/static/images/favicon.ico" var="favicon" />
 		<link rel="stylesheet" type="text/css" media="screen" href="${roo_css_url}"><!-- //required for FF3 and Opera --></link>
 		<link rel="stylesheet" type="text/css" href="${tundra_url}"><!-- //required for FF3 and Opera --></link>
-		<link href="/lifeforachild/static/styles/print.css" media="print" type="text/css" rel="stylesheet"/>	
+		<link href="/static/styles/print.css" media="print" type="text/css" rel="stylesheet"/>	
 		<link rel="SHORTCUT ICON" href="${favicon}" />
 		<script type="text/javascript"><![CDATA[
 			function readCookie(name) {
@@ -55,13 +55,13 @@
 	    	<div id="main">	    	
 	    		<tiles:insertAttribute name="body" />
 	    		<div id="footer">	
+					<spring:url var="home" value="/" />
 	    			<!--  put before left spans as workaround to bug in IE7 -->
 	    			<span class="right">
-				    	<a href="/lifeforachild/help" id="right"><spring:message code="help.label"/></a>
+				    	<a href="${home}help" id="right"><spring:message code="help.label"/></a>
 				    	<c:out value=" | "/>
-				    	<a href="/lifeforachild/about" id="right"><spring:message code="about.label"/></a>
-			    	</span>
-				  	<spring:url var="home" value="/" />
+				    	<a href="${home}about" id="right"><spring:message code="about.label"/></a>
+			    	</span>				  	
 				    <span><a href="${home}search"><spring:message code="button.home"/></a></span>				    
 				    <c:if test="${pageContext.request.userPrincipal != null}">	
 				    	<c:out value=" | "/>
