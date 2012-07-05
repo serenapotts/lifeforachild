@@ -10,7 +10,7 @@
             <div id="print">
             	<spring:url value="/child/print" var="print_url"/>
 	            <a href="${print_url}">
-	            	<c:url value="/static/images/excel.gif" var="excel_image_url"/>
+	            	<c:url value="/static/images/printer.png" var="excel_image_url"/>
 	                <spring:message code="global.menu.print" var="add_message"/>
 	                <img alt="${add_message}" src="${excel_image_url}" title="${add_message}" height="16" width="16"/>
 	            </a>
