@@ -1,11 +1,11 @@
 <div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:fmt="http://java.sun.com/jsp/jstl/fmt" xmlns:sec="http://www.springframework.org/security/tags" xmlns:form="http://www.springframework.org/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:roo="urn:jsptagdir:/WEB-INF/tags" xmlns:spring="http://www.springframework.org/tags" version="2.0">
     <jsp:output omit-xml-declaration="yes"/>
-    <script type="text/javascript" src="../static/js/ChildFtns.js"/>  
+    <script type="text/javascript" src="../../static/js/ChildFtns.js"/>  
     <script type="text/javascript">
     	// this is needed because of the previous import for some reason the next javascript block gets ignored
     	function dummy() {}   	
     </script> 
-   	<script type="text/javascript" src="../static/js/CountryCentreFtns.js"/>  
+   	<script type="text/javascript" src="../../static/js/CountryCentreFtns.js"/>  
     <script type="text/javascript">
     	// this is needed because of the previous import for some reason the next javascript block gets ignored
     	function dummy() {}   	
