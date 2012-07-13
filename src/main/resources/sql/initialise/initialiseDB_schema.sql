@@ -464,7 +464,7 @@ CREATE TABLE `clinical_record_versions` (
 -- Table structure for table `user_versions`
 --
 CREATE TABLE `user_versions` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `id` bigint(20) NOT NULL,
   `version` int(11) DEFAULT NULL,
   `created_by` varchar(255) DEFAULT NULL,
   `created_on` datetime DEFAULT NULL,

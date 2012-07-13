@@ -20,6 +20,30 @@ ALTER TABLE child ADD malnutrition int(11) not null;
 ALTER TABLE child ADD other_syndrome_additional_comment varchar(255) default null;
 ALTER TABLE child ADD hba1c_method_other varchar(255) default null;
 
+
+ALTER TABLE child_versions ADD blood_glucose_at_diagnosis int(11) not null;
+ALTER TABLE child_versions ADD blood_glucose_value float default null;
+ALTER TABLE child_versions ADD blood_glucose_units int(11) default null;
+ALTER TABLE child_versions ADD hba1c_at_diagnosis int(11) not null;
+ALTER TABLE child_versions ADD hba1c_percentage float default null;
+ALTER TABLE child_versions ADD hba1c_method int(11) default null;
+ALTER TABLE child_versions ADD ketoacidosis_at_diagnosis int(11) not null;
+ALTER TABLE child_versions ADD polyuria_at_diagnosis int(11) not null;
+ALTER TABLE child_versions ADD thirst_at_diagnosis int(11) not null;
+ALTER TABLE child_versions ADD weight_loss_at_diagnosis int(11) not null;
+ALTER TABLE child_versions ADD weight_at_diagnosis int(11) not null;
+ALTER TABLE child_versions ADD weight_at_diagnosis_value float default null;
+ALTER TABLE child_versions ADD height_at_diagnosis int(11) not null;
+ALTER TABLE child_versions ADD height_at_diagnosis_value float default null;
+ALTER TABLE child_versions ADD type_one_in_family int(11) not null;
+ALTER TABLE child_versions ADD type_one_relatives_details varchar(255) default null;
+ALTER TABLE child_versions ADD type_two_in_family int(11) not null;
+ALTER TABLE child_versions ADD type_two_relatives_details varchar(255) default null;
+ALTER TABLE child_versions ADD malnutrition int(11) not null;
+ALTER TABLE child_versions ADD other_syndrome_additional_comment varchar(255) default null;
+ALTER TABLE child_versions ADD hba1c_method_other varchar(255) default null;
+
+
 update child set blood_glucose_at_diagnosis = 1;
 update child set hba1c_at_diagnosis = 2;
 update child set ketoacidosis_at_diagnosis = 3;
