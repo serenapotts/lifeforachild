@@ -55,7 +55,3 @@ update child set height_at_diagnosis = 1;
 update child set type_one_in_family = 2;
 update child set type_two_in_family = 2;
 update child set malnutrition = 2;
-
-DROP TABLE child_versions;
-CREATE TABLE child_versions LIKE child;
-ALTER TABLE child_versions MODIFY COLUMN id BIGINT(20) NOT NULL, DROP PRIMARY KEY;
