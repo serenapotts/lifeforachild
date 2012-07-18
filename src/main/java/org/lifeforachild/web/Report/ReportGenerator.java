@@ -22,8 +22,8 @@ import net.sf.jasperreports.engine.export.JRRtfExporter;
 import net.sf.jasperreports.engine.export.JRXlsExporter;
 import net.sf.jasperreports.engine.export.JRXlsExporterParameter;
 
-import org.lifeforachild.domain.OutputType;
 import org.lifeforachild.domain.Report;
+import org.lifeforachild.web.Report.enums.OutputType;
 
 import ar.com.fdvs.dj.core.DynamicJasperHelper;
 import ar.com.fdvs.dj.core.layout.AbstractLayoutManager;

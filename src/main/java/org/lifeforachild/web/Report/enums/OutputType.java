@@ -1,4 +1,6 @@
-package org.lifeforachild.domain;
+package org.lifeforachild.web.Report.enums;
+
+import org.lifeforachild.domain.Report;
 
 /**
  * Defines {@link Report} output formats.

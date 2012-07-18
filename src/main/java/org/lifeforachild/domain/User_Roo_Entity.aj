@@ -1,6 +1,7 @@
 package org.lifeforachild.domain;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.Column;
 import javax.persistence.EntityManager;
@@ -11,8 +12,11 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Version;
 
 import org.hibernate.Criteria;
+import org.lifeforachild.enums.ResearchConsentType;
 import org.lifeforachild.web.query.UserQuery;
 import org.springframework.transaction.annotation.Transactional;
+
+import ar.com.fdvs.dj.domain.CustomExpression;
 
 privileged aspect User_Roo_Entity {
     
@@ -115,4 +119,17 @@ privileged aspect User_Roo_Entity {
     	UserQuery userQuery = new UserQuery();
     	return (User)userQuery.findUserByUsername(entityManager(), username);
     }  
+    
+    public static CustomExpression User.getCustomExpression() {
+	    return new CustomExpression() {
+	            public Object evaluate(Map fields, Map variables, Map parameters) {
+	            	User user = (User)fields.get("personCompletingForm");
+	            	return user.getFirstName() + " " + user.getLastName();
+	            }
+	
+	            public String getClassName() {
+	                    return String.class.getName();
+	            }
+	    };
+	}      
 }

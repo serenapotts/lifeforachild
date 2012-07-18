@@ -5,13 +5,13 @@ import java.util.List;
 
 import org.lifeforachild.Util.SecurityUtil;
 import org.lifeforachild.domain.Child;
-import org.lifeforachild.domain.ChildFields;
 import org.lifeforachild.domain.Permissions;
 import org.lifeforachild.domain.Report;
 import org.lifeforachild.enums.CauseOfDeathType;
 import org.lifeforachild.enums.DiabetesType;
 import org.lifeforachild.enums.SexType;
 import org.lifeforachild.enums.SurvivalStatusType;
+import org.lifeforachild.web.Report.enums.ChildFields;
 import org.lifeforachild.web.query.ChildQuery;
 
 import ar.com.fdvs.dj.domain.builders.ColumnBuilderException;
@@ -64,9 +64,6 @@ public class ChildReportGenerator extends ReportGenerator {
 	        		drb.addField("diabetesType", String.class.getName());
 	                addColumn(drb, "diabetesType", "Diabetes Type", DiabetesType.class, 85, null, DiabetesType.getCustomExpression());
 				case AGE_AT_DIAGNOSIS:
-					// TODO field not in database
-					break;
-				case AGE_FIRST_INSULIN:
 					// TODO field not in database
 					break;
 				case DATE_OF_BIRTH:

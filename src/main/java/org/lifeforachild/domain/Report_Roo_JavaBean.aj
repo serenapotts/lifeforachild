@@ -2,15 +2,15 @@ package org.lifeforachild.domain;
 
 import java.lang.String;
 import java.util.Date;
-import org.lifeforachild.domain.ChildFields;
-import org.lifeforachild.domain.ClinicalRecordFields;
 import org.lifeforachild.domain.Country;
 import org.lifeforachild.domain.DiabetesCentre;
-import org.lifeforachild.domain.ReportType;
-import org.lifeforachild.domain.StatusType;
-import org.lifeforachild.domain.TimePeriodUnit;
 import org.lifeforachild.domain.User;
 import org.lifeforachild.enums.ShowOptionType;
+import org.lifeforachild.web.Report.enums.ChildFields;
+import org.lifeforachild.web.Report.enums.ClinicalRecordFields;
+import org.lifeforachild.web.Report.enums.ReportType;
+import org.lifeforachild.web.Report.enums.StatusType;
+import org.lifeforachild.web.Report.enums.TimePeriodUnit;
 
 privileged aspect Report_Roo_JavaBean {
     

@@ -15,10 +15,10 @@ import org.lifeforachild.domain.Country;
 import org.lifeforachild.domain.DiabetesCentre;
 import org.lifeforachild.domain.Report;
 import org.lifeforachild.domain.Search;
-import org.lifeforachild.domain.StatusType;
-import org.lifeforachild.domain.TimePeriodUnit;
 import org.lifeforachild.enums.ShowOptionType;
 import org.lifeforachild.security.SimpleStringCipher;
+import org.lifeforachild.web.Report.enums.StatusType;
+import org.lifeforachild.web.Report.enums.TimePeriodUnit;
 
 public class ChildQuery extends BaseQuery<Child> {
 
@@ -87,9 +87,6 @@ public class ChildQuery extends BaseQuery<Child> {
 //		searchByDateRange(criteria, from, to);
 		searchByDiabetesCentre(criteria, diabetesCentre);
 		searchByCountry(criteria, country);
-//		searchByStatusType(criteria, statusType);
-//		searchByShowOptionType(criteria, showOptionType);
-//		searchByAge(criteria, age);
 //		orderBy(criteria, orderBy, thenOrderBy);		
 		return criteria.list();
 

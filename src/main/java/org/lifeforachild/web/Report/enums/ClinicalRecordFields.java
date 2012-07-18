@@ -1,0 +1,33 @@
+package org.lifeforachild.web.Report.enums;
+
+import org.lifeforachild.web.AppContext;
+import org.springframework.context.i18n.LocaleContextHolder;
+
+
+public enum ClinicalRecordFields {
+    ALL("ClinicalRecordFields.All"),
+    GENERAL("ClinicalRecordFields.General"),
+	DIABETES_CARE("ClinicalRecordFields.DiabetesCare"),
+	CLINICAL_MEASURES("ClinicalRecordFields.ClinicalMeasures"),
+	EYESANDFEET("ClinicalRecordFields.EyesAndFeet"),     
+    LAB_TESTING("ClinicalRecordFields.LabTesting"), 
+    SCHOOLING("ClinicalRecordFields.SchoolStatus"), 
+    EMERGENCIES("ClinicalRecordFields.Emergencies");
+
+    ClinicalRecordFields(String s) {
+        label = s;
+    }
+
+    String label;
+
+    public String getLabel() { 
+    	return AppContext.getApplicationContext().getMessage(label, null, LocaleContextHolder.getLocale());
+    }	
+    
+    public String toString()
+    {
+    	return getLabel();
+    }    
+    
+    public String getId() {return name();}
+}

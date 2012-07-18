@@ -2,7 +2,8 @@ package org.lifeforachild.domain;
 
 import java.lang.Long;
 import java.lang.String;
-import org.lifeforachild.domain.ReportType;
+
+import org.lifeforachild.web.Report.enums.ReportType;
 
 privileged aspect ReportProperties_Roo_JavaBean {
     

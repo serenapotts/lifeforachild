@@ -1,13 +1,18 @@
 package org.lifeforachild.web.query;
 
+import java.util.Date;
+import java.util.List;
+
 import javax.persistence.EntityManager;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
+import org.lifeforachild.Util.StringUtil;
 import org.lifeforachild.domain.ClinicalRecord;
-import org.lifeforachild.domain.DiabetesCentre;
+import org.lifeforachild.domain.Report;
+import org.lifeforachild.security.SimpleStringCipher;
 import org.springframework.security.access.AccessDeniedException;
 
 /**
@@ -51,4 +56,52 @@ public class ClinicalRecordQuery extends BaseQuery<ClinicalRecord> {
 		criteria.setProjection(Projections.max("id"));
 		return (Long)criteria.uniqueResult();
 	}
+	
+	public List<ClinicalRecord> getIndividualClinicalRecordQuery(EntityManager entityManager, Report report)
+	{
+		return getQuery(entityManager, null, report.getRecordNumber(), null, null, report.getFromDate());
+	}
+	
+	private List<ClinicalRecord> getQuery(EntityManager entityManager, String individualId, String localMedicaldNo, String name, String lastName, Date date)
+	{
+		// restrict to only what they have access to by default
+		Criteria criteria = findByAccessCriteria(entityManager);
+		Criteria child = criteria.createCriteria("child");
+		searchByID(child, individualId);
+		searchByLocalMedicalNo(child, localMedicaldNo);
+		searchByName(child, name);
+		searchByLastName(child, lastName);
+		//searchByDate(criteria, date);
+		return criteria.list();
+	}	
+	
+	private void searchByID(Criteria criteria, String id)
+	{
+		if (!StringUtil.isEmpty(id))
+			criteria.add(Restrictions.eq("individualId", id) );
+	}
+	
+	private void searchByLocalMedicalNo(Criteria criteria, String id)
+	{
+		if (!StringUtil.isEmpty(id))
+			criteria.add(Restrictions.eq("localMedicalNumber", id) );
+	}
+	
+	private void searchByName(Criteria criteria, String name)
+	{
+		if (!StringUtil.isEmpty(name))
+			criteria.add(Restrictions.like("name", SimpleStringCipher.encrypt(name)) );
+	}	
+	
+	private void searchByLastName(Criteria criteria, String lastName)
+	{
+		if (!StringUtil.isEmpty(lastName))
+			criteria.add(Restrictions.like("lastName", SimpleStringCipher.encrypt(lastName)) );
+	}		
+	
+	private void searchByDate(Criteria criteria, Date date)
+	{
+		if (date != null)
+			criteria.add(Restrictions.like("dateCompleted", date ));
+	}	
 }

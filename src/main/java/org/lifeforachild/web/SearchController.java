@@ -6,9 +6,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.lifeforachild.domain.Child;
 import org.lifeforachild.domain.Country;
-import org.lifeforachild.domain.ReportType;
 import org.lifeforachild.domain.Search;
-import org.lifeforachild.domain.TimePeriodUnit;
+import org.lifeforachild.web.Report.enums.ReportType;
+import org.lifeforachild.web.Report.enums.TimePeriodUnit;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;

@@ -4,9 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
+import org.lifeforachild.Util.SecurityUtil;
 import org.lifeforachild.domain.ClinicalRecord;
-import org.lifeforachild.domain.ClinicalRecordFields;
+import org.lifeforachild.domain.Permissions;
 import org.lifeforachild.domain.Report;
+import org.lifeforachild.domain.User;
+import org.lifeforachild.enums.ResearchConsentType;
+import org.lifeforachild.enums.SexType;
+import org.lifeforachild.web.AppContext;
+import org.lifeforachild.web.Report.enums.ChildFields;
+import org.lifeforachild.web.Report.enums.ClinicalRecordFields;
+import org.lifeforachild.web.query.ClinicalRecordQuery;
 
 import ar.com.fdvs.dj.domain.builders.ColumnBuilderException;
 import ar.com.fdvs.dj.domain.builders.DynamicReportBuilder;
@@ -27,10 +35,15 @@ public class ClinicalRecordReportGenerator extends ReportGenerator {
      */
 	void addColumns(DynamicReportBuilder drb, Object[] fields) throws ColumnBuilderException {
 		// these columns are displayed on every report
-		addColumn(drb, "child", "Child ID", Integer.class, 85);
-		addColumn(drb, "name", "Child Name", String.class, 85);
-		addDateColumn(drb, "date_of_measurement", "Date of Measurement");
-		addDateColumn(drb, "date_completed", "Date Form Completed");
+		addColumn(drb, "child.individualId", "Child ID", String.class, 85);
+		boolean viewNameInfo = SecurityUtil.getInstance().hasPermission(Permissions.VIEW_CHILD_NAME);
+        if (viewNameInfo)
+        {
+        	addColumn(drb, "child.name", "Child Name", String.class, 85);
+        	addColumn(drb, "child.lastName", "Last Name", String.class, 85);
+        }
+        
+        
         // configurable columns
 		if (fields instanceof ClinicalRecordFields[])
         {
@@ -38,27 +51,99 @@ public class ClinicalRecordReportGenerator extends ReportGenerator {
         	{
         		ClinicalRecordFields field = (ClinicalRecordFields)fields[i];
 	        	switch (field) {
-	        		case CLINICAL_MEASURES:
+	        		case ALL:
+	        		{
+	        			addGeneralFields(drb);
+	        			addDiabetesCareFields(drb);
+	        			addClinicalMeasuresFields(drb);
+	        			addEyesAndFeetFields(drb);
+	        			addLabTestingFields(drb);
+	        			addSchoolingFields(drb);
+	        			addEmergenciesFields(drb);
 	        			break;
+	        		}
+	        		case GENERAL:
+	        		{
+	        			addGeneralFields(drb);
+	        			break;
+	        		}
 	        		case DIABETES_CARE:
-	        			break;	        			
-	        		case EMERGENCIES:
+	        		{
+	        			addDiabetesCareFields(drb);
 	        			break;
-	        		case EYES:
+	        		}
+	        		case CLINICAL_MEASURES:
+	        		{
+	        			addClinicalMeasuresFields(drb);
 	        			break;
-	        		case FEET:
+	        		}	        		
+	        		case EYESANDFEET:
+	        		{
+	        			addEyesAndFeetFields(drb);	        		
 	        			break;
+	        		}
 	        		case LAB_TESTING:
+	        		{
+	        			addLabTestingFields(drb);
 	        			break;
-	        		case PEBERTAL_STATUS:
+	        		}
+	        		case SCHOOLING:
+	        		{
+	        			addSchoolingFields(drb);
 	        			break;
-	        		case SCHOOL_STATUS:
+	        		}
+	        		case EMERGENCIES:
+	        		{
+	        			addEmergenciesFields(drb);
 	        			break;
-	        		case TYPES_INSULIN:
-	        			break;	        			
+	        		}
 	        	}
         	}
         }
+	}
+	
+	private String getColumnLabel(String code)
+	{
+		return AppContext.getMessage(code);
+	}
+
+	private void addGeneralFields(DynamicReportBuilder drb) throws ColumnBuilderException {
+		
+		drb.addField("personCompletingForm", String.class.getName()); 
+		addColumn(drb, "personCompletingForm", getColumnLabel("record.personCompleting"), User.class, 85, null, User.getCustomExpression());
+				
+		addDateColumn(drb, "dateCompleted", getColumnLabel("record.dateCompleted"));
+		addColumn(drb, "seniorPhysician", getColumnLabel("record.seniorPhysician"), String.class, 85);
+		
+		drb.addField("consentGiven", String.class.getName());        
+        addColumn(drb, "consentGiven", getColumnLabel("record.consentGiven"), ResearchConsentType.class, 85, null, ResearchConsentType.getCustomExpression());
+        
+        addColumn(drb, "exactAge", getColumnLabel("record.exactAge"), Float.class, 85);
+        addColumn(drb, "insulinPerKg", getColumnLabel("record.insulinPerKg"), Float.class, 85);
+	}
+
+	private void addEmergenciesFields(DynamicReportBuilder drb) throws ColumnBuilderException {
+		
+	}
+
+	private void addSchoolingFields(DynamicReportBuilder drb) throws ColumnBuilderException {
+		
+	}
+
+	private void addLabTestingFields(DynamicReportBuilder drb) throws ColumnBuilderException {
+		
+	}
+
+	private void addEyesAndFeetFields(DynamicReportBuilder drb) throws ColumnBuilderException {
+		
+	}
+
+	private void addClinicalMeasuresFields(DynamicReportBuilder drb) throws ColumnBuilderException {
+		//addDateColumn(drb, "dateOfMeasurement", "Date of Measurement");
+	}
+
+	private void addDiabetesCareFields(DynamicReportBuilder drb) throws ColumnBuilderException {
+		
 	}
 
 	/**
@@ -69,7 +154,8 @@ public class ClinicalRecordReportGenerator extends ReportGenerator {
 	public List buildQuery(Report report) {
 		// TODO
 		//return "SELECT * FROM clinical_record c, child where c.child=child.id";
-		return null;
+		return new ClinicalRecordQuery().getIndividualClinicalRecordQuery(report.getEntityManager(), report);
+		//return null;
 	}
 
 	public Object[] getDisplayFieldsList(String fields)

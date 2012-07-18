@@ -21,7 +21,7 @@
         <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_title_div', widgetType : 'dijit.TitlePane', widgetAttrs : {title: '${title_msg}'}})); </script>
         <spring:url value="/child" var="form_url"/>
         <spring:message code="field.invalid.date" var="field_invalid_date"/>
-        <spring:message code="field.date.tooltip" var="field_date_tooltip"/>        
+        <spring:message code="field.date.tooltip" var="field_date_tooltip"/>      
         <form:form action="${form_url}" method="POST" modelAttribute="child">
             <form:errors cssClass="errors" delimiter="&lt;p/&gt;"/>
             <form:hidden id="_individualId_id" path="individualId"/>

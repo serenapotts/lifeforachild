@@ -8,15 +8,10 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.lifeforachild.Util.SecurityUtil;
-import org.lifeforachild.domain.ChildFields;
-import org.lifeforachild.domain.ClinicalRecordFields;
 import org.lifeforachild.domain.Country;
 import org.lifeforachild.domain.DiabetesCentre;
 import org.lifeforachild.domain.Permissions;
 import org.lifeforachild.domain.Report;
-import org.lifeforachild.domain.ReportType;
-import org.lifeforachild.domain.StatusType;
-import org.lifeforachild.domain.TimePeriodUnit;
 import org.lifeforachild.domain.User;
 import org.lifeforachild.enums.ShowOptionType;
 import org.springframework.ui.ModelMap;
@@ -26,6 +21,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.lifeforachild.web.AppContext;
+import org.lifeforachild.web.Report.enums.ChildFields;
+import org.lifeforachild.web.Report.enums.ClinicalRecordFields;
+import org.lifeforachild.web.Report.enums.ReportType;
+import org.lifeforachild.web.Report.enums.StatusType;
+import org.lifeforachild.web.Report.enums.TimePeriodUnit;
 
 privileged aspect ReportController_Roo_Controller {
     

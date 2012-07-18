@@ -1,7 +1,11 @@
-package org.lifeforachild.domain;
+package org.lifeforachild.web.Report.enums;
 
 import java.util.Calendar;
 import java.util.Date;
+
+import org.lifeforachild.web.AppContext;
+import org.lifeforachild.web.Report.DateRange;
+import org.springframework.context.i18n.LocaleContextHolder;
 
 /**
  * Enum that represents a unit of time, i.e. Month, Year etc.
@@ -10,20 +14,23 @@ import java.util.Date;
  *
  */
 public enum TimePeriodUnit {
-	NONE(""),
-	MONTHS("Months"),
-	YEARS("Years");		
+	NONE("timeperiodunit.none"),
+	MONTH("timeperiodunit.month"),
+	QUARTER("timeperiodunit.quarter"),
+	YEAR("timeperiodunit.year");		
 	
 	TimePeriodUnit(String s) { label = s; }
     
     String label;
     
-    public String getLabel() { return label; }
+    public String getLabel() { 
+    	return AppContext.getApplicationContext().getMessage(label, null, LocaleContextHolder.getLocale());
+    }	
     
     public String toString()
     {
-    	return label;
-    }
+    	return getLabel();
+    }    
     
     /**
      * Determines the from and to dates in a date range for a {@link TimePeriodUnit}
@@ -54,7 +61,7 @@ public enum TimePeriodUnit {
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(now);
 		// determine number of units by subtracting value
-    	if (unit.equals(MONTHS))
+    	if (unit.equals(MONTH))
     		cal.add(Calendar.MONTH, timePeriodInt);    		
     	else 
     		cal.add(Calendar.YEAR, timePeriodInt);

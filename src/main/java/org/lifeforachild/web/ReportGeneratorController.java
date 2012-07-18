@@ -7,9 +7,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.lifeforachild.domain.Report;
 import org.lifeforachild.domain.ReportProperties;
-import org.lifeforachild.domain.ReportType;
 import org.lifeforachild.web.Report.ChildReportGenerator;
+import org.lifeforachild.web.Report.ClinicalRecordReportGenerator;
 import org.lifeforachild.web.Report.ReportGenerator;
+import org.lifeforachild.web.Report.enums.ReportType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -37,12 +38,7 @@ public class ReportGeneratorController {
     @RequestMapping(method = RequestMethod.GET, value = "/reportgenerator/{id}")
     public String get(@PathVariable Long id, ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) {
     	Report report = Report.findReport(id);
-    	ReportGenerator repGen = null;
-    	// check what type of report we are displaying
-    	if (report.getReporttype().equals(ReportType.CHILD))
-    		repGen = new ChildReportGenerator();
-//    	else if (report.getReporttype().equals(ReportType.CLINICAL_RECORD))
-//    		repGen = new ClinicalRecordReportGenerator();    		
+    	ReportGenerator repGen = ReportGeneratorController.getReportGenerator(report);   		
     	if (repGen != null)
     	{
     		List results = repGen.buildQuery(report);
@@ -54,6 +50,26 @@ public class ReportGeneratorController {
 	    	return "report/report";
     	}
     	return "dataAccessFailure";    	
+    }
+    
+    public static ReportGenerator getReportGenerator(Report report)
+    {
+    	ReportGenerator repGen = null;
+    	// check what type of report we are displaying
+    	switch (report.getReporttype())
+    	{
+    		case CHILD:
+    		{
+    			repGen = new ChildReportGenerator();
+    			break;
+    		}
+    		case INDIVIDUAL_CHILD_VISIT:
+    		{
+    			repGen = new ClinicalRecordReportGenerator(); 
+    			break;
+    		}
+    	}
+    	return repGen;
     }
       
 }

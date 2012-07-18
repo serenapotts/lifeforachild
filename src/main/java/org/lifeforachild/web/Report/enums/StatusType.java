@@ -1,4 +1,4 @@
-package org.lifeforachild.domain;
+package org.lifeforachild.web.Report.enums;
 
 public enum StatusType {
 	NONE("StatusType.None"),

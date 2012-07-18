@@ -4,7 +4,7 @@ import java.lang.Long;
 import java.lang.String;
 import javax.validation.Valid;
 import org.lifeforachild.domain.ReportProperties;
-import org.lifeforachild.domain.ReportType;
+import org.lifeforachild.web.Report.enums.ReportType;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
