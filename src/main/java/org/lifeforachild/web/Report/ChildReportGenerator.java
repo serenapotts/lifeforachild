@@ -111,7 +111,19 @@ public class ChildReportGenerator extends ReportGenerator {
 	public List buildQuery(Report report) {
 		// TODO build query based on report object
 		
-		return new ChildQuery().getQuery(report.getEntityManager(), report);		
+		switch (report.getReporttype())
+		{
+			case CHILD:
+			case INDIVIDUAL_CHILD:
+			{
+				return new ChildQuery().getQuery(report.getEntityManager(), report);				
+			}
+			case CHILD_NOT_SEEN_TIME_PERIOD:
+			{
+				return new ChildQuery().getNotSeenVisitClinicalRecordQuery(report.getEntityManager(), report);
+			}
+		}
+		return null;
 		//return "select * from Child";
 	}
 	

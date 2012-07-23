@@ -13,8 +13,7 @@ import org.springframework.context.i18n.LocaleContextHolder;
  * @author Serena Potts
  *
  */
-public enum TimePeriodUnit {
-	NONE("timeperiodunit.none"),
+public enum TimePeriodUnit {	
 	MONTH("timeperiodunit.month"),
 	QUARTER("timeperiodunit.quarter"),
 	YEAR("timeperiodunit.year");		
@@ -40,20 +39,10 @@ public enum TimePeriodUnit {
      * @param unit The time period unit to use
      * @return A date range
      */
-    public static DateRange getDateRange(String timePeriod, TimePeriodUnit unit)
+    public static DateRange getDateRange(TimePeriodUnit unit)
     {
-    	if (unit == null || unit.equals(NONE))
-    		return null;
-    	int timePeriodInt;
-    	try
-    	{
-    		// try to parse the number of units
-    		// make negative as we want to subtract later
-    		timePeriodInt = - Integer.parseInt(timePeriod);
-    	}
-    	catch (Exception e) {
-			return null;
-		}
+    	if (unit == null)
+    		return new DateRange(new Date(), new Date());
     	DateRange dateRange = new DateRange();
     	Date now = new Date();
     	// to date is the current date
@@ -61,10 +50,24 @@ public enum TimePeriodUnit {
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(now);
 		// determine number of units by subtracting value
-    	if (unit.equals(MONTH))
-    		cal.add(Calendar.MONTH, timePeriodInt);    		
-    	else 
-    		cal.add(Calendar.YEAR, timePeriodInt);
+		switch (unit)
+		{
+			case MONTH:
+			{
+				cal.add(Calendar.MONTH, -1);
+				break;
+			}
+			case QUARTER: 
+			{
+				cal.add(Calendar.MONTH, -4);
+				break;
+			}
+			case YEAR:
+			{
+				cal.add(Calendar.YEAR, -1);
+				break;
+			}			
+		}    	
     	dateRange.setFromDate(cal.getTime());
     	return dateRange;
     }

@@ -6,8 +6,11 @@ import java.util.List;
 import javax.persistence.EntityManager;
 
 import org.hibernate.Criteria;
+import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
+import org.lifeforachild.domain.Country;
+import org.lifeforachild.domain.DiabetesCentre;
 import org.springframework.security.access.AccessDeniedException;
 
 /**
@@ -81,4 +84,29 @@ public abstract class BaseQuery<T> {
 	 */
 	abstract public Criteria findByAccessCriteria(EntityManager entityManager);
  
+	protected void searchByCountry(Criteria criteria, Country country) {
+		Long countryId = (country == null) ? null : Long.valueOf(country.getId());
+		if (countryId != null)
+			criteria.add(Restrictions.eq("country.id", countryId) );
+	}
+
+	protected void searchByDiabetesCentre(Criteria criteria,
+			DiabetesCentre centre) {
+		Long centreId = (centre == null) ? null : Long.valueOf(centre.getId());
+		if (centreId != null && centreId != 0)
+			criteria.add(Restrictions.eq("centre.id", centreId) );
+	}	
+	
+	protected void searchByCountry(DetachedCriteria criteria, Country country) {
+		Long countryId = (country == null) ? null : Long.valueOf(country.getId());
+		if (countryId != null)
+			criteria.add(Restrictions.eq("country.id", countryId) );
+	}
+
+	protected void searchByDiabetesCentre(DetachedCriteria criteria,
+			DiabetesCentre centre) {
+		Long centreId = (centre == null) ? null : Long.valueOf(centre.getId());
+		if (centreId != null && centreId != 0)
+			criteria.add(Restrictions.eq("centre.id", centreId) );
+	}		
 }

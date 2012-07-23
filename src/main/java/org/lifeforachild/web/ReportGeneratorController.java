@@ -59,11 +59,16 @@ public class ReportGeneratorController {
     	switch (report.getReporttype())
     	{
     		case CHILD:
+    		case INDIVIDUAL_CHILD:
+    		case CHILD_NOT_SEEN_TIME_PERIOD:
     		{
     			repGen = new ChildReportGenerator();
     			break;
     		}
     		case INDIVIDUAL_CHILD_VISIT:
+    		case INDIVIDUAL_CHILD_MULTI_VISIT:
+    		case CHILD_RECENT_VISIT:
+    		case CHILD_SEEN_TIME_PERIOD:    		
     		{
     			repGen = new ClinicalRecordReportGenerator(); 
     			break;

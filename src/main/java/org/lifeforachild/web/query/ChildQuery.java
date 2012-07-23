@@ -8,9 +8,13 @@ import javax.persistence.EntityManager;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.criterion.Subqueries;
 import org.lifeforachild.Util.StringUtil;
 import org.lifeforachild.domain.Child;
+import org.lifeforachild.domain.ClinicalRecord;
 import org.lifeforachild.domain.Country;
 import org.lifeforachild.domain.DiabetesCentre;
 import org.lifeforachild.domain.Report;
@@ -83,14 +87,27 @@ public class ChildQuery extends BaseQuery<Child> {
 		searchByID(criteria, id);
 		searchByName(criteria, name);
 		searchByLastName(criteria, lastName);
-		searchByTimePeriod(criteria, timePeriod, timePeriodUnit);
-//		searchByDateRange(criteria, from, to);
 		searchByDiabetesCentre(criteria, diabetesCentre);
-		searchByCountry(criteria, country);
-//		orderBy(criteria, orderBy, thenOrderBy);		
+		searchByCountry(criteria, country);	
 		return criteria.list();
-
 	}
+	
+	public List<Child> getNotSeenVisitClinicalRecordQuery(EntityManager entityManager, Report report)
+	{		
+		// do subquery to find child seen in that time period
+		DetachedCriteria d = DetachedCriteria.forClass(ClinicalRecord.class, "cr");
+		DetachedCriteria dChild = d.createCriteria("child", "ch");
+		dChild.setProjection(Projections.distinct(Projections.property("id")));
+		ClinicalRecordQuery.searchByTimePeriod(d, report.getTimeperiodunit(), true);
+		searchByCountry(dChild, report.getCountry());
+		searchByDiabetesCentre(dChild, report.getCentre());
+				
+		// find children not in that time period
+		Criteria criteria = findByAccessCriteria(entityManager);
+		criteria.add(Subqueries.propertyNotIn("id", d));
+							
+		return criteria.list();		
+	}	
 	
 	private void searchByID(Criteria criteria, String id)
 	{
@@ -108,33 +125,7 @@ public class ChildQuery extends BaseQuery<Child> {
 	{
 		if (!StringUtil.isEmpty(lastName))
 			criteria.add(Restrictions.like("lastName", SimpleStringCipher.encrypt(lastName)) );
-	}	
-	
-	private void searchByTimePeriod(Criteria criteria, String timePeriod, TimePeriodUnit timePeriodUnit)
-	{
-		if (!StringUtil.isEmpty(timePeriod) && timePeriodUnit != TimePeriodUnit.NONE)
-		{
-			//DateRange dateRange = TimePeriodUnit.getDateRange(timePeriod, timePeriodUnit);
-			// TODO what dates to compare against. child or record??
-//			criteria.add(Restrictions.and(
-//					Restrictions.ge(propertyName, dateRange.getFromDate()), 
-//					Restrictions.le(propertyName, dateRange.getToDate())) );
-		}
-	}	
-	
-	private void searchByShowOptionType(Criteria criteria,
-			ShowOptionType showOptionType) {
-		
-	}
-
-	private void searchByAge(Criteria criteria, String age) {
-		
-	}
-
-	private void searchByStatusType(Criteria criteria,
-			StatusType statusType) {
-		
-	}
+	}		
 
 	private void searchByCountry(Criteria criteria, Long country) {
 		if (country != null)

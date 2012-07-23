@@ -7,12 +7,17 @@ import javax.persistence.EntityManager;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.criterion.Subqueries;
 import org.lifeforachild.Util.StringUtil;
 import org.lifeforachild.domain.ClinicalRecord;
 import org.lifeforachild.domain.Report;
 import org.lifeforachild.security.SimpleStringCipher;
+import org.lifeforachild.web.Report.DateRange;
+import org.lifeforachild.web.Report.enums.TimePeriodUnit;
 import org.springframework.security.access.AccessDeniedException;
 
 /**
@@ -59,10 +64,68 @@ public class ClinicalRecordQuery extends BaseQuery<ClinicalRecord> {
 	
 	public List<ClinicalRecord> getIndividualClinicalRecordQuery(EntityManager entityManager, Report report)
 	{
-		return getQuery(entityManager, null, report.getRecordNumber(), null, null, report.getFromDate());
+		//return getQueryByDate(entityManager, null, report.getRecordNumber(), null, null, report.getFromDate());
+		Criteria criteria = getQuery(entityManager, null, report.getRecordNumber(), null, null);		
+		// TODO set date
+		searchByDate(criteria, report.getFromDate());
+		return criteria.list();
 	}
 	
-	private List<ClinicalRecord> getQuery(EntityManager entityManager, String individualId, String localMedicaldNo, String name, String lastName, Date date)
+	public List<ClinicalRecord> getIndividualMultiVisitClinicalRecordQuery(EntityManager entityManager, Report report)
+	{
+		//return getQueryByDateRange(entityManager, null, report.getRecordNumber(), null, null, report.getFromDate(), 
+		//						   report.getToDate());
+		Criteria criteria = getQuery(entityManager, null, report.getRecordNumber(), null, null);		
+		searchByDateRange(criteria, report.getFromDate(), report.getToDate());
+		return criteria.list();
+	}
+	
+	// TODO
+	public List<ClinicalRecord> getRecentVisitClinicalRecordQuery(EntityManager entityManager, Report report)
+	{
+		//return getQueryByRecentVisit(entityManager, null, report.getRecordNumber(), null, null);
+		DetachedCriteria d = DetachedCriteria.forClass(ClinicalRecord.class, "cr");
+		d.setProjection(Projections.projectionList()
+				.add(Projections.max("dateCompleted"))
+				.add(Projections.groupProperty("child.id"))
+				//.add(Projections.distinct(Projections.property("id")))
+				);
+					
+		DetachedCriteria d2 = DetachedCriteria.forClass(ClinicalRecord.class, "cr");
+		d2.setProjection(Projections.distinct(Projections.property("id")));
+		d2.add(Subqueries.propertyEq("id", d));
+		
+		Criteria criteria = findByAccessCriteria(entityManager);
+		criteria.add(Subqueries.propertyIn("id", d2));
+		Criteria child = criteria.createCriteria("child");
+		searchByCountry(child, report.getCountry());
+		searchByDiabetesCentre(child, report.getCentre());
+		
+		return criteria.list();	
+		
+				
+		/*Criteria criteria = findByAccessCriteria(entityManager);
+		criteria.setProjection(Projections.projectionList()
+				.add(Projections.max("id"))
+				.add(Projections.groupProperty("child.id")));
+		Criteria child = criteria.createCriteria("child");
+		searchByCountry(child, report.getCountry());
+		searchByDiabetesCentre(child, report.getCentre());
+		return criteria.list();*/
+	}
+	
+	public List<ClinicalRecord> getBeenSeenVisitClinicalRecordQuery(EntityManager entityManager, Report report)
+	{
+		Criteria criteria = findByAccessCriteria(entityManager);
+		Criteria child = criteria.createCriteria("child");
+		searchByTimePeriod(criteria, report.getTimeperiodunit(), true);
+		searchByCountry(child, report.getCountry());
+		searchByDiabetesCentre(child, report.getCentre());
+		return criteria.list();			
+	}
+	
+	
+	private Criteria getQuery(EntityManager entityManager, String individualId, String localMedicaldNo, String name, String lastName)
 	{
 		// restrict to only what they have access to by default
 		Criteria criteria = findByAccessCriteria(entityManager);
@@ -71,8 +134,7 @@ public class ClinicalRecordQuery extends BaseQuery<ClinicalRecord> {
 		searchByLocalMedicalNo(child, localMedicaldNo);
 		searchByName(child, name);
 		searchByLastName(child, lastName);
-		//searchByDate(criteria, date);
-		return criteria.list();
+		return criteria;
 	}	
 	
 	private void searchByID(Criteria criteria, String id)
@@ -104,4 +166,50 @@ public class ClinicalRecordQuery extends BaseQuery<ClinicalRecord> {
 		if (date != null)
 			criteria.add(Restrictions.like("dateCompleted", date ));
 	}	
+	
+	private static void searchByTimePeriod(Criteria criteria, TimePeriodUnit timePeriodUnit, boolean inRange)
+	{
+		DateRange dateRange = TimePeriodUnit.getDateRange(timePeriodUnit);
+		searchByDateRange(criteria, dateRange.getFromDate(), dateRange.getToDate(), inRange);
+	}	
+	
+	private static void searchByDateRange(Criteria criteria, Date fromDate, Date toDate)
+	{
+		searchByDateRange(criteria, fromDate, toDate, true);
+	}
+
+	private static void searchByDateRange(Criteria criteria, Date fromDate, Date toDate, boolean inRange)
+	{
+		Criterion c = Restrictions.and(
+				Restrictions.ge("dateCompleted", fromDate), 
+				Restrictions.le("dateCompleted", toDate));
+		
+		if (inRange)
+			criteria.add(c);
+		else
+			criteria.add(Restrictions.not(c));						
+	}	
+	
+	protected static void searchByTimePeriod(DetachedCriteria criteria, TimePeriodUnit timePeriodUnit, boolean inRange)
+	{
+		DateRange dateRange = TimePeriodUnit.getDateRange(timePeriodUnit);
+		searchByDateRange(criteria, dateRange.getFromDate(), dateRange.getToDate(), inRange);
+	}	
+	
+	protected static void searchByDateRange(DetachedCriteria criteria, Date fromDate, Date toDate)
+	{
+		searchByDateRange(criteria, fromDate, toDate, true);
+	}
+
+	protected static void searchByDateRange(DetachedCriteria criteria, Date fromDate, Date toDate, boolean inRange)
+	{
+		Criterion c = Restrictions.and(
+				Restrictions.ge("dateCompleted", fromDate), 
+				Restrictions.le("dateCompleted", toDate));
+		
+		if (inRange)
+			criteria.add(c);
+		else
+			criteria.add(Restrictions.not(c));						
+	}		
 }

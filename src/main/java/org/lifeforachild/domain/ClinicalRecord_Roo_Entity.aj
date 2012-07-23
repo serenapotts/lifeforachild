@@ -3,6 +3,8 @@ package org.lifeforachild.domain;
 import java.lang.Integer;
 import java.lang.Long;
 import java.util.List;
+import java.util.Map;
+
 import javax.persistence.Column;
 import javax.persistence.EntityManager;
 import javax.persistence.GeneratedValue;
@@ -15,6 +17,8 @@ import org.hibernate.Criteria;
 import org.lifeforachild.domain.ClinicalRecord;
 import org.lifeforachild.web.query.ClinicalRecordQuery;
 import org.springframework.transaction.annotation.Transactional;
+
+import ar.com.fdvs.dj.domain.CustomExpression;
 
 privileged aspect ClinicalRecord_Roo_Entity {
     
@@ -112,5 +116,5 @@ privileged aspect ClinicalRecord_Roo_Entity {
     		return findClinicalRecord(max);
     	return null;
     }     
-    
+       
 }

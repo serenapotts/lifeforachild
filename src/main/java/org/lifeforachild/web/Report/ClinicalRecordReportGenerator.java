@@ -4,15 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
+import javax.persistence.EntityManager;
+
 import org.lifeforachild.Util.SecurityUtil;
 import org.lifeforachild.domain.ClinicalRecord;
 import org.lifeforachild.domain.Permissions;
 import org.lifeforachild.domain.Report;
 import org.lifeforachild.domain.User;
 import org.lifeforachild.enums.ResearchConsentType;
-import org.lifeforachild.enums.SexType;
 import org.lifeforachild.web.AppContext;
-import org.lifeforachild.web.Report.enums.ChildFields;
 import org.lifeforachild.web.Report.enums.ClinicalRecordFields;
 import org.lifeforachild.web.query.ClinicalRecordQuery;
 
@@ -151,10 +151,21 @@ public class ClinicalRecordReportGenerator extends ReportGenerator {
 	 * @param report The report parameters.
 	 * @return The SQL query.
 	 */
-	public List buildQuery(Report report) {
-		// TODO
-		//return "SELECT * FROM clinical_record c, child where c.child=child.id";
-		return new ClinicalRecordQuery().getIndividualClinicalRecordQuery(report.getEntityManager(), report);
+	public List<ClinicalRecord> buildQuery(Report report) {
+
+		switch (report.getReporttype())
+		{
+			case INDIVIDUAL_CHILD_VISIT:
+				return new ClinicalRecordQuery().getIndividualClinicalRecordQuery(report.getEntityManager(), report);
+			case INDIVIDUAL_CHILD_MULTI_VISIT:
+				return new ClinicalRecordQuery().getIndividualMultiVisitClinicalRecordQuery(report.getEntityManager(), report);
+			case CHILD_RECENT_VISIT:
+				return new ClinicalRecordQuery().getRecentVisitClinicalRecordQuery(report.getEntityManager(), report);
+			case CHILD_SEEN_TIME_PERIOD:
+				return new ClinicalRecordQuery().getBeenSeenVisitClinicalRecordQuery(report.getEntityManager(), report);
+			default:
+				return new ArrayList<ClinicalRecord>();				
+		}
 		//return null;
 	}
 
