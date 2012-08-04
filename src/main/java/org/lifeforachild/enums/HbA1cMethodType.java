@@ -1,7 +1,11 @@
 package org.lifeforachild.enums;
 
+import java.util.Map;
+
 import org.lifeforachild.web.AppContext;
 import org.springframework.context.i18n.LocaleContextHolder;
+
+import ar.com.fdvs.dj.domain.CustomExpression;
 
 public enum HbA1cMethodType {
 	DCA2000("HbA1cMethodType.DCA"), 
@@ -23,4 +27,23 @@ public enum HbA1cMethodType {
     {
     	return getLabel();
     }    
+    
+    /**
+     * Custom Expression that formats a Distance Type enum in a report to display the label based
+     * on the code.
+     */
+	public static CustomExpression getCustomExpression() {
+	    return new CustomExpression() {
+	            public Object evaluate(Map fields, Map variables, Map parameters) {
+	            	HbA1cMethodType type = (HbA1cMethodType)fields.get("hbA1cMethod");   
+	            	if (type == null)
+	            		return "";
+	                return type.getLabel();
+	            }
+	
+	            public String getClassName() {
+	                    return String.class.getName();
+	            }
+	    };
+	}     
 }

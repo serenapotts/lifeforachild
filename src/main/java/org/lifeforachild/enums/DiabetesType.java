@@ -36,7 +36,7 @@ public enum DiabetesType {
 	 public static CustomExpression getCustomExpression() {
         return new CustomExpression() {
                 public Object evaluate(Map fields, Map variables, Map parameters) {
-                	DiabetesType type = (DiabetesType)fields.get("diabetes_type"); 
+                	DiabetesType type = (DiabetesType)fields.get("diabetesType"); 
                 	if (type == null)
                 		return "";
                 	return type.getLabel();

@@ -19,6 +19,21 @@ public enum ChildFields {
 	LAST_NAME("child.lastName"),
 	COUNTRY("child.country"),
 	CENTRE("child.centre"),
+	LOCAL_MED_NO("child.localMedicalNumber"),
+	INDIVIDUAL_ID("child.individualId"),
+	DISTANCE_FROM_CENTRE("child.distanceFromCentre"),
+	BLOOD_GLUCOSE_AT_DIAGNOSIS("child.bloodGlucoseAtDiagnosis"),
+	HBA1C_AT_DIAGNOSIS("child.hbA1cAtDiagnosis"),
+	KETOACIDOSIS_AT_DIAGNOSIS("child.ketoacidosisAtDiagnosis"),
+	POLYURIA_AT_DIAGNOSIS("child.polyuriaAtDiagnosis"),
+	THIRST_AT_DIAGNOSIS("child.thirstAtDiagnosis"),
+	WEIGHT_LOSS_AT_DIAGNOSIS("child.weightLossAtDiagnosis"),
+	WEIGHT_AT_DIAGNOSIS("child.weightAtDiagnosis"),
+	HEIGHT_AT_DIAGNOSIS("child.heightAtDiagnosis"),
+	TYPE_1_IN_FAMILY("child.typeOneInFamily"),
+	TYPE_2_IN_FAMILY("child.typeTwoInFamily"),
+	MALNUTRITION("child.malnutrition"),
+	ADDITIONAL_COMMENTS("child.otherSyndromeAdditionalComment"),
 	ALL("ChildFields.All");
 	
 	ChildFields(String s) { label = s;  }

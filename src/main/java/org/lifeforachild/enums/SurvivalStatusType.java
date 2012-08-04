@@ -32,7 +32,7 @@ public enum SurvivalStatusType {
 	public static CustomExpression getCustomExpression() {
 	    return new CustomExpression() {
 	            public Object evaluate(Map fields, Map variables, Map parameters) {
-	            	SurvivalStatusType survivalStatus = (SurvivalStatusType)fields.get("survival_status");   
+	            	SurvivalStatusType survivalStatus = (SurvivalStatusType)fields.get("survivalStatus");   
 	            	if (survivalStatus == null)
 	            		return "";
 	                return survivalStatus.getLabel();

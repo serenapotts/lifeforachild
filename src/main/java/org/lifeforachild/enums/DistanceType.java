@@ -32,7 +32,7 @@ public enum DistanceType {
 	public static CustomExpression getCustomExpression() {
 	    return new CustomExpression() {
 	            public Object evaluate(Map fields, Map variables, Map parameters) {
-	            	DistanceType distanceType = (DistanceType)fields.get("distance_lives_from_centre");   
+	            	DistanceType distanceType = (DistanceType)fields.get("distanceLivesFromCentre");   
 	            	if (distanceType == null)
 	            		return "";
 	                return distanceType.getLabel();

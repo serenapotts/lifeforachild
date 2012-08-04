@@ -36,7 +36,7 @@ public enum CauseOfDeathType {
 	public static CustomExpression getCustomExpression() {
 	    return new CustomExpression() {
 	            public Object evaluate(Map fields, Map variables, Map parameters) {
-	            	CauseOfDeathType cause = (CauseOfDeathType)fields.get("cause_of_death"); 
+	            	CauseOfDeathType cause = (CauseOfDeathType)fields.get("causeOfDeath"); 
 	            	if (cause == null)
 	            		return "";
 	            	return cause.getLabel();
