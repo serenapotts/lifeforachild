@@ -332,9 +332,9 @@ public class ClinicalRecord {
     
     private Float bmiSD = null;
     
-    private Float BloodPressureSystolicSD = null;
+    private Float bloodPressureSystolicSD = null;
     
-    private Float BloodPressureDiastolicSD = null;    
+    private Float bloodPressureDiastolicSD = null;    
     
     private Boolean isDeleted;    
     

@@ -670,19 +670,19 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
     }    
     
     public Float ClinicalRecord.getBloodPressureSystolicSD() {    
-        return this.BloodPressureSystolicSD;        
+        return this.bloodPressureSystolicSD;        
     }    
     
     public void ClinicalRecord.setBloodPressureSystolicSD(Float BloodPressureSystolicSD) {    
-        this.BloodPressureSystolicSD = BloodPressureSystolicSD;        
+        this.bloodPressureSystolicSD = BloodPressureSystolicSD;        
     }    
     
     public Float ClinicalRecord.getBloodPressureDiastolicSD() {    
-        return this.BloodPressureDiastolicSD;        
+        return this.bloodPressureDiastolicSD;        
     }    
     
     public void ClinicalRecord.setBloodPressureDiastolicSD(Float BloodPressureDiastolicSD) {    
-        this.BloodPressureDiastolicSD = BloodPressureDiastolicSD;        
+        this.bloodPressureDiastolicSD = BloodPressureDiastolicSD;        
     }    
     
     public boolean ClinicalRecord.getIsDeleted() {    
