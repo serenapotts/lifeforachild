@@ -3,6 +3,7 @@ package org.lifeforachild.web;
 import java.lang.Long;
 import java.lang.String;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -28,15 +29,19 @@ import org.lifeforachild.web.Report.enums.StatusType;
 import org.lifeforachild.web.Report.enums.TimePeriodUnit;
 
 privileged aspect ReportController_Roo_Controller {
-    
+    	
     @RequestMapping(value = "/report", method = RequestMethod.POST)    
     public String ReportController.create(@Valid Report report, BindingResult result, ModelMap modelMap) { 
     	SecurityUtil.getInstance().checkPermission(Permissions.CREATE_REPORT);
         if (report == null) throw new IllegalArgumentException("A report is required");        
         if (result.hasErrors()) {        
-            modelMap.addAttribute("report", report);            
-            modelMap.addAttribute("childfields_enum", ChildFields.class.getEnumConstants());            
-            modelMap.addAttribute("clinicalrecordfields_enum", ClinicalRecordFields.class.getEnumConstants());            
+            modelMap.addAttribute("report", report);  
+            ChildFields[] childFieldsArray = ChildFields.class.getEnumConstants();
+            Arrays.sort(childFieldsArray, new ChildFieldsComparator());
+            modelMap.addAttribute("childfields_enum", childFieldsArray);          
+            ClinicalRecordFields[] crFieldsArray = ClinicalRecordFields.class.getEnumConstants();
+            Arrays.sort(crFieldsArray, new ClinicalRecordFieldsComparator());
+            modelMap.addAttribute("clinicalrecordfields_enum", crFieldsArray);            
             modelMap.addAttribute("countrys", Country.findAllCountrys(true));
             Country country = report.getCountry();
             List<DiabetesCentre> centres = (country == null) ? null : DiabetesCentre.findAllDiabetesCentres(true, country.getId());
@@ -63,8 +68,12 @@ privileged aspect ReportController_Roo_Controller {
     	Report report = new Report();
     	report.setIsDeleted(false);
         modelMap.addAttribute("report", report);        
-        modelMap.addAttribute("childfields_enum", ChildFields.class.getEnumConstants());        
-        modelMap.addAttribute("clinicalrecordfields_enum", ClinicalRecordFields.class.getEnumConstants());        
+        ChildFields[] childFieldsArray = ChildFields.class.getEnumConstants();
+        Arrays.sort(childFieldsArray, new ChildFieldsComparator());
+        modelMap.addAttribute("childfields_enum", childFieldsArray);          
+        ClinicalRecordFields[] crFieldsArray = ClinicalRecordFields.class.getEnumConstants();
+        Arrays.sort(crFieldsArray, new ClinicalRecordFieldsComparator());
+        modelMap.addAttribute("clinicalrecordfields_enum", crFieldsArray);      
         modelMap.addAttribute("countrys", Country.findAllCountrys(true));        
         Country country = report.getCountry();
         List<DiabetesCentre> centres = (country == null) ? null : DiabetesCentre.findAllDiabetesCentres(true, country.getId());
@@ -114,8 +123,12 @@ privileged aspect ReportController_Roo_Controller {
     	if (report == null) throw new IllegalArgumentException("A report is required");        
         if (result.hasErrors()) {        
             modelMap.addAttribute("report", report);            
-            modelMap.addAttribute("childfields_enum", ChildFields.class.getEnumConstants());            
-            modelMap.addAttribute("clinicalrecordfields_enum", ClinicalRecordFields.class.getEnumConstants());            
+            ChildFields[] childFieldsArray = ChildFields.class.getEnumConstants();
+            Arrays.sort(childFieldsArray, new ChildFieldsComparator());
+            modelMap.addAttribute("childfields_enum", childFieldsArray);          
+            ClinicalRecordFields[] crFieldsArray = ClinicalRecordFields.class.getEnumConstants();
+            Arrays.sort(crFieldsArray, new ClinicalRecordFieldsComparator());
+            modelMap.addAttribute("clinicalrecordfields_enum", crFieldsArray);           
             modelMap.addAttribute("countrys", Country.findAllCountrys(true));            
             Country country = report.getCountry();
             List<DiabetesCentre> centres = (country == null) ? null : DiabetesCentre.findAllDiabetesCentres(true, country.getId());
@@ -142,8 +155,12 @@ privileged aspect ReportController_Roo_Controller {
         if (id == null) throw new IllegalArgumentException("An Identifier is required");
         Report report = Report.findReport(id);
         modelMap.addAttribute("report", report);        
-        modelMap.addAttribute("childfields_enum", ChildFields.class.getEnumConstants());        
-        modelMap.addAttribute("clinicalrecordfields_enum", ClinicalRecordFields.class.getEnumConstants());        
+        ChildFields[] childFieldsArray = ChildFields.class.getEnumConstants();
+        Arrays.sort(childFieldsArray, new ChildFieldsComparator());
+        modelMap.addAttribute("childfields_enum", childFieldsArray);          
+        ClinicalRecordFields[] crFieldsArray = ClinicalRecordFields.class.getEnumConstants();
+        Arrays.sort(crFieldsArray, new ClinicalRecordFieldsComparator());
+        modelMap.addAttribute("clinicalrecordfields_enum", crFieldsArray);      
         modelMap.addAttribute("countrys", Country.findAllCountrys(true));        
         Country country = report.getCountry();
         List<DiabetesCentre> centres = (country == null) ? null : DiabetesCentre.findAllDiabetesCentres(true, country.getId());

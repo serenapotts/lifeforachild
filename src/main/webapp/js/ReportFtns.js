@@ -3,7 +3,7 @@ dojo.require('dijit.form.DateTextBox');
 dojo.require('dijit.form.ValidationTextBox');
 
 dojo.addOnLoad(
-	function(){	
+	function(){			
 	}
 );
 
@@ -47,8 +47,8 @@ function reportTypeOnChange(newValue) {
 		dojo.style(dijit.byId("roo_report_childfields").domNode, "display", "none");
 		dojo.style(dijit.byId("roo_report_timeperiodunit").domNode, "display", "none");
 		dojo.style(dijit.byId("roo_report_toDate").domNode, "display", "none");
-		dojo.style(dijit.byId("roo_report_country").domNode, "display", "block");
-		dojo.style(dijit.byId("roo_report_centre").domNode, "display", "block");		
+		//dojo.style(dijit.byId("roo_report_country").domNode, "display", "block");
+		//dojo.style(dijit.byId("roo_report_centre").domNode, "display", "block");		
 	}
 	else if (newValue == "INDIVIDUAL_CHILD_MULTI_VISIT")
 	{
