@@ -163,7 +163,7 @@ public abstract class ReportGenerator {
 			Object[] fields, String title, boolean addTitleAndImage) throws JRException
 	{
 		//Create DynamicReport instance
-        DynamicReport dr = buildDynamicReport(request, null, fields, title, addTitleAndImage);
+        DynamicReport dr = buildDynamicReport(request, null, fields, title, addTitleAndImage, outputType);
 
         outputProcessed = processOutput(outputType);  
 		//Obtain the JasperPrint instance with a ClassicLayoutManager
@@ -194,12 +194,14 @@ public abstract class ReportGenerator {
         } else if (output.equals(OutputType.EXCEL)) {
             result.contentType = "application/vnd.ms-excel";
             result.exporter = new JRXlsExporter();
+            result.exporter.setParameter(JRXlsExporterParameter.IS_ONE_PAGE_PER_SHEET, Boolean.FALSE);
             result.exporter.setParameter(JRXlsExporterParameter.IS_WHITE_PAGE_BACKGROUND, Boolean.FALSE);
             result.exporter.setParameter(JRXlsExporterParameter.IS_REMOVE_EMPTY_SPACE_BETWEEN_ROWS, Boolean.TRUE);
             result.layoutManager = new ClassicLayoutManager();
         } else if (output.equals(OutputType.EXCEL_PLAIN)) {
             result.contentType = "application/vnd.ms-excel";
             result.exporter = new JRXlsExporter();
+            result.exporter.setParameter(JRXlsExporterParameter.IS_ONE_PAGE_PER_SHEET, Boolean.FALSE);
             result.exporter.setParameter(JRXlsExporterParameter.IS_WHITE_PAGE_BACKGROUND, Boolean.FALSE);
             result.exporter.setParameter(JRXlsExporterParameter.IS_REMOVE_EMPTY_SPACE_BETWEEN_ROWS, Boolean.TRUE);
             result.layoutManager = new ListLayoutManager();
@@ -216,11 +218,22 @@ public abstract class ReportGenerator {
 	 * @param query The SQL query/
 	 */
     private DynamicReport buildDynamicReport(HttpServletRequest request, String query, Object[] fields, 
-    		String title, boolean addTitleAndImage) 
+    		String title, boolean addTitleAndImage, String outputType) 
     {       
         DynamicReportBuilder drb = new DynamicReportBuilder();
-        drb.setPrintBackgroundOnOddRows(true);                          
-        drb.setUseFullPageWidth(true);
+        drb.setPrintBackgroundOnOddRows(true); 
+        if ( outputType.equals(OutputType.EXCEL) || outputType.equals(OutputType.EXCEL_PLAIN) ) {
+        	drb.setIgnorePagination(true);
+        	drb.setMargins(0, 0, 0, 0);
+        	//drb.setAllowDetailSplit(false);
+        }
+        else
+        {
+        	//drb.setUseFullPageWidth(true);
+        	//drb.setIgnorePagination(false);
+        	//drb.setPageSizeAndOrientation(new Page(20, 30));
+        }
+        
         
         if (addTitleAndImage)
         {
@@ -238,6 +251,8 @@ public abstract class ReportGenerator {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+        
+        
         
         DynamicReport dr = drb.build();
         return dr;
