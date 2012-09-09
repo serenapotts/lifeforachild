@@ -56,7 +56,7 @@ public class ChildQuery extends BaseQuery<Child> {
 		String country = search.getCountry();
 		Long centreId = StringUtil.isEmpty(centre) ? null : Long.valueOf(centre);
 		Long countryId = StringUtil.isEmpty(country) ? null : Long.valueOf(country); 
-		return getQuery(entityManager, id, name, lastName, timePeriod, timePeriodUnit, fromDate, toDate, centreId, countryId);
+		return getQuery(entityManager, null, id, name, lastName, timePeriod, timePeriodUnit, fromDate, toDate, centreId, countryId);
 	}
 	
 	public List<Child> getQuery(EntityManager entityManager, Report report)
@@ -65,26 +65,31 @@ public class ChildQuery extends BaseQuery<Child> {
 		Country country = report.getCountry();
 		Long centreId = centre == null ? null : Long.valueOf(centre.getId());
 		Long countryId = country == null ? null : Long.valueOf(country.getId());		
-		return getQuery(entityManager, report.getRecordNumber(), null, null, report.getTimePeriod(), report.getTimeperiodunit(), 
+		return getQuery(entityManager, report.getRecordNumber(), report.getLocalMedicalNumber(), report.getFirstName(), 
+				report.getLastName(), report.getTimePeriod(), report.getTimeperiodunit(), 
 				report.getFromDate(), report.getToDate(), centreId, countryId,
 				report.getStatustype(), report.getShowoptiontype(), 
 				report.getAge(), report.getOrderBy(), report.getThenOrderBy());
 	}
 	
-	private List<Child> getQuery(EntityManager entityManager, String id, String name, String lastName, String timePeriod, 
+	private List<Child> getQuery(EntityManager entityManager, String individualId, 
+			String localMedicalNumber, String name, String lastName, String timePeriod, 
 			TimePeriodUnit timePeriodUnit, Date from, Date to, Long diabetesCentre, Long country)
 	{
-		return getQuery(entityManager, id, name, lastName, timePeriod, timePeriodUnit, from, to, diabetesCentre, country, null,
+		return getQuery(entityManager, individualId, localMedicalNumber, name, lastName, timePeriod, 
+				timePeriodUnit, from, to, diabetesCentre, country, null,
 				null, null, null, null);
 	}
 	
-	private List<Child> getQuery(EntityManager entityManager, String id, String name, String lastName, String timePeriod, 
+	private List<Child> getQuery(EntityManager entityManager, String individualId, 
+			String localMedicalNumber, String name, String lastName, String timePeriod, 
 			TimePeriodUnit timePeriodUnit, Date from, Date to, Long diabetesCentre, Long country,
 			StatusType statusType, ShowOptionType showOptionType, String age, String orderBy, String thenOrderBy)
 	{
 		// restrict to only what they have access to by default
 		Criteria criteria = findByAccessCriteria(entityManager);
-		searchByID(criteria, id);
+		searchByID(criteria, individualId);
+		searchByLocalMedicalNumber(criteria, localMedicalNumber);
 		searchByName(criteria, name);
 		searchByLastName(criteria, lastName);
 		searchByDiabetesCentre(criteria, diabetesCentre);
@@ -110,6 +115,12 @@ public class ChildQuery extends BaseQuery<Child> {
 	}	
 	
 	private void searchByID(Criteria criteria, String id)
+	{
+		if (!StringUtil.isEmpty(id))
+			criteria.add(Restrictions.eq("individualId", id) );
+	}
+	
+	private void searchByLocalMedicalNumber(Criteria criteria, String id)
 	{
 		if (!StringUtil.isEmpty(id))
 			criteria.add(Restrictions.eq("localMedicalNumber", id) );

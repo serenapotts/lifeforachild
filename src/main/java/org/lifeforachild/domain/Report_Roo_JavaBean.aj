@@ -157,4 +157,28 @@ privileged aspect Report_Roo_JavaBean {
     public void Report.setIsDeleted(boolean isDeleted) {    
         this.isDeleted = isDeleted;        
     }    
+    
+    public String Report.getFirstName() {    
+        return this.firstName;        
+    }    
+    
+    public void Report.setFirstName(String firstName) {    
+        this.firstName = firstName;        
+    } 
+    
+    public String Report.getLastName() {    
+        return this.lastName;        
+    }    
+    
+    public void Report.setLastName(String lastName) {    
+        this.lastName = lastName;        
+    }
+    
+    public String Report.getLocalMedicalNumber() {    
+        return this.localMedicalNumber;        
+    }    
+    
+    public void Report.setLocalMedicalNumber(String localMedicalNumber) {    
+        this.localMedicalNumber = localMedicalNumber;        
+    }    
 }

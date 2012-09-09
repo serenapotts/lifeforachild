@@ -88,6 +88,12 @@ public class Report {
     
     private Boolean isDeleted;
     
+    private String localMedicalNumber;
+    
+    private String firstName;
+    
+    private String lastName;
+    
     public EntityManager getEntityManager()
     {
     	return entityManager();

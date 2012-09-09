@@ -20,6 +20,10 @@ function reportTypeOnChange(newValue) {
 		dojo.style(dijit.byId("roo_report_timeperiodunit").domNode, "display", "none");
 		dojo.style(dijit.byId("roo_report_fromDate").domNode, "display", "none");
 		dojo.style(dijit.byId("roo_report_toDate").domNode, "display", "none");
+		dojo.style(dijit.byId("roo_report_recordNumber").domNode, "display", "none");	
+		dojo.style(dijit.byId("roo_report_localMedicalNumber").domNode, "display", "none");
+		dojo.style(dijit.byId("roo_report_firstName").domNode, "display", "none");
+		dojo.style(dijit.byId("roo_report_lastName").domNode, "display", "none");			
 	}
 	else if (newValue == "INDIVIDUAL_CHILD")
 	{
@@ -27,6 +31,9 @@ function reportTypeOnChange(newValue) {
 		dojo.style(dijit.byId("roo_report_name").domNode, "display", "block");
 		dojo.style(dijit.byId("roo_report_viewableBy").domNode, "display", "block");
 		dojo.style(dijit.byId("roo_report_recordNumber").domNode, "display", "block");
+		dojo.style(dijit.byId("roo_report_localMedicalNumber").domNode, "display", "block");
+		dojo.style(dijit.byId("roo_report_firstName").domNode, "display", "block");
+		dojo.style(dijit.byId("roo_report_lastName").domNode, "display", "block");
 		
 		dojo.style(dijit.byId("roo_report_clinicalrecordfields").domNode, "display", "none");
 		dojo.style(dijit.byId("roo_report_timeperiodunit").domNode, "display", "none");
@@ -43,6 +50,9 @@ function reportTypeOnChange(newValue) {
 		//dojo.style(dijit.byId("roo_report_childfields").domNode, "display", "block");
 		dojo.style(dijit.byId("roo_report_fromDate").domNode, "display", "block");
 		dojo.style(dijit.byId("roo_report_recordNumber").domNode, "display", "block");
+		dojo.style(dijit.byId("roo_report_localMedicalNumber").domNode, "display", "block");
+		dojo.style(dijit.byId("roo_report_firstName").domNode, "display", "block");
+		dojo.style(dijit.byId("roo_report_lastName").domNode, "display", "block");		
 		
 		dojo.style(dijit.byId("roo_report_childfields").domNode, "display", "none");
 		dojo.style(dijit.byId("roo_report_timeperiodunit").domNode, "display", "none");
@@ -58,6 +68,9 @@ function reportTypeOnChange(newValue) {
 		dojo.style(dijit.byId("roo_report_fromDate").domNode, "display", "block");
 		dojo.style(dijit.byId("roo_report_toDate").domNode, "display", "block");
 		dojo.style(dijit.byId("roo_report_recordNumber").domNode, "display", "block");	
+		dojo.style(dijit.byId("roo_report_localMedicalNumber").domNode, "display", "block");
+		dojo.style(dijit.byId("roo_report_firstName").domNode, "display", "block");
+		dojo.style(dijit.byId("roo_report_lastName").domNode, "display", "block");		
 		
 		dojo.style(dijit.byId("roo_report_childfields").domNode, "display", "none");		
 		dojo.style(dijit.byId("roo_report_country").domNode, "display", "none");
@@ -76,7 +89,10 @@ function reportTypeOnChange(newValue) {
 		dojo.style(dijit.byId("roo_report_timeperiodunit").domNode, "display", "none");
 		dojo.style(dijit.byId("roo_report_fromDate").domNode, "display", "none");
 		dojo.style(dijit.byId("roo_report_toDate").domNode, "display", "none");
-		dojo.style(dijit.byId("roo_report_recordNumber").domNode, "display", "none");				
+		dojo.style(dijit.byId("roo_report_recordNumber").domNode, "display", "none");	
+		dojo.style(dijit.byId("roo_report_localMedicalNumber").domNode, "display", "none");
+		dojo.style(dijit.byId("roo_report_firstName").domNode, "display", "none");
+		dojo.style(dijit.byId("roo_report_lastName").domNode, "display", "none");		
 	}
 	else if (newValue == "CHILD_SEEN_TIME_PERIOD")
 	{
@@ -91,6 +107,9 @@ function reportTypeOnChange(newValue) {
 		dojo.style(dijit.byId("roo_report_fromDate").domNode, "display", "none");
 		dojo.style(dijit.byId("roo_report_toDate").domNode, "display", "none");
 		dojo.style(dijit.byId("roo_report_recordNumber").domNode, "display", "none");
+		dojo.style(dijit.byId("roo_report_localMedicalNumber").domNode, "display", "none");
+		dojo.style(dijit.byId("roo_report_firstName").domNode, "display", "none");
+		dojo.style(dijit.byId("roo_report_lastName").domNode, "display", "none");
 	}
 	else if (newValue == "CHILD_NOT_SEEN_TIME_PERIOD")
 	{
@@ -105,6 +124,9 @@ function reportTypeOnChange(newValue) {
 		dojo.style(dijit.byId("roo_report_fromDate").domNode, "display", "none");
 		dojo.style(dijit.byId("roo_report_toDate").domNode, "display", "none");
 		dojo.style(dijit.byId("roo_report_recordNumber").domNode, "display", "none");
+		dojo.style(dijit.byId("roo_report_localMedicalNumber").domNode, "display", "none");
+		dojo.style(dijit.byId("roo_report_firstName").domNode, "display", "none");
+		dojo.style(dijit.byId("roo_report_lastName").domNode, "display", "none");
 	}
 	else
 	{
@@ -116,6 +138,9 @@ function reportTypeOnChange(newValue) {
 		dojo.style(dijit.byId("roo_report_fromDate").domNode, "display", "none");
 		dojo.style(dijit.byId("roo_report_toDate").domNode, "display", "none");
 		dojo.style(dijit.byId("roo_report_recordNumber").domNode, "display", "none");
+		dojo.style(dijit.byId("roo_report_localMedicalNumber").domNode, "display", "none");
+		dojo.style(dijit.byId("roo_report_firstName").domNode, "display", "none");
+		dojo.style(dijit.byId("roo_report_lastName").domNode, "display", "none");		
 		//dojo.style(dijit.byId("roo_report_country").domNode, "display", "none");
 		//dojo.style(dijit.byId("roo_report_centre").domNode, "display", "none");
 	}
