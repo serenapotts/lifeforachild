@@ -1,17 +1,19 @@
 package org.lifeforachild.web.query;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
-import org.hibernate.criterion.Subqueries;
 import org.lifeforachild.Util.StringUtil;
 import org.lifeforachild.domain.ClinicalRecord;
 import org.lifeforachild.domain.Report;
@@ -64,18 +66,14 @@ public class ClinicalRecordQuery extends BaseQuery<ClinicalRecord> {
 	
 	public List<ClinicalRecord> getIndividualClinicalRecordQuery(EntityManager entityManager, Report report)
 	{
-		//return getQueryByDate(entityManager, null, report.getRecordNumber(), null, null, report.getFromDate());
 		Criteria criteria = getQuery(entityManager, report.getRecordNumber(), report.getLocalMedicalNumber(), 
 				report.getFirstName(), report.getLastName());		
-		// TODO set date
 		searchByDate(criteria, report.getFromDate());
 		return criteria.list();
 	}
 	
 	public List<ClinicalRecord> getIndividualMultiVisitClinicalRecordQuery(EntityManager entityManager, Report report)
 	{
-		//return getQueryByDateRange(entityManager, null, report.getRecordNumber(), null, null, report.getFromDate(), 
-		//						   report.getToDate());
 		Criteria criteria = getQuery(entityManager, report.getRecordNumber(), report.getLocalMedicalNumber(), 
 				report.getFirstName(), report.getLastName());		
 		searchByDateRange(criteria, report.getFromDate(), report.getToDate());
@@ -84,36 +82,17 @@ public class ClinicalRecordQuery extends BaseQuery<ClinicalRecord> {
 	
 	// TODO
 	public List<ClinicalRecord> getRecentVisitClinicalRecordQuery(EntityManager entityManager, Report report)
-	{
-		//return getQueryByRecentVisit(entityManager, null, report.getRecordNumber(), null, null);
-		DetachedCriteria d = DetachedCriteria.forClass(ClinicalRecord.class, "cr");
-		d.setProjection(Projections.projectionList()
-				.add(Projections.max("dateCompleted"))
-				.add(Projections.groupProperty("child.id"))
-				//.add(Projections.distinct(Projections.property("id")))
-				);
-					
-		DetachedCriteria d2 = DetachedCriteria.forClass(ClinicalRecord.class, "cr");
-		d2.setProjection(Projections.distinct(Projections.property("id")));
-		d2.add(Subqueries.propertyEq("id", d));
-		
-		Criteria criteria = findByAccessCriteria(entityManager);
-		criteria.add(Subqueries.propertyIn("id", d2));
-		Criteria child = criteria.createCriteria("child");
-		searchByCountry(child, report.getCountry());
-		searchByDiabetesCentre(child, report.getCentre());
-		
-		return criteria.list();	
-		
-				
-		/*Criteria criteria = findByAccessCriteria(entityManager);
-		criteria.setProjection(Projections.projectionList()
-				.add(Projections.max("id"))
-				.add(Projections.groupProperty("child.id")));
-		Criteria child = criteria.createCriteria("child");
-		searchByCountry(child, report.getCountry());
-		searchByDiabetesCentre(child, report.getCentre());
-		return criteria.list();*/
+	{		
+		Query query = ((Session)entityManager.getDelegate()).createQuery(
+				"from ClinicalRecord c where (c.child, c.dateCompleted) in (select c.child, max(c.dateCompleted) from ClinicalRecord c group by c.child)");
+		Iterator it = query.iterate();
+		ArrayList<ClinicalRecord> list = new ArrayList<ClinicalRecord>();
+		while (it.hasNext())
+		{
+			Object o = it.next();
+			list.add((ClinicalRecord)o);
+		}
+		return list;				
 	}
 	
 	public List<ClinicalRecord> getBeenSeenVisitClinicalRecordQuery(EntityManager entityManager, Report report)
