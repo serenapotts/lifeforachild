@@ -47,6 +47,8 @@ public class ClinicalRecordReportGenerator extends ReportGenerator {
 	void addColumns(DynamicReportBuilder drb, Object[] fields) throws ColumnBuilderException {
 		// these columns are displayed on every report
 		addColumn(drb, "child.individualId", "Child ID", String.class, 85);
+		addColumn(drb, "child.country.name", ChildFields.COUNTRY.getLabel(), String.class, 85);
+		addColumn(drb, "child.centre.name", ChildFields.CENTRE.getLabel(), String.class, 85);
 		boolean viewNameInfo = SecurityUtil.getInstance().hasPermission(Permissions.VIEW_CHILD_NAME);
         if (viewNameInfo)
         {

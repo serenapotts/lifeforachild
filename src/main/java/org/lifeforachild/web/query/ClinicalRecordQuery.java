@@ -14,8 +14,12 @@ import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
+import org.lifeforachild.Util.SecurityUtil;
 import org.lifeforachild.Util.StringUtil;
+import org.lifeforachild.domain.Child;
 import org.lifeforachild.domain.ClinicalRecord;
+import org.lifeforachild.domain.Country;
+import org.lifeforachild.domain.DiabetesCentre;
 import org.lifeforachild.domain.Report;
 import org.lifeforachild.security.SimpleStringCipher;
 import org.lifeforachild.web.Report.DateRange;
@@ -83,6 +87,7 @@ public class ClinicalRecordQuery extends BaseQuery<ClinicalRecord> {
 	// TODO
 	public List<ClinicalRecord> getRecentVisitClinicalRecordQuery(EntityManager entityManager, Report report)
 	{		
+		// was too hard to do this query as hibernate criteria so falling back to HQL
 		Query query = ((Session)entityManager.getDelegate()).createQuery(
 				"from ClinicalRecord c where (c.child, c.dateCompleted) in (select c.child, max(c.dateCompleted) from ClinicalRecord c group by c.child)");
 		Iterator it = query.iterate();
@@ -90,7 +95,41 @@ public class ClinicalRecordQuery extends BaseQuery<ClinicalRecord> {
 		while (it.hasNext())
 		{
 			Object o = it.next();
-			list.add((ClinicalRecord)o);
+			
+			// also easier to restrict by child properties after the query is done in deciding what to return 
+			Child c = ((ClinicalRecord)o).getChild();
+			int childCountry = c.getCountry().getId().intValue();
+			int childCentre = c.getCentre().getId().intValue();
+			
+			boolean add = true;	
+			
+			// restrict to current user country and centre
+			Integer country = SecurityUtil.getInstance().getCountry();
+			if (country != null && country != 0)
+			{
+				if (childCountry != country)
+					add = false;
+				
+				// check the centre
+				Integer centre = SecurityUtil.getInstance().getCentre();
+				if (centre != null && centre != 0)
+				{
+					if (childCentre != centre)
+						add = false;
+				}
+			}
+			
+			// restrict to selected country and centre too
+			Country rCountry = report.getCountry(); 
+			if (rCountry != null && rCountry.getId().intValue() != childCountry)
+				add = false;
+			
+			DiabetesCentre rCentre = report.getCentre(); 
+			if (rCentre != null && rCentre.getId().intValue() != childCentre)
+				add = false;
+			
+			if (add)
+				list.add((ClinicalRecord)o);
 		}
 		return list;				
 	}
