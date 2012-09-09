@@ -65,7 +65,8 @@ public class ClinicalRecordQuery extends BaseQuery<ClinicalRecord> {
 	public List<ClinicalRecord> getIndividualClinicalRecordQuery(EntityManager entityManager, Report report)
 	{
 		//return getQueryByDate(entityManager, null, report.getRecordNumber(), null, null, report.getFromDate());
-		Criteria criteria = getQuery(entityManager, null, report.getRecordNumber(), null, null);		
+		Criteria criteria = getQuery(entityManager, report.getRecordNumber(), report.getLocalMedicalNumber(), 
+				report.getFirstName(), report.getLastName());		
 		// TODO set date
 		searchByDate(criteria, report.getFromDate());
 		return criteria.list();
@@ -75,7 +76,8 @@ public class ClinicalRecordQuery extends BaseQuery<ClinicalRecord> {
 	{
 		//return getQueryByDateRange(entityManager, null, report.getRecordNumber(), null, null, report.getFromDate(), 
 		//						   report.getToDate());
-		Criteria criteria = getQuery(entityManager, null, report.getRecordNumber(), null, null);		
+		Criteria criteria = getQuery(entityManager, report.getRecordNumber(), report.getLocalMedicalNumber(), 
+				report.getFirstName(), report.getLastName());		
 		searchByDateRange(criteria, report.getFromDate(), report.getToDate());
 		return criteria.list();
 	}

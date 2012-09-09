@@ -449,6 +449,8 @@
 			                        <th><spring:message code="record.list.dateOfMeasurement"/></th>
 			                        <th><spring:message code="record.list.personCompletedBy"/></th>
 			                        <th/>
+			                        <th/>
+			                        <th/>
 			                    </tr>
 			                </thead>
 			                <c:forEach items="${child.clinicalRecords}" var="clinicalRecord">
@@ -470,6 +472,20 @@
 			                                <spring:message arguments="${entity_label}" code="record.show" var="show_label"/>
 			                                <input alt="${show_label}" class="image" src="${show_image_url}" title="${show_label}" type="image" value="${show_label}"/>
 			                            </form:form>
+			                        </td>
+			                        <td>
+				                        <c:url value="/excelvisitgenerator/${clinicalRecord.id}" var="export_excel_url"/>
+				                        <c:url value="/static/images/excel.gif" var="excel_image_url"/>
+				                        <form:form action="${export_excel_url}" method="GET" target="_blank">
+				                            <input alt="Export to Excel" src="${excel_image_url}" title="Export to Excel" type="image" value="Export to Excel"/>
+				                        </form:form>			                        
+			                        </td>
+			                        <td>
+				                        <c:url value="/pdfvisitgenerator/${clinicalRecord.id}" var="export_pdf_url"/>
+				                        <c:url value="/static/images/pdf.gif" var="pdf_image_url"/>
+				                        <form:form action="${export_pdf_url}" method="GET" target="_blank">
+				                            <input alt="Export to PDF" src="${pdf_image_url}" title="Export to PDF" type="image" value="Export to PDF"/>
+				                        </form:form>
 			                        </td>
 			                    </tr>
 			                </c:forEach>
