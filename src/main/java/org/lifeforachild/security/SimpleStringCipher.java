@@ -1,8 +1,12 @@
 package org.lifeforachild.security;
 
+import java.io.File;
+import java.io.FileInputStream;
+
 import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
+
 import org.apache.commons.codec.binary.Base64;
 import org.lifeforachild.web.AppContext;
 import org.springframework.context.i18n.LocaleContextHolder;
@@ -14,13 +18,23 @@ import org.springframework.context.i18n.LocaleContextHolder;
  */
 public class SimpleStringCipher {
 	private static byte[] linebreak = {}; // Remove Base64 encoder default linebreak
-	private static String secret = AppContext.getApplicationContext().getMessage("cipher.key", null, LocaleContextHolder.getLocale());
+	private static String secret;
 	private static SecretKey key;
 	private static Cipher cipher;
 	private static Base64 coder;
 
 	static {
 		try {
+			// load cipher key
+			String userHomeDir = System.getProperty("user.home");
+			System.out.println(userHomeDir);
+			String path = userHomeDir + "/lifeforachild/settings.txt";
+			File file = new File(path);
+			byte fileContent[] = new byte[(int)file.length()];
+			FileInputStream fis = new FileInputStream(file);
+			fis.read(fileContent);
+			secret = new String(fileContent);
+			
 			key = new SecretKeySpec(secret.getBytes(), "AES");
 			cipher = Cipher.getInstance("AES/ECB/PKCS5Padding", "SunJCE");
 			coder = new Base64(32,linebreak,true);
@@ -50,6 +64,12 @@ public class SimpleStringCipher {
 		cipher.init(Cipher.DECRYPT_MODE, key);
 		byte[] decrypted = cipher.doFinal(encypted);  
 		return new String(decrypted);
+	}
+	
+	public static void main(String[] args)
+	{
+		String userHomeDir = System.getProperty("user.home");
+		System.out.println(userHomeDir);
 	}
 
 }

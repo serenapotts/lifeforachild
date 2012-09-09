@@ -52,7 +52,7 @@ public class ClinicalRecordQuery extends BaseQuery<ClinicalRecord> {
 	}
 	
 	/**
-	 * Return the id of the latest version of the clincal record for a given child.
+	 * Return the id of the latest version of the clinical record for a given child.
 	 */
 	public Long findLatestClinicalRecordId(EntityManager entityManager, Long childId)
 	{
