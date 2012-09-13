@@ -5,6 +5,14 @@
     	dojo.require('dijit.form.FilteringSelect');
     	dojo.require('dojo.data.ItemFileReadStore');
     </script>
+    <spring:hasBindErrors name="report">
+    	<script type="text/javascript" src="static/js/CountryCentreFtns.js"/> 
+    	<script type="text/javascript">
+	    	// this is needed because of the previous import for some reason the next javascript block gets ignored
+	    	function dummy() {}   	
+	    </script>      
+	    <script type="text/javascript" src="static/js/ReportFtns.js"/>  
+   	</spring:hasBindErrors>
     <script type="text/javascript" src="../static/js/CountryCentreFtns.js"/>  
     <script type="text/javascript">
     	// this is needed because of the previous import for some reason the next javascript block gets ignored

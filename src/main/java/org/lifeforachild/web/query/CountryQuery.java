@@ -4,6 +4,7 @@ import javax.persistence.EntityManager;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.CriteriaSpecification;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.lifeforachild.Util.SecurityUtil;
@@ -50,6 +51,28 @@ public class CountryQuery extends BaseQuery<Country> {
 					.add(Restrictions.eq("id", new Long(country)));
 		}    
     }
+    
+    protected static void findChildCountryByAccessCriteria(Criteria criteria)
+    {
+		Integer country = SecurityUtil.getInstance().getCountry();
+		if (country != null && country != 0)
+		{
+			// have just country access to restrict to all centres in that country
+			criteria.createCriteria("child.country")
+					.add(Restrictions.eq("id", new Long(country)));
+		}    
+    }
+    
+    protected static void findReportCountryByAccessCriteria(Criteria criteria)
+    {
+		Integer country = SecurityUtil.getInstance().getCountry();
+		if (country != null && country != 0)
+		{
+			// have just country access to restrict to all centres in that country
+			criteria.createCriteria("country", CriteriaSpecification.LEFT_JOIN)
+					.add(Restrictions.or(Restrictions.eq("id", new Long(country)),Restrictions.isNull("id")));
+		}    
+    }    
 		
     /**
      * Return the country with the given name.

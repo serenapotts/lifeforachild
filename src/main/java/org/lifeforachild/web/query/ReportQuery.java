@@ -18,8 +18,9 @@ public class ReportQuery extends BaseQuery<Report> {
 		AllUserDetails user = SecurityUtil.getInstance().getCurrentUser();
 		// restrict to reports by user or ones all users have access to
 		criteria.createAlias("viewableBy", "vb", CriteriaSpecification.LEFT_JOIN)
-			.add(Restrictions.or(Restrictions.isNull("viewableBy"), Restrictions.eq("vb.id", user.getId())));			
+			.add(Restrictions.or(Restrictions.isNull("viewableBy"), Restrictions.eq("vb.id", user.getId())));	
+		CountryQuery.findReportCountryByAccessCriteria(criteria);
+    	DiabetesCentreQuery.findReportCentreByAccessCriteria(criteria);
 		return criteria;
 	}
-
 }

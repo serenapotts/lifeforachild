@@ -39,7 +39,10 @@ public class ClinicalRecordQuery extends BaseQuery<ClinicalRecord> {
 	 * Return hibernate criteria to get clinical records.
 	 */
 	public Criteria findByAccessCriteria(EntityManager entityManager) {
-		return ((Session)entityManager.getDelegate()).createCriteria(ClinicalRecord.class);
+		Criteria criteria = ((Session)entityManager.getDelegate()).createCriteria(ClinicalRecord.class);
+		CountryQuery.findChildCountryByAccessCriteria(criteria);
+    	DiabetesCentreQuery.findChildCentreByAccessCriteria(criteria);
+    	return criteria;
 	}
 
 	/** 

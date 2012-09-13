@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.CriteriaSpecification;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.lifeforachild.Util.SecurityUtil;
@@ -70,6 +71,28 @@ public class DiabetesCentreQuery extends BaseQuery<DiabetesCentre> {
 					.add(Restrictions.eq("id", new Long(centre)));
 		}    
     }	
+ 
+    public static void findChildCentreByAccessCriteria(Criteria criteria)
+    {
+		Integer centre = SecurityUtil.getInstance().getCentre();
+		if (centre != null && centre != 0)
+		{
+			// have just country access to restrict to all centres in that country
+			criteria.createCriteria("child.centre")
+					.add(Restrictions.eq("id", new Long(centre)));
+		}    
+    }	
+    
+    public static void findReportCentreByAccessCriteria(Criteria criteria)
+    {
+		Integer centre = SecurityUtil.getInstance().getCentre();
+		if (centre != null && centre != 0)
+		{
+			// have just country access to restrict to all centres in that country
+			criteria.createCriteria("centre", CriteriaSpecification.LEFT_JOIN)
+					.add(Restrictions.or(Restrictions.eq("id", new Long(centre)), Restrictions.isNull("id")));
+		}    
+    }	    
     
     /**
      * Returns a list of diabetes centres the user has access to in a particular country, excluding deleted ones.
