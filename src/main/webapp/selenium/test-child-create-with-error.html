@@ -1,26 +1,54 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-	<head profile="http://selenium-ide.openqa.org/profiles/test-case">
-		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
-		<link href="http://localhost:8080/" rel="selenium.base"/>
-		<title>Selenium test for ChildController</title>
-	</head>
-	<body>
-		<table border="1" cellpadding="1" cellspacing="1">
-			<thead>
-				<tr>
-					<td colspan="3" rowspan="1">Selenium test for ChildController</td>
-				</tr>
-			</thead>
-			<tbody>			
-				<tr>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost:8080/" />
+<title>test-child-create-with-error</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">test-child-create-with-error</td></tr>
+</thead><tbody>
+<tr>
 	<td>open</td>
-	<td>/lifeforachild/search?lang=en</td>
+	<td>/lifeforachild/child?size=20</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Search</td>
 	<td></td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
 	<td>link=Enter new Child Record</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=_name_id</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=_name_id</td>
+	<td>dsfsf</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=_lastName_id</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=_lastName_id</td>
+	<td>fdsfsdf</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=proceed</td>
 	<td></td>
 </tr>
 <tr>
@@ -51,7 +79,7 @@
 <tr>
 	<td>type</td>
 	<td>_localMedicalNumber_id</td>
-	<td>001166</td>
+	<td>001177</td>
 </tr>
 <tr>
 	<td>type</td>
@@ -193,7 +221,6 @@
 	<td>http://localhost:8080/lifeforachild/child/*</td>
 	<td></td>
 </tr>
-</tbody>
-		</table>
-	</body>
+</tbody></table>
+</body>
 </html>

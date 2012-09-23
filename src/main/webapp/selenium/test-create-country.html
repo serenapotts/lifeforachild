@@ -4,12 +4,12 @@
 <head profile="http://selenium-ide.openqa.org/profiles/test-case">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="selenium.base" href="http://localhost:8080/" />
-<title>test-search</title>
+<title>test-create-country</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">test-search</td></tr>
+<tr><td rowspan="1" colspan="3">test-create-country</td></tr>
 </thead><tbody>
 <tr>
 	<td>open</td>
@@ -17,14 +17,19 @@
 	<td></td>
 </tr>
 <tr>
-	<td>click</td>
-	<td>id=_id</td>
+	<td>clickAndWait</td>
+	<td>link=Enter new Country</td>
 	<td></td>
 </tr>
 <tr>
+	<td>store</td>
+	<td>javascript{Math.floor(Math.random()*11111)}</td>
+	<td>countrynum</td>
+</tr>
+<tr>
 	<td>type</td>
-	<td>id=_id</td>
-	<td>001166</td>
+	<td>id=_name_id</td>
+	<td>test${countrynum}</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
@@ -32,20 +37,16 @@
 	<td></td>
 </tr>
 <tr>
-	<td>verifyVisible</td>
-	<td>id=child_table</td>
-	<td></td>
+	<td>storeLocation</td>
+	<td>countryLocation</td>
+	<td>countryLocation</td>
 </tr>
 <tr>
-	<td>clickAndWait</td>
-	<td>css=input.image</td>
-	<td></td>
+	<td>store</td>
+	<td>javascript{storedVars['countryLocation'].substring(storedVars['countryLocation'].lastIndexOf('/') +1 ,storedVars['countryLocation'].length)}</td>
+	<td>countryid</td>
 </tr>
-<tr>
-	<td>verifyLocation</td>
-	<td>http://localhost:8080/lifeforachild/child/*</td>
-	<td></td>
-</tr>
+
 </tbody></table>
 </body>
 </html>

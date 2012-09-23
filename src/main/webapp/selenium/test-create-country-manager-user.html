@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost:8080/" />
+<title>test-create-user</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">test-create-user</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/lifeforachild/user/form</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Enter new User</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=_firstName_id</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=_firstName_id</td>
+	<td>test</td>
+</tr>
+<tr>
+	<td>store</td>
+	<td>javascript{Math.floor(Math.random()*11111)}</td>
+	<td>usernum</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=_lastName_id</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=_lastName_id</td>
+	<td>${usernum}</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=_username_id</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=_username_id</td>
+	<td>test${usernum}</td>
+</tr>
+<tr>
+	<td>store</td>
+	<td>test${usernum}</td>
+	<td>username</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=_password_id</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=_password_id</td>
+	<td>Test1234</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=proceed</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeLocation</td>
+	<td>myLocation</td>
+	<td>myLocation</td>
+</tr>
+<tr>
+	<td>store</td>
+	<td>javascript{storedVars['myLocation'].substring(storedVars['myLocation'].lastIndexOf('/') + 1,storedVars['myLocation'].length)}</td>
+	<td>userid</td>
+</tr>
+</tbody></table>
+</body>
+</html>

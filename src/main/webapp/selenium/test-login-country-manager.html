@@ -4,27 +4,32 @@
 <head profile="http://selenium-ide.openqa.org/profiles/test-case">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="selenium.base" href="http://localhost:8080/" />
-<title>test-search</title>
+<title>test-login-country-manager</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">test-search</td></tr>
+<tr><td rowspan="1" colspan="3">test-login-country-manager</td></tr>
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>/lifeforachild/search</td>
+	<td>/lifeforachild/login</td>
 	<td></td>
 </tr>
 <tr>
 	<td>click</td>
-	<td>id=_id</td>
+	<td>id=j_username</td>
 	<td></td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>id=_id</td>
-	<td>001166</td>
+	<td>id=j_username</td>
+	<td>${countrymanagerusername}</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=j_password</td>
+	<td>Test1234</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
@@ -32,20 +37,11 @@
 	<td></td>
 </tr>
 <tr>
-	<td>verifyVisible</td>
-	<td>id=child_table</td>
-	<td></td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>css=input.image</td>
-	<td></td>
-</tr>
-<tr>
 	<td>verifyLocation</td>
-	<td>http://localhost:8080/lifeforachild/child/*</td>
+	<td>http://localhost:8080/lifeforachild/search</td>
 	<td></td>
 </tr>
+
 </tbody></table>
 </body>
 </html>
