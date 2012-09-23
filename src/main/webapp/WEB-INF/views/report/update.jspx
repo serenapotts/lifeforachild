@@ -237,7 +237,7 @@
                         widgetType: 'dijit.layout.ContentPane'})); 
             </script> 
             <div id="roo_report_centre" style="display:none">
-	            <label for="_centre_id">cc<spring:message code="report.centre"/></label>
+	            <label for="_centre_id"><spring:message code="report.centre"/></label>
 	            <form:select cssStyle="width:350px" id="_centre_id" path="centre">
 	                <form:options itemValue="id" items="${diabetescentres}"/>
 	            </form:select>
