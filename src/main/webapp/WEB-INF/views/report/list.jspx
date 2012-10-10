@@ -16,7 +16,6 @@
                         <th/>
                         <th/>
                         <th/>
-                        <th/>
                         <sec:authorize ifAllGranted="CAN_DELETE">
                         	<th/>
                         </sec:authorize>
@@ -49,14 +48,7 @@
 	                        <form:form action="${export_excel_url}" method="GET" target="_blank">
 	                            <input alt="Export to Excel" src="${excel_image_url}" title="Export to Excel" type="image" value="Export to Excel"/>
 	                        </form:form>
-	                    </td>
-	                    <td>
-	                        <c:url value="/pdfgenerator/${report.id}" var="export_pdf_url"/>
-	                        <c:url value="/static/images/pdf.gif" var="pdf_image_url"/>
-	                        <form:form action="${export_pdf_url}" method="GET" target="_blank">
-	                            <input alt="Export to PDF" src="${pdf_image_url}" title="Export to PDF" type="image" value="Export to PDF"/>
-	                        </form:form>
-	                    </td>    
+	                    </td>  
 	                    <sec:authorize ifAllGranted="CAN_DELETE">                    
 	                        <td>
 	                            <spring:url value="/report/${report.id}" var="delete_form_url"/>

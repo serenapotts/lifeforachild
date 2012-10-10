@@ -18,17 +18,6 @@
 					    <form:hidden id="_displayfields" path="displayFields"/>			   		
 					</form:form>
 				</td>
-				<td class="submit">
-					<c:url value="/pdfgenerator/${reportProperties.id}" var="export_pdf_url"/>
-					<form:form action="${export_pdf_url}" method="GET" modelAttribute="reportProperties" target="_blank">
-						<script type="text/javascript">Spring.addDecoration(new Spring.ValidateAllDecoration({elementId:'exportPdf', event:'onclick'}));</script>
-					    <input id="exportPdf" type="submit" value="Export PDF"/>
-					    <form:hidden id="_id" path="id"/>
-					    <form:hidden id="_query" path="query"/>
-					    <form:hidden id="_reporttype" path="reportType"/>	
-					    <form:hidden id="_displayfields" path="displayFields"/>
-					</form:form>
-				</td>
 			</tr>
 		</table>
     </div>

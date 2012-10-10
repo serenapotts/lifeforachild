@@ -29,16 +29,16 @@ import org.springframework.roo.addon.tostring.RooToString;
 @RooJavaBean
 @RooToString
 public class Report {
-
-    @NotNull
-    @NotEmpty
+	
+    @NotEmpty(message="Please enter the report name")
+    @NotNull(message="Please enter the report name")
     private String name;
 
     @ManyToOne    
     private User viewableBy;
     
     @Enumerated
-    @NotNull
+    @NotNull(message="Please select the type of report you would like")
     private ReportType reporttype;
 
     @Enumerated
