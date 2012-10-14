@@ -8,10 +8,10 @@
 #define JavaExeName "jre-6u32-windows-i586.exe"
 #define TomcatExeName "apache-tomcat-6.0.35.exe"
 #define MYSQLExeName "mysql-5.5.15-win32.msi"
-#define databaseSQL "sql.zip"
+#define databaseSQL "..\target\sql.zip"
 #define setupScript "setup.bat"
 #define uninstallScript "uninstall.bat"
-#define appWar "lifeforachild.war"
+#define appWar "..\target\lifeforachild.war"
 #define unzipExe "unzip.exe"
 
 
