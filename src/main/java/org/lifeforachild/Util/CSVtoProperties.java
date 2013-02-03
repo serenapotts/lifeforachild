@@ -26,7 +26,7 @@ public class CSVtoProperties {
 			SortedProperties properties_fr = new SortedProperties();
 			SortedProperties properties_ru = new SortedProperties();
 			
-			File f = new File("C:/charity/i18n/translations4/i18n_reviewed_v8.txt");
+			File f = new File("C:/charity/i18n/translations5/i18n_reviewed_v9.txt");
 			FileInputStream fis = new FileInputStream(f);
 			DataInputStream in = new DataInputStream(fis);
 	        BufferedReader br = new BufferedReader(new InputStreamReader(fis));
