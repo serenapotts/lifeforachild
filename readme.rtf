@@ -1,0 +1,28 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1187\cocoasubrtf400
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\f0\fs24 \cf0 Setup dev environment on mac\
+\
+1. Download and nstall Springsource Tool Suite (STS)\
+2. Download and install msql community server\
+3. Download and install Tomcat 6.0\
+4. Checkout code from google code site\
+5. Open STS\
+6. File --> Import\
+7. Select General --> Existing projects from workspace and select the checkout directory\
+8. Select JRE 6, install one if you don't have it\
+9. Add server, select Tomcat 6.0 and point to tomcat install directory\
+10. start mysql. \
+cd /usr/local/mysql/bin\
+sudo ./mysqld_safe\
+11. Run setupDB.bat script to initialise DB (copy and run in mysql/bin directory)\
+12. copy settings.txt with encryption key to /<user.home>/lifeforachild/settings.txt\
+13. Start server\
+\
+Go to localhost:8080/lifeforachild in browser\
+\
+To run test install firefox selenium hq plugin\
+Run test suite in /src/main/webapp/selenium an ensure all pass before committing}
