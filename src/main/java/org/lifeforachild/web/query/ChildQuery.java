@@ -36,17 +36,18 @@ public class ChildQuery extends BaseQuery<Child> {
 		String name = search.getName();
 		String lastName = search.getLastName();
 		String timePeriod = search.getTimePeriod();
-		TimePeriodUnit timePeriodUnit = search.getTimePeriodUnit();
-		String from = search.getFromDate();
-		String to = search.getToDate();		
-		Date fromDate = parseDate(from);
-		Date toDate = parseDate(to);
+		TimePeriodUnit timePeriodUnit = search.getTimePeriodUnit();		
+		Date fromDate = parseDate(search.getFromDate());
+		Date toDate = parseDate(search.getToDate());
+		Date createdFromDate = parseDate(search.getCreatedFromDate());
+		Date createdToDate = parseDate(search.getCreatedToDate());
 		// TODO convert these to objects in the Search class and in UI
 		String centre = search.getCentre();
 		String country = search.getCountry();
 		Long centreId = StringUtil.isEmpty(centre) ? null : Long.valueOf(centre);
 		Long countryId = StringUtil.isEmpty(country) ? null : Long.valueOf(country); 
-		return getQuery(entityManager, null, id, name, lastName, timePeriod, timePeriodUnit, fromDate, toDate, centreId, countryId);
+		return getQuery(entityManager, null, id, name, lastName, timePeriod, timePeriodUnit, fromDate, toDate, 
+				createdFromDate, createdToDate, centreId, countryId);
 	}
 	
 	private Date parseDate(String dateString) {
@@ -69,31 +70,32 @@ public class ChildQuery extends BaseQuery<Child> {
 		Long countryId = country == null ? null : Long.valueOf(country.getId());		
 		return getQuery(entityManager, report.getRecordNumber(), report.getLocalMedicalNumber(), report.getFirstName(), 
 				report.getLastName(), report.getTimePeriod(), report.getTimeperiodunit(), 
-				report.getFromDate(), report.getToDate(), centreId, countryId,
+				report.getFromDate(), report.getToDate(), null, null, centreId, countryId,
 				report.getStatustype(), report.getShowoptiontype(), 
 				report.getAge(), report.getOrderBy(), report.getThenOrderBy());
 	}
 	
 	private List<Child> getQuery(EntityManager entityManager, String individualId, 
 			String localMedicalNumber, String name, String lastName, String timePeriod, 
-			TimePeriodUnit timePeriodUnit, Date from, Date to, Long diabetesCentre, Long country)
+			TimePeriodUnit timePeriodUnit, Date from, Date to, Date createdFrom, Date createdTo, Long diabetesCentre, Long country)
 	{
 		return getQuery(entityManager, individualId, localMedicalNumber, name, lastName, timePeriod, 
-				timePeriodUnit, from, to, diabetesCentre, country, null,
+				timePeriodUnit, from, to, createdFrom, createdTo, diabetesCentre, country, null,
 				null, null, null, null);
 	}
 	
 	private List<Child> getQuery(EntityManager entityManager, String individualId, 
 			String localMedicalNumber, String name, String lastName, String timePeriod, 
-			TimePeriodUnit timePeriodUnit, Date from, Date to, Long diabetesCentre, Long country,
-			StatusType statusType, ShowOptionType showOptionType, String age, String orderBy, String thenOrderBy)
+			TimePeriodUnit timePeriodUnit, Date from, Date to, Date createdFrom, Date createdTo, 
+			Long diabetesCentre, Long country, StatusType statusType, ShowOptionType showOptionType, 
+			String age, String orderBy, String thenOrderBy)
 	{
 		// restrict to only what they have access to by default
 		Criteria criteria = findByAccessCriteria(entityManager);
 		searchByID(criteria, individualId);
 		searchByLocalMedicalNumber(criteria, localMedicalNumber);
 		searchByName(criteria, name);
-//		searchByDate(criteria, from, to, "createdOn");
+		searchByDate(criteria, createdFrom, createdTo, "createdOn");
 		searchByDate(criteria, from, to, "updatedOn");
 		searchByLastName(criteria, lastName);
 		searchByDiabetesCentre(criteria, diabetesCentre);

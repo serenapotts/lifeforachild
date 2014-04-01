@@ -14,6 +14,8 @@ public class Search {
 	private String lastName;
 	private String fromDate;
 	private String toDate;
+	private String createdFromDate;
+	private String createdToDate;
 	private String timePeriod;
 	private TimePeriodUnit timePeriodUnit;
 	public ReportType getReportType() {
@@ -63,6 +65,18 @@ public class Search {
 	}
 	public void setToDate(String toDate) {
 		this.toDate = toDate;
+	}
+	public String getCreatedFromDate() {
+		return createdFromDate;
+	}
+	public void setCreatedFromDate(String createdFromDate) {
+		this.createdFromDate = createdFromDate;
+	}
+	public String getCreatedToDate() {
+		return createdToDate;
+	}
+	public void setCreatedToDate(String createdToDate) {
+		this.createdToDate = createdToDate;
 	}
 	public String getTimePeriod() {
 		return timePeriod;

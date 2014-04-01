@@ -46,17 +46,33 @@
 	        </div>
 	        <br/>-->
 	        <div id="roo_search_dateRange">
-	            <label for="_fromDate"><spring:message code="search.dateRange"/></label>
+	            <label for="_fromDate"><spring:message code="search.updatedDateRange"/></label>
+	            <spring:message code="search.updatedFrom" var="from_field_validation"/>
 	            <form:input cssStyle="width:100px" id="_fromDate" maxlength="30" path="fromDate" size="0"/>
-	            <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_fromDate', widgetType : 'dijit.form.DateTextBox', widgetAttrs : {constraints: {datePattern : 'd/MM/yyyy', required : false}, datePattern : 'd/MM/yyyy'}})); </script>
+	            <div style="display:inline-block"><spring:message code="search.toDateRange"/></div>
+	            <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_fromDate', widgetType : 'dijit.form.DateTextBox', widgetAttrs : {promptMessage: '${from_field_validation}', constraints: {datePattern : 'd/MM/yyyy', required : false}, datePattern : 'd/MM/yyyy'}})); </script>
+	            <spring:message code="search.updatedTo" var="to_field_validation"/>
 	            <form:input cssStyle="width:100px" id="_toDate" maxlength="30" path="toDate" size="0"/>
-	            <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_toDate', widgetType : 'dijit.form.DateTextBox', widgetAttrs : {constraints: {datePattern : 'd/MM/yyyy', required : false}, datePattern : 'd/MM/yyyy'}})); </script>
+	            <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_toDate', widgetType : 'dijit.form.DateTextBox', widgetAttrs : {promptMessage: '${to_field_validation}', constraints: {datePattern : 'd/MM/yyyy', required : false}, datePattern : 'd/MM/yyyy'}})); </script>
+	        </div>
+	        <br/>
+	        <div id="roo_search_created_dateRange">
+	            <label for="_fromDate"><spring:message code="search.createdDateRange"/></label>
+	            <spring:message code="search.createdFrom" var="created_from_field_validation"/>
+	            <form:input cssStyle="width:100px" id="_createdFromDate" maxlength="30" path="createdFromDate" size="0"/>
+	            <div style="display:inline-block"><spring:message code="search.toDateRange"/></div>
+	            <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_createdFromDate', widgetType : 'dijit.form.DateTextBox', widgetAttrs : {promptMessage: '${created_from_field_validation}', constraints: {datePattern : 'd/MM/yyyy', required : false}, datePattern : 'd/MM/yyyy'}})); </script>
+	            <spring:message code="search.createdTo" var="created_to_field_validation"/>
+	            <form:input cssStyle="width:100px" id="_createdToDate" maxlength="30" path="createdToDate" size="0"/>
+	            <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_createdToDate', widgetType : 'dijit.form.DateTextBox', widgetAttrs : {promptMessage: '${created_to_field_validation}', constraints: {datePattern : 'd/MM/yyyy', required : false}, datePattern : 'd/MM/yyyy'}})); </script>
 	        </div>
 	        <br/>
 	        <form:hidden id="_id_id" path="timePeriod"/>
 	        <form:hidden id="_id_id" path="timePeriodUnit"/>
 	        <form:hidden id="_id_id" path="fromDate"/>
 	        <form:hidden id="_id_id" path="toDate"/>
+	        <form:hidden id="_id_id" path="createdFromDate"/>
+	        <form:hidden id="_id_id" path="createdToDate"/>
 	        <div id="roo_search_country">
 	            <c:if test="${not empty countrys}">
                     <label for="_country_id"><spring:message code="search.country"/></label>
