@@ -171,7 +171,7 @@
                 <form:errors cssClass="errors" id="_localMedicalNumber_error_id" path="localMedicalNumber"/>
                 <spring:message arguments="Local Medical Number" code="field.invalid" var="field_invalid"/>
                 <spring:message code="field.required" var="field_required"/>
-                <spring:message argumentSeparator="," arguments="Record Number," code="field.simple.validation" var="field_validation"/>
+                <spring:message argumentSeparator="," arguments="Local Medical Number," code="field.simple.validation" var="field_validation"/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_localMedicalNumber_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : false}})); </script>
                 <br/>
             </div>
