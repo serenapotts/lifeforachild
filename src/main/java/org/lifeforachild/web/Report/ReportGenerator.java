@@ -250,9 +250,7 @@ public abstract class ReportGenerator {
 		} catch (ColumnBuilderException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-        
-        
+		}   
         
         DynamicReport dr = drb.build();
         return dr;

@@ -203,14 +203,23 @@ public class ClinicalRecordQuery extends BaseQuery<ClinicalRecord> {
 
 	private static void searchByDateRange(Criteria criteria, Date fromDate, Date toDate, boolean inRange)
 	{
-		Criterion c = Restrictions.and(
-				Restrictions.ge("dateCompleted", fromDate), 
-				Restrictions.le("dateCompleted", toDate));
-		
-		if (inRange)
-			criteria.add(c);
-		else
-			criteria.add(Restrictions.not(c));						
+		Criterion c = null;
+		if (fromDate != null && toDate != null) {
+			c = Restrictions.and(
+					Restrictions.ge("dateCompleted", fromDate), 
+					Restrictions.le("dateCompleted", toDate));
+		} else if (fromDate != null) {
+			c = Restrictions.ge("dateCompleted", fromDate);
+		} else if (toDate != null) {
+			c = Restrictions.le("dateCompleted", toDate);
+		}	
+
+		if (c != null) {
+			if (inRange)
+				criteria.add(c);
+			else
+				criteria.add(Restrictions.not(c));	
+		}					
 	}	
 	
 	protected static void searchByTimePeriod(DetachedCriteria criteria, TimePeriodUnit timePeriodUnit, boolean inRange)
