@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
@@ -38,25 +39,26 @@ public class ChildQuery extends BaseQuery<Child> {
 		TimePeriodUnit timePeriodUnit = search.getTimePeriodUnit();
 		String from = search.getFromDate();
 		String to = search.getToDate();		
-		Date fromDate = null;
-		Date toDate = null;
-		if (!StringUtil.isEmpty(from) && !StringUtil.isEmpty(to))
-		{
-			try
-			{
-				fromDate = DATE_FORMAT.parse(from);
-				toDate = DATE_FORMAT.parse(to);
-			}
-			catch (ParseException ex) {
-				ex.printStackTrace();
-			}	
-		}
+		Date fromDate = parseDate(from);
+		Date toDate = parseDate(to);
 		// TODO convert these to objects in the Search class and in UI
 		String centre = search.getCentre();
 		String country = search.getCountry();
 		Long centreId = StringUtil.isEmpty(centre) ? null : Long.valueOf(centre);
 		Long countryId = StringUtil.isEmpty(country) ? null : Long.valueOf(country); 
 		return getQuery(entityManager, null, id, name, lastName, timePeriod, timePeriodUnit, fromDate, toDate, centreId, countryId);
+	}
+	
+	private Date parseDate(String dateString) {
+		if (!StringUtil.isEmpty(dateString)) {
+			try {
+				return DATE_FORMAT.parse(dateString);
+			}
+			catch (ParseException ex) {
+				ex.printStackTrace();
+			}	
+		}
+		return null;
 	}
 	
 	public List<Child> getQuery(EntityManager entityManager, Report report)
@@ -91,6 +93,8 @@ public class ChildQuery extends BaseQuery<Child> {
 		searchByID(criteria, individualId);
 		searchByLocalMedicalNumber(criteria, localMedicalNumber);
 		searchByName(criteria, name);
+//		searchByDate(criteria, from, to, "createdOn");
+		searchByDate(criteria, from, to, "updatedOn");
 		searchByLastName(criteria, lastName);
 		searchByDiabetesCentre(criteria, diabetesCentre);
 		searchByCountry(criteria, country);	
@@ -124,6 +128,23 @@ public class ChildQuery extends BaseQuery<Child> {
 	{
 		if (!StringUtil.isEmpty(id))
 			criteria.add(Restrictions.eq("localMedicalNumber", id) );
+	}
+	
+	private void searchByDate(Criteria criteria, Date from, Date to, String property) {
+		Criterion c = null;
+		if (from != null && to != null) {
+			c = Restrictions.and(
+					Restrictions.ge(property, from), 
+					Restrictions.le(property, to));
+		} else if (from != null) {
+			c = Restrictions.ge(property, from);
+		} else if (to != null) {
+			c = Restrictions.le(property, to);
+		}		
+		
+		if (c!= null) {
+			criteria.add(c);
+		}
 	}
 	
 	private void searchByName(Criteria criteria, String name)

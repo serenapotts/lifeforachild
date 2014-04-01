@@ -34,7 +34,21 @@
               		<c:out value="${child.individualId}"/>
           		</div>
           	</div>
-        <br/>        
+        <br/>      
+        <div id="roo_child_createdOn">
+             <label for="_createdOn_id"><spring:message code="child.createdOn"/></label>
+             <div class="box" id="_createdOn_id">
+                 <fmt:formatDate pattern="${child_createdOn_date_format}" value="${child.createdOn}"/>
+             </div>
+         </div>
+         <br/>
+         <div id="roo_child_updatedOn">
+             <label for="_updatedOn_id"><spring:message code="child.updatedOn"/></label>
+             <div class="box" id="_updatedOn_id">
+                 <fmt:formatDate pattern="${child_updatedOn_date_format}" value="${child.updatedOn}"/>
+             </div>
+         </div>
+         <br/>  
 		<div id="mainTabContainer" style="width:530px;height:600px">
             <div id="childInfo">        
 		        <spring:url value="/child/${child.id}" var="form_url"/>

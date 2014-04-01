@@ -44,7 +44,7 @@
 	            <form:select cssStyle="width:200px" id="_timeperiodunit" items="${_timeperiodunit}" path="timePeriodUnit" itemLabel="label"/>
 	            <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_timeperiodunit', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
 	        </div>
-	        <br/>
+	        <br/>-->
 	        <div id="roo_search_dateRange">
 	            <label for="_fromDate"><spring:message code="search.dateRange"/></label>
 	            <form:input cssStyle="width:100px" id="_fromDate" maxlength="30" path="fromDate" size="0"/>
@@ -52,7 +52,7 @@
 	            <form:input cssStyle="width:100px" id="_toDate" maxlength="30" path="toDate" size="0"/>
 	            <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_toDate', widgetType : 'dijit.form.DateTextBox', widgetAttrs : {constraints: {datePattern : 'd/MM/yyyy', required : false}, datePattern : 'd/MM/yyyy'}})); </script>
 	        </div>
-	        <br/> -->
+	        <br/>
 	        <form:hidden id="_id_id" path="timePeriod"/>
 	        <form:hidden id="_id_id" path="timePeriodUnit"/>
 	        <form:hidden id="_id_id" path="fromDate"/>
