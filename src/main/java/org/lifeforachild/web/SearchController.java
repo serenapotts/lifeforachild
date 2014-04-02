@@ -52,20 +52,8 @@ public class SearchController {
     	// generate the query from the search parameters entered
     	// determine the type of object we are searching on
     	modelMap.addAttribute("children", Child.findChildren(search));
-    	return "child/list";
-    	// TODO will we handle searching both children and visits
-//    	if (search.getReportType().equals(ReportType.CHILD))
-//    	{
-//    		modelMap.addAttribute("children", Child.findChildren(search));
-//	    	return "child/list";
-//    	}
-//    	else if (search.getReportType().equals(ReportType.CLINICAL_RECORD))
-//    	{
-//	    	modelMap.addAttribute("clinicalrecords", ClinicalRecord.findAllClinicalRecords());
-//	    	return "clinicalrecord/list";    		
-//    	}
-    	// error
-    	//return "dataAccessFailure";    	
+    	modelMap.addAttribute("search", search);
+    	return "child/list";    	
     }
 
 }

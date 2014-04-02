@@ -31,9 +31,33 @@
         <div id="roo_child_individualId">
             <label for="_individualId_id"><spring:message code="child.individualId"/></label>
             <div class="box" id="_individualId_id_label">
-              		<c:out value="${child.individualId}"/>
-          		</div>
-          	</div>
+           		<c:out value="${child.individualId}"/>
+           		<div id="print">
+                   	<c:if test="${previousId != null}">
+                    	<spring:url value="/child/${previousId}/form" var="previous_url"/>
+		                <a href="${previous_url}">
+		                    <spring:url value="/static/images/resultset_previous.png" var="previous_img_url"/>
+		                    <spring:message code="global.menu.previous" var="previous_message"/>
+		                    <img alt="${previous_message}" src="${previous_img_url}" title="${previous_message}"/>
+		                </a>
+	                </c:if>
+	                <c:if test="${nextId != null}"> 
+		                <spring:url value="/child/${nextId}/form" var="print_url"/>
+		                <a href="${print_url}">
+		                    <spring:url value="/static/images/resultset_next.png" var="next_img_url"/>
+		                    <spring:message code="global.menu.next" var="next_message"/>
+		                    <img alt="${next_message}" src="${next_img_url}" title="${next_message}"/>
+		                </a>
+	                </c:if>
+                	<spring:url value="/child/${child.id}/print" var="print_url"/>
+	                <a href="${print_url}" target="_blank">
+	                    <spring:url value="/static/images/printer.png" var="printer_img_url"/>
+	                    <spring:message code="global.menu.print" var="print_message"/>
+	                    <img alt="${print_message}" src="${printer_img_url}" title="${print_message}"/>
+	                </a>
+                </div>
+   			</div>
+        </div>
         <br/>      
         <div id="roo_child_createdOn">
              <label for="_createdOn_id"><spring:message code="child.createdOn"/></label>

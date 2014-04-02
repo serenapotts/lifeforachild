@@ -14,6 +14,7 @@ import org.lifeforachild.domain.ClinicalRecord;
 import org.lifeforachild.domain.Country;
 import org.lifeforachild.domain.DiabetesCentre;
 import org.lifeforachild.domain.Permissions;
+import org.lifeforachild.domain.Search;
 import org.lifeforachild.security.SimpleStringCipher;
 import org.lifeforachild.web.Report.ChildReportGenerator;
 import org.lifeforachild.web.Report.ReportGenerator;
@@ -124,7 +125,8 @@ privileged aspect ChildController_Roo_Controller {
     
     @RequestMapping(value = "/child/{id}", method = RequestMethod.GET)    
     public String ChildController.show(@PathVariable("id") Long id, ModelMap modelMap) {    
-        if (id == null) throw new IllegalArgumentException("An Identifier is required");        
+        if (id == null) throw new IllegalArgumentException("An Identifier is required");    
+        Child child = Child.findChild(id);
         modelMap.addAttribute("child_createdOn_date_format", AppContext.getDatePattern());        
         modelMap.addAttribute("child_dateOfBirth_date_format", AppContext.getDatePattern());        
         modelMap.addAttribute("child_diabetesDiagnosed_date_format", AppContext.getDatePattern());        
@@ -134,7 +136,9 @@ privileged aspect ChildController_Roo_Controller {
         modelMap.addAttribute("child_dateOfRegistration_date_format", AppContext.getDatePattern());
         modelMap.addAttribute("clinicalRecord_dateCompleted_date_format", AppContext.getDatePattern());
         modelMap.addAttribute("locale", LocaleContextHolder.getLocale().toString());
-        modelMap.addAttribute("child", Child.findChild(id));        
+        modelMap.addAttribute("child", child);  
+        
+        addSearchToModel(child, modelMap);
         return "child/show";        
     }    
     
@@ -231,6 +235,9 @@ privileged aspect ChildController_Roo_Controller {
         modelMap.addAttribute("YesUnknownType_enum", YesUnknownType.class.getEnumConstants());
         modelMap.addAttribute("yesnounkowntype_enum", YesNoUnkownType.class.getEnumConstants());
         modelMap.addAttribute("locale", LocaleContextHolder.getLocale().toString());
+        
+        addSearchToModel(child, modelMap);
+        
         return "child/update";        
     }    
     
@@ -276,5 +283,16 @@ privileged aspect ChildController_Roo_Controller {
 		ChildValidator validator = new ChildValidator();
 		validator.validate(child, errors);
 	}    
+	
+	private void ChildController.addSearchToModel(Child child, ModelMap modelMap) {
+		Search search = new Search();
+        // TODO just get ids here ideally as this query could be expensive
+        List<Child> children = Child.findChildren(search);
+        int index = children.indexOf(child);
+        Long previousId = (index == 0) ? null : children.get(index - 1).getId();
+        Long nextId = (index == (children.size() -1)) ? null : children.get(index + 1).getId();
+        modelMap.addAttribute("previousId", previousId);
+        modelMap.addAttribute("nextId", nextId);
+	}
     
 }
