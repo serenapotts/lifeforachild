@@ -124,7 +124,9 @@ privileged aspect ChildController_Roo_Controller {
     }    
     
     @RequestMapping(value = "/child/{id}", method = RequestMethod.GET)    
-    public String ChildController.show(@PathVariable("id") Long id, ModelMap modelMap) {    
+    public String ChildController.show(@PathVariable("id") Long id, 
+    		@RequestParam(value = "country", required = false) String country,
+    		ModelMap modelMap) {    
         if (id == null) throw new IllegalArgumentException("An Identifier is required");    
         Child child = Child.findChild(id);
         modelMap.addAttribute("child_createdOn_date_format", AppContext.getDatePattern());        
@@ -138,12 +140,15 @@ privileged aspect ChildController_Roo_Controller {
         modelMap.addAttribute("locale", LocaleContextHolder.getLocale().toString());
         modelMap.addAttribute("child", child);  
         
-        addSearchToModel(child, modelMap);
+        Search search = createSearchFromParams(country);
+        addSearchToModel(child, modelMap, search);
         return "child/show";        
     }    
     
     @RequestMapping(value = "/child", method = RequestMethod.GET)    
-    public String ChildController.list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, ModelMap modelMap) {    
+    public String ChildController.list(@RequestParam(value = "page", required = false) Integer page, 
+    								   @RequestParam(value = "size", required = false) Integer size, 
+    								   ModelMap modelMap) {    
         if (page != null || size != null) {        
             int sizeNo = size == null ? 10 : size.intValue();            
             modelMap.addAttribute("children", Child.findChildEntries(page == null ? 0 : (page.intValue() - 1) * sizeNo, sizeNo));            
@@ -205,7 +210,9 @@ privileged aspect ChildController_Roo_Controller {
     }    
     
     @RequestMapping(value = "/child/{id}/form", method = RequestMethod.GET)    
-    public String ChildController.updateForm(@PathVariable("id") Long id, ModelMap modelMap) { 
+    public String ChildController.updateForm(@PathVariable("id") Long id, 
+    		@RequestParam(value = "country", required = false) String country, 
+    		ModelMap modelMap) { 
     	SecurityUtil.getInstance().checkPermission(Permissions.EDIT_CHILD);
         if (id == null) throw new IllegalArgumentException("An Identifier is required");     
         Child child = Child.findChild(id);
@@ -214,8 +221,8 @@ privileged aspect ChildController_Roo_Controller {
         modelMap.addAttribute("causeofdeathtype_enum", CauseOfDeathType.class.getEnumConstants());        
         modelMap.addAttribute("clinicalrecords", ClinicalRecord.findAllClinicalRecords());        
         modelMap.addAttribute("countrys", Country.findAllCountrys());  
-        Country country = child.getCountry();
-        List<DiabetesCentre> centres = (country == null) ? null : DiabetesCentre.findAllDiabetesCentres(true, country.getId());
+        Country childCountry = child.getCountry();
+        List<DiabetesCentre> centres = (childCountry == null) ? null : DiabetesCentre.findAllDiabetesCentres(true, childCountry.getId());
         modelMap.addAttribute("diabetescentres", centres);        
         modelMap.addAttribute("diabetestype_enum", DiabetesType.class.getEnumConstants());        
         modelMap.addAttribute("distancetype_enum", DistanceType.class.getEnumConstants());        
@@ -236,7 +243,8 @@ privileged aspect ChildController_Roo_Controller {
         modelMap.addAttribute("yesnounkowntype_enum", YesNoUnkownType.class.getEnumConstants());
         modelMap.addAttribute("locale", LocaleContextHolder.getLocale().toString());
         
-        addSearchToModel(child, modelMap);
+        Search search = createSearchFromParams(country);
+        addSearchToModel(child, modelMap, search);
         
         return "child/update";        
     }    
@@ -269,7 +277,9 @@ privileged aspect ChildController_Roo_Controller {
 	}    
     
     @RequestMapping(value = "/child/{id}", method = RequestMethod.DELETE)    
-    public String ChildController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size) {
+    public String ChildController.delete(@PathVariable("id") Long id, 
+    									 @RequestParam(value = "page", required = false) Integer page, 
+    									 @RequestParam(value = "size", required = false) Integer size) {
     	SecurityUtil.getInstance().checkPermission(Permissions.EDIT_CHILD);
         if (id == null) throw new IllegalArgumentException("An Identifier is required");        
         Child child = Child.findChild(id);  
@@ -284,8 +294,13 @@ privileged aspect ChildController_Roo_Controller {
 		validator.validate(child, errors);
 	}    
 	
-	private void ChildController.addSearchToModel(Child child, ModelMap modelMap) {
+	private Search ChildController.createSearchFromParams(String country) {
 		Search search = new Search();
+		search.setCountry(country);
+		return search;
+	}
+	
+	private void ChildController.addSearchToModel(Child child, ModelMap modelMap, Search search) {
         // TODO just get ids here ideally as this query could be expensive
         List<Child> children = Child.findChildren(search);
         int index = children.indexOf(child);
@@ -293,6 +308,7 @@ privileged aspect ChildController_Roo_Controller {
         Long nextId = (index == (children.size() -1)) ? null : children.get(index + 1).getId();
         modelMap.addAttribute("previousId", previousId);
         modelMap.addAttribute("nextId", nextId);
+        modelMap.addAttribute("search", SearchController.buildSearchQueryParams(search));
 	}
     
 }

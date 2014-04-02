@@ -52,8 +52,33 @@ public class SearchController {
     	// generate the query from the search parameters entered
     	// determine the type of object we are searching on
     	modelMap.addAttribute("children", Child.findChildren(search));
-    	modelMap.addAttribute("search", search);
+    	modelMap.addAttribute("search", buildSearchQueryParams(search));
+    	modelMap.addAttribute("country", search.getCountry());
     	return "child/list";    	
+    }
+    
+    public static String buildSearchQueryParams(Search search) {
+    	StringBuilder builder = new StringBuilder();
+    	appendIfValuePresent(builder, "localMedicalNum", search.getId());
+    	appendIfValuePresent(builder, "from", search.getFromDate());
+    	appendIfValuePresent(builder, "to", search.getToDate());
+    	appendIfValuePresent(builder, "createdfrom", search.getCreatedFromDate());
+    	appendIfValuePresent(builder, "createdto", search.getCreatedToDate());
+    	appendIfValuePresent(builder, "firstname", search.getName());
+    	appendIfValuePresent(builder, "lastname", search.getLastName());
+    	appendIfValuePresent(builder, "centre", search.getCentre());
+    	appendIfValuePresent(builder, "country", search.getCountry());
+    	return builder.toString();
+    }
+    
+    private static StringBuilder appendIfValuePresent(StringBuilder builder, String name, String value) {
+    	if (value != null && !value.isEmpty() && !value.equals(",") && !value.equals(0)) {
+    		builder.append(name);
+    		builder.append("=");
+    		builder.append(value);
+    		builder.append("&");
+    	}
+    	return builder;
     }
 
 }
