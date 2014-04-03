@@ -59,7 +59,7 @@ public class SearchController {
     
     public static String buildSearchQueryParams(Search search) {
     	StringBuilder builder = new StringBuilder();
-    	appendIfValuePresent(builder, "localMedicalNum", search.getId());
+    	appendIfValuePresent(builder, "localmedicalnum", search.getId());
     	appendIfValuePresent(builder, "from", search.getFromDate());
     	appendIfValuePresent(builder, "to", search.getToDate());
     	appendIfValuePresent(builder, "createdfrom", search.getCreatedFromDate());

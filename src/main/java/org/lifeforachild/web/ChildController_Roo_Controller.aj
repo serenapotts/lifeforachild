@@ -126,6 +126,14 @@ privileged aspect ChildController_Roo_Controller {
     @RequestMapping(value = "/child/{id}", method = RequestMethod.GET)    
     public String ChildController.show(@PathVariable("id") Long id, 
     		@RequestParam(value = "country", required = false) String country,
+    		@RequestParam(value = "centre", required = false) String centre,
+    		@RequestParam(value = "from", required = false) String fromDate,
+    		@RequestParam(value = "to", required = false) String toDate,
+    		@RequestParam(value = "createdFrom", required = false) String createdFromDate,
+    		@RequestParam(value = "createdTo", required = false) String createdToDate,
+    		@RequestParam(value = "firstname", required = false) String firstName,
+    		@RequestParam(value = "lastname", required = false) String lastName,
+    		@RequestParam(value = "localmedicalnum", required = false) String localMedicalNum,
     		ModelMap modelMap) {    
         if (id == null) throw new IllegalArgumentException("An Identifier is required");    
         Child child = Child.findChild(id);
@@ -140,7 +148,8 @@ privileged aspect ChildController_Roo_Controller {
         modelMap.addAttribute("locale", LocaleContextHolder.getLocale().toString());
         modelMap.addAttribute("child", child);  
         
-        Search search = createSearchFromParams(country);
+        Search search = createSearchFromParams(country, centre, fromDate, toDate, createdFromDate, createdToDate, 
+        		lastName, firstName, localMedicalNum);
         addSearchToModel(child, modelMap, search);
         return "child/show";        
     }    
@@ -212,6 +221,14 @@ privileged aspect ChildController_Roo_Controller {
     @RequestMapping(value = "/child/{id}/form", method = RequestMethod.GET)    
     public String ChildController.updateForm(@PathVariable("id") Long id, 
     		@RequestParam(value = "country", required = false) String country, 
+    		@RequestParam(value = "centre", required = false) String centre,
+    		@RequestParam(value = "from", required = false) String fromDate,
+    		@RequestParam(value = "to", required = false) String toDate,
+    		@RequestParam(value = "createdFrom", required = false) String createdFromDate,
+    		@RequestParam(value = "createdTo", required = false) String createdToDate,
+    		@RequestParam(value = "firstname", required = false) String firstName,
+    		@RequestParam(value = "lastname", required = false) String lastName,
+    		@RequestParam(value = "localmedicalnum", required = false) String localMedicalNum,
     		ModelMap modelMap) { 
     	SecurityUtil.getInstance().checkPermission(Permissions.EDIT_CHILD);
         if (id == null) throw new IllegalArgumentException("An Identifier is required");     
@@ -243,7 +260,8 @@ privileged aspect ChildController_Roo_Controller {
         modelMap.addAttribute("yesnounkowntype_enum", YesNoUnkownType.class.getEnumConstants());
         modelMap.addAttribute("locale", LocaleContextHolder.getLocale().toString());
         
-        Search search = createSearchFromParams(country);
+        Search search = createSearchFromParams(country, centre, fromDate, toDate, createdFromDate, createdToDate, 
+        		lastName, firstName, localMedicalNum);
         addSearchToModel(child, modelMap, search);
         
         return "child/update";        
@@ -294,9 +312,19 @@ privileged aspect ChildController_Roo_Controller {
 		validator.validate(child, errors);
 	}    
 	
-	private Search ChildController.createSearchFromParams(String country) {
+	private Search ChildController.createSearchFromParams(String country, String centre, String fromDate, 
+			String toDate, String createdFromDate, String createdToDate, 
+    		String lastName, String firstName, String localMedicalNum) {
 		Search search = new Search();
 		search.setCountry(country);
+		search.setCentre(centre);
+		search.setFromDate(fromDate);
+		search.setToDate(toDate);
+		search.setCreatedFromDate(createdFromDate);
+		search.setCreatedToDate(createdToDate);
+		search.setName(firstName);
+		search.setLastName(lastName);
+		search.setId(localMedicalNum);
 		return search;
 	}
 	
