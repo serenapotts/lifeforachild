@@ -56,7 +56,7 @@ public class ChildQuery extends BaseQuery<Child> {
 				return DATE_FORMAT.parse(dateString);
 			}
 			catch (ParseException ex) {
-				ex.printStackTrace();
+				System.out.println("Unable to parse date:" + dateString);
 			}	
 		}
 		return null;
