@@ -2,7 +2,13 @@
 	<jsp:output omit-xml-declaration="yes"/>
     <div id="_title" style="width: 800px">
 	     <spring:message code="security.login.title" var="title"/>
-	     <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_title', widgetType : 'dijit.TitlePane', widgetAttrs : {title: '${title}'}})); </script>
+	     <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_title', widgetType : 'dijit.TitlePane', widgetAttrs : {title: '${title}'}})); 
+	     
+	     function setFocus()
+	     {
+	     	document.getElementById("j_username").focus();
+	     }
+	     </script>
 	    <c:if test="${not empty param.login_error}">
 	      <font color="red">
 			<spring:message code="security.login.unsuccessful"/>

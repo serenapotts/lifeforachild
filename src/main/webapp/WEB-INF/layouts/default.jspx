@@ -43,7 +43,7 @@
 		<spring:message code="application.name" var="app_name"/>
 		<title><spring:message code="welcome.h3" arguments="${app_name}" /></title>
 	</head>
-   	<body class="tundra spring">		
+   	<body class="tundra spring" onload="setFocus()">		
    		<div id="wrapper">
    			<c:if test="${pageContext.request.userPrincipal != null}">
 	   			<div id="welcomeUser">

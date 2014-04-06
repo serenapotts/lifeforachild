@@ -5,7 +5,12 @@
 	</script>
     <div id="_title_div">
     	<spring:message var="title" code="welcome.titlepane" />
-    	<script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_title_div', widgetType : 'dijit.TitlePane', widgetAttrs : {title: '${title}'}})); </script>
+    	<script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_title_div', widgetType : 'dijit.TitlePane', widgetAttrs : {title: '${title}'}}));
+	     function setFocus()
+	     {
+	     	document.getElementById("_id").focus();
+	     }
+    	</script>
 		<c:url value="/search" var="form_url"/>
 	    <form:form action="${form_url}" method="POST" modelAttribute="search">
 	        <!-- <div id="roo_search_reporttype">

@@ -4,7 +4,7 @@
 	    <script type="text/javascript" src="static/js/ChildFtns.js"/>  
 	    <script type="text/javascript">
 	    	// this is needed because of the previous import for some reason the next javascript block gets ignored
-	    	function dummy() {}   	
+	    	function dummy() {}  
 	    </script>   	   
 	    <script type="text/javascript" src="static/js/unsaved.js"/>  
 	    <script type="text/javascript">
@@ -35,24 +35,18 @@
     <div id="_title_div">
         <spring:message code="label.child" var="entity_label"/>
         <spring:message arguments="${entity_label}" code="entity.create" var="title_msg"/>
-        <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_title_div', widgetType : 'dijit.TitlePane', widgetAttrs : {title: '${title_msg}'}})); </script>
+        <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_title_div', widgetType : 'dijit.TitlePane', widgetAttrs : {title: '${title_msg}'}}));
+         function setFocus()
+	     {
+	     	document.getElementById("_name_id").focus();
+	     }
+        </script>
         <spring:url value="/child" var="form_url"/>
         <spring:message code="field.invalid.date" var="field_invalid_date"/>
         <spring:message code="field.date.tooltip" var="field_date_tooltip"/>      
         <form:form action="${form_url}" method="POST" modelAttribute="child">
             <form:errors cssClass="errors" delimiter="&lt;p/&gt;"/>
             <form:hidden id="_individualId_id" path="individualId"/>
-            <div id="roo_child_initials">
-                <label for="_initials_id"><spring:message code="child.initials"/></label>
-                <form:input cssStyle="width:250px" id="_initials_id" maxlength="30" path="initials" size="0"/>
-                <br/>
-                <form:errors cssClass="errors" id="_initials_error_id" path="initials"/>
-                <spring:message arguments="Initials" code="field.invalid" var="field_invalid"/>
-                <spring:message code="field.required" var="field_required"/>
-                <spring:message code="initials.tooltip" var="field_validation"/>
-                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_initials_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : false}})); </script>
-            </div>
-            <br/>
             <div id="roo_child_name">
                 <label for="_name_id"><spring:message code="child.firstName"/></label>
                 <form:input cssStyle="width:250px" id="_name_id" maxlength="30" path="name" size="0"/>
@@ -62,6 +56,17 @@
                 <spring:message code="field.required" var="field_required"/>
                 <spring:message argumentSeparator="," arguments="Name,(${field_required})" code="field.simple.validation" var="field_validation"/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_name_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : true}})); </script>
+            </div>
+            <br/>
+            <div id="roo_child_initials">
+                <label for="_initials_id"><spring:message code="child.initials"/></label>
+                <form:input cssStyle="width:250px" id="_initials_id" maxlength="30" path="initials" size="0"/>
+                <br/>
+                <form:errors cssClass="errors" id="_initials_error_id" path="initials"/>
+                <spring:message arguments="Initials" code="field.invalid" var="field_invalid"/>
+                <spring:message code="field.required" var="field_required"/>
+                <spring:message code="initials.tooltip" var="field_validation"/>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_initials_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : false}})); </script>
             </div>
             <br/>
             <div id="roo_child_lastName">

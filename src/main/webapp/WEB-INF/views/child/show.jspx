@@ -13,7 +13,7 @@
                     <div id="print">
                     	<c:if test="${previousId != null}">
 	                    	<spring:url value="/child/${previousId}?${search}" var="previous_url"/>
-			                <a href="${previous_url}">
+			                <a href="${previous_url}" id="previous">
 			                    <spring:url value="/static/images/resultset_previous.png" var="previous_img_url"/>
 			                    <spring:message code="global.menu.previous" var="previous_message"/>
 			                    <img alt="${previous_message}" src="${previous_img_url}" title="${previous_message}"/>
@@ -21,7 +21,7 @@
 		                </c:if>
 		                <c:if test="${nextId != null}"> 
 			                <spring:url value="/child/${nextId}?${search}" var="print_url"/>
-			                <a href="${print_url}">
+			                <a href="${print_url}" id="next">
 			                    <spring:url value="/static/images/resultset_next.png" var="next_img_url"/>
 			                    <spring:message code="global.menu.next" var="next_message"/>
 			                    <img alt="${next_message}" src="${next_img_url}" title="${next_message}"/>
