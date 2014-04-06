@@ -11,6 +11,56 @@
 <thead>
 <tr><td rowspan="1" colspan="3">test-report-recent-visit</td></tr>
 </thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/lifeforachild/child?size=20</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Enter new Report</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=_reporttype_id</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=_reporttype_id</td>
+	<td>Children last visit report</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='widget__reporttype_id']/div/div</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=_name_id</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=_name_id</td>
+	<td>test child last visit</td>
+</tr>
+<tr>
+	<td>addSelection</td>
+	<td>id=_clinicalrecordfields</td>
+	<td>label=All</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=proceed</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyLocation</td>
+	<td>http://localhost:8080/lifeforachild/reportgenerator/*</td>
+	<td></td>
+</tr>
 
 </tbody></table>
 </body>
