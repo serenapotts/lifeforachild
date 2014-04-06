@@ -11,6 +11,101 @@
 <thead>
 <tr><td rowspan="1" colspan="3">test-list-back-next</td></tr>
 </thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/lifeforachild/child</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyVisible</td>
+	<td>id=child_table</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=img[alt=&quot;Show Child&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyLocation</td>
+	<td>http://localhost:8080/lifeforachild/child/*</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementNotPresent</td>
+	<td>id=previous</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=img[alt=&quot;Next&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyLocation</td>
+	<td>http://localhost:8080/lifeforachild/child/*</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=img[alt=&quot;Next&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyLocation</td>
+	<td>http://localhost:8080/lifeforachild/child/*</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=img[alt=&quot;Next&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyLocation</td>
+	<td>http://localhost:8080/lifeforachild/child/*</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementNotPresent</td>
+	<td>id=next</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=img[alt=&quot;Previous&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyLocation</td>
+	<td>http://localhost:8080/lifeforachild/child/*</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=img[alt=&quot;Previous&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyLocation</td>
+	<td>http://localhost:8080/lifeforachild/child/*</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=img[alt=&quot;Previous&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyLocation</td>
+	<td>http://localhost:8080/lifeforachild/child/*</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementNotPresent</td>
+	<td>id=previous</td>
+	<td></td>
+</tr>
 
 </tbody></table>
 </body>

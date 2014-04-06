@@ -11,6 +11,141 @@
 <thead>
 <tr><td rowspan="1" colspan="3">test-centre-manager-access</td></tr>
 </thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/lifeforachild/search</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/lifeforachild/country/form</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyVisible</td>
+	<td>_access_denied_title</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/lifeforachild/search</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/lifeforachild/country</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyVisible</td>
+	<td>_access_denied_title</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/lifeforachild/search</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/lifeforachild/country/${countryid}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyVisible</td>
+	<td>_access_denied_title</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/lifeforachild/search</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/lifeforachild/country/${countryid}/form</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyVisible</td>
+	<td>_access_denied_title</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/lifeforachild/search</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/lifeforachild/diabetescentre/form</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyVisible</td>
+	<td>_access_denied_title</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/lifeforachild/search</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/lifeforachild/diabetescentre</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyVisible</td>
+	<td>_access_denied_title</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/lifeforachild/search</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/lifeforachild/diabetescentre/${centreid}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyVisible</td>
+	<td>_access_denied_title</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/lifeforachild/search</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/lifeforachild/diabetescentre/${centreid}/form</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyVisible</td>
+	<td>_access_denied_title</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/lifeforachild/search</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/lifeforachild/usergroup</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyVisible</td>
+	<td>_access_denied_title</td>
+	<td></td>
+</tr>
 
 </tbody></table>
 </body>

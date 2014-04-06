@@ -63,7 +63,7 @@
 </tr>
 <tr>
 	<td>open</td>
-	<td>/lifeforachild/country/form/${countryid}</td>
+	<td>/lifeforachild/country/${countryid}/form</td>
 	<td></td>
 </tr>
 <tr>
@@ -77,51 +77,75 @@
 	<td></td>
 </tr>
 <tr>
-	<td>clickAndWait</td>
-	<td>link=Enter new Diabetes Centre</td>
+	<td>open</td>
+	<td>/lifeforachild/diabetescentre/form</td>
 	<td></td>
 </tr>
 <tr>
-	<td>clickAndWait</td>
-	<td>link=List all Diabetes Centres</td>
+	<td>verifyVisible</td>
+	<td>_access_denied_title</td>
 	<td></td>
 </tr>
 <tr>
-	<td>clickAndWait</td>
-	<td>css=input.image</td>
+	<td>open</td>
+	<td>/lifeforachild/search</td>
 	<td></td>
 </tr>
 <tr>
-	<td>clickAndWait</td>
-	<td>//input[@value='Update Diabetes Centre']</td>
+	<td>open</td>
+	<td>/lifeforachild/diabetescentre</td>
 	<td></td>
 </tr>
 <tr>
-	<td>clickAndWait</td>
-	<td>link=Enter new User</td>
+	<td>verifyVisible</td>
+	<td>_access_denied_title</td>
 	<td></td>
 </tr>
 <tr>
-	<td>clickAndWait</td>
-	<td>link=List all Users</td>
+	<td>open</td>
+	<td>/lifeforachild/search</td>
 	<td></td>
 </tr>
 <tr>
-	<td>clickAndWait</td>
-	<td>css=input.image</td>
+	<td>open</td>
+	<td>/lifeforachild/diabetescentre/${centreid}</td>
 	<td></td>
 </tr>
 <tr>
-	<td>clickAndWait</td>
-	<td>//input[@value='Update User']</td>
+	<td>verifyVisible</td>
+	<td>_access_denied_title</td>
 	<td></td>
 </tr>
 <tr>
-	<td>clickAndWait</td>
-	<td>link=List all User Groups</td>
+	<td>open</td>
+	<td>/lifeforachild/search</td>
 	<td></td>
 </tr>
-
+<tr>
+	<td>open</td>
+	<td>/lifeforachild/diabetescentre/${centreid}/form</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyVisible</td>
+	<td>_access_denied_title</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/lifeforachild/search</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/lifeforachild/usergroup</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyVisible</td>
+	<td>_access_denied_title</td>
+	<td></td>
+</tr>
 </tbody></table>
 </body>
 </html>
