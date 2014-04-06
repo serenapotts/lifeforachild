@@ -70,6 +70,16 @@
 		                </div>
 		            </div>
 		            <br/>
+		            <div id="roo_clinicalRecord_dateReviewed">
+		                <label  class="record" for="_dateReviewed_id"><spring:message code="record.dateReviewed"/></label>
+		                <div class="box" id="_dateReviewed_id">
+		                    <fmt:formatDate pattern="${clinicalRecord_dateReviewed_date_format}" value="${clinicalRecord.dateReviewed}"/>
+		                </div>
+		            </div>
+		            <br/>
+		            <c:if test="${empty clinicalRecord.dateReviewed}">
+		            	<br/>
+		            </c:if>
 		            <div id="roo_clinicalRecord_exactAge">
 		                <label  class="record" for="_exactAge_id"><spring:message code="record.exactAge"/></label>
 		                <div class="box" id="_exactAge_id">

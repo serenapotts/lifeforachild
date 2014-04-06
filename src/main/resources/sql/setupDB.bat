@@ -17,6 +17,7 @@ mysql -u root life_for_a_child -e "source updates/009_mark_deleted_false.sql"
 mysql -u root life_for_a_child -e "source updates/010_sync_versions_tables.sql"
 mysql -u root life_for_a_child -e "source updates/011_new_child_fields.sql"
 mysql -u root life_for_a_child -e "source updates/012_new_report_fields.sql"
+mysql -u root life_for_a_child -e "source updates/013_new_reviewed_field.sql"
 mysql -u root life_for_a_child -e "source updates/triggers.sql"
 
 

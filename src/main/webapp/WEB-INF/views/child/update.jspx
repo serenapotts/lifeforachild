@@ -73,7 +73,7 @@
              </div>
          </div>
          <br/>  
-		<div id="mainTabContainer" style="width:530px;height:600px">
+		<div id="mainTabContainer" style="width:550px;height:600px">
             <div id="childInfo">        
 		        <spring:url value="/child/${child.id}" var="form_url"/>
 		        <form:form action="${form_url}" method="PUT" modelAttribute="child">
@@ -746,12 +746,13 @@
                          <c:out value="${create_label}"/>
                     </a>
 		        <c:if test="${not empty child.clinicalRecords}">			            
-	               <table width="500px">		            
+	               <table width="530px">		            
 		                <thead>
 		                    <tr>
 		                        <th><spring:message code="record.list.id"/></th>
 		                        <th><spring:message code="record.list.dateCompleted"/></th>
 		                        <th><spring:message code="record.list.dateOfMeasurement"/></th>
+		                        <th><spring:message code="record.list.dateReviewed"/></th>
 		                        <th><spring:message code="record.list.personCompletedBy"/></th>
 		                        <th/>
                         		<th/>		                        
@@ -765,6 +766,9 @@
 		                        </td>
 		                        <td>
 		                            <fmt:formatDate pattern="${clinicalRecord_dateCompleted_date_format}" value="${clinicalRecord.dateOfMeasurement}"/>
+		                        </td>
+		                        <td>
+		                            <fmt:formatDate pattern="${clinicalRecord_dateCompleted_date_format}" value="${clinicalRecord.dateReviewed}"/>
 		                        </td>
 		                        <td>
 		                        	<c:out value="${clinicalRecord.personCompletingForm}"/>

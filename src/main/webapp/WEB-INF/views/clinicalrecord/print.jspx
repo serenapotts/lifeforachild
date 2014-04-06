@@ -59,6 +59,13 @@
 	            </td>
 	        </tr>
 	        
+	         <tr id="roo_clinicalRecord_dateReviewed">
+	            <td  class="record" for="_dateReviewed_id"><spring:message code="record.dateReviewed"/></td>
+	            <td class="box" id="_dateReviewed_id">
+	                <fmt:formatDate pattern="${clinicalRecord_dateReviewed_date_format}" value="${clinicalRecord.dateReviewed}"/>
+	            </td>
+	        </tr>
+	        
 	        <tr id="roo_clinicalRecord_exactAge">
 	            <td  class="record" for="_exactAge_id"><spring:message code="record.exactAge"/></td>
 	            <td class="box" id="_exactAge_id">

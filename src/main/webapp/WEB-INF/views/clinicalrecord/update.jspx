@@ -114,7 +114,17 @@
                 <spring:message code="field.required" var="field_required"/>
 	            <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_consentGiven_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
             </div>
-            <br/>            
+            <br/>    
+            <div id="roo_child_dateReviewed">
+                <label for="_dateReviewed_id"><spring:message code="record.dateReviewed"/></label>
+                <form:input cssStyle="width:250px" id="_dateReviewed_id" maxlength="30" path="dateReviewed" size="0"/>
+                <br/>
+                <form:errors cssClass="errors" id="_dateReviewed_error_id" path="dateReviewed"/>
+                <spring:message arguments="Date Reviewed" code="field.invalid" var="field_invalid"/>
+                <spring:message argumentSeparator="," arguments="Date Reviewed,(optional)" code="field.simple.validation" var="field_validation"/>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_dateReviewed_id', widgetType : 'dijit.form.DateTextBox', widgetAttrs : {promptMessage: '${field_validation}', constraints: {max: new Date(), datePattern : '${clinicalRecord_dateReviewed_date_format}', required : false}, datePattern : '${clinicalRecord_dateReviewed_date_format}'}})); </script>
+            </div>
+            <br/>        
             <div id="roo_clinicalRecord_exactAge">
                 <label for="_exactAge_id"><spring:message code="record.exactAge"/></label>
                 <form:input cssStyle="width:250px; border:0" id="_exactAge_id" maxlength="30" path="exactAge" size="0"/>

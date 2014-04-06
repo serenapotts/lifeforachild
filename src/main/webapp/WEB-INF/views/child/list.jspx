@@ -61,14 +61,14 @@
                         </td>
                         <td style="text-align:center">
                             <spring:url value="/child/${child.id}?${search}" var="show_form_url"/>
-                            <a href="${show_form_url}">
+                            <a href="${show_form_url}" id="show">
                             	<spring:url value="/static/images/show.png" var="show_image_url"/>
                                 <spring:message arguments="${entity_label}" code="entity.show" var="show_label"/>
                                 <img alt="${show_label}" src="${show_image_url}" title="${show_label}"/>
                             </a>
                         </td>
                         <sec:authorize ifAllGranted="EDIT_CHILD">
-	                        <td style="text-align:center">
+	                        <td style="text-align:center" id="edit">
 	                            <spring:url value="/child/${child.id}/form?${search}" var="update_form_url"/>
 	                            <a href="${update_form_url}">
 	                            	<spring:url value="/static/images/update.png" var="update_image_url"/>
