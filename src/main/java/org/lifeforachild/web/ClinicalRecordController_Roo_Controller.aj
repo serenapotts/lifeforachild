@@ -127,7 +127,8 @@ privileged aspect ClinicalRecordController_Roo_Controller {
     public String ClinicalRecordController.show(@PathVariable("id") Long id, ModelMap modelMap) {    
         if (id == null) throw new IllegalArgumentException("An Identifier is required");        
         modelMap.addAttribute("clinicalRecord_dateOfMeasurement_date_format", AppContext.getDatePattern());                
-        modelMap.addAttribute("clinicalRecord_dateCompleted_date_format", AppContext.getDatePattern());        
+        modelMap.addAttribute("clinicalRecord_dateCompleted_date_format", AppContext.getDatePattern());     
+        modelMap.addAttribute("clinicalRecord_dateReviewed_date_format", AppContext.getDatePattern());  
         modelMap.addAttribute("clinicalRecord", ClinicalRecord.findClinicalRecord(id));        
         return "clinicalrecord/show";        
     }    
@@ -161,6 +162,7 @@ privileged aspect ClinicalRecordController_Roo_Controller {
             modelMap.addAttribute("yesnounkowntype_enum", YesNoUnkownType.class.getEnumConstants());            
             modelMap.addAttribute("clinicalRecord_dateOfMeasurement_date_format", AppContext.getDatePattern());                        
             modelMap.addAttribute("clinicalRecord_dateCompleted_date_format", AppContext.getDatePattern()); 
+            modelMap.addAttribute("clinicalRecord_dateReviewed_date_format", AppContext.getDatePattern());
             modelMap.addAttribute("locale", LocaleContextHolder.getLocale().toString());
             return "clinicalrecord/update";            
         }
@@ -210,7 +212,8 @@ privileged aspect ClinicalRecordController_Roo_Controller {
         modelMap.addAttribute("yesnotype_enum", YesNoType.class.getEnumConstants()); 
         modelMap.addAttribute("yesnounkowntype_enum", YesNoUnkownType.class.getEnumConstants());        
         modelMap.addAttribute("clinicalRecord_dateOfMeasurement_date_format", AppContext.getDatePattern());                
-        modelMap.addAttribute("clinicalRecord_dateCompleted_date_format", AppContext.getDatePattern());     
+        modelMap.addAttribute("clinicalRecord_dateCompleted_date_format", AppContext.getDatePattern()); 
+        modelMap.addAttribute("clinicalRecord_dateReviewed_date_format", AppContext.getDatePattern());
         modelMap.addAttribute("locale", LocaleContextHolder.getLocale().toString());
         return "clinicalrecord/update";        
     }    
@@ -222,7 +225,8 @@ privileged aspect ClinicalRecordController_Roo_Controller {
         ClinicalRecord record = ClinicalRecord.findClinicalRecord(id);
         modelMap.addAttribute("clinicalRecord", record);                
         modelMap.addAttribute("clinicalRecord_dateOfMeasurement_date_format", AppContext.getDatePattern());                
-        modelMap.addAttribute("clinicalRecord_dateCompleted_date_format", AppContext.getDatePattern());        
+        modelMap.addAttribute("clinicalRecord_dateCompleted_date_format", AppContext.getDatePattern());    
+        modelMap.addAttribute("clinicalRecord_dateReviewed_date_format", AppContext.getDatePattern());
         return "clinicalrecord/print";  
     }
     

@@ -336,7 +336,11 @@ public class ClinicalRecord {
     
     private Float bloodPressureDiastolicSD = null;    
     
-    private Boolean isDeleted;    
+    private Boolean isDeleted;   
+    
+    @Temporal(TemporalType.TIMESTAMP)
+    @DateTimeFormat(pattern="dd/MM/yy", style = "S-")
+    private Date dateReviewed;
     
     public static Float calculateBMI(Float weightKG, Float heightCM) {
         Float result = null;

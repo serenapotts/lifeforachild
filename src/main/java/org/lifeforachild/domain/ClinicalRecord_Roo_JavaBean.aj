@@ -700,5 +700,12 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
     public void ClinicalRecord.setConsentGiven(ResearchConsentType consentGiven) {    
         this.consentGiven = consentGiven;        
     }    
-      
+    
+    public Date ClinicalRecord.getDateReviewed() {    
+        return this.dateReviewed;        
+    }    
+    
+    public void ClinicalRecord.setDateReviewed(Date dateReviewed) {    
+        this.dateReviewed = dateReviewed;        
+    }      
 }
