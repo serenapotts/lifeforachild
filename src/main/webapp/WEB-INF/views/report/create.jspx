@@ -211,6 +211,7 @@
                 <c:if test="${not empty countrys}">
                     <label for="_country_id"><spring:message code="report.country"/></label>
                     <form:select cssStyle="width:350px" id="_country_id" path="country" >
+                    	<form:option value="0" label="--- Select ---"/>
                         <form:options itemValue="id" items="${countrys}"/>
                     </form:select>
                     <br/>
@@ -233,6 +234,7 @@
             <div id="roo_report_centre" style="display:none">
 	            <label for="_centre_id"><spring:message code="report.centre"/></label>
 	            <form:select cssStyle="width:350px" id="_centre_id" path="centre">
+	            	<form:option value="0" label="--- Select ---"/>
 	                <form:options itemValue="id" items="${diabetescentres}"/>
 	            </form:select>
 	            <br/>
