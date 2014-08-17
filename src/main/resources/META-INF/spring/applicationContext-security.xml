@@ -11,7 +11,8 @@
         <logout logout-url="/static/j_spring_security_logout" logout-success-url="/logout"/>
         <intercept-url pattern="/child/**" access="isAuthenticated()"/>
         <intercept-url pattern="/user/**" access="isAuthenticated() and hasRole('USER_ADMIN')"/>
-        <intercept-url pattern="/usergroup/**" access="isAuthenticated() and hasRole('USER_GROUP_ADMIN')"/>    
+        <intercept-url pattern="/usergroup/**" access="isAuthenticated() and hasRole('USER_GROUP_ADMIN')"/>   
+        <intercept-url pattern="/message/**" access="isAuthenticated() and hasRole('EDIT_TRANSLATIONS')"/>  
         <intercept-url pattern="/search/**" access="isAuthenticated()"/>   
 		<intercept-url pattern="/search" access="isAuthenticated()"/>          
         <intercept-url pattern="/clinicalrecord/**" access="isAuthenticated()"/>        
@@ -36,5 +37,5 @@
      <beans:bean id="customUserDetailsService" class="org.lifeforachild.web.service.CustomUserDetailsService">
 		<beans:property name="dataSource" ref="dataSource"/>
  	</beans:bean> 
-              		          
+        
 </beans:beans>
