@@ -148,5 +148,21 @@
 	            </ul>
 	        </li>
         </sec:authorize>
+         <sec:authorize ifAllGranted="EDIT_TRANSLATIONS"> 		
+	    	<li id="web_mvc_jsp_message_category">
+	            <h2>
+	                <spring:message code="menu.category.web_mvc_jsp_message_category.label"/>
+	            </h2>
+	            <ul>
+	            	<li id="web_mvc_jsp_list_message_menu_item">
+	                    <spring:url value="/message?size=${empty param.size ? 20 : param.size}" var="web_mvc_jsp_list_message_menu_item_url"/>
+	                    <a href="${web_mvc_jsp_list_message_menu_item_url}">
+	                        <spring:message code="label.messages" var="label_messages"/>
+	                        <spring:message code="message.menu.list"/>
+	                    </a>
+	                </li>
+	            </ul>
+	        </li>   
+		</sec:authorize>
     </ul>
 </div>

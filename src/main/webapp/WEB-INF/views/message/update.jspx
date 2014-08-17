@@ -1,0 +1,61 @@
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:form="http://www.springframework.org/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+    <jsp:output omit-xml-declaration="yes"/>    
+    <div id="_title_div">
+        <spring:message code="label.message" var="entity_label"/>
+        <spring:message arguments="${entity_label}" code="entity.update" var="title_msg"/>
+        <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_title_div', widgetType : 'dijit.TitlePane', widgetAttrs : {title: '${title_msg}'}})); </script>
+        <spring:url value="/message/${message.id}" var="form_url"/>
+        <form:form action="${form_url}" method="PUT" modelAttribute="message">
+            <form:errors cssClass="errors" delimiter="&lt;p/&gt;"/>
+            <div id="roo_message_messageKey">
+                <label for="_messagekey_id"><spring:message code="message.messagekey"/></label>
+                <form:input cssStyle="width:250px" id="_messagekey_id" maxlength="255" path="messageKey" size="0"/>
+                <br/>
+                <form:errors cssClass="errors" id="_messageKey_error_id" path="messageKey"/>
+                <spring:message arguments="Message Key" code="field.invalid" var="field_invalid"/>
+                <spring:message code="field.required" var="field_required"/>
+                <spring:message argumentSeparator="," arguments="Message Key,(${field_required})" code="field.simple.validation" var="field_validation"/>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_messagekey_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : true}})); </script>
+            </div>
+            <br/>
+            <div id="roo_message_english">
+                <label for="_english_id"><spring:message code="message.english"/></label>
+                <form:input cssStyle="width:250px" id="_english_id" maxlength="30" path="english" size="0"/>
+                <br/>
+                <form:errors cssClass="errors" id="_english_error_id" path="english"/>
+                <spring:message arguments="English" code="field.invalid" var="field_invalid"/>
+                <spring:message code="field.required" var="field_required"/>
+                <spring:message argumentSeparator="," arguments="English,(${field_required})" code="field.simple.validation" var="field_validation"/>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_english_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : true}})); </script>
+            </div>
+            <br/>
+            <div id="roo_message_french">
+                <label for="_french_id"><spring:message code="message.french"/></label>
+                <form:input cssStyle="width:250px" id="_french_id" maxlength="30" path="french" size="0"/>
+                <br/>
+                <form:errors cssClass="errors" id="_french_error_id" path="french"/>
+                <spring:message arguments="French" code="field.invalid" var="field_invalid"/>
+                <spring:message argumentSeparator="," arguments="French,(${field_required})" code="field.simple.validation" var="field_validation"/>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_french_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : false}})); </script>
+            </div>
+            <br/>
+              <div id="roo_message_spanish">
+                <label for="_spanish_id"><spring:message code="message.spanish"/></label>
+                <form:input cssStyle="width:250px" id="_spanish_id" maxlength="30" path="spanish" size="0"/>
+                <br/>
+                <form:errors cssClass="errors" id="_french_error_id" path="spanish"/>
+                <spring:message arguments="Spanish" code="field.invalid" var="field_invalid"/>
+                <spring:message argumentSeparator="," arguments="Spanish,(${field_required})" code="field.simple.validation" var="field_validation"/>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_spanish_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : false}})); </script>
+            </div>
+            <br/>
+            <div class="submit" id="roo_message_submit">
+                <spring:message code="button.update" var="update_button"/>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ValidateAllDecoration({elementId:'proceed', event:'onclick'}));</script>
+                <input id="proceed" type="submit" value="${update_button}"/>
+            </div>
+            <form:hidden id="_id_id" path="id"/>
+            <form:hidden id="_version_id" path="version"/>
+        </form:form>
+    </div>
+</div>
