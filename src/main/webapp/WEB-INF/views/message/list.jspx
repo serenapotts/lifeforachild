@@ -43,6 +43,11 @@
                     </tr>
                 </c:forEach>
                 <tr class="footer">
+               	 	<td colspan="10">
+                        <c:if test="${not empty maxPages}">
+                            <roo:pagination maxPages="${maxPages}" page="${param.page}" size="${param.size}"/>
+                        </c:if>
+                    </td>
                 </tr>
             </table>
         </c:if>

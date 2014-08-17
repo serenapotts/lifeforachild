@@ -26,7 +26,7 @@ public class CSVtoProperties {
 			SortedProperties properties_fr = new SortedProperties();
 			SortedProperties properties_ru = new SortedProperties();
 			
-			File f = new File("C:/charity/i18n/translations5/i18n_reviewed_v9.txt");
+			File f = new File("/Users/skeating/charity/i18n/translations5/i18n_reviewed_v9.txt");
 			FileInputStream fis = new FileInputStream(f);
 			DataInputStream in = new DataInputStream(fis);
 	        BufferedReader br = new BufferedReader(new InputStreamReader(fis));
@@ -47,12 +47,12 @@ public class CSVtoProperties {
 			    //	  properties_ru.setProperty(propName, values[4]);
 		      }
 		    }
-		    properties.store(new FileOutputStream("C:/charity/lifeforachild/src/main/webapp/WEB-INF/i18n/new_messages.properties"), null);
-		    properties_es.store(new FileOutputStream("C:/charity/lifeforachild/src/main/webapp/WEB-INF/i18n/new_messages_es.properties"), null);
-		    properties_fr.store(new FileOutputStream("C:/charity/lifeforachild/src/main/webapp/WEB-INF/i18n/new_messages_fr.properties"), null);
+		    properties.store(new FileOutputStream("/Users/skeating/charity/lifeforachild/src/main/webapp/WEB-INF/i18n/new_messages.properties"), null);
+		    properties_es.store(new FileOutputStream("/Users/skeating/charity/lifeforachild/src/main/webapp/WEB-INF/i18n/new_messages_es.properties"), null);
+		    properties_fr.store(new FileOutputStream("/Users/skeating/charity/lifeforachild/src/main/webapp/WEB-INF/i18n/new_messages_fr.properties"), null);
 		    
 		    
-		    f = new File("C:/charity/lifeforachild/src/main/webapp/WEB-INF/i18n/messages_ru.properties");
+		    f = new File("/Users/skeating/charity/lifeforachild/src/main/webapp/WEB-INF/i18n/messages_ru.properties");
 			fis = new FileInputStream(f);
 			in = new DataInputStream(fis);
 	        br = new BufferedReader(new InputStreamReader(fis));
@@ -66,7 +66,7 @@ public class CSVtoProperties {
 			    	  properties_ru.setProperty(propName, values[1]);
 		      }
 		    }
-		    properties_ru.store(new FileOutputStream("C:/charity/lifeforachild/src/main/webapp/WEB-INF/i18n/new_messages_ru.properties"), null);
+		    properties_ru.store(new FileOutputStream("/Users/skeating/charity/lifeforachild/src/main/webapp/WEB-INF/i18n/new_messages_ru.properties"), null);
 		    //Close the input stream
 		    in.close();		
 		}

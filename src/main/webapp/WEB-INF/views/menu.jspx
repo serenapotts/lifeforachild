@@ -155,7 +155,7 @@
 	            </h2>
 	            <ul>
 	            	<li id="web_mvc_jsp_list_message_menu_item">
-	                    <spring:url value="/message?size=${empty param.size ? 20 : param.size}" var="web_mvc_jsp_list_message_menu_item_url"/>
+	                    <spring:url value="/message?size=${empty param.size ? 100 : param.size}" var="web_mvc_jsp_list_message_menu_item_url"/>
 	                    <a href="${web_mvc_jsp_list_message_menu_item_url}">
 	                        <spring:message code="label.messages" var="label_messages"/>
 	                        <spring:message code="message.menu.list"/>

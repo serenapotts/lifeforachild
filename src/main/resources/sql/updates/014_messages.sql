@@ -4,10 +4,10 @@ CREATE TABLE `message` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `message_key` varchar(255) NOT NULL,
   `version` int(11) DEFAULT NULL,
-  `english` varchar(255) DEFAULT NULL,
-  `french` varchar(255) DEFAULT NULL,
-  `spanish` varchar(255) DEFAULT NULL,
-  `russian` varchar(255) DEFAULT NULL,
+  `english` varchar(512) DEFAULT NULL,
+  `french` varchar(512) DEFAULT NULL,
+  `spanish` varchar(512) DEFAULT NULL,
+  `russian` varchar(512) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

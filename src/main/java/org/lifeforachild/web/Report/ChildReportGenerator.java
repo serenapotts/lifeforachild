@@ -445,6 +445,6 @@ public class ChildReportGenerator extends ReportGenerator {
 	
 	private String getLabel(String code)
 	{
-		return AppContext.getApplicationContext().getMessage(code, null, LocaleContextHolder.getLocale());
+		return AppContext.getMessage(code);
 	}
 }

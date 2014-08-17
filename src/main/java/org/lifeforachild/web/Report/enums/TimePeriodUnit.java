@@ -23,7 +23,7 @@ public enum TimePeriodUnit {
     String label;
     
     public String getLabel() { 
-    	return AppContext.getApplicationContext().getMessage(label, null, LocaleContextHolder.getLocale());
+    	return AppContext.getMessage(label);
     }	
     
     public String toString()

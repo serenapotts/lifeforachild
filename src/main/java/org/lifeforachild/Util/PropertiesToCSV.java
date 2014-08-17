@@ -15,9 +15,9 @@ public class PropertiesToCSV {
 		Properties properties = new Properties();
 		Properties properties_es = new Properties(); 
 		try { 
-			properties.load(new FileInputStream("C:/charity/lifeforachild/src/main/webapp/WEB-INF/i18n/messages.properties"));
-			properties_es.load(new FileInputStream("C:/charity/lifeforachild/src/main/webapp/WEB-INF/i18n/messages_es.properties"));
-			File f = new File("C:/charity/i18n.csv");
+			properties.load(new FileInputStream("/Users/skeating/charity/lifeforachild/src/main/webapp/WEB-INF/i18n/messages.properties"));
+			properties_es.load(new FileInputStream("/Users/skeating/charity/lifeforachild/src/main/webapp/WEB-INF/i18n/messages_es.properties"));
+			File f = new File("/Users/skeating/charity/i18n.csv");
 			String headings = "Key\tEnglish\tSpanish\tFrench\tRussian\n";
 			FileOutputStream fos = new FileOutputStream(f);
 			fos.write(headings.getBytes());

@@ -12,7 +12,7 @@ privileged aspect UserGroup_Roo_JavaBean {
     public String UserGroup.getGroupName() {      	
     	try
     	{
-    		return AppContext.getApplicationContext().getMessage(this.groupName, null, LocaleContextHolder.getLocale());
+    		return AppContext.getMessage(this.groupName);
     	}
     	catch (NoSuchMessageException e)
     	{
