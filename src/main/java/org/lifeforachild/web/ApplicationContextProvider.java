@@ -15,7 +15,6 @@ public class ApplicationContextProvider implements ApplicationContextAware {
         // Wiring the ApplicationContext into a static method 
 
         AppContext.setApplicationContext(ctx); 
-
     } 
 
 }
