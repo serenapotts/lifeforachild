@@ -11,5 +11,6 @@ source updates/009_mark_deleted_false.sql
 source updates/010_sync_versions_tables.sql
 source updates/011_new_child_fields.sql
 source updates/012_new_report_fields.sql
-source updates/011_new_reviewed_field.sql
+source updates/013_new_reviewed_field.sql
+source updates/014_messages.sql
 source updates/triggers.sql
