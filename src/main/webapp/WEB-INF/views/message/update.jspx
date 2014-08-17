@@ -39,7 +39,7 @@
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_french_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : false}})); </script>
             </div>
             <br/>
-              <div id="roo_message_spanish">
+            <div id="roo_message_spanish">
                 <label for="_spanish_id"><spring:message code="message.spanish"/></label>
                 <form:input cssStyle="width:250px" id="_spanish_id" maxlength="30" path="spanish" size="0"/>
                 <br/>
@@ -47,6 +47,16 @@
                 <spring:message arguments="Spanish" code="field.invalid" var="field_invalid"/>
                 <spring:message argumentSeparator="," arguments="Spanish,(${field_required})" code="field.simple.validation" var="field_validation"/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_spanish_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : false}})); </script>
+            </div>
+            <br/>
+            <div id="roo_message_russian">
+                <label for="_russian_id"><spring:message code="message.russian"/></label>
+                <form:input cssStyle="width:250px" id="_russian_id" maxlength="30" path="russian" size="0"/>
+                <br/>
+                <form:errors cssClass="errors" id="_french_error_id" path="russian"/>
+                <spring:message arguments="Russian" code="field.invalid" var="field_invalid"/>
+                <spring:message argumentSeparator="," arguments="Russian,(${field_required})" code="field.simple.validation" var="field_validation"/>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_russian_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : false}})); </script>
             </div>
             <br/>
             <div class="submit" id="roo_message_submit">

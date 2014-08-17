@@ -34,6 +34,13 @@
                 </div>
             </div>
             <br/>
+            <div id="roo_message_russian">
+                <label for="_russian_id"><spring:message code="message.russian"/></label>
+                <div class="box" id="_russian_id">
+                    <c:out value="${message.russian}"/>
+                </div>
+            </div>
+            <br/>
         </c:if>
         <c:if test="${empty message}">
             <spring:message arguments="${entity_label}" code="entity.not.found.single"/>

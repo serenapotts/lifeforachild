@@ -99,7 +99,5 @@ privileged aspect UserGroup_Roo_Entity {
     public static List<UserGroup> UserGroup.findUserGroupEntries(int firstResult, int maxResults) {  
     	UserGroupQuery userGroupQuery = new UserGroupQuery();
         return userGroupQuery.findEntries(entityManager(), firstResult, maxResults);        
-    }    
-    
-        
+    }        
 }

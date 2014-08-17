@@ -54,12 +54,13 @@ public class AppContext {
     		} else if ("es".equals(locale.getLanguage())) {
     			return message.getSpanish();
     		} else if ("ru".equals(locale.getLanguage())) {
-    			try {
-					return java.net.URLDecoder.decode(message.getRussian(), "UTF-8");
-				} catch (UnsupportedEncodingException e) {
-					e.printStackTrace();
-					return "";
-				}
+//    			try {
+//					return java.net.URLDecoder.decode(message.getRussian(), "UTF-8");
+    				return message.getRussian();
+//				} catch (UnsupportedEncodingException e) {
+//					e.printStackTrace();
+//					return "";
+//				}
     		} else {
     			return message.getEnglish();
     		}

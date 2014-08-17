@@ -27,22 +27,22 @@ import javax.persistence.CascadeType;
 @RooJavaBean
 @RooToString
 public class Message {
-    @Size(max = 255)
+    @Size(max = 512)
     @NotNull
     @NotEmpty
     private String messageKey;
 
-    @Size(max = 255)
+    @Size(max = 512)
     @NotNull
     @NotEmpty
     private String english;
     
-    @Size(max = 255)
+    @Size(max = 512)
     private String french;
     
     @Size(max = 255)
     private String spanish;
     
-    @Size(max = 255)
+    @Size(max = 512)
     private String russian;   
 }
