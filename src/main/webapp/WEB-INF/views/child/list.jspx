@@ -27,9 +27,9 @@
                         </sec:authorize>
                         <th><spring:message code="child.list.country"/></th>
                         <th><spring:message code="child.list.centre"/></th>
-                        <th><spring:message code="child.list.show"/></th>
+                        <th/>
                         <sec:authorize ifAllGranted="EDIT_CHILD">
-                        	<th><spring:message code="child.list.update"/></th>
+                        	<th/>
                         </sec:authorize>
                         <sec:authorize ifAllGranted="CAN_DELETE">
                         	<th><spring:message code="child.list.delete"/></th>
