@@ -38,8 +38,8 @@ public class PropertiesToSQL {
 					String ru_prop = properties_ru.getProperty(s);
 					String line = "insert into message (message_key, version, english, french, spanish, russian) " +
 							"values ('" + s + "', 1, '" + en_prop.replace("'", "''").replace("\\", "\\\\") + "', '" + 
-							(es_prop == null ? "" : es_prop.replace("'", "''").replace("\\", "\\\\")) + "'," + " '" + 
-							(fr_prop == null ? "" : fr_prop.replace("'", "''").replace("\\", "\\\\")) + "'," + " '";
+							(fr_prop == null ? "" : fr_prop.replace("'", "''").replace("\\", "\\\\")) + "'," + " '" +
+							(es_prop == null ? "" : es_prop.replace("'", "''").replace("\\", "\\\\")) + "'," + " '";
 							//(ru_prop == null ? "" : new String(ru_prop.getBytes("UTF-8"))) + "');\n";
 					fos.write(line.getBytes("UTF-8"));
 					if (ru_prop != null) {

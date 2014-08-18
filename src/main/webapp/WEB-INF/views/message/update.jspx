@@ -8,14 +8,10 @@
         <form:form action="${form_url}" method="PUT" modelAttribute="message">
             <form:errors cssClass="errors" delimiter="&lt;p/&gt;"/>
             <div id="roo_message_messageKey">
-                <label for="_messagekey_id"><spring:message code="message.messagekey"/></label>
-                <form:input cssStyle="width:250px" id="_messagekey_id" maxlength="255" path="messageKey" size="0"/>
-                <br/>
-                <form:errors cssClass="errors" id="_messageKey_error_id" path="messageKey"/>
-                <spring:message arguments="Message Key" code="field.invalid" var="field_invalid"/>
-                <spring:message code="field.required" var="field_required"/>
-                <spring:message argumentSeparator="," arguments="Message Key,(${field_required})" code="field.simple.validation" var="field_validation"/>
-                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_messagekey_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : true}})); </script>
+            	<label for="_messagekey_id"><spring:message code="message.messagekey"/></label>
+                <div class="box" id="_messagekey_id">
+                    <c:out value="${message.messageKey}"/>
+                </div>
             </div>
             <br/>
             <div id="roo_message_english">
@@ -66,6 +62,7 @@
             </div>
             <form:hidden id="_id_id" path="id"/>
             <form:hidden id="_version_id" path="version"/>
+            <form:hidden id="_messagekey_id" path="messageKey"/>
         </form:form>
     </div>
 </div>

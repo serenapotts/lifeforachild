@@ -3,7 +3,6 @@ package org.lifeforachild.enums;
 import java.util.Map;
 
 import org.lifeforachild.web.AppContext;
-import org.springframework.context.i18n.LocaleContextHolder;
 
 import ar.com.fdvs.dj.domain.CustomExpression;
 
