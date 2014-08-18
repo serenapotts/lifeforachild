@@ -46,7 +46,6 @@ public class AppContext {
     		}
     	}
     	if (messages.containsKey(code)) {
-    		System.out.println("Reading from DB messages");
     		Message message =  messages.get(code);
     		String translatedMessage = null;
     		if ("fr".equals(locale.getLanguage())) {
