@@ -206,7 +206,21 @@
 	<td>_access_denied_title</td>
 	<td></td>
 </tr>
-
+<tr>
+	<td>open</td>
+	<td>/lifeforachild/search</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/lifeforachild/message</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyVisible</td>
+	<td>_access_denied_title</td>
+	<td></td>
+</tr>
 </tbody></table>
 </body>
 </html>
