@@ -7,22 +7,22 @@
         <spring:message arguments="${entity_label_plural}" code="entity.list.all" var="title_msg"/>
         <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_title_div', widgetType : 'dijit.TitlePane', widgetAttrs : {title: '${title_msg}'}})); </script>
         <c:if test="${not empty messages}">        
-            <table width="570px">
+            <table width="570px" style="table-layout: fixed">
                 <thead>
                     <tr>
-                        <th><spring:message code="message.list.messageKey"/></th>
-                        <th><spring:message code="message.list.english"/></th>
-                        <th/>
-                        <th/>
+                        <th width="265px"><spring:message code="message.list.english"/></th>
+                        <th width="265px"><spring:message code="message.list.messageKey"/></th>
+                        <th width="20px"/>
+                        <th width="20px"/>
                     </tr>
                 </thead>
                 <c:forEach items="${messages}" var="message">
                     <tr>
-                        <td>
-                            <c:out value="${message.messageKey}"/>
-                        </td>
-                        <td>
+                    	<td style="word-wrap:break-word">
                             <c:out value="${message.english}"/>
+                        </td>
+                        <td style="word-wrap:break-word">
+                            <c:out value="${message.messageKey}"/>
                         </td>
                         <td>
                             <spring:url value="/message/${message.id}" var="show_form_url"/>

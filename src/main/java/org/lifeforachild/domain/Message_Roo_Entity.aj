@@ -91,7 +91,7 @@ privileged aspect Message_Roo_Entity {
     } 
     
     public static List<Message> Message.list() {
-    	return entityManager().createQuery("select o from Message o order by o.messageKey").getResultList(); 
+    	return entityManager().createQuery("select o from Message o order by o.english").getResultList(); 
     }
     
     public static Message Message.find(Long id) {
@@ -99,7 +99,7 @@ privileged aspect Message_Roo_Entity {
     }
     
     public static List<Message> Message.findMessageEntries(int firstResult, int maxResults) {    
-		return entityManager().createQuery("select o from Message o order by o.messageKey").setFirstResult(firstResult).setMaxResults(maxResults).getResultList();       
+		return entityManager().createQuery("select o from Message o order by o.english").setFirstResult(firstResult).setMaxResults(maxResults).getResultList();       
     }
     
     public static long Message.countMessages() {  

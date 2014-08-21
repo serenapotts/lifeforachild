@@ -16,7 +16,7 @@
             <br/>
             <div id="roo_message_english">
                 <label for="_english_id"><spring:message code="message.english"/></label>
-                <form:input cssStyle="width:250px" id="_english_id" maxlength="30" path="english" size="0"/>
+                <form:input cssStyle="width:250px" id="_english_id" maxlength="512" path="english" size="0"/>
                 <br/>
                 <form:errors cssClass="errors" id="_english_error_id" path="english"/>
                 <spring:message arguments="English" code="field.invalid" var="field_invalid"/>
@@ -27,7 +27,7 @@
             <br/>
             <div id="roo_message_french">
                 <label for="_french_id"><spring:message code="message.french"/></label>
-                <form:input cssStyle="width:250px" id="_french_id" maxlength="30" path="french" size="0"/>
+                <form:input cssStyle="width:250px" id="_french_id" maxlength="512" path="french" size="0"/>
                 <br/>
                 <form:errors cssClass="errors" id="_french_error_id" path="french"/>
                 <spring:message arguments="French" code="field.invalid" var="field_invalid"/>
@@ -37,7 +37,7 @@
             <br/>
             <div id="roo_message_spanish">
                 <label for="_spanish_id"><spring:message code="message.spanish"/></label>
-                <form:input cssStyle="width:250px" id="_spanish_id" maxlength="30" path="spanish" size="0"/>
+                <form:input cssStyle="width:250px" id="_spanish_id" maxlength="512" path="spanish" size="0"/>
                 <br/>
                 <form:errors cssClass="errors" id="_french_error_id" path="spanish"/>
                 <spring:message arguments="Spanish" code="field.invalid" var="field_invalid"/>
@@ -47,7 +47,7 @@
             <br/>
             <div id="roo_message_russian">
                 <label for="_russian_id"><spring:message code="message.russian"/></label>
-                <form:input cssStyle="width:250px" id="_russian_id" maxlength="30" path="russian" size="0"/>
+                <form:input cssStyle="width:250px" id="_russian_id" maxlength="512" path="russian" size="0"/>
                 <br/>
                 <form:errors cssClass="errors" id="_french_error_id" path="russian"/>
                 <spring:message arguments="Russian" code="field.invalid" var="field_invalid"/>
