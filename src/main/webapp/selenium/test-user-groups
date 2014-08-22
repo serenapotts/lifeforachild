@@ -4,21 +4,16 @@
 <head profile="http://selenium-ide.openqa.org/profiles/test-case">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="selenium.base" href="http://localhost:8080/" />
-<title>test-translations</title>
+<title>test-user-groups</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">test-translations</td></tr>
+<tr><td rowspan="1" colspan="3">test-user-groups</td></tr>
 </thead><tbody>
 <tr>
-	<td>open</td>
-	<td>/lifeforachild/message</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyVisible</td>
-	<td>id=message_table</td>
+	<td>clickAndWait</td>
+	<td>link=List all User Groups</td>
 	<td></td>
 </tr>
 <tr>
@@ -28,17 +23,17 @@
 </tr>
 <tr>
 	<td>verifyLocation</td>
-	<td>http://localhost:8080/lifeforachild/message/*</td>
-	<td></td>
-</tr>
-<tr>
-	<td>open</td>
-	<td>/lifeforachild/message</td>
+	<td>http://localhost:8080/lifeforachild/usergroup/*</td>
 	<td></td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>xpath=(//input[@value='Update Translation'])[6]</td>
+	<td>link=List all User Groups</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='Update User Group']</td>
 	<td></td>
 </tr>
 <tr>
@@ -48,9 +43,10 @@
 </tr>
 <tr>
 	<td>verifyLocation</td>
-	<td>http://localhost:8080/lifeforachild/message/*</td>
+	<td>http://localhost:8080/lifeforachild/usergroup/*</td>
 	<td></td>
 </tr>
+
 </tbody></table>
 </body>
 </html>

@@ -11,6 +11,36 @@
 <thead>
 <tr><td rowspan="1" colspan="3">test-assistant-to-PM-access</td></tr>
 </thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/lifeforachild/login</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=j_username</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=j_username</td>
+	<td>${assistantusername}</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=j_password</td>
+	<td>Test1234</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=proceed</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyLocation</td>
+	<td>http://localhost:8080/lifeforachild/search</td>
+	<td></td>
+</tr>
 
 </tbody></table>
 </body>
