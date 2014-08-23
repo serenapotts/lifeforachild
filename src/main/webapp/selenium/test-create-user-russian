@@ -11,6 +11,106 @@
 <thead>
 <tr><td rowspan="1" colspan="3">test-create-user-russian</td></tr>
 </thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/lifeforachild/user/form?lang=ru</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Введите данные нового пользователя</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=_firstName_id</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=_firstName_id</td>
+	<td>test</td>
+</tr>
+<tr>
+	<td>store</td>
+	<td>javascript{Math.floor(Math.random()*11111)}</td>
+	<td>usernum</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=_lastName_id</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=_lastName_id</td>
+	<td>${usernum}</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=_username_id</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=_username_id</td>
+	<td>testrussian${usernum}</td>
+</tr>
+<tr>
+	<td>store</td>
+	<td>testrussian${usernum}</td>
+	<td>russianusername</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=_password_id</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=_password_id</td>
+	<td>Test1234</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=_userGroup_id</td>
+	<td>Centre Manager</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=_country_id</td>
+	<td>testing${countrynum}</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=_centre_id</td>
+	<td>testing${centrenum}</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=proceed</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeLocation</td>
+	<td>myLocation</td>
+	<td>myLocation</td>
+</tr>
+<tr>
+	<td>store</td>
+	<td>javascript{storedVars['myLocation'].substring(storedVars['myLocation'].lastIndexOf('/') + 1,storedVars['myLocation'].length)}</td>
+	<td>russianuserrid</td>
+</tr>
+<tr>
+	<td>verifyLocation</td>
+	<td>http://localhost:8080/lifeforachild/user/${russianuserrid}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/lifeforachild/user/form?lang=en</td>
+	<td></td>
+</tr>
 
 </tbody></table>
 </body>

@@ -41,6 +41,181 @@
 	<td>http://localhost:8080/lifeforachild/search</td>
 	<td></td>
 </tr>
+<tr>
+	<td>open</td>
+	<td>/lifeforachild/search</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/lifeforachild/child</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementNotPresent</td>
+	<td>id=_access_denied_title</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/lifeforachild/report</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementNotPresent</td>
+	<td>id=_access_denied_title</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/lifeforachild/user</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyVisible</td>
+	<td>_access_denied_title</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/lifeforachild/message</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyVisible</td>
+	<td>_access_denied_title</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/lifeforachild/country/form</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyVisible</td>
+	<td>_access_denied_title</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/lifeforachild/search</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/lifeforachild/country</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyVisible</td>
+	<td>_access_denied_title</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/lifeforachild/search</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/lifeforachild/country/${countryid}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyVisible</td>
+	<td>_access_denied_title</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/lifeforachild/search</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/lifeforachild/country/${countryid}/form</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyVisible</td>
+	<td>_access_denied_title</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/lifeforachild/search</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/lifeforachild/diabetescentre/form</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyVisible</td>
+	<td>_access_denied_title</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/lifeforachild/search</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/lifeforachild/diabetescentre</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyVisible</td>
+	<td>_access_denied_title</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/lifeforachild/search</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/lifeforachild/diabetescentre/${centreid}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyVisible</td>
+	<td>_access_denied_title</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/lifeforachild/search</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/lifeforachild/diabetescentre/${centreid}/form</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyVisible</td>
+	<td>_access_denied_title</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/lifeforachild/search</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/lifeforachild/usergroup</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyVisible</td>
+	<td>_access_denied_title</td>
+	<td></td>
+</tr>
 
 </tbody></table>
 </body>

@@ -11,6 +11,71 @@
 <thead>
 <tr><td rowspan="1" colspan="3">test-program-manager-deidentified</td></tr>
 </thead><tbody>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=List all Children</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementNotPresent</td>
+	<td>xpath=(//th[contains(text(),'Initials')])</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementNotPresent</td>
+	<td>xpath=(//th[contains(text(),'First Name')])</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementNotPresent</td>
+	<td>xpath=(//th[contains(text(),'Last Name')])</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=img[alt=&quot;Show Child&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementNotPresent</td>
+	<td>xpath=(//label[contains(text(),'Initials')])</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementNotPresent</td>
+	<td>xpath=(//label[contains(text(),'First Name')])</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementNotPresent</td>
+	<td>xpath=(//label[contains(text(),'Last Name')])</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=List all Children</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=img[alt=&quot;Update Child&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementNotPresent</td>
+	<td>xpath=(//label[contains(text(),'Initials')])</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementNotPresent</td>
+	<td>xpath=(//label[contains(text(),'First Name')])</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementNotPresent</td>
+	<td>xpath=(//label[contains(text(),'Last Name')])</td>
+	<td></td>
+</tr>
 
 </tbody></table>
 </body>
