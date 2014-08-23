@@ -3,7 +3,10 @@ dojo.require('dijit.form.DateTextBox');
 dojo.require('dijit.form.ValidationTextBox');
 
 dojo.addOnLoad(
-	function(){			
+	function(){		
+		if (dijit.byId("_reporttype_id").value != null) {
+			reportTypeOnChange(dijit.byId("_reporttype_id").value);
+		}
 	}
 );
 
