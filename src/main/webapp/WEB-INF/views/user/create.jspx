@@ -89,6 +89,7 @@
                     <form:select cssStyle="width:250px" id="_country_id" path="country">
                         <form:options itemValue="id" items="${countrys}"/>
                     </form:select>
+                    <form:errors cssClass="errors" id="_password_error_id" path="country"/>
                     <script type="text/javascript">Spring.addDecoration(
                             new Spring.ElementDecoration({
                                 elementId : '_country_id', 
@@ -105,6 +106,7 @@
 	            <form:select cssStyle="width:250px" id="_centre_id" path="centre">
 	                <form:options itemValue="id" items="${diabetescentres}"/>
 	            </form:select>
+	            <form:errors cssClass="errors" id="_password_error_id" path="centre"/>
 	            <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_centre_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
             </div>
             <br/>

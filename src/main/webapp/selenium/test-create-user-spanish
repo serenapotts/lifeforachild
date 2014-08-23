@@ -22,6 +22,11 @@
 	<td></td>
 </tr>
 <tr>
+	<td>type</td>
+	<td>id=_country_id</td>
+	<td>testing${countrynum}</td>
+</tr>
+<tr>
 	<td>click</td>
 	<td>id=_firstName_id</td>
 	<td></td>
@@ -75,11 +80,6 @@
 	<td>type</td>
 	<td>id=_userGroup_id</td>
 	<td>Centro Gestor</td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>id=_country_id</td>
-	<td>testing${countrynum}</td>
 </tr>
 <tr>
 	<td>type</td>
