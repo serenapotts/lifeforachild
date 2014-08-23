@@ -288,10 +288,7 @@ privileged aspect ChildController_Roo_Controller {
     public void ChildController.printForm(ModelMap modelMap, HttpServletRequest request, HttpServletResponse response)
 	{
     	ReportGenerator repGen = new ChildReportGenerator();
-    	repGen.generateExcelReport("List Children", Child.findAllChildren(), new ChildFields[] {}, request, response);
-		//SecurityUtil.getInstance().checkPermission(Permissions.EDIT_CHILD);
-        //modelMap.addAttribute("children", );         
-		//return "child/printList";
+    	repGen.generateExcelReport("List Children", Child.findAllChildren(), new ChildFields[] {ChildFields.ALL}, request, response);
 	}    
     
     @RequestMapping(value = "/child/{id}", method = RequestMethod.DELETE)    
