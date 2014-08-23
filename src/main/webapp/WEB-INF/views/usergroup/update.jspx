@@ -10,13 +10,9 @@
             <form:errors cssClass="errors" delimiter="&lt;p/&gt;"/>
             <div id="roo_userGroup_groupName">
                 <label for="_groupName_id"><spring:message code="usergroup.groupName"/></label>
-                <form:input cssStyle="width:250px" id="_groupName_id" maxlength="30" path="groupName" size="0"/>
-                <br/>
-                <form:errors cssClass="errors" id="_groupName_error_id" path="groupName"/>
-                <spring:message arguments="Group Name" code="field.invalid" var="field_invalid"/>
-                <spring:message code="field.required" var="field_required"/>
-                <spring:message argumentSeparator="," arguments="Group Name,(${field_required})" code="field.simple.validation" var="field_validation"/>
-                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_groupName_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : true}})); </script>
+           		<div class="box" id="_groupName_id">
+                    <c:out value="${userGroup.groupNameAsString}"/>
+                </div>
             </div>
             <br/>
             <div id="roo_userGroup_permissions">
@@ -37,6 +33,7 @@
             <form:hidden id="_version_id" path="version"/>
             <form:hidden id="_isDeleted_id" path="isDeleted"/>
             <form:hidden id="_groupCode_id" path="groupCode"/>
+            <form:hidden id="_groupName_id" path="groupName"/>
         </form:form>
     </div>
 </div>

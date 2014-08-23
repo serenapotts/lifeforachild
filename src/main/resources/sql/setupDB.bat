@@ -21,6 +21,8 @@ mysql -u root life_for_a_child -e "source updates/013_new_reviewed_field.sql"
 mysql -u root life_for_a_child -e "source updates/014_messages.sql"
 mysql -u root life_for_a_child -e "source updates/015_i18n.sql"
 mysql -u root life_for_a_child -e "source updates/015_transcountrymanager.sql"
+mysql -u root life_for_a_child -e "source updates/016_transcountrymanager.sql"
+mysql -u root life_for_a_child -e "source updates/017_usergroupcodes.sql"
 mysql -u root life_for_a_child -e "source updates/triggers.sql"
 
 

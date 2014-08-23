@@ -59,9 +59,9 @@ public class AppContext {
     		if (translatedMessage == null || translatedMessage.isEmpty()) {
     			translatedMessage = message.getEnglish();
     		}
-    		return (translatedMessage == null || translatedMessage.isEmpty()) ? code : translatedMessage;
+    		return (translatedMessage == null || translatedMessage.isEmpty()) ? null : translatedMessage;
     	} else {
-    		return code;
+    		return null;
     	}
     }
     

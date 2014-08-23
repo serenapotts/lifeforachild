@@ -32,7 +32,7 @@
                     <tr>
                         <td>${userGroup.id}</td>
                         <td>
-                            <c:out value="${userGroup.groupName}"/>
+                            <c:out value="${userGroup.groupNameAsString}"/>
                         </td>
                         <td>${fn:length(userGroup.permissions)}</td>
                         <td>

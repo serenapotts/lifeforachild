@@ -10,6 +10,10 @@ import org.springframework.context.i18n.LocaleContextHolder;
 privileged aspect UserGroup_Roo_JavaBean {
     
     public String UserGroup.getGroupName() {      	
+    	return this.groupName;
+    }   
+    
+    public String UserGroup.getGroupNameAsString() {
     	try
     	{
     		return AppContext.getMessage(this.groupName);
@@ -17,8 +21,8 @@ privileged aspect UserGroup_Roo_JavaBean {
     	catch (NoSuchMessageException e)
     	{
     		return this.groupName;
-    	}    	      
-    }    
+    	} 
+    }
     
     public void UserGroup.setGroupName(String groupName) {    
         this.groupName = groupName;        

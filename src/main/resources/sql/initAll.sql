@@ -15,4 +15,5 @@ source updates/013_new_reviewed_field.sql
 source updates/014_messages.sql
 source updates/015_i18n.sql
 source updates/016_transcountrymanager.sql
+source updates/017_usergroupcodes.sql
 source updates/triggers.sql

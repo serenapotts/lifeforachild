@@ -9,7 +9,7 @@
             <div id="roo_userGroup_groupName">
                 <label for="_groupName_id"><spring:message code="usergroup.groupName"/></label>
                 <div class="box" id="_groupName_id">
-                    <c:out value="${userGroup.groupName}"/>
+                    <c:out value="${userGroup.groupNameAsString}"/>
                 </div>
             </div>
             <br/>
