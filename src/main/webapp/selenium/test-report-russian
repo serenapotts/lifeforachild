@@ -11,6 +11,131 @@
 <thead>
 <tr><td rowspan="1" colspan="3">test-report-russian</td></tr>
 </thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/lifeforachild/report/form?lang=ru</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=div.dijitArrowButtonInner</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=_reporttype_id</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=_reporttype_id</td>
+	<td>Все дети исходных данных отчета</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='widget__reporttype_id']/div/div</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=_country_id</td>
+	<td>testing${countrynum}</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=_name_id</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=_name_id</td>
+	<td>russian child baseline</td>
+</tr>
+<tr>
+	<td>removeSelection</td>
+	<td>id=_childfields</td>
+	<td>label=regexp:\s+Недоедание</td>
+</tr>
+<tr>
+	<td>addSelection</td>
+	<td>id=_childfields</td>
+	<td>label=regexp:\sГлюкоза в крови на момент постановки диагноза</td>
+</tr>
+<tr>
+	<td>addSelection</td>
+	<td>id=_childfields</td>
+	<td>label=regexp:\sВесь на момент постановки диагноза</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=_centre_id</td>
+	<td>testing${centrenum}</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=proceed</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyLocation</td>
+	<td>http://localhost:8080/lifeforachild/reportgenerator/*</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=exportExcel</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/lifeforachild/report?size=20</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Поиск по отчётам:</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>xpath=(//input[@value='Обновлять&nbsp;&nbsp;отчёта'])[17]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=proceed</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyLocation</td>
+	<td>http://localhost:8080/lifeforachild/reportgenerator/*</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/lifeforachild/report?size=20</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Поиск по отчётам:</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.image</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=exportExcel</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/lifeforachild/search?lang=en</td>
+	<td></td>
+</tr>
 
 </tbody></table>
 </body>
