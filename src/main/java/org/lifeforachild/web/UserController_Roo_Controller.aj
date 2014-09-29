@@ -37,7 +37,7 @@ privileged aspect UserController_Roo_Controller {
     @RequestMapping(value = "/user", method = RequestMethod.POST)    
     public String UserController.create(@Valid User user, BindingResult result, ModelMap modelMap) {   
     	try {
-    		//SecurityUtil.getInstance().checkPermission(Permissions.USER_ADMIN);
+    		SecurityUtil.getInstance().checkPermission(Permissions.USER_ADMIN);
 	        if (user == null) throw new IllegalArgumentException("A user is required");  
 	        validate(result, user);        
 	        encryptPassword(user);
@@ -66,7 +66,7 @@ privileged aspect UserController_Roo_Controller {
     @RequestMapping(value = "/user/form", method = RequestMethod.GET)    
     public String UserController.createForm(ModelMap modelMap) {
     	try {
-    		//SecurityUtil.getInstance().checkPermission(Permissions.USER_ADMIN);
+    		SecurityUtil.getInstance().checkPermission(Permissions.USER_ADMIN);
 	    	User user = new User();
 	    	user.setIsDeleted(false);
 	    	user.setCreatedOn(new Date());
@@ -93,7 +93,7 @@ privileged aspect UserController_Roo_Controller {
     @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)    
     public String UserController.show(@PathVariable("id") Long id, ModelMap modelMap) {  
     	try {
-    		//SecurityUtil.getInstance().checkPermission(Permissions.USER_ADMIN);
+    		SecurityUtil.getInstance().checkPermission(Permissions.USER_ADMIN);
 	        if (id == null) throw new IllegalArgumentException("An Identifier is required");        
 	        modelMap.addAttribute("user", User.findUser(id, true));        
 	        return "user/show";  
@@ -110,7 +110,7 @@ privileged aspect UserController_Roo_Controller {
     public String UserController.list(@RequestParam(value = "page", required = false) Integer page, 
     		@RequestParam(value = "size", required = false) Integer size, ModelMap modelMap) {    
     	try {
-    		//SecurityUtil.getInstance().checkPermission(Permissions.USER_ADMIN);
+    		SecurityUtil.getInstance().checkPermission(Permissions.USER_ADMIN);
 	        if (page != null || size != null) {        
 	            int sizeNo = size == null ? 10 : size.intValue();            
 	            modelMap.addAttribute("users", User.findUserEntries(page == null ? 0 : (page.intValue() - 1) * sizeNo, sizeNo));            
@@ -132,7 +132,7 @@ privileged aspect UserController_Roo_Controller {
     @RequestMapping(method = RequestMethod.PUT)    
     public String UserController.update(@Valid User user, BindingResult result, ModelMap modelMap) {  
     	try {
-    		//SecurityUtil.getInstance().checkPermission(Permissions.USER_ADMIN);
+    		SecurityUtil.getInstance().checkPermission(Permissions.USER_ADMIN);
 	        if (user == null) throw new IllegalArgumentException("A user is required");  
 	        validate(result, user);
 	        if (result.hasErrors()) {        
@@ -165,7 +165,7 @@ privileged aspect UserController_Roo_Controller {
     @RequestMapping(value = "/user/{id}/form", method = RequestMethod.GET)    
     public String UserController.updateForm(@PathVariable("id") Long id, ModelMap modelMap) {  
     	try {
-    		//SecurityUtil.getInstance().checkPermission(Permissions.USER_ADMIN);
+    		SecurityUtil.getInstance().checkPermission(Permissions.USER_ADMIN);
 	        if (id == null) throw new IllegalArgumentException("An Identifier is required");    
 	        User user = User.findUser(id, true);
 	        if (user.getCreatedOn() == null)	// for backcompatability
@@ -201,7 +201,7 @@ privileged aspect UserController_Roo_Controller {
     									@RequestParam(value = "size", required = false) Integer size) {   
     	try {
 	    	SecurityUtil.getInstance().checkPermission(Permissions.CAN_DELETE);
-	    	//SecurityUtil.getInstance().checkPermission(Permissions.USER_ADMIN);
+	    	SecurityUtil.getInstance().checkPermission(Permissions.USER_ADMIN);
 	    	if (id == null) throw new IllegalArgumentException("An Identifier is required");        
 	        User user = User.findUser(id, true);
 	        user.setIsDeleted(true);
