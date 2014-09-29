@@ -7,6 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.criterion.Disjunction;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
+import org.jfree.util.Log;
 import org.lifeforachild.Util.SecurityUtil;
 import org.lifeforachild.domain.Country;
 import org.lifeforachild.domain.User;
@@ -23,8 +24,10 @@ public class UserQuery extends BaseQuery<User> {
 		Criteria criteria = ((Session)entityManager.getDelegate()).createCriteria(User.class);
 		criteria.add(Restrictions.eq("id", id));
     	Object obj = criteria.uniqueResult();
-    	if (obj == null)
+    	if (obj == null) {
+    		Log.warn(SecurityUtil.getInstance().getCurrentUsername() + " attempted to access user " + id + " without permission ");
     		throw new AccessDeniedException("Denied");
+    	}
     	return (User)obj;
 	}
 	

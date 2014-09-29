@@ -36,15 +36,15 @@ public class WeightSDController
 
                 return (weightSD != null ? DecimalUtil.format(weightSD) : "");
             }
-        }
-        catch (ParseException e)
+        } catch (ParseException e)
         {
         	e.printStackTrace();
-        }
-        catch (NumberFormatException e)
+        } catch (NumberFormatException e)
         {
         	e.printStackTrace();
-        }
+        } catch(Exception e) {
+			e.printStackTrace();
+		}
         return "";
     }
 }

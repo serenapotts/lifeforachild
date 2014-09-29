@@ -20,19 +20,21 @@ public class AgeController {
 	public @ResponseBody String calculateAge(@PathVariable String measureDate, @PathVariable String childId) {
 		
 		try {
-		Child child = Child.findChild(Long.parseLong(childId));
-		if (child != null)
-		{
-			Date dobDate = child.getDateOfBirth();
-			
-			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-			Date measDate = dateFormat.parse(measureDate);
-			
-			// Just after years so daylight saving won't make a huge difference
-			Float calculateAge = ClinicalRecord.calculateAge(measDate, dobDate);
-            return (calculateAge != null ? DecimalUtil.format(calculateAge) : "");
-		}
-		}catch(ParseException e) {
+			Child child = Child.findChild(Long.parseLong(childId));
+			if (child != null)
+			{
+				Date dobDate = child.getDateOfBirth();
+				
+				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+				Date measDate = dateFormat.parse(measureDate);
+				
+				// Just after years so daylight saving won't make a huge difference
+				Float calculateAge = ClinicalRecord.calculateAge(measDate, dobDate);
+	            return (calculateAge != null ? DecimalUtil.format(calculateAge) : "");
+			}
+		} catch(ParseException e) {
+			e.printStackTrace();
+		} catch(Exception e) {
 			e.printStackTrace();
 		}
 		return "";

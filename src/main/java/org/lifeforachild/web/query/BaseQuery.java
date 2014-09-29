@@ -9,6 +9,8 @@ import org.hibernate.Criteria;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
+import org.jfree.util.Log;
+import org.lifeforachild.Util.SecurityUtil;
 import org.lifeforachild.domain.Country;
 import org.lifeforachild.domain.DiabetesCentre;
 import org.springframework.security.access.AccessDeniedException;
@@ -51,9 +53,11 @@ public abstract class BaseQuery<T> {
         Criteria criteria = findByAccessCriteria(entityManager);
     	criteria.add(Restrictions.eq("id", id));
     	Object obj = criteria.uniqueResult();
-    	if (obj == null)
+    	if (obj == null) {
+    		Log.warn(SecurityUtil.getInstance().getCurrentUsername() + " attempted to access object " + id + " without permission ");
     		// no access so throw exception so the user is redirected to the no access page
     		throw new AccessDeniedException("Denied");
+    	}
     	// found so have access and return
     	return obj;
 	}

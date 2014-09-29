@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import org.jfree.util.Log;
 import org.lifeforachild.domain.AllUserDetails;
 import org.lifeforachild.domain.User;
 import org.lifeforachild.domain.UserGroup;
@@ -111,8 +112,10 @@ public class SecurityUtil {
 	public void checkPermission(String permission)
 	{
 		boolean found = hasPermission(permission);
-		if (!found)
+		if (!found) {
+			Log.warn(getCurrentUsername() + " attempted to access resource without permission " + permission);
 			throw new AccessDeniedException("Denied");
+		}
 	}
 	
 	public boolean hasPermission(String permission)

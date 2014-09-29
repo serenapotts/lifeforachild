@@ -3,6 +3,8 @@ package org.lifeforachild.web;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.lifeforachild.domain.Report;
 import org.lifeforachild.web.Report.ChildReportGenerator;
 import org.lifeforachild.web.Report.ReportGenerator;
@@ -22,7 +24,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @Controller
 public class PdfGeneratorController {
-
+	
 	/**
 	 * @param report Report object
 	 * @param modelMap Map to hold servlet information

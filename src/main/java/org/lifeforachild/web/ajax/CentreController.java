@@ -14,16 +14,20 @@ public class CentreController {
 	
 	@RequestMapping("/ajax/centre/{countryId}")
 	public @ResponseBody String calculateAge(@PathVariable String countryId) {
-		
-		Long id = Long.parseLong(countryId);
-		List<DiabetesCentre> centres = DiabetesCentre.findAllDiabetesCentres(true, id);
-		String json = "{identifier: 'id', items: [";
-		for (DiabetesCentre centre: centres)
-		{
-			json += "{id:" + centre.getId() + ", name: '" + centre.getName() + "'},";
-			
+		try {
+			Long id = Long.parseLong(countryId);
+			List<DiabetesCentre> centres = DiabetesCentre.findAllDiabetesCentres(true, id);
+			String json = "{identifier: 'id', items: [";
+			for (DiabetesCentre centre: centres)
+			{
+				json += "{id:" + centre.getId() + ", name: '" + centre.getName() + "'},";
+				
+			}
+			return json.substring(0, json.length() - 1) + "]}"; 
+		} catch(Exception e) {
+			e.printStackTrace();
 		}
-		return json.substring(0, json.length() - 1) + "]}"; 
+		return "";
 	}
 
 }

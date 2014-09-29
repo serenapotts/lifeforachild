@@ -22,11 +22,12 @@ public class BmiController
             Float calculateBMI = ClinicalRecord.calculateBMI(weightKGValue, heightCMValue);
             
             return (calculateBMI != null ? DecimalUtil.format(calculateBMI) : "");
-        }
-        catch (NumberFormatException e)
+        } catch (NumberFormatException e)
         {
         	e.printStackTrace();
-        }
+        } catch(Exception e) {
+			e.printStackTrace();
+		}
         return "";
     }
 }

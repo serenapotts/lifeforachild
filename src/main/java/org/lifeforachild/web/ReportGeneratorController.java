@@ -5,12 +5,17 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.lifeforachild.Util.SecurityUtil;
+import org.lifeforachild.domain.Permissions;
 import org.lifeforachild.domain.Report;
 import org.lifeforachild.domain.ReportProperties;
 import org.lifeforachild.web.Report.ChildReportGenerator;
 import org.lifeforachild.web.Report.ClinicalRecordReportGenerator;
 import org.lifeforachild.web.Report.ReportGenerator;
 import org.lifeforachild.web.Report.enums.ReportType;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,6 +32,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class ReportGeneratorController {
 
+	private static final Log LOG = LogFactory.getLog(ReportGeneratorController.class);
+	
 	/**
 	 * 
 	 * @param id Id of the report to display.
@@ -37,19 +44,28 @@ public class ReportGeneratorController {
 	 */
     @RequestMapping(method = RequestMethod.GET, value = "/reportgenerator/{id}")
     public String get(@PathVariable Long id, ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) {
-    	Report report = Report.findReport(id);
-    	ReportGenerator repGen = ReportGeneratorController.getReportGenerator(report);   		
-    	if (repGen != null)
-    	{
-    		List results = repGen.buildQuery(report);
-    		String html = repGen.generateHtmlReport(report, results, request);
-    		modelMap.addAttribute("html", html);
-    		ReportProperties reportProperties = new ReportProperties();
-    		reportProperties.setId(report.getId());
-    		modelMap.addAttribute("reportProperties", reportProperties);
-	    	return "report/report";
+    	try {
+    		SecurityUtil.getInstance().checkPermission(Permissions.VIEW_REPORT);
+    		Report report = Report.findReport(id);
+	    	ReportGenerator repGen = ReportGeneratorController.getReportGenerator(report);   		
+	    	if (repGen != null)
+	    	{
+	    		List results = repGen.buildQuery(report);
+	    		String html = repGen.generateHtmlReport(report, results, request);
+	    		modelMap.addAttribute("html", html);
+	    		ReportProperties reportProperties = new ReportProperties();
+	    		reportProperties.setId(report.getId());
+	    		modelMap.addAttribute("reportProperties", reportProperties);
+		    	return "report/report";
+	    	}
+	    	return "dataAccessFailure"; 
+    	} catch (AccessDeniedException ade) {
+     		throw ade;
+    	} catch (Exception e) {
+    		LOG.error("Unable to generate html report");
+    		e.printStackTrace();
+    		return "unexpectedError";
     	}
-    	return "dataAccessFailure";    	
     }
     
     public static ReportGenerator getReportGenerator(Report report)

@@ -14,6 +14,7 @@ import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
+import org.jfree.util.Log;
 import org.lifeforachild.Util.SecurityUtil;
 import org.lifeforachild.Util.StringUtil;
 import org.lifeforachild.domain.Child;
@@ -55,8 +56,10 @@ public class ClinicalRecordQuery extends BaseQuery<ClinicalRecord> {
     	Long childId = cr.getChild().getId();
     	ChildQuery childQuery = new ChildQuery();
     	Object child = childQuery.findByAccess(entityManager, childId);
-    	if (child == null)
+    	if (child == null) {
+    		Log.warn(SecurityUtil.getInstance().getCurrentUsername() + " attempted to access clinical record " + id + " without permission ");
     		throw new AccessDeniedException("Denied");
+    	}
     	return cr;
 	}
 	

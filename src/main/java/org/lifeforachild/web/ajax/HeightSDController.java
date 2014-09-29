@@ -36,15 +36,15 @@ public class HeightSDController
 
                 return (heightSD != null ? DecimalUtil.format(heightSD) : "");
             }
-        }
-        catch (ParseException e)
+        } catch (ParseException e)
         {
         	e.printStackTrace();
-        }
-        catch (NumberFormatException e)
+        } catch (NumberFormatException e)
         {
         	e.printStackTrace();
-        }
+        } catch(Exception e) {
+			e.printStackTrace();
+		}
         return "";
     }
 }

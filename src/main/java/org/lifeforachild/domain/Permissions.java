@@ -14,6 +14,7 @@ import org.springframework.roo.addon.entity.RooEntity;
 public class Permissions {
 	
 	public static final String EDIT_CHILD = "EDIT_CHILD";
+	public static final String CAN_DELETE = "CAN_DELETE";
 	public static final String CREATE_CHILD = "CREATE_CHILD";
 	public static final String CREATE_RECORD = "CREATE_RECORD";
 	public static final String EDIT_RECORD = "EDIT_RECORD";
@@ -25,6 +26,9 @@ public class Permissions {
 	public static final String EDIT_REPORT = "EDIT_REPORT";
 	public static final String CREATE_REPORT = "CREATE_REPORT";	
 	public static final String VIEW_CHILD_NAME = "VIEW_CHILD_NAME";
+	public static final String USER_ADMIN = "USER_ADMIN";
+	public static final String USER_GROUP_ADMIN = "USER_GROUP_ADMIN";
+	public static final String EDIT_TRANSLATIONS = "EDIT_TRANSLATIONS";
 	
 	@NotNull
 	String name;
