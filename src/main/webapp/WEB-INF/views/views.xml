@@ -18,6 +18,10 @@
 		<put-attribute name="body" value="/WEB-INF/views/accessDenied.jspx"/>
 	</definition>	
 	
+	<definition extends="default" name="unexpectedError">
+		<put-attribute name="body" value="/WEB-INF/views/unexpectedError.jspx"/>
+	</definition>
+	
 	<definition extends="public" name="dataAccessFailure">
 		<put-attribute name="body" value="/WEB-INF/views/dataAccessFailure.jspx"/>
 	</definition>
