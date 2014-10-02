@@ -168,7 +168,7 @@ public abstract class ReportGenerator {
         outputProcessed = processOutput(outputType);  
 		//Obtain the JasperPrint instance with a ClassicLayoutManager
         JRDataSource ds = new JRBeanCollectionDataSource(results);
-
+                                                                                                                                                                                                                                                                                                                                       
         JasperPrint jp = DynamicJasperHelper.generateJasperPrint(dr, outputProcessed.layoutManager, ds);
         return jp;
 	}
@@ -197,6 +197,7 @@ public abstract class ReportGenerator {
             result.exporter.setParameter(JRXlsExporterParameter.IS_ONE_PAGE_PER_SHEET, Boolean.FALSE);
             result.exporter.setParameter(JRXlsExporterParameter.IS_WHITE_PAGE_BACKGROUND, Boolean.FALSE);
             result.exporter.setParameter(JRXlsExporterParameter.IS_REMOVE_EMPTY_SPACE_BETWEEN_ROWS, Boolean.TRUE);
+            result.exporter.setParameter(JRXlsExporterParameter.IS_DETECT_CELL_TYPE, Boolean.TRUE);
             result.layoutManager = new ClassicLayoutManager();
         } else if (output.equals(OutputType.EXCEL_PLAIN)) {
             result.contentType = "application/vnd.ms-excel";
@@ -204,6 +205,7 @@ public abstract class ReportGenerator {
             result.exporter.setParameter(JRXlsExporterParameter.IS_ONE_PAGE_PER_SHEET, Boolean.FALSE);
             result.exporter.setParameter(JRXlsExporterParameter.IS_WHITE_PAGE_BACKGROUND, Boolean.FALSE);
             result.exporter.setParameter(JRXlsExporterParameter.IS_REMOVE_EMPTY_SPACE_BETWEEN_ROWS, Boolean.TRUE);
+            result.exporter.setParameter(JRXlsExporterParameter.IS_DETECT_CELL_TYPE, Boolean.TRUE);
             result.layoutManager = new ListLayoutManager();
         } else {
             result.contentType = "application/rtf";
@@ -222,6 +224,7 @@ public abstract class ReportGenerator {
     {       
         DynamicReportBuilder drb = new DynamicReportBuilder();
         drb.setPrintBackgroundOnOddRows(true); 
+        drb.setWhenNoDataAllSectionNoDetail();
         if ( outputType.equals(OutputType.EXCEL) || outputType.equals(OutputType.EXCEL_PLAIN) ) {
         	drb.setIgnorePagination(true);
         	drb.setMargins(0, 0, 0, 0);

@@ -50,9 +50,6 @@ public class ReportGeneratorController {
 	    	ReportGenerator repGen = ReportGeneratorController.getReportGenerator(report);   		
 	    	if (repGen != null)
 	    	{
-	    		List results = repGen.buildQuery(report);
-	    		String html = repGen.generateHtmlReport(report, results, request);
-	    		modelMap.addAttribute("html", html);
 	    		ReportProperties reportProperties = new ReportProperties();
 	    		reportProperties.setId(report.getId());
 	    		modelMap.addAttribute("reportProperties", reportProperties);
