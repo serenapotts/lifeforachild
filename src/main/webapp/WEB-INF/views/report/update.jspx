@@ -67,7 +67,7 @@
             <br/>
             <div id="roo_report_name" style="display:none">
                 <label for="_name_id"><spring:message code="report.name"/></label>
-                <form:input cssStyle="width:350px" id="_name_id" maxlength="30" path="name" size="0"/>
+                <form:input cssStyle="width:350px" id="_name_id" maxlength="60" path="name" size="0"/>
                 <br/>
                 <form:errors cssClass="errors" id="_name_error_id" path="name"/>
                 <spring:message arguments="name" code="field.invalid" var="field_invalid"/>
