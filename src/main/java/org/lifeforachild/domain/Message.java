@@ -40,7 +40,7 @@ public class Message {
     @Size(max = 512)
     private String french;
     
-    @Size(max = 255)
+    @Size(max = 512)
     private String spanish;
     
     @Size(max = 512)
