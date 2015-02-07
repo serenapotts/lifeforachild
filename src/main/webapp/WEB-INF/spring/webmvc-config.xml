@@ -49,7 +49,7 @@
 		resource bundle localizes all application specific messages such as entity names and menu items. -->
 	<bean class="org.springframework.context.support.ReloadableResourceBundleMessageSource" id="propertiesMessageSource" p:basenames="WEB-INF/i18n/messages,WEB-INF/i18n/application" p:fallbackToSystemLocale="false"/>
 	
-	<bean id="messageSource" class="org.lifeforachild.Util.DatabaseMessageSource">
+	<bean id="messageSource" class="org.lifeforachild.util.DatabaseMessageSource">
         <property name="parentMessageSource" ref="propertiesMessageSource"/>
     </bean>
     
