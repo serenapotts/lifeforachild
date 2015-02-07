@@ -4,6 +4,7 @@ Setup dev environment on mac
 1. Download and install Springsource Tool Suite (STS) latest version
 2. Download and install msql community server 5.5.x dmg file
 3. Download and unzip/install Tomcat 8.0
+3a. Download and install maven as per instructions on download page
 4. Checkout code from github
 5. Open STS
 6. File --> Import
