@@ -1,4 +1,4 @@
-package org.lifeforachild.web.Report.enums;
+package org.lifeforachild.web.report.enums;
 
 import org.lifeforachild.web.AppContext;
 import org.springframework.context.i18n.LocaleContextHolder;

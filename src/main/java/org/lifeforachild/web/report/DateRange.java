@@ -1,4 +1,4 @@
-package org.lifeforachild.web.Report;
+package org.lifeforachild.web.report;
 
 import java.util.Date;
 

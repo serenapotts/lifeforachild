@@ -3,7 +3,7 @@ package org.lifeforachild.web.validation;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.lifeforachild.Util.SecurityUtil;
+import org.lifeforachild.util.SecurityUtil;
 import org.lifeforachild.domain.User;
 import org.lifeforachild.domain.UserGroup;
 import org.lifeforachild.enums.UserGroups;

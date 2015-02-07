@@ -1,10 +1,10 @@
-package org.lifeforachild.web.Report.enums;
+package org.lifeforachild.web.report.enums;
 
 import java.util.Calendar;
 import java.util.Date;
 
 import org.lifeforachild.web.AppContext;
-import org.lifeforachild.web.Report.DateRange;
+import org.lifeforachild.web.report.DateRange;
 import org.springframework.context.i18n.LocaleContextHolder;
 
 /**

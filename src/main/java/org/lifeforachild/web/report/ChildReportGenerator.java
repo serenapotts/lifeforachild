@@ -1,9 +1,9 @@
-package org.lifeforachild.web.Report;
+package org.lifeforachild.web.report;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.lifeforachild.Util.SecurityUtil;
+import org.lifeforachild.util.SecurityUtil;
 import org.lifeforachild.domain.Child;
 import org.lifeforachild.domain.Permissions;
 import org.lifeforachild.domain.Report;
@@ -19,7 +19,7 @@ import org.lifeforachild.enums.SurvivalStatusType;
 import org.lifeforachild.enums.YesNoUnkownType;
 import org.lifeforachild.enums.YesUnknownType;
 import org.lifeforachild.web.AppContext;
-import org.lifeforachild.web.Report.enums.ChildFields;
+import org.lifeforachild.web.report.enums.ChildFields;
 import org.lifeforachild.web.query.ChildQuery;
 import org.springframework.context.i18n.LocaleContextHolder;
 

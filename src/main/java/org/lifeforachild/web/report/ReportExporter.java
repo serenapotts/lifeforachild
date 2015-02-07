@@ -1,4 +1,4 @@
-package org.lifeforachild.web.Report;
+package org.lifeforachild.web.report;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
@@ -14,7 +14,7 @@ import net.sf.jasperreports.engine.JasperPrint;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.lifeforachild.web.Report.ReportGenerator.OutputProcessed;
+import org.lifeforachild.web.report.ReportGenerator.OutputProcessed;
 
 public class ReportExporter {
 	/**

@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.lifeforachild.domain.Report;
-import org.lifeforachild.web.Report.ReportGenerator;
+import org.lifeforachild.web.report.ReportGenerator;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

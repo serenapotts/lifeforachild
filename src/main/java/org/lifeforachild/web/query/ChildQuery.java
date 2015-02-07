@@ -13,7 +13,7 @@ import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.criterion.Subqueries;
-import org.lifeforachild.Util.StringUtil;
+import org.lifeforachild.util.StringUtil;
 import org.lifeforachild.domain.Child;
 import org.lifeforachild.domain.ClinicalRecord;
 import org.lifeforachild.domain.Country;
@@ -22,8 +22,8 @@ import org.lifeforachild.domain.Report;
 import org.lifeforachild.domain.Search;
 import org.lifeforachild.enums.ShowOptionType;
 import org.lifeforachild.security.SimpleStringCipher;
-import org.lifeforachild.web.Report.enums.StatusType;
-import org.lifeforachild.web.Report.enums.TimePeriodUnit;
+import org.lifeforachild.web.report.enums.StatusType;
+import org.lifeforachild.web.report.enums.TimePeriodUnit;
 
 public class ChildQuery extends BaseQuery<Child> {
 

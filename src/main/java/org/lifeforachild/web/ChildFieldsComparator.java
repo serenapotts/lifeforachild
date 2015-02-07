@@ -2,7 +2,7 @@ package org.lifeforachild.web;
 
 import java.util.Comparator;
 
-import org.lifeforachild.web.Report.enums.ChildFields;
+import org.lifeforachild.web.report.enums.ChildFields;
 
 public class ChildFieldsComparator implements Comparator<ChildFields> {
 

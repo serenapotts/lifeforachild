@@ -1,6 +1,6 @@
 package org.lifeforachild.web.ajax;
 
-import org.lifeforachild.Util.DecimalUtil;
+import org.lifeforachild.util.DecimalUtil;
 import org.lifeforachild.domain.ClinicalRecord;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;

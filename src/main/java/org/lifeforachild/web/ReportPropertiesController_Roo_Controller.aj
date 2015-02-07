@@ -7,10 +7,10 @@ import javax.validation.Valid;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.lifeforachild.Util.SecurityUtil;
+import org.lifeforachild.util.SecurityUtil;
 import org.lifeforachild.domain.Permissions;
 import org.lifeforachild.domain.ReportProperties;
-import org.lifeforachild.web.Report.enums.ReportType;
+import org.lifeforachild.web.report.enums.ReportType;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;

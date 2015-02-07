@@ -1,4 +1,4 @@
-package org.lifeforachild.Util;
+package org.lifeforachild.util;
 
 import java.io.BufferedReader;
 import java.io.DataInputStream;

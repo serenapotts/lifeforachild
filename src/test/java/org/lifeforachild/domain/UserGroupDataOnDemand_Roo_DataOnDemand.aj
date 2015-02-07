@@ -13,7 +13,7 @@ import java.util.Random;
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 
-import org.lifeforachild.Util.SecurityUtil;
+import org.lifeforachild.util.SecurityUtil;
 import org.lifeforachild.domain.UserGroup;
 import org.lifeforachild.util.TestUtil;
 import org.springframework.stereotype.Component;

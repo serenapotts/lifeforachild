@@ -15,16 +15,16 @@ import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.jfree.util.Log;
-import org.lifeforachild.Util.SecurityUtil;
-import org.lifeforachild.Util.StringUtil;
+import org.lifeforachild.util.SecurityUtil;
+import org.lifeforachild.util.StringUtil;
 import org.lifeforachild.domain.Child;
 import org.lifeforachild.domain.ClinicalRecord;
 import org.lifeforachild.domain.Country;
 import org.lifeforachild.domain.DiabetesCentre;
 import org.lifeforachild.domain.Report;
 import org.lifeforachild.security.SimpleStringCipher;
-import org.lifeforachild.web.Report.DateRange;
-import org.lifeforachild.web.Report.enums.TimePeriodUnit;
+import org.lifeforachild.web.report.DateRange;
+import org.lifeforachild.web.report.enums.TimePeriodUnit;
 import org.springframework.security.access.AccessDeniedException;
 
 /**

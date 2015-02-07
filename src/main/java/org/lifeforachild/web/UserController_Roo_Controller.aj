@@ -10,14 +10,14 @@ import javax.validation.Valid;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.lifeforachild.Util.SecurityUtil;
+import org.lifeforachild.util.SecurityUtil;
 import org.lifeforachild.domain.Country;
 import org.lifeforachild.domain.DiabetesCentre;
 import org.lifeforachild.domain.Permissions;
 import org.lifeforachild.domain.User;
 import org.lifeforachild.domain.UserGroup;
-import org.lifeforachild.web.Report.ReportGenerator;
-import org.lifeforachild.web.Report.UserReportGenerator;
+import org.lifeforachild.web.report.ReportGenerator;
+import org.lifeforachild.web.report.UserReportGenerator;
 import org.lifeforachild.web.validation.UserValidator;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.authentication.encoding.ShaPasswordEncoder;

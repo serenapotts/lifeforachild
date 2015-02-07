@@ -1,4 +1,4 @@
-package org.lifeforachild.web.Report;
+package org.lifeforachild.web.report;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.StringTokenizer;
 
 import javax.persistence.EntityManager;
 
-import org.lifeforachild.Util.SecurityUtil;
+import org.lifeforachild.util.SecurityUtil;
 import org.lifeforachild.domain.ClinicalRecord;
 import org.lifeforachild.domain.Permissions;
 import org.lifeforachild.domain.Report;
@@ -23,8 +23,8 @@ import org.lifeforachild.enums.YesNoLaterType;
 import org.lifeforachild.enums.YesNoType;
 import org.lifeforachild.enums.YesNoUnkownType;
 import org.lifeforachild.web.AppContext;
-import org.lifeforachild.web.Report.enums.ChildFields;
-import org.lifeforachild.web.Report.enums.ClinicalRecordFields;
+import org.lifeforachild.web.report.enums.ChildFields;
+import org.lifeforachild.web.report.enums.ClinicalRecordFields;
 import org.lifeforachild.web.query.ClinicalRecordQuery;
 
 import ar.com.fdvs.dj.domain.builders.ColumnBuilderException;

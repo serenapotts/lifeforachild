@@ -18,7 +18,7 @@ import javax.validation.constraints.Size;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.lifeforachild.Util.DecimalUtil;
+import org.lifeforachild.util.DecimalUtil;
 import org.lifeforachild.enums.CreatineUnitsType;
 import org.lifeforachild.enums.DiabetesCopingType;
 import org.lifeforachild.enums.HbA1cMethodType;

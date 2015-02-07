@@ -1,4 +1,4 @@
-package org.lifeforachild.Util;
+package org.lifeforachild.util;
 
 import java.util.Collections;
 import java.util.Enumeration;

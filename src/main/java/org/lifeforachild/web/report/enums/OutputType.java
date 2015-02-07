@@ -1,4 +1,4 @@
-package org.lifeforachild.web.Report.enums;
+package org.lifeforachild.web.report.enums;
 
 import org.lifeforachild.domain.Report;
 

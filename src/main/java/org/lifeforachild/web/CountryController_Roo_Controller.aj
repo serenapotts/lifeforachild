@@ -9,11 +9,11 @@ import javax.validation.Valid;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.lifeforachild.Util.SecurityUtil;
+import org.lifeforachild.util.SecurityUtil;
 import org.lifeforachild.domain.Country;
 import org.lifeforachild.domain.Permissions;
-import org.lifeforachild.web.Report.CountryReportGenerator;
-import org.lifeforachild.web.Report.ReportGenerator;
+import org.lifeforachild.web.report.CountryReportGenerator;
+import org.lifeforachild.web.report.ReportGenerator;
 import org.lifeforachild.web.validation.CountryValidator;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.ui.ModelMap;

@@ -23,11 +23,11 @@ import org.lifeforachild.domain.User;
 import org.lifeforachild.domain.UserDataOnDemand;
 import org.lifeforachild.enums.ShowOptionType;
 import org.lifeforachild.util.TestUtil;
-import org.lifeforachild.web.Report.enums.ChildFields;
-import org.lifeforachild.web.Report.enums.ClinicalRecordFields;
-import org.lifeforachild.web.Report.enums.ReportType;
-import org.lifeforachild.web.Report.enums.StatusType;
-import org.lifeforachild.web.Report.enums.TimePeriodUnit;
+import org.lifeforachild.web.report.enums.ChildFields;
+import org.lifeforachild.web.report.enums.ClinicalRecordFields;
+import org.lifeforachild.web.report.enums.ReportType;
+import org.lifeforachild.web.report.enums.StatusType;
+import org.lifeforachild.web.report.enums.TimePeriodUnit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

@@ -5,10 +5,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.lifeforachild.domain.ClinicalRecord;
 import org.lifeforachild.domain.Report;
-import org.lifeforachild.web.Report.ChildReportGenerator;
-import org.lifeforachild.web.Report.ReportGenerator;
-import org.lifeforachild.web.Report.enums.ClinicalRecordFields;
-import org.lifeforachild.web.Report.enums.ReportType;
+import org.lifeforachild.web.report.ChildReportGenerator;
+import org.lifeforachild.web.report.ReportGenerator;
+import org.lifeforachild.web.report.enums.ClinicalRecordFields;
+import org.lifeforachild.web.report.enums.ReportType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;

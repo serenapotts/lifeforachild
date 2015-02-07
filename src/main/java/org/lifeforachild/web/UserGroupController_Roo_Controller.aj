@@ -6,11 +6,11 @@ import javax.validation.Valid;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.lifeforachild.Util.SecurityUtil;
+import org.lifeforachild.util.SecurityUtil;
 import org.lifeforachild.domain.Permissions;
 import org.lifeforachild.domain.UserGroup;
-import org.lifeforachild.web.Report.ReportGenerator;
-import org.lifeforachild.web.Report.UserGroupReportGenerator;
+import org.lifeforachild.web.report.ReportGenerator;
+import org.lifeforachild.web.report.UserGroupReportGenerator;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;

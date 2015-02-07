@@ -1,4 +1,4 @@
-package org.lifeforachild.web.Report;
+package org.lifeforachild.web.report;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
@@ -23,7 +23,7 @@ import net.sf.jasperreports.engine.export.JRXlsExporter;
 import net.sf.jasperreports.engine.export.JRXlsExporterParameter;
 
 import org.lifeforachild.domain.Report;
-import org.lifeforachild.web.Report.enums.OutputType;
+import org.lifeforachild.web.report.enums.OutputType;
 
 import ar.com.fdvs.dj.core.DynamicJasperHelper;
 import ar.com.fdvs.dj.core.layout.AbstractLayoutManager;

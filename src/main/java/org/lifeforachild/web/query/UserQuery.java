@@ -8,7 +8,7 @@ import org.hibernate.criterion.Disjunction;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.jfree.util.Log;
-import org.lifeforachild.Util.SecurityUtil;
+import org.lifeforachild.util.SecurityUtil;
 import org.lifeforachild.domain.Country;
 import org.lifeforachild.domain.User;
 import org.lifeforachild.domain.UserGroup;

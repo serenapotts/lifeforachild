@@ -1,7 +1,7 @@
 package org.lifeforachild.domain;
 
-import org.lifeforachild.web.Report.enums.ReportType;
-import org.lifeforachild.web.Report.enums.TimePeriodUnit;
+import org.lifeforachild.web.report.enums.ReportType;
+import org.lifeforachild.web.report.enums.TimePeriodUnit;
 
 
 public class Search {

@@ -1,4 +1,4 @@
-package org.lifeforachild.Util;
+package org.lifeforachild.util;
 
 import java.io.File;
 import java.io.FileInputStream;

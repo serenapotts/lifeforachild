@@ -1,7 +1,7 @@
 package org.lifeforachild.util;
 
 import org.junit.Ignore;
-import org.lifeforachild.Util.SecurityUtil;
+import org.lifeforachild.util.SecurityUtil;
 import org.lifeforachild.domain.User;
 import org.lifeforachild.domain.UserGroup;
 

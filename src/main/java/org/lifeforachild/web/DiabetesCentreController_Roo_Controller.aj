@@ -9,12 +9,12 @@ import javax.validation.Valid;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.lifeforachild.Util.SecurityUtil;
+import org.lifeforachild.util.SecurityUtil;
 import org.lifeforachild.domain.Country;
 import org.lifeforachild.domain.DiabetesCentre;
 import org.lifeforachild.domain.Permissions;
-import org.lifeforachild.web.Report.DiabetesCentreReportGenerator;
-import org.lifeforachild.web.Report.ReportGenerator;
+import org.lifeforachild.web.report.DiabetesCentreReportGenerator;
+import org.lifeforachild.web.report.ReportGenerator;
 import org.lifeforachild.web.validation.DiabetesCentreValidator;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.ui.ModelMap;

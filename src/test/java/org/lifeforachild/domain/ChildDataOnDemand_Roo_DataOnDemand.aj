@@ -17,7 +17,7 @@ import java.util.Random;
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 
-import org.lifeforachild.Util.SecurityUtil;
+import org.lifeforachild.util.SecurityUtil;
 import org.lifeforachild.domain.Child;
 import org.lifeforachild.domain.Country;
 import org.lifeforachild.domain.DiabetesCentre;
