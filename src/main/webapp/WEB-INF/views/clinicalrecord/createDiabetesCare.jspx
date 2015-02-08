@@ -1,0 +1,233 @@
+<div id="diabetesCare"
+	 xmlns:c="http://java.sun.com/jsp/jstl/core" 
+	 xmlns:sec="http://www.springframework.org/security/tags" 
+	 xmlns:form="http://www.springframework.org/tags/form" 
+	 xmlns:jsp="http://java.sun.com/JSP/Page" 
+	 xmlns:spring="http://www.springframework.org/tags">               
+       <div id="roo_clinicalRecord_bloodGlucoseSelfMonitoringPerWeek">
+           <label for="_bloodGlucoseSelfMonitoringPerWeek_id"><spring:message code="record.bloodGlucose"/></label>
+           <form:input cssStyle="width:250px" id="_bloodGlucoseSelfMonitoringPerWeek_id" maxlength="30" path="bloodGlucoseSelfMonitoringPerWeek" size="0"/>
+           <br/>
+           <form:errors cssClass="errors" id="_bloodGlucoseSelfMonitoringPerWeek_error_id" path="bloodGlucoseSelfMonitoringPerWeek"/>
+           <spring:message code="field.invalid.integer" var="field_invalid"/>
+           <spring:message code="field.required" var="field_required"/>
+           <spring:message argumentSeparator="," arguments="Blood Glucose Self Monitoring Per Week,(${field_required})" code="field.simple.validation" var="field_validation"/>
+           <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_bloodGlucoseSelfMonitoringPerWeek_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', regExp: '-?[0-9]*'}})); </script>
+           <spring:bind path="clinicalRecord.bloodGlucoseSelfMonitoringPerWeek"><c:if test="${status.error}"><script type="text/javascript">diabetesCareHasError = true;</script></c:if></spring:bind>
+       </div>
+       <br/>
+       <div id="roo_clinicalRecord_urineGlucoseSelfMonitoringPerWeek">
+           <label for="_urineGlucoseSelfMonitoringPerWeek_id"><spring:message code="record.urineGlucose"/></label>
+           <form:input cssStyle="width:250px" id="_urineGlucoseSelfMonitoringPerWeek_id" maxlength="30" path="urineGlucoseSelfMonitoringPerWeek" size="0"/>
+           <br/>
+           <form:errors cssClass="errors" id="_urineGlucoseSelfMonitoringPerWeek_error_id" path="urineGlucoseSelfMonitoringPerWeek"/>
+           <spring:message code="field.invalid.integer" var="field_invalid"/>
+           <spring:message code="field.required" var="field_required"/>
+           <spring:message argumentSeparator="," arguments="Urine Glucose Self Monitoring Per Week,(${field_required})" code="field.simple.validation" var="field_validation"/>
+           <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_urineGlucoseSelfMonitoringPerWeek_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', regExp: '-?[0-9]*'}})); </script>
+           <spring:bind path="clinicalRecord.urineGlucoseSelfMonitoringPerWeek"><c:if test="${status.error}"><script type="text/javascript">diabetesCareHasError = true;</script></c:if></spring:bind>
+       </div>
+       <br/>
+       <div id="roo_clinicalRecord_insulinUnitsPerDay">
+           <label for="_insulinUnitsPerDay_id"><spring:message code="record.insulinPerDay"/></label>
+           <form:input cssStyle="width:250px" id="_insulinUnitsPerDay_id" maxlength="30" path="insulinUnitsPerDay" size="0"/>
+           <br/>
+           <form:errors cssClass="errors" id="_insulinUnitsPerDay_error_id" path="insulinUnitsPerDay"/>
+           <spring:message code="field.invalid.integer" var="field_invalid"/>
+           <spring:message code="field.required" var="field_required"/>
+           <spring:message argumentSeparator="," arguments="Insulin Units Per Day (0-200),(${field_required})" code="field.simple.validation" var="field_validation"/>
+           <script type="text/javascript">
+               Spring.addDecoration(new Spring.ElementDecoration({
+                   elementId : '_insulinUnitsPerDay_id', 
+                   widgetType : 'dijit.form.ValidationTextBox', 
+                   widgetAttrs : {promptMessage: '${field_validation}', 
+                                  invalidMessage: '${field_invalid}', 
+                                  regExp: '-?[0-9]*',
+                                  intermediateChanges : true,
+                                  onChange : updateInsulinUnitsPerDayFromCreate                                      
+                                  }}));
+           </script>
+           <spring:bind path="clinicalRecord.insulinUnitsPerDay"><c:if test="${status.error}"><script type="text/javascript">diabetesCareHasError = true;</script></c:if></spring:bind>
+       </div>
+       <br/>
+       <div id="roo_clinicalRecord_adjustInsulinDoseIfNeeded">
+           <label for="_adjustInsulinDoseIfNeeded_id"><spring:message code="record.whoAdjustsInsulinDose"/></label>
+           <form:select cssStyle="width:250px" id="_adjustInsulinDoseIfNeeded_id" path="adjustInsulinDoseIfNeeded">
+<form:option value=""></form:option>
+           	<form:options items="${whoAdjustsInsulinType_enum}" itemLabel="label"/>
+           </form:select>                
+           <br/>
+           <form:errors cssClass="errors" id="_adjustInsulinDoseIfNeeded_error_id" path="adjustInsulinDoseIfNeeded"/>
+           <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_adjustInsulinDoseIfNeeded_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
+           <spring:bind path="clinicalRecord.adjustInsulinDoseIfNeeded"><c:if test="${status.error}"><script type="text/javascript">diabetesCareHasError = true;</script></c:if></spring:bind>
+		<br/>  
+       </div>   
+       <script type="text/javascript">Spring.addDecoration(
+               new Spring.ElementDecoration({
+                   elementId : 'roo_clinicalRecord_adjustInsulinDoseIfNeeded', 
+                   widgetType: 'dijit.layout.ContentPane'})); 
+       </script>          
+       <div id="roo_clinicalRecord_numberOfInsulinInjectionsPerDay">
+           <label for="_numberOfInsulinInjectionsPerDay_id"><spring:message code="record.numInjections"/></label>
+           <form:input cssStyle="width:250px" id="_numberOfInsulinInjectionsPerDay_id" maxlength="30" path="numberOfInsulinInjectionsPerDay" size="0"/>
+           <br/>
+           <form:errors cssClass="errors" id="_numberOfInsulinInjectionsPerDay_error_id" path="numberOfInsulinInjectionsPerDay"/>
+           <spring:message code="field.invalid.integer" var="field_invalid"/>
+           <spring:message code="field.required" var="field_required"/>
+           <spring:message argumentSeparator="," arguments="Number Of Insulin Injections Per Day," code="field.simple.validation" var="field_validation"/>
+           <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_numberOfInsulinInjectionsPerDay_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', regExp: '-?[0-9]*', required : false}})); </script>
+       	<br/>                  
+       </div>      
+       <div id="roo_clinicalRecord_longActingHuman">
+           <label for="_longActingHuman_id"><spring:message code="record.longActingHuman"/></label>
+           <form:select cssStyle="width:250px" id="_longActingHuman_id" path="longActingHuman">
+           	<form:option value=""></form:option>
+           	<form:options items="${yesnotype_enum}" itemLabel="label"/>
+           </form:select>
+           <br/>
+           <form:errors cssClass="errors" id="_longActingHuman_error_id" path="longActingHuman"/>
+           <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_longActingHuman_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
+           <spring:bind path="clinicalRecord.longActingHuman"><c:if test="${status.error}"><script type="text/javascript">diabetesCareHasError = true;</script></c:if></spring:bind>
+       </div>
+       <br/>
+       <div id="roo_clinicalRecord_shortActingHuman">
+           <label for="_shortActingHuman_id"><spring:message code="record.shortActingHuman"/></label>
+           <form:select cssStyle="width:250px" id="_shortActingHuman_id" path="shortActingHuman">
+<form:option value=""></form:option>
+           	<form:options items="${yesnotype_enum}" itemLabel="label"/>
+           </form:select>                
+           <br/>
+           <form:errors cssClass="errors" id="_shortActingHuman_error_id" path="shortActingHuman"/>
+           <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_shortActingHuman_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
+           <spring:bind path="clinicalRecord.shortActingHuman"><c:if test="${status.error}"><script type="text/javascript">diabetesCareHasError = true;</script></c:if></spring:bind>
+       </div>
+       <br/>
+       <div id="roo_clinicalRecord_analog">
+           <label for="_analog_id"><spring:message code="record.analog"/></label>
+           <form:select cssStyle="width:250px" id="_analog_id" path="analog">
+<form:option value=""></form:option>
+           	<form:options items="${yesnotype_enum}" itemLabel="label"/>
+           </form:select>                 
+           <br/>
+           <form:errors cssClass="errors" id="_analog_error_id" path="analog"/>
+           <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_analog_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
+           <spring:bind path="clinicalRecord.analog"><c:if test="${status.error}"><script type="text/javascript">diabetesCareHasError = true;</script></c:if></spring:bind>
+       </div>
+       <br/>
+       <div id="roo_clinicalRecord_oralAgents">
+           <label for="_oralAgents_id"><spring:message code="record.oralAgents"/></label>
+           <form:select cssStyle="width:250px" id="_oralAgents_id" path="oralAgents">
+<form:option value=""></form:option>
+           	<form:options items="${yesnotype_enum}" itemLabel="label"/>
+           </form:select>                 
+           <br/>
+           <form:errors cssClass="errors" id="_oralAgents_error_id" path="oralAgents"/>
+           <spring:bind path="clinicalRecord.oralAgents"><c:if test="${status.error}"><script type="text/javascript">diabetesCareHasError = true;</script></c:if></spring:bind>                
+           <script type="text/javascript">Spring.addDecoration(
+                   new Spring.ElementDecoration({
+                       elementId : '_oralAgents_id', 
+                       widgetType: 'dijit.form.FilteringSelect', 
+                       widgetAttrs : {hasDownArrow : true,
+                       onChange : oralAgentsOnChange
+           		}
+           	})); 
+           </script>
+       </div>
+       <br/>
+       <div id="roo_clinicalRecord_oralAgentsDescription">
+           <label for="_oralAgentsDescription_id"><spring:message code="record.oralAgents.decription"/></label>
+           <form:textarea cssStyle="width:250px" id="_oralAgentsDescription_id" path="oralAgentsDescription"/>
+           <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_oralAgentsDescription_id', widgetType: 'dijit.form.SimpleTextarea', widgetAttrs: {}})); </script>
+           <br/>               
+           <form:errors cssClass="errors" id="_oralAgentsDescription_error_id" path="oralAgentsDescription"/>
+           <br/>
+       </div>
+       <script type="text/javascript">Spring.addDecoration(
+               new Spring.ElementDecoration({
+                   elementId : 'roo_clinicalRecord_oralAgentsDescription', 
+                   widgetType: 'dijit.layout.ContentPane'})); 
+       </script>              
+       <div id="roo_clinicalRecord_routineClinicReviewsLastYear">
+           <label for="_routineClinicReviewsLastYear_id"><spring:message code="record.clinicReviews"/></label>
+           <form:input cssStyle="width:250px" id="_routineClinicReviewsLastYear_id" maxlength="30" path="routineClinicReviewsLastYear" size="0"/>
+           <br/>
+           <form:errors cssClass="errors" id="_routineClinicReviewsLastYear_error_id" path="routineClinicReviewsLastYear"/>
+           <spring:message code="field.invalid.integer" var="field_invalid"/>
+           <spring:message code="field.required" var="field_required"/>
+           <spring:message argumentSeparator="," arguments="Routine Clinic Reviews Last Year,(${field_required})" code="field.simple.validation" var="field_validation"/>
+           <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_routineClinicReviewsLastYear_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', regExp: '-?[0-9]*'}})); </script>
+       </div>
+       <br/>
+       <div id="roo_clinicalRecord_bpMedications">
+           <label for="_bpMedications_id"><spring:message code="record.bpMedications"/></label>
+           <form:select cssStyle="width:250px" id="_bpMedications_id" path="bpMedications">
+<form:option value=""></form:option>
+           	<form:options items="${yesnotype_enum}" itemLabel="label"/>
+           </form:select>                 
+           <br/>
+           <form:errors cssClass="errors" id="_bpMedications_error_id" path="bpMedications"/>
+           <spring:bind path="clinicalRecord.bpMedications"><c:if test="${status.error}"><script type="text/javascript">diabetesCareHasError = true;</script></c:if></spring:bind>
+           <script type="text/javascript">Spring.addDecoration(
+                   new Spring.ElementDecoration({
+                       elementId : '_bpMedications_id', 
+                       widgetType: 'dijit.form.FilteringSelect', 
+                       widgetAttrs : {hasDownArrow : true,
+                       onChange : bpMedicationsOnChange
+           		}
+           	})); 
+           </script>
+       </div>
+       <br/>
+       <div id="roo_clinicalRecord_acearb">
+           <label for="_acearb_id"><spring:message code="record.acearbAgents"/></label>
+           <form:select cssStyle="width:250px" id="_acearb_id" path="acearb">
+<form:option value=""></form:option>
+           	<form:options items="${yesnotype_enum}" itemLabel="label"/>
+           </form:select>                 
+           <br/>
+           <form:errors cssClass="errors" id="_acearb_error_id" path="acearb"/>
+           <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_acearb_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
+           <br/>                
+       </div>
+       <script type="text/javascript">Spring.addDecoration(
+               new Spring.ElementDecoration({
+                   elementId : 'roo_clinicalRecord_acearb', 
+                   widgetType: 'dijit.layout.ContentPane'})); 
+       </script>               
+       <div id="roo_clinicalRecord_bpMedicationsOther">
+           <label for="_bpMedicationsOther_id"><spring:message code="record.bpMedications.other"/></label>
+           <form:input cssStyle="width:250px" id="_bpMedicationsOther_id" maxlength="30" path="bpMedicationsOther" size="0"/>
+           <br/>
+           <form:errors cssClass="errors" id="_bpMedicationsOther_error_id" path="bpMedicationsOther"/>
+           <spring:message arguments="Bp Medications Other" code="field.invalid" var="field_invalid"/>
+           <spring:message code="field.required" var="field_required"/>
+           <spring:message argumentSeparator="," arguments="Bp Medications Other," code="field.simple.validation" var="field_validation"/>
+           <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_bpMedicationsOther_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : false}})); </script>
+       	<br/>                
+       </div>
+       <script type="text/javascript">Spring.addDecoration(
+               new Spring.ElementDecoration({
+                   elementId : 'roo_clinicalRecord_bpMedicationsOther', 
+                   widgetType: 'dijit.layout.ContentPane'})); 
+       </script>               
+       <div id="roo_clinicalRecord_otherTreatments">
+           <label for="_otherTreatments_id"><spring:message code="record.otherTreatments"/></label>
+           <form:textarea cssStyle="width:250px" id="_otherTreatments_id" path="otherTreatments"/>
+           <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_otherTreatments_id', widgetType: 'dijit.form.SimpleTextarea', widgetAttrs: {}})); </script>
+           <br/>
+           <form:errors cssClass="errors" id="_otherTreatments_error_id" path="otherTreatments"/>
+       </div>
+       <br/>
+       <div id="roo_clinicalRecord_laserRxInLast12Months">
+           <label for="_laserRxInLast12Months_id"><spring:message code="record.laserRx"/></label>
+           <form:select cssStyle="width:250px" id="_LaserRxInLast12Months_id" path="LaserRxInLast12Months">
+<form:option value=""></form:option>
+           	<form:options items="${yesnounkowntype_enum}" itemLabel="label"/>
+           </form:select>                
+           <br/>
+           <form:errors cssClass="errors" id="_LaserRxInLast12Months_error_id" path="LaserRxInLast12Months"/>
+           <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_LaserRxInLast12Months_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
+          </div>
+          <br/>
+</div>
+

@@ -1,0 +1,75 @@
+<div id="general" 
+	 xmlns:c="http://java.sun.com/jsp/jstl/core" 
+	 xmlns:sec="http://www.springframework.org/security/tags" 
+	 xmlns:form="http://www.springframework.org/tags/form" 
+	 xmlns:jsp="http://java.sun.com/JSP/Page" 
+	 xmlns:spring="http://www.springframework.org/tags">
+          <form:hidden id="_child_id" path="child"/>
+
+          <div id="roo_clinicalRecord_personCompletingForm">
+              <c:if test="${not empty users}">
+                  <label for="_personCompletingForm_id"><spring:message code="record.personCompleting"/></label>
+                  <form:select cssStyle="width:250px" id="_personCompletingForm_id" path="personCompletingForm">
+                      <form:options itemValue="id" items="${users}"/>
+                  </form:select>
+                  <spring:message code="person.completing.tooltip" var="field_validation"/>
+                  <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_personCompletingForm_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {promptMessage: '${field_validation}', hasDownArrow : true}})); </script>
+              </c:if>
+          </div>
+          <br/>
+          <div id="roo_clinicalRecord_dateCompleted">
+              <label for="_dateCompleted_id"><spring:message code="record.dateCompleted"/></label>
+              <form:input cssStyle="width:250px" id="_dateCompleted_id" maxlength="30" path="dateCompleted" size="0"/>
+              <br/>
+              <form:errors cssClass="errors" id="_dateCompleted_error_id" path="dateCompleted"/>
+              <spring:message arguments="Date Completed" code="field.invalid" var="field_invalid"/>
+              <spring:message code="field.required" var="field_required"/>
+              <spring:message argumentSeparator="," arguments="Date Completed,(${field_required})" code="field.simple.validation" var="field_validation"/>
+              <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_dateCompleted_id', widgetType : 'dijit.form.DateTextBox', widgetAttrs : {promptMessage: '${field_date_tooltip}', invalidMessage: '${field_invalid_date}', popupClass: '', constraints: {max: new Date(),datePattern : '${clinicalRecord_dateCompleted_date_format}', required : false}, datePattern : '${clinicalRecord_dateCompleted_date_format}'}})); </script>
+              <spring:bind path="clinicalRecord.dateCompleted"><c:if test="${status.error}"><script type="text/javascript">generalHasError = true;</script></c:if></spring:bind>
+          </div>
+          <br/>
+          <div id="roo_clinicalRecord_seniorPhysician">
+              <label for="_seniorPhysician_id"><spring:message code="record.seniorPhysician"/></label>
+              <form:input cssStyle="width:250px" id="_seniorPhysician_id" maxlength="30" path="seniorPhysician" size="0"/>
+              <br/>
+              <form:errors cssClass="errors" id="_seniorPhysician_error_id" path="seniorPhysician"/>
+              <spring:message arguments="Senior Physician" code="field.invalid" var="field_invalid"/>
+              <spring:message code="field.required" var="field_required"/>
+              <spring:message code="physician.tooltip" var="field_validation"/>
+              <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_seniorPhysician_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}'}})); </script>
+              <spring:bind path="clinicalRecord.seniorPhysician"><c:if test="${status.error}"><script type="text/javascript">generalHasError = true;</script></c:if></spring:bind>
+          </div>
+          <br/>  
+          <div id="roo_clinicalRecord_previousConsentGiven">
+           <label for="_previousConsentGivenForm_id"><spring:message code="record.previousConsentGiven"/></label>
+           <c:out value="${previousConsentGiven}"/>	            
+             	<br/>               	
+          </div>
+          <br/>
+          <div id="roo_clinicalRecord_consentGiven">
+           <label for="_consentGivenForm_id"><spring:message code="record.consentGiven"/></label>
+           <form:select cssStyle="width:250px" id="_consentGiven_id" path="consentGiven">
+			<form:option value=""></form:option>
+              	<form:options items="${researchconsenttype_enum}" itemLabel="label"/>
+              </form:select> 
+              <br/>
+              <form:errors cssClass="errors" id="_consentGiven_error_id" path="consentGiven"/>
+           <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_consentGiven_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
+           <spring:bind path="clinicalRecord.consentGiven"><c:if test="${status.error}"><script type="text/javascript">generalHasError = true;</script></c:if></spring:bind>
+          </div>
+          <br/>
+          <div id="roo_clinicalRecord_exactAge">
+              <label for="_exactAge_id"><spring:message code="record.exactAge"/></label>
+              <form:input cssStyle="width:250px; border:0" id="_exactAge_id" maxlength="30" path="exactAge" size="0"/>
+             	<br/>
+              <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_exactAge_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {readOnly : true}})); </script>
+          </div>
+          <br/>    
+          <div id="roo_clinicalRecord_insulinPerKg">
+           <label for="_insulinPerKg_id"><spring:message code="record.insulinPerKg"/></label>
+           <form:input cssStyle="width:250px; border:0" id="_insulinPerKg_id" maxlength="30" path="insulinPerKg" size="0"/>               	
+           	<script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_insulinPerKg_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {readOnly : true}})); </script>
+       </div>
+       <br/>              
+</div>	   

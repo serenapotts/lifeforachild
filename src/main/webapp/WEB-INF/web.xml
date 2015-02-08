@@ -104,6 +104,15 @@
 		<servlet-name>Resource Servlet</servlet-name>
 		<servlet-class>org.springframework.js.resource.ResourceServlet</servlet-class>
 	</servlet>
+	
+	<servlet>
+         <servlet-name>jsp</servlet-name>
+         <servlet-class>org.apache.jasper.servlet.JspServlet</servlet-class>
+    	<init-param> 
+            <param-name>mappedfile</param-name>
+             <param-value>false</param-value>
+        </init-param>
+     </servlet> 
 
 	<servlet-mapping>
 		<servlet-name>lifeforachild</servlet-name>

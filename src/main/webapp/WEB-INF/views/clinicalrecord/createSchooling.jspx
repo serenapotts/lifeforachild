@@ -1,0 +1,103 @@
+<div id="schooling"
+	 xmlns:c="http://java.sun.com/jsp/jstl/core" 
+	 xmlns:sec="http://www.springframework.org/security/tags" 
+	 xmlns:form="http://www.springframework.org/tags/form" 
+	 xmlns:jsp="http://java.sun.com/JSP/Page" 
+	 xmlns:spring="http://www.springframework.org/tags">             
+    <div id="roo_clinicalRecord_attendingSchool">
+        <label for="_attendingSchool_id"><spring:message code="record.attendingSchool"/></label>
+        <form:select cssStyle="width:250px" id="_attendingSchool_id" path="attendingSchool">
+			<form:option value=""></form:option>
+        	<form:options items="${yesnotype_enum}" itemLabel="label"/>
+        </form:select>                 
+        <br/>
+        <form:errors cssClass="errors" id="_attendingSchool_error_id" path="attendingSchool"/>
+        <spring:bind path="clinicalRecord.attendingSchool"><c:if test="${status.error}"><script type="text/javascript">schoolingHasError = true;</script></c:if></spring:bind>
+        <script type="text/javascript">Spring.addDecoration(
+                new Spring.ElementDecoration({
+                    elementId : '_attendingSchool_id', 
+                    widgetType: 'dijit.form.FilteringSelect', 
+                    widgetAttrs : {hasDownArrow : true,
+                    onChange : attendingSchoolOnChange
+        		}
+        	})); 
+        </script>
+    </div>
+    <br/>
+    <div id="roo_clinicalRecord_notAttendingSchoolWhy">
+        <label for="_notAttendingSchoolWhy_id"><spring:message code="record.whyNotAttendingSchool"/></label>
+        <form:select cssStyle="width:250px" id="_notAttendingSchoolWhy_id" path="notAttendingSchoolWhy">
+			<form:option value=""></form:option>
+        	<form:options items="${notattendingschoolreasontype_enum}" itemLabel="label"/>
+        </form:select>                 
+        <br/>
+        <form:errors cssClass="errors" id="_notAttendingSchoolWhy_error_id" path="notAttendingSchoolWhy"/>
+        <spring:bind path="clinicalRecord.notAttendingSchoolWhy"><c:if test="${status.error}"><script type="text/javascript">schoolingHasError = true;</script></c:if></spring:bind>
+        <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_notAttendingSchoolWhy_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
+    	<br/>                
+    </div>
+    <script type="text/javascript">Spring.addDecoration(
+            new Spring.ElementDecoration({
+                elementId : 'roo_clinicalRecord_notAttendingSchoolWhy', 
+                widgetType: 'dijit.layout.ContentPane'})); 
+    </script> 
+    <div id="roo_clinicalRecord_diabetesLimitingAttendance">
+        <label for="_diabetesLimitingAttendance_id"><spring:message code="record.limitingAttendance"/></label>
+        <form:select cssStyle="width:250px" id="_diabetesLimitingAttendance_id" path="diabetesLimitingAttendance">
+			<form:option value=""></form:option>
+        	<form:options items="${yesnotype_enum}" itemLabel="label"/>
+        </form:select>                 
+        <br/>
+        <form:errors cssClass="errors" id="_diabetesLimitingAttendance_error_id" path="diabetesLimitingAttendance"/>
+        <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_diabetesLimitingAttendance_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>                
+    	<br/>                
+    </div>            
+    <script type="text/javascript">Spring.addDecoration(
+            new Spring.ElementDecoration({
+                elementId : 'roo_clinicalRecord_diabetesLimitingAttendance', 
+                widgetType: 'dijit.layout.ContentPane'})); 
+    </script> 
+    <div id="roo_clinicalRecord_appropriateGradeForAge">
+        <label for="_appropriateGradeForAge_id"><spring:message code="record.appropriateGrade"/></label>
+        <form:select cssStyle="width:250px" id="_appropriateGradeForAge_id" path="appropriateGradeForAge">
+			<form:option value=""></form:option>
+        	<form:options items="${yesnotype_enum}" itemLabel="label"/>
+        </form:select>                 
+        <br/>
+        <form:errors cssClass="errors" id="_appropriateGradeForAge_error_id" path="appropriateGradeForAge"/>
+        <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_appropriateGradeForAge_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>                
+    	<br/>                
+    </div>
+    <script type="text/javascript">Spring.addDecoration(
+            new Spring.ElementDecoration({
+                elementId : 'roo_clinicalRecord_appropriateGradeForAge', 
+                widgetType: 'dijit.layout.ContentPane'})); 
+    </script> 
+    <div id="roo_clinicalRecord_diabetesCopingAbilities">
+        <label for="_diabetesCopingAbilities_id"><spring:message code="record.copingAbilities"/></label>
+        <form:select cssStyle="width:250px" id="_diabetesCopingAbilities_id" path="diabetesCopingAbilities">
+			<form:option value=""></form:option>
+        	<form:options items="${diabetescopingtype_enum}" itemLabel="label"/>
+        </form:select>                 
+        <br/>
+        <form:errors cssClass="errors" id="_diabetesCopingAbilities_error_id" path="diabetesCopingAbilities"/>
+        <spring:bind path="clinicalRecord.diabetesCopingAbilities"><c:if test="${status.error}"><script type="text/javascript">schoolingHasError = true;</script></c:if></spring:bind>
+        <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_diabetesCopingAbilities_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
+    </div>
+    <br/>
+    <c:if test="${locale == 'es'}">
+    	<br/>
+    </c:if>
+    <div id="roo_clinicalRecord_literate">
+        <label for="_literate_id"><spring:message code="record.literate"/></label>
+        <form:select cssStyle="width:250px" id="_literate_id" path="literate">
+			<form:option value=""></form:option>
+        	<form:options items="${yesnotype_enum}" itemLabel="label"/>
+        </form:select>                 
+        <br/>
+        <form:errors cssClass="errors" id="_literate_error_id" path="literate"/>
+        <spring:bind path="clinicalRecord.literate"><c:if test="${status.error}"><script type="text/javascript">schoolingHasError = true;</script></c:if></spring:bind>
+        <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_literate_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
+          </div>
+          <br/>   
+</div>

@@ -1,0 +1,201 @@
+<div id="eyesFeet"
+	 xmlns:c="http://java.sun.com/jsp/jstl/core" 
+	 xmlns:sec="http://www.springframework.org/security/tags" 
+	 xmlns:form="http://www.springframework.org/tags/form" 
+	 xmlns:jsp="http://java.sun.com/JSP/Page" 
+	 xmlns:spring="http://www.springframework.org/tags">            
+          <div id="roo_clinicalRecord_eyesExaminedInLastYear">
+              <label for="_eyesExaminedInLastYear_id"><spring:message code="record.eyesExaminedInLastYear"/></label>
+              <form:select cssStyle="width:250px" id="_eyesExaminedInLastYear_id" path="eyesExaminedInLastYear">
+			<form:option value=""></form:option>
+              	<form:options items="${yesnounkowntype_enum}" itemLabel="label"/>
+              </form:select>                
+              <br/>
+              <form:errors cssClass="errors" id="_eyesExaminedInLastYear_error_id" path="eyesExaminedInLastYear"/>
+              <spring:bind path="clinicalRecord.eyesExaminedInLastYear"><c:if test="${status.error}"><script type="text/javascript">eyesHasError = true;</script></c:if></spring:bind>
+              <script type="text/javascript">Spring.addDecoration(
+                      new Spring.ElementDecoration({
+                          elementId : '_eyesExaminedInLastYear_id', 
+                          widgetType: 'dijit.form.FilteringSelect', 
+                          widgetAttrs : {hasDownArrow : true,
+                          onChange : eyesExaminedInLastYearOnChange
+              		}
+              	})); 
+              </script>                 
+          </div>
+          <br/>
+          <div id="roo_clinicalRecord_cateract">
+              <label for="_cateract_id"><spring:message code="record.cataract"/></label>
+              <form:select cssStyle="width:250px" id="_cateract_id" path="cateract">
+			<form:option value=""></form:option>
+              	<form:options items="${yesnounkowntype_enum}" itemLabel="label"/>
+              </form:select>                
+              <br/>
+              <form:errors cssClass="errors" id="_cateract_error_id" path="cateract"/>
+              <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_cateract_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
+          	<br/>                
+          </div>
+          <script type="text/javascript">Spring.addDecoration(
+                  new Spring.ElementDecoration({
+                      elementId : 'roo_clinicalRecord_cateract', 
+                      widgetType: 'dijit.layout.ContentPane'})); 
+          </script>             
+          <div id="roo_clinicalRecord_visualAcuityRight">
+              <label for="_visualAcuityRight_id"><spring:message code="record.VisualRight"/></label>
+              <form:input cssStyle="width:250px" id="_visualAcuityRight_id" maxlength="20" path="visualAcuityRight" size="0"/>
+              <br/>
+              <form:errors cssClass="errors" id="_visualAcuityRight_error_id" path="visualAcuityRight"/>
+              <spring:message arguments="Visual Acuity Right" code="field.invalid" var="field_invalid"/>
+              <spring:message code="field.required" var="field_required"/>
+              <spring:message argumentSeparator="," arguments="Visual Acuity Right," code="field.simple.validation" var="field_validation"/>
+              <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_visualAcuityRight_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : false}})); </script>
+          	<br/>                
+          </div>
+          <script type="text/javascript">Spring.addDecoration(
+                  new Spring.ElementDecoration({
+                      elementId : 'roo_clinicalRecord_visualAcuityRight', 
+                      widgetType: 'dijit.layout.ContentPane'})); 
+          </script>             
+          <div id="roo_clinicalRecord_visualAcuityLeft">
+              <label for="_visualAcuityLeft_id"><spring:message code="record.VisualLeft"/></label>
+              <form:input cssStyle="width:250px" id="_visualAcuityLeft_id" maxlength="20" path="visualAcuityLeft" size="0"/>
+              <br/>
+              <form:errors cssClass="errors" id="_visualAcuityLeft_error_id" path="visualAcuityLeft"/>
+              <spring:message arguments="Visual Acuity Left" code="field.invalid" var="field_invalid"/>
+              <spring:message code="field.required" var="field_required"/>
+              <spring:message argumentSeparator="," arguments="Visual Acuity Left," code="field.simple.validation" var="field_validation"/>
+              <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_visualAcuityLeft_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : false}})); </script>
+          	<br/>                
+          </div>
+          <script type="text/javascript">Spring.addDecoration(
+                  new Spring.ElementDecoration({
+                      elementId : 'roo_clinicalRecord_visualAcuityLeft', 
+                      widgetType: 'dijit.layout.ContentPane'})); 
+          </script>             
+          <div id="roo_clinicalRecord_eyesComment">
+              <label for="_eyesComment_id"><spring:message code="record.eyesComment"/></label>
+              <form:textarea cssStyle="width:250px" id="_eyesComment_id" path="eyesComment"/>
+              <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_eyesComment_id', widgetType: 'dijit.form.SimpleTextarea', widgetAttrs: {}})); </script>
+              <br/>
+              <form:errors cssClass="errors" id="_eyesComment_error_id" path="eyesComment"/>
+          	<br/>                
+          </div>
+          <script type="text/javascript">Spring.addDecoration(
+                  new Spring.ElementDecoration({
+                      elementId : 'roo_clinicalRecord_eyesComment', 
+                      widgetType: 'dijit.layout.ContentPane'})); 
+          </script>
+          <div id="roo_clinicalRecord_feetExaminedInLastYear">
+              <label for="_feetExaminedInLastYear_id"><spring:message code="record.feetExaminedInLastYear"/></label>
+              <form:select cssStyle="width:250px" id="_feetExaminedInLastYear_id" path="feetExaminedInLastYear">
+			<form:option value=""></form:option>
+              	<form:options items="${yesnounkowntype_enum}" itemLabel="label"/>
+              </form:select>                
+              <br/>
+              <form:errors cssClass="errors" id="_feetExaminedInLastYear_error_id" path="feetExaminedInLastYear"/>
+              <spring:bind path="clinicalRecord.feetExaminedInLastYear"><c:if test="${status.error}"><script type="text/javascript">feetHasError = true;</script></c:if></spring:bind>
+              <script type="text/javascript">Spring.addDecoration(
+                      new Spring.ElementDecoration({
+                          elementId : '_feetExaminedInLastYear_id', 
+                          widgetType: 'dijit.form.FilteringSelect', 
+                          widgetAttrs : {hasDownArrow : true,
+                          onChange : feetExaminedInLastYearOnChange
+              		}
+              	})); 
+              </script>                
+          </div>
+          <br/>
+          <div id="roo_clinicalRecord_monofilamentTested">
+              <label for="_monofilamentTested_id"><spring:message code="record.monoTested"/></label>
+              <form:select cssStyle="width:250px" id="_monofilamentTested_id" path="monofilamentTested">
+			<form:option value=""></form:option>
+              	<form:options items="${yesnotype_enum}" itemLabel="label"/>
+              </form:select>                
+              <br/>
+              <form:errors cssClass="errors" id="_monofilamentTested_error_id" path="monofilamentTested"/>
+              <script type="text/javascript">Spring.addDecoration(
+                      new Spring.ElementDecoration({
+                          elementId : '_monofilamentTested_id', 
+                          widgetType: 'dijit.form.FilteringSelect', 
+                          widgetAttrs : {hasDownArrow : true,
+                          onChange : monofilamentTestedOnChange
+              		}
+              	})); 
+              </script>
+              <br/>
+          </div>
+          <script type="text/javascript">Spring.addDecoration(
+                  new Spring.ElementDecoration({
+                      elementId : 'roo_clinicalRecord_monofilamentTested', 
+                      widgetType: 'dijit.layout.ContentPane'})); 
+          </script>              
+          <div id="roo_clinicalRecord_monofilamentAbnormal">
+              <label for="_monofilamentAbnormal_id"><spring:message code="record.monoAbnormal"/></label>
+              <form:select cssStyle="width:250px" id="_monofilamentAbnormal_id" path="monofilamentAbnormal">
+			<form:option value=""></form:option>
+              	<form:options items="${yesnotype_enum}" itemLabel="label"/>
+              </form:select>                
+              <br/>
+              <form:errors cssClass="errors" id="_monofilamentAbnormal_error_id" path="monofilamentAbnormal"/>
+              <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_monofilamentAbnormal_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
+          	<br/>                
+          </div>
+          <script type="text/javascript">Spring.addDecoration(
+                  new Spring.ElementDecoration({
+                      elementId : 'roo_clinicalRecord_monofilamentAbnormal', 
+                      widgetType: 'dijit.layout.ContentPane'})); 
+          </script>              
+          <div id="roo_clinicalRecord_tuningForkTested">
+              <label for="_tuningForkTested_id"><spring:message code="record.tuningForkTested"/></label>
+              <form:select cssStyle="width:250px" id="_tuningForkTested_id" path="tuningForkTested">
+			<form:option value=""></form:option>
+              	<form:options items="${yesnotype_enum}" itemLabel="label"/>
+              </form:select>                
+              <br/>
+              <form:errors cssClass="errors" id="_tuningForkTested_error_id" path="tuningForkTested"/>
+              <script type="text/javascript">Spring.addDecoration(
+                      new Spring.ElementDecoration({
+                          elementId : '_tuningForkTested_id', 
+                          widgetType: 'dijit.form.FilteringSelect', 
+                          widgetAttrs : {hasDownArrow : true,
+                          onChange : tuningForkTestedOnChange
+              		}
+              	})); 
+              </script>
+          	<br/>                
+          </div>
+          <script type="text/javascript">Spring.addDecoration(
+                  new Spring.ElementDecoration({
+                      elementId : 'roo_clinicalRecord_tuningForkTested', 
+                      widgetType: 'dijit.layout.ContentPane'})); 
+          </script>            
+          <div id="roo_clinicalRecord_tuningForkAbnormal">
+              <label for="_tuningForkAbnormal_id"><spring:message code="record.tuningForkAbnormal"/></label>
+              <form:select cssStyle="width:250px" id="_tuningForkAbnormal_id" path="tuningForkAbnormal">
+			<form:option value=""></form:option>
+              	<form:options items="${yesnotype_enum}" itemLabel="label"/>
+              </form:select>                
+              <br/>
+              <form:errors cssClass="errors" id="_tuningForkAbnormal_error_id" path="tuningForkAbnormal"/>
+              <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_tuningForkAbnormal_id', widgetType: 'dijit.form.FilteringSelect', widgetAttrs : {hasDownArrow : true}})); </script>
+          	<br/>                
+          </div>
+          <script type="text/javascript">Spring.addDecoration(
+                  new Spring.ElementDecoration({
+                      elementId : 'roo_clinicalRecord_tuningForkAbnormal', 
+                      widgetType: 'dijit.layout.ContentPane'})); 
+          </script>    
+          <div id="roo_clinicalRecord_feetComment">
+              <label for="_feetComment_id"><spring:message code="record.feetComment"/></label>
+              <form:textarea cssStyle="width:250px" id="_feetComment_id" path="feetComment"/>
+              <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_feetComment_id', widgetType: 'dijit.form.SimpleTextarea', widgetAttrs: {}})); </script>
+              <br/>
+              <form:errors cssClass="errors" id="_feetComment_error_id" path="feetComment"/>
+          	<br/>                
+          </div>
+          <script type="text/javascript">Spring.addDecoration(
+                  new Spring.ElementDecoration({
+                      elementId : 'roo_clinicalRecord_feetComment', 
+                      widgetType: 'dijit.layout.ContentPane'})); 
+          </script>  
+</div>

@@ -93,7 +93,7 @@
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>xpath=(//input[@value='Mettre à jour Rapport'])[17]</td>
+	<td>xpath=(//input[@value='Mettre à jour Rapport'])[1]</td>
 	<td></td>
 </tr>
 <tr>
@@ -131,7 +131,6 @@
 	<td>/lifeforachild/search?lang=en</td>
 	<td></td>
 </tr>
-
 </tbody></table>
 </body>
 </html>

@@ -1,0 +1,54 @@
+<div id="emergencies"
+	 xmlns:c="http://java.sun.com/jsp/jstl/core" 
+	 xmlns:sec="http://www.springframework.org/security/tags" 
+	 xmlns:form="http://www.springframework.org/tags/form" 
+	 xmlns:jsp="http://java.sun.com/JSP/Page" 
+	 xmlns:spring="http://www.springframework.org/tags">              
+     <div id="roo_clinicalRecord_numberOfSevereHypoglycaemiaEpisodes">
+         <label for="_numberOfSevereHypoglycaemiaEpisodes_id"><spring:message code="record.glyceamicEpisodes"/></label>
+         <form:input cssStyle="width:250px" id="_numberOfSevereHypoglycaemiaEpisodes_id" maxlength="30" path="numberOfSevereHypoglycaemiaEpisodes" size="0"/>
+         <br/>
+         <form:errors cssClass="errors" id="_numberOfSevereHypoglycaemiaEpisodes_error_id" path="numberOfSevereHypoglycaemiaEpisodes"/>
+         <spring:message code="field.invalid.integer" var="field_invalid"/>
+         <spring:message code="field.required" var="field_required"/>
+         <spring:message argumentSeparator="," arguments="Number Of Severe Hypoglycaemia Episodes," code="field.simple.validation" var="field_validation"/>
+         <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_numberOfSevereHypoglycaemiaEpisodes_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', regExp: '-?[0-9]*', required : false}})); </script>
+   		<spring:bind path="clinicalRecord.numberOfSevereHypoglycaemiaEpisodes"><c:if test="${status.error}"><script type="text/javascript">emergenciesHasError = true;</script></c:if></spring:bind>
+     </div>
+     <br/>            
+     <br/>
+     <div id="roo_clinicalRecord_numberKetoacidosisEpisodes">
+         <label for="_numberKetoacidosisEpisodes_id"><spring:message code="record.ketoacidosisEpisodes"/></label>
+         <form:input cssStyle="width:250px" id="_numberKetoacidosisEpisodes_id" maxlength="30" path="numberKetoacidosisEpisodes" size="0"/>
+         <br/>
+         <form:errors cssClass="errors" id="_numberKetoacidosisEpisodes_error_id" path="numberKetoacidosisEpisodes"/>
+         <spring:message code="field.invalid.integer" var="field_invalid"/>
+         <spring:message code="field.required" var="field_required"/>
+         <spring:message argumentSeparator="," arguments="Number Ketoacidosis Episodes," code="field.simple.validation" var="field_validation"/>
+         <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_numberKetoacidosisEpisodes_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', regExp: '-?[0-9]*', required : false}})); </script>
+         <spring:bind path="clinicalRecord.numberKetoacidosisEpisodes"><c:if test="${status.error}"><script type="text/javascript">emergenciesHasError = true;</script></c:if></spring:bind>
+     </div>
+     <br/>
+     <br/>            
+     <div id="roo_clinicalRecord_numberOfHospitalAdmissionsRelatedToDiabetes">
+         <label for="_numberOfHospitalAdmissionsRelatedToDiabetes_id"><spring:message code="record.hospitalAdmissions"/></label>
+         <form:input cssStyle="width:250px" id="_numberOfHospitalAdmissionsRelatedToDiabetes_id" maxlength="30" path="numberOfHospitalAdmissionsRelatedToDiabetes" size="0"/>
+         <br/>
+         <form:errors cssClass="errors" id="_numberOfHospitalAdmissionsRelatedToDiabetes_error_id" path="numberOfHospitalAdmissionsRelatedToDiabetes"/>
+         <spring:message code="field.invalid.integer" var="field_invalid"/>
+         <spring:message code="field.required" var="field_required"/>
+         <spring:message argumentSeparator="," arguments="Number Of Hospital Admissions Related To Diabetes," code="field.simple.validation" var="field_validation"/>
+         <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_numberOfHospitalAdmissionsRelatedToDiabetes_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', regExp: '-?[0-9]*', required : false}})); </script>
+         <spring:bind path="clinicalRecord.numberOfHospitalAdmissionsRelatedToDiabetes"><c:if test="${status.error}"><script type="text/javascript">emergenciesHasError = true;</script></c:if></spring:bind>
+     </div>
+     <br/>
+     <br/>           
+     <div id="roo_clinicalRecord_additionalComment">
+         <label for="_additionalComment_id"><spring:message code="record.additionalComment"/></label>
+         <form:textarea cssStyle="width:250px" id="_additionalComment_id" path="additionalComment"/>
+         <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_additionalComment_id', widgetType: 'dijit.form.SimpleTextarea', widgetAttrs: {}})); </script>
+              <br/>
+              <form:errors cssClass="errors" id="_additionalComment_error_id" path="additionalComment"/>
+     </div>
+     <br/>
+</div>
