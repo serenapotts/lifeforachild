@@ -6,7 +6,7 @@ Setup dev environment on mac
 4. Optionally install MySQLWorkbench to use the GUI to view the database
 5. Download and unzip/install Tomcat 6.0
 6. Download and install maven as per instructions on download page
-7. Checkout code from github (fork https://github.com/serenapotts/lifeforachild). Commit and use pull requests to merge to the main codebase.
+7. Checkout code from github (fork https://github.com/serenapotts/lifeforachild). Commit and use pull requests to merge to the main codebase. You may wish to download sourcetree or another git GUI tool.
 8. Open STS
 9. File --> Import
 10. Select General --> Existing projects from workspace and select the checkout directory
@@ -24,7 +24,7 @@ cd lifeforachild/src/main/resources/sql
 17. Start the tomcat server
 18. Go to localhost:8080/lifeforachild in browser
 
-To run tests install firefox selenium hq plugin
-Run test suite in /src/main/webapp/selenium an ensure all pass before committing
+To run tests install firefox selenium hq plugin (Selenium IDE)
+Run test suite in /src/main/webapp/selenium an ensure all pass before committing (File -> Open, select test-suite.html)
 
 
