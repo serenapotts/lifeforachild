@@ -10,9 +10,10 @@ Setup dev environment on mac
 8. Open STS
 9. File --> Import
 10. Select General --> Existing projects from workspace and select the checkout directory
-11. Right click on lifeforachild in project window, maven —> update project
-12. Make sure Project --> Build All, successfully runs (Java 8 has some )
-13. In Server window, Right Click, New —> Apache —> select Tomcat 6.0 and point to tomcat install directory
+11. Right click on lifeforachild in the Package Explorer window, maven —> update project
+12. Make sure Project --> Build All, successfully runs (Java 8 has some errors which can be ignored for now )
+13. In Server window bottom right (if not present add via Window --> Show View --> Servers), Right Click, New —> Apache —> select Tomcat 6.0 and point to tomcat install directory
+14. Right click on Tomcat --> Add and Remove --> Select 'lifeforachild', click Add and Finish
 14. start mysql: 
 either start in System Preferences --> MySQL OR 
 cd /usr/local/mysql/bin
