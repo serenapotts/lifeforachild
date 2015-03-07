@@ -6,6 +6,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import org.lifeforachild.domain.Message;
+import org.lifeforachild.util.MailSender;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.i18n.LocaleContextHolder;
 
@@ -31,6 +32,10 @@ public class AppContext {
     public static ApplicationContext getApplicationContext() { 
         return ctx; 
     } 
+    
+    public static MailSender getMailSender() {
+    	return (MailSender) getApplicationContext().getBean("mailSender");
+    }
     
     public static String getMessage(String code) {
     	return getMessage(code, LocaleContextHolder.getLocale());

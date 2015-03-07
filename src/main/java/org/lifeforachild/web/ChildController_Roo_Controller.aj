@@ -101,6 +101,7 @@ privileged aspect ChildController_Roo_Controller {
 	        String paddedCentreId = StringUtil.padWithZeros(centreId, 3);
 	        child.setIndividualId(paddedCountryId + paddedCentreId + id);
 	        child.persist();
+	        AppContext.getMailSender().send(true, "/child/" + child.getId());
 	        return "redirect:/child/" + child.getId();    
     	} catch (AccessDeniedException ade) {
     		throw ade;
@@ -255,7 +256,8 @@ privileged aspect ChildController_Roo_Controller {
 	        child.setLastName(SimpleStringCipher.encrypt(child.getLastName()));
 	        child.setInitials(SimpleStringCipher.encrypt(child.getInitials()));        
 	        child.setAgeAtDiagnosis(child.calculatedAgeAtDiabetesDiagnosis());
-	        child.merge();        
+	        child.merge();   
+	        AppContext.getMailSender().send(false, "/child/" + child.getId());
 	        return "redirect:/child/" + child.getId();    
     	} catch (AccessDeniedException ade) {
     		throw ade;

@@ -91,6 +91,7 @@ privileged aspect ClinicalRecordController_Roo_Controller {
 	        clinicalRecord.setBloodPressureDiastolicSD(ClinicalRecord.calcDiastolicBloodPressureSD(exactAge, childSex, clinicalRecord.getHeightSD(), clinicalRecord.getBloodPressureDiastolicMMHg()));
 	        
 	        clinicalRecord.persist();        
+	        AppContext.getMailSender().send(true, "/clinicalrecord/" + clinicalRecord.getChild().getId());
 	        return "redirect:/clinicalrecord/" + clinicalRecord.getId();    
     	} catch (AccessDeniedException ade) {
     		throw ade;
@@ -219,6 +220,7 @@ privileged aspect ClinicalRecordController_Roo_Controller {
 	        clinicalRecord.setBloodPressureDiastolicSD(ClinicalRecord.calcDiastolicBloodPressureSD(exactAge, childSex, clinicalRecord.getHeightSD(), clinicalRecord.getBloodPressureDiastolicMMHg()));
 	        
 	        clinicalRecord.merge();        
+	        AppContext.getMailSender().send(false, "/clinicalrecord/" + clinicalRecord.getChild().getId());
 	        return "redirect:/clinicalrecord/" + clinicalRecord.getId();
     	} catch (AccessDeniedException ade) {
     		throw ade;
