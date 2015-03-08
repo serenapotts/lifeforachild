@@ -28,4 +28,9 @@ cd lifeforachild/src/main/resources/sql
 To run tests install firefox selenium hq plugin (Selenium IDE)
 Run test suite in /src/test/resources/selenium an ensure all pass before committing (File -> Open, select test-suite.html)
 
+To build war:
+Change web.xml and database.properties to correct environment (lifeforachild for prod and lifeforachild-staging for staging)
+File --> Export war
+
+
 
