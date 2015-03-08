@@ -32,6 +32,9 @@
     	<authentication-provider user-service-ref="customUserDetailsService">
     		<password-encoder hash="sha"/>
     	</authentication-provider>
+    	<authentication-provider user-service-ref="customUserDetailsService">
+    		<password-encoder hash="sha-256"/>
+    	</authentication-provider>
 	</authentication-manager>
              
      <beans:bean id="customUserDetailsService" class="org.lifeforachild.web.service.CustomUserDetailsService">
