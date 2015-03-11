@@ -14,7 +14,7 @@
 	                <spring:message code="global.menu.print" var="add_message"/>
 	                <img alt="${add_message}" src="${excel_image_url}" title="${add_message}" height="16" width="16"/>
 	            </a>
-            </div>        
+            </div>       
             <table width="570px" id="child_table">
                 <thead>
                     <tr>

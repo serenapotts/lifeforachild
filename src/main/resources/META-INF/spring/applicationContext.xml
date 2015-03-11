@@ -87,4 +87,11 @@
         <property name="subject" value="${mail.subject}"/>
         <property name="messageBody" value="${mail.message.body}"/>
     </bean>
+    
+	<bean id="multipartFilter" class="org.springframework.web.multipart.support.MultipartFilter">
+		<property name="multipartResolverBeanName" value="multipartResolver" />
+	</bean>
+	
+	<!-- allows for integration of file upload functionality -->
+	<bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" id="multipartResolver"/>
 </beans>

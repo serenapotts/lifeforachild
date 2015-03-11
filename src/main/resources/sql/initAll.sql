@@ -17,4 +17,5 @@ source updates/015_i18n.sql
 source updates/016_transcountrymanager.sql
 source updates/017_usergroupcodes.sql
 source updates/018_errorMessages.sql
+source updates/019_import.sql
 source updates/triggers.sql

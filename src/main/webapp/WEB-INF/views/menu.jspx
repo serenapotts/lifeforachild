@@ -164,5 +164,21 @@
 	            </ul>
 	        </li>   
 		</sec:authorize>
+        <sec:authorize ifAllGranted="IMPORT_DATA"> 		
+	    	<li id="web_mvc_jsp_import_category">
+	            <h2>
+	                <spring:message code="menu.category.web_mvc_jsp_import_category.label"/>
+	            </h2>
+	            <ul>
+	            	<li id="web_mvc_jsp_list_import_menu_item">
+	                    <spring:url value="/import" var="web_mvc_jsp_list_import_menu_item_url"/>
+	                    <a href="${web_mvc_jsp_list_import_menu_item_url}">
+	                        <spring:message code="label.import" var="label_import"/>
+	                        <spring:message code="import.menu.show"/>
+	                    </a>
+	                </li>
+	            </ul>
+	        </li>   
+		</sec:authorize>
     </ul>
 </div>
