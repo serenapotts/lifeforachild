@@ -12,7 +12,10 @@
         <intercept-url pattern="/child/**" access="isAuthenticated()"/>
         <intercept-url pattern="/user/**" access="isAuthenticated() and hasRole('USER_ADMIN')"/>
         <intercept-url pattern="/usergroup/**" access="isAuthenticated() and hasRole('USER_GROUP_ADMIN')"/>   
-        <intercept-url pattern="/message/**" access="isAuthenticated() and hasRole('EDIT_TRANSLATIONS')"/>  
+        <intercept-url pattern="/message/**" access="isAuthenticated() and hasRole('EDIT_TRANSLATIONS')"/>
+        <intercept-url pattern="/import/**" access="isAuthenticated() and hasRole('IMPORT_DATA')"/> 
+        <intercept-url pattern="/account/**" access="isAuthenticated()"/> 
+        <intercept-url pattern="/changepassword/**" access="isAuthenticated()"/>  
         <intercept-url pattern="/search/**" access="isAuthenticated()"/>   
 		<intercept-url pattern="/search" access="isAuthenticated()"/>          
         <intercept-url pattern="/clinicalrecord/**" access="isAuthenticated()"/>        

@@ -11,7 +11,6 @@ import javax.mail.internet.MimeMessage;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.lifeforachild.web.AppContext;
 import org.springframework.stereotype.Component;
 
 import java.util.Properties;
@@ -32,11 +31,7 @@ public class MailSender {
 	public void send(boolean isCreate, String url) {
 		
 		Authenticator mailAuthenticator;
-		
-		 // Get system properties
         Properties properties = System.getProperties();
-
-        // Setup mail server
         properties.setProperty("mail.smtp.host", host);
 
         mailAuthenticator = new Authenticator() {
@@ -45,33 +40,19 @@ public class MailSender {
             }
         };
 
-        // Get the default Session object.
         Session session = Session.getDefaultInstance(properties, mailAuthenticator);
 
         try {
-            // Create a default MimeMessage object.
             MimeMessage message = new MimeMessage(session);
-
-            // Set From: header field of the header.
             message.setFrom(new InternetAddress(fromAddress));
-
-            // Set To: header field of the header.
-            message.addRecipient(Message.RecipientType.TO,
-                    new InternetAddress(toAddress));
-
-            // Set Subject: header field
+            message.addRecipients(Message.RecipientType.TO, toAddress);
             message.setSubject(subject);
-
-            // Now set the actual message
             message.setText(messageBody);
-
-            // Send message
             Transport.send(message);
-            LOG.info("Sent message successfully....");
+            LOG.debug("Sent message successfully....");
         } catch (MessagingException mex) {
             mex.printStackTrace();
         }
-
 	}
 
 	public String getHost() {

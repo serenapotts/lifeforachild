@@ -22,10 +22,10 @@ public class ExcelReader {
 	public static final String LAST_NAME = "Last Name";
 	public static final String SEX = "Sex";
 	public static final String COUNTRY = "Country";
-	public static final String CENTRE = "centre";
+	public static final String CENTRE = "Centre";
 	public static final String DOB = "Date of Birth";
-	public static final String HEIGHT = "Height";
-	public static final String WEIGHT = "Weight";
+	public static final String HEIGHT = "Height (cm)";
+	public static final String WEIGHT = "Weight (kg)";
 	
 	private String inputFile;
 
@@ -63,11 +63,15 @@ public class ExcelReader {
       Sheet sheet = w.getSheet(0);
       // Loop over first 10 column and lines
 
-      for (int i = 1; i < sheet.getRows(); i++) {
-        for (int j = 0; j < sheet.getColumns(); j++) {
+      
+    for (int j = 1; j < sheet.getColumns(); j++) {
+    	if (sheet.getCell(j, 1).getContents().isEmpty()) {
+    		break;
+    	}
+    	for (int i = 1; i < sheet.getRows(); i++) {
         
           Cell cell = sheet.getCell(j, i);
-          Cell heading = sheet.getCell(j, 0);
+          Cell heading = sheet.getCell(0, i);
           Child child = new Child();
           switch (heading.getContents()) {
 	      	case FIRST_NAME: {
@@ -115,18 +119,6 @@ public class ExcelReader {
 	      		break;
 	      	}
           }
-          
-//          CellType type = cell.getType();
-//          if (type == CellType.LABEL) {
-//            System.out.println("I got a label "
-//                + cell.getContents());
-//          }
-//
-//          if (type == CellType.NUMBER) {
-//            System.out.println("I got a number "
-//                + cell.getContents());
-//          }
-
         }
       }
 

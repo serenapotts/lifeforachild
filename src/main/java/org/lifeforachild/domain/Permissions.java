@@ -29,6 +29,7 @@ public class Permissions {
 	public static final String USER_ADMIN = "USER_ADMIN";
 	public static final String USER_GROUP_ADMIN = "USER_GROUP_ADMIN";
 	public static final String EDIT_TRANSLATIONS = "EDIT_TRANSLATIONS";
+	public static final String IMPORT_DATA = "IMPORT_DATA";
 	
 	@NotNull
 	String name;
