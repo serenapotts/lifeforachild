@@ -10,33 +10,45 @@
 	     }
 	     </script>
 	    <spring:url value='/changepassword' var="update_password_url"/>
-		<form action="${update_password_url}" method="PUT"> 
+		<form:form action="${update_password_url}" method="PUT" modelAttribute="changePassword"> 
 	    	<div>
-	            <label for="j_old_password"><spring:message code="change.password.old"/></label>
-	            <input id="j_old_password" type='password' name='j_old_password' style="width:150px"/>
-	            <spring:message code="change.password.old.message" var="name_msg"/>
-	            <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : "j_old_password", widgetType : "dijit.form.ValidationTextBox", widgetAttrs : {promptMessage: "${name_msg}", required : true}})); </script>
-	        </div>  
+	            <label for="_old_password_id"><spring:message code="change.password.old"/></label>
+	            <form:password showPassword="true" cssStyle="width:250px" id="_old_password_id" maxlength="30" path="oldPassword" size="0"/>
+                <br/>
+                <form:errors cssClass="errors" id="_old_password_error_id" path="oldPassword"/>
+                <spring:message arguments="Password" code="field.invalid" var="field_invalid"/>
+                <spring:message code="field.required" var="field_required"/>
+                <spring:message argumentSeparator="," arguments="Password,(${field_required})" code="field.simple.validation" var="field_validation"/>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_old_password_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : true}})); </script>
+            </div>  
 	        <br/>
 	        <div>
-	            <label for="j_new_password"><spring:message code="change.password.new"/></label>
-	            <input id="j_new_password" type='password' name='j_new_password' style="width:150px" />
-	            <spring:message code="change.password.new.message" var="pwd_msg"/>
-	            <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : "j_new_password", widgetType : "dijit.form.ValidationTextBox", widgetAttrs : {promptMessage: "${pwd_msg}", required : true}})); </script>
-	        </div>
+	            <label for="_new_password_id"><spring:message code="change.password.new"/></label>
+	            <form:password showPassword="true" cssStyle="width:250px" id="_new_password_id" maxlength="30" path="newPassword" size="0"/>
+                <br/>
+                <form:errors cssClass="errors" id="_new_password_error_id" path="newPassword"/>
+                <spring:message arguments="Password" code="field.invalid" var="field_invalid"/>
+                <spring:message code="field.required" var="field_required"/>
+                <spring:message argumentSeparator="," arguments="Password,(${field_required})" code="field.simple.validation" var="field_validation"/>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_new_password_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : true}})); </script>
+            </div>
 	        <br/>
 	        <div>
-	            <label for="j_confirm_password"><spring:message code="change.password.confirm"/></label>
-	            <input id="j_confirm_password" type='password' name='j_confirm_password' style="width:150px" />
-	            <spring:message code="change.password.confirm.message" var="confirm_pwd_msg"/>
-	            <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : "j_confirm_password", widgetType : "dijit.form.ValidationTextBox", widgetAttrs : {promptMessage: "${confirm_pwd_msg}", required : true}})); </script>
-	        </div>
+	            <label for="_confirm_password_id"><spring:message code="change.password.confirm"/></label>
+	            <form:password showPassword="true" cssStyle="width:250px" id="_confirm_password_id" maxlength="30" path="confirmPassword" size="0"/>
+                <br/>
+                <form:errors cssClass="errors" id="_confirm_password_error_id" path="confirmPassword"/>
+                <spring:message arguments="Password" code="field.invalid" var="field_invalid"/>
+                <spring:message code="field.required" var="field_required"/>
+                <spring:message argumentSeparator="," arguments="Password,(${field_required})" code="field.simple.validation" var="field_validation"/>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_confirm_password_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : true}})); </script>
+            </div>
 	        <div class="submit">
 	            <script type="text/javascript">Spring.addDecoration(new Spring.ValidateAllDecoration({elementId:'proceed', event:'onclick'}));</script>
 	            <spring:message code="button.update" var="update_label"/>
 	            <input id="proceed" type="submit" value="${update_label}"/>
 	        </div>
-	    </form>
+	    </form:form>
 	</div>
 </div>
 
