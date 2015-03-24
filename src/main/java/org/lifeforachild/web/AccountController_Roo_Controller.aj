@@ -39,6 +39,9 @@ privileged aspect AccountController_Roo_Controller {
 	        if (user.getLastName() != null && !user.getLastName().trim().isEmpty()) {
 	        	updatedUser.setLastName(user.getLastName());
 	        }
+	        if (user.getEmail() != null && !user.getEmail().trim().isEmpty()) {
+	        	updatedUser.setEmail(user.getEmail());
+	        }
 	        updatedUser.merge();
         }
     	} catch (Exception e) {

@@ -27,6 +27,13 @@
                 </div>
             </div>
             <br/>
+            <div id="roo_user_email">
+                <label for="_email_id"><spring:message code="user.email"/></label>
+                <div class="box" id="_email_id">
+                    <c:out value="${user.email}"/>
+                </div>
+            </div>
+            <br/>
             <div id="roo_user_enabled">
                 <label for="_enabled_id"><spring:message code="user.enabled"/></label>
                 <div class="box" id="_enabled_id">

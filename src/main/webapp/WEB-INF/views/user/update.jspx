@@ -57,6 +57,17 @@
                 <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_username_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : true}})); </script>
             </div>
             <br/>
+            <div id="roo_user_email">
+                <label for="_username_id"><spring:message code="user.email"/></label>
+                <form:input cssStyle="width:250px" id="_email_id" maxlength="30" path="email" size="0"/>
+                <br/>
+                <form:errors cssClass="errors" id="_email_error_id" path="email"/>
+                <spring:message arguments="Username" code="field.invalid" var="field_invalid"/>
+                <spring:message code="field.required" var="field_required"/>
+                <spring:message argumentSeparator="," arguments="Email,(${field_required})" code="field.simple.validation" var="field_validation"/>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_email_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : true}})); </script>
+            </div>
+            <br/>
             <div id="roo_user_password">
                 <label for="_password_id"><spring:message code="user.password"/></label>
                 <form:password showPassword="true" cssStyle="width:250px" id="_password_id" maxlength="30" path="password" size="0"/>

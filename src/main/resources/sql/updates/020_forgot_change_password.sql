@@ -17,8 +17,9 @@ insert into message (message_key, version, english) values ('change.password.con
 insert into message (message_key, version, english) values ('change.password.old.message', 1, 'Enter your current password');
 insert into message (message_key, version, english) values ('change.password.new.message', 1, 'Enter a new password');
 insert into message (message_key, version, english) values ('change.password.confirm.message', 1, 'Re-enter the new password');
-
-
+insert into message (message_key, version, english) values ('user.email', 1, 'Email Address');
+ALTER TABLE user ADD email varchar(255) default null;
+ALTER TABLE user_versions ADD email varchar(255) default null;
 
 
 

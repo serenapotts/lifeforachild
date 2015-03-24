@@ -54,7 +54,10 @@ public class User {
 	
 	String oldUsername;
 	
-    boolean isDeleted;	
+    boolean isDeleted;
+    
+    @NotNull
+    String email;
     
     @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(pattern="dd/MM/yy", style = "S-")
