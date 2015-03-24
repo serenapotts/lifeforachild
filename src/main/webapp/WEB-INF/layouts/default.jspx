@@ -58,6 +58,10 @@
 					<spring:url var="home" value="/" />
 	    			<!--  put before left spans as workaround to bug in IE7 -->
 	    			<span class="right">
+	    				<c:if test="${pageContext.request.userPrincipal != null}">
+		    				<a href="${home}account" id="right"><spring:message code="account.label"/></a>
+					    	<c:out value=" | "/>
+				    	</c:if>
 				    	<a href="${home}help" id="right"><spring:message code="help.label"/></a>
 				    	<c:out value=" | "/>
 				    	<a href="${home}about" id="right"><spring:message code="about.label"/></a>

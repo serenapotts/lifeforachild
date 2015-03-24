@@ -231,10 +231,13 @@ privileged aspect UserController_Roo_Controller {
     	}
 	}     
     
-    public static void encryptPassword(User user)
-    {
+    public static void UserController.encryptPassword(User user) {
+        user.setPassword(encryptPassword(user.getPassword()));
+    }
+    
+    public static String UserController.encryptPassword(String password) {
     	ShaPasswordEncoder passwordEncoder = new ShaPasswordEncoder(256);
-        user.setPassword(passwordEncoder.encodePassword(user.getPassword(), null));
+    	return passwordEncoder.encodePassword(password, null);
     }
     
 	public void UserController.validate(BindingResult result, User user) {

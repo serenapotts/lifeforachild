@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN" "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+    <definition extends="public" name="forgotpassword/request">
+        <put-attribute name="body" value="/WEB-INF/views/forgotpassword/request.jspx"/>
+    </definition>
+    <definition extends="public" name="forgotpassword/success">
+        <put-attribute name="body" value="/WEB-INF/views/forgotpassword/success.jspx"/>
+    </definition>
+</tiles-definitions>

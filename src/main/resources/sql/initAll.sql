@@ -18,4 +18,5 @@ source updates/016_transcountrymanager.sql
 source updates/017_usergroupcodes.sql
 source updates/018_errorMessages.sql
 source updates/019_import.sql
+source updates/020_forgot_change_password.sql
 source updates/triggers.sql

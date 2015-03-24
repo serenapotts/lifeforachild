@@ -1,0 +1,23 @@
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:fmt="http://java.sun.com/jsp/jstl/fmt" xmlns:form="http://www.springframework.org/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+    <jsp:output omit-xml-declaration="yes"/>
+    <script type="text/javascript">dojo.require('dijit.TitlePane');</script>
+    <div id="_title_div" style="width: 800px">
+    	<spring:message code="forgot.password.title" var="title_msg"/>
+    	<script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_title_div', widgetType : 'dijit.TitlePane', widgetAttrs : {title: '${title_msg}'}})); </script>
+    	<spring:url value='/forgotpassword' var="form_url"/>
+		<form name="f" action="${form_url}" method="POST"> 
+			<p><spring:message code="reset.password.request.info"/></p>
+	    	<div>
+	            <label for="j_username"><spring:message code="forgot.password.username"/></label>
+	            <input id="j_username" type='text' name='j_username' style="width:150px"/>
+	            <spring:message code="forgot.password.username.message" var="username_msg"/>
+	            <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : "j_username", widgetType : "dijit.form.ValidationTextBox", widgetAttrs : {promptMessage: "${username_msg}", required : true}})); </script>
+	        </div>
+	        <div class="submit">
+	            <script type="text/javascript">Spring.addDecoration(new Spring.ValidateAllDecoration({elementId:'proceed', event:'onclick'}));</script>
+	            <spring:message code="button.submit" var="submit_label"/>
+	            <input id="proceed" type="submit" value="${submit_label}"/>
+	        </div>
+        </form> 
+    </div>
+</div>
