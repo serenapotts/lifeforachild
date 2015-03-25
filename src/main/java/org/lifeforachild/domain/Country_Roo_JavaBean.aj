@@ -2,9 +2,18 @@ package org.lifeforachild.domain;
 
 import java.lang.String;
 import java.util.Set;
+
 import org.lifeforachild.domain.DiabetesCentre;
 
 privileged aspect Country_Roo_JavaBean {
+    
+    public Long Country.getId() {    
+        return this.id;        
+    }    
+    
+    public void Country.setId(Long id) {    
+        this.id = id;        
+    }    
     
     public String Country.getName() {    
         return this.name;        

@@ -1,6 +1,9 @@
 package org.lifeforachild.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.roo.addon.javabean.RooJavaBean;
@@ -31,6 +34,10 @@ public class Permissions {
 	public static final String EDIT_TRANSLATIONS = "EDIT_TRANSLATIONS";
 	public static final String IMPORT_DATA = "IMPORT_DATA";
 	
+    @Id    
+    @GeneratedValue(strategy = GenerationType.AUTO)  
+    private Long id; 
+    
 	@NotNull
 	String name;
 	String description;

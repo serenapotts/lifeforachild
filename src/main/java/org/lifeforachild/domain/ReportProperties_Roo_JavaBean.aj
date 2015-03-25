@@ -7,6 +7,14 @@ import org.lifeforachild.web.report.enums.ReportType;
 
 privileged aspect ReportProperties_Roo_JavaBean {
     
+    public Long ReportProperties.get_id() {    
+        return this._id;        
+    }    
+    
+    public void ReportProperties.set_id(Long id) {    
+        this._id = id;        
+    }  
+    
     public String ReportProperties.getQuery() {    
         return this.query;        
     }    

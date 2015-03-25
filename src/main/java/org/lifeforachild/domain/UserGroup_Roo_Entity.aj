@@ -18,22 +18,9 @@ privileged aspect UserGroup_Roo_Entity {
     @PersistenceContext    
     transient EntityManager UserGroup.entityManager;    
     
-    @Id    
-    @GeneratedValue(strategy = GenerationType.AUTO)    
-    @Column(name = "id")    
-    private Long UserGroup.id;    
-    
     @Version    
     @Column(name = "version")    
-    private Integer UserGroup.version;    
-    
-    public Long UserGroup.getId() {    
-        return this.id;        
-    }    
-    
-    public void UserGroup.setId(Long id) {    
-        this.id = id;        
-    }    
+    private Integer UserGroup.version;      
     
     public Integer UserGroup.getVersion() {    
         return this.version;        

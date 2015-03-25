@@ -21,22 +21,9 @@ privileged aspect Report_Roo_Entity {
     @PersistenceContext    
     transient EntityManager Report.entityManager;    
     
-    @Id    
-    @GeneratedValue(strategy = GenerationType.AUTO)    
-    @Column(name = "id")    
-    private Long Report.id;    
-    
     @Version    
     @Column(name = "version")    
     private Integer Report.version;    
-    
-    public Long Report.getId() {    
-        return this.id;        
-    }    
-    
-    public void Report.setId(Long id) {    
-        this.id = id;        
-    }    
     
     public Integer Report.getVersion() {    
         return this.version;        

@@ -22,22 +22,9 @@ privileged aspect DiabetesCentre_Roo_Entity {
     @PersistenceContext    
     transient EntityManager DiabetesCentre.entityManager;    
     
-    @Id    
-    @GeneratedValue(strategy = GenerationType.AUTO)    
-    @Column(name = "id")    
-    private Long DiabetesCentre.id;    
-    
     @Version    
     @Column(name = "version")    
     private Integer DiabetesCentre.version;    
-    
-    public Long DiabetesCentre.getId() {    
-        return this.id;        
-    }    
-    
-    public void DiabetesCentre.setId(Long id) {    
-        this.id = id;        
-    }    
     
     public Integer DiabetesCentre.getVersion() {    
         return this.version;        

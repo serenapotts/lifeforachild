@@ -18,22 +18,9 @@ privileged aspect LMS_Roo_Entity {
     @PersistenceContext    
     transient EntityManager LMS.entityManager;    
     
-    @Id    
-    @GeneratedValue(strategy = GenerationType.AUTO)    
-    @Column(name = "id")    
-    private Long LMS.id;    
-    
     @Version    
     @Column(name = "version")    
     private Integer LMS.version;    
-    
-    public Long LMS.getId() {    
-        return this.id;        
-    }    
-    
-    public void LMS.setId(Long id) {    
-        this.id = id;        
-    }    
     
     public Integer LMS.getVersion() {    
         return this.version;        

@@ -25,22 +25,9 @@ privileged aspect ClinicalRecord_Roo_Entity {
     @PersistenceContext    
     transient EntityManager ClinicalRecord.entityManager;    
     
-    @Id    
-    @GeneratedValue(strategy = GenerationType.AUTO)    
-    @Column(name = "id")    
-    private Long ClinicalRecord.id;    
-    
     @Version    
     @Column(name = "version")    
     private Integer ClinicalRecord.version;    
-    
-    public Long ClinicalRecord.getId() {    
-        return this.id;        
-    }    
-    
-    public void ClinicalRecord.setId(Long id) {    
-        this.id = id;        
-    }    
     
     public Integer ClinicalRecord.getVersion() {    
         return this.version;        

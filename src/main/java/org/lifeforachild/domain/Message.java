@@ -15,6 +15,10 @@ import org.lifeforachild.domain.DiabetesCentre;
 
 import java.util.HashSet;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.CascadeType;
 
@@ -27,6 +31,12 @@ import javax.persistence.CascadeType;
 @RooJavaBean
 @RooToString
 public class Message {
+	
+    @Id     
+    @GeneratedValue(strategy = GenerationType.AUTO) 
+    @Column(name = "id")    
+    private Long id; 
+    
     @Size(max = 512)
     @NotNull
     @NotEmpty

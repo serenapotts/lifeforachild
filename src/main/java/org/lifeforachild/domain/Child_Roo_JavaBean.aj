@@ -18,6 +18,14 @@ import org.lifeforachild.security.SimpleStringCipher;
 
 privileged aspect Child_Roo_JavaBean {
     
+    public Long Child.getId() {    
+        return this.id;        
+    }    
+    
+    public void Child.setId(Long id) {    
+        this.id = id;        
+    }    
+    
     public String Child.getIndividualId() {    
         return this.individualId;        
     }    

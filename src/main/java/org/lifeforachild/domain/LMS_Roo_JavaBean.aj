@@ -6,6 +6,14 @@ import org.lifeforachild.enums.SexType;
 
 privileged aspect LMS_Roo_JavaBean {
     
+    public Long LMS.getId() {    
+        return this.id;        
+    }    
+    
+    public void LMS.setId(Long id) {    
+        this.id = id;        
+    }    
+    
     public SexType LMS.getSex() {    
         return this.sex;        
     }    

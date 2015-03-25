@@ -2,9 +2,18 @@ package org.lifeforachild.domain;
 
 import java.lang.String;
 import java.util.Set;
+
 import org.lifeforachild.domain.DiabetesCentre;
 
 privileged aspect Message_Roo_JavaBean {
+    
+    public Long Message.getId() {    
+        return this.id;        
+    }    
+    
+    public void Message.setId(Long id) {    
+        this.id = id;        
+    }      
     
     public String Message.getMessageKey() {    
         return this.messageKey;        

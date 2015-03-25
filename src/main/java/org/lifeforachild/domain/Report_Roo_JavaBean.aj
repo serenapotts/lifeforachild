@@ -2,6 +2,7 @@ package org.lifeforachild.domain;
 
 import java.lang.String;
 import java.util.Date;
+
 import org.lifeforachild.domain.Country;
 import org.lifeforachild.domain.DiabetesCentre;
 import org.lifeforachild.domain.User;
@@ -13,6 +14,14 @@ import org.lifeforachild.web.report.enums.StatusType;
 import org.lifeforachild.web.report.enums.TimePeriodUnit;
 
 privileged aspect Report_Roo_JavaBean {
+    
+    public Long Report.getId() {    
+        return this.id;        
+    }    
+    
+    public void Report.setId(Long id) {    
+        this.id = id;        
+    }    
     
     public String Report.getName() {    
         return this.name;        

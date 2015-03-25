@@ -4,6 +4,7 @@ import java.lang.Float;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Date;
+
 import org.lifeforachild.domain.Child;
 import org.lifeforachild.domain.User;
 import org.lifeforachild.enums.CreatineUnitsType;
@@ -19,6 +20,14 @@ import org.lifeforachild.enums.YesNoType;
 import org.lifeforachild.enums.YesNoUnkownType;
 
 privileged aspect ClinicalRecord_Roo_JavaBean {
+    
+    public Long ClinicalRecord.getId() {    
+        return this.id;        
+    }    
+    
+    public void ClinicalRecord.setId(Long id) {    
+        this.id = id;        
+    }  
     
     public Child ClinicalRecord.getChild() {    
         return this.child;        

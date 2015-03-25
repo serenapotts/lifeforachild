@@ -10,10 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Version;
 
-import org.hibernate.Criteria;
-import org.hibernate.Session;
-import org.hibernate.criterion.Restrictions;
-import org.lifeforachild.web.query.UserQuery;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
@@ -28,22 +24,9 @@ privileged aspect Message_Roo_Entity {
     @PersistenceContext    
     transient EntityManager Message.entityManager;    
     
-    @Id     
-    @GeneratedValue(strategy = GenerationType.AUTO) 
-    @Column(name = "id")    
-    private Long Message.id; 
-    
     @Version    
     @Column(name = "version")    
     private Integer Message.version;  
-    
-    public Long Message.getId() {    
-        return this.id;        
-    }    
-    
-    public void Message.setId(Long id) {    
-        this.id = id;        
-    }      
     
     public Integer Message.getVersion() {    
         return this.version;        

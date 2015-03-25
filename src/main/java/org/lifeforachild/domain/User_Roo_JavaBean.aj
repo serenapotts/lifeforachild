@@ -9,6 +9,14 @@ import org.lifeforachild.domain.UserGroup;
 
 privileged aspect User_Roo_JavaBean {
     
+    public Long User.getId() {    
+        return this.id;        
+    }    
+    
+    public void User.setId(Long id) {    
+        this.id = id;        
+    }  
+    
     public String User.getFirstName() {    
         return this.firstName;        
     }    

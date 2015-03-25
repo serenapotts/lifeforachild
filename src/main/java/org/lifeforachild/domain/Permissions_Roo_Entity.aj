@@ -21,22 +21,9 @@ privileged aspect Permissions_Roo_Entity {
     @PersistenceContext    
     transient EntityManager Permissions.entityManager;    
     
-    @Id    
-    @GeneratedValue(strategy = GenerationType.AUTO)    
-    @Column(name = "id")    
-    private Long Permissions.id;    
-    
     @Version    
     @Column(name = "version")    
-    private Integer Permissions.version;    
-    
-    public Long Permissions.getId() {    
-        return this.id;        
-    }    
-    
-    public void Permissions.setId(Long id) {    
-        this.id = id;        
-    }    
+    private Integer Permissions.version;     
     
     public Integer Permissions.getVersion() {    
         return this.version;        

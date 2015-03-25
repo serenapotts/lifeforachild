@@ -4,6 +4,14 @@ import java.lang.String;
 
 privileged aspect Permissions_Roo_JavaBean {
     
+    public Long Permissions.getId() {    
+        return this.id;        
+    }    
+    
+    public void Permissions.setId(Long id) {    
+        this.id = id;        
+    }   
+    
     public String Permissions.getName() {    
         return this.name;        
     }    
