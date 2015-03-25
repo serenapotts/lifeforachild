@@ -20,6 +20,10 @@ insert into message (message_key, version, english) values ('change.password.con
 insert into message (message_key, version, english) values ('user.email', 1, 'Email Address');
 ALTER TABLE user ADD email varchar(255) default null;
 ALTER TABLE user_versions ADD email varchar(255) default null;
+insert into message (message_key, version, english) values ('user.old.password.invalid', 1, 'Old Password does not match current password');
+insert into message (message_key, version, english) values ('user.new.password.mismatch', 1, 'New and confirm passwords must be the same');
+
+
 
 
 
