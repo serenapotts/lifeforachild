@@ -36,11 +36,11 @@
 	            <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : "j_password", widgetType : "dijit.form.ValidationTextBox", widgetAttrs : {promptMessage: "${pwd_msg}", required : true}})); </script>
 	        </div>
 	        <br/>
-	        <div class="forgotpassword">
+	        <!--  <div class="forgotpassword">
 	        <spring:url var="forgotPasswordUrl" value="/forgotpassword" />
         	<a href="${forgotPasswordUrl}"><spring:message code="forgot.password"/></a>
 	        </div>
-	        <br/>
+	        <br/>-->
 	        <div class="submit">
 	            <script type="text/javascript">Spring.addDecoration(new Spring.ValidateAllDecoration({elementId:'proceed', event:'onclick'}));</script>
 	            <spring:message code="button.submit" var="submit_label"/>

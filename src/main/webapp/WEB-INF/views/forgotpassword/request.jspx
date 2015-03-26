@@ -5,19 +5,23 @@
     	<spring:message code="forgot.password.title" var="title_msg"/>
     	<script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_title_div', widgetType : 'dijit.TitlePane', widgetAttrs : {title: '${title_msg}'}})); </script>
     	<spring:url value='/forgotpassword' var="form_url"/>
-		<form name="f" action="${form_url}" method="POST"> 
+		<form:form action="${form_url}" method="POST" modelAttribute="forgotPassword"> 
 			<p><spring:message code="reset.password.request.info"/></p>
 	    	<div>
-	            <label for="j_username"><spring:message code="forgot.password.username"/></label>
-	            <input id="j_username" type='text' name='j_username' style="width:150px"/>
-	            <spring:message code="forgot.password.username.message" var="username_msg"/>
-	            <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : "j_username", widgetType : "dijit.form.ValidationTextBox", widgetAttrs : {promptMessage: "${username_msg}", required : true}})); </script>
-	        </div>
+	            <label for="_username_id"><spring:message code="forgot.password.username"/></label>
+	            <form:input id="_username_id" type='text' name='_username_id' path="username" style="width:150px"/>
+	            <br/>
+                <form:errors cssClass="errors" id="_username_error_id" path="username"/>
+                <spring:message arguments="Username" code="field.invalid" var="field_invalid"/>
+                <spring:message code="field.required" var="field_required"/>
+                <spring:message argumentSeparator="," arguments="Username,(${field_required})" code="field.simple.validation" var="field_validation"/>
+                <script type="text/javascript">Spring.addDecoration(new Spring.ElementDecoration({elementId : '_username_id', widgetType : 'dijit.form.ValidationTextBox', widgetAttrs : {promptMessage: '${field_validation}', invalidMessage: '${field_invalid}', required : true}})); </script>
+            </div>
 	        <div class="submit">
 	            <script type="text/javascript">Spring.addDecoration(new Spring.ValidateAllDecoration({elementId:'proceed', event:'onclick'}));</script>
 	            <spring:message code="button.submit" var="submit_label"/>
 	            <input id="proceed" type="submit" value="${submit_label}"/>
 	        </div>
-        </form> 
+        </form:form> 
     </div>
 </div>

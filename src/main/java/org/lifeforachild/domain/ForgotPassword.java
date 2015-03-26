@@ -10,14 +10,8 @@ import org.springframework.roo.addon.tostring.RooToString;
 @RooEntity
 @RooJavaBean
 @RooToString
-public class ChangePassword {
+public class ForgotPassword {
 
 	@NotNull	
-    String newPassword;
-    
-	@NotNull
-	String oldPassword;
-
-	@NotNull
-	String confirmPassword;
+    String username;
 }
