@@ -717,4 +717,12 @@ privileged aspect ClinicalRecord_Roo_JavaBean {
     public void ClinicalRecord.setDateReviewed(Date dateReviewed) {    
         this.dateReviewed = dateReviewed;        
     }      
+    
+    public String ClinicalRecord.getPreviousConsentGivenCode() {    
+        return this.previousConsentGivenCode;        
+    }    
+    
+    public void ClinicalRecord.setPreviousConsentGivenCode(String previousConsentGivenCode) {    
+        this.previousConsentGivenCode = previousConsentGivenCode;        
+    }     
 }

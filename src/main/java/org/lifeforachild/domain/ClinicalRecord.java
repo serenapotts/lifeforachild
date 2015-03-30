@@ -351,6 +351,9 @@ public class ClinicalRecord {
     @DateTimeFormat(pattern="dd/MM/yy", style = "S-")
     private Date dateReviewed;
     
+    @Transient
+    private String previousConsentGivenCode;
+    
     public static Float calculateBMI(Float weightKG, Float heightCM) {
         Float result = null;
         if (weightKG != null && heightCM != null && !heightCM.equals(new Integer(0))) {

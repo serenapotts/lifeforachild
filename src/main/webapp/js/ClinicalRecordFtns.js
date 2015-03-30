@@ -135,6 +135,15 @@ dojo.addOnLoad(
 		{
 			dojo.style(dijit.byId("roo_clinicalRecord_adjustInsulinDoseIfNeeded").domNode, "display", "none");
 		}
+		if (dojo.byId("_previousConsentGiven_id").value == '')
+	  	{
+			dojo.style(dojo.byId("roo_clinicalRecord_previousConsentGiven"), "display", "none");
+	  	}
+		if (dojo.byId("_previousConsentGiven_id").value == 'YES')
+	  	{
+			dojo.style(dojo.byId("roo_clinicalRecord_consentGiven"), "display", "none");
+			dijit.byId("_consentGiven_id").value = 'YES';
+	  	}
 	}
 );    	        
 

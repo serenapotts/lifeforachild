@@ -111,12 +111,11 @@ privileged aspect ClinicalRecordController_Roo_Controller {
 	    	// set child for record from child information passed when creating record
 	    	record.setChild(child);
 	    	record.setIsDeleted(false); 
-	    	// set person completing to the current user
-	    	//record.setPersonCompletingForm(SecurityUtil.getInstance().getApplicationUserForCurrentUser());
 	    	// default date completed to today
 	    	record.setDateCompleted(new Date());
+	    	ClinicalRecord maxRecord = ClinicalRecord.findMaxClinicalRecordEntries(child.getId());
+	    	record.setPreviousConsentGivenCode(maxRecord != null ? maxRecord.getConsentGiven().name() : "");
 	        modelMap.addAttribute("clinicalRecord", record);
-	        ClinicalRecord maxRecord = ClinicalRecord.findMaxClinicalRecordEntries(child.getId());
 	        modelMap.addAttribute("previousConsentGiven", maxRecord != null ? maxRecord.getConsentGiven() : "");
 	        modelMap.addAttribute("creatineunitstype_enum", CreatineUnitsType.class.getEnumConstants());        
 	        modelMap.addAttribute("diabetescopingtype_enum", DiabetesCopingType.class.getEnumConstants());

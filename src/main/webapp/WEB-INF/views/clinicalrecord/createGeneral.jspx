@@ -43,10 +43,10 @@
           <br/>  
           <div id="roo_clinicalRecord_previousConsentGiven">
            <label for="_previousConsentGivenForm_id"><spring:message code="record.previousConsentGiven"/></label>
-           <c:out value="${previousConsentGiven}"/>	            
-             	<br/>               	
+           <c:out value="${previousConsentGiven}"/>            
+           <br/>  
+           <br/>             	
           </div>
-          <br/>
           <div id="roo_clinicalRecord_consentGiven">
            <label for="_consentGivenForm_id"><spring:message code="record.consentGiven"/></label>
            <form:select cssStyle="width:250px" id="_consentGiven_id" path="consentGiven">

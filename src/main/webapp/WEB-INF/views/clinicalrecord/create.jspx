@@ -239,6 +239,7 @@
             <form:hidden id="_BloodPressureSystolicSD_id" path="BloodPressureSystolicSD"/>
             <form:hidden id="_BloodPressureDiastolicSD_id" path="BloodPressureDiastolicSD"/>
             <form:hidden id="_isDeleted_id" path="isDeleted"/>
+            <form:hidden id="_previousConsentGiven_id" path="previousConsentGivenCode"/>
             <div class="submit" id="roo_clinicalRecord_submit">
                 <spring:message code="button.save" var="save_button"/>
                 <script type="text/javascript">Spring.addDecoration(new Spring.ValidateAllDecoration({elementId:'proceed', event:'onclick'}));</script>
