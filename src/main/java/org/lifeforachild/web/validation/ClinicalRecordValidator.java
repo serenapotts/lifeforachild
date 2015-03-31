@@ -137,8 +137,6 @@ public class ClinicalRecordValidator implements Validator {
 				errors.rejectValue("totalCholesterolValue", "record.required.cholesterolValue");
 			if (record.getCholesterolUnits() == null)
 				errors.rejectValue("cholesterolUnits", "record.required.cholesterolUnits");
-			if (record.getFasted() == null)
-				errors.rejectValue("fasted", "record.required.fasted");
 		}
 		
 		if (record.getHdlCholesterolInLast12Months() != null 
@@ -159,6 +157,16 @@ public class ClinicalRecordValidator implements Validator {
 				errors.rejectValue("triglyceridesValue", "record.required.triglyceridesValue");
 			if (record.getTriglyceridesUnits() == null)
 				errors.rejectValue("triglyceridesUnits", "record.required.triglyceridesUnits");
+		}
+		
+		if ((record.getTotalCholesterolInLast12Months() != null 
+				&& record.getTotalCholesterolInLast12Months().equals(YesNoLaterType.YES)) ||
+				(record.getHdlCholesterolInLast12Months() != null 
+				&& record.getHdlCholesterolInLast12Months().equals(YesNoLaterType.YES)) ||
+				(record.getTriglyceridesInLast12Months() != null 
+				&& record.getTriglyceridesInLast12Months().equals(YesNoLaterType.YES))) {
+			if (record.getFasted() == null)
+				errors.rejectValue("fasted", "record.required.fasted");
 		}
 		
 		if (record.getAttendingSchool() != null && record.getAttendingSchool().equals(YesNoType.NO))

@@ -105,7 +105,6 @@ dojo.addOnLoad(
 		{
 			dojo.style(dijit.byId("roo_clinicalRecord_totalCholesterolValue").domNode, "display", "none");
 			dojo.style(dijit.byId("roo_clinicalRecord_cholesterolUnits").domNode, "display", "none");
-			dojo.style(dijit.byId("roo_clinicalRecord_fasted").domNode, "display", "none");
 		} 
 		if (dijit.byId("_weightInLast12Months_id").value != 'YES')
 		{
@@ -135,15 +134,16 @@ dojo.addOnLoad(
 		{
 			dojo.style(dijit.byId("roo_clinicalRecord_adjustInsulinDoseIfNeeded").domNode, "display", "none");
 		}
-		if (dojo.byId("_previousConsentGiven_id").value == '')
+		if (dojo.byId("_previousConsentGiven_id") != null && dojo.byId("_previousConsentGiven_id").value == '')
 	  	{
 			dojo.style(dojo.byId("roo_clinicalRecord_previousConsentGiven"), "display", "none");
 	  	}
-		if (dojo.byId("_previousConsentGiven_id").value == 'YES')
+		if (dojo.byId("_previousConsentGiven_id") != null && dojo.byId("_previousConsentGiven_id").value == 'YES')
 	  	{
 			dojo.style(dojo.byId("roo_clinicalRecord_consentGiven"), "display", "none");
 			dijit.byId("_consentGiven_id").value = 'YES';
 	  	}
+		checkHideFasted();
 	}
 );    	        
 
@@ -381,7 +381,7 @@ function totalCholesterolInLast12MonthsOnChange(newValue) {
 	{
 		dojo.style(dijit.byId("roo_clinicalRecord_totalCholesterolValue").domNode, "display", "none");
 		dojo.style(dijit.byId("roo_clinicalRecord_cholesterolUnits").domNode, "display", "none");
-		dojo.style(dijit.byId("roo_clinicalRecord_fasted").domNode, "display", "none");
+		checkHideFasted();
 	}
 }
 
@@ -390,11 +390,13 @@ function hdlCholesterolInLast12MonthsOnChange(newValue) {
 	{
 		dojo.style(dijit.byId("roo_clinicalRecord_hdlCholesterolValue").domNode, "display", "block");
 		dojo.style(dijit.byId("roo_clinicalRecord_hdlUnits").domNode, "display", "block");
+		dojo.style(dijit.byId("roo_clinicalRecord_fasted").domNode, "display", "block");
 	}
 	else
 	{
 		dojo.style(dijit.byId("roo_clinicalRecord_hdlCholesterolValue").domNode, "display", "none");
 		dojo.style(dijit.byId("roo_clinicalRecord_hdlUnits").domNode, "display", "none");
+		checkHideFasted();
 	}
 }
 
@@ -403,11 +405,24 @@ function triglyceridesInLast12MonthsOnChange(newValue) {
 	{
 		dojo.style(dijit.byId("roo_clinicalRecord_triglyceridesValue").domNode, "display", "block");
 		dojo.style(dijit.byId("roo_clinicalRecord_triglyceridesUnits").domNode, "display", "block");
+		dojo.style(dijit.byId("roo_clinicalRecord_fasted").domNode, "display", "block");
 	}
 	else
 	{
 		dojo.style(dijit.byId("roo_clinicalRecord_triglyceridesValue").domNode, "display", "none");
 		dojo.style(dijit.byId("roo_clinicalRecord_triglyceridesUnits").domNode, "display", "none");
+		checkHideFasted();
+	}
+}
+
+function checkHideFasted() {
+	var triLast12Months = dijit.byId("_triglyceridesInLast12Months_id");
+	var hdlLast12Months = dijit.byId("_hdlCholesterolInLast12Months_id");
+	var choLast12Months = dijit.byId("_totalCholesterolInLast12Months_id");
+	if ((triLast12Months.value == 'NO' || triLast12Months.value == '') && 
+			(hdlLast12Months.value == "NO" || hdlLast12Months.value == "") &&
+			(choLast12Months.value == "NO" || choLast12Months.value == "")) {
+		dojo.style(dijit.byId("roo_clinicalRecord_fasted").domNode, "display", "none");
 	}
 }
 

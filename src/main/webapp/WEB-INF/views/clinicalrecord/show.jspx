@@ -682,16 +682,6 @@
 		                    </c:if>
 			            </div>
 			            <br/>
-			            <div id="roo_clinicalRecord_fasted">
-			                <label  class="record" for="_fasted_id"><spring:message code="record.fasted"/></label>
-			                <div class="box" id="_fasted_id">
-			                    <c:out value="${clinicalRecord.fasted}"/>
-			                </div>
-			                <c:if test="${clinicalRecord.fasted == null}">
-		                    	<br/>
-		                    </c:if>
-			            </div>
-			            <br/>		  
 		            </c:if>
 		            <div id="roo_clinicalRecord_hdlCholesterolInLast12Months">
 		                <label  class="record" for="_hdlCholesterolInLast12Months_id"><spring:message code="record.lastHdlCholesterol"/></label>
@@ -751,6 +741,18 @@
 			            </div>
 			            <br/>
 		            </c:if>
+		            <c:if test="${clinicalRecord.totalCholesterolInLast12Months == 'YES' || clinicalRecord.triglyceridesInLast12Months == 'YES' || clinicalRecord.hdlCholesterolInLast12Months == 'YES'}">
+		                <div id="roo_clinicalRecord_fasted">
+			                <label  class="record" for="_fasted_id"><spring:message code="record.fasted"/></label>
+			                <div class="box" id="_fasted_id">
+			                    <c:out value="${clinicalRecord.fasted}"/>
+			                </div>
+			                <c:if test="${clinicalRecord.fasted == null}">
+		                    	<br/>
+		                    </c:if>
+			            </div>
+			            <br/>	
+		            </c:if> 
 		        </div>
 				<script type="text/javascript">
 					Spring.addDecoration(new Spring.ElementDecoration({
