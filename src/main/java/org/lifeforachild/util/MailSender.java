@@ -21,6 +21,8 @@ public class MailSender {
 	private static final Log LOG = LogFactory.getLog(MailSender.class);
 	
 	private String host;
+	private String port;
+	private String tlsEnable;
 	private String username;
 	private String password;
 	private String toAddress;
@@ -30,17 +32,28 @@ public class MailSender {
 	
 	public void send(boolean isCreate, String url) {
 		
-		Authenticator mailAuthenticator;
+		Authenticator mailAuthenticator = null;
         Properties properties = System.getProperties();
         properties.setProperty("mail.smtp.host", host);
+        if (port != null && !port.trim().isEmpty()) {
+        	properties.put("mail.smtp.port", port);
+        }
+        if (tlsEnable != null && !tlsEnable.trim().isEmpty()) {
+        	properties.put("mail.smtp.starttls.enable", "true");
+        }
 
-        mailAuthenticator = new Authenticator() {
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(username, password);
-            }
-        };
-
-        Session session = Session.getDefaultInstance(properties, mailAuthenticator);
+        Session session;
+        if (username != null && !username.trim().isEmpty() && password != null && !password.trim().isEmpty()) {
+	        mailAuthenticator = new Authenticator() {
+	            protected PasswordAuthentication getPasswordAuthentication() {
+	                return new PasswordAuthentication(username, password);
+	            }
+	        };
+	        properties.setProperty("mail.smtp.auth", "true");
+	        session = Session.getDefaultInstance(properties, mailAuthenticator);
+        } else {
+        	session = Session.getDefaultInstance(properties);
+        }
 
         try {
             MimeMessage message = new MimeMessage(session);
@@ -109,5 +122,21 @@ public class MailSender {
 
 	public void setMessageBody(String messageBody) {
 		this.messageBody = messageBody;
+	}
+
+	public String getPort() {
+		return port;
+	}
+
+	public void setPort(String port) {
+		this.port = port;
+	}
+
+	public String getTlsEnable() {
+		return tlsEnable;
+	}
+
+	public void setTlsEnable(String tlsEnable) {
+		this.tlsEnable = tlsEnable;
 	}
 }

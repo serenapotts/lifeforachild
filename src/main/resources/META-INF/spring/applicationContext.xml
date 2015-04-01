@@ -80,6 +80,8 @@
 
 	<bean class="org.lifeforachild.util.MailSender" id="mailSender">
         <property name="host" value="${mail.host}"/>
+        <property name="port" value="${mail.port}"/>
+        <property name="tlsEnable" value="${mail.tls.enable}"/>
         <property name="username" value="${mail.username}"/>
         <property name="password" value="${mail.password}"/>
         <property name="toAddress" value="${mail.to.address}"/>
