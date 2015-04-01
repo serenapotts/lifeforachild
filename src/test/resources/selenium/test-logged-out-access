@@ -4,16 +4,21 @@
 <head profile="http://selenium-ide.openqa.org/profiles/test-case">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="selenium.base" href="http://localhost:8080/" />
-<title>test-centre-staff-access</title>
+<title>test-logged-out-access</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">test-centre-staff-access</td></tr>
+<tr><td rowspan="1" colspan="3">test-logged-out-access</td></tr>
 </thead><tbody>
 <tr>
 	<td>open</td>
 	<td>/lifeforachild/search</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyLocation</td>
+	<td>http://localhost:8080/lifeforachild/login</td>
 	<td></td>
 </tr>
 <tr>
@@ -22,8 +27,8 @@
 	<td></td>
 </tr>
 <tr>
-	<td>verifyVisible</td>
-	<td>_access_denied_title</td>
+	<td>verifyLocation</td>
+	<td>http://localhost:8080/lifeforachild/login</td>
 	<td></td>
 </tr>
 <tr>
@@ -32,8 +37,8 @@
 	<td></td>
 </tr>
 <tr>
-	<td>verifyElementNotPresent</td>
-	<td>id=_access_denied_title</td>
+	<td>verifyLocation</td>
+	<td>http://localhost:8080/lifeforachild/login</td>
 	<td></td>
 </tr>
 <tr>
@@ -42,8 +47,8 @@
 	<td></td>
 </tr>
 <tr>
-	<td>verifyElementNotPresent</td>
-	<td>id=_access_denied_title</td>
+	<td>verifyLocation</td>
+	<td>http://localhost:8080/lifeforachild/login</td>
 	<td></td>
 </tr>
 <tr>
@@ -52,8 +57,8 @@
 	<td></td>
 </tr>
 <tr>
-	<td>verifyVisible</td>
-	<td>_access_denied_title</td>
+	<td>verifyLocation</td>
+	<td>http://localhost:8080/lifeforachild/login</td>
 	<td></td>
 </tr>
 <tr>
@@ -62,13 +67,8 @@
 	<td></td>
 </tr>
 <tr>
-	<td>verifyVisible</td>
-	<td>_access_denied_title</td>
-	<td></td>
-</tr>
-<tr>
-	<td>open</td>
-	<td>/lifeforachild/search</td>
+	<td>verifyLocation</td>
+	<td>http://localhost:8080/lifeforachild/login</td>
 	<td></td>
 </tr>
 <tr>
@@ -77,13 +77,8 @@
 	<td></td>
 </tr>
 <tr>
-	<td>verifyVisible</td>
-	<td>_access_denied_title</td>
-	<td></td>
-</tr>
-<tr>
-	<td>open</td>
-	<td>/lifeforachild/search</td>
+	<td>verifyLocation</td>
+	<td>http://localhost:8080/lifeforachild/login</td>
 	<td></td>
 </tr>
 <tr>
@@ -92,13 +87,8 @@
 	<td></td>
 </tr>
 <tr>
-	<td>verifyVisible</td>
-	<td>_access_denied_title</td>
-	<td></td>
-</tr>
-<tr>
-	<td>open</td>
-	<td>/lifeforachild/search</td>
+	<td>verifyLocation</td>
+	<td>http://localhost:8080/lifeforachild/login</td>
 	<td></td>
 </tr>
 <tr>
@@ -107,13 +97,8 @@
 	<td></td>
 </tr>
 <tr>
-	<td>verifyVisible</td>
-	<td>_access_denied_title</td>
-	<td></td>
-</tr>
-<tr>
-	<td>open</td>
-	<td>/lifeforachild/search</td>
+	<td>verifyLocation</td>
+	<td>http://localhost:8080/lifeforachild/login</td>
 	<td></td>
 </tr>
 <tr>
@@ -122,13 +107,8 @@
 	<td></td>
 </tr>
 <tr>
-	<td>verifyVisible</td>
-	<td>_access_denied_title</td>
-	<td></td>
-</tr>
-<tr>
-	<td>open</td>
-	<td>/lifeforachild/search</td>
+	<td>verifyLocation</td>
+	<td>http://localhost:8080/lifeforachild/login</td>
 	<td></td>
 </tr>
 <tr>
@@ -137,13 +117,8 @@
 	<td></td>
 </tr>
 <tr>
-	<td>verifyVisible</td>
-	<td>_access_denied_title</td>
-	<td></td>
-</tr>
-<tr>
-	<td>open</td>
-	<td>/lifeforachild/search</td>
+	<td>verifyLocation</td>
+	<td>http://localhost:8080/lifeforachild/login</td>
 	<td></td>
 </tr>
 <tr>
@@ -152,13 +127,8 @@
 	<td></td>
 </tr>
 <tr>
-	<td>verifyVisible</td>
-	<td>_access_denied_title</td>
-	<td></td>
-</tr>
-<tr>
-	<td>open</td>
-	<td>/lifeforachild/search</td>
+	<td>verifyLocation</td>
+	<td>http://localhost:8080/lifeforachild/login</td>
 	<td></td>
 </tr>
 <tr>
@@ -167,13 +137,8 @@
 	<td></td>
 </tr>
 <tr>
-	<td>verifyVisible</td>
-	<td>_access_denied_title</td>
-	<td></td>
-</tr>
-<tr>
-	<td>open</td>
-	<td>/lifeforachild/search</td>
+	<td>verifyLocation</td>
+	<td>http://localhost:8080/lifeforachild/login</td>
 	<td></td>
 </tr>
 <tr>
@@ -182,13 +147,8 @@
 	<td></td>
 </tr>
 <tr>
-	<td>verifyVisible</td>
-	<td>_access_denied_title</td>
-	<td></td>
-</tr>
-<tr>
-	<td>open</td>
-	<td>/lifeforachild/search</td>
+	<td>verifyLocation</td>
+	<td>http://localhost:8080/lifeforachild/login</td>
 	<td></td>
 </tr>
 <tr>
@@ -197,13 +157,8 @@
 	<td></td>
 </tr>
 <tr>
-	<td>verifyVisible</td>
-	<td>_access_denied_title</td>
-	<td></td>
-</tr>
-<tr>
-	<td>open</td>
-	<td>/lifeforachild/search</td>
+	<td>verifyLocation</td>
+	<td>http://localhost:8080/lifeforachild/login</td>
 	<td></td>
 </tr>
 <tr>
@@ -212,13 +167,8 @@
 	<td></td>
 </tr>
 <tr>
-	<td>verifyVisible</td>
-	<td>_access_denied_title</td>
-	<td></td>
-</tr>
-<tr>
-	<td>open</td>
-	<td>/lifeforachild/search</td>
+	<td>verifyLocation</td>
+	<td>http://localhost:8080/lifeforachild/login</td>
 	<td></td>
 </tr>
 <tr>
@@ -227,13 +177,8 @@
 	<td></td>
 </tr>
 <tr>
-	<td>verifyVisible</td>
-	<td>_access_denied_title</td>
-	<td></td>
-</tr>
-<tr>
-	<td>open</td>
-	<td>/lifeforachild/search</td>
+	<td>verifyLocation</td>
+	<td>http://localhost:8080/lifeforachild/login</td>
 	<td></td>
 </tr>
 <tr>
@@ -242,23 +187,8 @@
 	<td></td>
 </tr>
 <tr>
-	<td>verifyVisible</td>
-	<td>_access_denied_title</td>
-	<td></td>
-</tr>
-<tr>
-	<td>open</td>
-	<td>/lifeforachild/search</td>
-	<td></td>
-</tr>
-<tr>
-	<td>open</td>
-	<td>/lifeforachild/message</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyVisible</td>
-	<td>_access_denied_title</td>
+	<td>verifyLocation</td>
+	<td>http://localhost:8080/lifeforachild/login</td>
 	<td></td>
 </tr>
 <tr>
@@ -267,8 +197,8 @@
 	<td></td>
 </tr>
 <tr>
-	<td>verifyElementNotPresent</td>
-	<td>id=_access_denied_title</td>
+	<td>verifyLocation</td>
+	<td>http://localhost:8080/lifeforachild/login</td>
 	<td></td>
 </tr>
 <tr>
@@ -277,10 +207,16 @@
 	<td></td>
 </tr>
 <tr>
-	<td>verifyElementNotPresent</td>
-	<td>id=_access_denied_title</td>
+	<td>open</td>
+	<td>/lifeforachild/forgotpassword</td>
 	<td></td>
 </tr>
+<tr>
+	<td>open</td>
+	<td>/lifeforachild/clinicalrecord</td>
+	<td></td>
+</tr>
+
 </tbody></table>
 </body>
 </html>
