@@ -32,5 +32,8 @@ To build war:
 Change web.xml and database.properties to correct environment (lifeforachild for prod and lifeforachild-staging for staging)
 File --> Export war
 
+To import sql scripts on staging:
+mysql --default-character-set=utf8 -u root staging_life_for_a_child -e "source name.sql"
+
 
 
