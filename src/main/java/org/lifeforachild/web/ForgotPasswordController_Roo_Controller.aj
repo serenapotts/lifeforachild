@@ -26,7 +26,7 @@ privileged aspect ForgotPasswordController_Roo_Controller {
     	User user = User.findUserbyUsername(forgotPassword.getUsername());
     	if (user.getEmail() != null) {
     		// TODO send OTP email link
-    		AppContext.getMailSender().send(true, "");
+    		AppContext.getMailSender().send(true, false, "");
     	}
         return "forgotpassword/success"; 
     }         

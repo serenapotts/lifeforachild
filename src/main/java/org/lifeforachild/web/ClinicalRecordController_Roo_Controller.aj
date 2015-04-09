@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.apache.commons.logging.Log;
@@ -46,7 +47,7 @@ privileged aspect ClinicalRecordController_Roo_Controller {
 	
     @RequestMapping(value = "/clinicalrecord", method = RequestMethod.POST)    
     public String ClinicalRecordController.create(@Valid ClinicalRecord clinicalRecord, 
-    		BindingResult result, ModelMap modelMap) {    
+    											  BindingResult result, ModelMap modelMap, HttpServletRequest request) {    
     	try {
 	    	SecurityUtil.getInstance().checkPermission(Permissions.CREATE_RECORD);
 	    	if (clinicalRecord == null) throw new IllegalArgumentException("A clinicalRecord is required");
@@ -91,7 +92,7 @@ privileged aspect ClinicalRecordController_Roo_Controller {
 	        clinicalRecord.setBloodPressureDiastolicSD(ClinicalRecord.calcDiastolicBloodPressureSD(exactAge, childSex, clinicalRecord.getHeightSD(), clinicalRecord.getBloodPressureDiastolicMMHg()));
 	        
 	        clinicalRecord.persist();        
-	        AppContext.getMailSender().send(true, "/clinicalrecord/" + clinicalRecord.getChild().getId());
+	        AppContext.getMailSender().send(true, false, request.getRequestURL() + "/form");
 	        return "redirect:/clinicalrecord/" + clinicalRecord.getId();    
     	} catch (AccessDeniedException ade) {
     		throw ade;
@@ -165,14 +166,15 @@ privileged aspect ClinicalRecordController_Roo_Controller {
     @RequestMapping(value = "/clinicalrecord", method = RequestMethod.GET)    
     public String ClinicalRecordController.list(@RequestParam(value = "page", required = false) Integer page, 
     											@RequestParam(value = "size", required = false) Integer size, 
-    											ModelMap modelMap) {
+    											ModelMap modelMap, HttpServletRequest request) {
     	// users should never be able to view this page they have to go through the child
     	throw new AccessDeniedException("Denied");
     }    
     
     @RequestMapping(method = RequestMethod.PUT)    
     public String ClinicalRecordController.update(@Valid ClinicalRecord clinicalRecord, 
-    											  BindingResult result, ModelMap modelMap) {    
+    											  BindingResult result, ModelMap modelMap, 
+    											  HttpServletRequest request) {    
     	try {
 	    	SecurityUtil.getInstance().checkPermission(Permissions.EDIT_RECORD);
 	    	if (clinicalRecord == null) throw new IllegalArgumentException("A clinicalRecord is required");
@@ -219,7 +221,7 @@ privileged aspect ClinicalRecordController_Roo_Controller {
 	        clinicalRecord.setBloodPressureDiastolicSD(ClinicalRecord.calcDiastolicBloodPressureSD(exactAge, childSex, clinicalRecord.getHeightSD(), clinicalRecord.getBloodPressureDiastolicMMHg()));
 	        
 	        clinicalRecord.merge();        
-	        AppContext.getMailSender().send(false, "/clinicalrecord/" + clinicalRecord.getChild().getId());
+	        AppContext.getMailSender().send(false, false, request.getRequestURL() + "/form");
 	        return "redirect:/clinicalrecord/" + clinicalRecord.getId();
     	} catch (AccessDeniedException ade) {
     		throw ade;

@@ -1,7 +1,5 @@
 package org.lifeforachild.web;
 
-import javax.persistence.Transient;
-
 import java.util.Date;
 import java.util.List;
 
@@ -52,7 +50,8 @@ privileged aspect ChildController_Roo_Controller {
     private static final Log LOG = LogFactory.getLog(ChildController.class);
     
     @RequestMapping(value = "/child", method = RequestMethod.POST)    
-    public String ChildController.create(@Valid Child child, BindingResult result, ModelMap modelMap) { 
+    public String ChildController.create(@Valid Child child, BindingResult result, ModelMap modelMap,
+    									 HttpServletRequest request) { 
     	try {
 	    	SecurityUtil.getInstance().checkPermission(Permissions.CREATE_CHILD);
 	        if (child == null) throw new IllegalArgumentException("A child is required"); 
@@ -101,7 +100,7 @@ privileged aspect ChildController_Roo_Controller {
 	        String paddedCentreId = StringUtil.padWithZeros(centreId, 3);
 	        child.setIndividualId(paddedCountryId + paddedCentreId + id);
 	        child.persist();
-	        AppContext.getMailSender().send(true, "/child/" + child.getId());
+	        AppContext.getMailSender().send(true, true, request.getRequestURL() + "/form");
 	        return "redirect:/child/" + child.getId();    
     	} catch (AccessDeniedException ade) {
     		throw ade;
@@ -218,7 +217,8 @@ privileged aspect ChildController_Roo_Controller {
     }    
     
     @RequestMapping(method = RequestMethod.PUT)    
-    public String ChildController.update(@Valid Child child, BindingResult result, ModelMap modelMap) { 
+    public String ChildController.update(@Valid Child child, BindingResult result, ModelMap modelMap,
+    		HttpServletRequest request) { 
     	try {
 	    	SecurityUtil.getInstance().checkPermission(Permissions.EDIT_CHILD);
 	        if (child == null) throw new IllegalArgumentException("A child is required");   
@@ -257,7 +257,7 @@ privileged aspect ChildController_Roo_Controller {
 	        child.setInitials(SimpleStringCipher.encrypt(child.getInitials()));        
 	        child.setAgeAtDiagnosis(child.calculatedAgeAtDiabetesDiagnosis());
 	        child.merge();   
-	        AppContext.getMailSender().send(false, "/child/" + child.getId());
+	        AppContext.getMailSender().send(false, true, request.getRequestURL() + "/form");
 	        return "redirect:/child/" + child.getId();    
     	} catch (AccessDeniedException ade) {
     		throw ade;
