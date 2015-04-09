@@ -136,7 +136,7 @@ p, ul {
 }
 p.lead { font-size:17px; }
 p.last { margin-bottom:0px;}
-p.footer {font-size:12px;}
+p.footer {font-size:10px;}
 
 ul li {
 	margin-left:5px;
@@ -238,7 +238,6 @@ ul.sidebar li a h1,ul.sidebar li a h2,ul.sidebar li a h3,ul.sidebar li a h4,ul.s
 </head>
  
 <body bgcolor="#FFFFFF">
-<img src="cid:banner"/>
 <!-- HEADER -->
 <!--<table class="head-wrap">
 	<tr>
