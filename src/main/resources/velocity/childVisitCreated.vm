@@ -238,27 +238,6 @@ ul.sidebar li a h1,ul.sidebar li a h2,ul.sidebar li a h3,ul.sidebar li a h4,ul.s
 </head>
  
 <body bgcolor="#FFFFFF">
-<!-- HEADER -->
-<!--<table class="head-wrap">
-	<tr>
-		<td></td>
-		<td class="header container" >
-				
-				<div class="content">
-				<table>
-					<tr>
-					    <td>
-					    <img src="cid:banner"/>
-					    </td>
-					</tr>
-				</table>
-				</div>
-				
-		</td>
-		<td></td>
-	</tr>
-</table>--><!-- /HEADER -->
-
 
 <!-- BODY -->
 <table class="body-wrap">

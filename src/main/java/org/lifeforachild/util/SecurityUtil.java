@@ -120,7 +120,11 @@ public class SecurityUtil {
 	
 	public boolean hasPermission(String permission)
 	{
-		Collection<GrantedAuthority> ga = getCurrentUser().getAuthorities();
+		AllUserDetails user = getCurrentUser();
+		if (user == null) {
+			return false;
+		}
+		Collection<GrantedAuthority> ga = user.getAuthorities();
 		GrantedAuthorityImpl role = new GrantedAuthorityImpl(permission);
 		boolean found = false;
 		for (GrantedAuthority authority: ga)
