@@ -43,7 +43,6 @@ public class MailSender {
 	private String toAddress;
 	private String fromAddress;
 	private String subject;
-	private String messageBody;
 	
 	public void send(boolean isCreate, boolean isChild, String url) {
 		ExecutorService executor = Executors.newFixedThreadPool(4);
@@ -178,14 +177,6 @@ public class MailSender {
 
 	public void setSubject(String subject) {
 		this.subject = subject;
-	}
-
-	public String getMessageBody() {
-		return messageBody;
-	}
-
-	public void setMessageBody(String messageBody) {
-		this.messageBody = messageBody;
 	}
 
 	public String getPort() {

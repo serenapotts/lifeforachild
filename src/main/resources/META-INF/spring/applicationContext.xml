@@ -87,7 +87,6 @@
         <property name="toAddress" value="${mail.to.address}"/>
         <property name="fromAddress" value="${mail.from.address}"/>
         <property name="subject" value="${mail.subject}"/>
-        <property name="messageBody" value="${mail.message.body}"/>
     </bean>
     
 	<bean id="multipartFilter" class="org.springframework.web.multipart.support.MultipartFilter">
