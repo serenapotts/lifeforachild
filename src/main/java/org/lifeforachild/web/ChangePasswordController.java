@@ -51,7 +51,8 @@ public class ChangePasswordController {
     public void validate(BindingResult result, User user, ChangePassword changePassword) {
 		Errors errors = new BindException(result);
 		String encPassword = UserController.encryptPassword(changePassword.getOldPassword());
-    	if (!user.getPassword().equals(encPassword)) {
+		String encPasswordSha1 = UserController.encryptPassword(changePassword.getOldPassword(), 1);
+    	if (!user.getPassword().equals(encPassword) && !user.getPassword().equals(encPasswordSha1)) {
     		errors.rejectValue("oldPassword", "user.old.password.invalid");
     	}
     	if (!changePassword.getNewPassword().equals(changePassword.getConfirmPassword())) {
