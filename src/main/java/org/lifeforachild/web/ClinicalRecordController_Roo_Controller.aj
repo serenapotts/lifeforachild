@@ -53,7 +53,9 @@ privileged aspect ClinicalRecordController_Roo_Controller {
 	    	if (clinicalRecord == null) throw new IllegalArgumentException("A clinicalRecord is required");
 	    	validate(result, clinicalRecord);
 	        if (result.hasErrors()) {                	
-	            modelMap.addAttribute("clinicalRecord", clinicalRecord);                       
+	            modelMap.addAttribute("clinicalRecord", clinicalRecord); 
+	            ClinicalRecord maxRecord = ClinicalRecord.findMaxClinicalRecordEntries(clinicalRecord.getChild().getId());
+	            modelMap.addAttribute("previousConsentGiven", maxRecord != null ? maxRecord.getConsentGiven() : "");
 	            modelMap.addAttribute("creatineunitstype_enum", CreatineUnitsType.class.getEnumConstants());            
 	            modelMap.addAttribute("diabetescopingtype_enum", DiabetesCopingType.class.getEnumConstants());   
 	            modelMap.addAttribute("researchconsenttype_enum", ResearchConsentType.class.getEnumConstants()); 
@@ -116,6 +118,10 @@ privileged aspect ClinicalRecordController_Roo_Controller {
 	    	record.setDateCompleted(new Date());
 	    	ClinicalRecord maxRecord = ClinicalRecord.findMaxClinicalRecordEntries(child.getId());
 	    	record.setPreviousConsentGivenCode(maxRecord != null ? maxRecord.getConsentGiven().name() : "");
+	    	if (maxRecord != null && maxRecord.getConsentGiven() != null 
+	    			&& maxRecord.getConsentGiven().equals(ResearchConsentType.YES)) {
+	    		record.setConsentGiven(ResearchConsentType.YES);
+	    	}
 	        modelMap.addAttribute("clinicalRecord", record);
 	        modelMap.addAttribute("previousConsentGiven", maxRecord != null ? maxRecord.getConsentGiven() : "");
 	        modelMap.addAttribute("creatineunitstype_enum", CreatineUnitsType.class.getEnumConstants());        
