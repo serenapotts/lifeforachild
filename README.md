@@ -35,5 +35,18 @@ File --> Export war
 To import sql scripts on staging:
 mysql --default-character-set=utf8 -u root staging_life_for_a_child -e "source name.sql"
 
+To upgrade staging/prod:
+
+1. scp war file to machine
+2. cd tomcat directory
+3. bin/shutdown.sh  
+4. cd webapps
+4. rm -rf lifeforachild-staging
+5. rm lifeforachild-staging.war
+6. copy new war to webapps
+7. cd ..
+8. bin/startup.sh
+9. Check logs: tail -f logs/catalina.out
+
 
 
