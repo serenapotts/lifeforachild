@@ -100,7 +100,7 @@ privileged aspect ChildController_Roo_Controller {
 	        String paddedCentreId = StringUtil.padWithZeros(centreId, 3);
 	        child.setIndividualId(paddedCountryId + paddedCentreId + id);
 	        child.persist();
-	        AppContext.getMailSender().send(true, true, request.getRequestURL() + "/form");
+	        AppContext.getMailSender().send(true, true, request.getRequestURL() + "/" + child.getId() + "/form");
 	        return "redirect:/child/" + child.getId();    
     	} catch (AccessDeniedException ade) {
     		throw ade;

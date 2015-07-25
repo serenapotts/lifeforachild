@@ -44,7 +44,7 @@ public class MailSender {
 	private String fromAddress;
 	private String subject;
 	
-	public void send(boolean isCreate, boolean isChild, String url) {
+	public void send(final boolean isCreate, final boolean isChild, final String url) {
 		ExecutorService executor = Executors.newFixedThreadPool(4);
 		executor.submit(new Callable<Void>() {
 	         public Void call() {
@@ -79,7 +79,7 @@ public class MailSender {
         return session;
 	}
 
-	public void sendEmailViaTemplate(boolean isCreate, boolean isChild, String url) {
+	public void sendEmailViaTemplate(boolean isCreate, boolean isChild, final String url) {
 		
 		JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
 		mailSender.setSession(getSession());
@@ -90,11 +90,11 @@ public class MailSender {
 		props.put("class.resource.loader.class", "org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader");
 		vef.setVelocityProperties(props);
 		
-		String type = isChild ? "Child" : "Visit";
-        String operation = isCreate ? "created" : "updated";
+		final String type = isChild ? "Child" : "Visit";
+        final String operation = isCreate ? "created" : "updated";
         
 		try {
-			VelocityEngine velocityEngine = vef.createVelocityEngine();
+			final VelocityEngine velocityEngine = vef.createVelocityEngine();
 			MimeMessagePreparator preparator = new MimeMessagePreparator() {
 		        @SuppressWarnings({ "rawtypes", "unchecked" })
 				public void prepare(MimeMessage mimeMessage) throws Exception {

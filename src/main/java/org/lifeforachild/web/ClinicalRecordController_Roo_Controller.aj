@@ -94,7 +94,7 @@ privileged aspect ClinicalRecordController_Roo_Controller {
 	        clinicalRecord.setBloodPressureDiastolicSD(ClinicalRecord.calcDiastolicBloodPressureSD(exactAge, childSex, clinicalRecord.getHeightSD(), clinicalRecord.getBloodPressureDiastolicMMHg()));
 	        
 	        clinicalRecord.persist();        
-	        AppContext.getMailSender().send(true, false, request.getRequestURL() + "/form");
+	        AppContext.getMailSender().send(true, false, request.getRequestURL() + "/" + clinicalRecord.getId() + "/form");
 	        return "redirect:/clinicalrecord/" + clinicalRecord.getId();    
     	} catch (AccessDeniedException ade) {
     		throw ade;
