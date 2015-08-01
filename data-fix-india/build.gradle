@@ -1,0 +1,20 @@
+apply plugin: "groovy"
+
+version = "1.0"
+description = "Spock Framework - Example Project"
+
+// Spock works with Java 1.5 and above
+sourceCompatibility = 1.5
+
+repositories {
+  // Spock releases are available from Maven Central
+  mavenCentral()
+  // Spock snapshots are available from the Sonatype OSS snapshot repository
+  maven { url "http://oss.sonatype.org/content/repositories/snapshots/" }
+}
+
+dependencies {
+  // mandatory dependencies for using Spock
+  compile "org.codehaus.groovy:groovy-all:2.4.1"
+  testCompile "org.spockframework:spock-core:1.0-groovy-2.4"
+}
