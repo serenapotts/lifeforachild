@@ -20,7 +20,8 @@ class Processor {
         }
     }
 
-    def getInsertStatement(tableName, rowData) {
+    String getInsertStatement(tableName, rowData) {
+        assert !rowData.keySet().contains('id')
         def columns = rowData.keySet().join(',')
         def values = rowData.keySet().collect { rowData[it].getClass() == Boolean ? rowData[it] : "'${rowData[it]}'" }.join(',')
         "insert into $tableName ($columns) values ($values)"

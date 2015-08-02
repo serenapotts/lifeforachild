@@ -1,4 +1,6 @@
 .settings/
+.gradle/
+build/
 target/
 settings.txt
 bin/
