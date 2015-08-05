@@ -37,10 +37,25 @@ class ProcessorSpec extends Specification {
 
         def prodCentreId = 65
 
+        def tableParam
+        def dataParams = []
+        processor.metaClass.getInsertStatementWithoutId = { table, data ->
+            tableParam = table
+            dataParams << data
+            return "mock insert into statement..."
+        }
+
         when:
         Map stagingToProdIds = processor.insertChild(prodCentreId)
 
-        then: 'map with keys as 10, 11 and values as 20, 21'
+        then: 'data inserted does not contain ID and centre ID has changed to the Production ones'
+        tableParam == 'child'
+        dataParams == [
+            [age_at_diagnosis: 7, ethnic_group: 'abc', centre: 65, country: 2],
+            [age_at_diagnosis: 9, ethnic_group: 'abc', centre: 65, country: 2]
+        ]
+        
+        and: 'map with keys as 10, 11 and values as 20, 21'
         stagingToProdIds == [10: 20, 11: 21]
     }
 }
