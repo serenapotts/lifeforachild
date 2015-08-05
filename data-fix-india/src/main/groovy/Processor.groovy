@@ -33,10 +33,11 @@ class Processor {
     String getInsertStatement(tableName, rowData) {
         def columns = rowData.keySet().join(',')
         def values = rowData.keySet().collect {
-            if (rowData[it] != null) {
-                rowData[it].getClass() == Boolean ? rowData[it] : "'${rowData[it]}'"
+            if (rowData[it] == null || rowData[it].getClass() == Boolean) {
+                rowData[it]
             } else {
-                null
+                // wrap around quote to turn to String for insert.
+                "'${rowData[it]}'"
             }
         }.join(',')
 
