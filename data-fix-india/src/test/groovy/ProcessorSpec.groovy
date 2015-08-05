@@ -58,4 +58,42 @@ class ProcessorSpec extends Specification {
         and: 'map with keys as 10, 11 and values as 20, 21'
         stagingToProdIds == [10: 20, 11: 21]
     }
+
+    def "#insertChildVersions"() {
+        given: 'sql is mocked'
+        def processor = new Processor([])
+        Sql sourceSql = Mock(Sql)
+        Sql destSql = Mock(Sql)
+
+        and: 'we have 2 rows in child_versions table, ids 10 and 11'
+        sourceSql.rows(_) >> [
+            [id: 10, age_at_diagnosis: 7, ethnic_group: 'abc', centre: 13, country: 2],
+            [id: 11, age_at_diagnosis: 9, ethnic_group: 'abc', centre: 13, country: 2],
+        ]
+
+        processor.sourceSql = sourceSql
+        processor.destSql = destSql
+
+        def prodCentreId = 65
+
+        def tableParam
+        def dataParams = []
+        processor.metaClass.getInsertStatementId = { table, data ->
+            tableParam = table
+            dataParams << data
+            return "mock insert into statement..."
+        }
+
+        def stagingToProdChildIds = [10: 20, 11: 21]
+
+        when:
+        Map stagingToProdIds = processor.insertChildVersions(prodCentreId, stagingToProdChildIds)
+
+        then: 'data inserted contains Production Child ID and Production Centre ID'
+        tableParam == 'child_versions'
+        dataParams == [
+            [id: 20, age_at_diagnosis: 7, ethnic_group: 'abc', centre: 65, country: 2],
+            [id: 21, age_at_diagnosis: 9, ethnic_group: 'abc', centre: 65, country: 2]
+        ]
+    }
 }

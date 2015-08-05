@@ -65,7 +65,7 @@ class Processor {
     }
 
     Integer insertCentre() {
-        log.info "Inserting Centre..."
+        log.info "Inserting 'diabetes_centre'..."
         def centreId
         def diabetesCentreQuery = """
             select * from diabetes_centre
@@ -84,7 +84,7 @@ class Processor {
     }
 
     Map insertUser(prodCentreId) {
-        log.info "Inserting User..."
+        log.info "Inserting 'user'..."
 
         def stagingToProdUserIdMap = [:]
         def userQuery = """
@@ -112,7 +112,7 @@ class Processor {
     }
 
     void insertUserVersions(prodCentreId, stagingToProdUserIdMap) {
-        log.info "Inserting User Versions..."
+        log.info "Inserting 'user_versions'..."
 
         def query = """
             select * from user_versions
@@ -133,7 +133,7 @@ class Processor {
 
     //child has 2 foreign keys: centre and country.
     Map insertChild(prodCentreId) {
-        log.info "Inserting Child..."
+        log.info "Inserting 'child'..."
 
         def stagingToProdChildIdMap = [:]
         def query = """
@@ -141,7 +141,8 @@ class Processor {
             where centre = $STAGING_CENTRE_ID
         """
         sourceSql.rows(query).each { row ->
-            //only need to change centre ID, country is the same id.
+            //only need to change centre ID, country is the same ID.
+
             def stagingChildId = row['id']
 
             row.remove('id')  // ID will be generated when inserting
@@ -156,4 +157,23 @@ class Processor {
         return stagingToProdChildIdMap
     }
 
+    void insertChildVersions(prodCentreId, stagingToProdChildIdMap) {
+        log.info "Inserting 'child_versions'..."
+
+        def query = """
+            select * from child_versions
+            where centre = $STAGING_CENTRE_ID
+        """
+        sourceSql.rows(query).each { row ->
+            // change the child's ID to the new Production ID
+            // change the centre ID
+
+            row['id'] = stagingToProdChildIdMap[row['id']]
+            row['centre'] = prodCentreId   // update the centre ID
+
+            def insert = getInsertStatementId('child_versions', row)
+            log.debug "  Executing statement: $insert"
+            def result = destSql.executeInsert(insert)
+        }
+    }
 }
