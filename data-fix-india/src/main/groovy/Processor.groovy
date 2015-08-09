@@ -57,16 +57,22 @@ class Processor {
         def destDb = [url: "jdbc:mysql://${host}:3306/${opts.d}", user: opts.u, password: opts.p, driver: 'com.mysql.jdbc.Driver']
         destSql = Sql.newInstance(destDb.url, destDb.user, destDb.password, destDb.driver)
 
+        def query
+
         def prodCentreId = insertCentre()
         //only need to update centre ID. Country ID and user_group are the same in both Staging and Production
         def userStagingToProdIdMap = insertToPrimaryTable('user', [centre: prodCentreId])
-        insertToNonPrimaryKeyTable('user_versions', [centre: prodCentreId], [id: userStagingToProdIdMap])
+        query = getQueryForCentre('user_versions')
+        insertToNonPrimaryKeyTable('user_versions', query, [centre: prodCentreId], [id: userStagingToProdIdMap])
 
         //only need to update centre ID. Country ID is the same in both Staging and Production
         def childStagingToProdIdMap = insertToPrimaryTable('child', [centre: prodCentreId])
-        insertToNonPrimaryKeyTable('child_versions', [centre: prodCentreId], [id: childStagingToProdIdMap])
+        query = getQueryForCentre('child_versions')
+        insertToNonPrimaryKeyTable('child_versions', query, [centre: prodCentreId], [id: childStagingToProdIdMap])
 
         def reportStagingToProdIdMap = insertToPrimaryTable('report', [centre: prodCentreId], [viewable_by: userStagingToProdIdMap])
+        query = getQueryForReport('report_childfields', reportStagingToProdIdMap.keySet())
+        insertToNonPrimaryKeyTable('report_childfields', query, null, [report: reportStagingToProdIdMap])
     }
 
     Integer insertCentre() {
@@ -119,10 +125,9 @@ class Processor {
         return stagingToProdIdMap
     }
 
-    void insertToNonPrimaryKeyTable(tableName, updateFieldValueMap, referenceFieldValueMap) {
+    void insertToNonPrimaryKeyTable(tableName, query, updateFieldValueMap, referenceFieldValueMap) {
         log.info "Inserting '$tableName'..."
 
-        def query = "select * from " + tableName + " where centre = $STAGING_CENTRE_ID"
         sourceSql.rows(query).each { row ->
             updateFieldValueMap?.each { field, value -> 
                 row[field] = value
@@ -137,5 +142,13 @@ class Processor {
             log.debug "  Executing statement: $insert"
             def result = destSql.executeInsert(insert)
         }
+    }
+
+    String getQueryForCentre(tableName) {
+        "select * from " + tableName + " where centre = $STAGING_CENTRE_ID"
+    }
+
+    String getQueryForReport(tableName, ids) {
+        "select * from " + tableName + " where report in (" + ids.join(',') + ")"
     }
 }

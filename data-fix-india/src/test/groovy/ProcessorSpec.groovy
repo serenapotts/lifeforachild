@@ -169,8 +169,10 @@ class ProcessorSpec extends Specification {
 
         def stagingToProdChildIds = [10: 20, 11: 21]
 
+        def query = processor.getQueryForCentre('child_versions')
+
         when:
-        Map stagingToProdIds = processor.insertToNonPrimaryKeyTable('child_versions', [centre: prodCentreId], [id: stagingToProdChildIds])
+        processor.insertToNonPrimaryKeyTable('child_versions', query, [centre: prodCentreId], [id: stagingToProdChildIds])
 
         then: 'data inserted contains Production Child ID and Production Centre ID'
         tableParam == 'child_versions'
@@ -178,5 +180,55 @@ class ProcessorSpec extends Specification {
             [id: 20, age_at_diagnosis: 7, ethnic_group: 'abc', centre: 65, country: 2],
             [id: 21, age_at_diagnosis: 9, ethnic_group: 'abc', centre: 65, country: 2]
         ]
+    }
+
+    def "#insertToNonPrimaryKeyTable test for report_childfields"() {
+        given: 'sql is mocked'
+        def processor = new Processor([])
+        Sql sourceSql = Mock(Sql)
+        Sql destSql = Mock(Sql)
+
+        and: 'we have 2 rows in child_versions table, ids 10 and 11'
+        sourceSql.rows(_) >> [
+            [report: 10, element: 30, child_fields: 1],
+            [report: 11, element: 31, child_fields: 2]
+        ]
+
+        processor.sourceSql = sourceSql
+        processor.destSql = destSql
+
+        def tableParam
+        def dataParams = []
+        processor.metaClass.getInsertStatement = { table, data ->
+            tableParam = table
+            dataParams << data
+            return "mock insert into statement..."
+        }
+
+        def reportStagingToProdIdMap = [10: 20, 11: 21]
+
+        def query = processor.getQueryForReport('report_childfields', reportStagingToProdIdMap.keySet())
+
+        when:
+        processor.insertToNonPrimaryKeyTable('report_childfields', query, null, [report: reportStagingToProdIdMap])
+
+        then: 'data inserted contains Production report ID'
+        tableParam == 'report_childfields'
+        dataParams == [
+            [report: 20, element: 30, child_fields: 1],
+            [report: 21, element: 31, child_fields: 2]
+        ]
+    }
+
+    def "#getQueryForReport"() {
+        given:
+        def reportStagingToProdIdMap = [10: 20, 11: 21]
+        def processor = new Processor([])
+
+        when:
+        def query = processor.getQueryForReport('report_childfields', reportStagingToProdIdMap.keySet())
+
+        then:
+        query == 'select * from report_childfields where report in (10,11)'
     }
 }
