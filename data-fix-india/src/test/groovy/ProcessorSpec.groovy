@@ -95,7 +95,54 @@ class ProcessorSpec extends Specification {
         stagingToProdIds == [10: 20, 11: 21]
     }
 
-    def "#insertToVersionTable"() {
+    def "#insertToPrimaryTable for report returns a map from stagingId to prodId"() {
+        given: 'sql is mocked'
+        def processor = new Processor([])
+        Sql sourceSql = Mock(Sql)
+        Sql destSql = Mock(Sql)
+
+        and: 'we have 2 rows in report table, ids 10 and 11'
+        sourceSql.rows(_) >> [
+            [id: 10, record_number: 13, centre: 13, country: 2, viewable_by: 22],
+            [id: 11, record_number: 14, centre: 13, country: 2, viewable_by: 23]
+        ]
+
+        and: 'insert returns 2 ids: 20 and 21'
+        destSql.executeInsert(_) >>> [
+            [[20]],
+            [[21]]
+        ]
+
+        processor.sourceSql = sourceSql
+        processor.destSql = destSql
+
+        def prodCentreId = 65
+
+        def tableParam
+        def dataParams = []
+        processor.metaClass.getInsertStatementWithoutId = { table, data ->
+            tableParam = table
+            dataParams << data
+            return "mock insert into statement..."
+        }
+
+        def userStagingToProdIdMap = [22: 32, 23: 33]
+
+        when:
+        Map stagingToProdIds = processor.insertToPrimaryTable('report', [centre: prodCentreId], [viewable_by: userStagingToProdIdMap])
+
+        then: 'data inserted does not contain ID and centre ID has changed to the Production ones'
+        tableParam == 'report'
+        dataParams == [
+            [record_number: 13, centre: 65, country: 2, viewable_by: 32],
+            [record_number: 14, centre: 65, country: 2, viewable_by: 33]
+        ]
+        
+        and: 'map with keys as 10, 11 and values as 20, 21'
+        stagingToProdIds == [10: 20, 11: 21]
+    }
+
+    def "#insertToNonPrimaryKeyTable test for child_versions"() {
         given: 'sql is mocked'
         def processor = new Processor([])
         Sql sourceSql = Mock(Sql)
@@ -123,7 +170,7 @@ class ProcessorSpec extends Specification {
         def stagingToProdChildIds = [10: 20, 11: 21]
 
         when:
-        Map stagingToProdIds = processor.insertToVersionTable('child_versions', [centre: prodCentreId], stagingToProdChildIds)
+        Map stagingToProdIds = processor.insertToNonPrimaryKeyTable('child_versions', [centre: prodCentreId], [id: stagingToProdChildIds])
 
         then: 'data inserted contains Production Child ID and Production Centre ID'
         tableParam == 'child_versions'

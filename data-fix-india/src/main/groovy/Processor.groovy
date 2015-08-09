@@ -59,12 +59,14 @@ class Processor {
 
         def prodCentreId = insertCentre()
         //only need to update centre ID. Country ID and user_group are the same in both Staging and Production
-        def stagingToProdUserIdMap = insertToPrimaryTable('user', [centre: prodCentreId])
-        insertToVersionTable('user_versions', [centre: prodCentreId], stagingToProdUserIdMap)
+        def userStagingToProdIdMap = insertToPrimaryTable('user', [centre: prodCentreId])
+        insertToNonPrimaryKeyTable('user_versions', [centre: prodCentreId], [id: userStagingToProdIdMap])
 
         //only need to update centre ID. Country ID is the same in both Staging and Production
-        def stagingToProdChildIdMap = insertToPrimaryTable('child', [centre: prodCentreId])
-        insertToVersionTable('child_versions', [centre: prodCentreId], stagingToProdChildIdMap)
+        def childStagingToProdIdMap = insertToPrimaryTable('child', [centre: prodCentreId])
+        insertToNonPrimaryKeyTable('child_versions', [centre: prodCentreId], [id: childStagingToProdIdMap])
+
+        def reportStagingToProdIdMap = insertToPrimaryTable('report', [centre: prodCentreId], [viewable_by: userStagingToProdIdMap])
     }
 
     Integer insertCentre() {
@@ -86,7 +88,7 @@ class Processor {
         return centreId
     }
 
-    Map insertToPrimaryTable(tableName, updateFieldValueMap) {
+    Map insertToPrimaryTable(tableName, updateFieldValueMap, referenceFieldValueMap = null) {
         log.info "Inserting '$tableName'..."
 
         def stagingToProdIdMap = [:]
@@ -99,13 +101,17 @@ class Processor {
                 row[field] = value
             }
 
-           def insert = getInsertStatementWithoutId(tableName, row)
+            referenceFieldValueMap?.each { field, idMap ->
+                row[field] = idMap[row[field]]
+            }
+
+            def insert = getInsertStatementWithoutId(tableName, row)
            
-           log.debug "  Executing statement: $insert"
-           def result = destSql.executeInsert(insert)
-           def id = result[0][0]
+            log.debug "  Executing statement: $insert"
+            def result = destSql.executeInsert(insert)
+            def id = result[0][0]
            
-           stagingToProdIdMap[stagingId] = id
+            stagingToProdIdMap[stagingId] = id
         }
 
         log.info("  stagingToProdIdMap = $stagingToProdIdMap")
@@ -113,19 +119,19 @@ class Processor {
         return stagingToProdIdMap
     }
 
-    void insertToVersionTable(tableName, updateFieldValueMap, stagingToProdIdMap) {
+    void insertToNonPrimaryKeyTable(tableName, updateFieldValueMap, referenceFieldValueMap) {
         log.info "Inserting '$tableName'..."
 
         def query = "select * from " + tableName + " where centre = $STAGING_CENTRE_ID"
         sourceSql.rows(query).each { row ->
-            // update ID to point to the Production IDs
-            // update centre to point to Production centre ID
-            row['id'] = stagingToProdIdMap[row['id']]
-
-            updateFieldValueMap.each { field, value -> 
+            updateFieldValueMap?.each { field, value -> 
                 row[field] = value
             }
-            
+
+            referenceFieldValueMap?.each { field, idMap ->
+                row[field] = idMap[row[field]]
+            }
+
             def insert = getInsertStatement(tableName, row)
              
             log.debug "  Executing statement: $insert"
