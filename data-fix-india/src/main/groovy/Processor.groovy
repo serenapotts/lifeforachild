@@ -57,11 +57,14 @@ class Processor {
         def destDb = [url: "jdbc:mysql://${host}:3306/${opts.d}", user: opts.u, password: opts.p, driver: 'com.mysql.jdbc.Driver']
         destSql = Sql.newInstance(destDb.url, destDb.user, destDb.password, destDb.driver)
 
-        def centreId = insertCentre()
-        def stagingToProdUserIdMap = insertUser(centreId)
-        insertUserVersions(centreId, stagingToProdUserIdMap)
+        def prodCentreId = insertCentre()
+        //only need to update centre ID. Country ID and user_group are the same in both Staging and Production
+        def stagingToProdUserIdMap = insertToPrimaryTable('user', [centre: prodCentreId])
+        insertToVersionTable('user_versions', [centre: prodCentreId], stagingToProdUserIdMap)
 
-        def stagingToProdChildIdMap = insertChild(centreId)
+        //only need to update centre ID. Country ID is the same in both Staging and Production
+        def stagingToProdChildIdMap = insertToPrimaryTable('child', [centre: prodCentreId])
+        insertToVersionTable('child_versions', [centre: prodCentreId], stagingToProdChildIdMap)
     }
 
     Integer insertCentre() {
@@ -83,95 +86,48 @@ class Processor {
         return centreId
     }
 
-    Map insertUser(prodCentreId) {
-        log.info "Inserting 'user'..."
+    Map insertToPrimaryTable(tableName, updateFieldValueMap) {
+        log.info "Inserting '$tableName'..."
 
-        def stagingToProdUserIdMap = [:]
-        def userQuery = """
-            select * from user
-            where centre = $STAGING_CENTRE_ID
-        """
-        sourceSql.rows(userQuery).each { row ->
-           def stagingUserId = row['id']
+        def stagingToProdIdMap = [:]
+        def query = "select * from " + tableName + " where centre = $STAGING_CENTRE_ID"
+        sourceSql.rows(query).each { row ->
+            def stagingId = row['id']
 
-           row.remove('id')
-           row['centre'] = prodCentreId   // update the centre ID
-           // user_group is the same for Staging and Prod database, so we don't need to modify reference key to user_group
-           def insert = getInsertStatementWithoutId('user', row)
+            row.remove('id')
+            updateFieldValueMap.each { field, value -> 
+                row[field] = value
+            }
+
+           def insert = getInsertStatementWithoutId(tableName, row)
            
            log.debug "  Executing statement: $insert"
            def result = destSql.executeInsert(insert)
-           def userId = result[0][0]
+           def id = result[0][0]
            
-           stagingToProdUserIdMap[stagingUserId] = userId
+           stagingToProdIdMap[stagingId] = id
         }
 
-        log.debug("  stagingToProdUserIdMap = $stagingToProdUserIdMap")
+        log.info("  stagingToProdIdMap = $stagingToProdIdMap")
 
-        return stagingToProdUserIdMap
+        return stagingToProdIdMap
     }
 
-    void insertUserVersions(prodCentreId, stagingToProdUserIdMap) {
-        log.info "Inserting 'user_versions'..."
+    void insertToVersionTable(tableName, updateFieldValueMap, stagingToProdIdMap) {
+        log.info "Inserting '$tableName'..."
 
-        def query = """
-            select * from user_versions
-            where centre = $STAGING_CENTRE_ID
-        """
+        def query = "select * from " + tableName + " where centre = $STAGING_CENTRE_ID"
         sourceSql.rows(query).each { row ->
             // update ID to point to the Production IDs
             // update centre to point to Production centre ID
-            row['id'] = stagingToProdUserIdMap[row['id']]
-            row['centre'] = prodCentreId   // update the centre ID
-            // user_group is the same for Staging and Prod database, so we don't need to modify reference key to user_group
-            def insert = getInsertStatement('user_versions', row)
+            row['id'] = stagingToProdIdMap[row['id']]
+
+            updateFieldValueMap.each { field, value -> 
+                row[field] = value
+            }
+            
+            def insert = getInsertStatement(tableName, row)
              
-            log.debug "  Executing statement: $insert"
-            def result = destSql.executeInsert(insert)
-        }
-    }
-
-    //child has 2 foreign keys: centre and country.
-    Map insertChild(prodCentreId) {
-        log.info "Inserting 'child'..."
-
-        def stagingToProdChildIdMap = [:]
-        def query = """
-            select * from child
-            where centre = $STAGING_CENTRE_ID
-        """
-        sourceSql.rows(query).each { row ->
-            //only need to change centre ID, country is the same ID.
-
-            def stagingChildId = row['id']
-
-            row.remove('id')  // ID will be generated when inserting
-            row['centre'] = prodCentreId   // update the centre ID
-
-            def insert = getInsertStatementWithoutId('child', row)
-            log.debug "  Executing statement: $insert"
-            def result = destSql.executeInsert(insert)
-            def insertedChildId = result[0][0]
-            stagingToProdChildIdMap[stagingChildId] = insertedChildId
-        }
-        return stagingToProdChildIdMap
-    }
-
-    void insertChildVersions(prodCentreId, stagingToProdChildIdMap) {
-        log.info "Inserting 'child_versions'..."
-
-        def query = """
-            select * from child_versions
-            where centre = $STAGING_CENTRE_ID
-        """
-        sourceSql.rows(query).each { row ->
-            // change the child's ID to the new Production ID
-            // change the centre ID
-
-            row['id'] = stagingToProdChildIdMap[row['id']]
-            row['centre'] = prodCentreId   // update the centre ID
-
-            def insert = getInsertStatementId('child_versions', row)
             log.debug "  Executing statement: $insert"
             def result = destSql.executeInsert(insert)
         }

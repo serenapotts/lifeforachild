@@ -2,6 +2,7 @@ import spock.lang.*
 import groovy.sql.Sql
 
 class ProcessorSpec extends Specification {
+    
     def "#getInsertStatement returns insert statement with correct columns and values"() {
         given: 'data with false and null values'
         def map = [address: 'No. 2, 1A Cross, Marenahalli, JP Nagar II Phase 560078 Bangalore, India', version: 0, is_deleted: false, name: 'Jnana Sanjeevini Medical Cente', country: 2, no_value_column: null]
@@ -14,7 +15,42 @@ class ProcessorSpec extends Specification {
         statement == "insert into diabetes_centre (address,version,is_deleted,name,country,no_value_column) values ('No. 2, 1A Cross, Marenahalli, JP Nagar II Phase 560078 Bangalore, India','0',false,'Jnana Sanjeevini Medical Cente','2',null)"
     }
 
-    def "#insertChild returns a map from stagingChildId to prodChildId"() {
+    def "#insertCentre"() {
+        given: 'sql is mocked'
+        def processor = new Processor([])
+        Sql sourceSql = Mock(Sql)
+        Sql destSql = Mock(Sql)
+
+        and:
+        sourceSql.rows(_) >> [
+            [id: 13, address: 'No. 2, 1A Cross, Marenahalli', version: 1, name: 'My Centre']
+        ]
+
+        destSql.executeInsert(_) >> [[20]]
+
+        processor.sourceSql = sourceSql
+        processor.destSql = destSql
+
+        def tableParam
+        def dataParams = []
+        processor.metaClass.getInsertStatementWithoutId = { table, data ->
+            tableParam = table
+            dataParams << data
+            return "mock insert into statement..."
+        }
+
+        when: 
+        Integer id = processor.insertCentre()
+
+        then: 'insert to the right table, row does not have ID'
+        tableParam == 'diabetes_centre'
+        dataParams == [[address: 'No. 2, 1A Cross, Marenahalli', version: 1, name: 'My Centre']]
+
+        and: 'correct id returned'
+        id == 20
+    }
+
+    def "#insertToPrimaryTable returns a map from stagingId to prodId"() {
         given: 'sql is mocked'
         def processor = new Processor([])
         Sql sourceSql = Mock(Sql)
@@ -46,7 +82,7 @@ class ProcessorSpec extends Specification {
         }
 
         when:
-        Map stagingToProdIds = processor.insertChild(prodCentreId)
+        Map stagingToProdIds = processor.insertToPrimaryTable('child', [centre: prodCentreId])
 
         then: 'data inserted does not contain ID and centre ID has changed to the Production ones'
         tableParam == 'child'
@@ -59,7 +95,7 @@ class ProcessorSpec extends Specification {
         stagingToProdIds == [10: 20, 11: 21]
     }
 
-    def "#insertChildVersions"() {
+    def "#insertToVersionTable"() {
         given: 'sql is mocked'
         def processor = new Processor([])
         Sql sourceSql = Mock(Sql)
@@ -78,7 +114,7 @@ class ProcessorSpec extends Specification {
 
         def tableParam
         def dataParams = []
-        processor.metaClass.getInsertStatementId = { table, data ->
+        processor.metaClass.getInsertStatement = { table, data ->
             tableParam = table
             dataParams << data
             return "mock insert into statement..."
@@ -87,7 +123,7 @@ class ProcessorSpec extends Specification {
         def stagingToProdChildIds = [10: 20, 11: 21]
 
         when:
-        Map stagingToProdIds = processor.insertChildVersions(prodCentreId, stagingToProdChildIds)
+        Map stagingToProdIds = processor.insertToVersionTable('child_versions', [centre: prodCentreId], stagingToProdChildIds)
 
         then: 'data inserted contains Production Child ID and Production Centre ID'
         tableParam == 'child_versions'
