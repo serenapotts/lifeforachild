@@ -1,7 +1,7 @@
 apply plugin: "groovy"
 
 version = "1.0"
-description = "Spock Framework - Example Project"
+description = "Spock Framework - Data fix for India Project"
 
 // Spock works with Java 1.5 and above
 //sourceCompatibility = 1.5
