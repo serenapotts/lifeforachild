@@ -73,16 +73,20 @@ class Processor {
         def reportStagingToProdIdMap = insertToPrimaryTable('report', [centre: prodCentreId], [viewable_by: userStagingToProdIdMap])
         query = getQueryForReport('report_childfields', reportStagingToProdIdMap.keySet())
         insertToNonPrimaryKeyTable('report_childfields', query, null, [report: reportStagingToProdIdMap])
+
+        query = getQueryForReport('report_clinicalrecordfields', reportStagingToProdIdMap.keySet())
+        insertToNonPrimaryKeyTable('report_clinicalrecordfields', query, null, [report: reportStagingToProdIdMap])
     }
 
     Integer insertCentre() {
         log.info "Inserting 'diabetes_centre'..."
         def centreId
-        def diabetesCentreQuery = """
+        def query = """
             select * from diabetes_centre
             where id = $STAGING_CENTRE_ID
         """
-        sourceSql.rows(diabetesCentreQuery).each { row ->
+        log.debug "  Query = $query"
+        sourceSql.rows(query).each { row ->
            row.remove('id')
            def insert = getInsertStatementWithoutId('diabetes_centre', row)
            
@@ -99,6 +103,7 @@ class Processor {
 
         def stagingToProdIdMap = [:]
         def query = "select * from " + tableName + " where centre = $STAGING_CENTRE_ID"
+        log.debug "  Query = $query"
         sourceSql.rows(query).each { row ->
             def stagingId = row['id']
 
@@ -128,6 +133,7 @@ class Processor {
     void insertToNonPrimaryKeyTable(tableName, query, updateFieldValueMap, referenceFieldValueMap) {
         log.info "Inserting '$tableName'..."
 
+        log.debug "  Query = $query"
         sourceSql.rows(query).each { row ->
             updateFieldValueMap?.each { field, value -> 
                 row[field] = value
