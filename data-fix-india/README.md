@@ -57,19 +57,22 @@ compileTestGroovy {
 # Run script
 ## Setting up the data
 Data dump can be done on the Hope server:
+Staging:
 ```
 $ mysqldump -u<username> -p<password> --add-drop-database --databases staging_db_name > staging_backup.sql
 ```
-
-Generate the schema of Production database:
+Prod: (the command below grab all data, alternatively you can grab just the schema):
 ```
+$ mysqldump -u<username> -p<password> --add-drop-database --databases prod_db_name > prod_backup.sql
+
+# Or just grab the scchema:
 $ mysqldump -u<username> -p<password> --no-data --add-drop-database --databases prod_db_name > prod_schema.sql
 ```
 
-SCP those files to your machine and import them:
+SCP those files to your machine and import them to your computer:
 ```
 $ mysql -u<username> -p<password> < staging_backup.sql
-$ mysql -u<username> -p<password> < prod_schema.sql
+$ mysql -u<username> -p<password> < prod_backup.sql
 ```
 
 ## Running script
