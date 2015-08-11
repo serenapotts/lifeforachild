@@ -61,18 +61,15 @@ Staging:
 ```
 $ mysqldump -u<username> -p<password> --add-drop-database --databases staging_db_name > staging_backup.sql
 ```
-Prod: (the command below grab all data, alternatively you can grab just the schema):
+Prod: (should just grab the schema):
 ```
-$ mysqldump -u<username> -p<password> --add-drop-database --databases prod_db_name > prod_backup.sql
-
-# Or just grab the scchema:
 $ mysqldump -u<username> -p<password> --no-data --add-drop-database --databases prod_db_name > prod_schema.sql
 ```
 
 SCP those files to your machine and import them to your computer:
 ```
 $ mysql -u<username> -p<password> < staging_backup.sql
-$ mysql -u<username> -p<password> < prod_backup.sql
+$ mysql -u<username> -p<password> < prod_schema.sql
 ```
 
 ## Running script
