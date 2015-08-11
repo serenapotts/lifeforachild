@@ -81,8 +81,10 @@ class ProcessorSpec extends Specification {
             return "mock insert into statement..."
         }
 
+        def query = "any mock query"
+
         when:
-        Map stagingToProdIds = processor.insertToPrimaryTable('child', [centre: prodCentreId])
+        Map stagingToProdIds = processor.insertToPrimaryTable('child', query, [centre: prodCentreId])
 
         then: 'data inserted does not contain ID and centre ID has changed to the Production ones'
         tableParam == 'child'
@@ -127,9 +129,10 @@ class ProcessorSpec extends Specification {
         }
 
         def userStagingToProdIdMap = [22: 32, 23: 33]
+        def query = "any mock query"
 
         when:
-        Map stagingToProdIds = processor.insertToPrimaryTable('report', [centre: prodCentreId], [viewable_by: userStagingToProdIdMap])
+        Map stagingToProdIds = processor.insertToPrimaryTable('report', query, [centre: prodCentreId], [viewable_by: userStagingToProdIdMap])
 
         then: 'data inserted does not contain ID and centre ID has changed to the Production ones'
         tableParam == 'report'

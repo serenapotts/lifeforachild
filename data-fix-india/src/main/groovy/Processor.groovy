@@ -59,25 +59,39 @@ class Processor {
 
         def query
 
+        // Table: diabetes_centre
         def prodCentreId = insertCentre()
+
+        // Table: user
         // only need to update centre ID. Country ID and user_group are the same in both Staging and Production
-        def userStagingToProdIdMap = insertToPrimaryTable('user', [centre: prodCentreId])
+        query = getQueryForCentre('user')
+        def userStagingToProdIdMap = insertToPrimaryTable('user', query, [centre: prodCentreId])
+
+        // Table: user_versions
         query = getQueryForCentre('user_versions')
         insertToNonPrimaryKeyTable('user_versions', query, [centre: prodCentreId], [id: userStagingToProdIdMap])
 
+        // Table: child
         // only need to update centre ID. Country ID is the same in both Staging and Production
         // update individual_id with new centre ID
         def stagingIndividualIds = getIndividualIds()
         Map individualIdStagingToProdMap = getIndividualIdStagingToProd(stagingIndividualIds, prodCentreId)
+        query = getQueryForCentre('child')
+        def childStagingToProdIdMap = insertToPrimaryTable('child', query, [centre: prodCentreId], [individual_id: individualIdStagingToProdMap])
 
-        def childStagingToProdIdMap = insertToPrimaryTable('child', [centre: prodCentreId], [individual_id: individualIdStagingToProdMap])
+        // Table: child_versions
         query = getQueryForCentre('child_versions')
         insertToNonPrimaryKeyTable('child_versions', query, [centre: prodCentreId], [id: childStagingToProdIdMap, individual_id: individualIdStagingToProdMap])
 
-        def reportStagingToProdIdMap = insertToPrimaryTable('report', [centre: prodCentreId], [viewable_by: userStagingToProdIdMap])
+        // Table: report
+        query = getQueryForCentre('report')
+        def reportStagingToProdIdMap = insertToPrimaryTable('report', query, [centre: prodCentreId], [viewable_by: userStagingToProdIdMap])
+
+        // Table: report_childfields
         query = getQueryForReport('report_childfields', reportStagingToProdIdMap.keySet())
         insertToNonPrimaryKeyTable('report_childfields', query, null, [report: reportStagingToProdIdMap])
 
+        // Table: report_clinicalrecordfields
         query = getQueryForReport('report_clinicalrecordfields', reportStagingToProdIdMap.keySet())
         insertToNonPrimaryKeyTable('report_clinicalrecordfields', query, null, [report: reportStagingToProdIdMap])
     }
@@ -102,11 +116,10 @@ class Processor {
         return centreId
     }
 
-    Map insertToPrimaryTable(tableName, updateFieldValueMap, referenceFieldValueMap = null) {
+    Map insertToPrimaryTable(tableName, query, updateFieldValueMap, referenceFieldValueMap = null) {
         log.info "Inserting '$tableName'..."
 
         def stagingToProdIdMap = [:]
-        def query = "select * from " + tableName + " where centre = $STAGING_CENTRE_ID"
         log.debug "  Query = $query"
         sourceSql.rows(query).each { row ->
             def stagingId = row['id']
