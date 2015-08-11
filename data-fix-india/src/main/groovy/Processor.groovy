@@ -83,6 +83,14 @@ class Processor {
         query = getQueryForCentre('child_versions')
         insertToNonPrimaryKeyTable('child_versions', query, [centre: prodCentreId], [id: childStagingToProdIdMap, individual_id: individualIdStagingToProdMap])
 
+        // Table: clinical_record
+        query = getQueryClinicalRecordForChild('clinical_record', childStagingToProdIdMap.keySet())
+        Map clinicalRecordStagingToProdIdMap = insertToPrimaryTable('clinical_record', query, null, [child: childStagingToProdIdMap, person_completing_form: userStagingToProdIdMap])
+
+        // Table: clinical_record_versions
+        query = getQueryClinicalRecordForChild('clinical_record_versions', childStagingToProdIdMap.keySet())
+        insertToNonPrimaryKeyTable('clinical_record_versions', query, null, [id: clinicalRecordStagingToProdIdMap, child: childStagingToProdIdMap, person_completing_form: userStagingToProdIdMap])
+
         // Table: report
         query = getQueryForCentre('report')
         def reportStagingToProdIdMap = insertToPrimaryTable('report', query, [centre: prodCentreId], [viewable_by: userStagingToProdIdMap])
@@ -125,12 +133,16 @@ class Processor {
             def stagingId = row['id']
 
             row.remove('id')
-            updateFieldValueMap.each { field, value -> 
+            updateFieldValueMap?.each { field, value -> 
                 row[field] = value
             }
 
             referenceFieldValueMap?.each { field, idMap ->
-                row[field] = idMap[row[field]]
+                if (!idMap.containsKey(row[field])) {
+                    log.error "  Wrong data!! column $field value: ${row[field]}, does not exist in idMap; idMap = $idMap"
+                } else {
+                    row[field] = idMap[row[field]]    
+                }
             }
 
             def insert = getInsertStatementWithoutId(tableName, row)
