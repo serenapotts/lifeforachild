@@ -206,4 +206,8 @@ class Processor {
     String getQueryForReport(tableName, ids) {
         "select * from " + tableName + " where report in (" + ids.join(',') + ")"
     }
+
+    String getQueryClinicalRecordForChild(tableName, childIds) {
+        "select * from " + tableName + " where child in (" + childIds.join(',') + ")"
+    }
 }

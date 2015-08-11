@@ -272,4 +272,16 @@ class ProcessorSpec extends Specification {
         5.toString().padLeft(3, '0') == '005'
         5.toString().padLeft(1, '0') == '5'
     }
+
+    def "#getQueryClinicalRecordForChild"() {
+        given:
+        def tableName = 'clinical_record'
+        def ids = [10, 11]
+
+        when:
+        def query = new Processor([]).getQueryClinicalRecordForChild(tableName, ids)
+
+        then:
+        query == 'select * from clinical_record where child in (10,11)'
+    }
 }
