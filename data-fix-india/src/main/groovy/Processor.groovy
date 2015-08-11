@@ -15,7 +15,7 @@ class Processor {
     Processor(opts) {
         log.level = Level.DEBUG
         // add an appender to log to file
-        // log.addAppender(new FileAppender(new TTCCLayout(), 'myscript.log'));
+        log.addAppender(new FileAppender(new TTCCLayout(), 'data-fix-india-centre.log'));
 
         this.opts = opts
         if(opts.h) {
@@ -140,9 +140,9 @@ class Processor {
             referenceFieldValueMap?.each { field, idMap ->
                 if (!idMap.containsKey(row[field])) {
                     log.error "  Wrong data!! column $field value: ${row[field]}, does not exist in idMap; idMap = $idMap"
-                } else {
-                    row[field] = idMap[row[field]]    
-                }
+                } 
+
+                row[field] = idMap[row[field]]    
             }
 
             def insert = getInsertStatementWithoutId(tableName, row)
