@@ -157,4 +157,13 @@ class Processor {
     String getQueryForReport(tableName, ids) {
         "select * from " + tableName + " where report in (" + ids.join(',') + ")"
     }
+
+    String padWithZeros(id, length) {
+        String idString = id.toString()
+        (length - idString.length()).times {
+            idString = "0${idString}"
+        }
+
+        return idString;
+    }
 }

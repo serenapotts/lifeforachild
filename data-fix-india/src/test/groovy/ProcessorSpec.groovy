@@ -231,4 +231,13 @@ class ProcessorSpec extends Specification {
         then:
         query == 'select * from report_childfields where report in (10,11)'
     }
+
+    def "#padWithZeros"() {
+        expect:
+        new Processor([]).padWithZeros(5, 4) == '0005'
+        new Processor([]).padWithZeros(1111, 4) == '1111'
+        new Processor([]).padWithZeros(11111, 4) == '11111'
+        new Processor([]).padWithZeros(5, 3) == '005'
+        new Processor([]).padWithZeros(5, 1) == '5'
+    }
 }
