@@ -150,8 +150,8 @@ class ProcessorSpec extends Specification {
 
         and: 'we have 2 rows in child_versions table, ids 10 and 11'
         sourceSql.rows(_) >> [
-            [id: 10, age_at_diagnosis: 7, ethnic_group: 'abc', centre: 13, country: 2],
-            [id: 11, age_at_diagnosis: 9, ethnic_group: 'abc', centre: 13, country: 2],
+            [id: 10, age_at_diagnosis: 7, ethnic_group: 'abc', centre: 13, country: 2, individual_id: '0020130001'],
+            [id: 11, age_at_diagnosis: 9, ethnic_group: 'abc', centre: 13, country: 2, individual_id: '0020130012'],
         ]
 
         processor.sourceSql = sourceSql
@@ -168,17 +168,21 @@ class ProcessorSpec extends Specification {
         }
 
         def stagingToProdChildIds = [10: 20, 11: 21]
+        def individualIdsMap = [
+            '0020130001': '0020670001',
+            '0020130012': '0020670012'
+        ]
 
         def query = processor.getQueryForCentre('child_versions')
 
         when:
-        processor.insertToNonPrimaryKeyTable('child_versions', query, [centre: prodCentreId], [id: stagingToProdChildIds])
+        processor.insertToNonPrimaryKeyTable('child_versions', query, [centre: prodCentreId], [id: stagingToProdChildIds, individual_id: individualIdsMap])
 
         then: 'data inserted contains Production Child ID and Production Centre ID'
         tableParam == 'child_versions'
         dataParams == [
-            [id: 20, age_at_diagnosis: 7, ethnic_group: 'abc', centre: 65, country: 2],
-            [id: 21, age_at_diagnosis: 9, ethnic_group: 'abc', centre: 65, country: 2]
+            [id: 20, age_at_diagnosis: 7, ethnic_group: 'abc', centre: 65, country: 2, individual_id: '0020670001'],
+            [id: 21, age_at_diagnosis: 9, ethnic_group: 'abc', centre: 65, country: 2, individual_id: '0020670012']
         ]
     }
 
@@ -232,12 +236,37 @@ class ProcessorSpec extends Specification {
         query == 'select * from report_childfields where report in (10,11)'
     }
 
-    def "#padWithZeros"() {
+    def "#getIndividualIdStagingToProd"() {
+        given:
+        def ids = ['0020130001', '0020130012', '0020130030', '0020130083']
+        def prodCentreId = 67
+
+        when:
+        def map = new Processor([]).getIndividualIdStagingToProd(ids, prodCentreId)
+
+        then:
+        map == [
+            '0020130001': '0020670001',
+            '0020130012': '0020670012',
+            '0020130030': '0020670030',
+            '0020130083': '0020670083'
+        ]
+    }
+
+    def "#getNewIndividualId"() {
         expect:
-        new Processor([]).padWithZeros(5, 4) == '0005'
-        new Processor([]).padWithZeros(1111, 4) == '1111'
-        new Processor([]).padWithZeros(11111, 4) == '11111'
-        new Processor([]).padWithZeros(5, 3) == '005'
-        new Processor([]).padWithZeros(5, 1) == '5'
+        new Processor([]).getNewIndividualId('0020130001', 66) == '0020660001'
+        new Processor([]).getNewIndividualId('0020130012', 66) == '0020660012'
+        new Processor([]).getNewIndividualId('0020130030', 66) == '0020660030'
+        new Processor([]).getNewIndividualId('0020130083', 66) == '0020660083'
+    }
+
+    def "#padLeft from String"() {
+        expect:
+        5.toString().padLeft(4, '0') == '0005'
+        1111.toString().padLeft(4, '0') == '1111'
+        11111.toString().padLeft(4, '0') == '11111'
+        5.toString().padLeft(3, '0') == '005'
+        5.toString().padLeft(1, '0') == '5'
     }
 }

@@ -60,15 +60,19 @@ class Processor {
         def query
 
         def prodCentreId = insertCentre()
-        //only need to update centre ID. Country ID and user_group are the same in both Staging and Production
+        // only need to update centre ID. Country ID and user_group are the same in both Staging and Production
         def userStagingToProdIdMap = insertToPrimaryTable('user', [centre: prodCentreId])
         query = getQueryForCentre('user_versions')
         insertToNonPrimaryKeyTable('user_versions', query, [centre: prodCentreId], [id: userStagingToProdIdMap])
 
-        //only need to update centre ID. Country ID is the same in both Staging and Production
-        def childStagingToProdIdMap = insertToPrimaryTable('child', [centre: prodCentreId])
+        // only need to update centre ID. Country ID is the same in both Staging and Production
+        // update individual_id with new centre ID
+        def stagingIndividualIds = getIndividualIds()
+        Map individualIdStagingToProdMap = getIndividualIdStagingToProd(stagingIndividualIds, prodCentreId)
+
+        def childStagingToProdIdMap = insertToPrimaryTable('child', [centre: prodCentreId], [individual_id: individualIdStagingToProdMap])
         query = getQueryForCentre('child_versions')
-        insertToNonPrimaryKeyTable('child_versions', query, [centre: prodCentreId], [id: childStagingToProdIdMap])
+        insertToNonPrimaryKeyTable('child_versions', query, [centre: prodCentreId], [id: childStagingToProdIdMap, individual_id: individualIdStagingToProdMap])
 
         def reportStagingToProdIdMap = insertToPrimaryTable('report', [centre: prodCentreId], [viewable_by: userStagingToProdIdMap])
         query = getQueryForReport('report_childfields', reportStagingToProdIdMap.keySet())
@@ -150,20 +154,43 @@ class Processor {
         }
     }
 
+    List getIndividualIds() {
+        log.info "Getting individual_ids"
+        def query = "select individual_id from child where centre = $STAGING_CENTRE_ID"
+        log.debug "  Query = $query"
+
+        def individualIds = []
+        sourceSql.rows(query).each { row ->
+            individualIds << row['individual_id']
+        }
+        log.info "  stagingIndividualIds = $individualIds"
+        return individualIds
+    }
+
+    Map getIndividualIdStagingToProd(stagingIndividualIds, prodCentreId) {
+        def map = [:]
+        stagingIndividualIds.each { stagingIndividualId ->
+            map[stagingIndividualId] = getNewIndividualId(stagingIndividualId, prodCentreId)
+        }
+        return map
+    }
+
+    /**
+     * Individual ID is made up of 3 digits country ID, 3 digits centre ID, and 4 digits child count.
+     * New individual id just different by centre id. Keep country and count.
+     */
+    String getNewIndividualId(oldIndividualId, prodCentreId) {
+        oldIndividualId.replaceAll(/(\d{3})(\d{3})(\d{4})/) { full, country, centre, childCount ->
+            // only need to change centre to the new centre, keep country and childCount
+            return country + prodCentreId.toString().padLeft(3, '0') + childCount
+        }
+    }
+
     String getQueryForCentre(tableName) {
         "select * from " + tableName + " where centre = $STAGING_CENTRE_ID"
     }
 
     String getQueryForReport(tableName, ids) {
         "select * from " + tableName + " where report in (" + ids.join(',') + ")"
-    }
-
-    String padWithZeros(id, length) {
-        String idString = id.toString()
-        (length - idString.length()).times {
-            idString = "0${idString}"
-        }
-
-        return idString;
     }
 }
