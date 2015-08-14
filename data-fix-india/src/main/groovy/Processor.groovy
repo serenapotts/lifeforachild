@@ -169,6 +169,10 @@ class Processor {
             }
 
             referenceFieldValueMap?.each { field, idMap ->
+                if (!idMap.containsKey(row[field])) {
+                    log.error "  Wrong data!! column $field value: ${row[field]}, does not exist in idMap; idMap = $idMap"
+                } 
+                
                 row[field] = idMap[row[field]]
             }
 
